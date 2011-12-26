@@ -1,0 +1,154 @@
+
+
+  
+  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: My Blackle Energy Consumption Experiment</title><link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+    <a href="/">
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
+    <nav><a href="/about/">About</a>
+      <a href="/resume/">Resume</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/favorites/">Favo(u)rites</a>
+      <a href="/contact/">Contact</a>
+      <a target="_blank" id="twitter" class="icon" href="http://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
+      <a target="_blank" id="linkedin" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
+      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
+    </nav>
+</div>                 
+</header><div class="text post sidebar">
+      <aside><ul class="share-buttons">
+<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+          <li class="plusone">
+          <!--
+          <li class="linkedin"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
+          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
+          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
+          -->
+        </ul></aside><section><article><h1 role="banner">
+            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
+            <span class="description">
+              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript, 
+              semantic web, Rails tips, graph databases, distributed systems.
+            </span>
+          </h1>
+          
+          <h2>My Blackle Energy Consumption Experiment</h2>
+          I received a forward from a contact earlier today touting the energy savings of using Blackle instead of Google to search.  My immediate thought was surely there would be no difference for an LCD monitor, or would there?  I can, of course, see for CRT monitors energy savings are highly likely.  The following is the energy saving content from the email forward I received:
+<blockquote>
+  We probably all use google several times a day - here's something to consider:
+  When your screen is white, be it an empty word page, or the Google page, your computer consumes 74 watts, and when its black it consumes only 59 watts. An article about the energy saving that would be achieved if Google had a black screen, taking into account the huge number of page views, worked out at a saving of 750 mega watts/hour per year.
+  In a response to this article Google created a black version of its search engine, called Blackle, with the exact same functions as the white version, but with a lower energy consumption, check it out:
+  <a href="http://www.blackle.com">http://www.blackle.com</a>
+</blockquote>
+Since I work for a very energy conscious firm and I have been cycling or walking EVERYWHERE around town this summer (except I allow myself use of my car one afternoon a week maximum), I was curious and had to get to the bottom of it.
+<h4>Hypothesis</h4>There
+will not be any significant change in power usage (aka wattage) when viewing Google.com in my web browser versus viewing Blackle.com in the same web browser window.  (I must confess I already knew how LCD monitors worked before conducting this experiment, but there are a surprising number of people who do not believe the backlight of an LCD monitor is on for the entire LCD regardless of what is being shown - ignorance is bliss for some).
+<h4>Conditions</h4>
+<ul>
+<li>Dimensions of browser on screen must remain constant for both page views</li>
+  Power reader is monitored for 30 seconds while each page is being displayed and all reading changes will be noted
+</ul>
+<h4>Equipment</h4>
+<ul>
+<li>
+    <a href="http://www.amazon.com/gp/redirect.html?ie=UTF8&amp;location=http%3A%2F%2Fwww.amazon.com%2FP3-International-Kill-Electricity-Monitor%2Fdp%2FB00009MDBU%3Fie%3DUTF8%26s%3Delectronics%26qid%3D1185292894%26sr%3D1-1&amp;tag=illinilistn09-20&amp;linkCode=ur2&amp;camp=1789&amp;creative=9325">P3 Kill-A-Watt reader (x1)</a>
+    <img alt="" border="0" height="1" src="http://www.assoc-amazon.com/e/ir?t=illinilistn09-20&amp;amp;l=ur2&amp;amp;o=1" style="border:none !important; margin:0px !important;" width="1">
+</li>
+  <li>17" Dell LCD monitor (x1)</li>
+  <li>[Indirectly used] Dell workstation (x1)</li>
+  <li>Cell phone (to time page view durations)</li>
+</ul>
+<h4>Preparation</h4>
+<ol>
+<li>Power off LCD monitor and unplug from power supply</li>
+  <li>Plug in power reader into power supply and plug LCD monitor plug into power reader socket</li>
+  <li>Select power reading (can choose from voltage, power and current "real-time" readings)</li>
+  <li>Record initial "power off" reading</li>
+  <li>Power on LCD monitor</li>
+  <li>Record initial "power on" reading</li>
+</ol>
+<h4>Method</h4>
+<ol>
+<li>Open web browser and maximize window</li>
+  <li>
+    Surf to
+    <tt>http://google.com</tt>
+  </li>
+  <li>Start cell phone timer as soon as page is loaded</li>
+  <li>Monitor power reading for 30 seconds and note any changes to reading</li>
+  <li>
+    In same web browser window surf to
+    <tt>http://blackle.com</tt>
+  </li>
+  <li>Start cell phone timers as soon as page is loaded</li>
+  <li>Monitor power reading for 30 seconds and note any changes to reading</li>
+</ol>
+<h4>Results</h4>
+<b>Initial "power off" reading:</b>
+0W (zero Watts)
+<b>Initial "power on" reading:</b>
+20W (twenty Watts) after 3-4 seconds
+<b>Google reading:</b>
+started at 20W, no change for 30 seconds, ended at 20W.
+<b>Blackle reading:</b>
+started at 20W, no change for 30 seconds, ended at 20W.
+<h4>Analysis</h4>As
+we can see there was no significant change in the reading (to stated equipment error of plus or minus 0.2%).
+Therefore our hypothesis is shown to hold in this experiment using the equipment identified above and I conclude that Blackle has next to zero impact on energy consumption of LCD monitors.
+The good news is that my LCD monitor consumes much less than Blackle's claim of 50-75 Watts regardless of the search engine presentation I use!:)
+
+        </article></section>
+</div>
+    <footer><p>
+    Copyright © 2006-2011 <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <p>
+    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <div id="rights"> 
+    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
+    Links: <a href="http://susanpotter.net/resume/software-engineer">Software Engineer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/architect">Application Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer</a>,
+           <a href="http://susanpotter.net/resume/architect">Software Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Hedge Fund Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Hedge Fund Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">Resource Oriented Architecture</a>,
+  </div> 
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-837842-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_setDetectFlash', false]);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script></footer><script type="text/javascript">
+      (function($) {
+        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })(jQuery);
+    </script><!-- Place this tag just before your close body tag -->

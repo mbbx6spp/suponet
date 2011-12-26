@@ -1,0 +1,127 @@
+
+
+  
+  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: </title><link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+    <a href="/">
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
+    <nav><a href="/about/">About</a>
+      <a href="/resume/">Resume</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/favorites/">Favo(u)rites</a>
+      <a href="/contact/">Contact</a>
+      <a target="_blank" id="twitter" class="icon" href="http://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
+      <a target="_blank" id="linkedin" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
+      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
+    </nav>
+</div>                 
+</header><div class="text post sidebar">
+      <aside><ul class="share-buttons">
+<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+          <li class="plusone">
+          <!--
+          <li class="linkedin"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
+          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
+          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
+          -->
+        </ul></aside><section><article><h1 role="banner">
+            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
+            <span class="description">
+              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript, 
+              semantic web, Rails tips, graph databases, distributed systems.
+            </span>
+          </h1>
+          
+          <h2></h2>
+          <p>
+  You may be grappling with the problem of how to scale out the relational database behind the great Rails web application you built as your service acquires more users rapidly. Two common bottlenecks with relational databases are:
+</p>
+<ul>
+<li>
+    query throughput decreasing due to increasing complexity of queries
+  </li>
+  <li>
+    size of the data stored no longer comfortably fits in RAM (or even on disk)
+  </li>
+</ul>
+<p>
+  Relational databases can scale out for reads reasonably well until the amount of data reaches the point where critical indices can no longer fit in RAM or the latency of slave replication is unacceptable for the application. Scaling out for writes, however, is not
+</p>
+<p>
+  Relational databases (RDBMS), based on principles of set theory, have long been a staple as the data store model for most kinds of software applications; the web arena is no different. When query throughput and the size of the data of web services and applications increased by orders of magnitude over the last decade, architects and engineers tried to come up with more ways to scale relational databases [1]. The problem is relational databases are easy to scale up, but not so easy to scale out. When significant economic advantage is often found by using commodity hardware, scaling up is not an appealing proposition.
+</p>
+<p>
+  After optimizing every query or index and beyond reserving a master relational database instance for just writes and delegating all reads to read-only slaves, another common method to scale out a RDBMS is to shard application data. This may cause developers more pain than relief as Morgan Tocker on the MySQL Performance Blog discusses [2].
+</p>
+<p>
+  Google with all its computing and engineering might have been using an in-house datastore called BigTable [3], which retains some features of relational databases but reduces some of the constraints that relational databases usually apply.  This allows BigTable to scale out across thousands nodes and solves the ‘big data’ and query latency problems found in RDBMS back ends that start growing beyond their limits.
+</p>
+<p>
+  Another titan in the data web-scale sphere is Amazon. Engineers at Amazon chose to further relax the emphasis on data structure than Google did with BigTable and created a different style of data store to assist with their scaling needs called Dynamo [4]. Amazon designed Dynamo with the business critical use case of the shopping cart in mind. If Amazon.com failed to add an item to a customer’s cart when requested, even for short periods of database downtime, large revenues could be lost. These are high stakes.
+</p>
+<p>
+  Amazon presented a paper on their proprietary Dynamo technology in 2007 at the Symposium of Operating System Principles (SOSP). This paper bases much of its discussion around Eric Brewer’s 2000 keynote speech at the ACM Symposium on the Principles of Distributed Computing (PODC), which postulated that as we build systems that are more distributed in nature (as large scale web applications were fast becoming then) we will not be able to impose data consistency at all times without impacting availability. This was Brewer’s Conjecture at the time and a couple of years later Gilbert and Lynch of MIT formally proved it [5], making it Brewer’s Theorem. It is also commonly referred to as CAP Theorem.
+</p>
+[1] URL for scaling out relational databases article.
+[2] http://www.mysqlperformanceblog.com/2009/08/06/why-you-dont-want-to-shard/
+[3] http://labs.google.com/papers/bigtable.html
+[4] http://www.allthingsdistributed.com/2007/10/amazons_dynamo.html
+[5] http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.20.1495&amp;rep=rep1&amp;type=pdf
+[6] List of dynamo-inspired
+[7] http://www.basho.com/products_riak_overview.php
+
+        </article></section>
+</div>
+    <footer><p>
+    Copyright © 2006-2011 <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <p>
+    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <div id="rights"> 
+    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
+    Links: <a href="http://susanpotter.net/resume/software-engineer">Software Engineer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/architect">Application Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer</a>,
+           <a href="http://susanpotter.net/resume/architect">Software Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Hedge Fund Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Hedge Fund Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">Resource Oriented Architecture</a>,
+  </div> 
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-837842-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_setDetectFlash', false]);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script></footer><script type="text/javascript">
+      (function($) {
+        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })(jQuery);
+    </script><!-- Place this tag just before your close body tag -->

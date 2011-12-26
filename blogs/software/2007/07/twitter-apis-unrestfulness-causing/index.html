@@ -1,0 +1,140 @@
+
+
+  
+  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: Twitter API's unRESTfulness causing trouble</title><link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+    <a href="/">
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
+    <nav><a href="/about/">About</a>
+      <a href="/resume/">Resume</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/favorites/">Favo(u)rites</a>
+      <a href="/contact/">Contact</a>
+      <a target="_blank" id="twitter" class="icon" href="http://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
+      <a target="_blank" id="linkedin" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
+      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
+    </nav>
+</div>                 
+</header><div class="text post sidebar">
+      <aside><ul class="share-buttons">
+<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+          <li class="plusone">
+          <!--
+          <li class="linkedin"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
+          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
+          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
+          -->
+        </ul></aside><section><article><h1 role="banner">
+            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
+            <span class="description">
+              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript, 
+              semantic web, Rails tips, graph databases, distributed systems.
+            </span>
+          </h1>
+          
+          <h2>Twitter API's unRESTfulness causing trouble</h2>
+          I am now designing my sixth (6th) set of web services on my new project.  The previous five (5) and this current venture were/are for the purpose of allowing partners and internal developers to integrate with a "platform" of some kind.  These clients varied from Fortune 500 companies, prestigious privately held firms and most recently a VC-funded startup.
+The previous two web service APIs were based on the REST "architecture" (yes, I know that word gets used too much, but I use it now for lack of a better word at this moment).  The previous REST API was in fact fully RESTful and my new software product design also has the aim of RESTfulness at all points.
+During my travels meandering through the windy trails of designing REST APIs, I have realized just how important being truly RESTful is to REST APIs.  Yes, reread that sentence again. if it doesn't make sense I recommend reading
+<a href="http://www.amazon.com/gp/redirect.html?ie=UTF8&amp;location=http%3A%2F%2Fwww.amazon.com%2FRESTful-Web-Services-Leonard-Richardson%2Fdp%2F0596529260%3Fie%3DUTF8%26s%3Dbooks%26qid%3D1182785267%26sr%3D8-1&amp;tag=illinilistn09-20&amp;linkCode=ur2&amp;camp=1789&amp;creative=9325">RESTful Web Services</a>
+<img alt="" border="0" height="1" src="http://www.assoc-amazon.com/e/ir?t=illinilistn09-20&amp;amp;l=ur2&amp;amp;o=1" style="border:none !important; margin:0px !important;" width="1">,
+which should clarify this distinction for you.
+For me, the biggest plus of RESTful web services is that it promotes consistency at all levels.
+Moving on...where was I going?  Ah, yes, Twitter...
+The routes.rb for twitter.com seem to be a little misleading.  It seems a mix and match approach was taken to developing a "RESTful" API for twitter.com using Rails.  The current RESTful Rails convention is the following (in a nutshell):
+<ul>
+<li>
+    <code>GET /resources/:id.:format</code>
+    =&gt; get information about resource with specified :id
+  </li>
+  <li>
+    <code>POST /resources</code>
+    =&gt; create new resource using data given in request body
+  </li>
+  <li>
+    <code>PUT /resources/:id.:format</code>
+    =&gt; update resource with specified :id using data given in request body
+  </li>
+  <li>
+    <code>DELETE /resources/:id.:format</code>
+    =&gt; delete resource with specified :id and return resource in :format given
+  </li>
+</ul>
+This is all great, however, in twitter.com it seems there was a previous ugly step-child of a "RESTful" design implemented before Rails 1.2 standardized on the above approach (just speculating here).  The evidence of this exists in multiple places in the Twitter API's inconsistency, however, one case in particular creates a defect in my view (and I am being kind by not considering all RESTful violations as defects, since the Twitter developers need to cater to the weekend PHP and VB.NET hackers that might not care about the beauty of REST's simple yet consistent design and purpose - I will give the Twitter developers the benefit of the doubt for this article):
+In the users#show API there seems to be a conflict.  For example,
+<code>GET /users/show.json?id=mylogin</code>
+will, in fact, return the user information for user with screen_name ‘show’ instead of ‘mylogin’, which is obviously not the intention of the above HTTP call, especially when
+<tt>/users/show</tt>
+is an advertised way to access user information in the
+<a href="http://groups.google.com/group/twitter-development-talk/web/api-documentation">official Twitter API docs</a>.
+Yes, I know I can call
+<code>GET /users/mylogin.json</code>
+and be done with it, but the misleading defect still remains.  Interestingly,
+<code>GET /users/show?id=mylogin</code>
+does yield the expected result assuming you have the
+<tt>Accept</tt>
+HTTP header set to the appropriate mime-type (e.g.
+<tt>'text/x-json'</tt>).
+Screen names that cause potential conflicts (if using Rails defaults) are: create, destroy, update, new, show.  All of which exist at twitter.com.
+My point here isn't to blast Twitter developers necessarily, simply to ask all developers (or if you must title yourself this way "architects") to consider the importance of creating consistent APIs, preferably based on open standards/recommendations like REST.  And most importantly, if a REST API isn't truly "RESTful", don't say it is!:)  You will get more respect for being honest from people that know what it really means.
+<b>Related post:</b>
+<ul>
+<li>
+    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-020-release.html">Twitter4R v0.2.0 Released</a>
+    - the ultimate open source library that provides Ruby bindings for 100% of the officially documented Twitter REST API.
+  </li>
+</ul></article></section>
+</div>
+    <footer><p>
+    Copyright © 2006-2011 <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <p>
+    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <div id="rights"> 
+    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
+    Links: <a href="http://susanpotter.net/resume/software-engineer">Software Engineer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/architect">Application Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer</a>,
+           <a href="http://susanpotter.net/resume/architect">Software Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Hedge Fund Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Hedge Fund Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">Resource Oriented Architecture</a>,
+  </div> 
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-837842-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_setDetectFlash', false]);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script></footer><script type="text/javascript">
+      (function($) {
+        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })(jQuery);
+    </script><!-- Place this tag just before your close body tag -->

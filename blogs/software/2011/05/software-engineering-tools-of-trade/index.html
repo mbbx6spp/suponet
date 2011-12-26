@@ -1,0 +1,164 @@
+
+
+  
+  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: Software Engineering: Tools of the Trade</title><link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+    <a href="/">
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
+    <nav><a href="/about/">About</a>
+      <a href="/resume/">Resume</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/favorites/">Favo(u)rites</a>
+      <a href="/contact/">Contact</a>
+      <a target="_blank" id="twitter" class="icon" href="http://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
+      <a target="_blank" id="linkedin" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
+      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
+    </nav>
+</div>                 
+</header><div class="text post sidebar">
+      <aside><ul class="share-buttons">
+<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+          <li class="plusone">
+          <!--
+          <li class="linkedin"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
+          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
+          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
+          -->
+        </ul></aside><section><article><h1 role="banner">
+            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
+            <span class="description">
+              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript, 
+              semantic web, Rails tips, graph databases, distributed systems.
+            </span>
+          </h1>
+          
+          <h2>Software Engineering: Tools of the Trade</h2>
+          <p>
+  While contemplating everything that software engineering encompasses during several conversations concerning
+  Computer Science education reform (my notes and thoughts coming soon, promise), I was asked what tools should be
+  taught and why. So below is a brief overview of the tools that have helped me be a better software engineer
+  over the years and why.
+</p>
+<ul>
+<li>
+    <code>emacs</code> <em>and</em> <code>vi(m)</code>: Let the student decide for themselves.
+    I am naturally strongly right-handed, but in editor choice I am, you could say, ambidexterous.
+    I have alternated between <em>emacs</em> and <em>vi(m)</em> on 1-3 year irregular cycles since
+    first typing <code>vi</code> in the SunOS lab at university. This excludes a 2-3 years dark
+    age in my development career while heavily engrossed in Java/J2EE/JEE and all
+    things <em>"enterprisey"</em>. During this phase I must confess to using a new IDE every other
+    month because I couldn't get confortable with one. It was at the end of this uncreative period
+    of my career that I realized the importance of getting back to editor basics with something like
+    <em>emacs</em> or <em>vim</em>. I am currently in a <em>vim</em> cycle that started about 10
+    months ago.
+  </li>
+  <li>
+    <code>make</code>: Laugh if you must. I have used many build tools that are fantastic
+    in very specific environments, but as soon as you veer off of its well manicured path
+    you fall into trouble. Make (I refer to GNU make or any mostly compatible derivative)
+    is most widely supported and truly versatile build tool around.
+  </li>
+  <li>
+    <code>gdb</code> (or other language command line debuggers): debugging from the command-line
+    forces me to form a more complete mental map of the codebase I am stepping through.
+    It is also, on rare but noteworthy occasions, a necessary evil in production headless systems
+    (not for the faint of heart and certainly not to be used unless absolutely necessary).
+  </li>
+  <li>
+    <code>UNIX/Linux</code> commands/utilities: Everything from awk to zipgrep (everything in between
+    plus I am sure things outside of that range too), including sed, awk, grep, cut, xargs, etc.
+  </li>
+  <li>
+    A <code>UNIX/Linux</code> shell (of your choice): I started on Bourne shell because that was
+    the default on SunOS when I started using the computer lab for my software development
+    (non-commercial) endeavours at university. Then migrated to Bash (Bourne Again SHell) after
+    installing Linux on my own computers in the mid/late-1990s. I remained on Bash for a number
+    of years before migrating to Zsh. Really getting intimate with various shells impressed
+    upon me the importance of knowing your tools well. When I have known my shell deeply I have
+    found lots of ways to save myself a lot of time on repetitive tasks using simple scripts, aliases
+    or autocomplete configuration.
+  </li>
+  <li>
+    <code>Git:</code> Out of all the tools of the trade that I use (and sometimes abuse) this one,
+    I am sure, will irritate the lonely Subversion fan or holier-than-thou Mercurial zealot. Fine.
+    I do not come to convert you, rather I mention this as the tool that has influenced my thoughts
+    the most on development workflows. Period. In 2006 I was still happily plodding along using
+    Subvesion in a centralized repository workflow. After the first half of 2007 past I truly
+    had an epiphany about how many options there were for distributed workflows and all the
+    possibilities. Git had arrived in my life and it was here to stay. If you do not know what all
+    the fuss is about, don't worry I am not sure 98% of the fanboys ranting about it realize either.
+    The key to remember isn't necessarily Git, but distributed version control systems (dVCS). Git
+    just happened to be the first dVCS that I truly had to understand. I had submitted a patch via
+    Darcs on an open source project years ago, but I didn't really appreciate what "distributed"
+    repositories really offered until I had to incorporate a distribute workflow using Git at work.
+    Try it!
+  </li>
+  <li>
+    <code>LaTeX:</code> Yeah, I know you are thinking "@#$(%(#*@". I get it. Perhaps it is because
+    I had to write my final year thesis in it, but I have rediscovered its beauty within the last
+    year and I wonder why I ever bothered with Word and Powerpoint (or open source equivalents).
+    LaTeX rules them all with superior and far more flexible typesetting. So much so that it
+    astonishes me more people do not use it. Now that I am presenting more at conferences as well
+    as to potential investors I can't live without it.
+  </li>
+</ul>
+<p>
+  The common thread of all these tools is the ability for me to get back to basics without the
+  clutter and danger of "pretty".
+</p>
+
+        </article></section>
+</div>
+    <footer><p>
+    Copyright © 2006-2011 <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <p>
+    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <div id="rights"> 
+    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
+    Links: <a href="http://susanpotter.net/resume/software-engineer">Software Engineer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/architect">Application Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer</a>,
+           <a href="http://susanpotter.net/resume/architect">Software Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Hedge Fund Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Hedge Fund Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">Resource Oriented Architecture</a>,
+  </div> 
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-837842-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_setDetectFlash', false]);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script></footer><script type="text/javascript">
+      (function($) {
+        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })(jQuery);
+    </script><!-- Place this tag just before your close body tag -->

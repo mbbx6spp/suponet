@@ -1,0 +1,19 @@
+/* I can't believe you actually checked, cheeky! */
+{
+  "name": "Susan Potter",
+  "career_phases": [
+    {
+      "name": "Relational database phase",
+      "from": 1995,
+      "until": null,
+      "products_used": ["PostgreSQL", "MySQL", "Sybase", "Oracle", "SQLite", "SQL Server"]
+    },
+    {
+      "name": "NoSQL phase",
+      "from": 2007,
+      "until": null,
+      "products_used": ["Mnesia", "CouchDB", "Neo4J", "Riak KV", "Redis"]
+    }
+  ],
+  "likes": "Best tool for job!"
+}

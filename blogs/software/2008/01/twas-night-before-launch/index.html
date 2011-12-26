@@ -1,0 +1,151 @@
+
+
+  
+  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: 'Twas the night before launch...</title><link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+    <a href="/">
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
+    <nav><a href="/about/">About</a>
+      <a href="/resume/">Resume</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/favorites/">Favo(u)rites</a>
+      <a href="/contact/">Contact</a>
+      <a target="_blank" id="twitter" class="icon" href="http://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
+      <a target="_blank" id="linkedin" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
+      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
+    </nav>
+</div>                 
+</header><div class="text post sidebar">
+      <aside><ul class="share-buttons">
+<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+          <li class="plusone">
+          <!--
+          <li class="linkedin"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
+          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
+          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
+          -->
+        </ul></aside><section><article><h1 role="banner">
+            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
+            <span class="description">
+              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript, 
+              semantic web, Rails tips, graph databases, distributed systems.
+            </span>
+          </h1>
+          
+          <h2>'Twas the night before launch...</h2>
+          Oh fun times!  On such fateful nights you know you will find something that will screw things up unless immediately addressed.  It must be someone's law already, but if it isn't I call dibs on it and it should thus be called
+<b>"Potter's Law"</b>:).
+On a night before launch that I recently experienced, I had a heart stopping moment.  The last 5 days of the sprint I had been churning out last minute changes based on usability feedback from the client.  In the process, I had neglected to include benchmarking and memory leak testing with the same discipline I prefer.  On the night before launch I ran my usual benchmarking scripts.  The results were pretty good except on one action.  We could have lived with that performance, but the real problem came when I ran tests to detect memory leaks in my Rails application.  Let the real fun begin!
+Before continuing, I should mention there is only thing I hate more than uber visual tasks (editing/creating graphics, layout tweaking, etc.) and that is debugging memory leaks.
+I ran the
+<code>ab</code>
+(Apache Bench) utility on a few different types of pages in the staging environment and didn't notice any problems.  The Rails application was consistently teetering under 50M RAM.  Excellent!  Then I tried the second most requested type of page (this was a static site we were rewriting in Rails to create an easy to use domain-specific CMS - so we had live production web statistics) and my heart skipped a beat or three.
+Memory usage spiraled out of control.  From 49.5M the single mongrel process eventually grew to 250M after a few
+<code>ab -c2 -n100 ....</code>
+runs.
+I first checked out the view since I knew the controller action code was only 6 lines (how much could go wrong there?).
+I tried removing different parts of the view code and rerunning my tests while monitoring the memory usage of the process.  Still no change.
+So I reluctantly looked in the controller and saw something like the following:
+<pre><code>
+  def show
+    @eto = ExchangeTradedOption.find_active(params[:id])
+
+    respond_to do |format|
+      format.html # show.rhtml
+      format.xml  { render :action =&gt; "xml", :layout =&gt; false }
+      format.csv  { render :action =&gt; "csv", :layout =&gt; false }
+    end
+  end
+
+
+
+
+
+
+
+  class  [:exchange, {:vendor_symbols =&gt; [:vendor]}],
+        :conditions =&gt; [
+          %{options.expires_at = ?}, 
+          now, now, now
+        ],
+        :order =&gt; 'vendor_symbols.effective_date DESC'
+      )
+    end
+  end
+
+
+
+
+
+
+# Controller action code: ExchangeTradedOptionsController#show
+  def show
+    @eto = ExchangeTradedOption.find_active(params[:id])
+    @vendor_symbols = VendorSymbol.find_active_for(params[:id])
+
+    respond_to do |format|
+      format.html # show.rhtml
+      format.xml  { render :action =&gt; "xml", :layout =&gt; false }
+      format.csv  { render :action =&gt; "csv", :layout =&gt; false }
+    end
+  end
+
+# Model finder code: ExchangeTradedOption.find_active
+  class  [:exchange],
+        :conditions =&gt; [%{options.expires_at </code></pre>
+
+        </article></section>
+</div>
+    <footer><p>
+    Copyright © 2006-2011 <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <p>
+    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <div id="rights"> 
+    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
+    Links: <a href="http://susanpotter.net/resume/software-engineer">Software Engineer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/architect">Application Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer</a>,
+           <a href="http://susanpotter.net/resume/architect">Software Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Hedge Fund Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Hedge Fund Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">Resource Oriented Architecture</a>,
+  </div> 
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-837842-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_setDetectFlash', false]);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script></footer><script type="text/javascript">
+      (function($) {
+        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })(jQuery);
+    </script><!-- Place this tag just before your close body tag -->

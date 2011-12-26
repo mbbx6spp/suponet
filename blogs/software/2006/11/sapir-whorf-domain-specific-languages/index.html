@@ -1,0 +1,146 @@
+
+
+  
+  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: Sapir-Whorf, Domain Specific Languages &amp; Gay Marriage</title><link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+    <a href="/">
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
+    <nav><a href="/about/">About</a>
+      <a href="/resume/">Resume</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/favorites/">Favo(u)rites</a>
+      <a href="/contact/">Contact</a>
+      <a target="_blank" id="twitter" class="icon" href="http://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
+      <a target="_blank" id="linkedin" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
+      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
+    </nav>
+</div>                 
+</header><div class="text post sidebar">
+      <aside><ul class="share-buttons">
+<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+          <li class="plusone">
+          <!--
+          <li class="linkedin"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
+          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
+          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
+          -->
+        </ul></aside><section><article><h1 role="banner">
+            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
+            <span class="description">
+              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript, 
+              semantic web, Rails tips, graph databases, distributed systems.
+            </span>
+          </h1>
+          
+          <h2>Sapir-Whorf, Domain Specific Languages &amp; Gay Marriage</h2>
+          <h3>Sapir-Whorf</h3>
+<p>A while ago I was introduced to Sapir-Whorf, which is an intriguing linguistics hypothesis.  Informally (my definition) it states that the language you use to describe a subject shapes the way you think about that subject.</p>
+<p>Formally Wikipedia defines the Sapir-Whorf hypothesis as:</p>
+<blockquote>
+  there is a systematic relationship between the grammatical categories of the language a person speaks and how that person both understands the world and behaves in it. This controversial hypothesis is named after the linguist and anthropologist Edward Sapir and his colleague and student Benjamin Whorf.
+</blockquote>
+<p>Almost everywhere I look these days, especially in the domain specific language design discussions, Sapir-Whorf is cited.</p>
+<h3>Domain Specific Languages</h3>
+<p>A domain specific language (DSL) is a programming language which may or may not be Turing complete that was design for the purpose of executing specific tasks.</p>
+<p>Examples of DSLs include:</p>
+<ul>
+<li>rspec - a software requirements specification DSL</li>
+  <li>Maven POM - a project comprehension tool's DSL</li>
+  <li>awk - processes text data DSL</li>
+  <li>XSLT - XML transformation DSL</li>
+</ul>
+<h3>Gay Marriage</h3>
+<p>That all sounds very academic, so I wanted to take a few steps back to have a look at a real world example and extension of Sapir-Whorf, especially applicable to the US audience today.</p>
+<p>Until 2004 I do not believe the majority of voters in the US had considered what "gay marriage" actually meant.  During the 2004 presidential elections it was at the forefront of the social issues in the debates even though both major presidential candidates (George W. Bush and John Kerry) were both against "gay marriage".  In the public and media debate on "gay marriage" the social right characterized "gay marriage" as breaking down the "institution" of marriage.  On the GLB and liberal side people characterized "gay marriage" as one step in a broader campaign promoting equality for a minority group analogous to the civil rights plight in the 1950s through 1970s but for the GLB minority.</p>
+<p>Today "gay marriage" remains a hot button issue for many Americans as we head into the mid-term elections.</p>
+<h3>Sapir-Whorf &amp; Gay Marriage</h3>
+<p>My personal (religious/political) opinion on the matter of "gay marriage" is irrelevant to my application and extension of the Sapir-Whorf hypothesis in the discussion below.  To understand my lay person's (note: I am anything, but an expert on this subject) linguistics argument you should also try to keep your personal opinions out of your mind when you process the discussion.</p>
+<p>According to Wikipedia:</p>
+<blockquote>A marriage is a relationship between or among [two] individuals, usually recognized by civil authority and/or bound by the religious beliefs of the participants.</blockquote>
+Let us investigate what the GLB and liberal groups advocating marriage are referring to.  Many references to gay marriage on the HRC (Human Rights Campaign, which advocates "gay marriage") website use the terms "gay marriage" and "civil unions" interchangeably and the meaning of civil unions seems pretty clear - a set of legal rights between individuals that enter into the union.
+<h3>The Polls</h3>
+<p>The Washington Post and ABC News conducted a poll of 1,202 randomly selected adults in US in March 2006 found the following:</p>
+<ul>
+<li>59 percent of respondents oppose gay marriage (up 4 percentage points from February)</li>
+  <li>51 percent of respondents favor allowing same-sex couples to enter into civil unions with the same basic legal rights as married couples (up 6 percentage points in less than a month)</li>
+</ul>
+<p>This puzzles me: how can 59 percent (and rising) respondents oppose gay marriage, and yet also 51 percent (and rising) from the same respondents also favor same-sex civil unions with all of the same legal rights as heterosexual married couples?  Even considering the margin of error, in this case 3%, this poll strongly suggests that many Americans (assuming the poll respondents are representative of the general population) are not interpreting "gay marriage" and "civil unions" to be interchangeable as GLB groups that advocate "gay marriage" do.</p>
+<p>Now let us consider the demographic of the social conservatives that vehemently oppose "gay marriage": people that consider themselves religiously active.  People in this demographic would probably use the term marriage in a way that emphasizes the religious sacrament of marriage rather than a marriage simply for legal convenience.  Of course, people get married everyday for a combination of these reasons - sometimes even business reasons, but as you will see it does not affect the rest of my argument.  In fact, the social conservatives' argument against "gay marriage" demonstrates their different interpretation of the term "gay marriage".  I suspect social conservatives feel like their freedom of religion is being attacked, but this direction in the argument is long and windy.</p>
+<h3>Convergence</h3>
+<p>My suggestion then on the issue of "gay marriage" in the US is simple: the social conservatives and the advocates of "gay marriage" are not talking about the same thing at all AND they are NOT talking in the same language.</p>
+<p>Whether you agree with allowing same-sex couples to enter into a relationship recognized for legal purposes or not, let us all agree that there is a mismatch in meaning between what GLB groups are promoting as "gay marriage" and what the social conservatives who oppose it denounce as "gay marriage".  I also suggest that the reason why these two groups on either side of the debate are talking about different things is because the dialects that they each use, while both are American-English in a broad sense, the meaning of words have subtle differences due to cultural nuances such that on this issue cause a potentially unnecessary collision of large proportions.</p>
+<p>Below is a proposal for a domain specific language for the purpose of defining political debates.  It would look something like this for the issues of Gay Marriage:</p>
+<pre>
+political_debate "Gay Marriage" do
+  argument_for do
+    define :glb_people.includes :gay, :lesbian, :bisexual
+    define :civil_union, legal_contract.between.2.individuals
+    define :gay_marriage, civil_union.for.glb_people
+  end
+
+  argument_against do
+    define :glb_people.includes :gay, :lesbian, :bisexual
+    define :sacrament, :religious_contract.with.god
+    define :gay_marriage, sacrament.for.glb_people
+    candidate_affiliation :george_w_bush, :john_kerry
+  end
+end
+
+
+</pre>
+
+        </article></section>
+</div>
+    <footer><p>
+    Copyright © 2006-2011 <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <p>
+    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <div id="rights"> 
+    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
+    Links: <a href="http://susanpotter.net/resume/software-engineer">Software Engineer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/architect">Application Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer</a>,
+           <a href="http://susanpotter.net/resume/architect">Software Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Hedge Fund Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Hedge Fund Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">Resource Oriented Architecture</a>,
+  </div> 
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-837842-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_setDetectFlash', false]);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script></footer><script type="text/javascript">
+      (function($) {
+        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })(jQuery);
+    </script><!-- Place this tag just before your close body tag -->

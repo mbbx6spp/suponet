@@ -1,0 +1,228 @@
+
+
+  
+  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: Why JSON Pointer falls short (and why XPath for JSON would be great)</title><link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+    <a href="/">
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
+    <nav><a href="/about/">About</a>
+      <a href="/resume/">Resume</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/favorites/">Favo(u)rites</a>
+      <a href="/contact/">Contact</a>
+      <a target="_blank" id="twitter" class="icon" href="http://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
+      <a target="_blank" id="linkedin" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
+      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
+    </nav>
+</div>                 
+</header><div class="text post sidebar">
+      <aside><ul class="share-buttons">
+<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+          <li class="plusone">
+          <!--
+          <li class="linkedin"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
+          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
+          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
+          -->
+        </ul></aside><section><article><h1 role="banner">
+            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
+            <span class="description">
+              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript, 
+              semantic web, Rails tips, graph databases, distributed systems.
+            </span>
+          </h1>
+          
+          <h2>Why JSON Pointer falls short (and why XPath for JSON would be great)</h2>
+          <h3>Overview</h3>
+<p>
+  My Twitter timeline this morning went crazy with references to the
+  <a href="http://tools.ietf.org/html/draft-pbryan-zyp-json-pointer-00">JSON Pointer</a>
+  draft proposal or specification (and the
+  <a href="https://github.com/janl/erl-jsonpointer">Erlang JSON Pointer</a>
+  implementation on GitHub by janl). I was all excited for all of two minutes as I
+  read the couple of non-boilerplate paragraphs in the JSON Pointer spec draft.
+</p>
+<p>
+  The problem is that it doesn't appear to return all matching nodes in the
+  JSON document representation tree for a given "pointer". Let us look at a
+  few examples.
+</p>
+<h3>JSON Pointer Examples</h3>
+<p>
+  Let us pretend that we have this JSON document:
+</p>
+<script src="https://gist.github.com/1117626.js"> </script><p>
+  Now let us say we want all the names of actors from this movie
+  (OK, it is a spoof trailer, but I might watch it if they did make it).
+  We would need to access each one by index like so:
+</p>
+<ul>
+<li>
+    <code>/actors/1/name</code>
+  </li>
+  <li>
+    <code>/actors/2/name</code>
+  </li>
+  <li>
+    <code>/actors/3/name</code>
+  </li>
+  <li>
+    <code>/actors/4/name</code>
+  </li>
+  <li>
+    <code>/actors/5/name</code>
+  </li>
+</ul>
+<p>
+  This is really very inelegant and verbose (not to mention pretty
+  inefficient) to use JSON Pointers to look these names up one by one.
+</p>
+<p>
+  Now let us suppose that instead of the JSON document only holding the
+  details of one movie, it contains a list of movies in a category. Now
+  when we do <code>/actors/X/name</code> (where X is a valid index for
+  the first movie in the list) we retrieve the Xth actor name for the
+  first movie (as per the spec draft linked to earlier). How droll!
+</p>
+<h3>Enter XPath</h3>
+<p>
+  I know it isn't fashionable to like anything XML related any more, but
+  there are some things that XML brought that are quite useful. One is
+  (IMHO) XPath.
+</p>
+<p>
+  I first came across XPath 7-8 years ago when building a canonical
+  <abbr title="Object Oriented">OO</abbr> model of a broad set of
+  financial products spanning many asset classes that would represent
+  (eventually) every financial product of varying complexity using the
+  same fundamental modeling building blocks (not a small feat - and not
+  sure it ever realized its full objective, but anyhoo...). (A subset of)
+  XPath was being use to query the rich object model (often represented
+  as XML at the periphery of the system i.e. at integration endpoints).
+  This may have been one of the bigger successes of the project. XPath
+  demonstrated its value by the following characteristics:
+</p>
+<ul>
+<li>
+    being flexible: it is able to describe a number of "paths" of data
+    representation.
+  </li>
+  <li>
+    being descriptive: most people can read an XPath and most of the time
+    understand what data it will access.
+  </li>
+  <li>
+    being representation agnostic: allowing clients to use XPath on either
+    a fully realized object representation or an unparsed XML document
+    (the runtime could be lazy when it made sense to be)
+  </li>
+</ul>
+<p>
+  You might be wondering how XPath is flexible? Well despite my appreciation
+  of the JSON Pointer draft spec being pretty short to read, the XPath spec
+  describes ways to start matching in mid path (by adding an extra '/' as
+  prefix), to select the parent of a matching node (by appending '..' to
+  XPath), to select attributes (by prepending '@' to attribute name in the
+  XPath - ok, not so useful, perhaps in a JSON document) as well as the
+  ability to use a number of predicates (e.g. last(), position(), index
+  numbers, &gt;, &lt;). However, the key differentiator of XPath over JSON
+  Pointer isn't all these extra path describing features, it is that it
+  returns a result set of all elements (or values) that match the given
+  selector.
+</p>
+<p>
+  Let us look at what would be returned using the JSON document of the
+  movie above with the following XPaths:
+</p>
+<ul>
+<li>
+    <code>//actors/name =&gt; ["Scala Johansson", "William Windows", ..., "Lenny Linux"]</code>
+  </li>
+  <li>
+    <code>title =&gt; ["Java 4-ever"]</code>
+  </li>
+  <li>
+    <code>//actors/character =&gt; ["A", "B", "C", "D", "C (Young)"]</code>
+  </li>
+  <li>
+    <code>//actors[2]/character =&gt; ["C"]</code>
+  </li>
+</ul>
+<p>
+  As we can see this provides a lot of flexibility. Now if we had a JSON
+  document that contained movie documents like this under a subtree then
+  the above XPaths would still select what we want.
+</p>
+<p>
+  The above examples only touched the surface of XPath, but I think it
+  already demonstrated how much more flexible it would be applied to
+  JSON documents.
+</p>
+<h3>Great, but what is the point, Susan?</h3>
+<p>
+  Not sure I can really say there is a lot of point to this post other than
+  griping and moaning about the lack of a good selector language for JSON
+  documents currently. However, if anyone else feels that an XPath subset
+  that is relevant to applying to JSON documents and would like to work with
+  me to distill such a useable subset into a draft/proposal (or whatever),
+  then
+  <a href="/contact">contact me</a>
+  so we can get the ball rolling. Even HTML has a decent way to select elements
+  ("values") in the DOM to be able to apply styles or behavio(u)r.
+</p>
+
+        </article></section>
+</div>
+    <footer><p>
+    Copyright © 2006-2011 <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <p>
+    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <div id="rights"> 
+    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
+    Links: <a href="http://susanpotter.net/resume/software-engineer">Software Engineer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/architect">Application Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer</a>,
+           <a href="http://susanpotter.net/resume/architect">Software Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Hedge Fund Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Hedge Fund Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">Resource Oriented Architecture</a>,
+  </div> 
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-837842-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_setDetectFlash', false]);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script></footer><script type="text/javascript">
+      (function($) {
+        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })(jQuery);
+    </script><!-- Place this tag just before your close body tag -->

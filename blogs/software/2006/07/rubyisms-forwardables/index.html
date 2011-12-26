@@ -1,0 +1,207 @@
+
+
+  
+  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: Rubyisms: forwardables</title><link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+    <a href="/">
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
+    <nav><a href="/about/">About</a>
+      <a href="/resume/">Resume</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/favorites/">Favo(u)rites</a>
+      <a href="/contact/">Contact</a>
+      <a target="_blank" id="twitter" class="icon" href="http://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
+      <a target="_blank" id="linkedin" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
+      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
+    </nav>
+</div>                 
+</header><div class="text post sidebar">
+      <aside><ul class="share-buttons">
+<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+          <li class="plusone">
+          <!--
+          <li class="linkedin"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
+          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
+          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
+          -->
+        </ul></aside><section><article><h1 role="banner">
+            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
+            <span class="description">
+              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript, 
+              semantic web, Rails tips, graph databases, distributed systems.
+            </span>
+          </h1>
+          
+          <h2>Rubyisms: forwardables</h2>
+          <p>
+  Recently some Java friends of mine have decided to taste the juicier fruits in Ruby-land with my assistance.  So below are some excerpts from an email conversation I had with one about Ruby's standard library
+  <code class="language-ruby">forwardable</code>
+  features:
+</p>
+<blockquote>
+  <p>
+    Suppose we have the following model classes defined for a simple CRM system: Customer, Address, PhoneNumber, Name, etc.  Now in Java-land we would have written something that looks like the following Ruby code (except you must type about a hundred more lines - although now you can write annotations to automate basic things like generate getters and setters or the like, which still requires a ridiculous amount of code to accomplish):
+  </p>
+  <pre><code class="language-ruby"><table class="CodeRay"><tr>
+<td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+</pre></td>
+  <td class="code"><pre><span class="constant">Name</span> = <span class="constant">Struct</span>.new(<span class="symbol">:first_name</span>, <span class="symbol">:last_name</span>, <span class="symbol">:suffix</span>, <span class="symbol">:salutation</span>)
+  <span class="constant">Address</span> = <span class="constant">Struct</span>.new(<span class="symbol">:street_address</span>, <span class="symbol">:suite</span>, <span class="symbol">:city</span>, <span class="symbol">:state</span>, <span class="symbol">:country</span>, <span class="symbol">:zip</span>)
+  <span class="constant">PhoneNumber</span> = <span class="constant">Struct</span>.new(<span class="symbol">:country_code</span>, <span class="symbol">:area_code</span>, <span class="symbol">:exchange</span>, <span class="symbol">:number</span>, <span class="symbol">:extension</span>)
+  <span class="keyword">class</span> <span class="class">Customer</span>
+  attr_accessor <span class="symbol">:name</span>, <span class="symbol">:address</span>, <span class="symbol">:phone_number</span>
+  <span class="keyword">end</span></pre></td>
+</tr></table></code></pre>
+  <small>
+    Note: the attr_accessor will create getters and setters for Ruby newbies.
+  </small>
+  <p>
+    The problem is that you are not sure when you first design this if it will support future product offerings for business customers, which means the way we have modeled our simple CRM above may not support a business customer as well as individual customers.  However, as good agile developers we know better than to pre-empt future requirements by modeling the world up-front, so we stick with our current implementation for this next iteration/release.  To help us with future changes (even though we do not know what they will be or try to pre-empt them) we want to be able to access details directly from the
+    <code class="language-ruby">Customer</code>
+    object to reduce coupling of clients of our
+    <code class="language-ruby">Customer</code>
+    model.  This also helps us implicitly adhere to the
+    <a href="http://c2.com/cgi/wiki?LawOfDemeter">Law of Demeter</a>.
+    A naive approach would be to manually create accessor methods for the
+    <code class="language-ruby">Address</code>,
+    <code>Name</code>
+    and
+    <code class="language-ruby">PhoneNumber</code>
+    attributes in the
+    <code class="language-ruby">Customer</code>
+    class.  But remember, this is Ruby-land, which is a magical place, so we can just do the following:
+  </p>
+  <pre><code class="language-ruby"><table class="CodeRay"><tr>
+<td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+<strong><a href="#n10" name="n10">10</a></strong>
+<a href="#n11" name="n11">11</a>
+<a href="#n12" name="n12">12</a>
+<a href="#n13" name="n13">13</a>
+<a href="#n14" name="n14">14</a>
+<a href="#n15" name="n15">15</a>
+<a href="#n16" name="n16">16</a>
+<a href="#n17" name="n17">17</a>
+</pre></td>
+  <td class="code"><pre>require <span class="string"><span class="delimiter">'</span><span class="content">forwardable</span><span class="delimiter">'</span></span>
+  <span class="constant">NAME_FIELDS</span> = [<span class="symbol">:first_name</span>, <span class="symbol">:last_name</span>, <span class="symbol">:suffix</span>, <span class="symbol">:salutation</span>]
+  <span class="constant">ADDRESS_FIELDS</span> = [<span class="symbol">:street_address</span>, <span class="symbol">:suite</span>, <span class="symbol">:city</span>, <span class="symbol">:state</span>, <span class="symbol">:country</span>, <span class="symbol">:zip</span>]
+  <span class="constant">PHONE_NUMBER_FIELDS</span> = [<span class="symbol">:country_code</span>, <span class="symbol">:area_code</span>, <span class="symbol">:exchange</span>, <span class="symbol">:number</span>, <span class="symbol">:extension</span>]
+  <span class="constant">Name</span> = <span class="constant">Struct</span>.new(*<span class="constant">NAME_FIELDS</span>)
+  <span class="constant">Address</span> = <span class="constant">Struct</span>.new(*<span class="constant">ADDRESS_FIELDS</span>)
+  <span class="constant">PhoneNumber</span> = <span class="constant">Struct</span>.new(*<span class="constant">PHONE_NUMBER_FIELDS</span>)
+  <span class="keyword">class</span> <span class="class">Customer</span>
+  extend <span class="constant">Forwardable</span>
+  attr_accessors <span class="symbol">:name</span>, <span class="symbol">:address</span>, <span class="symbol">:phone_number</span>
+  def_delegators <span class="symbol">:@name</span>, *<span class="constant">NAME_FIELDS</span>
+  def_delegators <span class="symbol">:@address</span>, *<span class="constant">ADDRESS_FIELDS</span>
+  def_delegators <span class="symbol">:@phone_number</span>, *<span class="constant">PHONE_NUMBER_FIELDS</span>
+  <span class="keyword">def</span> <span class="function">initialize</span>(name, address, phone_number)
+  <span class="instance-variable">@name</span>, <span class="instance-variable">@address</span>, <span class="instance-variable">@phone_number</span> = name, address, phone_number
+  <span class="keyword">end</span>
+  <span class="keyword">end</span></pre></td>
+</tr></table></code></pre>
+  <p>
+    One of the many fantastic things about Ruby (and Python) is we have
+    <code class="language-ruby">irb</code>
+    Ruby's interactive shell to prototype with.  So we open up a
+    <code class="language-ruby">irb</code>
+    shell and do the following:
+  </p>
+  <pre><code class="language-ruby"><table class="CodeRay"><tr>
+<td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+<a href="#n2" name="n2">2</a>
+<a href="#n3" name="n3">3</a>
+<a href="#n4" name="n4">4</a>
+<a href="#n5" name="n5">5</a>
+<a href="#n6" name="n6">6</a>
+<a href="#n7" name="n7">7</a>
+<a href="#n8" name="n8">8</a>
+<a href="#n9" name="n9">9</a>
+</pre></td>
+  <td class="code"><pre>irb&gt; require <span class="string"><span class="delimiter">'</span><span class="content">FILE_WITH_ABOVE_CODE_IN</span><span class="delimiter">'</span></span>
+  irb&gt; john_adams = <span class="constant">Customer</span>.new(<span class="constant">Name</span>.new(<span class="string"><span class="delimiter">'</span><span class="content">John</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">Adams</span><span class="delimiter">'</span></span>, <span class="predefined-constant">nil</span>, <span class="string"><span class="delimiter">'</span><span class="content">Former President</span><span class="delimiter">'</span></span>), <span class="constant">Address</span>.new(<span class="string"><span class="delimiter">'</span><span class="content">101 Constabulary Road</span><span class="delimiter">'</span></span>, <span class="predefined-constant">nil</span>, <span class="string"><span class="delimiter">'</span><span class="content">Bay Colony</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">MA</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">US</span><span class="delimiter">'</span></span>, <span class="string"><span class="delimiter">'</span><span class="content">000000</span><span class="delimiter">'</span></span>), <span class="predefined-constant">nil</span>) <span class="comment"># remember phones didn't exist in the mid-18th Century!</span>
+  =&gt; <span class="comment">#&lt;Customer:0xb7f2be30 @address=#&lt;struct Address street_address="101 Constabulary Road", suite=nil, city="Bay Colony", state="MA", country="US", zip="000000"&gt;, @name=#&lt;struct Name first_name="John", last_name="Adams", suffix=nil, salutation="Former President"&gt;, @phone_number=nil&gt;</span>
+  irb&gt; john_adams.salutation
+  =&gt; <span class="string"><span class="delimiter">"</span><span class="content">Former President</span><span class="delimiter">"</span></span>
+  irb&gt; john_adams.state
+  =&gt; <span class="string"><span class="delimiter">"</span><span class="content">MA</span><span class="delimiter">"</span></span>
+  irb&gt; john_adams.street_address
+  =&gt; <span class="string"><span class="delimiter">"</span><span class="content">101 Constabulary Road</span><span class="delimiter">"</span></span></pre></td>
+</tr></table></code></pre>
+  <p>Javahead&gt;&gt;&gt; We are still passing in the Name, Address and PhoneNumber stucts to create the Customer object in the first place, so why would flattening out the Customer interface reduce coupling?</p>
+  <p>
+    Great question [Javahead]!  In general, most applications will read data from models much more than create them, and quite a number of applications do not actually initially create any of the data, they simply massage it.  Now I am not suggesting that there are no applications that would create model objects more than read from them, but most likely your application will be 80% reading and 20% writing (including creating and updating).  So if we were to change the underlying structure of the Customer, on average 80% of the code that uses the Customer object would not know about its constituents and would not need to be changed.
+  </p>
+</blockquote>
+<p>
+  Of course, this is somewhat of a contrived example, but I hope it shows how elegant, concise, simple, and yet powerful Rubyisms can be.
+</p>
+
+        </article></section>
+</div>
+    <footer><p>
+    Copyright © 2006-2011 <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <p>
+    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <div id="rights"> 
+    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
+    Links: <a href="http://susanpotter.net/resume/software-engineer">Software Engineer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/architect">Application Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer</a>,
+           <a href="http://susanpotter.net/resume/architect">Software Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Hedge Fund Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Hedge Fund Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">Resource Oriented Architecture</a>,
+  </div> 
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-837842-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_setDetectFlash', false]);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script></footer><script type="text/javascript">
+      (function($) {
+        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })(jQuery);
+    </script><!-- Place this tag just before your close body tag -->

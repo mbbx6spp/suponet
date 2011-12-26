@@ -1,0 +1,199 @@
+
+
+  
+  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: Preventing Information Leaks, Part 3</title><link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+    <a href="/">
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
+    <nav><a href="/about/">About</a>
+      <a href="/resume/">Resume</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/favorites/">Favo(u)rites</a>
+      <a href="/contact/">Contact</a>
+      <a target="_blank" id="twitter" class="icon" href="http://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
+      <a target="_blank" id="linkedin" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
+      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
+    </nav>
+</div>                 
+</header><div class="text post sidebar">
+      <aside><ul class="share-buttons">
+<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+          <li class="plusone">
+          <!--
+          <li class="linkedin"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
+          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
+          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
+          -->
+        </ul></aside><section><article><h1 role="banner">
+            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
+            <span class="description">
+              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript, 
+              semantic web, Rails tips, graph databases, distributed systems.
+            </span>
+          </h1>
+          
+          <h2>Preventing Information Leaks, Part 3</h2>
+          In the third part of the
+<a href="http://snakesgemscoffee.blogspot.com/2008/02/preventing-information-leaks-part-1.html">how to prevent information leaks</a>
+blog post series, we will look for unguarded "hidden" files where we can garnish quite a bit of information.
+Make sure you check out
+<a href="http://snakesgemscoffee.blogspot.com/2008/02/preventing-information-leaks-part-1.html">part 1</a>
+and
+<a href="http://snakesgemscoffee.blogspot.com/2008/02/preventing-information-leaks-part-2.html">part 2 on how to prevent information leaks in web applications</a>
+before continuing.
+<h4>Seek Unguarded Hidden Files</h4>
+For web applications that use deployment tools that pull code from code repositories, you can find out quite a bit of information about the code repository (e.g. host, path, usernames, file listings), by finding unguarded hidden files.  One obvious example especially in the SVN saturated Rails world is the path
+<code>/.svn/entries</code>
+and similar URLs.
+You will want to make sure the following URIs are not accessible on your public sites if you use Subversion (SVN):
+<ul>
+<li>
+    <code>/.svn/entries</code>
+  </li>
+  <li>
+    <code>/javascripts/.svn/entries</code>
+  </li>
+  <li>
+    <code>/stylesheets/.svn/entries</code>
+  </li>
+  <li>
+    <code>/images/.svn/entries</code>
+  </li>
+</ul>
+If you are using a superior SCM for your project like Git you ought to be looking for the following:
+<ul>
+<li>
+    <code>/.git/config</code>
+  </li>
+  <li>
+    <code><strike>/javascripts/.git/config</strike></code>
+  </li>
+  <li>
+    <code><strike>/stylesheets/.git/config</strike></code>
+  </li>
+  <li>
+    <code><strike>/images/.git/config</strike></code>
+  </li>
+</ul>
+If your project is still in the stone-age using CVS, then check the following:
+<ul>
+<li>
+    <code>/CVS/Entries</code>
+  </li>
+  <li>
+    <code>/javascripts/CVS/Entries</code>
+  </li>
+  <li>
+    <code>/stylesheets/CVS/Entries</code>
+  </li>
+  <li>
+    <code>/images/CVS/Entries</code>
+  </li>
+</ul>
+Adapt these patterns for your application framework default structures.  The above is for Rails or Rails-based frameworks (e.g. Merb).
+When I first tried this last week on the Rails top 10 sites, three out of ten of these sites exposed their SVN information (and last week I had only checked SVN, no Git or CVS URIs).  Since last week at least one of those sites have fixed the problem!
+What information is exposed in these files?  Quite a lot of information.  Do you want potential hackers knowing:
+<ul>
+  code repository URL (host, port, protocol, path)
+  <li>usernames of committers</li>
+  <li>code repository listings of files in a directory</li>
+</ul>
+All these things are not things you really want the potential hacker knowing.  On my travels investigating the top 100 Rails sites I found one top 20 site that exposed enough information from their SVN entries file that I found a prototyping directory that included a "specs.rtf" document, which I was able to download.  The document was not very uninteresting (at least not to me), but if they had written more in-depth specifications in the document, it may have served as a nice guide for a potential hacker to garnish enough information about their setup to take over!
+<b>Moral of this story?</b>
+Guard hidden files.  I recommend "forbidding" access to all troublesome path regex patterns.
+For example, one of the LigHTTPd servers I administer has the following at the top of the configuration file:
+<pre><code>
+$HTTP["url"] =~ ".*/\..*" {
+  url.access-deny = ("")
+}
+
+
+
+
+
+
+
+&lt;DirectoryMatch "^.*\..*"&gt;
+  ErrorDocument 403 /403.html
+  Order allow,deny
+  Deny from all
+  Satisfy All
+&lt;/DirectoryMatch&gt;
+
+
+
+
+
+location ^~ /\..* {
+  deny    all;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+</code></pre>
+
+        </article></section>
+</div>
+    <footer><p>
+    Copyright © 2006-2011 <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <p>
+    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <div id="rights"> 
+    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
+    Links: <a href="http://susanpotter.net/resume/software-engineer">Software Engineer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/architect">Application Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer</a>,
+           <a href="http://susanpotter.net/resume/architect">Software Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Hedge Fund Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Hedge Fund Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">Resource Oriented Architecture</a>,
+  </div> 
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-837842-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_setDetectFlash', false]);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script></footer><script type="text/javascript">
+      (function($) {
+        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })(jQuery);
+    </script><!-- Place this tag just before your close body tag -->

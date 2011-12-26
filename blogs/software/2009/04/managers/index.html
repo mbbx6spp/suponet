@@ -1,0 +1,145 @@
+
+
+  
+  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: The Scala vs Erlang Debate, Part 1: The Managers Overview</title><link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+    <a href="/">
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
+    <nav><a href="/about/">About</a>
+      <a href="/resume/">Resume</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/favorites/">Favo(u)rites</a>
+      <a href="/contact/">Contact</a>
+      <a target="_blank" id="twitter" class="icon" href="http://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
+      <a target="_blank" id="linkedin" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
+      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
+    </nav>
+</div>                 
+</header><div class="text post sidebar">
+      <aside><ul class="share-buttons">
+<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+          <li class="plusone">
+          <!--
+          <li class="linkedin"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
+          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
+          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
+          -->
+        </ul></aside><section><article><h1 role="banner">
+            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
+            <span class="description">
+              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript, 
+              semantic web, Rails tips, graph databases, distributed systems.
+            </span>
+          </h1>
+          
+          <h2>The Scala vs Erlang Debate, Part 1: The Managers Overview</h2>
+          <em>Note: The discussion is primarily between Scala and Erlang, but other languages could potentially be substituted in the arguments for and against.  Scala stands for any language that attempts to solve the multi-core issue software developers face with threads and Erlang is a language that has light weight processes which solves the biggest issue of going with a multi-process solution in software.</em>
+The debate started with the realization that Moore's Law died a while ago.  Tomorrow (as we see it now) is destined for multi-cores.
+A problem of massive proportions now faces software engineers, since hardware engineers changed the rules on us.  Now I am not giving hardware engineers a hard time, I am simply pointing out that there has been a massive shift in the way hardware is built, which directly affects the performance and reliability of the software which runs on it.  It is not a transparent change that software engineers can ignore.
+With that background laid out, as software engineers, we must appreciate the problem we now have to tackle, both server-side and client-side developers alike will need to tackle these issues promptly.  However, this article only considers server-side software as there is where my specialized expertise lies.  This part of the article is the high-level.  I'll get into the specifics in the second part.
+So the question now is how do we leverage the advantage given to us by new hardware progress of multi-cores?
+There are two fundamentally different problems to solve: software products/projects that already have large complex systems already built in languages that support threads half-decently such as in Java and JVM languages including Scala; but there are also those startups that don't have baggage and can start with a better long-term solution by using a true concurrent language like Erlang.
+<h3>The Legacy Enterprise</h3>
+The problem with utilizing JVM threading (whether directly in Java or via other languages built on the JVM such as Scala) is that third party code you use or existing Java/JVM code written isn't necessarily thread-safe.  You might have all your business entities and models defined in Java, but can it really be threaded?
+The pain of migrating or porting your existing system from a JVM language to another truly concurrent language like Erlang might be much greater than dealing with threading issues in just a few key bottleneck areas that will increase throughput and CPU utilization
+<strong>enough</strong>.
+In this case I doubt many pragmatic engineers or architects will advocate starting from scratch in a language you know little (if anything) about.  However, identifying those key pain points might take some time, but will be a necessary cost if you are serious about solving this problem in the near-term using a solution like Scala.
+However, what these engineers and architects should stress to management is that this is likely to become a monkey patch.  There will be a tipping point where moving to a pure concurrent language like Erlang would be more beneficial that sticking to the monkey patch and living on the JVM forever, no matter what Sun tries to tell you.
+There are hybrid solutions for the medium-term, that depending on the project/enterprise specifics may be a good solution until you are able to fully port the code to a langauge like Erlang (or whatever the trend may be at the time you get to it).
+<acronym title="Service Oriented Architecture">SOA</acronym>
+principles can be used to design and define a meaningful architecture that will declutter the system and allow you to tackle just the bottlenecks of the system in an Erlang port/rewrite and still give you (the manager) a low risk
+<acronym title="Proof of Concept">PoC</acronym>
+project so you can evaluate Erlang in your enterprise.
+Having worked on a number of large enterprise projects where
+<em>upgrading</em>
+the "legacy" system was the goal, I know full well that management are likely to prefer the monkey patches (i.e. Scala where the pain of rewriting components in a PoC way doesn't exceed the pain of threading your existing code at the bottlenecks), especially when the middle/technical managers do not highlight the drawbacks of the "solution" adequately.  Three to nine months later the management (especially middle management) are hurting big time, but it is not usually the most appropriate time to do your
+<em>"I told you so dance"</em>.
+Trust me!:)
+The the monkey patch isn't an ideal solution when you are simply trading one complexity of equal of greater value for the other and in 2-5 years the likelihood that there will be many more skilled engineers and architects that truly understand and have solid production experience in a truly concurrent language like Erlang is high in my estimation, so making a move to such a language/environment would not be as risky at that time.  However, for 2-5 years you have been getting little out of your hardware and software together unless you overbuy hardware.  In fact, in the case where legacy code already exists, there is never really an ideal solution.  However, starting out with meaningful
+<acronym title="Proof of Concept">PoC</acronym>s
+and structuring low risk exit points after conducting objective evaluations of these projects is key to the success of every "legacy solution".  If in doubt and your legacy system isn't showing signs of hurting yet, you might want to wait and beef up on hardware.  This is a transition period and if you are in a conservative IT enterprise this might be a better near-term approach.
+<h3>Startups</h3>
+Now for the startups or those starting afresh, there is mixed news: very good news and not-so-bad news.
+Green field projects, in theory, are always the best.  You can get everything right from day one....well at least you can hope to do so (let us pretend for this article).  My advise for your team is to take the plunge to Erlang.  It is actually relatively low risk to do so for the following reasons:
+<ul>
+<li>It is a mature language and environment already tested by large and complex real world systems at telcos where reliability and scalability were and are top priorities.</li>
+  <li>There are a few good books out there on that will help you convert to Erlang and Functional Programming (see resources section below), although documentation and education on Erlang, generally, is somewhat lacking.</li>
+  <li>A framework for services has been designed, developed and put into production called OTP, which stands for the Open Telephony Platform and actually nothing specific to Telephony applications in it, it was simply developed by a Telco.</li>
+</ul>
+Erlang's approach to concurrency is interesting and takes some getting used to as it is a pure functional programming language unlike Scala which is a hybrid.
+Now the bad news is that there are very few people that know Erlang (or other pure concurrent languages), you need to hire at least one specialist with Erlang experience to guide your team to avoid the potholes and perhaps even stop you before you get to the edge of a cliff.  They might not be cheap, but starting out it will mitigate project risk significantly.
+Another negative on the Erlang side of the argument is that you will not be able to use your Java classes straight from within Erlang (in a meaningful way - I'll cover this in the next part).  The positive about this negative though is that you can encapsulate your Java code in an SOA way so that you can decouple and declutter subsystems within your enterprise, which is an important task to do regardless of which legacy solution you choose.
+Finally, good luck and let me know how it goes!
+<h4>Resources</h4>
+<h5>
+  <a href="http://www.amazon.com/gp/product/193435600X?ie=UTF8&amp;tag=illinilistn09-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=193435600X">Programming Erlang: Software for a Concurrent World</a>
+  <img alt="" border="0" height="1" src="http://www.assoc-amazon.com/e/ir?t=illinilistn09-20&amp;l=as2&amp;o=1&amp;a=193435600X" style="border:none !important; margin:0px !important;" width="1">
+  by Joe Armstrong
+</h5>
+<p>This book, for the moment, is the definitive guide for Erlang.  If you have already decided to go the Erlang route then you will not mind (or perhaps not even notice) the "selling" of Erlang throughout the book.  Overall this is an essential book to anyone learning Erlang at this point.</p>
+<h5>
+  <a href="http://www.amazon.com/gp/product/0596514980?ie=UTF8&amp;tag=illinilistn09-20&amp;linkCode=as2&amp;camp=1789&amp;creative=9325&amp;creativeASIN=0596514980">Real World Haskell</a>
+  <img alt="" border="0" height="1" src="http://www.assoc-amazon.com/e/ir?t=illinilistn09-20&amp;l=as2&amp;o=1&amp;a=0596514980" style="border:none !important; margin:0px !important;" width="1">
+</h5>
+<p>While Haskell isn't either Scala or Erlang, if you do not come from a functional programming frame of mind you will need a good book to introduce you gently into the realm of functional programming.  This book does a pretty good job.  While the syntax for Haskell is different to both Erlang and Scala, the hardest part of moving to functional programming isn't the syntax.  Trust me on this one:)</p>
+Also consider me,
+<a href="http://www.linkedin.com/in/susanpotter">Susan Potter</a>,
+a resource if you need an Erlang software engineer with high-level enterprise architecture background in Java/J2EE/JEE and Ruby/Rails production environments.  I am developing a risk management product in Erlang right now and I am available as a consultant through my consulting firm
+<a href="http://finsignia.com">Finsignia</a>,
+which mostly works with financial services firms such as investment banks and hedge funds, which is where my business domain expertise lies, but also works on designing, building and deploying reliable and robust server-side solutions for any industry.
+
+        </article></section>
+</div>
+    <footer><p>
+    Copyright © 2006-2011 <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <p>
+    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <div id="rights"> 
+    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
+    Links: <a href="http://susanpotter.net/resume/software-engineer">Software Engineer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/architect">Application Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer</a>,
+           <a href="http://susanpotter.net/resume/architect">Software Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Hedge Fund Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Hedge Fund Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">Resource Oriented Architecture</a>,
+  </div> 
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-837842-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_setDetectFlash', false]);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script></footer><script type="text/javascript">
+      (function($) {
+        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })(jQuery);
+    </script><!-- Place this tag just before your close body tag -->

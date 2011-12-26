@@ -1,0 +1,222 @@
+
+
+  
+  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: The Miseducation of Computer Science Graduates (in US)</title><link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+    <a href="/">
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
+    <nav><a href="/about/">About</a>
+      <a href="/resume/">Resume</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/favorites/">Favo(u)rites</a>
+      <a href="/contact/">Contact</a>
+      <a target="_blank" id="twitter" class="icon" href="http://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
+      <a target="_blank" id="linkedin" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
+      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
+    </nav>
+</div>                 
+</header><div class="text post sidebar">
+      <aside><ul class="share-buttons">
+<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+          <li class="plusone">
+          <!--
+          <li class="linkedin"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
+          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
+          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
+          -->
+        </ul></aside><section><article><h1 role="banner">
+            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
+            <span class="description">
+              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript, 
+              semantic web, Rails tips, graph databases, distributed systems.
+            </span>
+          </h1>
+          
+          <h2>The Miseducation of Computer Science Graduates (in US)</h2>
+          <h3>Introduction</h3>
+
+<p>
+  This is a draft of my critiques (hopefully constructive) on the topic of 
+  <em>Computer Science</em> education in post-high school level institutions, 
+  specifically research universities (in the United States as this is with 
+  what I have experience).
+</p>
+<p>
+  I hope to point out systemic deficiencies as far as I see them, as someone 
+  who has hired Computer Science graduates for my consulting clients and soon 
+  (I hope) for my new business venture when I get all my funding ducks in a 
+  row. The purpose of this draft (so far) is to help sort through my thoughts 
+  on the issues at hand, and potentially offer constructive suggestions for 
+  educators to test out in the lecture hall or computer lab (after revising 
+  my statements to more accurately depict my suggestions). It is not to point 
+  the finger at specific people, those with certain job titles or students. 
+  We are all in this together.
+</p>
+
+<p>
+  I hope the draft isn't too rough for people to read through so they can 
+  provide feedback, because I want this to be interactive and constructive
+  for everyone. Not simply a venting platform for me. If it is let me know.
+</p>
+
+<h3>Motivations</h3>
+
+<p>
+  My motivations are, undeniably, selfish. They are:
+</p>
+<ol>
+<li>
+    I want to be able to hire <acronym title="Computer Science">CS</acronym>
+    graduates that can be productive on day one instead of spending a good 
+    amount of time introducing them to aspects of software engineering I 
+    had hoped would be covered in their undergraduate degrees.
+  </li>
+  <li>
+    I also want to continue being able to live in a country that wil be 
+    economically competitive such that at least some creative jobs remain 
+    here for the rest of my career instead of being forced to lift up my 
+    roots to relocate somewhere I <em>may</em> not care to live just to 
+    satisfy my professional goals (of course, I may choose instead to 
+    wither and die professionally in a less competitive economy where 
+    only boring support jobs exist). Neither of these potential outcomes 
+    appeal to me. If you are reading this from a developing economy thinking, 
+    <em>"what an arrogant westerner"</em> you would be correct. I haven't
+    spent much of my life outside of western cultures, only the first 
+    seven years of it. As hard as it is to see a westerners point of view 
+    at least acknowledge that if you were in my shoes and had started your 
+    career in more creative, innovative positions that the you would also 
+    not look forward to a career that ends with dull, unchallenging 
+    support roles as I <em>should</em> be increasing in position, title, 
+    and salary if previous career trajectories are anything to go by. (Of 
+    course, they aren't but that is another matter entirely.)
+  </li>
+  <li>
+    As a new parent now I hope educational reform will take place to better 
+    equip my child in the future.
+  </li>
+</ol>
+<!--
+<p>
+  It should also be noted that there are the general motivations of students
+  in play too. As well as <strong>general</strong> motivations of those 
+  teaching Computer Science in higher education institutions.
+</p>
+
+<p>
+  I obviously cannot speak for everyone, but I imagine the primary motivation 
+  of students entering into a Computer Science degree would be to get into a 
+  career related to this subject matter and to make themselves more marketable
+  in comparison to those who enter the job market without <acronym 
+    title="Computer Science">CS</acronym> degrees. In the US, a student entering
+  into an undergraduate degree can expect, on average (assuming their parents 
+  can't pay for it out of pocket), to be in debt approximately $23,000 by the 
+  time they finish *if* they go to a public school [1]. This does make things 
+  more complicated as I will try to make a case later that CS degrees today 
+  are well taught if the objective is to train budding Computer scientists for 
+  an academic career, not well suited to train software, hardware or firmware 
+  engineers of the future for industry (without a lot more training and 
+  conditioning of the graduate by their first employer after college).
+</p>
+
+<p>
+  Because the average undergraduate debt increases every year at a rate much 
+  higher than inflation it wouldn't be unreasonable for new graduates to expect 
+  starting salaries to be higher to compensate for their debt. The sad truth is 
+  I suspect (based on conversations with a number of new CS graduates) the 
+  starting salaries are decreasing (in proportion at least to how much tuition 
+  and undergraduate debt levels increases year on year).
+</p>
+
+<p>
+  In terms of the motivations of the faculty teaching Computer Science programming 
+  courses, I would first like to point out that there are good, OK and bad 
+  teachers throughout academia in every subject. I am not going to talk about 
+  teaching quality as I find there to be a huge variance of this in higher 
+  education especially in the research-oriented universities. Teaching quality is 
+  also not the systemic issue I find to be the problem w.r.t. Computer Science 
+  higher education. I will discuss the issues I perceive in terms of course 
+  content, the way it is taught (again not related to teaching quality, but order 
+  of delivery of the content) and other areas not related to motivations later.
+  However, it would be incomplete of me not to mention that there seems to be 
+  a growing conflict <strong>due to no fault of the teaching faculty</strong> 
+  arising in higher education today (at least in US) that should be pointed out.
+</p>
+
+<p>
+  First consider that getting faculty positions, even in the area of Computer 
+  Science, is very competitive. It is made even more pronounced as higher 
+  education institutions are facing major budget cuts across the United States 
+  today impacting not just public (state funded) colleges, but also private 
+  universities as federal research grants are becoming even more competitive. 
+  This means faculty need to spend more time writing grant proposals to bring 
+  in as much money to their department as possible. Second consider the process 
+  of tenure-track positions on faculty. There is a much greater emphasis in many 
+  departments when considering tenure on journal articles or books published than 
+  teaching accomplishments, especially in research oriented universities. Both of 
+  these conflict for time resources of any faculty member teaching CS undergraduate 
+  courses. This is just reality. Even faculty that truly care about teaching their 
+  students all they can, this is just the new reality. This is a systemic issue.
+</p>
+--><h3>Observations</h3>
+
+<p>
+  Having hired (on behalf of clients
+</p>
+
+[1] http://www.redandblack.com/2011/05/02/undergraduate-debt-increases-across-country/
+[2] http://blog.jitbit.com/2011/05/what-if-drivers-were-hired-like.html
+        </article></section>
+</div>
+    <footer><p>
+    Copyright © 2006-2011 <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <p>
+    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <div id="rights"> 
+    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
+    Links: <a href="http://susanpotter.net/resume/software-engineer">Software Engineer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/architect">Application Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer</a>,
+           <a href="http://susanpotter.net/resume/architect">Software Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Hedge Fund Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Hedge Fund Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">Resource Oriented Architecture</a>,
+  </div> 
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-837842-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_setDetectFlash', false]);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script></footer><script type="text/javascript">
+      (function($) {
+        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })(jQuery);
+    </script><!-- Place this tag just before your close body tag -->

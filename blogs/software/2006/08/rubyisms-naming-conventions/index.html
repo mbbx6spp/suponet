@@ -1,0 +1,131 @@
+
+
+  
+  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: Rubyisms: naming conventions</title><link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+    <a href="/">
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
+    <nav><a href="/about/">About</a>
+      <a href="/resume/">Resume</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/favorites/">Favo(u)rites</a>
+      <a href="/contact/">Contact</a>
+      <a target="_blank" id="twitter" class="icon" href="http://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
+      <a target="_blank" id="linkedin" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
+      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
+    </nav>
+</div>                 
+</header><div class="text post sidebar">
+      <aside><ul class="share-buttons">
+<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+          <li class="plusone">
+          <!--
+          <li class="linkedin"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
+          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
+          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
+          -->
+        </ul></aside><section><article><h1 role="banner">
+            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
+            <span class="description">
+              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript, 
+              semantic web, Rails tips, graph databases, distributed systems.
+            </span>
+          </h1>
+          
+          <h2>Rubyisms: naming conventions</h2>
+          Today I wanted to show the implicit and explicit naming conventions in Ruby for newbies.  It isn't particularly consistent with another language's conventions, so could cause confusion when reading the Ruby Standard Library (RSL).  Where appropriate I also discuss how some of the naming conventions really aid code readability and developer productivity.
+<h3>ClassName and ModuleName [implicit]</h3>Naming
+classes is very similar to most common conventions following in C++, Java, Python and C#.  e.g.
+<code>DataMigration</code>,
+<code>CorporateConvertibleBond</code>,
+<code>Controller</code>
+etc.
+I am unaware of a class name in the (RSL) that violates this rule.  RSL examples of convention usage are Fixnum, Rational, DateTime, Module, NameError, NotImplementedError, NilClass.  I realize Fixnum is a little controversial, but I think there is a case for it's naming as above.
+<h3>variable_name and regular_method_name [implicit]</h3>For
+variable names and methods that do something that isn't dangerous and/or return a non-boolean to the caller, the common underscoring convention is used to name them.  This is consistent with Perl and PHP variable naming conventions.
+RSL examples include: String#strip, Object#instance_eval, Array#sort_by.
+Please note this is the one convention listed here that is violated in the RSL the most.
+<h3>method_asking_a_question? [implicit]</h3>Suffixing
+a method that asks a question with a '?' is a great way to tell clients of your code it returns a boolean value to be used in conditional expressions.
+My favorite RSL example is Object#nil?.  This is one of the most important methods, in my mind, that exist in Ruby in conjunction with making Ruby's
+<code>None</code>,
+<code>null</code>,
+<code>NULL</code>
+equivalent,
+<code>nil</code>
+and object of type NilClass.
+RSL exaples include: Object#is_a?, Hash#has_key?, Object#frozen?.
+This naming approach is my joint favorite with the following convention that significantly increases readability of code and implicitly improves developer productivity as a side effect.
+<h3>slightly_dangerous_method! [implicit]</h3>For
+methods that change the internal state of the object in a way that may not be apparent, a '!' is suffixed to the method name to follow this convention.
+As an example in the RSL, you would probably expect the method
+<code>"a string".upcase</code>
+to return a copy of the original string in upper case, but the method
+<code>"a string".upcase!</code>
+would probably warn you that it would change the original object's internal state.  This is an important distinction to know as a developer writing client code to the String class.
+This naming convention will keep you out of trouble.  If a team mate decides to try out some of your APIs, then you can feel safe knowing you have warned him/her of potential danger spots.
+<h3>@instance_variable [explicit]</h3>Instance
+variables are explicitly prefixed with the '@' sign.  Some may thing this is a Perlism that crept over, but in Perl '@' prefixed variables referred to arrays, if I remember correctly, so the usage is quite different.  It should be noted that the '@' prefix is only used when referring to instance variables internally within the class.
+Using the '@' prefix does provide a convenient visual que that I am using an instance method which definitely improves readability of code.
+<h3>$global_variable [explicit]</h3>To
+refer to global variables prefix the name with '$'.  This is an explicit naming convention in Ruby, much like the '@' prefix for instance variables above.  This gives a quick visual note that we are knowingly using globals.  For me it also provides a psychological check, where I start to question my motives whenever using a global variable and usually end up refactoring code to avoid using globals.
+<h3>SOME_CONSTANT or OtherConstant [kind of explicit:)]</h3>Much
+like in Java and Python, Ruby's constant naming convention is not commonly consistent.  Often developers use the capilized naming approach, while just as many use the camel case convention used for class and module names in Ruby.
+Personally, if the constant is accessible from the module or class, I default to using the former approach unless the project has a different preference.  For internally accessible constants, it is probably a moot point.
+All in all I find using these or very close naming conventions to those listed here, help me become more productive as a Ruby developer.  I also find it useful to notice the Ruby mindset of being as expressive as possible without being verbose implicitly defined in the naming rules above.
+
+        </article></section>
+</div>
+    <footer><p>
+    Copyright © 2006-2011 <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <p>
+    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <div id="rights"> 
+    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
+    Links: <a href="http://susanpotter.net/resume/software-engineer">Software Engineer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/architect">Application Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer</a>,
+           <a href="http://susanpotter.net/resume/architect">Software Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Hedge Fund Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Hedge Fund Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">Resource Oriented Architecture</a>,
+  </div> 
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-837842-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_setDetectFlash', false]);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script></footer><script type="text/javascript">
+      (function($) {
+        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })(jQuery);
+    </script><!-- Place this tag just before your close body tag -->

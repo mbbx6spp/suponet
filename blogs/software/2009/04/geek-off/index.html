@@ -1,0 +1,167 @@
+
+
+  
+  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: The Scala vs Erlang Debate, Part 2: The Geek Off</title><link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+    <a href="/">
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
+    <nav><a href="/about/">About</a>
+      <a href="/resume/">Resume</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/favorites/">Favo(u)rites</a>
+      <a href="/contact/">Contact</a>
+      <a target="_blank" id="twitter" class="icon" href="http://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
+      <a target="_blank" id="linkedin" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
+      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
+    </nav>
+</div>                 
+</header><div class="text post sidebar">
+      <aside><ul class="share-buttons">
+<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+          <li class="plusone">
+          <!--
+          <li class="linkedin"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
+          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
+          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
+          -->
+        </ul></aside><section><article><h1 role="banner">
+            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
+            <span class="description">
+              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript, 
+              semantic web, Rails tips, graph databases, distributed systems.
+            </span>
+          </h1>
+          
+          <h2>The Scala vs Erlang Debate, Part 2: The Geek Off</h2>
+          In the
+<a href="http://geek.susanpotter.net/2009/04/scala-vs-erlang-debate-part-1-managers.html">first part of The Scala vs Erlang Debate</a>
+article series, I discussed various ways to go about adopting either Scala or Erlang and in what scenarios it made sense to go with one over the other from the manager's perspective.    In summary the major advantage of Scala is that it runs on the
+<acronym title="Java Virtual Machine">JVM</acronym>
+so it can access pre-existing Java libraries your enterprise has already developed.  This is also Scala's major disadvantage because it makes a rather large assumption (which in my opinion would be incorrect the majority of the time) that the Java libraries being used are thread-safe.  Erlang on the other hand doesn't allow you to integrate in the same OS process with Java libraries, because Erlang was built from the ground up with scalability and fault-tolerence in mind and ideally you shouldn't put Java into the run-time stack because it compromises Erlang's fault-tolerance features significantly.  Instead the preferred approach when writing the biggest bottlenecks of your system in Erlang and integrating with pre-existing Java libraries/system is to use
+<acronym title="Service Oriented Architecture">SOA</acronym>
+to create separate, but integrated systems that are easy to swap out and upgrade at a later point.  In my view, you should be refactoring your enterprise architecture by defining services anyway, since this will decouple systems and remove a great deal of headaches in IT maintenance and deployment.  Today I wanted to geek out and differentiate the two environments on a more technical level for the middle/technical managers.<h4>Scala: Technical Overview</h4>Scala is an objected oriented, statically typed language with many functional programming capabilities built-in.  However, it must be noted (because few Scala documents do this) that Scala is hybrid actor programming language and therefore a number of assumptions cannot be made.  So by being a hybrid functional language it losses some of the benefits.  As well as it's Java run-time support on the
+<acronym title="Java Virtual Machine">JVM</acronym>
+it is also supported in Microsoft's Common Language Runtime (<acronym title="Common Language Runtime">CLR</acronym>) so .NET integration, in theory, is a breeze.  Again this also assumes that the .NET libraries you use from Scala are thread-safe.  On a related topic, .NET also has F# available, which is Microsoft's attempt at a
+<em>hybrid</em>
+functional programming language also.  I have no comment on F# myself, since I have zero experience with it.  Please chime in on the comments section if you have experience with F# and are able to contrast it with Scala.
+<h4>Erlang: Technical Overview</h4>Erlang
+on the other hand is a dynamic, purer functional programming language that supports light-weight processes in its own run-time environment (separate from
+<acronym title="Operating System">OS</acronym>
+processes), which send messages to each other asynchronously.  One major side effect of being purer in its actor treatment is that there is virtually
+<strong>not state</strong>.
+There is no way to pass "state" around (a couple of minor exceptions), but there is a
+<em>lambda calculus</em>
+optimization that can be taken advantage of that will ease away our troubles called
+<em>tail-recursion</em>.
+Tail-recursion only partially works in Scala.  For many developers that only have experience in procedural and Object-Oriented (<acronym title="Object Oriented">OO</acronym>) programming languages like Java, Python, Ruby, C++, C, Perl, C# this sounds completely
+<em>insane</em>.
+Two years ago I may have agreed with you, but today life is much simpler without state in my Erlang travels than when I had to write thread-safe Java code and I wish I had discovered this concept earlier.  I will not pretend this notion didn't take some getting used to but today I see things a lot clearer and I am thankful for that clarity.
+<h4>Scala: Concurrency</h4>Concurrency
+in Scala is modeled using a concept of
+<em>actors</em>,
+except there are two types of
+<em>actors</em>:
+thread-based and event-based actors.  Since Scala was implemented on top of the
+<acronym title="Java Virtual Machine">JVM</acronym>,
+which is stack-based, Scala had to compromise on Erlang's one actor approach.  This is because native threads, which the
+<acronym title="Java Virtual Machine">JVM</acronym>
+uses for concurrency support, are much heavier-weight than Erlang's lightweight processes thus reducing the number of thread-based actors that could be launched inside one
+<acronym title="Java Virtual Machine">JVM</acronym>.
+So Scala created this concept of a very peared down event-based actor, which does not have all the functionality of thread-based actors but does not incur the penalty of needing to be backed by a native thread.  To be as complete as I can be in this section I should also note that Scala treats everything as an object, even though it has these two types of actors.  Actors in Scala are just objects.  In turn this may create duplication between objects and actors.
+<h4>Erlang: Concurrency</h4>The
+Erlang
+<acronym title="Virtual Machine">VM</acronym>
+was built from the bottom up with lightweight processes (a.k.a. actors), therefore it is stackless and much better at lightweight concurrency.  Erlang also has a built-in mechanism for load balancing these lightweight processes across all available CPU cores.  This means Erlang has a massive advantage over JVM based functional programming languages at getting the most out of multi-core hardware, which is at the crux of the problem domain that software needs to address going forward.
+<h4>Scala vs. Erlang: Performance</h4>In
+terms of linear performance (sequential) Scala has been shown to beat Erlang in certain cases.  However, concurrent performance consistently shows Erlang beating Scala, sometimes by wide margins on multi-core hardware.  Not surprising considering what we learned in the concurrency sections above.  When considering the problem we are trying to overcome - optimizing software on multi-core hardware - it seems clear which of these benchmarks are more important! :)
+<h4>Conclusion</h4>I
+think it is clear, which side of this debate I firmly stand, but I have tried to demonstrate both good and bad traits of each programming language from a technical perspective that might translate into a business case or reason for choosing one over the other in your organization.  If I have time I might do a part 3, which will talk a little about syntax and DSL support.  This might round out the argument since it could be argued that Scala wins in the third part by a hair, but all is not lost for Erlang if the underlying problem you need to solve is related to optimizing software for modern hardware and building robust systems at the same time.  My vote still goes to Erlang despite the lack of built-in features that make designing
+<acronym title="Domain Specific Language">DSL</acronym>s
+easier, but it is not difficult to build your own
+<acronym title="Domain Specific Language">DSL</acronym>
+engine in Erlang either.
+<h4>Limitations of this series:</h4>There
+are quite a few topics I left out of this post that might be of interest for some applications or services.  Namely:
+<ul>
+<li>
+    <strong>Hot swapping:</strong>
+    Erlang has great hot swapping capabilities for production environments that minimizes or possibly eliminates downtime of systems.  This feature in Scala is not close in capability or reliability at this point.
+  </li>
+  <li>
+    <strong>Garbage collection:</strong>
+    without getting into too many details Erlang probably wins this section by a hair (not significant to write home about).  Long sweeps will not be a problem in Erlang and only a problem in JVM languages on rare occasions.
+  </li>
+  <li>
+    <strong>Distributed nodes:</strong>
+    The clear winner here would be Erlang because built-in to the environment are all the multi-node features that make distributed systems a breeze.  Scala on the other hand has different frameworks and libraries to facilitate distributing nodes of logic on different hosts.
+  </li>
+  <li>
+    <strong>[Added Nov-2009] Frameworks:</strong>
+    As far as I know, Scala doesn't have an OTP killer, not even a contender to compete with Erlang's Open Telephony Platform (OTP).  Sure it will take some time, even Haskell, which has been around much longer than Scala is slightly jealous of OTP (I saw the way Don Stewart looked at me when I asked him if Haskell had framework similar to OTP;) ).  Supervision trees along make it stand out as the best thing since sliced bread, at least for this particular software engineer.
+  </li>
+</ul>
+<h4>Resources:</h4>
+<ul>
+<li>
+    <a href="http://geek.susanpotter.net/2009/04/scala-vs-erlang-debate-part-1-managers.html">The Scala vs Erlang Debate, Part 1: The Manager's Overview</a>
+  </li>
+</ul>
+<h4>Corrections (added February 2010):</h4>
+<ul>
+<li>Erlang is not a pure functional language.  However, it does not have a polluted (impure) treatment of actors like Scala:)  Some think this is a good-enough approach to be able to leverage the JVM, when running on the JVM is really important, perhaps 4 times out of 5 it might be "good enough".  I just wonder if it really matters for most projects that you run on the JVM!?</li>
+  <li>"Scala's lack of tail recursion is entirely due to a trade-off. The JVM doesn't do tail recursion itself. It is possible to add tail recursion on top of the JVM using various tricks, but they are expensive. SISC does its own stack based heap and Kawa uses trampolining." -- James Iry</li>
+</ul></article></section>
+</div>
+    <footer><p>
+    Copyright © 2006-2011 <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <p>
+    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <div id="rights"> 
+    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
+    Links: <a href="http://susanpotter.net/resume/software-engineer">Software Engineer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/architect">Application Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Ruby on Rails Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Software Developer</a>,
+           <a href="http://susanpotter.net/resume/architect">Software Architect</a>,
+           <a href="http://susanpotter.net/resume/software-engineer">Hedge Fund Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/developer">Hedge Fund Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">REST Software Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design">Resource Oriented Architecture</a>,
+  </div> 
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script><script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-837842-1']);
+    _gaq.push(['_trackPageview']);
+    _gaq.push(['_setDetectFlash', false]);
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script></footer><script type="text/javascript">
+      (function($) {
+        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })(jQuery);
+    </script><!-- Place this tag just before your close body tag -->
