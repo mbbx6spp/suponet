@@ -778,7 +778,7 @@
   </url>
   <url>
     <loc>http://susanpotter.net/stylesheets/coderay.css</loc>
-    <lastmod>2011-03-12</lastmod>
+    <lastmod>2011-12-25</lastmod>
   </url>
   <url>
     <loc>http://susanpotter.net/stylesheets/reset.css</loc>
@@ -817,6 +817,10 @@
     <lastmod>2011-03-07</lastmod>
   </url>
   <url>
+    <loc>http://susanpotter.net/talks/codepalousa/2012/why-haskell/</loc>
+    <lastmod>2012-03-16</lastmod>
+  </url>
+  <url>
     <loc>http://susanpotter.net/talks/cudevmeetup/2011/git-distributed-development-workflows/</loc>
     <lastmod>2011-08-31</lastmod>
   </url>
@@ -830,7 +834,7 @@
   </url>
   <url>
     <loc>http://susanpotter.net/talks/</loc>
-    <lastmod>2011-08-31</lastmod>
+    <lastmod>2012-03-16</lastmod>
   </url>
   <url>
     <loc>http://susanpotter.net/whoami/windycitydb2011.json</loc>
