@@ -14,6 +14,8 @@ body > footer a { color: #444444; }
 body > footer #rights { display: none; }
 body > pre { font-family: monospace; }
 
+h1.banner { display: none; }
+
 .text { -moz-box-shadow: #cccccc 0px 0px 10px 0; -webkit-box-shadow: #cccccc 0px 0px 10px 0; -o-box-shadow: #cccccc 0px 0px 10px 0; box-shadow: #cccccc 0px 0px 10px 0; overflow: hidden; *zoom: 1; background-color: #fcfcfc; color: #333333; margin: 0 auto; max-width: 840px; padding: 30px; }
 .text a { color: #D02B55; text-shadow: #f0f0f0 1px 1px 0px; }
 .text a:hover { color: #0099ff; }
@@ -77,7 +79,7 @@ body > pre { font-family: monospace; }
 }
 
 .post.sidebar aside .share-buttons li.reddit,
-.post.sidebar aside .share-buttons li.linkedin {
+.post.sidebar aside .share-buttons li.linked {
   margin: 0.5em 2em;
 }
 
