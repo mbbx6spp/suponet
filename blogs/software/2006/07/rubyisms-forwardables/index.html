@@ -1,7 +1,9 @@
 
 
   
-  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: Rubyisms: forwardables</title><link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: Rubyisms: forwardables</title><!--
+  <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
+  --><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
     <a href="/">
       <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
     <nav><a href="/about/">About</a>
@@ -41,7 +43,7 @@
   <p>
     Suppose we have the following model classes defined for a simple CRM system: Customer, Address, PhoneNumber, Name, etc.  Now in Java-land we would have written something that looks like the following Ruby code (except you must type about a hundred more lines - although now you can write annotations to automate basic things like generate getters and setters or the like, which still requires a ridiculous amount of code to accomplish):
   </p>
-  <pre><code class="language-ruby"><table class="CodeRay"><tr>
+  <div class="CodeRay"><div class="code"><pre><code class="language-ruby"><table class="CodeRay"><tr>
 <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
 <a href="#n2" name="n2">2</a>
 <a href="#n3" name="n3">3</a>
@@ -55,7 +57,7 @@
   <span class="keyword">class</span> <span class="class">Customer</span>
   attr_accessor <span class="symbol">:name</span>, <span class="symbol">:address</span>, <span class="symbol">:phone_number</span>
   <span class="keyword">end</span></pre></td>
-</tr></table></code></pre>
+</tr></table></code></pre></div></div>
   <small>
     Note: the attr_accessor will create getters and setters for Ruby newbies.
   </small>
@@ -75,7 +77,7 @@
     <code class="language-ruby">Customer</code>
     class.  But remember, this is Ruby-land, which is a magical place, so we can just do the following:
   </p>
-  <pre><code class="language-ruby"><table class="CodeRay"><tr>
+  <div class="CodeRay"><div class="code"><pre><code class="language-ruby"><table class="CodeRay"><tr>
 <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
 <a href="#n2" name="n2">2</a>
 <a href="#n3" name="n3">3</a>
@@ -111,7 +113,7 @@
   <span class="instance-variable">@name</span>, <span class="instance-variable">@address</span>, <span class="instance-variable">@phone_number</span> = name, address, phone_number
   <span class="keyword">end</span>
   <span class="keyword">end</span></pre></td>
-</tr></table></code></pre>
+</tr></table></code></pre></div></div>
   <p>
     One of the many fantastic things about Ruby (and Python) is we have
     <code class="language-ruby">irb</code>
@@ -119,7 +121,7 @@
     <code class="language-ruby">irb</code>
     shell and do the following:
   </p>
-  <pre><code class="language-ruby"><table class="CodeRay"><tr>
+  <div class="CodeRay"><div class="code"><pre><code class="language-ruby"><table class="CodeRay"><tr>
 <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
 <a href="#n2" name="n2">2</a>
 <a href="#n3" name="n3">3</a>
@@ -139,7 +141,7 @@
   =&gt; <span class="string"><span class="delimiter">"</span><span class="content">MA</span><span class="delimiter">"</span></span>
   irb&gt; john_adams.street_address
   =&gt; <span class="string"><span class="delimiter">"</span><span class="content">101 Constabulary Road</span><span class="delimiter">"</span></span></pre></td>
-</tr></table></code></pre>
+</tr></table></code></pre></div></div>
   <p>Javahead&gt;&gt;&gt; We are still passing in the Name, Address and PhoneNumber stucts to create the Customer object in the first place, so why would flattening out the Customer interface reduce coupling?</p>
   <p>
     Great question [Javahead]!  In general, most applications will read data from models much more than create them, and quite a number of applications do not actually initially create any of the data, they simply massage it.  Now I am not suggesting that there are no applications that would create model objects more than read from them, but most likely your application will be 80% reading and 20% writing (including creating and updating).  So if we were to change the underlying structure of the Customer, on average 80% of the code that uses the Customer object would not know about its constituents and would not need to be changed.

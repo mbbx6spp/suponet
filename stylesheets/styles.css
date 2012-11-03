@@ -8,7 +8,7 @@ body > header nav { float: left; border-left: 1px solid #323232; padding: 0 0 0 
 body > header nav a { padding-right: 15px; border-right: 1px solid black; color: #ffffff; display: block; float: left; font-family: "Helvetica Neue", sans-serif; font-size: 12px; font-weight: bold; line-height: 45px; margin: 0 10px; text-decoration: none; text-shadow: black 0px 1px 1px; }
 body > header nav a:first-child { margin-left: 0; }
 body > header nav a:hover { color: white; text-decoration: none; }
-body > header a.icon { border: 0; padding: 7.5px 7.5px 7.5px 0; display: block; height: 30px; width: 30px; }
+body > header a.icon { border: 0; padding: 0 5px 5px 0; display: block; height: 30px; width: 30px; }
 body > footer { padding: 10px; max-width: 840px; margin: 20px auto; color: #777777; position: relative; font-size: 11px; }
 body > footer a { color: #444444; }
 body > footer #rights { display: none; }
@@ -114,6 +114,7 @@ h1.banner { display: none; }
   border-bottom: 1px dashed #999;
   padding: 0.5em;
   margin: 0 64px 0 0;
+  list-style: none;
 }
 
 .talks li.talk {
@@ -207,11 +208,11 @@ body.topics.whos-using-redis ul:first-of-type li img { vertical-align: middle; m
 #buzz { text-align: right; }
 #buzz h2 { font-weight: bold; }
 #buzz h2, #buzz .twitter ul { text-align: left; clear: both; }
-#buzz h2 span { display: block; font-size: 0.65em; font-weight: normal; margin: 0; padding: 0 0 0 16px; background: transparent url(/images/link.png) no-repeat left; }
-#buzz .github table { width: 85%; margin: 0; padding: 5px 0 20px 32px; font-size: 1.25em; }
+#buzz h2 span { display: block; font-size: 0.65em; font-weight: normal; margin: 0; padding: 0 0 0 8px; background: transparent url(/images/link.png) no-repeat left; }
+#buzz .github table { width: 85%; margin: 0; padding: 0 0 20px 32px; font-size: 1.25em; }
 #buzz .github table tr { border-bottom: 1px solid #e0e0e0; line-height: 1.75em; }
 #buzz .github table td { text-align: left; }
-#buzz .twitter ul { margin: 7px 0; }
+#buzz .twitter ul { margin: 0; }
 #buzz .twitter li { margin: 0 0 8px 0; padding-left: 34px; position: relative; min-height: 26px; }
 #buzz .twitter li a:first-child { -moz-box-shadow: #bbbbbb 0px 0px 3px 0; -webkit-box-shadow: #bbbbbb 0px 0px 3px 0; -o-box-shadow: #bbbbbb 0px 0px 3px 0; box-shadow: #bbbbbb 0px 0px 3px 0; display: block; height: 26px; left: 0; position: absolute; top: 3px; width: 26px; }
 #buzz .twitter li a:first-child img { height: 26px; width: 26px; }
