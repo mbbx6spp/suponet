@@ -34,7 +34,7 @@
           </h1>
           
           <h2>Coding with Explicit Intentions</h2>
-          <h3>2008-04-01 10:34:00 -0500</h3>
+          <h5 class="time">2008-04-01 10:34:00 -0500</h5>
           Recently I have had the [mis]fortune to be working with PHP for integration purposes for a client.  A partner of my client's (in the advertising space) sent us some PHP code to add to our servers for resolving the content type of a file based on its extension.  The line of code in the PHP script they sent over that was supposed to determine the file extension was:
 <pre><code>$ext = substr($file,-4);</code></pre>
 As you can see they are making a pretty big assumption - that the extension is exactly three letters long.  The media files that this script *may* support in the future are: Real Media (.rm), MPEG (.mpeg), Quicktime (.qt), etc.  These extensions are not exactly three letters long.  Why would someone want to write code that is quite likely to fail and also not communicate more explicitly their intentions?

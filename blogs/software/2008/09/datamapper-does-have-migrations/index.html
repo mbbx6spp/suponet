@@ -34,7 +34,7 @@
           </h1>
           
           <h2>DataMapper does have migrations</h2>
-          <h3>2008-09-04 09:27:00 -0500</h3>
+          <h5 class="time">2008-09-04 09:27:00 -0500</h5>
           I wanted to bust a myth out there that DataMapper does not have regular migrations, just the auto migrations.  At least in post 0.9 versions DataMapper has both.
 In other blogs about the topic I found quotes like: "DataMapper migrations pull your database structure directly from the Ruby code for your models, so there’s no need to write separate migration files...".  This, in my opinion, gives the wrong impression to those that are worried about non-trivial schema migrations.  The author of that quote appears to have never moved one column into multiple or vice versa (a non-trivial schema change), among other schema changes where a DataMapper auto migration would not work in a production environment.
 In merb you can just create a new DM migration with the following:
