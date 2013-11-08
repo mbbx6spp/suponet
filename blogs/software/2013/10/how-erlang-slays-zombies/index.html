@@ -94,8 +94,7 @@ Eshell V5.10.3  (abort with ^G)
 1&gt; {ok, Pid} = cover:start().
 {ok,}
 2&gt; cover:compile_module(zombie_part1).
-<!-- Users/spotter/Code/oss/susanpotter.net/content/blogs/software/2013/10/zombie_part1.erl:13: Warning: -->
-function weak_zombie/1 is unused
+<!-- path/to/zombie_part1.erl:13: Warning: function weak_zombie/1 is unused -->
 {ok,zombie_part1}
 3&gt; c(zombie_caller).
 {ok,zombie_caller}
@@ -106,6 +105,34 @@ function weak_zombie/1 is unused
 {{zombie_part1,weak_zombie,1},{0,1}}]}
 6&gt; cover:stop().
 ok</code></pre>
+<p>
+  Let's take a peak at what just happened here. First we ran <code>zombie_caller:main/1</code>
+  which called functions in <code>zombie_part1</code> module to see what got
+  called and what didn't. So that means you need <em>driver</em> code. Not
+  a test suite with good code coverage (unless you curate your test suite
+  VERY well, which I have yet to see in practice on larger codebases), but
+  representative production code that hits all or the vast majority of your
+  application's code to be able to tell where your codebase may have more
+  exported functions than needed. Maybe in the case of a service of some
+  kind that might be running the <code>main</code> entry point and then
+  running exhaustive, representative client requests in a separate OS
+  process. This might run for a few minutes or all day, or even all week.
+</p>
+<p>
+  So what else can we see from the above snippet. Well what is returned from
+  <code>code:analyse/1</code> is something of the following type:
+</p>
+<pre><code class="erlang"></code>
+{ok, [{{Module :: atom, Function :: atom, Arity :: integer()},
+{Cov ::integer(), NonCov :: integer()}}]}</pre>
+<p>
+  By default (unless you tell it otherwise) <code>cover:analyse</code> will
+  provide functional level coverage information. You can request clause
+  level of granularity, as well as line level detail.
+</p>
+<p>
+  The Erlang documentation is actually really great for cover.
+</p>
 <h3>More Resistant Zombies</h3>
 <p>
   Now let's say that we have the following scenario where we added a clause
