@@ -1,12 +1,31 @@
 
 
   
-  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: Rubyisms: forwardables</title><!--
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link href="/images/favicon.ico" rel="shortcut icon">
+  <title>Susan Potter: Rubyisms: forwardables</title>
+  <!--
   <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
-  --><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+  -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  
+  
+  <script async="async" defer src="/javascripts/app.js"></script>
+  <meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css">
+
+
+  
+    <header>
+  <div class="container">
     <a href="/">
-      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
-    <nav><a href="/about/">About</a>
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128">
+    </a>
+    <nav>
+      <a href="/about/">About</a>
       <a href="/resume/">Resume</a>
       <a href="/portfolio/">Portfolio</a>
       <a href="/talks/">Talks</a>
@@ -15,17 +34,25 @@
       <a target="_blank" id="linked" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
       <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
     </nav>
-</div>
-</header><div class="text post sidebar">
-      <aside><ul class="share-buttons">
-<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+  </div>
+</header>
+
+
+    <div class="text post sidebar">
+      <aside>
+        <ul class="share-buttons">
+          <li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <!--
           <li class="linked"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
           <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
           <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
           -->
-        </ul></aside><section><article><h1 class="banner">
+        </ul>
+      </aside>
+      <section>
+        <article>
+          <h1 class="banner">
             Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
             <span class="description">
               A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript,
@@ -34,7 +61,7 @@
           </h1>
           
           <h2>Rubyisms: forwardables</h2>
-          <h5 class="time">2006-07-22 18:23:00 -0500</h5>
+          <h5 class="time">2006-07-22 16:23:00 -0700</h5>
           <p>
   Recently some Java friends of mine have decided to taste the juicier fruits in Ruby-land with my assistance.  So below are some excerpts from an email conversation I had with one about Ruby's standard library
   <code class="language-ruby">forwardable</code>
@@ -45,7 +72,7 @@
     Suppose we have the following model classes defined for a simple CRM system: Customer, Address, PhoneNumber, Name, etc.  Now in Java-land we would have written something that looks like the following Ruby code (except you must type about a hundred more lines - although now you can write annotations to automate basic things like generate getters and setters or the like, which still requires a ridiculous amount of code to accomplish):
   </p>
   <div class="CodeRay"><div class="code"><pre><code class="language-ruby"><table class="CodeRay"><tr>
-<td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
 <a href="#n2" name="n2">2</a>
 <a href="#n3" name="n3">3</a>
 <a href="#n4" name="n4">4</a>
@@ -79,7 +106,7 @@
     class.  But remember, this is Ruby-land, which is a magical place, so we can just do the following:
   </p>
   <div class="CodeRay"><div class="code"><pre><code class="language-ruby"><table class="CodeRay"><tr>
-<td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
 <a href="#n2" name="n2">2</a>
 <a href="#n3" name="n3">3</a>
 <a href="#n4" name="n4">4</a>
@@ -123,7 +150,7 @@
     shell and do the following:
   </p>
   <div class="CodeRay"><div class="code"><pre><code class="language-ruby"><table class="CodeRay"><tr>
-<td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
+  <td class="line-numbers" title="double click to toggle" ondblclick="with (this.firstChild.style) { display = (display == '') ? 'none' : '' }"><pre><a href="#n1" name="n1">1</a>
 <a href="#n2" name="n2">2</a>
 <a href="#n3" name="n3">3</a>
 <a href="#n4" name="n4">4</a>
@@ -152,10 +179,12 @@
   Of course, this is somewhat of a contrived example, but I hope it shows how elegant, concise, simple, and yet powerful Rubyisms can be.
 </p>
 
-        </article></section>
-</div>
-    <footer><p>
-    Copyright © 2006-2013 <a href="http://susanpotter.net">Susan Potter</a>.
+        </article>
+      </section>
+    </div>
+    <footer>
+  <p>
+    Copyright © 2006-2014 <a href="http://susanpotter.net">Susan Potter</a>.
   </p>
   <p>
     This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
@@ -190,7 +219,8 @@
       twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
-  </script><script type="text/javascript">
+  </script>
+  <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-837842-1']);
     _gaq.push(['_trackPageview']);
@@ -200,11 +230,17 @@
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-  </script></footer><script type="text/javascript">
+  </script>
+</footer>
+
+    <script type="text/javascript">
       (function($) {
         var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
         var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
         po.src = 'https://apis.google.com/js/plusone.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
       })(jQuery);
-    </script><!-- Place this tag just before your close body tag -->
+    </script>
+    <!-- Place this tag just before your close body tag -->
+  
+

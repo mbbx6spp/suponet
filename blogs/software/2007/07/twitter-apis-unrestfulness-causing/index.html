@@ -1,12 +1,31 @@
 
 
   
-  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: Twitter API's unRESTfulness causing trouble</title><!--
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link href="/images/favicon.ico" rel="shortcut icon">
+  <title>Susan Potter: Twitter API's unRESTfulness causing trouble</title>
+  <!--
   <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
-  --><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+  -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  
+  
+  <script async="async" defer src="/javascripts/app.js"></script>
+  <meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css">
+
+
+  
+    <header>
+  <div class="container">
     <a href="/">
-      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
-    <nav><a href="/about/">About</a>
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128">
+    </a>
+    <nav>
+      <a href="/about/">About</a>
       <a href="/resume/">Resume</a>
       <a href="/portfolio/">Portfolio</a>
       <a href="/talks/">Talks</a>
@@ -15,17 +34,25 @@
       <a target="_blank" id="linked" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
       <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
     </nav>
-</div>
-</header><div class="text post sidebar">
-      <aside><ul class="share-buttons">
-<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+  </div>
+</header>
+
+
+    <div class="text post sidebar">
+      <aside>
+        <ul class="share-buttons">
+          <li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <!--
           <li class="linked"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
           <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
           <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
           -->
-        </ul></aside><section><article><h1 class="banner">
+        </ul>
+      </aside>
+      <section>
+        <article>
+          <h1 class="banner">
             Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
             <span class="description">
               A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript,
@@ -34,7 +61,7 @@
           </h1>
           
           <h2>Twitter API's unRESTfulness causing trouble</h2>
-          <h5 class="time">2007-07-05 11:07:00 -0500</h5>
+          <h5 class="time">2007-07-05 09:07:00 -0700</h5>
           I am now designing my sixth (6th) set of web services on my new project.  The previous five (5) and this current venture were/are for the purpose of allowing partners and internal developers to integrate with a "platform" of some kind.  These clients varied from Fortune 500 companies, prestigious privately held firms and most recently a VC-funded startup.
 The previous two web service APIs were based on the REST "architecture" (yes, I know that word gets used too much, but I use it now for lack of a better word at this moment).  The previous REST API was in fact fully RESTful and my new software product design also has the aim of RESTfulness at all points.
 During my travels meandering through the windy trails of designing REST APIs, I have realized just how important being truly RESTful is to REST APIs.  Yes, reread that sentence again. if it doesn't make sense I recommend reading
@@ -45,7 +72,7 @@ For me, the biggest plus of RESTful web services is that it promotes consistency
 Moving on...where was I going?  Ah, yes, Twitter...
 The routes.rb for twitter.com seem to be a little misleading.  It seems a mix and match approach was taken to developing a "RESTful" API for twitter.com using Rails.  The current RESTful Rails convention is the following (in a nutshell):
 <ul>
-<li>
+  <li>
     <code>GET /resources/:id.:format</code>
     =&gt; get information about resource with specified :id
   </li>
@@ -81,14 +108,18 @@ Screen names that cause potential conflicts (if using Rails defaults) are: creat
 My point here isn't to blast Twitter developers necessarily, simply to ask all developers (or if you must title yourself this way "architects") to consider the importance of creating consistent APIs, preferably based on open standards/recommendations like REST.  And most importantly, if a REST API isn't truly "RESTful", don't say it is!:)  You will get more respect for being honest from people that know what it really means.
 <b>Related post:</b>
 <ul>
-<li>
+  <li>
     <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-020-release.html">Twitter4R v0.2.0 Released</a>
     - the ultimate open source library that provides Ruby bindings for 100% of the officially documented Twitter REST API.
   </li>
-</ul></article></section>
-</div>
-    <footer><p>
-    Copyright © 2006-2013 <a href="http://susanpotter.net">Susan Potter</a>.
+</ul>
+
+        </article>
+      </section>
+    </div>
+    <footer>
+  <p>
+    Copyright © 2006-2014 <a href="http://susanpotter.net">Susan Potter</a>.
   </p>
   <p>
     This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
@@ -123,7 +154,8 @@ My point here isn't to blast Twitter developers necessarily, simply to ask all d
       twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
-  </script><script type="text/javascript">
+  </script>
+  <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-837842-1']);
     _gaq.push(['_trackPageview']);
@@ -133,11 +165,17 @@ My point here isn't to blast Twitter developers necessarily, simply to ask all d
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-  </script></footer><script type="text/javascript">
+  </script>
+</footer>
+
+    <script type="text/javascript">
       (function($) {
         var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
         var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
         po.src = 'https://apis.google.com/js/plusone.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
       })(jQuery);
-    </script><!-- Place this tag just before your close body tag -->
+    </script>
+    <!-- Place this tag just before your close body tag -->
+  
+

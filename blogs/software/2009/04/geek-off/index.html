@@ -1,12 +1,31 @@
 
 
   
-  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: The Scala vs Erlang Debate, Part 2: The Geek Off</title><!--
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link href="/images/favicon.ico" rel="shortcut icon">
+  <title>Susan Potter: The Scala vs Erlang Debate, Part 2: The Geek Off</title>
+  <!--
   <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
-  --><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+  -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  
+  
+  <script async="async" defer src="/javascripts/app.js"></script>
+  <meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css">
+
+
+  
+    <header>
+  <div class="container">
     <a href="/">
-      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
-    <nav><a href="/about/">About</a>
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128">
+    </a>
+    <nav>
+      <a href="/about/">About</a>
       <a href="/resume/">Resume</a>
       <a href="/portfolio/">Portfolio</a>
       <a href="/talks/">Talks</a>
@@ -15,17 +34,25 @@
       <a target="_blank" id="linked" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
       <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
     </nav>
-</div>
-</header><div class="text post sidebar">
-      <aside><ul class="share-buttons">
-<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+  </div>
+</header>
+
+
+    <div class="text post sidebar">
+      <aside>
+        <ul class="share-buttons">
+          <li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <!--
           <li class="linked"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
           <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
           <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
           -->
-        </ul></aside><section><article><h1 class="banner">
+        </ul>
+      </aside>
+      <section>
+        <article>
+          <h1 class="banner">
             Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
             <span class="description">
               A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript,
@@ -34,7 +61,7 @@
           </h1>
           
           <h2>The Scala vs Erlang Debate, Part 2: The Geek Off</h2>
-          <h5 class="time">2009-04-20 15:47:00 -0500</h5>
+          <h5 class="time">2009-04-20 13:47:00 -0700</h5>
           In the
 <a href="http://geek.susanpotter.net/2009/04/scala-vs-erlang-debate-part-1-managers.html">first part of The Scala vs Erlang Debate</a>
 article series, I discussed various ways to go about adopting either Scala or Erlang and in what scenarios it made sense to go with one over the other from the manager's perspective.    In summary the major advantage of Scala is that it runs on the
@@ -85,7 +112,7 @@ engine in Erlang either.
 <h4>Limitations of this series:</h4>There
 are quite a few topics I left out of this post that might be of interest for some applications or services.  Namely:
 <ul>
-<li>
+  <li>
     <strong>Hot swapping:</strong>
     Erlang has great hot swapping capabilities for production environments that minimizes or possibly eliminates downtime of systems.  This feature in Scala is not close in capability or reliability at this point.
   </li>
@@ -104,18 +131,22 @@ are quite a few topics I left out of this post that might be of interest for som
 </ul>
 <h4>Resources:</h4>
 <ul>
-<li>
+  <li>
     <a href="http://geek.susanpotter.net/2009/04/scala-vs-erlang-debate-part-1-managers.html">The Scala vs Erlang Debate, Part 1: The Manager's Overview</a>
   </li>
 </ul>
 <h4>Corrections (added February 2010):</h4>
 <ul>
-<li>Erlang is not a pure functional language.  However, it does not have a polluted (impure) treatment of actors like Scala:)  Some think this is a good-enough approach to be able to leverage the JVM, when running on the JVM is really important, perhaps 4 times out of 5 it might be "good enough".  I just wonder if it really matters for most projects that you run on the JVM!?</li>
+  <li>Erlang is not a pure functional language.  However, it does not have a polluted (impure) treatment of actors like Scala:)  Some think this is a good-enough approach to be able to leverage the JVM, when running on the JVM is really important, perhaps 4 times out of 5 it might be "good enough".  I just wonder if it really matters for most projects that you run on the JVM!?</li>
   <li>"Scala's lack of tail recursion is entirely due to a trade-off. The JVM doesn't do tail recursion itself. It is possible to add tail recursion on top of the JVM using various tricks, but they are expensive. SISC does its own stack based heap and Kawa uses trampolining." -- James Iry</li>
-</ul></article></section>
-</div>
-    <footer><p>
-    Copyright © 2006-2013 <a href="http://susanpotter.net">Susan Potter</a>.
+</ul>
+
+        </article>
+      </section>
+    </div>
+    <footer>
+  <p>
+    Copyright © 2006-2014 <a href="http://susanpotter.net">Susan Potter</a>.
   </p>
   <p>
     This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
@@ -150,7 +181,8 @@ are quite a few topics I left out of this post that might be of interest for som
       twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
-  </script><script type="text/javascript">
+  </script>
+  <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-837842-1']);
     _gaq.push(['_trackPageview']);
@@ -160,11 +192,17 @@ are quite a few topics I left out of this post that might be of interest for som
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-  </script></footer><script type="text/javascript">
+  </script>
+</footer>
+
+    <script type="text/javascript">
       (function($) {
         var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
         var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
         po.src = 'https://apis.google.com/js/plusone.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
       })(jQuery);
-    </script><!-- Place this tag just before your close body tag -->
+    </script>
+    <!-- Place this tag just before your close body tag -->
+  
+

@@ -1,12 +1,31 @@
 
 
   
-  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: Why proponents of marriage equality should love graph databases, Part 1: A Reply to 'The Database Engineering Perspective'</title><!--
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link href="/images/favicon.ico" rel="shortcut icon">
+  <title>Susan Potter: Why proponents of marriage equality should love graph databases, Part 1: A Reply to 'The Database Engineering Perspective'</title>
+  <!--
   <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
-  --><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+  -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  
+  
+  <script async="async" defer src="/javascripts/app.js"></script>
+  <meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css">
+
+
+  
+    <header>
+  <div class="container">
     <a href="/">
-      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
-    <nav><a href="/about/">About</a>
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128">
+    </a>
+    <nav>
+      <a href="/about/">About</a>
       <a href="/resume/">Resume</a>
       <a href="/portfolio/">Portfolio</a>
       <a href="/talks/">Talks</a>
@@ -15,17 +34,25 @@
       <a target="_blank" id="linked" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
       <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
     </nav>
-</div>
-</header><div class="text post sidebar">
-      <aside><ul class="share-buttons">
-<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+  </div>
+</header>
+
+
+    <div class="text post sidebar">
+      <aside>
+        <ul class="share-buttons">
+          <li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <!--
           <li class="linked"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
           <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
           <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
           -->
-        </ul></aside><section><article><h1 class="banner">
+        </ul>
+      </aside>
+      <section>
+        <article>
+          <h1 class="banner">
             Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
             <span class="description">
               A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript,
@@ -34,27 +61,36 @@
           </h1>
           
           <h2>Why proponents of marriage equality should love graph databases, Part 1: A Reply to 'The Database Engineering Perspective'</h2>
-          <h5 class="time">2010-03-13 10:28:00 -0600</h5>
+          <h5 class="time">2010-03-13 08:28:00 -0800</h5>
           This is a response to the excellent
 <a href="http://qntm.org/gay" target="_blank">Gay marriage: the database engineering perspective</a>
 blog post from November 2008 by Sam Hughs.  The only discussion that didn't happen in his blog post was offering a NOSQL alternative to the gay marriage database problem, but I will not hold it against Sam Hughs because it was a comprehensive look at relational database schema designs for modelling marriage!
-<br><br>
+<br>
+<br>
 This response is a little dabble (i.e. not as thorough as the original post) into how graph databases could model monogamous same sex marriages without much problem and also allow for polyamorous marriages quite naturally.  My goal here is to demonstrate how graph databases provide a great amount of flexibility without very much work at all, especially when the data application is just as concerned with connections between entities (aka records in RDBMS or nodes in graph databases) than just the entities themselves.
-<br><br>
+<br>
+<br>
 First off I want to look at the inherent problems with modelling real world data in relational databases and how the approach of graph databases can overcome many, if not all, of these problems.  Then I will launch into a specific snippet of code to demonstrate modelling marriages that can be between any two consenting adults rather than just one man and one woman.  Then I hope to outline how this could be extended to model poly amorous (including polygamous) relationships without much more work.  Near the end I will also include a section at the end that discusses shortcomings of the graph database approach as well for completeness.  My discussion will be focused on using
 <a href="http://neo4j.org/" target="_blank">Neo4J</a>
 as it is the only comprehensive graph database I am aware of that is open source.
-<br><br><strong>Update (2010-03-13):</strong>
+<br>
+<br>
+<strong>Update (2010-03-13):</strong>
 Boris (in the comments) mentioned that there is another open source graph database called
 <a href="http://www.kobrix.com/hgdb.jsp" target="_blank">HyperGraphDB</a>
-<br><br><strong>Update (2010-04-03):</strong>
+<br>
+<br>
+<strong>Update (2010-04-03):</strong>
 Johannes (via email) told me about
 <a href="http://infogrid.org/" target="_blank">InfoGrid</a>,
 which looks like a very interesting alternative to Neo4J with a slightly different way of doing things.
-<br><br><h3>What is wrong with relational databases?</h3>For
+<br>
+<br>
+<h3>What is wrong with relational databases?</h3>For
 the last 14 years I have been using, designing, maintaining and administering relational databases in some capacity as a software programmer, developer, engineer and now as an applications architect.    During that time I have found the following problems with using relational databases:
-<br><ul>
-<li>
+<br>
+<ul>
+  <li>
     <strong>A lot of real world data isn't highly structured (only partially):</strong>
     this is probably the biggest problem with using relational databases (for everything) the way they are supposed to be.  Sure you can add a blob, clob or text field to a table and add an arbitrary structure of data that depends on the record, which can be parsed by the application, but that would be a violation of all things relational and you would be paying a heavy price for doing this in a relational database depending on how big these "blobs" generally are.  Not to mention you miss out on query-ability, which is something relational databases do well on highly structured datasets with the relevant indexes defined and a decent attempt at normalization.
     <em>Note: I think relational databases are a fine thing when utilized to model data that truly is highly structured in the wild where the entities, not the relationships matter the most.</em>
@@ -101,19 +137,26 @@ the last 14 years I have been using, designing, maintaining and administering re
 </ul>
 <br>
 It has been fun thinking out loud, but I have stuff to do today.  Hey, I sometimes have a life, honest!:)  So I have made an outline of what is to come in the next parts of this topic.  I have already written some (bad) Java code to model same-sex and opposite-sex marriages consistently using a graph database (in this case Neo4J), but I plan on offering a Python snippet too, since I really can't stand the look of Java any more and the API doesn't make the case of Graph Databases for those coming from more terser feeling languages like Python, Ruby, Haskell, Erlang, Javascript (well if you use sane APIs like jQuery at least).
-<br><br><h3>What is coming in Part 2?</h3>
+<br>
+<br>
+<h3>What is coming in Part 2?</h3>
 <ul>
-<li>How can graph databases overcome relational database shortcomings?</li>
+  <li>How can graph databases overcome relational database shortcomings?</li>
   <li>Gay marriage: the graph database solution</li>
 </ul>
-<br><h3>What is coming in Part 3?</h3>
+<br>
+<h3>What is coming in Part 3?</h3>
 <ul>
-<li>Poly amorous marriage using a graph database</li>
+  <li>Poly amorous marriage using a graph database</li>
   <li>Graph databases: problems to watch out for</li>
-</ul></article></section>
-</div>
-    <footer><p>
-    Copyright © 2006-2013 <a href="http://susanpotter.net">Susan Potter</a>.
+</ul>
+
+        </article>
+      </section>
+    </div>
+    <footer>
+  <p>
+    Copyright © 2006-2014 <a href="http://susanpotter.net">Susan Potter</a>.
   </p>
   <p>
     This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
@@ -148,7 +191,8 @@ It has been fun thinking out loud, but I have stuff to do today.  Hey, I sometim
       twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
-  </script><script type="text/javascript">
+  </script>
+  <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-837842-1']);
     _gaq.push(['_trackPageview']);
@@ -158,11 +202,17 @@ It has been fun thinking out loud, but I have stuff to do today.  Hey, I sometim
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-  </script></footer><script type="text/javascript">
+  </script>
+</footer>
+
+    <script type="text/javascript">
       (function($) {
         var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
         var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
         po.src = 'https://apis.google.com/js/plusone.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
       })(jQuery);
-    </script><!-- Place this tag just before your close body tag -->
+    </script>
+    <!-- Place this tag just before your close body tag -->
+  
+

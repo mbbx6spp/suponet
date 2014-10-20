@@ -1,12 +1,31 @@
 
 
   
-  <meta charset="utf-8"><meta http-equiv="content-type" content="text/html; charset=UTF-8"><link href="/images/favicon.ico" rel="shortcut icon"><title>Susan Potter: The Scala vs Erlang Debate, Part 1: The Managers Overview</title><!--
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link href="/images/favicon.ico" rel="shortcut icon">
+  <title>Susan Potter: The Scala vs Erlang Debate, Part 1: The Managers Overview</title>
+  <!--
   <link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.css"/>
-  --><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"><script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script><script async="async" defer src="/javascripts/app.js"></script><meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport"><link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"><header><div class="container">
+  -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  
+  
+  <script async="async" defer src="/javascripts/app.js"></script>
+  <meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css">
+
+
+  
+    <header>
+  <div class="container">
     <a href="/">
-      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128"></a>
-    <nav><a href="/about/">About</a>
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128">
+    </a>
+    <nav>
+      <a href="/about/">About</a>
       <a href="/resume/">Resume</a>
       <a href="/portfolio/">Portfolio</a>
       <a href="/talks/">Talks</a>
@@ -15,17 +34,25 @@
       <a target="_blank" id="linked" class="icon" href="http://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
       <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
     </nav>
-</div>
-</header><div class="text post sidebar">
-      <aside><ul class="share-buttons">
-<li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+  </div>
+</header>
+
+
+    <div class="text post sidebar">
+      <aside>
+        <ul class="share-buttons">
+          <li class="twitter"><a href="http://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <!--
           <li class="linked"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
           <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
           <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
           -->
-        </ul></aside><section><article><h1 class="banner">
+        </ul>
+      </aside>
+      <section>
+        <article>
+          <h1 class="banner">
             Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
             <span class="description">
               A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript,
@@ -34,7 +61,7 @@
           </h1>
           
           <h2>The Scala vs Erlang Debate, Part 1: The Managers Overview</h2>
-          <h5 class="time">2009-04-15 09:37:00 -0500</h5>
+          <h5 class="time">2009-04-15 07:37:00 -0700</h5>
           <em>Note: The discussion is primarily between Scala and Erlang, but other languages could potentially be substituted in the arguments for and against.  Scala stands for any language that attempts to solve the multi-core issue software developers face with threads and Erlang is a language that has light weight processes which solves the biggest issue of going with a multi-process solution in software.</em>
 The debate started with the realization that Moore's Law died a while ago.  Tomorrow (as we see it now) is destined for multi-cores.
 A problem of massive proportions now faces software engineers, since hardware engineers changed the rules on us.  Now I am not giving hardware engineers a hard time, I am simply pointing out that there has been a massive shift in the way hardware is built, which directly affects the performance and reliability of the software which runs on it.  It is not a transparent change that software engineers can ignore.
@@ -64,7 +91,7 @@ and structuring low risk exit points after conducting objective evaluations of t
 Now for the startups or those starting afresh, there is mixed news: very good news and not-so-bad news.
 Green field projects, in theory, are always the best.  You can get everything right from day one....well at least you can hope to do so (let us pretend for this article).  My advise for your team is to take the plunge to Erlang.  It is actually relatively low risk to do so for the following reasons:
 <ul>
-<li>It is a mature language and environment already tested by large and complex real world systems at telcos where reliability and scalability were and are top priorities.</li>
+  <li>It is a mature language and environment already tested by large and complex real world systems at telcos where reliability and scalability were and are top priorities.</li>
   <li>There are a few good books out there on that will help you convert to Erlang and Functional Programming (see resources section below), although documentation and education on Erlang, generally, is somewhat lacking.</li>
   <li>A framework for services has been designed, developed and put into production called OTP, which stands for the Open Telephony Platform and actually nothing specific to Telephony applications in it, it was simply developed by a Telco.</li>
 </ul>
@@ -90,10 +117,12 @@ a resource if you need an Erlang software engineer with high-level enterprise ar
 <a href="http://finsignia.com">Finsignia</a>,
 which mostly works with financial services firms such as investment banks and hedge funds, which is where my business domain expertise lies, but also works on designing, building and deploying reliable and robust server-side solutions for any industry.
 
-        </article></section>
-</div>
-    <footer><p>
-    Copyright © 2006-2013 <a href="http://susanpotter.net">Susan Potter</a>.
+        </article>
+      </section>
+    </div>
+    <footer>
+  <p>
+    Copyright © 2006-2014 <a href="http://susanpotter.net">Susan Potter</a>.
   </p>
   <p>
     This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
@@ -128,7 +157,8 @@ which mostly works with financial services firms such as investment banks and he
       twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
-  </script><script type="text/javascript">
+  </script>
+  <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-837842-1']);
     _gaq.push(['_trackPageview']);
@@ -138,11 +168,17 @@ which mostly works with financial services firms such as investment banks and he
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
-  </script></footer><script type="text/javascript">
+  </script>
+</footer>
+
+    <script type="text/javascript">
       (function($) {
         var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
         var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
         po.src = 'https://apis.google.com/js/plusone.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
       })(jQuery);
-    </script><!-- Place this tag just before your close body tag -->
+    </script>
+    <!-- Place this tag just before your close body tag -->
+  
+
