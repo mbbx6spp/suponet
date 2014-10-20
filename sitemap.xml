@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://susanpotter.net/</loc>
-    <lastmod>2014-10-19</lastmod>
+    <lastmod>2014-10-20</lastmod>
   </url>
   <url>
     <loc>http://susanpotter.net/about/</loc>
@@ -707,6 +707,10 @@
   <url>
     <loc>http://susanpotter.net/resume/cloud-deployment/</loc>
     <lastmod>2014-10-19</lastmod>
+  </url>
+  <url>
+    <loc>http://susanpotter.net/resume/distributed-systems/</loc>
+    <lastmod>2014-10-20</lastmod>
   </url>
   <url>
     <loc>http://susanpotter.net/resume/linux/</loc>
