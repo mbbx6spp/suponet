@@ -75,18 +75,18 @@
     var $table = $github.find("table");
     if ($table.length === 0) { $github.append("<table></table>"); $table = $github.find("table"); }
 
-    $.getJSON("http://github.com/api/v2/json/user/show/mbbx6spp?callback=?", function(response) {
-      var user = response.user;
+    $.getJSON("https://api.github.com/users/mbbx6spp?callback=?", function(response) {
+      var user = response.data;
       $table.append(
         "<tr>" +
           "<td>Repos</td>" +
-          "<td>" + user.public_repo_count + "</td>" +
+          "<td>" + user.public_repos + "</td>" +
         "</tr><tr>" +
-          "<td>Gists</td>" + 
-          "<td>" + user.public_gist_count + "</td>" +
+          "<td>Gists</td>" +
+          "<td>" + user.public_gists + "</td>" +
         "</tr><tr>" +
-          "<td>Followers</td>" + 
-          "<td>" + user.followers_count + "</td>" +
+          "<td>Followers</td>" +
+          "<td>" + user.followers + "</td>" +
         "</tr>"
       );
     });
@@ -100,19 +100,6 @@
     var $ul = $buzz.find("ul");
     if ($ul.length === 0) { $buzz.append("<ul class='unstyled'></ul>"); $ul = $buzz.find("ul"); }
     var count = 0;
-
-    $.getJSON("http://search.twitter.com/search.json?q=from%3ASusanPotter&filter:links&rpp=4&callback=?", function(response) {
-      $.each(response.results, function() {
-        $ul.append(
-          "<li>" +
-          "<a href='http://twitter.com/" + this.from_user + "/statuses/" + this.id_str + "' title='" + this.from_user + "'>" +
-          "<img src='" + this.profile_image_url + "' alt='" + this.from_user + "' />" +
-          "</a> " +
-          massageTweet(this.text) +
-          "</li>"
-        );
-      });
-    });
   }
 
   function initializeMaps() {
