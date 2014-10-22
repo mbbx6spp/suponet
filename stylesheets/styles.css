@@ -153,7 +153,7 @@ h1.banner { display: none; }
 .columns.sidebar > section { width: 70%; }
 .columns.sidebar > aside { width: 29.5%; min-height: 200px; }
 .columns.sidebar .columns { margin-left: 0 !important; margin-right: 0 !important; }
-.sidebar #subnav { font-size: 1.25em; line-height: 1.75em; margin: 2.5em 0 0 0; }
+.sidebar #subnav { font-size: 1.25em; line-height: 1.75em; margin: 0 0; list-style: none; }
 
 .home h1:first-child { display: none; }
 .home section h2, .home section p { text-align: justify; margin-right: 30px; }
