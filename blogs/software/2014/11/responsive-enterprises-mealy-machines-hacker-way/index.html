@@ -1,0 +1,143 @@
+
+
+  
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link href="/images/favicon.ico" rel="shortcut icon">
+  <meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
+  <title>Susan Potter: What do Mealy Machines have to do with responsive enterprises?</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
+  <!--
+  <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css"/>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css"/>
+  -->
+
+
+  
+    <header>
+  <div class="container">
+    <a href="/">
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128">
+    </a>
+    <nav>
+      <a href="/about/">About</a>
+      <a href="/resume/">Resume</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/talks/">Talks</a>
+      <a href="/contact/">Contact</a>
+      <a target="_blank" id="twitter" class="icon" href="https://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
+      <a target="_blank" id="linked" class="icon" href="https://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
+      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="text post sidebar">
+      <aside>
+        <ul class="share-buttons">
+          <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+          <li class="plusone">
+          <!--
+          <li class="linked"><script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script></li>
+          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
+          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
+          -->
+        </ul>
+      </aside>
+      <section>
+        <article>
+          <h1 class="banner">
+            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
+            <span class="description">
+              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript,
+              semantic web, Rails tips, graph databases, distributed systems.
+            </span>
+          </h1>
+          
+          <h2>What do Mealy Machines have to do with responsive enterprises?</h2>
+          <h5 class="time"></h5>
+          <h2>Responsive Enterprises</h2>
+<p>Anyone who knows my code knows how much I reach for modeling using finite state machines aka FSMs (often Mealy Machines; yep the state monad among other things) in many contexts in software, but in this case it is an even more scintillating application because authors Meijer and Kapoor create the analog of responsive enterprises to a closed-loop feedback system, which is basically a Mealy Machine. This is simultaneously obvious yet genius...</p>
+<p>This is a thoughtful exploration of how every enterprise will need to become a software business to survive in the next decade and remain competitive in their field. It compares and contrasts how traditional enterprises manage process and people to software businesses.</p>
+<p>Even within software businesses I have worked in during the course of my career I have seen executive management miss the mark on managing both aspects (iterative feedback process and the engineering culture) but especially the people risks (the "Hacker Way") outlined in this ACM article.</p>
+<a href="http://queue.acm.org/detail.cfm?id=2685692">The Responsive Enterprise: Embracing the Hacker Way</a>
+<h2>Codifying Business Process</h2>
+<p>For the code inclined here is some Scala code to represent a Mealy machine:</p>
+<code class="scala">type Mealy[S, I, O]= (I, S) =&gt; (O, S)</code>
+<p>As you can see we have a parameterized type that depends on the current accumulated state value of type S, which based on some logic that needs to be defined by those that model the state machine and the current input of type I, to yield a new state value of same type S for the next round plus the output of type O.</p>
+<p>It's amazing how many software engineers use overly complicated object oriented (OO) design patterns instead of the most appropriate abstraction to model their domains when [finite] state machines are most suitable, but I will leave that there before I diverge into a totally separate topic. (But suffice it so say functional programming does offer a more natural way to define FSMs over OO's clunky representations).</p>
+<p>In this context we receive input from external stimuli/metrics/measurements to feed into the closed loop system along with the current business "memory" (state) which is accumulated in some hopefully meaningful way to produce a new state value and output.</p>
+<p>This makes the business process iteratively reactive. Meijer and Kapoor point out at times state/memory resets are necessary to avoid catastrophic business failure and that would be represented in the mealy machine definition itself of the business. Genetic algorithms have been investigated in recent research with inferring finite state machines (FSMs) which is no coincidence...moving on to the more problematic concern.</p>
+<h3>Human Factors</h3>
+<p>The ACM article above really highlights some great gotchas for businesses evolving into software companies to avoid common pitfalls. It's a must read for any manager: executive or middle. And entrepreneur.</p>
+<p>If Erik Meijer has written an article or paper where he misses the mark, I have yet to read it.</p>
+
+        </article>
+      </section>
+    </div>
+    <footer>
+  <p>
+    Copyright © 2006-2014 <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <p>
+    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <div id="rights">
+    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
+    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+  </div>
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-837842-1', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+  </script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  
+  
+  <script async="async" defer src="/javascripts/app.js"></script>
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+</footer>
+
+    <script type="text/javascript">
+      (function($) {
+        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })(jQuery);
+    </script>
+    <!-- Place this tag just before your close body tag -->
+  
+
