@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
   <link href="/images/favicon.ico" rel="shortcut icon">
   <meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
-  <title>Susan Potter: What do Mealy Machines have to do with responsive enterprises?</title>
+  <title>Susan Potter: Using Mealy Machines to model responsive enterprises of early 21st century</title>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
   <!--
@@ -56,14 +56,14 @@
             </span>
           </h1>
           
-          <h2>What do Mealy Machines have to do with responsive enterprises?</h2>
+          <h2>Using Mealy Machines to model responsive enterprises of early 21st century</h2>
           <h5 class="time"></h5>
-          <h2>Responsive Enterprises</h2>
+          <h3>Responsive Enterprises</h3>
 <p>Anyone who knows my code knows how much I reach for modeling using finite state machines aka FSMs (often Mealy Machines; yep the state monad among other things) in many contexts in software, but in this case it is an even more scintillating application because authors Meijer and Kapoor create the analog of responsive enterprises to a closed-loop feedback system, which is basically a Mealy Machine. This is simultaneously obvious yet genius...</p>
 <p>This is a thoughtful exploration of how every enterprise will need to become a software business to survive in the next decade and remain competitive in their field. It compares and contrasts how traditional enterprises manage process and people to software businesses.</p>
 <p>Even within software businesses I have worked in during the course of my career I have seen executive management miss the mark on managing both aspects (iterative feedback process and the engineering culture) but especially the people risks (the "Hacker Way") outlined in this ACM article.</p>
 <a href="http://queue.acm.org/detail.cfm?id=2685692">The Responsive Enterprise: Embracing the Hacker Way</a>
-<h2>Codifying Business Process</h2>
+<h3>Codifying Business Process</h3>
 <p>For the code inclined here is some Scala code to represent a Mealy machine:</p>
 <code class="scala">type Mealy[S, I, O]= (I, S) =&gt; (O, S)</code>
 <p>As you can see we have a parameterized type that depends on the current accumulated state value of type S, which based on some logic that needs to be defined by those that model the state machine and the current input of type I, to yield a new state value of same type S for the next round plus the output of type O.</p>
