@@ -58,39 +58,76 @@
           
           <h2>Five Signs Your TechOps Organization Is Doing It Wrong</h2>
           <h5 class="time"></h5>
-          <h3>1. Infrastructure as a Jira Ticket (IaaJT)</h3>
+          <p>
+  This is a collection of troubling signs that I have witness in a variety of
+  clients and employers over my career. Let's see what we can learn from them.
+</p>
+<h3>1. Infrastructure as a Jira Ticket (IaaJT)</h3>
 <p>
   If you, as an engineer or SRE, need to create a new Jira ticket to have VMs
   or baremetal servers provisioned by a specific team in your organization
   then management has done something horribly wrong.
 </p>
 <p>
-  This demonstrates a complete lack in understanding of technical
+  This demonstrates a lack in understanding of technical
   operations in the 21st century which differs dramatically in terms of
-  scale, priorities (distributed uptime, not node uptime), and complexity.
+  scale, priorities (distributed uptime, not node uptime), economics, and
+  complexity.
 </p>
 <p>
-  Is this salvagable? Perhaps. When someone does take initiative to attempt
-  to solve the automation problem, has the technical capacity, and is given
-  the resources (time and/or other people) then hopefully those people aren't
-  shot down due to turf wars. If on the other hand, they are, then good luck.
-  You'll need it.
+  Software services are no longer limited to tens or even hundreds of servers
+  in one datacenter, in the same or adjacent racks. As such we must emphasize
+  the importance of on-demand infrastructure for our <em>customers</em>. This
+  should not be news to anyone who has read any industry news or opinion in
+  the last fifteen years.
+</p>
+<p>
+  Competitors are doing this in public clouds and perhaps even in-house. This
+  is not an advantage for a company now, it's a basic necessity.
+</p>
+<p>
+  An organization that bottlenecks infrastructure requests (virtual or
+  physical) for provisioning in even a semi-automated process (but still
+  requires gatekeepers) cannot enable innovation, experimentation, or take
+  advantage of the ecnomomies of virtualization and on-demand infrastructure.
+</p>
+<p>
+  Is this salvagable? Perhaps. Give someone who has the initiative, technical
+  capacity the resources they need to pay down the debt service and principal
+  on the lack of automation. Do not punt on this. Find the person that is
+  committed to fixing the issue with clear purpose and driven innovate not
+  just catch up. If this kind of person can't be enabled in such an
+  organization, then good luck. That is indicative of a culture deficit,
+  which is the hardest kind of problem to solve.
 </p>
 <h3>2. If Hardware Ordering Is Chaotic</h3>
 <p>
-  This mostly applies to organizations that manage actual hardware and
-  the procurement process, however, could applied to ensuring your AWS/cloud
-  account limits are sensible as an on-going concern. When orders go
-  <em>"missing"</em>, nobody can find out where their hardware orders are
-  after months, or you are constantly hitting AWS/cloud account limits this
-  indicates a troubling administrative oversight.
+  This applies to organizations that manage actual hardware and
+  the procurement process, however, could be applied to ensuring your AWS/cloud
+  account limits are sensible as an on-going concern. Perhaps via metrics.
+  How progressive. (Some may say necessary.) When orders go "missing", nobody
+  can find out where their hardware orders are months later, or you are
+  constantly hitting AWS/cloud account limits this indicates a troubling
+  administrative oversight.
 </p>
 <p>
-  When this becomes the rule and not the exception, big action is needed by
-  those in charge. Or it will not get better, adding frustration and wasted
-  time to what will become an even more burned out org (see the last part).
+  Management action is needed to rectify this problem. The changes should be
+  straight-forward assuming no foul/fraud play here. Put a simple organization
+  structure and process in place so that orders can be tracked. Have a simple
+  set of steps to allow anyone in the organizaation to request new hardware
+  when they need it and the requirements for justification. This should be
+  documented, simply. Without fanfare and broadly accessible throughout the
+  organization. Tracking of hardware should be transparent to as many people
+  in the organization as possible to prevent potential abuse (of varying
+  degrees).
 </p>
-<h3>3. Management Has Disdain For Automated Checks And Balances</h3>
+<p>
+  If these changes aren't made this reality will continue to add frustration,
+  burn unnecessary cycles and increase time to delivery. Creating a
+  wasteful and inefficient organization that isn't [responsive to the current
+  state of the world externally and internal state](/blogs/software/2014/11/responsive-enterprises-mealy-machines-hacker-way/).
+</p>
+<h3>3. Management Devalues Automated Checks And Balances</h3>
 <p>
   Imagine an organization with tens of thousands of machines (virtual and
   physical) that doesn't validate even the syntax of Puppet manifests in
@@ -108,33 +145,34 @@
   simpler [orders of magnitude smaller]. This operations engineer has not
   learned the value of checks and balances as an anti-entropy mechanism.
   They do not truly consider Infrastructure as [Delcarative] Code. The
-  culture has failed him.
+  culture has failed to teach him.
 </p>
 <p>
-  The key here is the technical leaders of TechOps must be competent to
-  understand the importance of check and balances, should also have a good
-  idea about which checks and balances provide more ROI and have effective
-  project management support to drive the changes. However, all bets are
-  off on fixing this fundamental issue if technical leadership doesn't
-  exist at all or the competence of those who win political battles is in
-  question.
+  The key here is the technical leaders of TechOps must be competent enough to
+  articulate the importance of check and balances to decision makers.
+  They should also have a good idea about which checks and balances provide
+  more ROI and have effective project management support to drive the changes.
+  However, all bets are off on fixing this fundamental issue if technical
+  leadership doesn't exist at all or the competence of those who win
+  political battles is in question. Those are examples of toxic environments.
 </p>
 <h3>
   4. Nobody Has Pride
 </h3>
 <p>
   There are several shops where I have experienced this both on the ops
-  and the engineering side. This is a problem. When this is the case there is
-  no pride in the work product from people or teams. This directly
-  reduces the code quality and makes the maintenance of your infrastructure
-  (which is now codified in, you know, code) significantly harder. From a
-  business perspective it also directly impacts time to delivery. The harder
-  it is to maintain code because of low quality the lower the morale on the
-  team is and the harder it is to add new features or fix bugs. Both adversely
-  impact delivery times negatively.
+  and the engineering side.
+  When engineers do not have pride in their work product it
+  reduces code quality and makes the maintenance of your infrastructure
+  (which is now codified in, you know, Infrastructure as Code) significantly
+  harder. From a business perspective it also directly impacts time to
+  delivery making the product offering less competitive. The harder it is to
+  maintain code because of low quality the  lower the morale on the team is
+  and the harder it is to add new features or fix bugs. Both adversely impact
+  delivery times negatively.
 </p>
 <p>
-  So what is the purpose of a code convention? The team has to all agree
+  So what is the purpose of a set of conventions? The team has to all agree
   to a set of conventions and guidelines that they are willing to write
   code in. It doesn't have to be in great depth but the constraints of the
   codebase have to be defined, preferrably in written form. It can be a simple
@@ -160,30 +198,26 @@
 <p>
   With one mind and agreement a team can work together and not constantly
   fight with each other over minor details that in the grand scheme of things
-  don't really matter. For example, I might say the difference between two
-  space indentation and four space indentation is more a personal preference.
-  However, the difference between four and eight space indentation potentially
-  has readability impat for the team to consider. I personally use two space
-  indentation for most languages except Python where four is the commonly
-  accepted PEP8 standard for the community. If I joined a Ruby project that
-  used four space indentation I would not make a stink about it. It is just
-  an agreement in the team. It's not personal. We should move on to the
-  more interesting engineering problems in such a case.
+  don't really matter.
 </p>
 <blockquote>
   All happy families are alike; each unhappy family is unhappy in its own way.
 </blockquote>
 <p>
-  All families must make compromises to continue functioning well. The agree-
-  ment on code conventions and/or styleguides plus the changes workflow
-  itself should be documented, well defined, and easy to update when needed.
+  All families (or teams) must make compromises to continue functioning well.
+  The agreement on code conventions and/or styleguides plus the changes
+  workflow itself should be documented, well defined, and easy to update when
+  needed.
 </p>
 <p>
   Things happen. People join and people leave. Treat the team's agreement
-  as a living breathing document and set of principles to adhere by. Talk
+  as a living document and set of principles to adhere by. Talk
   about things at lunch some times. What irks you about the conventions, why?
   How would you change it? Make a case to the rest of the team. Decide. As a
-  team.
+  team. More times than not this will reveal how unimportant these
+  details actually are. It also encourages discourse on what constitutes
+  code quality on a low level and getting engineers to understand why
+  some conventions and guidelines were upt in place.
 </p>
 <p>
   The changes workflow (e.g. git and/or release workflow, etc.) needs to be
@@ -196,8 +230,11 @@
   style guidelines when creating new teams and/or codebases. Then iterate.
   Otherwise you will spent an enternity arguing over an empty canvas. If
   there are multiple, put the top three already existing public ones up for a
-  vote to the team. But make sure it is a living and breathing document that
-  can be updated and revisited.
+  vote to the team. But make sure it is a living document that can be
+  updated and revisited when a case is made. The key is that team members
+  must feel the ability to change things and not be stuck with antiquated
+  restrictions if that happens to become the case. Hungarian notation comes
+  to mind from my C++ days, as an example! :)
 </p>
 <h3>5. People Are Burned Out</h3>
 <p>
@@ -211,15 +248,18 @@
   When this happens you can see management decisions are not based on
   meaningful metrics; these are discarded in favor of pomp and fanfare
   numbers without context to drive decisions. Decisions based on their deep
-  seated biases and their strongly held belief that as long as they look good
-  nothing (and maybe nobody) else matters.
+  seated biases knowingly or not.
 </p>
 <p>
-  This is the biggest problem in this list. Without cleaning house, nothing
-  can fix this. Executives must believe that using metrics meaningfully with
-  context and not just for the gamification of their peons against each other
-  is a valuable proposition that will lead to a more effective organization
-  with less headaches (for them).
+  This is the biggest problem in this list. Without cleaning house at the very
+  top, nothing can fix this. Executives must believe that using metrics
+  meaningfully with context and not just for the gamification of their peons
+  against each other is a valuable proposition that will lead to a more
+  effective organization with less headaches (for them).
+</p>
+<p>
+  As noted by a coworker I need to present a compelling case for a small
+  set of metrics that could be used.
 </p>
 
         </article>
