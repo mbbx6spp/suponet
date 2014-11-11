@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>http://susanpotter.net/</loc>
-    <lastmod>2014-10-22</lastmod>
+    <lastmod>2014-10-29</lastmod>
   </url>
   <url>
     <loc>http://susanpotter.net/404.html</loc>
@@ -542,7 +542,15 @@
   </url>
   <url>
     <loc>http://susanpotter.net/blogs/software/2014/10/command-line-usability/</loc>
-    <lastmod>2014-10-23</lastmod>
+    <lastmod>2014-11-11</lastmod>
+  </url>
+  <url>
+    <loc>http://susanpotter.net/blogs/software/2014/11/5-signs-your-techops-org-is-doing-it-wrong/</loc>
+    <lastmod>2014-11-11</lastmod>
+  </url>
+  <url>
+    <loc>http://susanpotter.net/blogs/software/2014/11/responsive-enterprises-mealy-machines-hacker-way/</loc>
+    <lastmod>2014-11-09</lastmod>
   </url>
   <url>
     <loc>http://susanpotter.net/contact/</loc>
@@ -603,6 +611,10 @@
   <url>
     <loc>http://susanpotter.net/images/gravatar.png</loc>
     <lastmod>2014-10-19</lastmod>
+  </url>
+  <url>
+    <loc>http://susanpotter.net/images/haskell.png</loc>
+    <lastmod>2014-10-25</lastmod>
   </url>
   <url>
     <loc>http://susanpotter.net/images/interests_polaroid.png</loc>
@@ -709,8 +721,44 @@
     <lastmod>2014-10-19</lastmod>
   </url>
   <url>
+    <loc>http://susanpotter.net/jvm-options/CMSClassUnloadingEnabled/</loc>
+    <lastmod>2014-11-09</lastmod>
+  </url>
+  <url>
+    <loc>http://susanpotter.net/jvm-options/CMSConcurrentMTEnabled/</loc>
+    <lastmod>2014-11-09</lastmod>
+  </url>
+  <url>
+    <loc>http://susanpotter.net/jvm-options/CMSInitiatingOccupancyFraction/</loc>
+    <lastmod>2014-11-09</lastmod>
+  </url>
+  <url>
+    <loc>http://susanpotter.net/jvm-options/CMSScavengeBeforeRemark/</loc>
+    <lastmod>2014-11-09</lastmod>
+  </url>
+  <url>
+    <loc>http://susanpotter.net/jvm-options/UseCompressedOops/</loc>
+    <lastmod>2014-11-09</lastmod>
+  </url>
+  <url>
+    <loc>http://susanpotter.net/jvm-options/ms/</loc>
+    <lastmod>2014-11-09</lastmod>
+  </url>
+  <url>
+    <loc>http://susanpotter.net/jvm-options/mx/</loc>
+    <lastmod>2014-11-09</lastmod>
+  </url>
+  <url>
+    <loc>http://susanpotter.net/keybase.txt</loc>
+    <lastmod>2014-11-07</lastmod>
+  </url>
+  <url>
+    <loc>http://susanpotter.net/nextsftrip/</loc>
+    <lastmod>2014-11-03</lastmod>
+  </url>
+  <url>
     <loc>http://susanpotter.net/portfolio/</loc>
-    <lastmod>2014-10-21</lastmod>
+    <lastmod>2014-10-25</lastmod>
   </url>
   <url>
     <loc>http://susanpotter.net/resume/</loc>
@@ -802,7 +850,7 @@
   </url>
   <url>
     <loc>http://susanpotter.net/stylesheets/styles.css</loc>
-    <lastmod>2014-10-21</lastmod>
+    <lastmod>2014-11-11</lastmod>
   </url>
   <url>
     <loc>http://susanpotter.net/tags/erlang/</loc>
@@ -871,6 +919,10 @@
   <url>
     <loc>http://susanpotter.net/writings/2011/05/miseducation-computer-science-graduates/</loc>
     <lastmod>2014-10-19</lastmod>
+  </url>
+  <url>
+    <loc>http://susanpotter.net/youknowwhat/</loc>
+    <lastmod>2014-11-03</lastmod>
   </url>
 </urlset>
 
