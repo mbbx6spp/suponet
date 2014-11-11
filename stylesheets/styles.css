@@ -220,7 +220,7 @@ article table.versions td:first-child { font-size: 22px; line-height: 22px; }
   .text { padding: 15px 10px; }
 
   .post.sidebar aside {
-    display: block;
+    display: none;
     padding: 0;
     margin: 0;
   }
