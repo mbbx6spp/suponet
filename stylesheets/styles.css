@@ -170,35 +170,17 @@ article table tr.current { background-color: #feffe8; }
 article table.versions td:first-child { font-size: 22px; line-height: 22px; }
 
 @media (min-width: 460px) {
+  body > header > .container { margin: 0 auto; max-width: 900px; }
+  body > header > .container > a { float: left; border-right: 1px solid black; padding: 7.5px 20px 7.5px 30px; }
   body > header > .container > a img { display: block; height: 30px; width: 128px; }
-  body > header nav { display: table-cell; padding: 5px 0 5px 8px; float: none; vertical-align: middle; border-left: 1px solid #323232; position: relative; }
-  body > header nav a { font-size: 12px; margin: 0 4px 0 0; display: inline; height: auto; line-height: 16px; }
+  body > header nav { float: left; border-left: 1px solid #323232; padding: 0 0 0 20px; }
+  body > header nav a { padding-right: 15px; border-right: 1px solid black; color: #ffffff; display: block; float: left; font-family: "Helvetica Neue", sans-serif; font-size: 12px; font-weight: bold; line-height: 45px; margin: 0 10px; text-decoration: none; text-shadow: black 0px 1px 1px; }
+  body > header nav a:first-child { margin-left: 0; }
+  body > header nav a:hover { color: white; text-decoration: none; }
+  body > header a.icon { border: 0; padding: 0 5px 5px 0; display: block; height: 30px; width: 30px; }
+  body > header > .container > a img { display: block; height: 30px; width: 128px; }
   body > footer { background-image: none; line-height: 22px; margin: 10px 0; padding: 2px 8px; }
   .text { padding: 15px 10px; }
-
-  .post.sidebar aside {
-    display: block;
-    padding: 0;
-    margin: 0;
-  }
-
-  .post.sidebar aside .share-buttons li {
-    list-style: none;
-    display: block;
-    margin: 0em 0.5em;
-    padding: 0;
-  }
-
-  .post.sidebar aside .share-buttons li.reddit,
-  .post.sidebar aside .share-buttons li.linked {
-    margin: -0.5em 1em;
-  }
-
-  .post.sidebar section {
-    display: block;
-    padding: 0;
-    margin: 0;
-  }
 }
 
 @media (min-width: 960px) {
