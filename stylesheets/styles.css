@@ -170,6 +170,39 @@ article table tr.current { background-color: #feffe8; }
 article table.versions td:first-child { font-size: 22px; line-height: 22px; }
 
 @media (min-width: 460px) {
+  body { padding: 0; }
+  body > header { height: auto; padding: 0; position: relative; }
+  body > header > .container { display: table; margin: 0; max-width: none; position: relative; width: 100%; }
+  body > header > .container > a { display: table-cell; float: none; height: 30px; overflow: hidden; padding: 5px 0; position: relative; width: 46px; }
+  body > header > .container > a img { display: none; }
+  body > header nav { display: table-cell; padding: 5px 0 5px 8px; float: none; vertical-align: middle; border-left: 1px solid #323232; position: relative; }
+  body > header nav a { font-size: 12px; margin: 0 4px 0 0; display: inline; height: auto; line-height: 16px; }
+  body > footer { background-image: none; line-height: 22px; margin: 10px 0; padding: 2px 8px; }
+  .text { padding: 15px 10px; }
+
+  .post.sidebar aside {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
+
+  .post.sidebar aside .share-buttons li {
+    list-style: none;
+    display: block;
+    margin: 0.25em 0.5em;
+    padding: 0;
+  }
+
+  .post.sidebar aside .share-buttons li.reddit,
+  .post.sidebar aside .share-buttons li.linked {
+    margin: 0.25em 2em;
+  }
+
+  .post.sidebar section {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
 }
 
 @media (min-width: 960px) {
@@ -187,8 +220,7 @@ article table.versions td:first-child { font-size: 22px; line-height: 22px; }
   .text { padding: 15px 10px; }
 
   .post.sidebar aside {
-    float: left;
-    width: 20%;
+    display: block;
     padding: 0;
     margin: 0;
   }
@@ -201,10 +233,12 @@ article table.versions td:first-child { font-size: 22px; line-height: 22px; }
   }
 
   .post.sidebar aside .share-buttons li.reddit,
+  .post.sidebar aside .share-buttons li.linked {
+    margin: 0.25em 2em;
+  }
 
   .post.sidebar section {
-    float: right;
-    width: 80%;
+    display: block;
     padding: 0;
     margin: 0;
   }
