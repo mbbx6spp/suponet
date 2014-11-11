@@ -170,10 +170,6 @@ article table tr.current { background-color: #feffe8; }
 article table.versions td:first-child { font-size: 22px; line-height: 22px; }
 
 @media (min-width: 460px) {
-  body { padding: 0; }
-  body > header { height: auto; padding: 0; position: relative; }
-  body > header > .container { display: table; margin: 0; max-width: none; position: relative; width: 100%; }
-  body > header > .container > a { display: table-cell; float: none; height: 30px; overflow: hidden; padding: 5px 0; position: relative; width: 46px; }
   body > header > .container > a img { display: block; height: 30px; width: 128px; }
   body > header nav { display: table-cell; padding: 5px 0 5px 8px; float: none; vertical-align: middle; border-left: 1px solid #323232; position: relative; }
   body > header nav a { font-size: 12px; margin: 0 4px 0 0; display: inline; height: auto; line-height: 16px; }
@@ -195,7 +191,7 @@ article table.versions td:first-child { font-size: 22px; line-height: 22px; }
 
   .post.sidebar aside .share-buttons li.reddit,
   .post.sidebar aside .share-buttons li.linked {
-    margin: 0em 1em;
+    margin: -0.5em 1em;
   }
 
   .post.sidebar section {
