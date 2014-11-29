@@ -1,4 +1,4 @@
-body { background: #f6f6e6; color: #333333; padding: 45px 0 10px 0; margin: 0; }
+body { background: #f6f6e6; color: #333333; padding: 45px 0 10px 0; margin: 0 auto; }
 body > header { -moz-box-shadow: #999999 0px 4px 8px 0; -webkit-box-shadow: #999999 0px 4px 8px 0; -o-box-shadow: #999999 0px 4px 8px 0; box-shadow: #999999 0px 4px 8px 0; background-color: #123652; overflow: hidden; *zoom: 1; background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, #333333), color-stop(100%, #123652)); background-image: -moz-linear-gradient(top, #123652 0%, #000000 100%); background-image: linear-gradient(top, #123652 0%, #000000 100%); border-top: 1px solid black; height: 45px; left: 0; padding: 0; position: fixed; top: 0; width: 100%; z-index: 1000; }
 body > header img { border: 0; }
 body > header > .container { margin: 0 auto; max-width: 900px; }
@@ -169,60 +169,6 @@ article table tr:last-child td { border-bottom-width: 0; }
 article table tr.current { background-color: #feffe8; }
 article table.versions td:first-child { font-size: 22px; line-height: 22px; }
 
-@media (min-width: 460px) {
-  body > header > .container { margin: 0 auto; max-width: 900px; }
-  body > header > .container > a { float: left; border-right: 1px solid black; padding: 7.5px 20px 7.5px 30px; }
-  body > header > .container > a img { display: block; height: 30px; width: 128px; }
-  body > header nav { float: left; border-left: 1px solid #323232; padding: 0 0 0 20px; }
-  body > header nav a { padding-right: 15px; border-right: 1px solid black; color: #ffffff; display: block; float: left; font-family: "Helvetica Neue", sans-serif; font-size: 12px; font-weight: bold; line-height: 45px; margin: 0 10px; text-decoration: none; text-shadow: black 0px 1px 1px; }
-  body > header nav a:first-child { margin-left: 0; }
-  body > header nav a:hover { color: white; text-decoration: none; }
-  body > header a.icon { border: 0; padding: 0 5px 5px 0; display: block; height: 30px; width: 30px; }
-  body > header > .container > a img { display: block; height: 30px; width: 128px; }
-  body > footer { background-image: none; line-height: 22px; margin: 10px 0; padding: 2px 8px; }
-  .text { padding: 15px 10px; }
-}
-
-@media (min-width: 960px) {
-}
-
-@media screen and (max-device-width: 480px) {
-  body { padding: 0; }
-  body > header { height: auto; padding: 0; position: relative; }
-  body > header > .container { display: table; margin: 0; max-width: none; position: relative; width: 100%; }
-  body > header > .container > a { display: table-cell; float: none; height: 30px; overflow: hidden; padding: 5px 0; position: relative; width: 46px; }
-  body > header > .container > a img { display: none; }
-  body > header nav { display: table-cell; padding: 5px 0 5px 8px; float: none; vertical-align: middle; border-left: 1px solid #323232; position: relative; }
-  body > header nav a { font-size: 12px; margin: 0 4px 0 0; display: inline; height: auto; line-height: 16px; }
-  body > footer { background-image: none; line-height: 22px; margin: 10px 0; padding: 2px 8px; }
-  .text { padding: 15px 10px; }
-
-  .post.sidebar aside {
-    display: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .post.sidebar aside .share-buttons li {
-    list-style: none;
-    display: block;
-    margin: 0em 0.5em;
-    padding: 0;
-  }
-
-  .post.sidebar aside .share-buttons li.reddit,
-  .post.sidebar aside .share-buttons li.linked {
-    margin: 0em 1.5em;
-  }
-
-  .post.sidebar section {
-    display: block;
-    padding: 0;
-    margin: 0;
-  }
-
-}
-
 #buzz { text-align: right; }
 #buzz h4 { font-weight: bold; }
 #buzz h4, #buzz .twitter ul { text-align: left; clear: both; }
@@ -236,3 +182,41 @@ article table.versions td:first-child { font-size: 22px; line-height: 22px; }
 #buzz .twitter li a:first-child img { height: 26px; width: 26px; }
 #buzz .twitter li .user { color: #0066ff; }
 #buzz .twitter li .hashtag { color: #aa0066; }
+
+@media (min-width: 960px) {
+  body > footer { padding: 10px; max-width: 840px; margin: 20px auto; color: #777777; position: relative; font-size: 11px; }
+}
+
+@media (min-width: 460px) {
+  body > footer { background-image: none; line-height: 22px; margin: 10px auto; padding: 2px 8px; }
+  .text { padding: 15px 10px; }
+}
+
+
+@media screen and (max-device-width: 480px) {
+  body { padding: 0; }
+  body > header { height: auto; padding: 0; position: relative; }
+  body > header > .container { display: table; margin: 0; max-width: none; position: relative; width: 100%; }
+  body > header > .container > a { display: table-cell; float: none; height: 30px; overflow: hidden; padding: 5px 0; position: relative; width: 46px; }
+  body > header > .container > a img { display: none; }
+  body > header nav { display: table-cell; padding: 5px 0 5px 8px; float: none; vertical-align: middle; border-left: 1px solid #323232; position: relative; }
+  body > header nav a { font-size: 12px; margin: 0 4px 0 0; display: inline; height: auto; line-height: 16px; }
+  .text { padding: 15px 10px; }
+
+  .post.sidebar aside {
+    display: none;
+  }
+
+  .post.sidebar aside .share-buttons li {
+    list-style: none;
+    display: none;
+  }
+
+  .post.sidebar section {
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
+
+}
+
