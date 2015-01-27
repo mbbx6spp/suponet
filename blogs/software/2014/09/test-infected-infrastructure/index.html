@@ -1,0 +1,243 @@
+
+
+  
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link href="/images/favicon.ico" rel="shortcut icon">
+  <meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.0" name="viewport">
+  <title>Susan Potter: Test-Infected Infrastructure</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css">
+
+
+  
+    <header>
+  <div class="container">
+    <a href="/">
+      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128">
+    </a>
+    <nav>
+      <a href="/about/">About</a>
+      <a href="/resume/">Resume</a>
+      <a href="/portfolio/">Portfolio</a>
+      <a href="/talks/">Talks</a>
+      <a href="/contact/">Contact</a>
+      <a target="_blank" id="twitter" class="icon" href="https://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
+      <a target="_blank" id="linked" class="icon" href="https://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
+      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="text post sidebar">
+      <aside class=".hidden-xs .hidden-sm">
+        <ul class="share-buttons">
+          <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
+          <li class="plusone">
+          <li class="linked">
+<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+</li>
+          <!--
+          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
+          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
+          -->
+        </ul>
+      </aside>
+      <section>
+        <article>
+          <h1 class="banner">
+            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
+            <span class="description">
+              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript,
+              semantic web, Rails tips, graph databases, distributed systems.
+            </span>
+          </h1>
+          
+          <h2>Test-Infected Infrastructure</h2>
+          <h5 class="time"></h5>
+          <h3>Getting Real</h3>
+<p>
+  Rich Hickey gave a talk at Strangeloop 2011 which I had to watch online as
+  I had to leave that conference early that year - so much sadness - titled
+  <em>"Simple Made Easy"</em>. You can watch it here:
+  <a href="">Simple Made Easy</a>
+</p>
+<p>
+  Ignore his digs at type systems. They can be overcomplicated with little
+  added value (e.g. Java), but they can also be beautifully simple too
+  (Haskell2010's type system without enabling extensions is beautifully simple).
+</p>
+<p>
+  Anyway, some highlights from the talk is his mentioning of methods of
+  informal reasoning about code. He derisively discounts the TDD fad, which
+  it is (fad, I mean), but what he says about "guard rails" and the fact that
+  bugs still leak out from type systems and test suites should not be
+  regarded as dismissing using them at all. He's a little dramatic at points
+  in his delivery. To me he is saying that you can't think about testing in
+  this zealous/religious fashion or just writing tests in a mechanical
+  fashion for the sake of it. It has to help you [informally] reason about
+  your code.
+</p>
+<p>
+  Now Hickey has the luxury of working in his mostly functional LISP dialect
+  on the JVM, Clojure. The rest of us, especially in TechOps, are usually
+  limited to what the tools we use support bindings to. These are typically
+  Ruby, Python, Ruby, C, and maybe Java (the latter is an outside chance
+  usually). These are all imperative languages by default, definitely not
+  functional (even if you think Ruby procs are great, or Python's lambdas
+  allow you to write HOFs such as combinators, or you want to wax poetic
+  about Java 8's lambdas and new Streams APIs you don't get a language with a
+  standard library that cares about eliminating state or writing in a
+  declarative fashion at all). This adds complexity. Which I think we can all
+  agree is a bad thing.
+</p>
+<h3>Stating The Obvious</h3>
+<p>
+  By non-functional, I mean by default you have to manage shared mutable
+  state. Even not considering concurrency at all (which today is a silly
+  thing with scaling across multiple cores being a necessity), you can only
+  make things simple by eliminating shared or mutable from the state
+  equation. For example,
+</p>
+<code>Shared + Mutable + State      =&gt; Complexity (bad maintainability properties)
+Local + Mutable + State         =&gt; Simple (good maintainability properties)
+Shared + Immutable + State  =&gt; Simple (good maintainability properties)</code>
+<p>
+  By composing the latter two approaches at different levels of code and the
+  problem domain (examples will come next part in the blog post series) we
+  can make something that was once complex into something modular,
+  composeable, and simple to maintain longer term. From a business
+  perspective where teams evolve, and grow or shrink or mutate organically,
+  this is of paramount importance.
+</p>
+<h3>Enter Testing That Makes a Difference</h3>
+<p>
+  Now we need to write tests for our infrastructure that can be run in an
+  automated fashion. From testing Puppet manifests and modules to Sensu check
+  scripts to automation scripts and beyond. The benefits of rerunnable,
+  automated test suites allows us to validate changes don't break the
+  existing expectations already codified in our test suite(s). It doesn't
+  validate changes don't break anything. It is important to understand that
+  limitation. It means we need to get better about building solid test suites.
+</p>
+<p>
+  To do this we need to refactor shared mutable state into smaller bite sized
+  pieces to eliminate either the shared or mutable part at each given point.
+  This enables us to avoid problematic constructs in automated testing
+  frameworks like mocks or stubs. Instead verifying a pure function with
+  cases is trivial. You know what you pass in as explicit inputs to a
+  function/method are the only things the function body will use to derive
+  the output. So supplying the same input values each time we know we should
+  get the expected output value and it doesn't depend on some shared data
+  elsewhere that has to be in a certain state to compute the desired result.
+  This makes testing effortless. No more excuses!
+</p>
+<h3>Reasoning</h3>
+<p>
+  Reasoning in functional languages (even FP languages that are not pure) is
+  a lot simpler when you know when side effects are likely to happen such a
+  opening a file or socket (or if you are in a pure FP language like Haskell
+  you know from the type when EFFECTS - they are no longer side effects when
+  they are marked explicitly this way - will eventually be performed after
+  evaluation and sequenced correctly).
+</p>
+<p>
+  Reasoning, even informally, in non-functional language which are imperative
+  by default, they may or may not be in the object oriented paradigm,
+  requires some level of testing to ensure you can validate it's behavior to
+  some degree of sanity.
+</p>
+<p>
+  In functional languages that support parametric polymorphism we can use
+  parametricity to formally reason about code from the type signatures.
+  Wadler proved it with real math. It's a thing. Yeah. It's so powerful my
+  knees tremble at it's awesomeness and the implications that software
+  development doesn't have to suck so much in terms of quality.
+  <a href="">Here is a brief, informal treatment of the ideas of
+  parametricity for those without an academic background</a>.
+</p>
+<h3>Summary</h3>
+<p>
+  So the point of this blog post is to say, to improve our sanity, and our
+  code quality in TechOps we really need to step up and test-infect our code
+  to provide us with better informal reasoning capabilities. The next part of
+  this blog post series will include examples.
+</p>
+<p>Added since someone asked in the comments:</p>
+<div id="p">
+  In addition we should explore using pure functional languages, more
+  efficient runtimes, and/or type safe languages in our infrastructure
+  adventures to solve some of the problems that exist in the common Ops
+  languages and runtimes.
+</div>
+
+        </article>
+      </section>
+    </div>
+    <footer>
+  <p>
+    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <p>
+    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+  </p>
+  <div id="rights">
+    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
+    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
+           <a href="http://susanpotter.net/">Web Services Engineer</a>,
+           <a href="http://susanpotter.net/">Web Services Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+  </div>
+  <script type="text/javascript">
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-837842-1', 'auto');
+    ga('require', 'displayfeatures');
+    ga('send', 'pageview');
+  </script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  
+  
+  <script async="async" defer src="/javascripts/app.js"></script>
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+</footer>
+
+    <script type="text/javascript">
+      (function($) {
+        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+      })(jQuery);
+    </script>
+    <!-- Place this tag just before your close body tag -->
+  
+
