@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,131 +55,134 @@
           <h2>Custom Processors for ActiveWarehouse ETL</h2>
           <h5 class="time">2007-09-21 00:45:00 -0500</h5>
           For anyone interested in extending
-<a href="http://activewarehouse.rubyforge.org/etl/">ActiveWarehouse ETL</a>'s
+= succeed "'s" do
+  %a{:href =&gt; "http://activewarehouse.rubyforge.org/etl/"} ActiveWarehouse ETL
 features with custom pre/post processors, I thought I would share this piece of code that I wrote in August for a personal project I am working on.  The example should provide you with enough details for you to create your own custom processors.
-<pre><code>
-# Written by Susan Potter <mbbx6spp> under open source MIT license.
-# August 12, 2007.
-
-require 'net/ftp'
-
-module ETL
-  module Processor
-    # Custom pre-processor to download files via FTP before beginning control process.
-    class FtpDownloaderProcessor &lt; ETL::Processor::Processor
-      attr_reader :host
-      attr_reader :port
-      attr_reader :remote_dir
-      attr_reader :files
-      attr_reader :username
-      attr_reader :local_dir
+%pre
+  %code
+    :preserve
       
-      # configuration options include:
-      # * host - hostname or IP address of FTP server (required)
-      # * port - port number for FTP server (default: 21)
-      # * remote_dir - remote path on FTP server (default: /)
-      # * files - list of files to download from FTP server (default: [])
-      # * username - username for FTP server authentication (default: anonymous)
-      # * password - password for FTP server authentication (default: nil)
-      # * local_dir - local output directory to save downloaded files (default: '')
-      # 
-      # As an example you might write something like the following in your control process file:
-      #  pre_process :ftp_downloader, {
-      #    :host =&gt; 'ftp.sec.gov',
-      #    :path =&gt; 'edgar/Feed/2007/QTR2',
-      #    :files =&gt; ['20070402.nc.tar.gz', '20070403.nc.tar.gz', '20070404.nc.tar.gz', 
-      #               '20070405.nc.tar.gz', '20070406.nc.tar.gz'],
-      #    :local_dir =&gt; '/data/sec/2007/04',
-      #  }
-      # The above example will anonymously download via FTP the first week's worth of SEC filing feed data
-      # from the second quarter of 2007 and download the files to the local directory +/data/sec/2007/04+.
-      def initialize(control, configuration)
-        @host = configuration[:host]
-        @port = configuration[:port] || 21
-        @remote_dir = configuration[:remote_dir] || '/'
-        @files = configuration[:files] || []
-        @username = configuration[:username] || 'anonymous'
-        @password = configuration[:password]
-        @local_dir = configuration[:local_dir] || ''
-      end
+      # Written by Susan Potter <mbbx6spp> under open source MIT license.
+      # August 12, 2007.
       
-      def process
-        Net::FTP.open(@host) do |conn|
-          conn.connect(@host, @port)
-          conn.login(@username, @password)
-          remote_files = conn.chdir(@remote_dir)
-          @files.each do |f|
-            conn.gettextfile(remote_file(f), local_file(f))
+      require 'net/ftp'
+      
+      module ETL
+        module Processor
+          # Custom pre-processor to download files via FTP before beginning control process.
+          class FtpDownloaderProcessor &lt; ETL::Processor::Processor
+            attr_reader :host
+            attr_reader :port
+            attr_reader :remote_dir
+            attr_reader :files
+            attr_reader :username
+            attr_reader :local_dir
+            
+            # configuration options include:
+            # * host - hostname or IP address of FTP server (required)
+            # * port - port number for FTP server (default: 21)
+            # * remote_dir - remote path on FTP server (default: /)
+            # * files - list of files to download from FTP server (default: [])
+            # * username - username for FTP server authentication (default: anonymous)
+            # * password - password for FTP server authentication (default: nil)
+            # * local_dir - local output directory to save downloaded files (default: '')
+            # 
+            # As an example you might write something like the following in your control process file:
+            #  pre_process :ftp_downloader, {
+            #    :host =&gt; 'ftp.sec.gov',
+            #    :path =&gt; 'edgar/Feed/2007/QTR2',
+            #    :files =&gt; ['20070402.nc.tar.gz', '20070403.nc.tar.gz', '20070404.nc.tar.gz', 
+            #               '20070405.nc.tar.gz', '20070406.nc.tar.gz'],
+            #    :local_dir =&gt; '/data/sec/2007/04',
+            #  }
+            # The above example will anonymously download via FTP the first week's worth of SEC filing feed data
+            # from the second quarter of 2007 and download the files to the local directory +/data/sec/2007/04+.
+            def initialize(control, configuration)
+              @host = configuration[:host]
+              @port = configuration[:port] || 21
+              @remote_dir = configuration[:remote_dir] || '/'
+              @files = configuration[:files] || []
+              @username = configuration[:username] || 'anonymous'
+              @password = configuration[:password]
+              @local_dir = configuration[:local_dir] || ''
+            end
+            
+            def process
+              Net::FTP.open(@host) do |conn|
+                conn.connect(@host, @port)
+                conn.login(@username, @password)
+                remote_files = conn.chdir(@remote_dir)
+                @files.each do |f|
+                  conn.gettextfile(remote_file(f), local_file(f))
+                end
+              end
+            end
+            
+            private
+            attr_accessor :password
+            
+            def local_file(name)
+              File.join(@local_dir, name)
+            end
+            
+            def remote_file(name)
+              File.join(@remote_dir, name)
+            end
           end
         end
       end
-      
-      private
-      attr_accessor :password
-      
-      def local_file(name)
-        File.join(@local_dir, name)
-      end
-      
-      def remote_file(name)
-        File.join(@remote_dir, name)
-      end
-    end
-  end
-end
+The key things to note from this is that you are at present required to:
+%ul
+  %li
+    define all your custom processors with in the
+    %code ETL::Processor
+    module
+  %li name your custom processor class in the form XXXXProcessor
+  %li
+    need to extend (or really just adhere to the message interface of)
+    %code ETL::Processor::Processor
+    class defined in ActiveWarehouse ETL
+  %li
+    define
+    %code initialize
+    taking two arguments (look above for guidance)
+  %li
+    define a
+    %code process
+    method to do what you need do before or after the control process runs (for pre and post processors respectively)
+Hope this helps someone customize ActiveWarehouse more easily, since the only bad thing I have found with ActiveWarehouse is lack of documentation.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</mbbx6spp></code></pre>
-
-        </article>
+        </mbbx6spp></article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -194,7 +193,7 @@ end
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -203,7 +202,7 @@ end
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -58,74 +54,68 @@
           
           <h2>Cloud Computing, Part 1: Delivery Models</h2>
           <h5 class="time">2009-09-11 21:10:00 -0500</h5>
-          <p>
+          %p
   Today I went to a regional CEO Roundtable lunch talk given by
-  <a href="http://cs.illinois.edu/people/faculty/roy-campbell" target="_new">
+  %a{:href =&gt; "http://cs.illinois.edu/people/faculty/roy-campbell", :target =&gt; "_new"}
     Professor Roy Campbell at
-    <acronym title="University of Illinois at Urbana-Champaign">UIUC</acronym>
-  </a>
+    %acronym{:title =&gt; "University of Illinois at Urbana-Champaign"} UIUC
   on Cloud Computing and why executives of any kind of business should care.
-</p>
-<p>While I am not new to the concepts of cloud computing and multi-tenancy SaaS, since I have consumed various cloud services and designed multi-tenant architectures for two previous clients.  However, there was one particular "overview" slide that Professor Campbell showed that got me thinking a little.  It was titled Delivery Models.</p>
-<p>It was a text slide with bullets, but I think a diagram (or two) could have communicated to the higher-level audience more than most of the first half of his presentation could have (see below and let me know if it is more effective).</p>
-<p>
+%p While I am not new to the concepts of cloud computing and multi-tenancy SaaS, since I have consumed various cloud services and designed multi-tenant architectures for two previous clients.  However, there was one particular "overview" slide that Professor Campbell showed that got me thinking a little.  It was titled Delivery Models.
+%p It was a text slide with bullets, but I think a diagram (or two) could have communicated to the higher-level audience more than most of the first half of his presentation could have (see below and let me know if it is more effective).
+%p
   I especially liked Professor Campbell's categorization of the Delivery Models.  Until this lunch time I had really only considered there to be two cloud delivery models:
-  <acronym title="Software as a Service">SaaS</acronym>
+  %acronym{:title =&gt; "Software as a Service"} SaaS
   and
-  <acronym title="Platform as a Service">PaaS</acronym>.
+  = succeed "." do
+    %acronym{:title =&gt; "Platform as a Service"} PaaS
   I wasn't making a distinction between Amazon services like S3 and EC2 and that of Google's AppEngine.  On reflection, I am glad I took two hours out of my busy Friday if only to consider the distinction made in this talk.
-</p>
-<p>In a nutshell the slide has three major bullets:</p>
-<ul>
-  <li>Software as a Service</li>
-  <li>Platform as a Service</li>
-  <li>Infrastructure as a Service</li>
-</ul>
-<p>Nice!  Google AppEngine, essentially being an application container (that supports various frameworks now), is a platform, whereas S3 and EC2 provide infrastructure on demand.</p>
-<p>Now unfortunately this is where Campbell left it.  For those of us not unfamiliar with cloud computing, we can see the importance of this distinction so that we can develop a more solid business plan (for those of us that might be interested in using the cloud to generate revenue from).  It may also help technically savvy people that aren't familiar with the cloud.</p>
-<p>
-  <a href="http://4.bp.blogspot.com/_YUkA0L0Czls/SqsNB413zaI/AAAAAAAAAIw/_iJREHeogXs/s1600-h/CloudComputing-DeliveryModel.png" onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}">
-    <img alt="" border="0" id="BLOGGER_PHOTO_ID_5380408505913560482" src="http://4.bp.blogspot.com/_YUkA0L0Czls/SqsNB413zaI/AAAAAAAAAIw/_iJREHeogXs/s400/CloudComputing-DeliveryModel.png" style="display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;width: 283px; height: 400px;">
-  </a>
-</p>
-<p>Hope this helps people make a choice between container services like AppEngine or Heroku (platform) and those such as S3 and EC2 (infrastructure) from a consumer side and perhaps those devising business models to focus on their core competencies.</p>
-<p>
+%p In a nutshell the slide has three major bullets:
+%ul
+  %li Software as a Service
+  %li Platform as a Service
+  %li Infrastructure as a Service
+%p Nice!  Google AppEngine, essentially being an application container (that supports various frameworks now), is a platform, whereas S3 and EC2 provide infrastructure on demand.
+%p Now unfortunately this is where Campbell left it.  For those of us not unfamiliar with cloud computing, we can see the importance of this distinction so that we can develop a more solid business plan (for those of us that might be interested in using the cloud to generate revenue from).  It may also help technically savvy people that aren't familiar with the cloud.
+%p
+  %a{:href =&gt; "http://4.bp.blogspot.com/_YUkA0L0Czls/SqsNB413zaI/AAAAAAAAAIw/_iJREHeogXs/s1600-h/CloudComputing-DeliveryModel.png", :onblur =&gt; "try {parent.deselectBloggerImageGracefully();} catch(e) {}"}
+    %img#BLOGGER_PHOTO_ID_5380408505913560482{:alt =&gt; "", :border =&gt; "0", :src =&gt; "http://4.bp.blogspot.com/_YUkA0L0Czls/SqsNB413zaI/AAAAAAAAAIw/_iJREHeogXs/s400/CloudComputing-DeliveryModel.png", :style =&gt; "display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;width: 283px; height: 400px;"}/
+%p Hope this helps people make a choice between container services like AppEngine or Heroku (platform) and those such as S3 and EC2 (infrastructure) from a consumer side and perhaps those devising business models to focus on their core competencies.
+%p
   Next time I want to talk about privacy, legal and compliance issues surrounding Cloud Computing as well as how business should weigh the risk of outsourcing their data handling (however that happens) to countries will less mature laws, regulation and oversight.  Perhaps
-  <em>cloud governance</em>
+  %em cloud governance
   would be the most appropriate term?
-</p>
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -136,7 +126,7 @@
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -145,7 +135,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

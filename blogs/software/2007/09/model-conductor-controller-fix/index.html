@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,71 +55,75 @@
           <h2>Model-Conductor-Controller fix</h2>
           <h5 class="time">2007-09-11 11:42:00 -0500</h5>
           The New Bamboo blog talked about
-<em>Presenters &amp; Conductors</em>
+%em Presenters &amp; Conductors
 last month.  The demonstration Rails application was broken, so the enclosed link to a zip file contains the fixes I made to get the application running as expected.
+
 The offending code was in
-<code>lib/action_conductor/lib/action_conductor/errors.rb</code>:
-<pre><code>
-module ActiveRecord
-  class Errors
-   def add_conductor_errors_for(record, mapping)
+= succeed ":" do
+  %code lib/action_conductor/lib/action_conductor/errors.rb
+%pre
+  %code
+    :preserve
+      
+      module ActiveRecord
+        class Errors
+         def add_conductor_errors_for(record, mapping)
+          return if record.valid?
+          record.errors.each do |attribute, message|
+            self.add(mapping[attribute.to_sym], message)
+          end
+         end
+        end
+      end
+The fixed code changed one line as so:
+%pre
+  %code
+    module ActiveRecord
+    class Errors
+    def add_conductor_errors_for(record, mapping)
     return if record.valid?
+    %b or record.new_record?
     record.errors.each do |attribute, message|
-      self.add(mapping[attribute.to_sym], message)
+    self.add(mapping[attribute.to_sym], message)
     end
-   end
-  end
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</code></pre>
+    end
+    end
+    end
+The fixed zip file can be found at my
+%a{:href =&gt; "http://www.4shared.com/file/24033810/a58d14dc/presenters_and_conductors-20070911.html"} 4shared
+account and also fixes the minor view errors.
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -134,7 +134,7 @@ end
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -143,7 +143,7 @@ end
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -58,120 +54,131 @@
           
           <h2>Rubyisms: reopening classes</h2>
           <h5 class="time">2006-08-10 14:26:00 -0500</h5>
-          Ever wished you could write code in a very expressive way like the following examples?<ul>
-  <li>
-    <code>expiration_date = 3.years.from_now</code>
-  </li>
-  <li>
-    <code>birth_date = 32.years.ago</code>
-  </li>
-</ul>Now you can, in Ruby at least.
+          Ever wished you could write code in a very expressive way like the following examples?
+%ul&gt;
+  %li
+    %code expiration_date = 3.years.from_now
+  %li
+    %code birth_date = 32.years.ago
+Now you can, in Ruby at least.
+
 Two years ago I was a huge Python head that thought no other language could compete with Python for developer productivity.  My Python indoctrination occurred after 7 solid years of proclaiming Java was the ultimate language that would reign supreme.  Prior to my Java phase I was a C++ and Perl coder.
+
 It was also two years ago that I got my first glimpse at Ruby.  I read articles, blogs and forums between Python and Ruby heads discussing finer points of each language and how one is far more superior than the other, because....bla bla bla.
+
 It was at this time that Ruby's concept of reopening classes came to my attention.  As a hearty Python developer at the time I came to the conclusion that Python had to be superior on this point because Python allowed class reopening through metaclasses, so the original author of the code could be explicit to allow class reopening or not.  In Ruby, however, anyone could reopen your classes, write malicious code and redploy without others knowing.
+
 Over the past two years I have realized that while Python is a beautiful programming language (not just scripting language) in its own right, my views on this point have changed considerably.
+
 To show class reopening I will be using an example of code that is very similar to some Ruby standard library extensions found in Active Support included in Rails (Disclaimer: This is not necessarily the same underlying code - I have not checked to be honest).
+
 Let us start up an
-<tt>irb</tt>
+%tt irb
 shell session and write the following:
-<code><pre>
-  irb&gt; 3.class
-  =&gt; Fixnum
-  irb&gt; class Fixnum
-  irb&gt;   def years
-  irb&gt;     return self*365*24*60*60
-  irb&gt;   end
-  irb&gt; end
-  =&gt; nil
-  irb&gt; 3.years
-  =&gt; 94608000
-  irb&gt; 3.years.class
-  =&gt; Fixnum
-  irb&gt; class Fixnum
-  irb&gt;   def ago
-  irb&gt;     return Time.now() - self
-  irb&gt;   end
-  irb&gt;   def from_now
-  irb&gt;     return Time.now() + self
-  irb&gt;   end
-  irb&gt; end
-  =&gt; nil
-  irb&gt; 3.years.from_now
-  =&gt; Sun Aug 09 14:23:10 CDT 2009
-  irb&gt; 3.years.ago
-  =&gt; Mon Aug 11 14:23:19 CDT 2003
+%code
+  %pre
+    :preserve
+      
+        irb&gt; 3.class
+        =&gt; Fixnum
+        irb&gt; class Fixnum
+        irb&gt;   def years
+        irb&gt;     return self*365*24*60*60
+        irb&gt;   end
+        irb&gt; end
+        =&gt; nil
+        irb&gt; 3.years
+        =&gt; 94608000
+        irb&gt; 3.years.class
+        =&gt; Fixnum
+        irb&gt; class Fixnum
+        irb&gt;   def ago
+        irb&gt;     return Time.now() - self
+        irb&gt;   end
+        irb&gt;   def from_now
+        irb&gt;     return Time.now() + self
+        irb&gt;   end
+        irb&gt; end
+        =&gt; nil
+        irb&gt; 3.years.from_now
+        =&gt; Sun Aug 09 14:23:10 CDT 2009
+        irb&gt; 3.years.ago
+        =&gt; Mon Aug 11 14:23:19 CDT 2003
+Did you follow what I just did?  I wanted to show what
+= succeed "'s" do
+  %code 3
+class is in Ruby.  To those not very familiar with Ruby, this was important to show, since newbies might expect 3.class to be
+= succeed "," do
+  %code Integer
+but in fact it is of type
+= succeed "." do
+  %code Fixnum
+Next we reopened the
+%code Fixnum
+class for new definition.  If we had reopened it and inserted a method called
+%code floor
+or
+%code ceil
+we would have overwritten the original Ruby standard library implementation of these methods.  Instead we defined a method called
+= succeed "," do
+  %code years
+which wasn't previously defined in Fixnum.  Then we closed the class and found that
+%code 3.years
+returns
+= succeed "," do
+  %code 94608000
+which is the number of seconds in a year.  Is that useful?  Not yet, so next we reopened
+%code Fixnum
+again and insert two methods:
+%code ago
+and
+= succeed "." do
+  %code from_now
+After reclosing the class again, we can write partial sentences in Ruby and provide an extremely expressive API for an application that deals a lot with dates and converting numbers to dates.
 
+This couldn't be done in Python with the same ease using metaclasses, because the builtin
+%code int
+type cannot be reopened unless you redefined the
+%code int
+type from scratch in Python including the addition of your special purpose methods in the mix.
 
+Anyway, this might not convince all readers of the significant utility of the class reopening feature of Ruby, but I have began to love this feature, arguably too much (some may say).  I have found it has significantly improved readability and condensed the code necessary to do many tasks.
 
+After converting to Java a number of years ago from Perl and C++, I vowed not to take the Perlist's attitude toward trusting clients of your code not to bastardize it.  However, I find myself accepting that if a client of my code knowingly decides to take this risk, it is on their own head they fall.  I should not be bothered by this professionally or personally.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre></code>
+I should also bring to reader's attention that this feature of Ruby is a stepping stone to promote the development of true domain specific languages (DSL), which is difficult at best to do in many other languages.
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -182,7 +189,7 @@ shell session and write the following:
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -191,7 +198,7 @@ shell session and write the following:
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

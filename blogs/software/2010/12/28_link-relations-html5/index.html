@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -58,213 +54,200 @@
           
           <h2>HTML5: Link Relations</h2>
           <h5 class="time"></h5>
-          <p>
+          %p
   When viewing the HTML source on a number of large and high traffic sites
-  (mostly blogs) I find a number of link relations that either use
-  non-existant relations, misspell or deviate from the specified intent.
-  Worst of all are sites that never use link relations when doing so would
+  (mostly blogs) I find a number of link relations that either use 
+  non-existant relations, misspell or deviate from the specified intent. 
+  Worst of all are sites that never use link relations when doing so would 
   offer their audience a richer, more meaningful experience of the content.
-</p>
-<p>
-  By ensuring standards compliance, browsers and other tools used to render
-  web content could offer more useful and intuitive user interfaces for the
+%p 
+  By ensuring standards compliance, browsers and other tools used to render 
+  web content could offer more useful and intuitive user interfaces for the 
   content on sites.
-</p>
-<p>
-  In an effort to promote proper use (as in intended by the specification) of
-  these link relations in HTML5, I decided to research (informally) the
+%p
+  In an effort to promote proper use (as in intended by the specification) of 
+  these link relations in HTML5, I decided to research (informally) the 
   major offenders in the wild and ways they could be fixed.
-</p>
-<p>
-  The first order of business is to establish exactly what are the purposes
+
+%p
+  The first order of business is to establish exactly what are the purposes 
   of link relations and where should they be defined.
-</p>
-<h3>What on earth is a link relation?</h3>
-<p>
-  Also called a
-  <em>link type,</em>
+
+%h3 What on earth is a link relation?
+
+%p
+  Also called a 
+  %em link type,
   a link relation is a way to explain why a link points to another resource.
-  Is it augmenting the content in the current document in some way or is it
-  simply linking to another resource for extra information specific to the
+  Is it augmenting the content in the current document in some way or is it 
+  simply linking to another resource for extra information specific to the 
   content.
-</p>
-<p>
-  Some reasons why an web author, editor or publisher might want to link to
+
+%p
+  Some reasons why an web author, editor or publisher might want to link to 
   other resources are to:
-</p>
-<ul>
-  <li>
+%ul
+  %li
     point to style rules for the page
-  </li>
-  <li>
+  %li
     offer alternate versions (formats) of the current page
-  </li>
-  <li>
+  %li
     offer translations of the current page
-  </li>
-  <li>
+  %li
     point to the next chapter of a book or next post in a blog series
-  </li>
-  <li>
+  %li 
     point to an archives listing
-  </li>
-  <li>
-    offer a way to subscribe to content, like offering an RSS or Atom feed for
+  %li 
+    offer a way to subscribe to content, like offering an RSS or Atom feed for 
     a blog or podcast.
-  </li>
-</ul>
-<p>
-  These are by no means the only reasons to link to other resources outside of
+
+%p 
+  These are by no means the only reasons to link to other resources outside of 
   the page using relations.
-</p>
-<h3>How are relations defined?</h3>
-<p>
-  The way to define relationships between resources (pages) is to use the
-  <code class="language-html">rel</code> attribute on
-  <code class="language-html">link</code>,
-  <code class="language-html">a</code> or even
-  <code class="language-html">area</code>
-  elements.  For example, <code class="language-html">&lt;link rel="license"
-  href="http://creativecommons.org/licenses/by-nc-sa/3.0/"&gt;</code> creates a
+
+%h3 How are relations defined?
+
+%p
+  The way to define relationships between resources (pages) is to use the 
+  <code class="language-html">rel</code> attribute on 
+  <code class="language-html">link</code>, 
+  <code class="language-html">a</code> or even 
+  <code class="language-html">area</code> 
+  elements.  For example, <code class="language-html">&lt;link rel="license" 
+  href="http://creativecommons.org/licenses/by-nc-sa/3.0/"&gt;</code> creates a 
   link indicating that the content at that resource is covered by the copyright
   license described by the referenced document (in this case the Attribution-
   NonCommercial-ShareAlike 3.0 Unported license).
-</p>
-<h3>What relations are standard?</h3>
-<p>
-  Suppose we have a blog with URL of <code>http://domain.tld/blogs/blog-title</code> for
-  the home page of a blog of mine. The following are standard link relations that might
+
+%h3 What relations are standard?
+
+%p 
+  Suppose we have a blog with URL of <code>http://domain.tld/blogs/blog-title</code> for 
+  the home page of a blog of mine. The following are standard link relations that might 
   be used.
-</p>
-<ul>
-  <li>
-    <strong>alternate</strong>
-    <span>
+%ul
+  %li 
+    %strong alternate
+    %span 
       e.g. in the head element point to Atom feed as an alternative view of the blog
-      <code class="language-html">&lt;link rel="alternate" href="http://domain.tld/blogs/blog-title/feed.atom"&gt;</code>
-    </span>
-  </li>
-  <li>
-    <strong>archives</strong>
-    <span>
+      %code{:class =&gt; "language-html"}
+        &lt;link rel="alternate" href="http://domain.tld/blogs/blog-title/feed.atom"&gt;
+  %li 
+    %strong archives
+    %span 
       e.g. in a side menu in the body of the page you might link to the December 2010 archive
-      <code class="language-html">&lt;a rel="archives" href="http://domain.tld/blogs/blog-title/2010/12/archive.html"&gt;</code>
-    </span>
-  </li>
-  <li>
-    <strong>author</strong>
-    <span>
+      %code{:class =&gt; "language-html"}
+        &lt;a rel="archives" href="http://domain.tld/blogs/blog-title/2010/12/archive.html"&gt;
+  %li 
+    %strong author
+    %span
       e.g. in the head element point to author's home page
-      <code class="language-html">&lt;link rel="author" href="http://susanpotter.net"&gt;</code>
-    </span>
-  </li>
-  <li>
-    <strong>bookmark</strong>
-    <span>
+      %code{:class =&gt; "language-html"}
+        &lt;link rel="author" href="http://susanpotter.net"&gt;
+
+  %li 
+    %strong bookmark
+    %span
       e.g. in the body in a link element (e.g. <code>a</code> element) put permalink for bookmarking
-      <code class="language-html">&lt;a rel="bookmark" href="http://domain.tld/blogs/blog-title"&gt;</code>
-    </span>
-  </li>
-  <li>
-    <strong>external</strong>
-    <span>
+      %code{:class =&gt; "language-html"}
+        &lt;a rel="bookmark" href="http://domain.tld/blogs/blog-title"&gt;
+  %li 
+    %strong external
+    %span
       e.g. in the body in a link element we might link to a resource on an external site
-      <code class="language-html">&lt;a rel="external" href="http://anothersite.com/some-uri"&gt;</code>
-    </span>
-  </li>
-  <li>
-    <strong>first</strong>
-  </li>
-  <li>
-    <strong>help</strong>
-    <span>
+      %code{:class =&gt; "language-html"}
+        &lt;a rel="external" href="http://anothersite.com/some-uri"&gt;
+  %li 
+    %strong first
+
+  %li 
+    %strong help
+    %span
       e.g. in the head of the page we can add a link to a help page or in the body put an anchor to
       a context-specific help page
-      <code class="language-html">&lt;a rel="help" href="http://domain.tld/help/blog.html"&gt;</code>
-    </span>
-  </li>
-  <li>
-    <strong>icon</strong>
-    <span>
+      %code{:class =&gt; "language-html"}
+        &lt;a rel="help" href="http://domain.tld/help/blog.html"&gt;
+
+  %li 
+    %strong icon
+    %span
       e.g. in the head of the page we can add an icon that represents the page
-      <code class="language-html">&lt;link rel="icon" href="http://domain.tld/icons/blog-icon.png"&gt;</code>
-    </span>
-  </li>
-  <li>
-    <strong>index</strong>
-  </li>
-  <li>
-    <strong>last</strong>
-  </li>
-  <li>
-    <strong>license</strong>
-  </li>
-  <li>
-    <strong>next</strong>
-  </li>
-  <li>
-    <strong>nofollow</strong>
-  </li>
-  <li>
-    <strong>noreferrer</strong>
-  </li>
-  <li>
-    <strong>pingback</strong>
-  </li>
-  <li>
-    <strong>prefetch</strong>
-  </li>
-  <li>
-    <strong>prev</strong>
-  </li>
-  <li>
-    <strong>search</strong>
-  </li>
-  <li>
-    <strong>stylesheet</strong>
-  </li>
-  <li>
-    <strong>sidebar</strong>
-  </li>
-  <li>
-    <strong>tag</strong>
-  </li>
-  <li>
-    <strong>up</strong>
-  </li>
-</ul>
+      %code{:class =&gt; "language-html"}
+        &lt;link rel="icon" href="http://domain.tld/icons/blog-icon.png"&gt;
+  %li 
+    %strong index
+
+  %li 
+    %strong last
+
+  %li 
+    %strong license
+
+  %li 
+    %strong next
+
+  %li 
+    %strong nofollow
+
+  %li 
+    %strong noreferrer
+
+  %li 
+    %strong pingback
+
+  %li 
+    %strong prefetch
+
+  %li 
+    %strong prev
+
+  %li 
+    %strong search
+
+  %li 
+    %strong stylesheet
+
+  %li 
+    %strong sidebar
+
+  %li 
+    %strong tag
+
+  %li 
+    %strong up
+
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -275,7 +258,7 @@
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -284,7 +267,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

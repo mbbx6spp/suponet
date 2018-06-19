@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,38 +55,37 @@
           <h2>Twitter4R v0.2.3 Released</h2>
           <h5 class="time">2007-07-22 12:50:00 -0500</h5>
           As promised earlier this week Twitter4R v0.2.3 made it out this weekend.
+
 Twitter4R v0.2.3 has just been uploaded to Rubyforge in Ruby Gem, tgz and zip formats.  It may take up to several hours for the Rubyforge download mirrors to sync, so you may not be able to download it for a while.
+
 To upgrade/install using Ruby Gems:
-<code>$ sudo gem install twitter4r</code>
+%code $ sudo gem install twitter4r
 I am in the process of updating the
-<a href="http://twitter4r.rubyforge.org">project website</a>.
+= succeed "." do
+  %a{:href =&gt; "http://twitter4r.rubyforge.org"} project website
 So bear with me while I take care of this.
+
 Release Notes:
-<ul>
-  <li>
+%ul
+  %li
     Fixed defect
-    <a href="http://retro.tautology.net/projects/twitter4r/ticket/31">#31</a>
+    %a{:href =&gt; "http://retro.tautology.net/projects/twitter4r/ticket/31"} #31
     such that passing string screen name as for user argument is handled correctly.
-  </li>
-  <li>
+  %li
     Fixed
-    <a href="http://retro.tautology.net/projects/twitter4r/ticket/30">#30</a>
+    %a{:href =&gt; "http://retro.tautology.net/projects/twitter4r/ticket/30"} #30
     typo: respond_to -&gt; respond_to?
-  </li>
-  <li>
+  %li
     Added relevant exception handling for #message(:post, ...) case
-    <a href="http://retro.tautology.net/projects/twitter4r/ticket/32">#32</a>
-  </li>
-  <li>
+    %a{:href =&gt; "http://retro.tautology.net/projects/twitter4r/ticket/32"} #32
+  %li
     Add ability to pass in Twitter::User object to Twitter::Client#user(...)
-    <a href="http://retro.tautology.net/projects/twitter4r/ticket/33">#33</a>
-  </li>
-  <li>Added stats Rake task</li>
-  <li>
+    %a{:href =&gt; "http://retro.tautology.net/projects/twitter4r/ticket/33"} #33
+  %li Added stats Rake task
+  %li
     Updated RDoc for Twitter::Client#user to warn against using it to get followers of authenticated user and updated ArgumentError raising logic as per
-    <a href="http://retro.tautology.net/projects/twitter4r/ticket/29">#29</a>.
-  </li>
-</ul>
+    = succeed "." do
+      %a{:href =&gt; "http://retro.tautology.net/projects/twitter4r/ticket/29"} #29
 Enjoy!
 
         </article>
@@ -98,32 +93,32 @@ Enjoy!
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -134,7 +129,7 @@ Enjoy!
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -143,7 +138,7 @@ Enjoy!
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,95 +55,95 @@
           <h2>Erlang doesn't support currying? News to me!</h2>
           <h5 class="time">2009-05-20 16:13:00 -0500</h5>
           I keep seeing developers who only glance at Erlang and think that
-<strong>currying</strong>
+%strong currying
 isn't supported.
-<strong>Nothing could be further from the truth...</strong>
-<em>
+%strong Nothing could be further from the truth...
+%em
   unless you are defining
-  <strong>currying</strong>
+  %strong currying
   support only in terms of specific syntactic sugar in a language for currying.
-</em>
 So let us step back and define what currying support really means:
-<blockquote>
+%blockquote
   Currying is the process of transforming a function that takes multiple arguments into a function that takes just a single argument and returns another function if any arguments are still needed.
-  <cite>
-    <a href="http://www.haskell.org/haskellwiki/Currying" target="_new">http://www.haskell.org/haskellwiki/Currying</a>
-  </cite>
-</blockquote>
+  %cite
+    %a{:href =&gt; "http://www.haskell.org/haskellwiki/Currying", :target =&gt; "_new"} http://www.haskell.org/haskellwiki/Currying
 Let us look at a simple (but hopefully not too contrived, albeit it _slightly_ contrived) example:
-<pre><code>
-%% currying_example.erl
--module(currying_example).
+%pre
+  %code
+    :preserve
+      
+      %% currying_example.erl
+      -module(currying_example).
+      
+      -compile([export_all]).
+      
+      multiply(X, Y) -&gt; X*Y.
+      doubler() -&gt; fun(X) -&gt; multiply(2, X) end.
+In your erl shell try the following:
+%pre
+  %code
+    1&gt; c(currying_example).
+    {ok,currying_example}
+    2&gt; D = currying_example:doubler().
+    \#Fun
+    %currying_example.0.96239340
+      3&gt; D(6).
+      12
+      4&gt; q().
+      ok
+As you can see in the module code above, Erlang supports what is called
+%em anonymous functions
+(e.g. fun (X) -&gt; somePredefineFunction(OtherVarOrConst, X) end), which then allows us to manufacture single argument functions in a way that is clear and expressive in the code IMO.
 
--compile([export_all]).
-
-multiply(X, Y) -&gt; X*Y.
-doubler() -&gt; fun(X) -&gt; multiply(2, X) end.
-
-
-
-
-
-
-
-
-3&gt; D(6).
-12
-4&gt; q().
-ok
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</code></pre>
+For those that haven't been following the functional programming debates over the last week or two around the blogosphere, please see the following blog posts (some are pretty funny and will make you smile at least twice with their intended absurdity):
+%ul
+  %li
+    %a{:href =&gt; "http://enfranchisedmind.com/blog/posts/scala-not-functional/", :rel =&gt; "nofollow", :target =&gt; "_new"} Scala is not a functional programming language
+  %li
+    %a{:href =&gt; "http://www.reddit.com/goto?id=8krbo", :rel =&gt; "nofollow", :target =&gt; "_new"} Erlang is not a programming language
+  %li
+    %a{:href =&gt; "http://conal.net/blog/posts/the-c-language-is-purely-functional/", :rel =&gt; "nofollow", :target =&gt; "_new"} The C language is purely functional
+  %li
+    %a{:href =&gt; "http://12monkeys.co.uk/2009/05/16/erlang-is-pragmatic.html", :rel =&gt; "nofollow", :target =&gt; "_new"} Erlang is pragmatic
+Previous posts on this blog that are related are:
+%ul
+  %li
+    %a{:href =&gt; "http://geek.susanpotter.net/2009/04/scala-vs-erlang-debate-part-1-managers.html"} Scala vs Erlang Debate, Part 1: Manager's Overview
+  %li
+    %a{:href =&gt; "http://geek.susanpotter.net/2009/04/scala-vs-erlang-debate-part-2-geek-off.html"} Scala vs Erlang Debate, Part 2: Geek Off
+I will try to put together a few snippets on currying support in Python, Javascript and Ruby tonight after my Greek class (which I am late for now) if I have time as a quick exercise:)
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -158,7 +154,7 @@ ok
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -167,7 +163,7 @@ ok
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

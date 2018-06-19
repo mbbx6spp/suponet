@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,84 +55,92 @@
           <h2>The Democratic debate, Ann Coulter and cryptographic utilities for Ruby application developers</h2>
           <h5 class="time">2007-10-30 23:11:00 -0500</h5>
           An unlikely trio, but...
+
 After watching the flip flop of Clinton in the Democratic debate, the subsequent carcass ravaging by her competition, UFO spotting by spock (aka Kucinich) and two great stinging one-liners from Joe Biden about the presidential [dis]qualification of candidate 911, I stumbled across the infinitely dim and unimpressive Ann Coutler.  She was attempting to justify yet another deliberately outlandish statement she made last week, a desperate bid to remain in the limelight to which she is so addicted.
+
 At this point, I remembered I wrote a RubyGem a few weekends ago that might be able to decrypt these events and make sense of it all (well maybe!?).
+
 A few weekends ago I released
-<code>metafusion-crypto</code>
+%code metafusion-crypto
 as a Ruby Gem.  I hadn't announced it yet as it got lost in the shuffle of some personal matters that forced me to take five days off work unexpectedly.  So here is the belated introduction to that small, humble Gem.
+
 This
-<code>metafusion</code>
+%code metafusion
 sub-project is basically just two utility classes:
-<code>Metafusion::Crypo::PrivateKey</code>
+%code Metafusion::Crypo::PrivateKey
 and
-<code>Metafusion::Crypo::DigitalSignature</code>
+%code Metafusion::Crypo::DigitalSignature
 for application developers that don't want to worry about twiddling bits.  To install you only need to do the following:
-<pre><code>$ sudo gem install metafusion-crypto</code></pre>
+%pre
+  %code $ sudo gem install metafusion-crypto
 An example of
-<code>DigitalSignature</code>
+%code DigitalSignature
 usage might be:
-<pre><code>
-require 'metafusion/crypto'
+%pre
+  %code
+    :preserve
+      
+      require 'metafusion/crypto'
+      
+      priv_key = Metafusion::Crypto.generate_key_pair
+      # this returns OpenSSL::PKey::RSA object into priv_key
+      
+      include Metafusion::Crypto
+      sig = DigitalSignature.from_keys('rsa_key.pub', 'rsa_key')
+      original_text = "my clear text message"
+      crypted_text = sig.encrypt(original_text)
+      plain_text = sig.decrypt(crypted_text)
+      puts "It worked - let's celebrate!" if original_text == plain_text
+An example of
+%code PrivateKey
+usage might be:
+%pre
+  %code
+    :preserve
+      
+      include Metafusion::Crypto
+      pkey = PrivateKey.new('mypassphrase')
+      original_text = 'Yo yo yo.  What up dog?'
+      crypted_text = pkey.encrypt(original_text)
+      plain_text = pkey.decrypt(crypted_text)
+      puts "Let's roll and celebrate - it worked" if original_text == plain_text
+I look forward to application developer's feedback.
 
-priv_key = Metafusion::Crypto.generate_key_pair
-# this returns OpenSSL::PKey::RSA object into priv_key
-
-include Metafusion::Crypto
-sig = DigitalSignature.from_keys('rsa_key.pub', 'rsa_key')
-original_text = "my clear text message"
-crypted_text = sig.encrypt(original_text)
-plain_text = sig.decrypt(crypted_text)
-puts "It worked - let's celebrate!" if original_text == plain_text
-
-
-
-
-
-
-
-include Metafusion::Crypto
-pkey = PrivateKey.new('mypassphrase')
-original_text = 'Yo yo yo.  What up dog?'
-crypted_text = pkey.encrypt(original_text)
-plain_text = pkey.decrypt(crypted_text)
-puts "Let's roll and celebrate - it worked" if original_text == plain_text
-
-
-
-
-</code></pre>
+I promise to return to the  agile anti-pattern "series" soon.
+%b Update:
+Since two people asked, I have stuck to my tradition of releasing with only 100% C0 code coverage of the project's RSpec examples.
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -147,7 +151,7 @@ puts "Let's roll and celebrate - it worked" if original_text == plain_text
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -156,7 +160,7 @@ puts "Let's roll and celebrate - it worked" if original_text == plain_text
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

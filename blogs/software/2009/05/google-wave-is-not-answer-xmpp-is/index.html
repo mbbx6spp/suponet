@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,117 +55,129 @@
           <h2>Google Wave is not the answer, XMPP is!</h2>
           <h5 class="time">2009-05-29 13:00:00 -0500</h5>
           Since yesterday afternoon (my time) all over the Twittersphere (and blogosphere) I kept hearing a ton of great reviews of the Google Wave API/protocol and how it will revolutionize communication and collaboration on the web.
+
 This morning I watched the Google Wave demonstration from yesterday and I have to say I am completely underwhelmed considering everyone else's reactions were ridiculously positive and had nothing measured or thoughtful to say about it.
+
 You can find my initial reaction of it,
-<a href="http://tumblelog.susanpotter.net/post/114911182/google-wave-is-just-a-simple-xmpp-extension-shrink"><em>
-    "Google Wave is just a simple
-    <acronym title="Extensible Messaging and Presence Protocol">XMPP</acronym>
-    extnesion"
-  </em>, on my tumblelog
-</a>.
+= succeed "." do
+  %a{:href =&gt; "http://tumblelog.susanpotter.net/post/114911182/google-wave-is-just-a-simple-xmpp-extension-shrink"}
+    %em&gt;
+      "Google Wave is just a simple
+      %acronym{:title =&gt; "Extensible Messaging and Presence Protocol"} XMPP
+      extnesion"
+    , on my tumblelog
 As someone that has had to write
-<acronym title="Extensible Messaging and Presence Protocol">XMPP</acronym>
+%acronym{:title =&gt; "Extensible Messaging and Presence Protocol"} XMPP
 extensions for clients and my own internal apps, servers, API interfaces (mostly distributed monitoring of services, but a few more for media processing) I am saddened that anyone would think the current Google Wave protocol (which is just an
-<acronym title="Extensible Messaging and Presence Protocol">XMPP</acronym>
+%acronym{:title =&gt; "Extensible Messaging and Presence Protocol"} XMPP
 extension) is extraordinarily ground breaking.  There have been a number of existing extensions that tried to do VERY VERY similar things already and specific features of Google Wave were already exactly defined.
+
 What made the demonstration of Google Wave yesterday
-<em>appear</em>
+%em appear
 so impressive were the applications: the wave client and the web embedding.  The responsiveness of the web application really made it stand out, NOT the underlying Google Wave protocol/API.
+
 For those who have never really gotten their hands dirty with
-<acronym title="Extensible Messaging and Presence Protocol">XMPP</acronym>
+%acronym{:title =&gt; "Extensible Messaging and Presence Protocol"} XMPP
 in any real technical way, I expected they would not really know what it already provided in
-<acronym title="Extensible Messaging and Presence Protocol">XMPP</acronym>.
+= succeed "." do
+  %acronym{:title =&gt; "Extensible Messaging and Presence Protocol"} XMPP
 Many
-<em>"geeks"</em>
+%em "geeks"
 hyping up Google Wave seemed to think
-<acronym title="Extensible Messaging and Presence Protocol">XMPP</acronym>
+%acronym{:title =&gt; "Extensible Messaging and Presence Protocol"} XMPP
 only supported instant messaging.  That just happened to be the most popular and apparent
-<acronym title="Extensible Messaging and Presence Protocol">XMPP</acronym>
+%acronym{:title =&gt; "Extensible Messaging and Presence Protocol"} XMPP
 extension, which many people call Jabber.
-<acronym title="Extensible Messaging and Presence Protocol">XMPP</acronym>
+%acronym{:title =&gt; "Extensible Messaging and Presence Protocol"} XMPP
 itself is a lot more far reaching than just an instant messaging protocol and the fact that Google Wave was based on top of
-<acronym title="Extensible Messaging and Presence Protocol">XMPP</acronym>
+%acronym{:title =&gt; "Extensible Messaging and Presence Protocol"} XMPP
 should tell you how flexible it is.  Yes that is right, Google may not have really made a big deal about it (why would they if they can get extra credit when it isn't due), but Google Wave
-<strong>is</strong>
+%strong is
 just an
-<acronym title="Extensible Messaging and Presence Protocol">XMPP</acronym>
+%acronym{:title =&gt; "Extensible Messaging and Presence Protocol"} XMPP
 extension and compared to other extensions I have had to interface with, not a particularly complicated one.
+
 Sure the
-<strong>
-  <em>applications</em>
-</strong>
+%strong
+  %em applications
 that Google demonstrated as part of the Google Wave presentation were nifty for personal communication, but are they really ground breaking, multipurpose, or ubiquitous?  No, it is only as ground breaking, multipurpose and ubiquitous as it's applications make it.
+
 Let us all now return to earth for a moment and praise Google for the things they do really well like web applications, but let us not pretend that Google is the mover and shaker in terms of the visionary of future underlying protocols.  They still advocate developing
-<acronym title="HyperText Transfer Protocol">HTTP</acronym>
+%acronym{:title =&gt; "HyperText Transfer Protocol"} HTTP
 applications for the future.
-HyperText Transfer Protocol (<acronym title="HyperText Transfer Protocol">HTTP</acronym>) is virtually on every digital device made by man today, but does it really lend itself to providing the distributed service oriented architecture we should be striving for and the protocol of the
-<em>future</em>?
+
+HyperText Transfer Protocol (
+%acronym{:title =&gt; "HyperText Transfer Protocol"}&gt; HTTP
+) is virtually on every digital device made by man today, but does it really lend itself to providing the distributed service oriented architecture we should be striving for and the protocol of the
+= succeed "?" do
+  %em future
 REST is not about the
-<acronym title="HyperText Transfer Protocol">HTTP</acronym>
+%acronym{:title =&gt; "HyperText Transfer Protocol"} HTTP
 protocol.  RESTful APIs can be creating in a number of ways and through a lot of different protocols.
+
 My take is (from a technical level)
-<acronym title="Extensible Messaging and Presence Protocol">XMPP</acronym>
+%acronym{:title =&gt; "Extensible Messaging and Presence Protocol"} XMPP
 ought to be the protocol of the future, NOT
-<acronym title="Extensible Messaging and Presence Protocol">XMPP</acronym>
-on just the back-end and then adding tons of bloatware in between the client and the service just so that we can create an API or UI on top of an antiquated protocol (<acronym title="HyperText Transfer Protocol">HTTP</acronym>) that has seen better days.
+%acronym{:title =&gt; "Extensible Messaging and Presence Protocol"} XMPP
+on just the back-end and then adding tons of bloatware in between the client and the service just so that we can create an API or UI on top of an antiquated protocol (
+%acronym{:title =&gt; "HyperText Transfer Protocol"}&gt; HTTP
+) that has seen better days.
+
 Anyone want to create a truly modular
-<acronym title="Extensible Messaging and Presence Protocol">XMPP</acronym>
+%acronym{:title =&gt; "Extensible Messaging and Presence Protocol"} XMPP
 "browser" for the new
-<em>"web"</em>
+%em "web"
 with me?  Email
-<code>me</code>
+%code me
 at
-<code>susanpotter</code>
+%code susanpotter
 dot
-<code>net</code>
+%code net
 if you want to join the future.
+
 UPDATE: Please subscribe to the
-<a href="http://groups.google.com/group/jointhefuture" target="_new">"Join the Future" Google Group</a>
+%a{:href =&gt; "http://groups.google.com/group/jointhefuture", :target =&gt; "_new"} "Join the Future" Google Group
 if you want to get involved in the XMPP browser project.
-<h4>Related Links</h4>
-<ul>
-  <li>
-    <a href="http://xmpp.org/" target="_new">XMPP Standards Foundation</a>
-  </li>
-  <li>
-    <a href="http://xmpp.org/protocols/" target="_new">XMPP Protocols</a>
-  </li>
-  <li>
-    <a href="http://xmpp.org/extensions/" target="_new">XMPP Open Extensions</a>
-  </li>
-</ul>
+%h4 Related Links
+%ul
+  %li
+    %a{:href =&gt; "http://xmpp.org/", :target =&gt; "_new"} XMPP Standards Foundation
+  %li
+    %a{:href =&gt; "http://xmpp.org/protocols/", :target =&gt; "_new"} XMPP Protocols
+  %li
+    %a{:href =&gt; "http://xmpp.org/extensions/", :target =&gt; "_new"} XMPP Open Extensions
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -180,7 +188,7 @@ if you want to get involved in the XMPP browser project.
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -189,7 +197,7 @@ if you want to get involved in the XMPP browser project.
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

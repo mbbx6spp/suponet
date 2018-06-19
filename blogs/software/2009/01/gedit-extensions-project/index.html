@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,520 +55,525 @@
           <h2>GEdit Extensions Project</h2>
           <h5 class="time">2009-01-14 23:54:00 -0600</h5>
           Just a quick post from a long blogging hiatus to let people know that I launched gedit-extensions where I will maintain a set of commonly used GEdit snippets and eventually plugins and tools that others might find useful.
+
 You can view the snippet source at the
-<a href="http://github.com/finsignia/gedit-extensions/tree/">GitHub gedit-extensions repository</a>.
+= succeed "." do
+  %a{:href =&gt; "http://github.com/finsignia/gedit-extensions/tree/"} GitHub gedit-extensions repository
 I plan on adding documentation to the
-<a href="http://wiki.github.com/finsignia/gedit-extensions">gedit-extensions wiki</a>
+%a{:href =&gt; "http://wiki.github.com/finsignia/gedit-extensions"} gedit-extensions wiki
 in the next couple of days, but for now see the sneak peak in the Ruby example snippets at the end of the post.
+
 The name in the comments directly above the example snippet is the shortcut you can use.  Type the first few characters of the shortcut and then
-<tt>Ctl+Space</tt>
+%tt Ctl+Space
 key combination to pull up all shortcuts the characters match so far.  Choose the relevant shortcut from the drop down list.  If the snippet contains variables the first variable will be highlighted for your to fill in, then press
-<tt>TAB</tt>
+%tt TAB
 to navigate to the next variable to fill in.
+
 As you will see most of the shortcuts so far are Ruby, Rails, RSpec or Cucumber specific since there are a few Python snippets I need to untangle from our in-house code references.
-<pre><span class="comment"># shebang</span>
-<span class="comment">#!/usr/bin/env ruby</span>
-<span class="comment"># absrequire</span>
-<span class="ident">require</span>
-<span class="punct">(</span>
-<span class="constant">File</span>
-<span class="punct">.</span>
-<span class="ident">join</span>
-<span class="punct">(</span>
-<span class="constant">File</span>
-<span class="punct">.</span>
-<span class="ident">dirname</span>
-<span class="punct">(</span>
-<span class="constant">__FILE__</span>
-<span class="punct">),</span>
-<span class="punct">"</span>
-<span class="string">config</span>
-<span class="punct">",</span>
-<span class="punct">"</span>
-<span class="string">enviornment</span>
-<span class="punct">")</span>
-<span class="comment"># habtm</span>
-<span class="ident">has_and_belongs_to_many</span>
-<span class="symbol">:idiots</span>
-<span class="comment"># unique</span>
-<span class="symbol">:unique</span>
-<span class="punct">=&gt;</span>
-<span class="constant">true</span>
-<span class="comment"># habtmthru</span>
-<span class="ident">has_and_belongs_to_many</span>
-<span class="symbol">:idiots</span>
-<span class="punct">,</span>
-<span class="symbol">:through</span>
-<span class="punct">=&gt;</span>
-<span class="symbol">:village</span>
-<span class="comment"># belongsto</span>
-<span class="ident">belongs_to</span>
-<span class="symbol">:village</span>
-<span class="comment"># createtable</span>
-<span class="ident">create_table</span>
-<span class="symbol">:sessions</span>
-<span class="keyword">do</span>
-<span class="punct"></span>
-<span class="ident">t</span>
-<span class="punct"></span>
-<span class="ident">t</span>
-<span class="punct">.</span>
-<span class="ident">column</span>
-<span class="punct">(</span>
-<span class="symbol">:name</span>
-<span class="punct">,</span>
-<span class="symbol">:string</span>
-<span class="punct">,</span>
-<span class="symbol">:limit</span>
-<span class="punct">=&gt;</span>
-<span class="number">34</span>
-<span class="punct">)</span>
-<span class="ident">t</span>
-<span class="punct">.</span>
-<span class="ident">column</span>
-<span class="punct">(</span>
-<span class="symbol">:description</span>
-<span class="punct">,</span>
-<span class="symbol">:string</span>
-<span class="punct">,</span>
-<span class="symbol">:limit</span>
-<span class="punct">=&gt;</span>
-<span class="number">255</span>
-<span class="punct">)</span>
-<span class="keyword">end</span>
-<span class="comment"># addindex</span>
-<span class="ident">add_index</span>
-<span class="punct">(</span>
-<span class="symbol">:sessions</span>
-<span class="punct">,</span>
-<span class="symbol">:name</span>
-<span class="punct">)</span>
-<span class="comment"># changecolumn</span>
-<span class="ident">change_column</span>
-<span class="punct">(</span>
-<span class="symbol">:sessions</span>
-<span class="punct">,</span>
-<span class="symbol">:name</span>
-<span class="punct">,</span>
-<span class="symbol">:limit</span>
-<span class="punct">=&gt;</span>
-<span class="number">70</span>
-<span class="punct">)</span>
-<span class="comment"># removecolumn</span>
-<span class="ident">remove_column</span>
-<span class="punct">(</span>
-<span class="symbol">:sessions</span>
-<span class="punct">,</span>
-<span class="symbol">:name</span>
-<span class="punct">)</span>
-<span class="comment"># irreversible</span>
-<span class="keyword">raise</span>
-<span class="constant">ActiveRecord</span>
-<span class="punct">::</span>
-<span class="constant">IrreversibleMigration</span>
-<span class="punct">,</span>
-<span class="punct">"</span>
-<span class="string">the reason the migration is irreversible</span>
-<span class="punct">"</span>
-<span class="comment"># resource</span>
-<span class="keyword">class</span>
-<span class="class">PersonResource</span>
-<span class="punct">&lt;</span>
-<span class="constant">ActiveResource</span>
-<span class="punct">::</span>
-<span class="constant">Base</span>
-<span class="constant">self</span>
-<span class="punct">.</span>
-<span class="ident">site</span>
-<span class="punct">=</span>
-<span class="punct">"</span>
-<span class="string">http://domain.com:8080/</span>
-<span class="punct">"</span>
-<span class="constant">self</span>
-<span class="punct">.</span>
-<span class="ident">element_name</span>
-<span class="punct">=</span>
-<span class="punct">"</span>
-<span class="string">contacts</span>
-<span class="punct">"</span>
-<span class="constant">self</span>
-<span class="punct">.</span>
-<span class="ident">prefix</span>
-<span class="punct">=</span>
-<span class="punct">"</span>
-<span class="string">v1_0</span>
-<span class="punct">"</span>
-<span class="constant">self</span>
-<span class="punct">.</span>
-<span class="ident">user</span>
-<span class="punct">=</span>
-<span class="punct">"</span>
-<span class="string">supo</span>
-<span class="punct">"</span>
-<span class="constant">self</span>
-<span class="punct">.</span>
-<span class="ident">password</span>
-<span class="punct">=</span>
-<span class="punct">"</span>
-<span class="string">geditrocks</span>
-<span class="punct">"</span>
-<span class="constant">self</span>
-<span class="punct">.</span>
-<span class="ident">timeout</span>
-<span class="punct">=</span>
-<span class="number">60</span>
-<span class="keyword">end</span>
-<span class="comment"># describe</span>
-<span class="ident">describe</span>
-<span class="constant">PersonResource</span>
-<span class="keyword">do</span>
-<span class="ident">before</span>
-<span class="punct">(</span>
-<span class="symbol">:each</span>
-<span class="punct">)</span>
-<span class="keyword">do</span>
-<span class="attribute">@resource</span>
-<span class="punct">=</span>
-<span class="ident">mock</span>
-<span class="punct">(</span>
-<span class="constant">PersonResource</span>
-<span class="punct">)</span>
-<span class="keyword">end</span>
-<span class="ident">it</span>
-<span class="punct">"</span>
-<span class="string">should bla</span>
-<span class="punct">"</span>
-<span class="keyword">do</span>
-<span class="keyword">end</span>
-<span class="ident">after</span>
-<span class="punct">(</span>
-<span class="symbol">:each</span>
-<span class="punct">)</span>
-<span class="keyword">do</span>
-<span class="attribute">@resource</span>
-<span class="punct">=</span>
-<span class="constant">nil</span>
-<span class="keyword">end</span>
-<span class="keyword">end</span>
-<span class="comment"># specmodelerror</span>
-<span class="ident">it</span>
-<span class="punct">"</span>
-<span class="string">should have an error on name</span>
-<span class="punct">"</span>
-<span class="keyword">do</span>
-<span class="attribute">@user</span>
-<span class="punct">.</span>
-<span class="ident">should</span>
-<span class="ident">have</span>
-<span class="punct">(</span>
-<span class="number">1</span>
-<span class="punct">).</span>
-<span class="ident">errors_on</span>
-<span class="punct">(</span>
-<span class="symbol">:name</span>
-<span class="punct">)</span>
-<span class="keyword">end</span>
-<span class="comment"># specmodelrecords</span>
-<span class="ident">it</span>
-<span class="punct">"</span>
-<span class="string">should have 50 records</span>
-<span class="punct">"</span>
-<span class="keyword">do</span>
-<span class="attribute">@states</span>
-<span class="punct">.</span>
-<span class="ident">should</span>
-<span class="ident">have</span>
-<span class="punct">(</span>
-<span class="number">50</span>
-<span class="punct">).</span>
-<span class="ident">records</span>
-<span class="keyword">end</span>
-<span class="comment"># spectemplaterendered</span>
-<span class="ident">it</span>
-<span class="punct">"</span>
-<span class="string">should render 'common/user' on get '/user'</span>
-<span class="punct">"</span>
-<span class="keyword">do</span>
-<span class="ident">get</span>
-<span class="punct">('</span>
-<span class="string">/user</span>
-<span class="punct">')</span>
-<span class="ident">response</span>
-<span class="punct">.</span>
-<span class="ident">should</span>
-<span class="punct">(</span>
-<span class="ident">render_template</span>
-<span class="punct">("</span>
-<span class="string">common/user</span>
-<span class="punct">"))</span>
-<span class="keyword">end</span>
-<span class="comment"># specresponsetext</span>
-<span class="ident">it</span>
-<span class="punct">"</span>
-<span class="string">should return text 'You were signed out.' in response to post on '/signout'</span>
-<span class="punct">"</span>
-<span class="keyword">do</span>
-<span class="ident">post</span>
-<span class="punct">('</span>
-<span class="string">/signout</span>
-<span class="punct">')</span>
-<span class="ident">response</span>
-<span class="punct">.</span>
-<span class="ident">should</span>
-<span class="ident">have_text</span>
-<span class="punct">("</span>
-<span class="string">You were signed out.</span>
-<span class="punct">")</span>
-<span class="keyword">end</span>
-<span class="comment"># specresponseredirect</span>
-<span class="ident">it</span>
-<span class="punct">"</span>
-<span class="string">should redirect to action 'index' on post '/users'</span>
-<span class="punct">"</span>
-<span class="keyword">do</span>
-<span class="ident">post</span>
-<span class="punct">('</span>
-<span class="string">/users</span>
-<span class="punct">')</span>
-<span class="ident">response</span>
-<span class="punct">.</span>
-<span class="ident">should</span>
-<span class="ident">redirect_to</span>
-<span class="punct">(</span>
-<span class="symbol">:action</span>
-<span class="punct">=&gt;</span>
-<span class="punct">'</span>
-<span class="string">index</span>
-<span class="punct">')</span>
-<span class="keyword">end</span>
-<span class="comment"># specroutefor</span>
-<span class="ident">it</span>
-<span class="punct">"</span>
-<span class="string">should map #index to '/users'</span>
-<span class="punct">"</span>
-<span class="keyword">do</span>
-<span class="ident">route_for</span>
-<span class="punct">(</span>
-<span class="symbol">:controller</span>
-<span class="punct">=&gt;</span>
-<span class="punct">"</span>
-<span class="string">users</span>
-<span class="punct">",</span>
-<span class="symbol">:action</span>
-<span class="punct">=&gt;</span>
-<span class="punct">"</span>
-<span class="string">index</span>
-<span class="punct">").</span>
-<span class="ident">should</span>
-<span class="punct">==</span>
-<span class="punct">"</span>
-<span class="string">/users</span>
-<span class="punct">"</span>
-<span class="keyword">end</span>
-<span class="comment"># specparamsfrom</span>
-<span class="ident">it</span>
-<span class="punct">"</span>
-<span class="string">should generate params for #update</span>
-<span class="punct">"</span>
-<span class="keyword">do</span>
-<span class="ident">params_from</span>
-<span class="punct">(</span>
-<span class="symbol">:put</span>
-<span class="punct">,</span>
-<span class="punct">"</span>
-<span class="string">/users/1</span>
-<span class="punct">").</span>
-<span class="ident">should</span>
-<span class="punct">==</span>
-<span class="punct">{</span>
-<span class="symbol">:controller</span>
-<span class="punct">=&gt;</span>
-<span class="punct">"</span>
-<span class="string">users</span>
-<span class="punct">",</span>
-<span class="symbol">:action</span>
-<span class="punct">=&gt;</span>
-<span class="punct">"</span>
-<span class="string">update</span>
-<span class="punct">",</span>
-<span class="symbol">:id</span>
-<span class="punct">=&gt;</span>
-<span class="punct">"</span>
-<span class="string">1</span>
-<span class="punct">"}</span>
-<span class="keyword">end</span>
-<span class="comment"># spectagexists</span>
-<span class="ident">response</span>
-<span class="punct">.</span>
-<span class="ident">should</span>
-<span class="ident">have_tag</span>
-<span class="punct">('</span>
-<span class="string">ul.menu#sidebar</span>
-<span class="punct">')</span>
-<span class="comment"># specnestedtagexists</span>
-<span class="ident">response</span>
-<span class="punct">.</span>
-<span class="ident">should</span>
-<span class="ident">have_tag</span>
-<span class="punct">('</span>
-<span class="string">ul.menu</span>
-<span class="punct">')</span>
-<span class="keyword">do</span>
-<span class="ident">with_tag</span>
-<span class="punct">('</span>
-<span class="string">li</span>
-<span class="punct">',</span>
-<span class="punct">'</span>
-<span class="string">my menu item</span>
-<span class="punct">')</span>
-<span class="comment"># specchildtagexists</span>
-<span class="ident">with_tag</span>
-<span class="punct">('</span>
-<span class="string">li</span>
-<span class="punct">',</span>
-<span class="punct">'</span>
-<span class="string">my second menu item</span>
-<span class="punct">')</span>
-<span class="keyword">end</span>
-<span class="comment"># specblocktagexists</span>
-<span class="ident">response</span>
-<span class="punct">[</span>
-<span class="symbol">:sidebar</span>
-<span class="punct">].</span>
-<span class="ident">should</span>
-<span class="ident">have_tag</span>
-<span class="punct">('</span>
-<span class="string">ul#sidebar</span>
-<span class="punct">')</span>
-<span class="comment"># mockviewhelper</span>
-<span class="ident">template</span>
-<span class="punct">.</span>
-<span class="ident">should_receive</span>
-<span class="punct">(</span>
-<span class="symbol">:curent_user</span>
-<span class="punct">).</span>
-<span class="ident">and_return</span>
-<span class="punct">(</span>
-<span class="ident">mock</span>
-<span class="punct">(</span>
-<span class="constant">User</span>
-<span class="punct">))</span>
-<span class="comment"># specsuccess</span>
-<span class="ident">response</span>
-<span class="punct">.</span>
-<span class="ident">should</span>
-<span class="ident">be_success</span>
-<span class="comment"># specredirect</span>
-<span class="ident">response</span>
-<span class="punct">.</span>
-<span class="ident">should</span>
-<span class="ident">be_redirect</span>
-<span class="comment"># feature</span>
-<span class="constant">Feature</span>
-<span class="punct">:</span>
-<span class="constant">Search</span>
-<span class="constant">Jobs</span>
-<span class="constant">In</span>
-<span class="ident">order</span>
-<span class="ident">to</span>
-<span class="ident">find</span>
-<span class="ident">relevant</span>
-<span class="ident">jobs</span>
-<span class="constant">As</span>
-<span class="ident">a</span>
-<span class="constant">Job</span>
-<span class="constant">Seeker</span>
-<span class="constant">I</span>
-<span class="ident">need</span>
-<span class="ident">to</span>
-<span class="ident">find</span>
-<span class="ident">jobs</span>
-<span class="ident">relevant</span>
-<span class="ident">to</span>
-<span class="ident">me</span>
-<span class="constant">Scenario</span>
-<span class="punct">:</span>
-<span class="constant">Location</span>
-<span class="constant">Search</span>
-<span class="constant">Given</span>
-<span class="ident">a</span>
-<span class="ident">search</span>
-<span class="ident">form</span>
-<span class="constant">When</span>
-<span class="constant">I</span>
-<span class="ident">enter</span>
-<span class="ident">my</span>
-<span class="ident">zip</span>
-<span class="ident">code</span>
-<span class="constant">Then</span>
-<span class="constant">I</span>
-<span class="ident">should</span>
-<span class="ident">see</span>
-<span class="ident">all</span>
-<span class="ident">jobs</span>
-<span class="keyword">in</span>
-<span class="keyword">and</span>
-<span class="ident">around</span>
-<span class="ident">my</span>
-<span class="ident">zip</span>
-<span class="ident">code</span>
-<span class="comment"># scenario</span>
-<span class="constant">Scenario</span>
-<span class="punct">:</span>
-<span class="constant">Skills</span>
-<span class="constant">Search</span>
-<span class="constant">Given</span>
-<span class="ident">a</span>
-<span class="ident">search</span>
-<span class="ident">form</span>
-<span class="constant">When</span>
-<span class="constant">I</span>
-<span class="ident">enter</span>
-<span class="ident">skill</span>
-<span class="ident">keywords</span>
-<span class="constant">Then</span>
-<span class="constant">I</span>
-<span class="ident">should</span>
-<span class="ident">see</span>
-<span class="ident">all</span>
-<span class="ident">job</span>
-<span class="ident">descriptions</span>
-<span class="ident">that</span>
-<span class="ident">mention</span>
-<span class="ident">those</span>
-<span class="ident">keywords</span></pre>
+%pre
+  %span.comment # shebang
+  %span.comment #!/usr/bin/env ruby
+  %span.comment # absrequire
+  %span.ident require
+  %span.punct (
+  %span.constant File
+  %span.punct .
+  %span.ident join
+  %span.punct (
+  %span.constant File
+  %span.punct .
+  %span.ident dirname
+  %span.punct (
+  %span.constant __FILE__
+  %span.punct ),
+  %span.punct "
+  %span.string config
+  %span.punct ",
+  %span.punct "
+  %span.string enviornment
+  %span.punct ")
+  %span.comment # habtm
+  %span.ident has_and_belongs_to_many
+  %span.symbol :idiots
+  %span.comment # unique
+  %span.symbol :unique
+  %span.punct =&gt;
+  %span.constant true
+  %span.comment # habtmthru
+  %span.ident has_and_belongs_to_many
+  %span.symbol :idiots
+  %span.punct ,
+  %span.symbol :through
+  %span.punct =&gt;
+  %span.symbol :village
+  %span.comment # belongsto
+  %span.ident belongs_to
+  %span.symbol :village
+  %span.comment # createtable
+  %span.ident create_table
+  %span.symbol :sessions
+  %span.keyword do
+  %span.punct |
+  %span.ident t
+  %span.punct |
+  %span.ident t
+  %span.punct .
+  %span.ident column
+  %span.punct (
+  %span.symbol :name
+  %span.punct ,
+  %span.symbol :string
+  %span.punct ,
+  %span.symbol :limit
+  %span.punct =&gt;
+  %span.number 34
+  %span.punct )
+  %span.ident t
+  %span.punct .
+  %span.ident column
+  %span.punct (
+  %span.symbol :description
+  %span.punct ,
+  %span.symbol :string
+  %span.punct ,
+  %span.symbol :limit
+  %span.punct =&gt;
+  %span.number 255
+  %span.punct )
+  %span.keyword end
+  %span.comment # addindex
+  %span.ident add_index
+  %span.punct (
+  %span.symbol :sessions
+  %span.punct ,
+  %span.symbol :name
+  %span.punct )
+  %span.comment # changecolumn
+  %span.ident change_column
+  %span.punct (
+  %span.symbol :sessions
+  %span.punct ,
+  %span.symbol :name
+  %span.punct ,
+  %span.symbol :limit
+  %span.punct =&gt;
+  %span.number 70
+  %span.punct )
+  %span.comment # removecolumn
+  %span.ident remove_column
+  %span.punct (
+  %span.symbol :sessions
+  %span.punct ,
+  %span.symbol :name
+  %span.punct )
+  %span.comment # irreversible
+  %span.keyword raise
+  %span.constant ActiveRecord
+  %span.punct ::
+  %span.constant IrreversibleMigration
+  %span.punct ,
+  %span.punct "
+  %span.string the reason the migration is irreversible
+  %span.punct "
+  %span.comment # resource
+  %span.keyword class
+  %span.class PersonResource
+  %span.punct &lt;
+  %span.constant ActiveResource
+  %span.punct ::
+  %span.constant Base
+  %span.constant self
+  %span.punct .
+  %span.ident site
+  %span.punct =
+  %span.punct "
+  %span.string http://domain.com:8080/
+  %span.punct "
+  %span.constant self
+  %span.punct .
+  %span.ident element_name
+  %span.punct =
+  %span.punct "
+  %span.string contacts
+  %span.punct "
+  %span.constant self
+  %span.punct .
+  %span.ident prefix
+  %span.punct =
+  %span.punct "
+  %span.string v1_0
+  %span.punct "
+  %span.constant self
+  %span.punct .
+  %span.ident user
+  %span.punct =
+  %span.punct "
+  %span.string supo
+  %span.punct "
+  %span.constant self
+  %span.punct .
+  %span.ident password
+  %span.punct =
+  %span.punct "
+  %span.string geditrocks
+  %span.punct "
+  %span.constant self
+  %span.punct .
+  %span.ident timeout
+  %span.punct =
+  %span.number 60
+  %span.keyword end
+  %span.comment # describe
+  %span.ident describe
+  %span.constant PersonResource
+  %span.keyword do
+  %span.ident before
+  %span.punct (
+  %span.symbol :each
+  %span.punct )
+  %span.keyword do
+  %span.attribute @resource
+  %span.punct =
+  %span.ident mock
+  %span.punct (
+  %span.constant PersonResource
+  %span.punct )
+  %span.keyword end
+  %span.ident it
+  %span.punct "
+  %span.string should bla
+  %span.punct "
+  %span.keyword do
+  %span.keyword end
+  %span.ident after
+  %span.punct (
+  %span.symbol :each
+  %span.punct )
+  %span.keyword do
+  %span.attribute @resource
+  %span.punct =
+  %span.constant nil
+  %span.keyword end
+  %span.keyword end
+  %span.comment # specmodelerror
+  %span.ident it
+  %span.punct "
+  %span.string should have an error on name
+  %span.punct "
+  %span.keyword do
+  %span.attribute @user
+  %span.punct .
+  %span.ident should
+  %span.ident have
+  %span.punct (
+  %span.number 1
+  %span.punct ).
+  %span.ident errors_on
+  %span.punct (
+  %span.symbol :name
+  %span.punct )
+  %span.keyword end
+  %span.comment # specmodelrecords
+  %span.ident it
+  %span.punct "
+  %span.string should have 50 records
+  %span.punct "
+  %span.keyword do
+  %span.attribute @states
+  %span.punct .
+  %span.ident should
+  %span.ident have
+  %span.punct (
+  %span.number 50
+  %span.punct ).
+  %span.ident records
+  %span.keyword end
+  %span.comment # spectemplaterendered
+  %span.ident it
+  %span.punct "
+  %span.string should render 'common/user' on get '/user'
+  %span.punct "
+  %span.keyword do
+  %span.ident get
+  %span.punct ('
+  %span.string /user
+  %span.punct ')
+  %span.ident response
+  %span.punct .
+  %span.ident should
+  %span.punct (
+  %span.ident render_template
+  %span.punct ("
+  %span.string common/user
+  %span.punct "))
+  %span.keyword end
+  %span.comment # specresponsetext
+  %span.ident it
+  %span.punct "
+  %span.string should return text 'You were signed out.' in response to post on '/signout'
+  %span.punct "
+  %span.keyword do
+  %span.ident post
+  %span.punct ('
+  %span.string /signout
+  %span.punct ')
+  %span.ident response
+  %span.punct .
+  %span.ident should
+  %span.ident have_text
+  %span.punct ("
+  %span.string You were signed out.
+  %span.punct ")
+  %span.keyword end
+  %span.comment # specresponseredirect
+  %span.ident it
+  %span.punct "
+  %span.string should redirect to action 'index' on post '/users'
+  %span.punct "
+  %span.keyword do
+  %span.ident post
+  %span.punct ('
+  %span.string /users
+  %span.punct ')
+  %span.ident response
+  %span.punct .
+  %span.ident should
+  %span.ident redirect_to
+  %span.punct (
+  %span.symbol :action
+  %span.punct =&gt;
+  %span.punct '
+  %span.string index
+  %span.punct ')
+  %span.keyword end
+  %span.comment # specroutefor
+  %span.ident it
+  %span.punct "
+  %span.string should map #index to '/users'
+  %span.punct "
+  %span.keyword do
+  %span.ident route_for
+  %span.punct (
+  %span.symbol :controller
+  %span.punct =&gt;
+  %span.punct "
+  %span.string users
+  %span.punct ",
+  %span.symbol :action
+  %span.punct =&gt;
+  %span.punct "
+  %span.string index
+  %span.punct ").
+  %span.ident should
+  %span.punct ==
+  %span.punct "
+  %span.string /users
+  %span.punct "
+  %span.keyword end
+  %span.comment # specparamsfrom
+  %span.ident it
+  %span.punct "
+  %span.string should generate params for #update
+  %span.punct "
+  %span.keyword do
+  %span.ident params_from
+  %span.punct (
+  %span.symbol :put
+  %span.punct ,
+  %span.punct "
+  %span.string /users/1
+  %span.punct ").
+  %span.ident should
+  %span.punct ==
+  %span.punct {
+  %span.symbol :controller
+  %span.punct =&gt;
+  %span.punct "
+  %span.string users
+  %span.punct ",
+  %span.symbol :action
+  %span.punct =&gt;
+  %span.punct "
+  %span.string update
+  %span.punct ",
+  %span.symbol :id
+  %span.punct =&gt;
+  %span.punct "
+  %span.string 1
+  %span.punct "}
+  %span.keyword end
+  %span.comment # spectagexists
+  %span.ident response
+  %span.punct .
+  %span.ident should
+  %span.ident have_tag
+  %span.punct ('
+  %span.string ul.menu#sidebar
+  %span.punct ')
+  %span.comment # specnestedtagexists
+  %span.ident response
+  %span.punct .
+  %span.ident should
+  %span.ident have_tag
+  %span.punct ('
+  %span.string ul.menu
+  %span.punct ')
+  %span.keyword do
+  %span.ident with_tag
+  %span.punct ('
+  %span.string li
+  %span.punct ',
+  %span.punct '
+  %span.string my menu item
+  %span.punct ')
+  %span.comment # specchildtagexists
+  %span.ident with_tag
+  %span.punct ('
+  %span.string li
+  %span.punct ',
+  %span.punct '
+  %span.string my second menu item
+  %span.punct ')
+  %span.keyword end
+  %span.comment # specblocktagexists
+  %span.ident response
+  %span.punct [
+  %span.symbol :sidebar
+  %span.punct ].
+  %span.ident should
+  %span.ident have_tag
+  %span.punct ('
+  %span.string ul#sidebar
+  %span.punct ')
+  %span.comment # mockviewhelper
+  %span.ident template
+  %span.punct .
+  %span.ident should_receive
+  %span.punct (
+  %span.symbol :curent_user
+  %span.punct ).
+  %span.ident and_return
+  %span.punct (
+  %span.ident mock
+  %span.punct (
+  %span.constant User
+  %span.punct ))
+  %span.comment # specsuccess
+  %span.ident response
+  %span.punct .
+  %span.ident should
+  %span.ident be_success
+  %span.comment # specredirect
+  %span.ident response
+  %span.punct .
+  %span.ident should
+  %span.ident be_redirect
+  %span.comment # feature
+  %span.constant Feature
+  %span.punct :
+  %span.constant Search
+  %span.constant Jobs
+  %span.constant In
+  %span.ident order
+  %span.ident to
+  %span.ident find
+  %span.ident relevant
+  %span.ident jobs
+  %span.constant As
+  %span.ident a
+  %span.constant Job
+  %span.constant Seeker
+  %span.constant I
+  %span.ident need
+  %span.ident to
+  %span.ident find
+  %span.ident jobs
+  %span.ident relevant
+  %span.ident to
+  %span.ident me
+  %span.constant Scenario
+  %span.punct :
+  %span.constant Location
+  %span.constant Search
+  %span.constant Given
+  %span.ident a
+  %span.ident search
+  %span.ident form
+  %span.constant When
+  %span.constant I
+  %span.ident enter
+  %span.ident my
+  %span.ident zip
+  %span.ident code
+  %span.constant Then
+  %span.constant I
+  %span.ident should
+  %span.ident see
+  %span.ident all
+  %span.ident jobs
+  %span.keyword in
+  %span.keyword and
+  %span.ident around
+  %span.ident my
+  %span.ident zip
+  %span.ident code
+  %span.comment # scenario
+  %span.constant Scenario
+  %span.punct :
+  %span.constant Skills
+  %span.constant Search
+  %span.constant Given
+  %span.ident a
+  %span.ident search
+  %span.ident form
+  %span.constant When
+  %span.constant I
+  %span.ident enter
+  %span.ident skill
+  %span.ident keywords
+  %span.constant Then
+  %span.constant I
+  %span.ident should
+  %span.ident see
+  %span.ident all
+  %span.ident job
+  %span.ident descriptions
+  %span.ident that
+  %span.ident mention
+  %span.ident those
+  %span.ident keywords
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -583,7 +584,7 @@ As you will see most of the shortcuts so far are Ruby, Rails, RSpec or Cucumber 
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -592,7 +593,7 @@ As you will see most of the shortcuts so far are Ruby, Rails, RSpec or Cucumber 
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

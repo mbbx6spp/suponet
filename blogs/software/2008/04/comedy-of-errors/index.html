@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,74 +55,79 @@
           <h2>Comedy of Errors</h2>
           <h5 class="time">2008-04-04 10:23:00 -0500</h5>
           Does anyone else find it comical that the
-<a href="http://cjug.org/uger/directory/list">Chicago Java Users Group</a>
+%a{:href =&gt; "http://cjug.org/uger/directory/list"} Chicago Java Users Group
 website is written in Rails?  And apparently not very well if it is not only sending a HTTP 500 error, but still using the default Rails generated 500.html page.  Poor all around.
+
 An IM buddy mentioned it might be JRuby, but I do think it is still very ironic considering the hostility from the Java world regarding Rails in general (whether Ruby on Rails or JRuby on Rails).
+
 I just had to share!:)
-<b>Update:</b>
+%b Update:
 Someone fixed it shortly after I reported it to CJUG.
-<br>
-<b>Update:</b>
+%br/
+%b Update:
 Actually it was only temporarily fixed, it is back to the default 500 Rails error page.
-<br>
-<b>Update:</b>
+%br/
+%b Update:
 In addition they have exposed their SVN information.  See the
-<a href="http://cjug.org/uger/.svn/entries">public entries</a>
+%a{:href =&gt; "http://cjug.org/uger/.svn/entries"} public entries
 and from that information you can find their
-<a href="http://svn.oaktop.com/Uger/trunk/">non-password protected source code and check it out</a>
+%a{:href =&gt; "http://svn.oaktop.com/Uger/trunk/"} non-password protected source code and check it out
 if you like.
+
 If anyone from CJUG is reading, you can fix this by reading my blog entry from two months back called
-<a href="http://snakesgemscoffee.blogspot.com/2008/02/preventing-information-leaks-part-3.html">Preventing Information Leaks, Part 3</a>.
+= succeed "." do
+  %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2008/02/preventing-information-leaks-part-3.html"} Preventing Information Leaks, Part 3
 Although it might be useful to read
-<a href="http://snakesgemscoffee.blogspot.com/2008/02/preventing-information-leaks-part-1.html">part 1</a>
+%a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2008/02/preventing-information-leaks-part-1.html"} part 1
 and
-<a href="http://snakesgemscoffee.blogspot.com/2008/02/preventing-information-leaks-part-2.html">part 2</a>
+%a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2008/02/preventing-information-leaks-part-2.html"} part 2
 as well.  Cheers!
+
 PS I also sent an email to
-<code>info at cjug.org</code>
+%code info at cjug.org
 and received an email delivery error.
-<br>
-<b>Update:</b>
+%br/
+%b Update:
 I may have read too much into the SVN repository information exposure in this specific case since this is an open source Rails application project (I only just realized), thus the non-password protected repository, but I still stand by the rest!:)  It is also not good practice to expose such information from the outset of deploying an web application.
-<br>
-<b>Update (1.5 hours after trying to notify JUG and posting the blog post):</b>
+%br/
+%b Update (1.5 hours after trying to notify JUG and posting the blog post):
 The site has been fixed now for over 5 minutes, so good job fixing it CJUG!:)
-<br>
-<b>Update (8 minutes later):</b>
+%br/
+%b Update (8 minutes later):
 Ooooops!  It is back to the default Rails 500 error page.  Perhaps it is 2 out of three bad FastCGI processes that need to be killed on the server?  HTH someone at CJUG, but since I can't look at the system I can't say for sure.
-<br>
+%br/
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -137,7 +138,7 @@ Ooooops!  It is back to the default Rails 500 error page.  Perhaps it is 2 out o
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -146,7 +147,7 @@ Ooooops!  It is back to the default Rails 500 error page.  Perhaps it is 2 out o
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,85 +55,88 @@
           <h2>Ruby Idioms, Part 3</h2>
           <h5 class="time">2007-01-22 19:32:00 -0600</h5>
           Now, probably the biggest difference after the syntax, and the non-static nature of Ruby for Java heads to get used to is that Ruby is an "expressionist" language.  Meaning almost all statements in Ruby evaluates to a value, i.e. everything that reasonably can be is an expression in Ruby is.  This is definitely not the way Java thinks or works.  So this will take some adjusting to.  Don't worry I will show you an example.
+
 Now the Javafied Ruby code we will optimize is shown below:
-<pre>
-user_id = nil
-if comments
-  if comments.first
-    if comments.first.user
-      user_id = comments.first.user.id
+%pre
+  :preserve
+    
+    user_id = nil
+    if comments
+      if comments.first
+        if comments.first.user
+          user_id = comments.first.user.id
+        end
+      end
     end
-  end
-end
+Now that is some ugly code, but sometimes doing something equivalent to that in Java is very necessary.  So how would a true Rubyist write that code:
+%pre
+  :preserve
+    
+    user_id = comments &amp;&amp; comments.first &amp;&amp; comments.first.user &amp;&amp; comments.first.user.id
+Now let us walk through what this really does.
+%ol
+  %li
+    %code comments
+    is evaluated, if it is
+    = succeed "," do
+      %code nil
+    then the value
+    %code nil
+    is returned, the boolean expression is exited out of (because it is all &amp;&amp;'s and fails at the first condition, thus the whole boolean expression fails) and
+    = succeed "," do
+      %code nil
+    which was the last value evaluated in that expression is set to
+    = succeed "." do
+      %code user_id
+    This is the same outcome that would have occurred in the first code snippet.
+  %li
+    We repeat the process of the previous step for
+    = succeed "," do
+      %code comments.first
+    %code comments.first.user
+    and finally
+    %code comments.first.user.id
+    until either
+    %code nil
+    is encountered and set as the value of user_id or the final part of the boolean expression evaluates to a non-nil value and that value is set to the value of user_id.
+Do you follow?  If not, reread through things again, because it should eventually make sense after a while.
 
-
-
-
-user_id = comments &amp;&amp; comments.first &amp;&amp; comments.first.user &amp;&amp; comments.first.user.id
-
-
-
-%code comments
-is evaluated, if it is
+So this Ruby "optimization" goes against my philosophy of producing code that reads as much like natural language as possible.  For the better more elegant, natural way to solve this, refer to my previous blog entry on
 = succeed "," do
-  %code nil
-then the value
-%code nil
-is returned, the boolean expression is exited out of (because it is all &amp;&amp;'s and fails at the first condition, thus the whole boolean expression fails) and
-= succeed "," do
-  %code nil
-which was the last value evaluated in that expression is set to
-= succeed "." do
-  %code user_id
-This is the same outcome that would have occurred in the first code snippet.
-
-We repeat the process of the previous step for
-= succeed "," do
-  %code comments.first
-%code comments.first.user
-and finally
-%code comments.first.user.id
-until either
-%code nil
-is encountered and set as the value of user_id or the final part of the boolean expression evaluates to a non-nil value and that value is set to the value of user_id.
-
-
-
-
-
-</pre>
+  %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2006/07/rubyisms-forwardables.html"} Rubyisms: Forwardables
+which talks about how to make evaluating attributes on attributes on attributes of your given object a thing of the past in a more elegant way.  This isn't, however, an idiom, since it is not a specific construct of the Ruby language that provides this utility.
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -148,7 +147,7 @@ is encountered and set as the value of user_id or the final part of the boolean 
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -157,7 +156,7 @@ is encountered and set as the value of user_id or the final part of the boolean 
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

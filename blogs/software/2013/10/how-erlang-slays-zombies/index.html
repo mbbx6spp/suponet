@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -58,77 +54,87 @@
           
           <h2>How Erlang Slays Zombies</h2>
           <h5 class="time">2013-10-06 20:31:00 -0500</h5>
-          <p>
+          %p
   At Chicago Erlang Factory Lite last Friday (Oct 4, 2013), I gave a talk on
   what functional programming (and declarative style) taught me when I first
   started using Erlang/OTP at work a few years ago.
-</p>
-<p>
+
+%p
   At the end someone asked about whether, like in his experience with XSLT,
   Erlang codebases could start accruing "zombie" code that no longer, or
   never gets invoked.
-</p>
-<p>
+
+%p
   My answer wasn't fantastic upon reflection so I wanted to elaborate on
   the tooling available in the Erlang ecosystem to address all the types of
   "zombie" code.
-</p>
-<h3>The Weak Zombies</h3>
-<p>
+
+%h3 The Weak Zombies
+
+%p
   When we write code in Erlang we either export the function for other
   modules to use or use only internally in the module. Or we don't use it at
   all. If we don't export it, the Erlang compiler will report this as a
   warning by default. Let's have a look at an example.
-</p>
-<pre><code class="erlang">$ erl
-Erlang R16B02 (erts-5.10.3) [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [
-dtrace]
-Eshell V5.10.3  (abort with ^G)
-1&gt; c(zombie_part1).
-zombie_part1.erl:11: Warning: function weak_zombie/0 is unused
-{ok,zombie_part1}
-2&gt;</code></pre>
-<p>
+
+%pre
+  %code{:class =&gt; 'erlang'}
+    $ erl
+    Erlang R16B02 (erts-5.10.3) [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [
+    dtrace]
+
+    Eshell V5.10.3  (abort with ^G)
+    1&gt; c(zombie_part1).
+    zombie_part1.erl:11: Warning: function weak_zombie/0 is unused
+    {ok,zombie_part1}
+    2&gt;
+
+%p
   As you can see here just compiling the Erlang source with default options
   will warn you that the function <code>weak_zombie/0</code> in the
   <code>zombie_part1</code> module is unused so you can clean it up.
-</p>
-<p>
+
+%p
   I don't believe this is the kind of zombie that the person that asked the
   question really had in mind, so let's keep going.
-</p>
-<h3>Ambiguous Zombies</h3>
-<p>
+
+%h3 Ambiguous Zombies
+
+%p
   Now let's say that this was an exported function of a module that could
   get used by your own project and other projects that may depend on your
   project. Well, there is no great way to tell in this case since you
   would need to know how other projects are using your exported functions to
   know. This boils down to designing your software for others to consume
   well and avoiding adding features where there isn't a warranted use case.
-</p>
-<p>
+
+%p
   Of course, in the simple case where your project's code cannot be used
   as a dependency by other projects, we can use the <code>cover</code>
   module in the standard library. It's a coverage analysis tool for Erlang.
   Let's look below.
-</p>
-<pre><code class="erlang">Erlang R16B02 (erts-5.10.3) [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
-Eshell V5.10.3  (abort with ^G)
-1&gt; {ok, Pid} = cover:start().
-{ok,&lt;0.34.0&gt;}
-2&gt; cover:compile_module(zombie_part1).
-<!-- path/to/zombie_part1.erl:13: Warning: function weak_zombie/1 is unused -->
-{ok,zombie_part1}
-3&gt; c(zombie_caller).
-{ok,zombie_caller}
-4&gt; zombie_caller:main(["Joe", "John", "Joan", "Josephine"]).
-{ok,["John","Joan","Josephine"]}
-5&gt; cover:analyse(zombie_part1).
-{ok,[{{zombie_part1,yo,1},{1,1}},
-{{zombie_part1,weak_zombie,1},{0,1}}]}
-6&gt; cover:stop().
-ok</code></pre>
-<p>
+
+%pre
+  %code{:class =&gt; 'erlang'}
+    Erlang R16B02 (erts-5.10.3) [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
+
+    Eshell V5.10.3  (abort with ^G)
+    1&gt; {ok, Pid} = cover:start().
+    {ok,&lt;0.34.0&gt;}
+    2&gt; cover:compile_module(zombie_part1).
+    /path/to/zombie_part1.erl:13: Warning: function weak_zombie/1 is unused
+    {ok,zombie_part1}
+    3&gt; c(zombie_caller).
+    {ok,zombie_caller}
+    4&gt; zombie_caller:main(["Joe", "John", "Joan", "Josephine"]).
+    {ok,["John","Joan","Josephine"]}
+    5&gt; cover:analyse(zombie_part1).
+    {ok,[{{zombie_part1,yo,1},{1,1}},
+    {{zombie_part1,weak_zombie,1},{0,1}}]}
+    6&gt; cover:stop().
+    ok
+
+%p
   Let's take a peak at what just happened here. First we ran
   <code>zombie_caller:main/1</code> which called functions in
   <code>zombie_part1</code> module to see what got called and what didn't.
@@ -141,65 +147,67 @@ ok</code></pre>
   the <code>main</code> entry point and then running exhaustive,
   representative client requests in a separate OS process. This might run
   for a few minutes or all day, or even all week.
-</p>
-<p>
+
+%p
   So what else can we see from the above snippet. Well what is returned from
   <code>code:analyse/1</code> is something of the following type:
-</p>
-<pre><code class="erlang"></code>
-{ok, [{{Module :: atom, Function :: atom, Arity :: integer()},
-{Cov ::integer(), NonCov :: integer()}}]}</pre>
-<p>
+
+%pre
+  %code{:class =&gt; 'erlang'}
+  {ok, [{{Module :: atom, Function :: atom, Arity :: integer()},
+  {Cov ::integer(), NonCov :: integer()}}]}
+
+%p
   By default (unless you tell it otherwise) <code>cover:analyse</code> will
   provide functional level coverage information. You can request clause
   level of granularity, as well as line level detail.
-</p>
-<p>
+
+%p
   The Erlang documentation is actually really great for cover.
-</p>
-<h3>More Resistant Zombies</h3>
-<p>
+
+%h3 More Resistant Zombies
+
+%p
   Now let's say that we have the following scenario where we added a clause
   for a function which we planned to use, maybe we did use it for a while,
   but realized something else would be better, but we didn't clean up the
   clause when we were done. Let's illustrate this with a watered down
   example:
-</p>
-<p>
+
+%p
   TODO
-</p>
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -210,7 +218,7 @@ ok</code></pre>
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -219,7 +227,7 @@ ok</code></pre>
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

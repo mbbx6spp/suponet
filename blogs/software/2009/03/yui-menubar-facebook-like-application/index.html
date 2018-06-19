@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -58,106 +54,109 @@
           
           <h2>YUI MenuBar: A Facebook-like Application Bar</h2>
           <h5 class="time">2009-03-27 18:59:00 -0500</h5>
-          <p>Below is a snippet of HTML code with embedded Javascript code that will create a top anchored menu bar very similar to what you see at the bottom of the Facebook page:</p>
-<pre style="font-family: Andale Mono, Lucida Console, Monaco, fixed, monospace; color: #000000; background-color: #eee;font-size: 12px;border: 1px dashed #999999;line-height: 14px;padding: 5px; overflow: auto; width: 100%"><code>&lt;!-- Add the following to your HTML/HEAD --&gt;
-&lt;link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/fonts/fonts-min.css"&gt;
-&lt;link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/menu/assets/skins/sam/menu.css"&gt;
-&lt;script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/container/container_core-min.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/menu/menu-min.js"&gt;&lt;/script&gt;
-&lt;script type="text/javascript"&gt;
-YAHOO.util.Event.onDOMReady(function () {
-  var oMenuBar = new YAHOO.widget.MenuBar("menubar");
-  oMenuBar.render();
-});
-&lt;/script&gt;
-
-&lt;!-- in your HTML/BODY modify the following for your own "Facebook Application Bar" menu --&gt;
-&lt;div id="menubar" class="yuimenubar"&gt;
-  &lt;div class="bd"&gt;
-    &lt;ul class="first-of-type"&gt;
-      &lt;li class="yuimenubaritem first-of-type"&gt;
-        &lt;a class="yuimenubaritemlabel" href="#file"&gt;Applications&lt;/a&gt;
-        &lt;div id="file" class="yuimenu"&gt;
-          &lt;div class="bd"&gt;
-            &lt;ul&gt;
-              &lt;li class="yuimenuitem"&gt;
-                &lt;a class="yuimenuitemlabel" href="#"&gt;Notes&lt;em class="helptext"&gt;Ctrl + N&lt;/em&gt;&lt;/a&gt;
-              &lt;/li&gt;
-              &lt;li class="yuimenuitem"&gt;
-                &lt;a class="yuimenuitemlabel" href="#"&gt;Links&lt;em class="helptext"&gt;Ctrl + L&lt;/em&gt;&lt;/a&gt;
-              &lt;/li&gt;
-              &lt;li class="yuimenuitem"&gt;
-                &lt;a class="yuimenuitemlabel" href="#open"&gt;Photos&lt;em class="helptext"&gt;Ctrl + P&lt;/em&gt;&lt;/a&gt;
-                &lt;div id="open" class="yuimenu"&gt;
-                  &lt;div class="bd"&gt;
-                      &lt;ul class="first-of-type"&gt;
-                        &lt;li class="yuimenuitem"&gt;
-                            &lt;a class="yuimenuitemlabel" href="#"&gt;Upload Album&lt;/a&gt;
-                        &lt;/li&gt;
-                        &lt;li class="yuimenuitem"&gt;
-                            &lt;a class="yuimenuitemlabel" href="#"&gt;Browse Albums&lt;/a&gt;
-                        &lt;/li&gt;
-                      &lt;/ul&gt;            
-                  &lt;/div&gt;
-                &lt;/div&gt;            
-              &lt;/li&gt;
-            &lt;/ul&gt;
-          &lt;/div&gt;
+          %p Below is a snippet of HTML code with embedded Javascript code that will create a top anchored menu bar very similar to what you see at the bottom of the Facebook page:
+%pre{:style =&gt; "font-family: Andale Mono, Lucida Console, Monaco, fixed, monospace; color: #000000; background-color: #eee;font-size: 12px;border: 1px dashed #999999;line-height: 14px;padding: 5px; overflow: auto; width: 100%"}
+  %code
+    :preserve
+      &lt;!-- Add the following to your HTML/HEAD --&gt;
+      &lt;link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/fonts/fonts-min.css"&gt;
+      &lt;link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/menu/assets/skins/sam/menu.css"&gt;
+      &lt;script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js"&gt;&lt;/script&gt;
+      &lt;script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/container/container_core-min.js"&gt;&lt;/script&gt;
+      &lt;script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/menu/menu-min.js"&gt;&lt;/script&gt;
+      &lt;script type="text/javascript"&gt;
+      YAHOO.util.Event.onDOMReady(function () {
+        var oMenuBar = new YAHOO.widget.MenuBar("menubar");
+        oMenuBar.render();
+      });
+      &lt;/script&gt;
+      
+      &lt;!-- in your HTML/BODY modify the following for your own "Facebook Application Bar" menu --&gt;
+      &lt;div id="menubar" class="yuimenubar"&gt;
+        &lt;div class="bd"&gt;
+          &lt;ul class="first-of-type"&gt;
+            &lt;li class="yuimenubaritem first-of-type"&gt;
+              &lt;a class="yuimenubaritemlabel" href="#file"&gt;Applications&lt;/a&gt;
+              &lt;div id="file" class="yuimenu"&gt;
+                &lt;div class="bd"&gt;
+                  &lt;ul&gt;
+                    &lt;li class="yuimenuitem"&gt;
+                      &lt;a class="yuimenuitemlabel" href="#"&gt;Notes&lt;em class="helptext"&gt;Ctrl + N&lt;/em&gt;&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="yuimenuitem"&gt;
+                      &lt;a class="yuimenuitemlabel" href="#"&gt;Links&lt;em class="helptext"&gt;Ctrl + L&lt;/em&gt;&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="yuimenuitem"&gt;
+                      &lt;a class="yuimenuitemlabel" href="#open"&gt;Photos&lt;em class="helptext"&gt;Ctrl + P&lt;/em&gt;&lt;/a&gt;
+                      &lt;div id="open" class="yuimenu"&gt;
+                        &lt;div class="bd"&gt;
+                            &lt;ul class="first-of-type"&gt;
+                              &lt;li class="yuimenuitem"&gt;
+                                  &lt;a class="yuimenuitemlabel" href="#"&gt;Upload Album&lt;/a&gt;
+                              &lt;/li&gt;
+                              &lt;li class="yuimenuitem"&gt;
+                                  &lt;a class="yuimenuitemlabel" href="#"&gt;Browse Albums&lt;/a&gt;
+                              &lt;/li&gt;
+                            &lt;/ul&gt;            
+                        &lt;/div&gt;
+                      &lt;/div&gt;            
+                    &lt;/li&gt;
+                  &lt;/ul&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+            &lt;li class="yuimenubaritem first-of-type"&gt;
+              &lt;a class="yuimenubaritemlabel" href="#"edit&gt;Something Else&lt;/a&gt;
+              &lt;div id="pim" class="yuimenu"&gt;
+                &lt;div class="bd"&gt;
+                  &lt;ul class="first-of-type"&gt;
+                    &lt;li class="yuimenuitem"&gt;
+                      &lt;a class="yuimenuitemlabel" href="#"&gt; Bla 1&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li class="yuimenuitem"&gt;
+                      &lt;a class="yuimenuitemlabel" href="#"&gt; Bla 2&lt;/a&gt;
+                    &lt;/li&gt;
+                  &lt;/ul&gt;            
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
         &lt;/div&gt;
-      &lt;/li&gt;
-      &lt;li class="yuimenubaritem first-of-type"&gt;
-        &lt;a class="yuimenubaritemlabel" href="#"edit&gt;Something Else&lt;/a&gt;
-        &lt;div id="pim" class="yuimenu"&gt;
-          &lt;div class="bd"&gt;
-            &lt;ul class="first-of-type"&gt;
-              &lt;li class="yuimenuitem"&gt;
-                &lt;a class="yuimenuitemlabel" href="#"&gt; Bla 1&lt;/a&gt;
-              &lt;/li&gt;
-              &lt;li class="yuimenuitem"&gt;
-                &lt;a class="yuimenuitemlabel" href="#"&gt; Bla 2&lt;/a&gt;
-              &lt;/li&gt;
-            &lt;/ul&gt;            
-          &lt;/div&gt;
-        &lt;/div&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
+      &lt;/div&gt;
 For further details about customizing the YUI MenuBar look and feel you should visit the
-<a href="http://developer.yahoo.com/yui/docs/YAHOO.widget.MenuBar.html">API documentation</a>
+%a{:href =&gt; "http://developer.yahoo.com/yui/docs/YAHOO.widget.MenuBar.html"} API documentation
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -168,7 +167,7 @@ For further details about customizing the YUI MenuBar look and feel you should v
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -177,7 +176,7 @@ For further details about customizing the YUI MenuBar look and feel you should v
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

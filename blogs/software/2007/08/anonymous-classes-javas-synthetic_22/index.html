@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,76 +55,79 @@
           <h2>Anonymous Classes: Java's Synthetic Closure, Part 2</h2>
           <h5 class="time">2007-08-22 22:16:00 -0500</h5>
           So in the last installment we saw something like the following (paraphrased) in Java:
-<pre><code>
-    executeTransaction(session, new PersistenceExecutor() {
-      public PersistenceExecutionResult execute() {
-        return new PersistenceExecutionResult(session.save(persistableObject);
-      }
-    });
+%pre
+  %code
+    :preserve
+      
+          executeTransaction(session, new PersistenceExecutor() {
+            public PersistenceExecutionResult execute() {
+              return new PersistenceExecutionResult(session.save(persistableObject);
+            }
+          });
+To accomplish the same thing, though in a more error prone manner, we might just do the following:
+%code
+  %pre
+    :preserve
+      
+        session.open();
+        Object obj = session.save(persistableObject);
+        session.close();
+Now you say, well that looks better.  Well yes and no.  The problem with this approach arises when the logic in between
+%tt session.open()
+and
+%tt session.close()
+is more involved.  If we had 10 lines of code between the open/close markers and we came to refactor the logic, but omitted the call to close, our tests (if they are purely state-based tests from the TDD world) would probably not catch this omission at the level we would want to catch it.  Remember the more levels you need to debug to find the issue the more time you have wasted not doing useful work on new stories or fixing defects, etc.
 
-
-
-
-
-  session.open();
-  Object obj = session.save(persistableObject);
-  session.close();
-
-
-
-
-
-
-
-
-
-
-
-
-# When a corporate action like merger, spinoff, etc. occurs for an issuer, usually 
-# a new option has a basket underlying instead of just a set of equities, so code might 
-# look like the following.
-Option.transaction(equityOption, basketOption) do
-  equityOption.substitute_with(basketOption)
-  equityOption.expire
-  basketOption.activate
-end
-
-
-
-</code></pre>
+Of course, in the Ruby world where closures are just there for the taking, we don't have to justify ugly looking code to help package reusable "wrapper" logic like above.  In a Ruby project that utilizes
+%tt ActiveRecord
+we can simply write:
+%pre
+  %code
+    :preserve
+      
+      # When a corporate action like merger, spinoff, etc. occurs for an issuer, usually 
+      # a new option has a basket underlying instead of just a set of equities, so code might 
+      # look like the following.
+      Option.transaction(equityOption, basketOption) do
+        equityOption.substitute_with(basketOption)
+        equityOption.expire
+        basketOption.activate
+      end
+So that I don't sound completely smug to my Java friends, I will let you decide which code snippet looks more beautiful!:)
+%b Update:
+One of my Java friends says there are no closures yet in Java 6, but there are talks about closures in 7 (or will it be version 96 next?), but it is all up in the air.
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -139,7 +138,7 @@ end
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -148,7 +147,7 @@ end
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,92 +55,100 @@
           <h2>Injecting Understanding</h2>
           <h5 class="time">2007-04-19 15:42:00 -0500</h5>
           Over the past 4 weeks numerous people (Java heads trying out Ruby for the first time, or even coding neophytes that are jumping on board the Ruby train) have asked me about the
-<code>.inject</code>
+%code .inject
 method.  So I will try to demystify a method that (to me) epitomizes Ruby, yet baffles many that first encounter it.
+
 First, let's start with the basic concept.  Here is some code you might find around in Ruby examples, etc., to demonstrate the purpose of
-<code>inject</code>:
-<pre>
-(1..10).inject(0) { |cumulative_sum, item| cumulative_sum + item } #=&gt; 55
+= succeed ":" do
+  %code inject
+%pre
+  :preserve
+    
+    (1..10).inject(0) { |cumulative_sum, item| cumulative_sum + item } #=&gt; 55
+Let's dissect:
+%ol
+  %li
+    %code (1..10)
+    is an inclusive
+    %code Range
+    (if you don't know what a
+    %code Range
+    is in Ruby...
+    %a{:href =&gt; "http://www.ruby-doc.org/core/classes/Range.html"}&gt; better read up here
+    , as it is out of scope for this article) from 1 to 10 (inclusive).
+  %li
+    Then because
+    %code Range
+    is
+    %code Enumerable
+    (again if you don't know what
+    %code Enumerable
+    in Ruby means...
+    %a{:href =&gt; "http://www.ruby-doc.org/core/classes/Enumerable.html"}&gt; read up about it here
+    , again out of scope of this posting) it has
+    %code inject
+    available, so it bears remembering that it isn't just Arrays
+    %code inject
+    will work on.
+  %li We initially pass in 0 (yes, that's zero) as the argument to inject, which tells inject to start the "balance" at 0 (yes, zero again).  Then it iterates through all the elements in the Range from 1 to 10 (inclusively remember because we used two dots not three) passing in the cumulative sum (or balance) and the current item into the block you define.  The block we defined above is an expression that evaluates to an integer in this case.
+  %li
+    The result of this expression is now set to the cumulative_sum (or "balance") carried forward into the next iteration.  So as we should have all learned in school Mathematics when getting to summation series', the cumulative sum of 1 through 10 is 55 (this is the result we get from inject from the above code - and not by accident either - this is exactly what
+    %code inject
+    is all about).
+You might also remember (or perhaps it is just sad Math geeks like myself that remember this stuff) that the sum of any set of consecutive numbers (starting from 1) is defined the by formula:
+= succeed "," do
+  %code (N*(N + 1))/2
+where N is the largest of all consecutive numbers in the set.  With this knowledge we can sanity check (for our own understanding) whether it does what you should expect it to do or if it was just coincidence above:
+%code
+  def sum(n)
+  n*(n+1)/2
+  end
+  
+  (1..9).inject(0) { |cumulative_sum, item| cumulative_sum + item } #=&gt; 45
+  sum(9) #=&gt; 45
+  
+  (1..100).inject(0) { |cumulative_sum, item| cumulative_sum + item } #=&gt; 5050
+  sum(100) #=&gt; 100
+  
+  (1..7890).inject(0) { |cumulative_sum, item| cumulative_sum + item } #=&gt; 31129995
+  sum(7890) #=&gt; 31129995
+See told you it wasn't just coincidence - or what everything above a coincidence? Hmmmm..let's not go there right now!:).
 
+I'll bet you could very easily figure out the more general formula for any sum of consecutive positive integers not necessarily starting at 1 (yes, that is one).  At least that is what my Mathematics teacher would ask us to do for homework (really not very much homework to be honest - I had a nice teacher)!  I'll not make you prove it by induction today though;)  Maybe tomorrow...
 
-
-%code (1..10)
-is an inclusive
-%code Range
-(if you don't know what a
-%code Range
-is in Ruby...
-%a{:href =&gt; "http://www.ruby-doc.org/core/classes/Range.html"}&gt; better read up here
-, as it is out of scope for this article) from 1 to 10 (inclusive).
-
-Then because
-%code Range
-is
-%code Enumerable
-(again if you don't know what
-%code Enumerable
-in Ruby means...
-%a{:href =&gt; "http://www.ruby-doc.org/core/classes/Enumerable.html"}&gt; read up about it here
-, again out of scope of this posting) it has
-%code inject
-available, so it bears remembering that it isn't just Arrays
-%code inject
-will work on.
-
-
-The result of this expression is now set to the cumulative_sum (or "balance") carried forward into the next iteration.  So as we should have all learned in school Mathematics when getting to summation series', the cumulative sum of 1 through 10 is 55 (this is the result we get from inject from the above code - and not by accident either - this is exactly what
-%code inject
-is all about).
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</pre>
+Now you can do more interesting things instead of just summing consecutive positive integers.  Don't just move on to geometric progressions either - the world is your oyster...like finding numerical solutions using an iterative method of your choice using this streamlined apporach!
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -155,7 +159,7 @@ is all about).
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -164,7 +168,7 @@ is all about).
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

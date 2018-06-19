@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -58,128 +54,114 @@
           
           <h2>How agile practices improve code review</h2>
           <h5 class="time">2010-01-30 21:27:00 -0600</h5>
-          <p>On a mailing list recently someone posed a question about how to incorporate code reviews into an "agile methodology".  While I had questions about the way the question was posed it got me thinking about how agile practices make code review happen more often, more organically and more transparently.  Having different members of the team review code at different times during the development process on agile projects is both explicit, but also implicit.</p>
-<h4>Values</h4>
-<p>
+          %p On a mailing list recently someone posed a question about how to incorporate code reviews into an "agile methodology".  While I had questions about the way the question was posed it got me thinking about how agile practices make code review happen more often, more organically and more transparently.  Having different members of the team review code at different times during the development process on agile projects is both explicit, but also implicit.
+%h4 Values
+%p
   Let us back up a little here.  First off
-  <em>agile</em>
+  %em agile
   is at its core a set of four ideals.  Prefer:
-</p>
-<ul>
-  <li>
-    <strong>individuals and interactions</strong>
-    <em>over</em>
+%ul
+  %li
+    %strong individuals and interactions
+    %em over
     processes and tools
-  </li>
-  <li>
-    <strong>working software</strong>
-    <em>over</em>
+  %li
+    %strong working software
+    %em over
     complete documentation
-  </li>
-  <li>
-    <strong>customer involvement</strong>
-    <em>over</em>
+  %li
+    %strong customer involvement
+    %em over
     contract negotiation
-  </li>
-  <li>
-    <strong>adapting to changing needs</strong>
-    <em>over</em>
+  %li
+    %strong adapting to changing needs
+    %em over
     completing a stale plan
-  </li>
-</ul>
-<h4>Principles/Tenets</h4>
-<p>From these ideals there are about 10 or so principles or tenets that are most commonly discussed among agile practitioners from most of the main camps.  This is where it starts getting controversial as some agile camps acknowledge some of these principles and others do not necessarily, so here are just a few that I want to talk about in relation to increasing code review on agile projects:</p>
-<ul>
-  <li>
-    <strong>Collective team ownership of product:</strong>
+%h4 Principles/Tenets
+%p From these ideals there are about 10 or so principles or tenets that are most commonly discussed among agile practitioners from most of the main camps.  This is where it starts getting controversial as some agile camps acknowledge some of these principles and others do not necessarily, so here are just a few that I want to talk about in relation to increasing code review on agile projects:
+%ul
+  %li
+    %strong Collective team ownership of product:
     meaning everyone on the team owns the product and nobody on the team is exclusive to just one or a couple of components of the product.
-  </li>
-  <li>
-    <strong>Embracing change:</strong>
+  %li
+    %strong Embracing change:
     instead of continuing down a set path determined long ago that no longer applies, the team needs to adapt to customer's changing requirements at set (and regular) intervals (these might be called iteration planning meetings/negotiations, for example).  This has various implications throughout the iteration/sprint.
-  </li>
-  <li>
-    <strong>Verify expectations continuously:</strong>
+  %li
+    %strong Verify expectations continuously:
     meaning whenever possible, without impeding development, verify that customer expectations will be satisfied and no new additions have negative impacts.
-  </li>
-  <li>
-    <strong>Customers set priorities:</strong>
+  %li
+    %strong Customers set priorities:
     instead of technical staff or outsourcing companies specifying technical priorities, customers specify business/feature priorities.
-  </li>
-</ul>
-<h4>Practices</h4>
-<p>
+%h4 Practices
+%p
   This is the point where we start seeing the translation into agile
-  <em>practices</em>,
+  = succeed "," do
+    %em practices
   many of while you will start to recognize:
-</p>
-<ul>
-  <li>
-    <strong>Pair programming</strong>
+%ul
+  %li
+    %strong Pair programming
     which arose from both
-    <em>collective team ownership</em>
+    %em collective team ownership
     and
-    <em>embracing change</em>
+    %em embracing change
     tenets.
-  </li>
-  <li>
-    <strong>Test-first</strong>
+  %li
+    %strong Test-first
     practice came about mostly to satisfy
-    <em>embracing change</em>,
+    = succeed "," do
+      %em embracing change
     but also
-    <em>verify expectations continuously</em>
-  </li>
-  <li>
-<strong>Assigning new stories independently of previous ones</strong>. This means that no developer or pair has a niche component or product area and is used to satisfy the first tenet listed above.
-  </li>
-  <li>
-    <strong>Continuous integration</strong>
+    %em verify expectations continuously
+  %li
+    %strong&gt; Assigning new stories independently of previous ones
+    \. This means that no developer or pair has a niche component or product area and is used to satisfy the first tenet listed above.
+  %li
+    %strong Continuous integration
     that helps satisfy the
-    <em>verify expectations continously</em>
+    %em verify expectations continously
     principle.
-  </li>
-  <li>
-<strong>No fear refactoring</strong>, which is only advisable if your test/spec suite has good enough coverage,.  This means you will likely revise poorly constructed code on agile projects vs non-agile projects more often and have the chance to do it more often too.
-  </li>
-</ul>
-<p>Obviously with the pair programming practice that some agile methods promote, you have another set of eyes reviewing code as it is written.  This catches errors closer to the time it was written, which is a big time (and money) saver.</p>
-<p>Applying a test-first approach means that you start out defining custom expectations of the code first before writing the actual code.  This is reviewing, perhaps not code in the traditional way, but the requirements, which in my view is even more productive usually.</p>
-<p>When a project manager assigns new stories to a developer or a pair without confining him/her/them to specific areas of the codebase, this increasing the transparency of the codebase and exposes hidden dragons to be exposed before too long and hopefully before being launched into production (but you never know).  Again this increasing the number of eye balls on parts of the codebase.</p>
-<p>With continuous integration you can incorporate metric tools to capture some metrics of the code so that parts of the code that are obviously in need to technical refactoring get highlighted earlier rather than later.  Increasing transparency of the codebase, which is always a goal of code reviews.</p>
-<p>Hopefully you can see where I am going with this and not think about code reviews in the traditional top-down way where every month or quarter a piece of code is reviewed from each developer in a formal way.</p>
-<p>There are a number of different agile (and common) software practices that could be used, I can think of 4 more off the top of my head that improves codebase visibility across more of the team.</p>
+  %li
+    %strong&gt; No fear refactoring
+    , which is only advisable if your test/spec suite has good enough coverage,.  This means you will likely revise poorly constructed code on agile projects vs non-agile projects more often and have the chance to do it more often too.
+%p Obviously with the pair programming practice that some agile methods promote, you have another set of eyes reviewing code as it is written.  This catches errors closer to the time it was written, which is a big time (and money) saver.
+%p Applying a test-first approach means that you start out defining custom expectations of the code first before writing the actual code.  This is reviewing, perhaps not code in the traditional way, but the requirements, which in my view is even more productive usually.
+%p When a project manager assigns new stories to a developer or a pair without confining him/her/them to specific areas of the codebase, this increasing the transparency of the codebase and exposes hidden dragons to be exposed before too long and hopefully before being launched into production (but you never know).  Again this increasing the number of eye balls on parts of the codebase.
+%p With continuous integration you can incorporate metric tools to capture some metrics of the code so that parts of the code that are obviously in need to technical refactoring get highlighted earlier rather than later.  Increasing transparency of the codebase, which is always a goal of code reviews.
+%p Hopefully you can see where I am going with this and not think about code reviews in the traditional top-down way where every month or quarter a piece of code is reviewed from each developer in a formal way.
+%p There are a number of different agile (and common) software practices that could be used, I can think of 4 more off the top of my head that improves codebase visibility across more of the team.
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -190,7 +172,7 @@
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -199,7 +181,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

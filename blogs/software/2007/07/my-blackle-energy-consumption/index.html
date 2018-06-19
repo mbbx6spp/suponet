@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,67 +55,65 @@
           <h2>My Blackle Energy Consumption Experiment</h2>
           <h5 class="time">2007-07-24 11:14:00 -0500</h5>
           I received a forward from a contact earlier today touting the energy savings of using Blackle instead of Google to search.  My immediate thought was surely there would be no difference for an LCD monitor, or would there?  I can, of course, see for CRT monitors energy savings are highly likely.  The following is the energy saving content from the email forward I received:
-<blockquote>
+%blockquote
   We probably all use google several times a day - here's something to consider:
+  
   When your screen is white, be it an empty word page, or the Google page, your computer consumes 74 watts, and when its black it consumes only 59 watts. An article about the energy saving that would be achieved if Google had a black screen, taking into account the huge number of page views, worked out at a saving of 750 mega watts/hour per year.
+  
   In a response to this article Google created a black version of its search engine, called Blackle, with the exact same functions as the white version, but with a lower energy consumption, check it out:
-  <a href="http://www.blackle.com">http://www.blackle.com</a>
-</blockquote>
+  %a{:href =&gt; "http://www.blackle.com"} http://www.blackle.com
 Since I work for a very energy conscious firm and I have been cycling or walking EVERYWHERE around town this summer (except I allow myself use of my car one afternoon a week maximum), I was curious and had to get to the bottom of it.
-<h4>Hypothesis</h4>There
+= succeed "There" do
+  %h4 Hypothesis
 will not be any significant change in power usage (aka wattage) when viewing Google.com in my web browser versus viewing Blackle.com in the same web browser window.  (I must confess I already knew how LCD monitors worked before conducting this experiment, but there are a surprising number of people who do not believe the backlight of an LCD monitor is on for the entire LCD regardless of what is being shown - ignorance is bliss for some).
-<h4>Conditions</h4>
-<ul>
-  <li>Dimensions of browser on screen must remain constant for both page views</li>
+%h4 Conditions
+%ul
+  %li Dimensions of browser on screen must remain constant for both page views
   Power reader is monitored for 30 seconds while each page is being displayed and all reading changes will be noted
-</ul>
-<h4>Equipment</h4>
-<ul>
-  <li>
-    <a href="http://www.amazon.com/gp/redirect.html?ie=UTF8&amp;location=http%3A%2F%2Fwww.amazon.com%2FP3-International-Kill-Electricity-Monitor%2Fdp%2FB00009MDBU%3Fie%3DUTF8%26s%3Delectronics%26qid%3D1185292894%26sr%3D1-1&amp;tag=illinilistn09-20&amp;linkCode=ur2&amp;camp=1789&amp;creative=9325">P3 Kill-A-Watt reader (x1)</a>
-    <img alt="" border="0" height="1" src="http://www.assoc-amazon.com/e/ir?t=illinilistn09-20&amp;amp;l=ur2&amp;amp;o=1" style="border:none !important; margin:0px !important;" width="1">
-  </li>
-  <li>17" Dell LCD monitor (x1)</li>
-  <li>[Indirectly used] Dell workstation (x1)</li>
-  <li>Cell phone (to time page view durations)</li>
-</ul>
-<h4>Preparation</h4>
-<ol>
-  <li>Power off LCD monitor and unplug from power supply</li>
-  <li>Plug in power reader into power supply and plug LCD monitor plug into power reader socket</li>
-  <li>Select power reading (can choose from voltage, power and current "real-time" readings)</li>
-  <li>Record initial "power off" reading</li>
-  <li>Power on LCD monitor</li>
-  <li>Record initial "power on" reading</li>
-</ol>
-<h4>Method</h4>
-<ol>
-  <li>Open web browser and maximize window</li>
-  <li>
+%h4 Equipment
+%ul
+  %li
+    %a{:href =&gt; "http://www.amazon.com/gp/redirect.html?ie=UTF8&amp;location=http%3A%2F%2Fwww.amazon.com%2FP3-International-Kill-Electricity-Monitor%2Fdp%2FB00009MDBU%3Fie%3DUTF8%26s%3Delectronics%26qid%3D1185292894%26sr%3D1-1&amp;tag=illinilistn09-20&amp;linkCode=ur2&amp;camp=1789&amp;creative=9325"} P3 Kill-A-Watt reader (x1)
+    %img{:alt =&gt; "", :border =&gt; "0", :height =&gt; "1", :src =&gt; "http://www.assoc-amazon.com/e/ir?t=illinilistn09-20&amp;l=ur2&amp;o=1", :style =&gt; "border:none !important; margin:0px !important;", :width =&gt; "1"}/
+  %li 17" Dell LCD monitor (x1)
+  %li [Indirectly used] Dell workstation (x1)
+  %li Cell phone (to time page view durations)
+%h4 Preparation
+%ol
+  %li Power off LCD monitor and unplug from power supply
+  %li Plug in power reader into power supply and plug LCD monitor plug into power reader socket
+  %li Select power reading (can choose from voltage, power and current "real-time" readings)
+  %li Record initial "power off" reading
+  %li Power on LCD monitor
+  %li Record initial "power on" reading
+%h4 Method
+%ol
+  %li Open web browser and maximize window
+  %li
     Surf to
-    <tt>http://google.com</tt>
-  </li>
-  <li>Start cell phone timer as soon as page is loaded</li>
-  <li>Monitor power reading for 30 seconds and note any changes to reading</li>
-  <li>
+    %tt http://google.com
+  %li Start cell phone timer as soon as page is loaded
+  %li Monitor power reading for 30 seconds and note any changes to reading
+  %li
     In same web browser window surf to
-    <tt>http://blackle.com</tt>
-  </li>
-  <li>Start cell phone timers as soon as page is loaded</li>
-  <li>Monitor power reading for 30 seconds and note any changes to reading</li>
-</ol>
-<h4>Results</h4>
-<b>Initial "power off" reading:</b>
+    %tt http://blackle.com
+  %li Start cell phone timers as soon as page is loaded
+  %li Monitor power reading for 30 seconds and note any changes to reading
+%h4 Results
+%b Initial "power off" reading:
 0W (zero Watts)
-<b>Initial "power on" reading:</b>
+%b Initial "power on" reading:
 20W (twenty Watts) after 3-4 seconds
-<b>Google reading:</b>
+%b Google reading:
 started at 20W, no change for 30 seconds, ended at 20W.
-<b>Blackle reading:</b>
+%b Blackle reading:
 started at 20W, no change for 30 seconds, ended at 20W.
-<h4>Analysis</h4>As
+= succeed "As" do
+  %h4 Analysis
 we can see there was no significant change in the reading (to stated equipment error of plus or minus 0.2%).
+
 Therefore our hypothesis is shown to hold in this experiment using the equipment identified above and I conclude that Blackle has next to zero impact on energy consumption of LCD monitors.
+
 The good news is that my LCD monitor consumes much less than Blackle's claim of 50-75 Watts regardless of the search engine presentation I use!:)
 
         </article>
@@ -127,32 +121,32 @@ The good news is that my LCD monitor consumes much less than Blackle's claim of 
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -163,7 +157,7 @@ The good news is that my LCD monitor consumes much less than Blackle's claim of 
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -172,7 +166,7 @@ The good news is that my LCD monitor consumes much less than Blackle's claim of 
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

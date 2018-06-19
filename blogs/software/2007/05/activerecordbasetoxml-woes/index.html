@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,90 +55,96 @@
           <h2>ActiveRecord::Base#to_xml woes</h2>
           <h5 class="time">2007-05-08 23:10:00 -0500</h5>
           For us Railies that use namespaced models inside Ruby modules and are relying on ActiveRecord::Base#to_xml, do not fret any longer.
+
 To reproduce the problem you just need to do something like:
-<code>users = Legacy::User.find(:all) #=&gt; []
-users.to_xml #=&gt; &lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;&lt;legacy/users&gt;&lt;/legacy/users&gt;</code>
+%code
+  users = Legacy::User.find(:all) #=&gt; []
+  users.to_xml #=&gt; &lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;&lt;legacy/users&gt;&lt;/legacy/users&gt;
 The XML produced by
-<code>#to_xml</code>
+%code #to_xml
 is NOT valid XML for this case.
+
 It's been a small thorn in my side for a week or so now and I've been living with it by adding the following to a file that is eventually/implicitly required by environment.rb:
-<pre>
-# Patch for Rails #8305 that I submitted on 2007-05-09
-# We'll need to keep an eye out upon next Rails Gem upgrade whether or not this 
-# fix has been applied to remove this or not.
-require 'active_record'
-require 'active_support'
-
-class ActiveRecord::Base
-  alias :old_to_xml :to_xml
-  def to_xml(options = {}, &amp;block)
-    options[:root] ||= self.class.name.tableize.singularize.gsub(/\//, ':') # for models that are namespaced in Ruby module
-    old_to_xml(options, &amp;block)
-  end
-end
-
-module ContainerPatchMixin
-  def self.included(base)
-    base.class_eval %{
+%pre
+  :preserve
+    
+    # Patch for Rails #8305 that I submitted on 2007-05-09
+    # We'll need to keep an eye out upon next Rails Gem upgrade whether or not this 
+    # fix has been applied to remove this or not.
+    require 'active_record'
+    require 'active_support'
+    
+    class ActiveRecord::Base
       alias :old_to_xml :to_xml
-    }
-    base.send(:include, InstanceMethods)
-  end
-  
-  module InstanceMethods
-    def to_xml(options = {})
-      contained_class = self.first.class.name
-      options[:root] ||= contained_class.tableize.gsub(/\//, ':') # for models that are namespaced in Ruby module
-      options[:children] ||= contained_class.tableize.singularize.gsub(/\//, ':') # for models that are namespaced in Ruby module
-      old_to_xml(options)
+      def to_xml(options = {}, &amp;block)
+        options[:root] ||= self.class.name.tableize.singularize.gsub(/\//, ':') # for models that are namespaced in Ruby module
+        old_to_xml(options, &amp;block)
+      end
     end
-  end
-end
+    
+    module ContainerPatchMixin
+      def self.included(base)
+        base.class_eval %{
+          alias :old_to_xml :to_xml
+        }
+        base.send(:include, InstanceMethods)
+      end
+      
+      module InstanceMethods
+        def to_xml(options = {})
+          contained_class = self.first.class.name
+          options[:root] ||= contained_class.tableize.gsub(/\//, ':') # for models that are namespaced in Ruby module
+          options[:children] ||= contained_class.tableize.singularize.gsub(/\//, ':') # for models that are namespaced in Ruby module
+          old_to_xml(options)
+        end
+      end
+    end
+    
+    class Array
+      include ContainerPatchMixin
+    end
+Now what is produced is something more along the lines of:
+%code
+  \&lt;?xml version=\"1.0\" encoding=\"UTF-8\"?&gt;&lt;legacy:users&gt;&lt;/legacy:users&gt;
+Which is valid XML.
 
-class Array
-  include ContainerPatchMixin
-end
+Today I finally reported this edge case defect on dev.rubyonrails.org (
+%a{:href =&gt; "http://dev.rubyonrails.org/ticket/8305"}&gt; #8305
+) as I hadn't seen anyone else report it yet.
 
-
-
-
-
-
-
-
-</pre>
+Thankfully this is Ruby and this is all possible while the Rails Core team determine if my not so elegant fix is worthy to be in the next Rails version or not.
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -153,7 +155,7 @@ end
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -162,7 +164,7 @@ end
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

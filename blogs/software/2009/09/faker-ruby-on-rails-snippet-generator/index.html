@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -58,104 +54,116 @@
           
           <h2>Faker, Ruby on Rails Snippet &amp; Generator</h2>
           <h5 class="time">2009-09-09 19:07:00 -0500</h5>
-          <a href="http://2.bp.blogspot.com/_YUkA0L0Czls/SqhxBu4ZNzI/AAAAAAAAAIo/33EMivvSZsw/s1600-h/twitter-screenshot.png" onblur="try {parent.deselectBloggerImageGracefully();} catch(e) {}">
-  <img alt="" border="0" id="BLOGGER_PHOTO_ID_5379674029472429874" src="http://2.bp.blogspot.com/_YUkA0L0Czls/SqhxBu4ZNzI/AAAAAAAAAIo/33EMivvSZsw/s400/twitter-screenshot.png" style="display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;width: 400px; height: 218px;">
-</a>
+          %a{:href =&gt; "http://2.bp.blogspot.com/_YUkA0L0Czls/SqhxBu4ZNzI/AAAAAAAAAIo/33EMivvSZsw/s1600-h/twitter-screenshot.png", :onblur =&gt; "try {parent.deselectBloggerImageGracefully();} catch(e) {}"}
+  %img#BLOGGER_PHOTO_ID_5379674029472429874{:alt =&gt; "", :border =&gt; "0", :src =&gt; "http://2.bp.blogspot.com/_YUkA0L0Czls/SqhxBu4ZNzI/AAAAAAAAAIo/33EMivvSZsw/s400/twitter-screenshot.png", :style =&gt; "display:block; margin:0px auto 10px; text-align:center;cursor:pointer; cursor:hand;width: 400px; height: 218px;"}/
 Hey blog readers (if there are any left),
+
 I know it has been a while, and I know I have left you high and dry, so today I decided I will share some code and software development thoughts with you.
+
 I am moving to a more snippet oriented blog posting style from now on.  Previously I preferred
-<a href="http://geek.susanpotter.net/2007/06/java-dogma-and-downfall.html" target="_new">long ramblings about the political ideology of programming languages</a>
+%a{:href =&gt; "http://geek.susanpotter.net/2007/06/java-dogma-and-downfall.html", :target =&gt; "_new"} long ramblings about the political ideology of programming languages
 and even
-<a href="http://geek.susanpotter.net/2007/10/democratic-debate-ann-coulter-and.html" target="_new">how Ann Coulter was _more_ comprehensible when I used my Metafusion Crypto library</a>
+%a{:href =&gt; "http://geek.susanpotter.net/2007/10/democratic-debate-ann-coulter-and.html", :target =&gt; "_new"} how Ann Coulter was _more_ comprehensible when I used my Metafusion Crypto library
 on her words (actually that was a marketing lie - she sounded just as incomprehensible using
-<a href="http://github.com/mbbx6spp/metafusion/tree/master/crypto">Metafusion Crypto</a>
+%a{:href =&gt; "http://github.com/mbbx6spp/metafusion/tree/master/crypto"} Metafusion Crypto
 as she did when not using it).  Of course, this was all in 2006-2007 when blogging was all about spewing small tidbits that taught the reader nothing, so I had to be different and attempt to find a reason for things.  Now things are swinging so I am trying to do the opposite from the norm again.
+
 Ok, on with it.
+
 Over the last week I have been using the Rails 2.3.4 "seed" mechanism, which in essence attempts to provide 80% of seed-fu's features inside Rails core.  In addition on my personal projects I have been using machinist as my factory framework of choice (although I am forced to use factory_girl for my clients), through which I was introduced to faker.  A beautiful gem indeed.
+
 So to cut a long story short, I have found myself doing the following a hell of a lot in my brand new Rails 2.3.4 projects this week:
-<code class="ruby"># in db/seeds.rb
-def load_seed_files!
-seed_files = Dir["#{RAILS_ROOT}/db/seeds/all/*.rb"] + Dir["#{RAILS_ROOT}/db/seeds/#{RAILS_ENV}/*.rb"]
-seed_files.each do |file|
-puts "Loading seed file: #{file}"
-load(file)
-end
-end
-load_seed_files!
-# When I add files to the db/seeds/all directory it seed ALL environments
-# When I add files to the db/seeds/{development,staging,test,production} directories it seeds
-# for only that environment.</code>
+%code.ruby
+  \# in db/seeds.rb
+  def load_seed_files!
+  seed_files = Dir["\#{RAILS_ROOT}/db/seeds/all/*.rb"] + Dir["\#{RAILS_ROOT}/db/seeds/\#{RAILS_ENV}/*.rb"]
+  seed_files.each do |file|
+  puts "Loading seed file: \#{file}"
+  load(file)
+  end
+  end
+  
+  load_seed_files!
+  \# When I add files to the db/seeds/all directory it seed ALL environments
+  \# When I add files to the db/seeds/{development,staging,test,production} directories it seeds
+  \# for only that environment.
 Note: I wouldn't recommend using seeds in just staging, test or production generally.  If you need seed data in these environments you _probably_ need them in all environments OR (in the case of the test environment) you need to use a factory framework like machinist or factory_girl.
+
 Now where is faker?  Well it's what I use inside these .rb files where faker comes into play:
-<code># Faking a company name
-&gt;&gt; Faker::Company.name
-=&gt; "King-Ruecker"
-&gt;&gt; Faker::Company.name
-=&gt; "Cartwright, Prosacco and Smith"
-&gt;&gt; Faker::Company.name
-=&gt; "Pagac, Adams and Barrows"
-&gt;&gt; Faker::Company.name
-=&gt; "Satterfield and Sons"
-&gt;&gt; Faker::Company.name
-=&gt; "Blick-Deckow"
-# Faking a person's name
-&gt;&gt; Faker::Name.first_name
-=&gt; "Ruthe"
-&gt;&gt; Faker::Name.first_name
-=&gt; "Jameson"
-&gt;&gt; Faker::Name.first_name
-=&gt; "Avery"
-&gt;&gt; Faker::Name.first_name
-=&gt; "Jordan"
-&gt;&gt; Faker::Name.first_name
-=&gt; "Ruthe"
-&gt;&gt; Faker::Name.first_name
-=&gt; "Winona"
-&gt;&gt; Faker::Name.last_name
-=&gt; "Brown"
-&gt;&gt; Faker::Name.last_name
-=&gt; "Hayes"
-&gt;&gt; Faker::Name.last_name
-=&gt; "Jerde"
-&gt;&gt; Faker::Name.last_name
-=&gt; "Lindgren"
-&gt;&gt; Faker::Name.last_name
-=&gt; "Considine"
-&gt;&gt; Faker::Name.last_name
-=&gt; "Rodriguez"
-&gt;&gt; Faker::Name.last_name
-=&gt; "Turner"
-&gt;&gt; Faker::Name.name
-=&gt; "Mekhi Lebsack"
-&gt;&gt; Faker::Name.name
-=&gt; "Esteban Brown"
-&gt;&gt; Faker::Name.name
-=&gt; "Velma Crona"
-&gt;&gt; Faker::Name.name
-=&gt; "Rollin Zemlak"
-&gt;&gt; Faker::Name.name
-=&gt; "Casper Sanford"
-# My favorite is coming up with BS (yes, BS is what you think it is):
-&gt;&gt; Faker::Company.bs
-=&gt; "redefine ubiquitous e-commerce"
-&gt;&gt; Faker::Company.bs
-=&gt; "synergize viral e-business"
-&gt;&gt; Faker::Company.bs
-=&gt; "innovate real-time experiences"
-&gt;&gt; Faker::Company.bs
-=&gt; "aggregate scalable systems"
-&gt;&gt; Faker::Company.bs
-=&gt; "e-enable back-end functionalities"
-&gt;&gt; Faker::Company.bs
-=&gt; "implement 24/365 models"</code>
+%code
+  \# Faking a company name
+  &gt;&gt; Faker::Company.name
+  \=&gt; "King-Ruecker"
+  &gt;&gt; Faker::Company.name
+  \=&gt; "Cartwright, Prosacco and Smith"
+  &gt;&gt; Faker::Company.name
+  \=&gt; "Pagac, Adams and Barrows"
+  &gt;&gt; Faker::Company.name
+  \=&gt; "Satterfield and Sons"
+  &gt;&gt; Faker::Company.name
+  \=&gt; "Blick-Deckow"
+  
+  \# Faking a person's name
+  &gt;&gt; Faker::Name.first_name
+  \=&gt; "Ruthe"
+  &gt;&gt; Faker::Name.first_name
+  \=&gt; "Jameson"
+  &gt;&gt; Faker::Name.first_name
+  \=&gt; "Avery"
+  &gt;&gt; Faker::Name.first_name
+  \=&gt; "Jordan"
+  &gt;&gt; Faker::Name.first_name
+  \=&gt; "Ruthe"
+  &gt;&gt; Faker::Name.first_name
+  \=&gt; "Winona"
+  &gt;&gt; Faker::Name.last_name
+  \=&gt; "Brown"
+  &gt;&gt; Faker::Name.last_name
+  \=&gt; "Hayes"
+  &gt;&gt; Faker::Name.last_name
+  \=&gt; "Jerde"
+  &gt;&gt; Faker::Name.last_name
+  \=&gt; "Lindgren"
+  &gt;&gt; Faker::Name.last_name
+  \=&gt; "Considine"
+  &gt;&gt; Faker::Name.last_name
+  \=&gt; "Rodriguez"
+  &gt;&gt; Faker::Name.last_name
+  \=&gt; "Turner"
+  &gt;&gt; Faker::Name.name
+  \=&gt; "Mekhi Lebsack"
+  &gt;&gt; Faker::Name.name
+  \=&gt; "Esteban Brown"
+  &gt;&gt; Faker::Name.name
+  \=&gt; "Velma Crona"
+  &gt;&gt; Faker::Name.name
+  \=&gt; "Rollin Zemlak"
+  &gt;&gt; Faker::Name.name
+  \=&gt; "Casper Sanford"
+  
+  \# My favorite is coming up with BS (yes, BS is what you think it is):
+  &gt;&gt; Faker::Company.bs
+  \=&gt; "redefine ubiquitous e-commerce"
+  &gt;&gt; Faker::Company.bs
+  \=&gt; "synergize viral e-business"
+  &gt;&gt; Faker::Company.bs
+  \=&gt; "innovate real-time experiences"
+  &gt;&gt; Faker::Company.bs
+  \=&gt; "aggregate scalable systems"
+  &gt;&gt; Faker::Company.bs
+  \=&gt; "e-enable back-end functionalities"
+  &gt;&gt; Faker::Company.bs
+  \=&gt; "implement 24/365 models"
 So the point of faker, if you haven't already figured out is that it generates data the way you would probably have in production so you are generating meaningful data in your development environment(s) where you want to show your client what the interface will look like with data inside.
-<b>Now a word of caution:</b>
+%b Now a word of caution:
 I would not advise you to use this in an end-user facing test environment.  I sometimes call that staging or qa, but ultimately it is an environment where real end-users or clients test out the features in a stable environment (not development or continuous integration environment) so they can sign off on your stories.  In these environments you should let the user create the data themselves using the admin forms or whatever UI you provide them because you want to see how they will break the system (and we all know they will somehow).  It gives you a much better indication of how things will end up working in production, which is very important.
+
 Thanks for reading and let me know if this is yet again too rambly?  How does it happen?  I have the best intentions to just blurt out tidbits with no nuance, yet I always end up rambling on about things and give it a thought process (well sort of).  Anyone want to be my editor to strip out all thought and insight so I can be just blog brainless "tip" blog posts like everyone else in the Rails community that wanted to be a micro celebrity (trust me I couldn't handle that kind of paparazzi attention and I don't even have a Macbook Pro to sling over my shoulder in a fashionable messenger bag)?  I can't pay you anything, but you could share in my measely $0.63 that Google Adsense pays me each month (actually they don't actually pay until a threshold is met).  You could buy one third of an MP3 from iTunes each month.  Any takers?  What an awesome deal!  No really!
+
 PS Coming soon a simple generator and Rails application template (or applate as I like to call them) that will set you up with this so you don't have to copy and paste all the time.  It'll be on GitHub.com/mbbx6spp.  Ta ta.
-<b>Update:</b>
+%b Update:
 As Damien in the comments pointed out indirectly, I really didn't do Faker justice.  Please read the
-<a href="http://faker.rubyforge.org/rdoc/" target="_new">Faker RDocs</a>
+%a{:href =&gt; "http://faker.rubyforge.org/rdoc/", :target =&gt; "_new"} Faker RDocs
 for more information.
 
         </article>
@@ -163,32 +171,32 @@ for more information.
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -199,7 +207,7 @@ for more information.
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -208,7 +216,7 @@ for more information.
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

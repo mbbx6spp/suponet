@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -58,40 +54,42 @@
           
           <h2>Five Signs Your TechOps Organization Is Doing It Wrong</h2>
           <h5 class="time"></h5>
-          <p>
+          %p
   This is a collection of troubling signs that I have witness in a variety of
   clients and employers over my career. Let's see what we can learn from them.
-</p>
-<h3>1. Infrastructure as a Jira Ticket (IaaJT)</h3>
-<p>
+
+
+%h3 1. Infrastructure as a Jira Ticket (IaaJT)
+
+%p
   If you, as an engineer or SRE, need to create a new Jira ticket to have VMs
   or baremetal servers provisioned by a specific team in your organization
   then management has done something horribly wrong.
-</p>
-<p>
+
+%p
   This demonstrates a lack in understanding of technical
   operations in the 21st century which differs dramatically in terms of
   scale, priorities (distributed uptime, not node uptime), economics, and
   complexity.
-</p>
-<p>
+
+%p
   Software services are no longer limited to tens or even hundreds of servers
   in one datacenter, in the same or adjacent racks. As such we must emphasize
   the importance of on-demand infrastructure for our <em>customers</em>. This
   should not be news to anyone who has read any industry news or opinion in
   the last fifteen years.
-</p>
-<p>
+
+%p
   Competitors are doing this in public clouds and perhaps even in-house. This
   is not an advantage for a company now, it's a basic necessity.
-</p>
-<p>
+
+%p
   An organization that bottlenecks infrastructure requests (virtual or
   physical) for provisioning in even a semi-automated process (but still
   requires gatekeepers) cannot enable innovation, experimentation, or take
   advantage of the ecnomomies of virtualization and on-demand infrastructure.
-</p>
-<p>
+
+%p
   Is this salvagable? Perhaps. Give someone who has the initiative, technical
   capacity the resources they need to pay down the debt service and principal
   on the lack of automation. Do not punt on this. Find the person that is
@@ -99,9 +97,10 @@
   just catch up. If this kind of person can't be enabled in such an
   organization, then good luck. That is indicative of a culture deficit,
   which is the hardest kind of problem to solve.
-</p>
-<h3>2. If Hardware Ordering Is Chaotic</h3>
-<p>
+
+%h3 2. If Hardware Ordering Is Chaotic
+
+%p
   This applies to organizations that manage actual hardware and
   the procurement process, however, could be applied to ensuring your AWS/cloud
   account limits are sensible as an on-going concern. Perhaps via metrics.
@@ -109,8 +108,8 @@
   can find out where their hardware orders are months later, or you are
   constantly hitting AWS/cloud account limits this indicates a troubling
   administrative oversight.
-</p>
-<p>
+
+%p
   Management action is needed to rectify this problem. The changes should be
   straight-forward assuming no foul/fraud play here. Put a simple organization
   structure and process in place so that orders can be tracked. Have a simple
@@ -120,22 +119,24 @@
   organization. Tracking of hardware should be transparent to as many people
   in the organization as possible to prevent potential abuse (of varying
   degrees).
-</p>
-<p>
+
+%p
   If these changes aren't made this reality will continue to add frustration,
   burn unnecessary cycles and increase time to delivery. Creating a
   wasteful and inefficient organization that isn't
   <a href="/blogs/software/2014/11/responsive-enterprises-mealy-machines-hacker-way/">responsive to the current state of the world externally and internal state</a>.
-</p>
-<h3>3. Management Devalues Automated Checks And Balances</h3>
-<p>
+
+
+%h3 3. Management Devalues Automated Checks And Balances
+
+%p
   Imagine an organization with tens of thousands of machines (virtual and
   physical) that doesn't validate even the syntax of Puppet manifests in
   a CI/CD feedback loop or thinks it does not constitute a compelling
   business case to spend time on automating. That TechOps organization is
   absolutely doing it wrong.
-</p>
-<p>
+
+%p
   Now imagine an operations engineer that only creates stub `precommit`,
   `commit`, and `deploy` CI/CD callback script in a new repository merely
   to check the boxes in a check list. This is someone that just does not
@@ -146,8 +147,8 @@
   learned the value of checks and balances as an anti-entropy mechanism.
   They do not truly consider Infrastructure as [Delcarative] Code. The
   culture has failed to teach him.
-</p>
-<p>
+
+%p
   The key here is the technical leaders of TechOps must be competent enough to
   articulate the importance of check and balances to decision makers.
   They should also have a good idea about which checks and balances provide
@@ -155,11 +156,11 @@
   However, all bets are off on fixing this fundamental issue if technical
   leadership doesn't exist at all or the competence of those who win
   political battles is in question. Those are examples of toxic environments.
-</p>
-<h3>
+
+%h3
   4. Nobody Has Pride
-</h3>
-<p>
+
+%p
   There are several shops where I have experienced this both on the ops
   and the engineering side.
   When engineers do not have pride in their work product it
@@ -170,8 +171,8 @@
   maintain code because of low quality the  lower the morale on the team is
   and the harder it is to add new features or fix bugs. Both adversely impact
   delivery times negatively.
-</p>
-<p>
+
+%p
   So what is the purpose of a set of conventions? The team has to all agree
   to a set of conventions and guidelines that they are willing to write
   code in. It doesn't have to be in great depth but the constraints of the
@@ -180,8 +181,8 @@
   be a 20 page, beautifully typeset, paper. In fact, if you spend
   time on that part you are probably doing it wrong too. Just in a totally
   different way. :)
-</p>
-<p>
+
+%p
   So now we come to why coding conventions and style guidelines matter, even
   in technical operations codebases? Because the team has to come together
   and agree and duke it out and agree to disagree. Code conventions are
@@ -194,22 +195,22 @@
   it might be. Perhaps it's a crypto/security library and some extra
   constraints would be important because of how the Ruby bindings interface
   with the native C code. (That example may or may not make sense.)
-</p>
-<p>
+
+%p
   With one mind and agreement a team can work together and not constantly
   fight with each other over minor details that in the grand scheme of things
   don't really matter.
-</p>
-<blockquote>
+
+%blockquote
   All happy families are alike; each unhappy family is unhappy in its own way.
-</blockquote>
-<p>
+
+%p
   All families (or teams) must make compromises to continue functioning well.
   The agreement on code conventions and/or styleguides plus the changes
   workflow itself should be documented, well defined, and easy to update when
   needed.
-</p>
-<p>
+
+%p
   Things happen. People join and people leave. Treat the team's agreement
   as a living document and set of principles to adhere by. Talk
   about things at lunch some times. What irks you about the conventions, why?
@@ -218,14 +219,14 @@
   details actually are. It also encourages discourse on what constitutes
   code quality on a low level and getting engineers to understand why
   some conventions and guidelines were put in place.
-</p>
-<p>
+
+%p
   The changes workflow (e.g. git and/or release workflow, etc.) needs to be
   well defined and documented. Unless it is contraversial, I don't think
   the initial agreement has to be democratically elected because that might
   take a while.
-</p>
-<p>
+
+%p
   As an initial step, I strongly suggest you use the default language code
   style guidelines when creating new teams and/or codebases. Then iterate.
   Otherwise you will spent an enternity arguing over an empty canvas. If
@@ -235,64 +236,64 @@
   must feel the ability to change things and not be stuck with antiquated
   restrictions if that happens to become the case. Hungarian notation comes
   to mind from my C++ days, as an example! :)
-</p>
-<h3>5. People Are Burned Out</h3>
-<p>
+
+%h3 5. People Are Burned Out
+
+%p
   There are potentially many reasons for this, but the root cause is usually
   ineffective executive management who constantly fail to drive meaningful
   changes through their organization. Instead what is common is buzzword
   bingo during All Hands meetings and empty promises that are never delivered
   on.
-</p>
-<p>
+
+%p
   When this happens you can see management decisions are not based on
   meaningful metrics; these are discarded in favor of pomp and fanfare
   numbers without context to drive decisions. Decisions based on their deep
   seated biases knowingly or not.
-</p>
-<p>
+
+%p
   This is the biggest problem in this list. Without cleaning house at the very
   top, nothing can fix this. Executives must believe that using metrics
   meaningfully with context and not just for the gamification of their peons
   against each other is a valuable proposition that will lead to a more
   effective organization with less headaches (for them).
-</p>
-<p>
+
+%p
   As noted by a coworker I need to present a compelling case for a small
   set of metrics that could be used.
-</p>
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -303,7 +304,7 @@
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -312,7 +313,7 @@
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

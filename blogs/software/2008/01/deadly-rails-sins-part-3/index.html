@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,76 +55,99 @@
           <h2>Stupid Easy: 7 Deadly [Rails] Sins, Part 3</h2>
           <h5 class="time">2008-01-31 09:23:00 -0600</h5>
           This is the third and final part in the
-<a href="http://snakesgemscoffee.blogspot.com/2008/01/stupid-easy-7-deadly-rails-sins-part-1.html">Stupid Easy: 7 Deadly [Rails] Sins</a>
+%a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2008/01/stupid-easy-7-deadly-rails-sins-part-1.html"} Stupid Easy: 7 Deadly [Rails] Sins
 series.  See
-<a href="http://snakesgemscoffee.blogspot.com/2008/01/stupid-easy-7-deadly-rails-sins-part-1.html">part 1</a>
+%a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2008/01/stupid-easy-7-deadly-rails-sins-part-1.html"} part 1
 and
-<a href="http://snakesgemscoffee.blogspot.com/2008/01/stupid-easy-7-deadly-rails-sins-part-2.html">part 2</a>
+%a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2008/01/stupid-easy-7-deadly-rails-sins-part-2.html"} part 2
 if you haven't already.
+
 I have left the most heinous sin to the end.  If you are a serious sinner in this aspect, there is little hope for you unless you take steps now to rectify your behavior in this aspect.
-<h4>Stupid Easy Ruby</h4>
-<blockquote>When in Rome, do as the Romans do</blockquote>
+%h4 Stupid Easy Ruby
+%blockquote When in Rome, do as the Romans do
 That's right.  This is the sin of not knowing how to really code in Ruby.  Sure some coders that move to Ruby can write code that does what they want it to do, but often at the severe expense of compromising project code maintainability (e.g. making things very unDRY, etc.) or even introducing significant performance issues by not understanding basics about the Ruby language.
+
 Instead I see people using Java, Perl, PHP, C# or even Python idioms in Ruby instead of understanding the essence of the language of Ruby, which is distinct from each of these languages in different ways.
+
 The same is true for any language/environment you work within.  I know former PHP people that moved to Java and do not have the first clue about basic Java idioms that work well.  This isn't just to pick on PHP heads as I imagine this occurs from any language migration path.  I have simply seen this sin committed most by former PHP coders moving toward Java, Ruby and Python.  However, I will say I see a LOT of former Java (massive static language proponents - Joshua Bloch you are a nonobjective snob) developers that do not understand or appreciate the non-static design mentality and they create large class hierarchies and don't understand what a Mixin is (or they pretend to be "cool" and talk alot of about these idioms, but don't really utilize them in the right way themselves).  The Ruby mindset is still different from it's more similar looking cousins: Python and Perl, but moving between Python, Perl and Ruby (in any direction) feels more intuitive (at least in my mind).
+
 Now I should stress that I can no longer code in Java without pulling my hair out because the thought of creating 5 interfaces and a factory for every three class implementations drives me temporarily insane.  The SPI design principle allows Java to be fairly flexible (especially for a statically typed language), but at the expense of my personal sanity now that I prefer to think the non-static way (yes, I still appreciate Python's strongly-typed ways).  This is why I prefer to use JRuby, Jython or Groovy scripting in Java environments.
+
 There is no magic bullet to stop sinning in this regard if you aren't willing to take a journey to learn and understand Ruby idioms (not just basic *knowledge*).  There are no shortcuts, it simply depends on how easily your brain can shift in gears.  This doesn't mean people who can't shift gears are "bad" developers, but not well suited to migrating to significantly different environments very often.
+
 Just remember the rules in Ruby aren't the same.  Think in terms of sending messages to objects that may or may not respond to the message you send, instead of expected interfaces and you are half way there if you are coming from Java, C++ and similar languages.  Think of Java as a big government structure with a complicated tax code and Ruby as minimal government with a simplified tax code
-<b>without</b>
-loopholes accessible only to the rich!  That means in the Ruby world wild things such as adult services can legally be procured between consenting adults, so bend your brain to think that way when working in Ruby...almost anything is possible especially in the realm of metaprogramming that is not possible in the Java world.<blockquote>
-  That government is best which governs least.<br>--Thomas Paine
-</blockquote>I personally happen to agree with Thomas Paine's statement (at least in the context of programming), but there are various programming philosophies that different languages cater for, so it comes down to your own preference.  Pick the ones you can live with at the time and think in terms of and you will be happier for it.
+%b without
+loopholes accessible only to the rich!  That means in the Ruby world wild things such as adult services can legally be procured between consenting adults, so bend your brain to think that way when working in Ruby...almost anything is possible especially in the realm of metaprogramming that is not possible in the Java world.
+%blockquote&gt;
+  That government is best which governs least.
+  %br&gt;/
+  \--Thomas Paine
+I personally happen to agree with Thomas Paine's statement (at least in the context of programming), but there are various programming philosophies that different languages cater for, so it comes down to your own preference.  Pick the ones you can live with at the time and think in terms of and you will be happier for it.
+
 Obviously in a programming context some people (e.g. Joshua Bloch, who is still a static language snob) will oppose legal procurement of "adult services".  They have a moral objection to these activities and thus do not appreciate the beauty of dynamic design.  If you have such moral reservations in programming, do everyone a favor and stay in the Java world or at least static languages!  This is the beauty of different opinions.  Nobody is right in absolute terms, but you need to make the right choice for yourself.  It is the zealots who only accept "absolute correctness" that we should be weary of (on any side of the argument, but including Joshua Bloch).
+
 My general philosophy when I had the Java Way ingrained in my brain was that as an API designer I had to protect stupid developers from their own stupidity.  Now my philosophy in the Ruby world is that I write APIs for smart developers and if you aren't [Ruby] smart, use at your own risk.  Of course, I oppose complication for the sake of appearing to be "smart".  But I try to write APIs that allow more advanced Ruby developers to take advantage of language features such as blocks, metaprogramming, etc. as opposed to providing an over-simplified, dumbed-down API that ends up looking ugly to the wiser Ruby developer due to being less DRY than might be possible without restriction.
-<h4>Ruby Language Pointers</h4>
+%h4 Ruby Language Pointers
 If you haven't acquainted yourself with
-<a href="http://whytheluckystiff.net/ruby/pickaxe/">the pickaxe book</a>
+%a{:href =&gt; "http://whytheluckystiff.net/ruby/pickaxe/"} the pickaxe book
 you should pay special attention to the following sections:
-<a href="http://whytheluckystiff.net/ruby/pickaxe/html/tut_containers.html#S2">Blocks</a>,
-<a href="http://whytheluckystiff.net/ruby/pickaxe/html/tut_modules.html#S2">Mixins</a>,
-<a href="http://whytheluckystiff.net/ruby/pickaxe/html/ospace.html#S1">Inspecting Objects</a>,
-<a href="http://whytheluckystiff.net/ruby/pickaxe/html/tut_classes.html#S1">Inheritance &amp; Messages</a>,
-<a href="http://whytheluckystiff.net/ruby/pickaxe/html/tut_classes.html#UA">Inheritance &amp; Mixins</a>,
-<a href="http://whytheluckystiff.net/ruby/pickaxe/html/classes.html#S1">Classes &amp; Objects Interacting</a>,
-<a href="http://whytheluckystiff.net/ruby/pickaxe/html/language.html">The Ruby Language</a>.
+= succeed "," do
+  %a{:href =&gt; "http://whytheluckystiff.net/ruby/pickaxe/html/tut_containers.html#S2"} Blocks
+= succeed "," do
+  %a{:href =&gt; "http://whytheluckystiff.net/ruby/pickaxe/html/tut_modules.html#S2"} Mixins
+= succeed "," do
+  %a{:href =&gt; "http://whytheluckystiff.net/ruby/pickaxe/html/ospace.html#S1"} Inspecting Objects
+= succeed "," do
+  %a{:href =&gt; "http://whytheluckystiff.net/ruby/pickaxe/html/tut_classes.html#S1"} Inheritance &amp; Messages
+= succeed "," do
+  %a{:href =&gt; "http://whytheluckystiff.net/ruby/pickaxe/html/tut_classes.html#UA"} Inheritance &amp; Mixins
+= succeed "," do
+  %a{:href =&gt; "http://whytheluckystiff.net/ruby/pickaxe/html/classes.html#S1"} Classes &amp; Objects Interacting
+= succeed "." do
+  %a{:href =&gt; "http://whytheluckystiff.net/ruby/pickaxe/html/language.html"} The Ruby Language
 Then I would look at the source code of the ActiveSupport open source project (part of Rails) for techniques that are very useful.  Some of these techniques I have discussed in previous blog posts:
-<a href="http://snakesgemscoffee.blogspot.com/2006/08/rubyisms-reopening-classes.html">Ruby Idiom: Reopening Classes</a>,
-<a href="http://snakesgemscoffee.blogspot.com/2006/07/rubyisms-forwardables.html">Ruby Idiom: forwardables</a>,
-<a href="http://snakesgemscoffee.blogspot.com/2007/04/injecting-understanding.html">Ruby Idiom: Inject-ing Understanding</a>,
-<a href="http://snakesgemscoffee.blogspot.com/2007/05/ruby-equality.html">Ruby Equality</a>,
-<a href="http://snakesgemscoffee.blogspot.com/2007/06/higher-order-messaging.html">Ruby Higher Order Messaging</a>.
+= succeed "," do
+  %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2006/08/rubyisms-reopening-classes.html"} Ruby Idiom: Reopening Classes
+= succeed "," do
+  %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2006/07/rubyisms-forwardables.html"} Ruby Idiom: forwardables
+= succeed "," do
+  %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/04/injecting-understanding.html"} Ruby Idiom: Inject-ing Understanding
+= succeed "," do
+  %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/05/ruby-equality.html"} Ruby Equality
+= succeed "." do
+  %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/06/higher-order-messaging.html"} Ruby Higher Order Messaging
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -139,7 +158,7 @@ Then I would look at the source code of the ActiveSupport open source project (p
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -148,7 +167,7 @@ Then I would look at the source code of the ActiveSupport open source project (p
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

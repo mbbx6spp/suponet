@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,100 +55,106 @@
           <h2>Ruby Idioms, Part 7</h2>
           <h5 class="time">2007-01-24 18:48:00 -0600</h5>
           This idiom I have seen a little more in Rails than I have seen in Ruby, but I am putting it in this Ruby Idioms series anyway.
+
 First off, most of you will know by know that you can "transparently" provide a method in Ruby a Hash.  What do I mean by "transparently"?  Well have a look at the code example below:
-<pre><code>
-user = User.find(:first, :include =&gt; :preferences)
+%pre
+  %code
+    :preserve
+      
+      user = User.find(:first, :include =&gt; :preferences)
+The last argument is actually a Hash even though you do not see the curly braces at all.
 
-
-
-
-
-
-class User
-  # ... some stuff here
-  class &lt;&lt; self
-    def find(type, params = {})
-      options = @@DEFAULTS.merge(params)
-      case type
-      when :first
-        options[:limit] = 1
-      when :all
-        # do stuff with options and query database
-        # bla bla bla
+In my opinion it makes for more readable code.  So let us look behind the scenes at what the User.find method might do if it wasn't a magic method from ActiveRecord:
+%pre
+  %code
+    :preserve
+      
+      class User
+        # ... some stuff here
+        class &lt;&lt; self
+          def find(type, params = {})
+            options = @@DEFAULTS.merge(params)
+            case type
+            when :first
+              options[:limit] = 1
+            when :all
+              # do stuff with options and query database
+              # bla bla bla
+            end
+            # rest of implementation
+          end
+        end
+        # ... some stuff here
       end
-      # rest of implementation
-    end
-  end
-  # ... some stuff here
-end
+This is quite useful, but one of the idioms in the same vain that I really appreciate is the following usage:
+%pre
+  %code
+    :preserve
+      
+        validates_length_of :name, :title, :company, :in =&gt; 2..128
+This provides another example of supplying a transparent
+%code Hash
+arguments at the end of a list of arguments, the length of which is unknown.  For example we may decide that the code needs to actually be more like:
+%pre
+  %code
+    :preserve
+      
+        validates_length_of :name, :company, :in =&gt; 2..64
+        validates_length_of :title, :in =&gt; 2..128, :allow_nil =&gt; true # to cater for those ridiculously long job titles out there or those that do not have a job title at all
+Now you will notice that the
+%code validates_length_of
+method accepts a list of variable size for the list of attribute symbols to check and then at the end an option hash to specify length checking specifics.  How does the method know there is an option Hash at the end to use for these things and/or how long the list of attributes is?
 
+The secret is in the sauce.  If we were to look in the source code (though I am not, because I have seen it so many times before), we would see something like:
+%pre
+  %code
+    :preserve
+      
+      def validates_length_of(*attrs)
+        options = @@DEFAULT_OPTIONS.merge(attrs.pop.symbolize_keys) if attrs.last.is_a?(Hash)
+        # then continue with rest of implementation.
+      end
+All it is doing here is in the signature, specifying that there is a list of unknown length to be supplied to the method.  Then it pops the last item off that list (
+%code&gt; Array
+) if and only if the last element of the list is a
+%code Hash
+for use as the options that the implementation will use.
 
-
-
-
-  validates_length_of :name, :title, :company, :in =&gt; 2..128
-
-
-
-
-
-
-
-  validates_length_of :name, :company, :in =&gt; 2..64
-  validates_length_of :title, :in =&gt; 2..128, :allow_nil =&gt; true # to cater for those ridiculously long job titles out there or those that do not have a job title at all
-
-
-
-
-
-
-
-
-def validates_length_of(*attrs)
-  options = @@DEFAULT_OPTIONS.merge(attrs.pop.symbolize_keys) if attrs.last.is_a?(Hash)
-  # then continue with rest of implementation.
-end
-
-
-
-
-
-
-
-
-</code></pre>
+Until the next time enjoy Ruby's "transparent"
+%code Hash
+idioms.
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -163,7 +165,7 @@ end
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -172,7 +174,7 @@ end
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

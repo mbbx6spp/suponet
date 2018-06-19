@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,106 +55,91 @@
           <h2>Twitter4R 0.2.0 Release</h2>
           <h5 class="time">2007-07-08 12:01:00 -0500</h5>
           It's been almost two weeks, but Twitter4R had some major refactoring and updating between 0.1.1 and 0.2.0.  So I hope you will think the wait was worth it.  As usual you can grab the latest Ruby Gem (once all Rubyforge mirrors have synced) with:
-<code>sudo gem install twitter4r</code>.
+= succeed "." do
+  %code sudo gem install twitter4r
 I am still in the process of pushing out the new Ruby Gem to Rubyforge and updating the website for the project, but the release is code complete.
+
 Some changes are quite significant in some areas.  The basic idea of this release (0.2.0) was to cover the official published Twitter REST API 100% and remove some of the clutter the first two releases of Twitter4R introduced partly due to mirroring Twitter's inconsistent API.  In the same fashion as both previous releases of Twitter4R, version 0.2.0 has 100% C0 code coverage via RSpec specifications.
+
 I separated out Twitter4R library into various API segments:
-<ul>
-  <li>
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-configuration-api.html">Configuration</a>
-  </li>
-  <li>
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-friendship-api.html">Friendship</a>
-  </li>
-  <li>
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-messaging-api.html">Messaging</a>
-  </li>
-  <li>
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-model-api.html">Model</a>
-  </li>
-  <li>
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-status-api.html">Status</a>
-  </li>
-  <li>
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-timeline-api.html">Timeline</a>
-  </li>
-  <li>
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-user-api.html">User</a>
-  </li>
-  <li>
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-extras-api.html">Extras</a>
-  </li>
-</ul>
+%ul
+  %li
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-configuration-api.html"} Configuration
+  %li
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-friendship-api.html"} Friendship
+  %li
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-messaging-api.html"} Messaging
+  %li
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-model-api.html"} Model
+  %li
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-status-api.html"} Status
+  %li
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-timeline-api.html"} Timeline
+  %li
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-user-api.html"} User
+  %li
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-extras-api.html"} Extras
 I will write a blog entry as an introduction to each segment over the next couple of days.  In the meantime I will finish publishing the new website documentation and leave you with the
-<a href="http://twitter4r.rubyforge.org/releases/v0.2.0/rdoc">RDoc</a>
+%a{:href =&gt; "http://twitter4r.rubyforge.org/releases/v0.2.0/rdoc"} RDoc
 for version 0.2.0.
-<b>Updates:</b>
-<ul>
-  <li>
+%b Updates:
+%ul
+  %li
     New entry:
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-configuration-api.html">Twitter4R v0.2.0: Configuration API</a>
-  </li>
-  <li>
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-configuration-api.html"} Twitter4R v0.2.0: Configuration API
+  %li
     New entry:
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-timeline-api.html">Twitter4R v0.2.0: Timeline API</a>
-  </li>
-  <li>
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-timeline-api.html"} Twitter4R v0.2.0: Timeline API
+  %li
     New entry:
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-status-api.html">Twitter4R v0.2.0: Status API</a>
-  </li>
-  <li>
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-status-api.html"} Twitter4R v0.2.0: Status API
+  %li
     New entry:
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-model-api.html">Twitter4R v0.2.0: Model API</a>
-  </li>
-  <li>
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-model-api.html"} Twitter4R v0.2.0: Model API
+  %li
     New entry:
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-messaging-api.html">Twitter4R v0.2.0: Messaging API</a>
-  </li>
-  <li>
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-messaging-api.html"} Twitter4R v0.2.0: Messaging API
+  %li
     New entry:
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-user-api.html">Twitter4R v0.2.0: User API</a>
-  </li>
-  <li>
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-user-api.html"} Twitter4R v0.2.0: User API
+  %li
     New entry:
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-extras-api.html">Twitter4R v0.2.0: Extras API</a>
-  </li>
-  <li>
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-extras-api.html"} Twitter4R v0.2.0: Extras API
+  %li
     New entry:
-    <a href="http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-friendship-api.html">Twitter4R v0.2.0: Friendship API</a>
-  </li>
-</ul>
+    %a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-friendship-api.html"} Twitter4R v0.2.0: Friendship API
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -169,7 +150,7 @@ for version 0.2.0.
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -178,7 +159,7 @@ for version 0.2.0.
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

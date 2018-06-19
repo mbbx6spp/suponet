@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,138 +55,144 @@
           <h2>Anonymous Classes: Java's Synthetic Closure</h2>
           <h5 class="time">2007-08-21 22:50:00 -0500</h5>
           I've been meaning to write this blog post since late last year when I revisited the Java world after a hiatus of adventures in the Ruby and Python worlds.
+
 When I was a Java advocate (many moons ago it seems now), I really didn't appreciate the true beauty that is anonymous classes.  I saw them as ugly and reducing code readability.  Syntactically I still agree with that assessment, but conceptually I couldn't disagree more now.
+
 When revisiting Java last year for a client, I found myself really missing blocks from the Ruby world.  The following common snippet of code in Ruby passes a block to a method:
-<pre><code>
-  connection = Net::HTTP.new
-  connection.use_ssl = true if ssl?
-  connection.start do |connection|
-    request = yield connection if block_given?
-    request.basic_auth(@login, @password) if require_auth
-    response = connection.request(request, body)
-    handle_rest_response(response)
-    response
-  end
+%pre
+  %code
+    :preserve
+      
+        connection = Net::HTTP.new
+        connection.use_ssl = true if ssl?
+        connection.start do |connection|
+          request = yield connection if block_given?
+          request.basic_auth(@login, @password) if require_auth
+          response = connection.request(request, body)
+          handle_rest_response(response)
+          response
+        end
+[This code is taken from the
+%a{:href =&gt; "http://twitter4r.rubyforge.org/"} Twitter4R
+project and is slightly
+= succeed ".]" do
+  %i paraphrased
+What we are doing here is wrapping a block within a begin/end API construct.  So the previous snippet of code is effectively the same as (and in fact this is the way the above gets executed):
+%pre
+  %code
+    :preserve
+      
+        connection = Net::HTTP.new
+        connection.use_ssl = true if ssl?
+        connection.open
+        request = yield connection if block_given?
+        request.basic_auth(@login, @password) if require_auth
+        response = connection.request(request, body)
+        handle_rest_response(response)
+        connection.close
+        response
+Why is the first so much better from a code maintainability and readability perspective?  In my view the main benefits include (but are not limited to):
+%ul
+  %li
+    Passing in a block ensures we close the connection (as in the above code example).  If we forgot to "end" the block in the first snippet we would get a
+    %tt SyntaxError
+    in Ruby which would remind us to close the block (and thus connection implicitly).  Which means less likely to introduce defects related to not closing connections unlike second code example.
+  %li Putting the code to be executed passed in with a block improves code readability and in my view that is always a good thing.  It is more obvious to fellow developers what is going on.
+Now in Java we can't simulate the code above in Java syntax...or can we?
 
+I suggest with a few more
+%tt {}
+and
+%tt ()
+and
+%tt ;
+we can accomplish the same as above.  And if we cover our eyes with our hands and squint through the gaps in our fingers, we might be happy with the way it looks (OK, it is ugly, but this is the world of Java people!).
 
-
-
-
-
-
-
-
-
-  connection = Net::HTTP.new
-  connection.use_ssl = true if ssl?
-  connection.open
-  request = yield connection if block_given?
-  request.basic_auth(@login, @password) if require_auth
-  response = connection.request(request, body)
-  handle_rest_response(response)
-  connection.close
-  response
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// In PersistenceExecutionResult.java we define the following....
-public class PersistenceExecutionResult {
-  private Object result;
-  public PersistenceExecutionResult(Object theResult) {
-    result = theResult;
-  }
-
-  public Object getResult() { return result; }
-  public void setResult(Object theResult) { result = theResult; }
-}
-
-// Now in PersistenceExecutor.java we define....
-public interface PersistenceExecutor {
-  public abstract PersistenceExecutionResult execute() throws Exception;
-}
-
-// Now in BaseDAO.java we have the following....
-public class BaseDAO {
-  public Long create(BaseObject persistableObject) throws Exception {
-    final Session session = ....; // get session somehow - irrelevant to demonstration of synthetic closures in Java
-    return (Long)executeTransaction(session, new PersistenceExecutor() {
-      public PersistenceExecutionResult execute() {
-        return new PersistenceExecutionResult(session.save(persistableObject);
+Below is an example of a similar technique as the Ruby example above, but this time in Java and related to database transaction (specifically in Hibernate3 below):
+%pre
+  %code
+    :preserve
+      
+      // In PersistenceExecutionResult.java we define the following....
+      public class PersistenceExecutionResult {
+        private Object result;
+        public PersistenceExecutionResult(Object theResult) {
+          result = theResult;
+        }
+      
+        public Object getResult() { return result; }
+        public void setResult(Object theResult) { result = theResult; }
       }
-    });
-  }
-
-  // other stuff, but just adds noise to example.
-
-  protected ExecutionResult executeTransaction(Session session, PersistenceExecutor executor)
-    throws Exception {
-    Transaction tx = null;
-    PersistenceExecutionResult result = null;
-    try  {
-      tx = session.beginTransaction();
-      result = executor.execute();
-      tx.commit();
-    } catch (Exception e) {
-      if (null != tx) tx.rollback();
-    } finally {
-      session.close();
-    }
-    return result;
-  }
-}
-
-
-
-</code></pre>
+      
+      // Now in PersistenceExecutor.java we define....
+      public interface PersistenceExecutor {
+        public abstract PersistenceExecutionResult execute() throws Exception;
+      }
+      
+      // Now in BaseDAO.java we have the following....
+      public class BaseDAO {
+        public Long create(BaseObject persistableObject) throws Exception {
+          final Session session = ....; // get session somehow - irrelevant to demonstration of synthetic closures in Java
+          return (Long)executeTransaction(session, new PersistenceExecutor() {
+            public PersistenceExecutionResult execute() {
+              return new PersistenceExecutionResult(session.save(persistableObject);
+            }
+          });
+        }
+      
+        // other stuff, but just adds noise to example.
+      
+        protected ExecutionResult executeTransaction(Session session, PersistenceExecutor executor)
+          throws Exception {
+          Transaction tx = null;
+          PersistenceExecutionResult result = null;
+          try  {
+            tx = session.beginTransaction();
+            result = executor.execute();
+            tx.commit();
+          } catch (Exception e) {
+            if (null != tx) tx.rollback();
+          } finally {
+            session.close();
+          }
+          return result;
+        }
+      }
+Now what on earth is going on?  Anyone?  Well I will explain in a subsequent posting and compare it to the equivalent code without using anonymous classes to wrap begin/end API constructs.  Right now I am too tired and lazy, but I will explain soon, fear not.
+%b Notes:
+the above works with JDK 1.4 because when I wrote this it had to be 1.4 compliant (therefore fancy generic interface definition to DAO was not possible).  I have only used JDK 1.5 (aka 5) and not 6.  Is there a nicer way of doing this in 6?
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -201,7 +203,7 @@ public class BaseDAO {
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -210,7 +212,7 @@ public class BaseDAO {
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,77 +55,82 @@
           <h2>Twitter4R v0.2.0: Messaging API</h2>
           <h5 class="time">2007-07-10 09:18:00 -0500</h5>
           Probably one of the more recent additions to the Twitter REST API has been that of direct messaging.  In the Twitter web interface we were introduced to the supported construct of direct messaging only a couple of months ago.  The
-<b>Messaging API</b>
+%b Messaging API
 in Twitter4R provides access to these new supported features via two instance methods on the
-<tt>Twitter::Client</tt>
+%tt Twitter::Client
 class:
-<tt>#message</tt>
+%tt #message
 and
-<tt>#messages</tt>.
+= succeed "." do
+  %tt #messages
 Below we can see an example of a common non-trivial usage of this API:
-<pre><code>
-gem('twitter4r', '&gt;=0.2.0')
-require('twitter')
+%pre
+  %code
+    :preserve
+      
+      gem('twitter4r', '&gt;=0.2.0')
+      require('twitter')
+      
+      client = Twitter::Client.new(:login =&gt; 'mylogin', :password =&gt; 'mypassword')
+      received_messages = client.messages(:received)
+      # Now do whatever it is you wish to do with the Array returned and assigned to received_messages.
+      # It is an Array of Twitter::Message.  Twitter::Message has the following attributes:
+      # * sender (Twitter::User)
+      # * recipient (Twitter::User)
+      # * text (String)
+      # * created_at (Time)
+      
+      new_message = client.message(:post, 'I am addicted to Twitter', 'myfriendslogin')
+      # Note: if we had a handle to our friend's Twitter::User object we could substitute that object
+      # for the screen name screen given (i.e. 'myfriendslogin' in the above example).  This would 
+      # look like:
+      #  new_message = client.message(:post, 'I am addicted to Twitter', user)
+      
+      # Now we realized sending that message was a big mistake, so we try to delete is quickly:
+      deleted_message = client.message(:delete, new_message)
+To find out more about the Messaging API of Twitter4R visit the
+%a{:href =&gt; "http://twitter4r.rubyforge.org/releases/v0.2.0/rdoc"} v0.2.0 RDoc
+and select the
+%b examples/messaging.rb
+link from the top left frame.
 
-client = Twitter::Client.new(:login =&gt; 'mylogin', :password =&gt; 'mypassword')
-received_messages = client.messages(:received)
-# Now do whatever it is you wish to do with the Array returned and assigned to received_messages.
-# It is an Array of Twitter::Message.  Twitter::Message has the following attributes:
-# * sender (Twitter::User)
-# * recipient (Twitter::User)
-# * text (String)
-# * created_at (Time)
+Also note that you can create new direct messages via the
+%a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2007/07/twitter4r-v020-model-api.html"} Model API
+of Twitter4R as well.
 
-new_message = client.message(:post, 'I am addicted to Twitter', 'myfriendslogin')
-# Note: if we had a handle to our friend's Twitter::User object we could substitute that object
-# for the screen name screen given (i.e. 'myfriendslogin' in the above example).  This would 
-# look like:
-#  new_message = client.message(:post, 'I am addicted to Twitter', user)
-
-# Now we realized sending that message was a big mistake, so we try to delete is quickly:
-deleted_message = client.message(:delete, new_message)
-
-
-
-
-
-
-
-
-
-</code></pre>
+Happy direct messaging on Twitter using Twitter4R.
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -140,7 +141,7 @@ deleted_message = client.message(:delete, new_message)
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -149,7 +150,7 @@ deleted_message = client.message(:delete, new_message)
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

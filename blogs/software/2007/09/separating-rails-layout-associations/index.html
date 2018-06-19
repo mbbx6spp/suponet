@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,192 +55,197 @@
           <h2>Separating Rails Layout Associations</h2>
           <h5 class="time">2007-09-13 21:16:00 -0500</h5>
           I just realized I hadn't shared this code yet on this blog.  I will also be including it in one of the
-<a href="http://metafusion.rubyforge.org">metafusion</a>
-subprojects (coming soon).  I've been using it when needed in my Rails projects on and off for the last several months.<h4>The Problem</h4>You have some controllers you include into your application from plugins or engines and you want to associate a particular layout to the plugin/engine controller from within your application (without changing anything in the plugin or engine - of course!).  There is not good way of doing this nicely in Rails presently as each controller usually defines controller-wide layouts within its definition.
-<h4>The Solution</h4>
-<pre>[finsignia/paths.rb]
-<code>
-# See:
-# * Finsignia::Paths
-
-# Contains helper methods related to paths and resolving modules and 
-# classes from paths.  Provides for helpful mixin for various applications.
-module Finsignia::Paths
-
-  def self.included(base)
-    base.extend ClassMethods
-  end
-  
-  # Contains class methods for Finsignia::Paths mixin
-  module ClassMethods
-    @@element_postfixes = {:model =&gt; '', :controller =&gt; 'Controller'}
-
-    def resolve_model(path)
-      resolve_element :model, path
-    end
-  
-    def resolve_controller(path)
-      resolve_element :controller, path
-    end
-    
-    def normalize_module_name(path)
-      list = path.split('_')
-      list.collect do |item|
-        item.capitalize
-      end.join
-    end
-    
-    # Resolves path to a type of Rails element 
-    # (e.g. model, controller, etc.).
-    # 
-    # Path refers to 'internal' path, NOT require path:
-    #  'users/users' #=&gt; internal path
-    #  'users/users_controller #=&gt; require path
-    def resolve_element(type, path)
-      first, rest = path.split('/')
-      mod = ObjectSpace.const_get(normalize_module_name(first))
-      while rest
-        first, rest = rest.split('/')
-
-        unless rest
-          mod = mod.const_get(normalize_module_name("#{first}_#{@@element_postfixes[type].downcase}"))
-        else
-          mod = mod.const_get(normalize_module_name(first))
+%a{:href =&gt; "http://metafusion.rubyforge.org"} metafusion
+subprojects (coming soon).  I've been using it when needed in my Rails projects on and off for the last several months.
+%h4&gt; The Problem
+You have some controllers you include into your application from plugins or engines and you want to associate a particular layout to the plugin/engine controller from within your application (without changing anything in the plugin or engine - of course!).  There is not good way of doing this nicely in Rails presently as each controller usually defines controller-wide layouts within its definition.
+%h4 The Solution
+%pre
+  [finsignia/paths.rb]
+  %code
+    :preserve
+      
+      # See:
+      # * Finsignia::Paths
+      
+      # Contains helper methods related to paths and resolving modules and 
+      # classes from paths.  Provides for helpful mixin for various applications.
+      module Finsignia::Paths
+      
+        def self.included(base)
+          base.extend ClassMethods
         end
-        # I doubt this will ever get this far as per expeceted behavior of ObjectSpace and Module...so commented it out following unreachable line.
-        #raise NameError.new("#{type} constant not found for internal path #{path}") unless mod
-        return mod unless rest
-      end      
-    end
-    
-    # Separating this so we can stub this method out in specifications.
-    def require_controller(path)
-      require("#{path}_controller") unless "test" == ENV["RAILS_ENV"]
-    end
-    
-    # Separating this so we can stub this method out in specifications.
-    def require_model(path)
-      require(path) unless "test" == ENV["RAILS_ENV"]
-    end
-  end
-end
+        
+        # Contains class methods for Finsignia::Paths mixin
+        module ClassMethods
+          @@element_postfixes = {:model =&gt; '', :controller =&gt; 'Controller'}
+      
+          def resolve_model(path)
+            resolve_element :model, path
+          end
+        
+          def resolve_controller(path)
+            resolve_element :controller, path
+          end
+          
+          def normalize_module_name(path)
+            list = path.split('_')
+            list.collect do |item|
+              item.capitalize
+            end.join
+          end
+          
+          # Resolves path to a type of Rails element 
+          # (e.g. model, controller, etc.).
+          # 
+          # Path refers to 'internal' path, NOT require path:
+          #  'users/users' #=&gt; internal path
+          #  'users/users_controller #=&gt; require path
+          def resolve_element(type, path)
+            first, rest = path.split('/')
+            mod = ObjectSpace.const_get(normalize_module_name(first))
+            while rest
+              first, rest = rest.split('/')
+      
+              unless rest
+                mod = mod.const_get(normalize_module_name("\#{first}_\#{@@element_postfixes[type].downcase}"))
+              else
+                mod = mod.const_get(normalize_module_name(first))
+              end
+              # I doubt this will ever get this far as per expeceted behavior of ObjectSpace and Module...so commented it out following unreachable line.
+              #raise NameError.new("\#{type} constant not found for internal path \#{path}") unless mod
+              return mod unless rest
+            end      
+          end
+          
+          # Separating this so we can stub this method out in specifications.
+          def require_controller(path)
+            require("\#{path}_controller") unless "test" == ENV["RAILS_ENV"]
+          end
+          
+          # Separating this so we can stub this method out in specifications.
+          def require_model(path)
+            require(path) unless "test" == ENV["RAILS_ENV"]
+          end
+        end
+      end
+  [finsignia/layouts.rb]
+  %code
+    :preserve
+      
+      # See:
+      # * Finsignia::Layouts
+      # * Finsignia::LayoutsError
+      
+      # Raised when an exceptional condition arises in the Layouts 
+      # mapping process.
+      class Finsignia::LayoutsError &lt; Exception; end
+      
+      # Provides a closure and declarative way to define layout
+      # mappings for an application that utilize controllers, views, 
+      # etc. from plugins.
+      #
+      # The closure approach simulates the Rails Routing approach 
+      # closely, like:
+      #  require 'application'
+      #  
+      #  Finsignia::Layouts.map do |map|
+      #    map.connect 'users/sessions', 'layout_name'
+      #  end
+      #
+      # The declarative approach looks like the following:
+      #  require 'application'
+      #  include Finsignia
+      #  Layouts.map 'users/sessions', 'layout_name'
+      # 
+      module Finsignia::Layouts
+        class &lt;&lt; self
+          def connect(controller_path, layout)
+            require_controller(controller_path)
+            # resolve controller class and call .layout(layout) on it.
+            controller = resolve_controller(controller_path)
+            controller.layout(layout)
+          end
+          
+          def map(&amp;block)
+            yield self if block_given?
+          end
+        end
+      
+      #  private
+          include Finsignia::Paths    
+      end
+So basically in a file like
+%tt config/layouts.rb
+of our application we have something like:
+%pre
+  %code
+    :preserve
+      
+      Finsignia::Layouts.map do |map|
+        map.connect 'users/sessions', 'session'
+        map.connect 'users/users', 'users'
+        map.connect 'accounts/transaction', 'account'
+      end
+Then include the
+%tt config/layouts.rb
+file in
+%tt config/environment.rb
+and you have separated your concerns relatively nicely and easily.
 
-
-
-
-# See:
-# * Finsignia::Layouts
-# * Finsignia::LayoutsError
-
-# Raised when an exceptional condition arises in the Layouts 
-# mapping process.
-class Finsignia::LayoutsError &lt; Exception; end
-
-# Provides a closure and declarative way to define layout
-# mappings for an application that utilize controllers, views, 
-# etc. from plugins.
-#
-# The closure approach simulates the Rails Routing approach 
-# closely, like:
-#  require 'application'
-#  
-#  Finsignia::Layouts.map do |map|
-#    map.connect 'users/sessions', 'layout_name'
-#  end
-#
-# The declarative approach looks like the following:
-#  require 'application'
-#  include Finsignia
-#  Layouts.map 'users/sessions', 'layout_name'
-# 
-module Finsignia::Layouts
-  class &lt;&lt; self
-    def connect(controller_path, layout)
-      require_controller(controller_path)
-      # resolve controller class and call .layout(layout) on it.
-      controller = resolve_controller(controller_path)
-      controller.layout(layout)
-    end
-    
-    def map(&amp;block)
-      yield self if block_given?
-    end
-  end
-
-#  private
-    include Finsignia::Paths    
-end
-
-
-
-
-
-
-
-Finsignia::Layouts.map do |map|
-  map.connect 'users/sessions', 'session'
-  map.connect 'users/users', 'users'
-  map.connect 'accounts/transaction', 'account'
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-gem('metafusion-rails', '=MFR_VERSION')
-require 'metafusion/rails'
-
-Finsignia::Layouts.map do |map|
-  map.connect 'namespace/resource', 'layout'
-  # etc....
-end
-
-</code></pre>
+When I release metafusion-rails my plan is that instead of installing the
+%tt finsignia/paths.rb
+and
+%tt finsignia/layouts.rb
+in the
+%tt lib
+directory you would be able to do something like the following at the end of your
+%tt config/environment.rb
+file:
+%pre
+  %code
+    :preserve
+      
+      gem('metafusion-rails', '=MFR_VERSION')
+      require 'metafusion/rails'
+      
+      Finsignia::Layouts.map do |map|
+        map.connect 'namespace/resource', 'layout'
+        # etc....
+      end
+Alternatively you could still keep the layouts.rb file if your environment.rb is getting large and keep the layouts.rb include in your environment.rb.
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -255,7 +256,7 @@ end
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -264,7 +265,7 @@ end
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,125 +55,122 @@
           <h2>Why proponents of marriage equality should love graph databases, Part 1: A Reply to 'The Database Engineering Perspective'</h2>
           <h5 class="time">2010-03-13 10:28:00 -0600</h5>
           This is a response to the excellent
-<a href="http://qntm.org/gay" target="_blank">Gay marriage: the database engineering perspective</a>
+%a{:href =&gt; "http://qntm.org/gay", :target =&gt; "_blank"} Gay marriage: the database engineering perspective
 blog post from November 2008 by Sam Hughs.  The only discussion that didn't happen in his blog post was offering a NOSQL alternative to the gay marriage database problem, but I will not hold it against Sam Hughs because it was a comprehensive look at relational database schema designs for modelling marriage!
-<br>
-<br>
+%br/
+%br/
 This response is a little dabble (i.e. not as thorough as the original post) into how graph databases could model monogamous same sex marriages without much problem and also allow for polyamorous marriages quite naturally.  My goal here is to demonstrate how graph databases provide a great amount of flexibility without very much work at all, especially when the data application is just as concerned with connections between entities (aka records in RDBMS or nodes in graph databases) than just the entities themselves.
-<br>
-<br>
+%br/
+%br/
 First off I want to look at the inherent problems with modelling real world data in relational databases and how the approach of graph databases can overcome many, if not all, of these problems.  Then I will launch into a specific snippet of code to demonstrate modelling marriages that can be between any two consenting adults rather than just one man and one woman.  Then I hope to outline how this could be extended to model poly amorous (including polygamous) relationships without much more work.  Near the end I will also include a section at the end that discusses shortcomings of the graph database approach as well for completeness.  My discussion will be focused on using
-<a href="http://neo4j.org/" target="_blank">Neo4J</a>
+%a{:href =&gt; "http://neo4j.org/", :target =&gt; "_blank"} Neo4J
 as it is the only comprehensive graph database I am aware of that is open source.
-<br>
-<br>
-<strong>Update (2010-03-13):</strong>
+%br/
+%br/
+%strong Update (2010-03-13):
 Boris (in the comments) mentioned that there is another open source graph database called
-<a href="http://www.kobrix.com/hgdb.jsp" target="_blank">HyperGraphDB</a>
-<br>
-<br>
-<strong>Update (2010-04-03):</strong>
+%a{:href =&gt; "http://www.kobrix.com/hgdb.jsp", :target =&gt; "_blank"} HyperGraphDB
+%br/
+%br/
+%strong Update (2010-04-03):
 Johannes (via email) told me about
-<a href="http://infogrid.org/" target="_blank">InfoGrid</a>,
+= succeed "," do
+  %a{:href =&gt; "http://infogrid.org/", :target =&gt; "_blank"} InfoGrid
 which looks like a very interesting alternative to Neo4J with a slightly different way of doing things.
-<br>
-<br>
-<h3>What is wrong with relational databases?</h3>For
+%br/
+%br/
+= succeed "For" do
+  %h3 What is wrong with relational databases?
 the last 14 years I have been using, designing, maintaining and administering relational databases in some capacity as a software programmer, developer, engineer and now as an applications architect.    During that time I have found the following problems with using relational databases:
-<br>
-<ul>
-  <li>
-    <strong>A lot of real world data isn't highly structured (only partially):</strong>
+%br/
+%ul
+  %li
+    %strong A lot of real world data isn't highly structured (only partially):
     this is probably the biggest problem with using relational databases (for everything) the way they are supposed to be.  Sure you can add a blob, clob or text field to a table and add an arbitrary structure of data that depends on the record, which can be parsed by the application, but that would be a violation of all things relational and you would be paying a heavy price for doing this in a relational database depending on how big these "blobs" generally are.  Not to mention you miss out on query-ability, which is something relational databases do well on highly structured datasets with the relevant indexes defined and a decent attempt at normalization.
-    <em>Note: I think relational databases are a fine thing when utilized to model data that truly is highly structured in the wild where the entities, not the relationships matter the most.</em>
-  </li>
-  <li>
-    <strong>Object to relational mapping (ORM) constraints and disjoints:</strong>
+    %em Note: I think relational databases are a fine thing when utilized to model data that truly is highly structured in the wild where the entities, not the relationships matter the most.
+  %li
+    %strong Object to relational mapping (ORM) constraints and disjoints:
     For almost a decade I have been using ORM libraries such as TOPLink (Java), Persistence (C++), Hibernate (Java), ActiveRecord (Ruby), DataMapper (Ruby), SQLObject (Python) and others.  They each had their own specific problems at times, but they also possessed a set of common problems that resulted in creating a far from seamless integration between the object oriented layer (that a vast number of business systems and web applications are currently written with today) and the distinct properties of a relational database.  These common object to relational constraints and disjointedness is not an
-    <abbr title="Object-Relational Mapper">ORM</abbr>
+    %abbr{:title =&gt; "Object-Relational Mapper"} ORM
     tool issue, rather it is a problem of trying to shove a round pin into a square hole (paraphrasing a comment made in page 3 of
-    <a href="http://dist.neo4j.org/neo-technology-introduction.pdf" target="_blank">'The Neo Database: A Technology Introduction'</a>).
-  </li>
-  <li>
-    <strong>Weak and inefficient "traversal" support:</strong>
+    = succeed ")." do
+      %a{:href =&gt; "http://dist.neo4j.org/neo-technology-introduction.pdf", :target =&gt; "_blank"} 'The Neo Database: A Technology Introduction'
+  %li
+    %strong Weak and inefficient "traversal" support:
     When I first started writing rich domain models in the nineties (that is last century for all you whipper-snappers) the focus of design was on the actual
-    <em>entities</em>
+    %em entities
     not relationships between the entities.  Sure occasionally you had to model a relationship as an "entity", but for the most part you could do your best to reduce your domain relationships as much as possible to a combination of
-    <em>contain a(n)</em>
+    %em contain a(n)
     (aka
-    <code>belongs_to</code>
+    %code belongs_to
     in ActiveRecord),
-    <em>contained by</em>
+    %em contained by
     (aka
-    <code>has_one</code>
+    %code has_one
     in ActiveRecord),
-    <em>one-to-many</em>
+    %em one-to-many
     (aka
-    <code>has_many</code>
+    %code has_many
     in ActiveRecord) and/or
-    <em>many-to-many</em>
+    %em many-to-many
     (aka
-    <code>has_and_belongs_to_many</code>
+    %code has_and_belongs_to_many
     in ActiveRecord) as much as possible because you can't attach attributes to relationships in a relational database unless you attempt to make it an entity.  If you are interested in deep and/or rich object graphs, however, you have to pay the penalty in any
-    <abbr title="Relational Database Management Systems">RDBMS</abbr>
+    %abbr{:title =&gt; "Relational Database Management Systems"} RDBMS
     with multiple joins, which are an expensive operation.  Even with all the right indices defined and queries optimized you will find more than three levels of indirection (aka
-    <code>JOIN</code>s)
+    = succeed "s)" do
+      %code JOIN
     will take a while on even a medium sized dataset.  So as application developers, we are forced to add lazy loading and/or customized eager loading logic into our rich object domain layer for a number cases where performance matters, which in my view pollutes business logic and makes the code less maintainable going forward.  This is far from ideal.  It is also not ideal that data set traversal patterns change with new the introduction of new features, so often you will need to fork lazy loading logic in the business logic layer to satisfy you new requirements.  Adding a lot more complexity to manage in the application tier.
-  </li>
-  <li>
-    <strong>Maintaining and evolving relational schemas:</strong>
+  %li
+    %strong Maintaining and evolving relational schemas:
     modifying relational database schemas has always been a little tricky at best.  Today I take advantage of using ActiveRecord's "migrations" that loosely orders (by creation timestamp) a set of relational schema modifications to run (and we wrote a simple extension to wrap them in a transaction to save our sanity - why wasn't that the default to begin with? anyway...).  Even though there is a method to the madness now, it is still a little crazy, especially when it comes time to run these migrations on the production server.  I always miss a heart beat or two when I run the
-    <code>rake db:migrate RAILS_ENV=production</code>
+    %code rake db:migrate RAILS_ENV=production
     command (yes, even after taking a snapshot).
-  </li>
-</ul>
-<br>
+%br/
 It has been fun thinking out loud, but I have stuff to do today.  Hey, I sometimes have a life, honest!:)  So I have made an outline of what is to come in the next parts of this topic.  I have already written some (bad) Java code to model same-sex and opposite-sex marriages consistently using a graph database (in this case Neo4J), but I plan on offering a Python snippet too, since I really can't stand the look of Java any more and the API doesn't make the case of Graph Databases for those coming from more terser feeling languages like Python, Ruby, Haskell, Erlang, Javascript (well if you use sane APIs like jQuery at least).
-<br>
-<br>
-<h3>What is coming in Part 2?</h3>
-<ul>
-  <li>How can graph databases overcome relational database shortcomings?</li>
-  <li>Gay marriage: the graph database solution</li>
-</ul>
-<br>
-<h3>What is coming in Part 3?</h3>
-<ul>
-  <li>Poly amorous marriage using a graph database</li>
-  <li>Graph databases: problems to watch out for</li>
-</ul>
+%br/
+%br/
+%h3 What is coming in Part 2?
+%ul
+  %li How can graph databases overcome relational database shortcomings?
+  %li Gay marriage: the graph database solution
+%br/
+%h3 What is coming in Part 3?
+%ul
+  %li Poly amorous marriage using a graph database
+  %li Graph databases: problems to watch out for
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -188,7 +181,7 @@ It has been fun thinking out loud, but I have stuff to do today.  Hey, I sometim
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -197,7 +190,7 @@ It has been fun thinking out loud, but I have stuff to do today.  Hey, I sometim
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

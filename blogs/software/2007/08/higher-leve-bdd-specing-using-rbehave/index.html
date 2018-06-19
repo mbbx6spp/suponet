@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,100 +55,102 @@
           <h2>Story-level BDD specing using rBehave</h2>
           <h5 class="time">2007-08-09 12:51:00 -0500</h5>
           For those in the BDD world that have been asleep at the wheel over the last month or two, Dan North has released
-<tt>rBehave</tt>
+%tt rBehave
 which wraps around
-<tt>RSpec</tt>
+%tt RSpec
 and allows developers to spec their code at the story level, which has been missed in
-<tt>RSpec</tt>
+%tt RSpec
 (though I don't know what I would do without
-<tt>RSpec</tt>).
+= succeed ")." do
+  %tt RSpec
 Dan mentions that he is discussing integrating his work into RSpec at some point in the future, but in the meantime Dan's
-<tt>rBehave</tt>
+%tt rBehave
 framework is currently at version 0.3.0 and is available for install as a Ruby Gem as usual:
-<code>sudo gem install rbehave</code>
+%code sudo gem install rbehave
 Dan gives an example of
-<tt>rBehave</tt>
+%tt rBehave
 using a bank transfer story on his blog.  Below I give another example of authenticating a user:
-<pre>
-require ‘rubygems’
-require ‘rbehave’
-require ’spec’ # for "should" method
-
-require ‘user’ # the actual application code
-
-Story "authenticate user",
-%(As a user of the system I wish to authenticate and access my account information.) do
-
-  Scenario "correct password is supplied but user has been suspended" do
-    Given "my user account is created", User.new do |user|
-      @user = User.new
+%pre
+  :preserve
+    
+    require ‘rubygems’
+    require ‘rbehave’
+    require ’spec’ # for "should" method
+    
+    require ‘user’ # the actual application code
+    
+    Story "authenticate user",
+    %(As a user of the system I wish to authenticate and access my account information.) do
+    
+      Scenario "correct password is supplied but user has been suspended" do
+        Given "my user account is created", User.new do |user|
+          @user = User.new
+        end
+        Given "my username is", "myusername" do |username|
+          @user.username = username
+        end
+        Given "my password is", "mypassword" do |password|
+          @user.password = password
+        end
+        Given "my user account has been suspended", true do |suspended|
+          @user.suspended = suspended
+        end
+        When "I attempt to authenticate with", "mypassword" do |password|
+          @authenticated = @user.authentiate?(password)
+        end
+        Then "my user account should respond with authentication status of", false do |status|
+          @authenticated.should be(status)
+        end
+      end
+    
+      Scenario "correct password is supplied and user is active and verified" do
+        Given "my user account is created", User.new
+        Given "my username is", "myusername"
+        Given "my password is", "mypassword"
+        Given "my user account has been suspended", false
+        Given "my user account has been activated", true do |activated|
+          @user.activated = activated
+        end
+        When "I attempt to authenticate with", "mypassword"
+        Then "my user account should respond with authentication status of", true
+      end
+    
+      # A few other scenarios go here, like non-activated user (but not suspended), etc.
+      # Left as exercise to the reader.
     end
-    Given "my username is", "myusername" do |username|
-      @user.username = username
-    end
-    Given "my password is", "mypassword" do |password|
-      @user.password = password
-    end
-    Given "my user account has been suspended", true do |suspended|
-      @user.suspended = suspended
-    end
-    When "I attempt to authenticate with", "mypassword" do |password|
-      @authenticated = @user.authentiate?(password)
-    end
-    Then "my user account should respond with authentication status of", false do |status|
-      @authenticated.should be(status)
-    end
-  end
-
-  Scenario "correct password is supplied and user is active and verified" do
-    Given "my user account is created", User.new
-    Given "my username is", "myusername"
-    Given "my password is", "mypassword"
-    Given "my user account has been suspended", false
-    Given "my user account has been activated", true do |activated|
-      @user.activated = activated
-    end
-    When "I attempt to authenticate with", "mypassword"
-    Then "my user account should respond with authentication status of", true
-  end
-
-  # A few other scenarios go here, like non-activated user (but not suspended), etc.
-  # Left as exercise to the reader.
-end
-
-</pre>
+Please note, i do not need to restate the Given, When or Then blocks passed in after they are defined once!
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -163,7 +161,7 @@ end
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -172,7 +170,7 @@ end
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

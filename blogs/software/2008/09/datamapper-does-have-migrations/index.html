@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,82 +55,89 @@
           <h2>DataMapper does have migrations</h2>
           <h5 class="time">2008-09-04 09:27:00 -0500</h5>
           I wanted to bust a myth out there that DataMapper does not have regular migrations, just the auto migrations.  At least in post 0.9 versions DataMapper has both.
+
 In other blogs about the topic I found quotes like: "DataMapper migrations pull your database structure directly from the Ruby code for your models, so there’s no need to write separate migration files...".  This, in my opinion, gives the wrong impression to those that are worried about non-trivial schema migrations.  The author of that quote appears to have never moved one column into multiple or vice versa (a non-trivial schema change), among other schema changes where a DataMapper auto migration would not work in a production environment.
+
 In merb you can just create a new DM migration with the following:
-<code>$ merb-gen migration name_of_your_migration</code>
+%code $ merb-gen migration name_of_your_migration
 (Assuming you have set the
-<code>use_orm</code>
+%code use_orm
 setting to
-<code>:datamapper</code>
+%code :datamapper
 in config/init.rb.)
+
 A simple DataMapper migration might look something like:
-<pre><code>
-migration 1, :create_orders  do
-  up do
-    create_table(:orders) do
-      column(:id, Integer, :serial =&gt; true)
-      column(:amount, Integer)
-      column(:completed, Boolean)
-      column(:description, String, :size =&gt; 255)
-      column(:created_at, DateTime)
-      column(:updated_at, DateTime)
-    end
-  end
+%pre
+  %code
+    :preserve
+      
+      migration 1, :create_orders  do
+        up do
+          create_table(:orders) do
+            column(:id, Integer, :serial =&gt; true)
+            column(:amount, Integer)
+            column(:completed, Boolean)
+            column(:description, String, :size =&gt; 255)
+            column(:created_at, DateTime)
+            column(:updated_at, DateTime)
+          end
+        end
+      
+        down do
+          drop_table(:orders)
+        end
+      end
+If you have problems with
+%code Boolean
+not being recognized, throw in the line:
+%code include DataMapper::Types
+to the top of the migration (yes, this needs some finessing obviously).
 
-  down do
-    drop_table(:orders)
-  end
-end
+Hope that helps a few people that may have been mislead by some blog posts inadvertently.  Migrations are needed for many cases I come across where auto migrations just will not cut it without losing data in production (not a good thing if data matters in your application:)).
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</code></pre>
+BTW A minor annoyance of mine in Merb is that for DM migrations you need to use this ugly Rake task:
+%code dm:db:migrate
+to migrate to latest version.  To rollback migrations you need to use this ugly thing:
+= succeed "." do
+  %code dm:db:migrate:down[version]
+Where those using AR in Merb just keep using
+%code db:migrate
+and
+= succeed "." do
+  %code db:rollback
+This is an area that needs cleaning up to promote ORM agnosticism the way Merb is supposed to do.
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -145,7 +148,7 @@ end
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -154,7 +157,7 @@ end
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

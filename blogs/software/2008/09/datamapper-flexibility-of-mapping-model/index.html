@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,90 +55,95 @@
           <h2>DataMapper: Flexibility of mapping model attributes to table columns</h2>
           <h5 class="time">2008-09-04 10:13:00 -0500</h5>
           I know an esteemed ex-colleague of mine (even if he is an Apple zombie now - yes, becoming a fan of Apple on Facebook deserves some heckling;)) has reservations about the apparent unDRY-ness of DataMapper with migrations.  I used to share his reservations before I wrote two applications using DataMapper.  Neither Merb application was particularly spectacular, but both had to work with legacy database schemas.  Oh the joys of crazy DBA naming conventions!
+
 Let's look at a brief example of DBA naming madness (some names were changed, but the conventions used are the same):
-<pre>
-ordersTable:
-  - uid_int: int (PK)
-  - acc_id_int: int
-  - amt_int: int
-  - ref_code_string: varchar(64) natural key
-  - desc_string: varchar(128)
-  - entered_dt: datetime
-  - changed_dt: datetime
+%pre
+  :preserve
+    
+    ordersTable:
+      - uid_int: int (PK)
+      - acc_id_int: int
+      - amt_int: int
+      - ref_code_string: varchar(64) natural key
+      - desc_string: varchar(128)
+      - entered_dt: datetime
+      - changed_dt: datetime
+In another table managed by a different group we had:
+%pre
+  :preserve
+    
+    Account:
+      - ID: int (PK)
+      - Balance: int
+      - UserID: int (FK)
+      - EnteredDateTime: datetime
+      - ChangedDateTime: datetime
+I kid you not.  Two different conventions, both relatively unreadable as Ruby attributes as they both violate popular coding conventions in some way.
 
+In ActiveRecord you would be left doing non-trivial coding to hide the ugly column names in the model and map Ruby-friendly names to the appropriate column.
 
+In DataMapper this is not so.  Lending from the design pattern's primary purpose - to explicitly map model attributes to database columns to decouple the two - we can write something like the following using DM:
+%pre
+  %code
+    :preserve
+      
+      class Order
+        include DataMapper::Resource
+        set_table_name("ordersTable") #ridiculous name really, but what can you do if other older applications rely on this already?
+      
+        has(1, :account, :child_key =&gt; 'acc_id_int', :repository =&gt; repository(:accounts))
+        property(:id, Integer, :serial =&gt; true, :field =&gt; 'uid')
+        property(:amount, Integer, :field =&gt; 'amt_int')
+        property(:reference, String, :field =&gt; 'ref_code_string', :key =&gt; true)
+        property(:description, String, :field =&gt; 'desc_string')
+        property(:created_at, DateTime, :field =&gt; 'entered_dt')
+        property(:changed_dt, DateTime, :field =&gt; 'changed_dt')
+      end
+      
+      class Account
+        include DataMapper::Resource
+        set_table_name('Account')
+      
+        property(:id, Integer, :serial =&gt; true, :field =&gt; 'ID')
+        property(:balance, Integer, :field =&gt; 'Balance')
+        property(:created_at, DateTime, :field =&gt; 'EnteredDateTime')
+        property(:updated_at, DateTime, :field =&gt; 'ChangedDateTime')
+      end
+This way we can write readable Ruby code with the model.
 
-
-Account:
-  - ID: int (PK)
-  - Balance: int
-  - UserID: int (FK)
-  - EnteredDateTime: datetime
-  - ChangedDateTime: datetime
-
-
-
-
-
-:preserve
-  
-  class Order
-    include DataMapper::Resource
-    set_table_name("ordersTable") #ridiculous name really, but what can you do if other older applications rely on this already?
-  
-    has(1, :account, :child_key =&gt; 'acc_id_int', :repository =&gt; repository(:accounts))
-    property(:id, Integer, :serial =&gt; true, :field =&gt; 'uid')
-    property(:amount, Integer, :field =&gt; 'amt_int')
-    property(:reference, String, :field =&gt; 'ref_code_string', :key =&gt; true)
-    property(:description, String, :field =&gt; 'desc_string')
-    property(:created_at, DateTime, :field =&gt; 'entered_dt')
-    property(:changed_dt, DateTime, :field =&gt; 'changed_dt')
-  end
-  
-  class Account
-    include DataMapper::Resource
-    set_table_name('Account')
-  
-    property(:id, Integer, :serial =&gt; true, :field =&gt; 'ID')
-    property(:balance, Integer, :field =&gt; 'Balance')
-    property(:created_at, DateTime, :field =&gt; 'EnteredDateTime')
-    property(:updated_at, DateTime, :field =&gt; 'ChangedDateTime')
-  end
-
-
-</pre>
+Next time we can look at lazy loading: how to switch it on and off and when to use it for greater effect.
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -153,7 +154,7 @@ Account:
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -162,7 +163,7 @@ Account:
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

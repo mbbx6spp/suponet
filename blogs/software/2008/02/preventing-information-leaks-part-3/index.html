@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,145 +55,140 @@
           <h2>Preventing Information Leaks, Part 3</h2>
           <h5 class="time">2008-02-12 10:44:00 -0600</h5>
           In the third part of the
-<a href="http://snakesgemscoffee.blogspot.com/2008/02/preventing-information-leaks-part-1.html">how to prevent information leaks</a>
+%a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2008/02/preventing-information-leaks-part-1.html"} how to prevent information leaks
 blog post series, we will look for unguarded "hidden" files where we can garnish quite a bit of information.
+
 Make sure you check out
-<a href="http://snakesgemscoffee.blogspot.com/2008/02/preventing-information-leaks-part-1.html">part 1</a>
+%a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2008/02/preventing-information-leaks-part-1.html"} part 1
 and
-<a href="http://snakesgemscoffee.blogspot.com/2008/02/preventing-information-leaks-part-2.html">part 2 on how to prevent information leaks in web applications</a>
+%a{:href =&gt; "http://snakesgemscoffee.blogspot.com/2008/02/preventing-information-leaks-part-2.html"} part 2 on how to prevent information leaks in web applications
 before continuing.
-<h4>Seek Unguarded Hidden Files</h4>
+%h4 Seek Unguarded Hidden Files
 For web applications that use deployment tools that pull code from code repositories, you can find out quite a bit of information about the code repository (e.g. host, path, usernames, file listings), by finding unguarded hidden files.  One obvious example especially in the SVN saturated Rails world is the path
-<code>/.svn/entries</code>
+%code /.svn/entries
 and similar URLs.
+
 You will want to make sure the following URIs are not accessible on your public sites if you use Subversion (SVN):
-<ul>
-  <li>
-    <code>/.svn/entries</code>
-  </li>
-  <li>
-    <code>/javascripts/.svn/entries</code>
-  </li>
-  <li>
-    <code>/stylesheets/.svn/entries</code>
-  </li>
-  <li>
-    <code>/images/.svn/entries</code>
-  </li>
-</ul>
+%ul
+  %li
+    %code /.svn/entries
+  %li
+    %code /javascripts/.svn/entries
+  %li
+    %code /stylesheets/.svn/entries
+  %li
+    %code /images/.svn/entries
 If you are using a superior SCM for your project like Git you ought to be looking for the following:
-<ul>
-  <li>
-    <code>/.git/config</code>
-  </li>
-  <li>
-    <code><strike>/javascripts/.git/config</strike></code>
-  </li>
-  <li>
-    <code><strike>/stylesheets/.git/config</strike></code>
-  </li>
-  <li>
-    <code><strike>/images/.git/config</strike></code>
-  </li>
-</ul>
+%ul
+  %li
+    %code /.git/config
+  %li
+    %code
+      %strike /javascripts/.git/config
+  %li
+    %code
+      %strike /stylesheets/.git/config
+  %li
+    %code
+      %strike /images/.git/config
 If your project is still in the stone-age using CVS, then check the following:
-<ul>
-  <li>
-    <code>/CVS/Entries</code>
-  </li>
-  <li>
-    <code>/javascripts/CVS/Entries</code>
-  </li>
-  <li>
-    <code>/stylesheets/CVS/Entries</code>
-  </li>
-  <li>
-    <code>/images/CVS/Entries</code>
-  </li>
-</ul>
+%ul
+  %li
+    %code /CVS/Entries
+  %li
+    %code /javascripts/CVS/Entries
+  %li
+    %code /stylesheets/CVS/Entries
+  %li
+    %code /images/CVS/Entries
 Adapt these patterns for your application framework default structures.  The above is for Rails or Rails-based frameworks (e.g. Merb).
+
 When I first tried this last week on the Rails top 10 sites, three out of ten of these sites exposed their SVN information (and last week I had only checked SVN, no Git or CVS URIs).  Since last week at least one of those sites have fixed the problem!
+
 What information is exposed in these files?  Quite a lot of information.  Do you want potential hackers knowing:
-<ul>
+%ul
   code repository URL (host, port, protocol, path)
-  <li>usernames of committers</li>
-  <li>code repository listings of files in a directory</li>
-</ul>
+  %li usernames of committers
+  %li code repository listings of files in a directory
 All these things are not things you really want the potential hacker knowing.  On my travels investigating the top 100 Rails sites I found one top 20 site that exposed enough information from their SVN entries file that I found a prototyping directory that included a "specs.rtf" document, which I was able to download.  The document was not very uninteresting (at least not to me), but if they had written more in-depth specifications in the document, it may have served as a nice guide for a potential hacker to garnish enough information about their setup to take over!
-<b>Moral of this story?</b>
+%b Moral of this story?
 Guard hidden files.  I recommend "forbidding" access to all troublesome path regex patterns.
+
 For example, one of the LigHTTPd servers I administer has the following at the top of the configuration file:
-<pre><code>
-$HTTP["url"] =~ ".*/\..*" {
-  url.access-deny = ("")
-}
+%pre
+  %code
+    :preserve
+      
+      $HTTP["url"] =~ ".*/\..*" {
+        url.access-deny = ("")
+      }
+For Apache httpd servers I use something like the following in the
+= succeed ":" do
+  %code httpd.conf
+%pre
+  %code
+    :preserve
+      
+      &lt;DirectoryMatch "^.*\..*"&gt;
+        ErrorDocument 403 /403.html
+        Order allow,deny
+        Deny from all
+        Satisfy All
+      &lt;/DirectoryMatch&gt;
+Nginx configuration might look something like:
+%pre
+  %code
+    :preserve
+      
+      location ^~ /\..* {
+        deny    all;
+      }
+This guards against URLs like:
+= succeed "," do
+  %code /.svn/entries
+%code .git/config
+as well as
+= succeed "," do
+  %code .htpasswd
+etc.  This means that only some script-kiddie hackers will mistakenly think you are using one SCM system instead of another, but they will never be able to know for sure which SCM you use or any information about your code repository.
 
-
-
-
-
-
-
-&lt;DirectoryMatch "^.*\..*"&gt;
-  ErrorDocument 403 /403.html
-  Order allow,deny
-  Deny from all
-  Satisfy All
-&lt;/DirectoryMatch&gt;
-
-
-
-
-
-location ^~ /\..* {
-  deny    all;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-</code></pre>
+Forbidding access to all paths containing "/." somewhere in the URL is generally a good idea (IMHO) as sometimes people change web servers and leave "secret" files in the directory structure, but the new server doesn't know that, for example,
+%code .htaccess
+or
+%code .htpasswd
+is "special", so it will just serve it without thinking.
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -208,7 +199,7 @@ location ^~ /\..* {
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -217,7 +208,7 @@ location ^~ /\..* {
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

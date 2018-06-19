@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,117 +55,124 @@
           <h2>Twitter4R v0.2.0: Configuration API</h2>
           <h5 class="time">2007-07-08 14:48:00 -0500</h5>
           The
-<b>Configuration API</b>
+%b Configuration API
 allows applications using Twitter4R configure static connection options such as:
-<ul>
-  <li>connection protocol (e.g. HTTP and SSL)</li>
-  <li>host name and port (good for testing or if the Twitter REST API moved to a different subdomain)</li>
-  <li>proxy settings (i.e. proxy host, port, username and password)</li>
-  <li>user agent identifier</li>
-  <li>
-    <tt>X-Twitter-Client*</tt>
+%ul
+  %li connection protocol (e.g. HTTP and SSL)
+  %li host name and port (good for testing or if the Twitter REST API moved to a different subdomain)
+  %li proxy settings (i.e. proxy host, port, username and password)
+  %li user agent identifier
+  %li
+    %tt X-Twitter-Client*
     HTTP headers for Twitter's internal usage analysis
-  </li>
-</ul>
 This API intentionally tries to look like the Rails initializer/configuration API:
-<pre><code>require('rubygems')
-gem('twitter4r', '0.2.0')
-require('twitter')
-Twitter::Client.configure do |conf|
-# We can set Twitter4R to use
-<tt>:ssl</tt>
-or
-<tt>:http</tt>
-to connect to the Twitter API.
-# Defaults to
-<tt>:ssl</tt>
-conf.protocol = :ssl
-# We can set Twitter4R to use another host name (perhaps for internal
-# testing purposes).
-# Defaults to 'twitter.com'
-conf.host = 'twitter.com'
-# We can set Twitter4R to use another port (also for internal
-# testing purposes).
-# Defaults to 443
-conf.port = 443
-# We can set proxy information for Twitter4R
-# By default all following values are set to
-<tt>nil</tt>.
-conf.proxy_host = 'myproxy.host'
-conf.proxy_port = 8080
-conf.proxy_user = 'myuser'
-conf.proxy_pass = 'mypass'
-# We can also change the User-Agent and X-Twitter-Client* HTTP headers
-conf.user_agent = 'MyAppAgentName'
-conf.application_name = 'MyAppName'
-conf.application_version = 'v1.5.6'
-conf.application_url = 'http://myapp.url'
-end</code></pre>
+%pre
+  %code
+    require('rubygems')
+    gem('twitter4r', '0.2.0')
+    require('twitter')
+    
+    Twitter::Client.configure do |conf|
+    \# We can set Twitter4R to use
+    %tt :ssl
+    or
+    %tt :http
+    to connect to the Twitter API.
+    \# Defaults to
+    %tt :ssl
+    conf.protocol = :ssl
+    
+    \# We can set Twitter4R to use another host name (perhaps for internal
+    \# testing purposes).
+    \# Defaults to 'twitter.com'
+    conf.host = 'twitter.com'
+    
+    \# We can set Twitter4R to use another port (also for internal
+    \# testing purposes).
+    \# Defaults to 443
+    conf.port = 443
+    
+    \# We can set proxy information for Twitter4R
+    \# By default all following values are set to
+    = succeed "." do
+      %tt nil
+    conf.proxy_host = 'myproxy.host'
+    conf.proxy_port = 8080
+    conf.proxy_user = 'myuser'
+    conf.proxy_pass = 'mypass'
+    
+    \# We can also change the User-Agent and X-Twitter-Client* HTTP headers
+    conf.user_agent = 'MyAppAgentName'
+    conf.application_name = 'MyAppName'
+    conf.application_version = 'v1.5.6'
+    conf.application_url = 'http://myapp.url'
+    end
 If using
-<a href="http://twitter4r.rubyforge.org">
+%a{:href =&gt; "http://twitter4r.rubyforge.org"}
   Twitter4R
-  <span style="display: none">(open source Ruby library for Twitter REST API)</span>
-</a>
+  %span{:style =&gt; "display: none"} (open source Ruby library for Twitter REST API)
 in a Rails application I would recommend adding the necessary Twitter4R configuration code in
-<tt>config/twitter.rb</tt>
+%tt config/twitter.rb
 then including it in the
-<tt>config/environment.rb</tt>
+%tt config/environment.rb
 file to keep configurations separate.
-<h4>Upgrading from 0.1.1</h4>
+%h4 Upgrading from 0.1.1
 In Twitter4R v0.1.1 you could configure protocol, server host, server port and proxy settings using the following code:
-<pre>
-Twitter::Client.conf(
-  :ssl =&gt; true, 
-  :port =&gt; 443, 
-  :proxy_host =&gt; 'myproxy.host', 
-  :proxy_port =&gt; 8080)
+%pre
+  :preserve
+    
+    Twitter::Client.conf(
+      :ssl =&gt; true, 
+      :port =&gt; 443, 
+      :proxy_host =&gt; 'myproxy.host', 
+      :proxy_port =&gt; 8080)
+This API no longer exists, so if upgrading to Twitter4R 0.1.1 you will need to change the above to something like the following:
+%pre
+  :preserve
+    
+    Twitter::Client.configure do |conf|
+      conf.protocol = :ssl
+      conf.port = 443
+      conf.proxy_host = 'myproxy.host'
+      conf.proxy_port = 8080
+    end
+This change shouldn't be too painful for people I hope.
 
-
-
-
-Twitter::Client.configure do |conf|
-  conf.protocol = :ssl
-  conf.port = 443
-  conf.proxy_host = 'myproxy.host'
-  conf.proxy_port = 8080
-end
-
-
-
-
-</pre>
+Please refer to the
+%a{:href =&gt; "http://twitter4r.rubyforge.org/releases/v0.2.0/rdoc/"} Twitter4R v0.2.0 RDoc
+for more information.
 
         </article>
       </section>
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -180,7 +183,7 @@ end
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -189,7 +192,7 @@ end
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>

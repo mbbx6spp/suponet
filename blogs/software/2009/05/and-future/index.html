@@ -38,12 +38,8 @@
           <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
           <li class="plusone">
           <li class="linked">
-<script type="text/javascript" src="http://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
+<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
 </li>
-          <!--
-          <li class="reddit"><script type="text/javascript" src="http://www.reddit.com/static/button/button2.js"></script></li>
-          <li class="facebook"><iframe src="http://www.facebook.com/plugins/like.php?app_id=130334077058276&amp;send=false&amp;layout=box_count&amp;width=170&amp;show_faces=true&amp;action=like&amp;colorscheme=light&amp;font=lucida+grande&amp;height=90" scrolling="no" frameborder="0" style="text-align: right; border:none; overflow:hidden; width:170px; height:90px;" allowTransparency="true"></iframe></li>
-          -->
         </ul>
       </aside>
       <section>
@@ -59,58 +55,54 @@
           <h2>Twitter4R 0.3.1 and the future</h2>
           <h5 class="time">2009-05-18 12:16:00 -0500</h5>
           Hi Twitter4R users,
+
 I know I have been rather absent in terms of my Twitter4R contributions and ongoing development, but despite my absence I have
-<em>_finally_</em>
+%em _finally_
 officially released 0.3.1 with a lot more new features and a few bug fixes more than I initially expected to release 0.3.1 with.
+
 Some of the goodies included in the official 0.3.1 release are:
-<ul>
-  <li>
+%ul
+  %li
     Added
-    <em>raw</em>
+    %em raw
     Twitter Search API support.  Meaning you can use any of the HTTP parameters the Twitter HTTP-based Search API will expect.  E.g.
-    <code>twitter.search(:to =&gt; "twitter4r", :rpp =&gt; 10)</code>
+    %code twitter.search(:to =&gt; "twitter4r", :rpp =&gt; 10)
     or
-    <code>twitter.search(:q =&gt; "twitter4r", :rpp =&gt; 15, :geocode =&gt; "40.112186,-88.207592,250km")</code>
-  </li>
-  <li>Profile, theme API coverage on Twitter REST API.</li>
-  <li>
+    %code twitter.search(:q =&gt; "twitter4r", :rpp =&gt; 15, :geocode =&gt; "40.112186,-88.207592,250km")
+  %li Profile, theme API coverage on Twitter REST API.
+  %li
     Social Graphing API. E.g.
-    <code>twitter.graph(:friends, user)</code>
-  </li>
-  <li>Added "reply" support at all levels (low-level to model-level)</li>
-  <li>
-    <strong>Bugfix:</strong>
+    %code twitter.graph(:friends, user)
+  %li Added "reply" support at all levels (low-level to model-level)
+  %li
+    %strong Bugfix:
     the infamous
-    <code>URI.encode</code>
+    %code URI.encode
     to
-    <code>CGI.escape</code>
+    %code CGI.escape
     change.
-  </li>
-  <li>Rate limit information (still needs to be able to support the HTTP header method, which I actually suggested to Twitter developers some time back, but they only recently added it when my bandwidth for OSS contribution was minimal) :(</li>
-  <li>
-    <a href="http://wiki.github.com/mbbx6spp/twitter4r/twitter4r-0-3-1-development-release">much more</a>
-  </li>
-</ul>
+  %li Rate limit information (still needs to be able to support the HTTP header method, which I actually suggested to Twitter developers some time back, but they only recently added it when my bandwidth for OSS contribution was minimal) :(
+  %li
+    %a{:href =&gt; "http://wiki.github.com/mbbx6spp/twitter4r/twitter4r-0-3-1-development-release"} much more
 Now the future of the Twitter4R project.  I have made a LOT of mistakes with this Twitter4R OSS project venture, so I am going to try to fix a bunch of these things:
-<ul>
-  <li>
+%ul
+  %li
     Create a new set of Git repos on GitHub that separates the education portions (screencast, etc.) from the core source code of the project so that people do not need to download ridiculous amounts of data to their local drive just to fork Twitter4R on GitHub as it required at present.
-    <strong>Announcements about this will be coming soon!</strong>
-  </li>
-  <li>
+    %strong Announcements about this will be coming soon!
+  %li
     Have a consistent issue tracking system for Twitter4R.  Previously it has appeared inconsistent to users of the Twitter4R library where to submit defect reports or new feature requests to.  So I have had to field these requests from the Google Groups mailing list to personal emails and also @twitter4r replies on Twitter.
-    <strong>I plan on using GitHub's new issue tracking system for this as it seems a logical extension.</strong>
-  </li>
-  <li>I plan on documenting things a little more obviously on the official website from now one.  It appears many users did not want to go to the RDoc unless specifically pointed to it, even though a large majority of the library is fairly well documented in the RDocs.</li>
-</ul>
+    %strong I plan on using GitHub's new issue tracking system for this as it seems a logical extension.
+  %li I plan on documenting things a little more obviously on the official website from now one.  It appears many users did not want to go to the RDoc unless specifically pointed to it, even though a large majority of the library is fairly well documented in the RDocs.
 Please be patient while I fix these process/marketing/workflow issues of the project and in the mean time I will also be
-<strong>tackling OAuth support</strong>
+%strong tackling OAuth support
 as well.
+
 Again thanks for your patience thus far and tweet me on twitter at either
-<a href="http://twitter.com/SusanPotter" target="_new">@SusanPotter</a>
+%a{:href =&gt; "http://twitter.com/SusanPotter", :target =&gt; "_new"} @SusanPotter
 or
-<a href="http://twitter.com/twitter4r" target="_new">@twitter4r</a>
+%a{:href =&gt; "http://twitter.com/twitter4r", :target =&gt; "_new"} @twitter4r
 if you have suggestions or questions about the direction.  If you have specific queries on using the actual API, please join the twitter4r-users Google Groups mailing list and search the archives for a solution first and then if you can't find a solution, please post a message giving the group members your environment details and the version of Twitter4R you are using.
+
 Thanks!
 Susan
 Twitter4R Developer
@@ -120,32 +112,32 @@ Twitter4R Developer
     </div>
     <footer>
   <p>
-    Copyright © 2006-2015 <a href="http://susanpotter.net">Susan Potter</a>.
+    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <p>
-    This website is developed by <a href="http://susanpotter.net">Susan Potter</a>.
+    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
   </p>
   <div id="rights">
-    <a href="http://susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="http://susanpotter.net">Susan Potter</a>.
-    Links: <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="http://susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Software Developer</a>,
-           <a href="http://susanpotter.net/">Web Services Engineer</a>,
-           <a href="http://susanpotter.net/">Web Services Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="http://susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
+    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
+           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
+           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
+           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Software Developer</a>,
+           <a href="//susanpotter.net/">Web Services Engineer</a>,
+           <a href="//susanpotter.net/">Web Services Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
+           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
   </div>
   <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -156,7 +148,7 @@ Twitter4R Developer
     ga('require', 'displayfeatures');
     ga('send', 'pageview');
   </script>
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
   
   
   <script async="async" defer src="/javascripts/app.js"></script>
@@ -165,7 +157,7 @@ Twitter4R Developer
       var twitterWidgets = document.createElement('script');
       twitterWidgets.type = 'text/javascript';
       twitterWidgets.async = true;
-      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
       document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
     })();
   </script>
