@@ -57,7 +57,7 @@
           </h1>
           
           <h2>Ruby Idioms, Part 2</h2>
-          <h5 class="time">2007-01-22 17:21:00 -0800</h5>
+          <h5 class="time">2007-01-22 19:21:00 -0600</h5>
           Now the "idiom" we will use is not specific to Ruby, since I am pretty sure Perl has one of the  constructs we will use to solve the stated problem, but it is still idiomatic, since the majority of popular OO languages (static, dynamic or otherwise) do not have it (as far as I know).  Also some consider this to be a sub-optimal idiom, because there is a terser way to do something like this.  However, the idiom I recommend below is much more multi-purpose, though I will show the terser version for the trivial case.
 Firstly our Javafied Ruby code looks like the following for the problem at hand:
 <pre>
@@ -99,7 +99,10 @@ user_defined_fruits = ['apple', 'cantaloupe']
 fruits = ['apple', 'banana']
 user_defined_fruits.each do |fruit|
   if fruits.include? fruit
-    fruits  ['apple', 'banana', 'cantaloupe'] NOT ['apple', 'banana', 'apple', 'cantaloupe']
+    fruits &lt;&lt; fruit
+  end
+end
+fruits #=&gt; ['apple', 'banana', 'cantaloupe'] NOT ['apple', 'banana', 'apple', 'cantaloupe']
 
 
 
@@ -107,9 +110,19 @@ user_defined_fruits.each do |fruit|
 user_defined_fruits = ['apple', 'cantaloupe']
 fruits = ['apple', 'banana']
 user_defined_fruits.each do |fruit|
-  fruits 
+  fruits &lt;&lt; fruit unless fruits.include? fruit
+end
 
-        </pre></article>
+
+
+
+
+user_defined_fruits = ['apple', 'cantaloupe']
+fruits = ['apple', 'banana']
+fruits |= user_defined_fruits
+</pre>
+
+        </article>
       </section>
     </div>
     <footer>

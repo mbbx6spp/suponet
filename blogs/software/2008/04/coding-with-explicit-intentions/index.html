@@ -57,11 +57,12 @@
           </h1>
           
           <h2>Coding with Explicit Intentions</h2>
-          <h5 class="time">2008-04-01 08:34:00 -0700</h5>
+          <h5 class="time">2008-04-01 10:34:00 -0500</h5>
           Recently I have had the [mis]fortune to be working with PHP for integration purposes for a client.  A partner of my client's (in the advertising space) sent us some PHP code to add to our servers for resolving the content type of a file based on its extension.  The line of code in the PHP script they sent over that was supposed to determine the file extension was:
 <pre><code>$ext = substr($file,-4);</code></pre>
 As you can see they are making a pretty big assumption - that the extension is exactly three letters long.  The media files that this script *may* support in the future are: Real Media (.rm), MPEG (.mpeg), Quicktime (.qt), etc.  These extensions are not exactly three letters long.  Why would someone want to write code that is quite likely to fail and also not communicate more explicitly their intentions?
-This partner already doesn't support PHP <code>$ext = ".".pathinfo($file, PATHINFO_EXTENSION);</code>
+This partner already doesn't support PHP &lt; 4.0.3, so why not substitute the line above with:
+<pre><code>$ext = ".".pathinfo($file, PATHINFO_EXTENSION);</code></pre>
 It is standard, will never fail (unless there is a defect in the PHP version you are using for the standard function pathinfo, but what can you do about that?) and communicates the explicit intent of the original author, thus improving code maintainability.
 Anyway, just a pet peeve.  This is not by any means the only example I see on a day in day out basis, this just happened to be a great example for me to demonstrate my point.  While this example shows just a minor one-line example, if developers introduce even only 2-3 of these un-explicit intentioned lines of code a day that do not always do what you might want it to do, then the codebase quickly becomes a mine field.
 

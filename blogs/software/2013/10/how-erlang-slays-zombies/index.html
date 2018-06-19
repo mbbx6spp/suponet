@@ -57,7 +57,7 @@
           </h1>
           
           <h2>How Erlang Slays Zombies</h2>
-          <h5 class="time">2013-10-06 18:31:00 -0700</h5>
+          <h5 class="time">2013-10-06 20:31:00 -0500</h5>
           <p>
   At Chicago Erlang Factory Lite last Friday (Oct 4, 2013), I gave a talk on
   what functional programming (and declarative style) taught me when I first
@@ -115,7 +115,7 @@ zombie_part1.erl:11: Warning: function weak_zombie/0 is unused
 <pre><code class="erlang">Erlang R16B02 (erts-5.10.3) [source] [64-bit] [smp:8:8] [async-threads:10] [hipe] [kernel-poll:false] [dtrace]
 Eshell V5.10.3  (abort with ^G)
 1&gt; {ok, Pid} = cover:start().
-{ok,}
+{ok,&lt;0.34.0&gt;}
 2&gt; cover:compile_module(zombie_part1).
 <!-- path/to/zombie_part1.erl:13: Warning: function weak_zombie/1 is unused -->
 {ok,zombie_part1}

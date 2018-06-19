@@ -57,7 +57,7 @@
           </h1>
           
           <h2>Separating Rails Layout Associations</h2>
-          <h5 class="time">2007-09-13 19:16:00 -0700</h5>
+          <h5 class="time">2007-09-13 21:16:00 -0500</h5>
           I just realized I hadn't shared this code yet on this blog.  I will also be including it in one of the
 <a href="http://metafusion.rubyforge.org">metafusion</a>
 subprojects (coming soon).  I've been using it when needed in my Rails projects on and off for the last several months.<h4>The Problem</h4>You have some controllers you include into your application from plugins or engines and you want to associate a particular layout to the plugin/engine controller from within your application (without changing anything in the plugin or engine - of course!).  There is not good way of doing this nicely in Rails presently as each controller usually defines controller-wide layouts within its definition.
@@ -138,7 +138,81 @@ end
 
 # Raised when an exceptional condition arises in the Layouts 
 # mapping process.
-class Finsignia::LayoutsError </code></pre>
+class Finsignia::LayoutsError &lt; Exception; end
+
+# Provides a closure and declarative way to define layout
+# mappings for an application that utilize controllers, views, 
+# etc. from plugins.
+#
+# The closure approach simulates the Rails Routing approach 
+# closely, like:
+#  require 'application'
+#  
+#  Finsignia::Layouts.map do |map|
+#    map.connect 'users/sessions', 'layout_name'
+#  end
+#
+# The declarative approach looks like the following:
+#  require 'application'
+#  include Finsignia
+#  Layouts.map 'users/sessions', 'layout_name'
+# 
+module Finsignia::Layouts
+  class &lt;&lt; self
+    def connect(controller_path, layout)
+      require_controller(controller_path)
+      # resolve controller class and call .layout(layout) on it.
+      controller = resolve_controller(controller_path)
+      controller.layout(layout)
+    end
+    
+    def map(&amp;block)
+      yield self if block_given?
+    end
+  end
+
+#  private
+    include Finsignia::Paths    
+end
+
+
+
+
+
+
+
+Finsignia::Layouts.map do |map|
+  map.connect 'users/sessions', 'session'
+  map.connect 'users/users', 'users'
+  map.connect 'accounts/transaction', 'account'
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+gem('metafusion-rails', '=MFR_VERSION')
+require 'metafusion/rails'
+
+Finsignia::Layouts.map do |map|
+  map.connect 'namespace/resource', 'layout'
+  # etc....
+end
+
+</code></pre>
 
         </article>
       </section>

@@ -57,7 +57,7 @@
           </h1>
           
           <h2>'Twas the night before launch...</h2>
-          <h5 class="time">2008-01-04 17:10:00 -0800</h5>
+          <h5 class="time">2008-01-04 19:10:00 -0600</h5>
           Oh fun times!  On such fateful nights you know you will find something that will screw things up unless immediately addressed.  It must be someone's law already, but if it isn't I call dibs on it and it should thus be called
 <b>"Potter's Law"</b>:).
 On a night before launch that I recently experienced, I had a heart stopping moment.  The last 5 days of the sprint I had been churning out last minute changes based on usability feedback from the client.  In the process, I had neglected to include benchmarking and memory leak testing with the same discipline I prefer.  On the night before launch I ran my usual benchmarking scripts.  The results were pretty good except on one action.  We could have lived with that performance, but the real problem came when I ran tests to detect memory leaks in my Rails application.  Let the real fun begin!
@@ -88,9 +88,15 @@ So I reluctantly looked in the controller and saw something like the following:
 
 
 
-  class  [:exchange, {:vendor_symbols =&gt; [:vendor]}],
+  class &lt;&lt; self
+    def find_active(id)
+      now = Time.now
+      find(
+        id,
+        :include =&gt; [:exchange, {:vendor_symbols =&gt; [:vendor]}],
         :conditions =&gt; [
-          %{options.expires_at = ?}, 
+          %{options.expires_at &lt;= ? AND options.active = 1 AND 
+            vendor_symbols.effective_date &lt;= ? AND vendor_symbols.expiration_date &gt;= ?}, 
           now, now, now
         ],
         :order =&gt; 'vendor_symbols.effective_date DESC'
@@ -116,8 +122,31 @@ So I reluctantly looked in the controller and saw something like the following:
   end
 
 # Model finder code: ExchangeTradedOption.find_active
-  class  [:exchange],
-        :conditions =&gt; [%{options.expires_at </code></pre>
+  class &lt;&lt; self
+    def find_active(id)
+      now = Time.now
+      find(
+        id,
+        :include =&gt; [:exchange],
+        :conditions =&gt; [%{options.expires_at &lt;= ? AND options.active = 1}, now],
+      )
+    end
+  end
+
+# The VendorSymbol.find_active_for method implementation is left as an exercise for the reader
+# but it is very, very simple!
+
+# Changed view to refer to @vendor_symbols array instead of @eto.vendor_symbols
+# This also helped reduce indirection and prevented Law of Demeter violations in the view code!
+
+
+
+
+
+
+
+
+</code></pre>
 
         </article>
       </section>

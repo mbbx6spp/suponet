@@ -57,7 +57,7 @@
           </h1>
           
           <h2>Ruby Idioms, Part 7</h2>
-          <h5 class="time">2007-01-24 16:48:00 -0800</h5>
+          <h5 class="time">2007-01-24 18:48:00 -0600</h5>
           This idiom I have seen a little more in Rails than I have seen in Ruby, but I am putting it in this Ruby Idioms series anyway.
 First off, most of you will know by know that you can "transparently" provide a method in Ruby a Hash.  What do I mean by "transparently"?  Well have a look at the code example below:
 <pre><code>
@@ -70,7 +70,27 @@ user = User.find(:first, :include =&gt; :preferences)
 
 class User
   # ... some stuff here
-  class  2..128
+  class &lt;&lt; self
+    def find(type, params = {})
+      options = @@DEFAULTS.merge(params)
+      case type
+      when :first
+        options[:limit] = 1
+      when :all
+        # do stuff with options and query database
+        # bla bla bla
+      end
+      # rest of implementation
+    end
+  end
+  # ... some stuff here
+end
+
+
+
+
+
+  validates_length_of :name, :title, :company, :in =&gt; 2..128
 
 
 

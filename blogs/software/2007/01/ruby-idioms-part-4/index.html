@@ -57,7 +57,7 @@
           </h1>
           
           <h2>Ruby Idioms, Part 4</h2>
-          <h5 class="time">2007-01-22 17:36:00 -0800</h5>
+          <h5 class="time">2007-01-22 19:36:00 -0600</h5>
           To splat or not to splat, that is the question.
 In Java to unpack an array's values into separate variables you would need to do something like the following:
 <pre>
@@ -78,9 +78,52 @@ t, u, v, w, x = *burgers # t=&gt;:hamburger, u=&gt;:bocaburger, v=&gt;:gardenbur
 
 
 
-class RunnableWithParams 
+class RunnableWithParams &lt;&lt; Thread
+  def initialize(param1)
+    @param1 = param1
+  end
 
-        </pre></article>
+  def initialize(param1, param2)
+    @param1 = param1
+    @param2 = param2
+  end
+
+  def initialize(param1, param2, param3)
+    @param1 = param1
+    @param2 = param2
+    @param3 = param3
+  end
+
+  def run
+    # some code the uses param1, param2, etc. - in Java this was an empty method body or abstract  - can't remember
+  end
+end
+
+
+
+
+
+
+
+
+class RunnableWithParams &lt;&lt; Thread
+  def initialize(*params)
+    @params = params
+  end
+  def run # needs to be defined by clients
+  end
+end
+
+
+
+
+rwp = RunnableWithParams.new param1, param2, param3, param4
+# instead of the initially optimized suggestion, where the client code would look like the following
+rwp = RunnableWithParams.new [param1, param2, param3, param4]
+
+</pre>
+
+        </article>
       </section>
     </div>
     <footer>

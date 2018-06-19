@@ -57,7 +57,7 @@
           </h1>
           
           <h2>Custom Processors for ActiveWarehouse ETL</h2>
-          <h5 class="time">2007-09-20 22:45:00 -0700</h5>
+          <h5 class="time">2007-09-21 00:45:00 -0500</h5>
           For anyone interested in extending
 <a href="http://activewarehouse.rubyforge.org/etl/">ActiveWarehouse ETL</a>'s
 features with custom pre/post processors, I thought I would share this piece of code that I wrote in August for a personal project I am working on.  The example should provide you with enough details for you to create your own custom processors.
@@ -70,7 +70,26 @@ require 'net/ftp'
 module ETL
   module Processor
     # Custom pre-processor to download files via FTP before beginning control process.
-    class FtpDownloaderProcessor  'ftp.sec.gov',
+    class FtpDownloaderProcessor &lt; ETL::Processor::Processor
+      attr_reader :host
+      attr_reader :port
+      attr_reader :remote_dir
+      attr_reader :files
+      attr_reader :username
+      attr_reader :local_dir
+      
+      # configuration options include:
+      # * host - hostname or IP address of FTP server (required)
+      # * port - port number for FTP server (default: 21)
+      # * remote_dir - remote path on FTP server (default: /)
+      # * files - list of files to download from FTP server (default: [])
+      # * username - username for FTP server authentication (default: anonymous)
+      # * password - password for FTP server authentication (default: nil)
+      # * local_dir - local output directory to save downloaded files (default: '')
+      # 
+      # As an example you might write something like the following in your control process file:
+      #  pre_process :ftp_downloader, {
+      #    :host =&gt; 'ftp.sec.gov',
       #    :path =&gt; 'edgar/Feed/2007/QTR2',
       #    :files =&gt; ['20070402.nc.tar.gz', '20070403.nc.tar.gz', '20070404.nc.tar.gz', 
       #               '20070405.nc.tar.gz', '20070406.nc.tar.gz'],
