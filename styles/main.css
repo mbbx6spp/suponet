@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Asap&display=swap');
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 27px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  background-color: #ffffff;
+  font-family: 'Asap', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-transform: capitalize;
+}
+
+h1.author {
+    color: rgb(243, 0, 52);
+}
+
+nav.navigation {
+    background-color: rgb(18, 54, 82);
+    background-image: -moz-linear-gradient(rgb(18, 54, 82) 0%, rgb(0, 0, 0) 100%);
+    border-bottom-color: rgb(51, 51, 51);
+    box-shadow: rgb(153, 153, 153) 0px 4px 8px 0px;
+    color: rgb(255,255,255);
+}
+
+nav .navigation-title {
+    color: rgb(255,255,255);
+    text-transform: capitalize;
+    font-size: 1.4em;
+}
+
+nav .menu-mobile .btn-mobile {
+    color: rgba(255, 255, 255, 0.9);
+}
+nav .menu-mobile  .navigation-list {
+    background-color: rgba(18, 54, 82, 0.95);
+    // background-image: -moz-linear-gradient(rgb(18, 54, 82) 0%, rgb(0, 0, 0) 100%);
+}
+
+nav .navigation-list .navigation-item .navigation-link {
+    color: rgb(255,255,255);
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+.content {
+    background-color: #fff;
+}
+
+footer .fixed-bar {
+    border-top-color: rgb(160, 160, 160);
+    background-image:
+        -moz-linear-gradient(rgb(200, 200, 200) 0%,
+                             rgb(255, 255, 255) 100%);
+}
+
+.avatar img {
+    width: 20em;
+}
+
+span.social-item {
+    margin: 2px 4px;
+}
+
+.social-list span {
+    font-size: 0.8em;
+}
+
+h2.info {
+    font-weight: 400;
+    color: #444;
+}
+
+.list ul li {
+    border-bottom: 1px dashed #aaa;
+    padding: 8px 0 0 0;
+}
+
+.list ul li:hover {
+    background-color: #eef;
+}
+
+.list ul li span {
+    text-transform: uppercase;
+    weight: bolder;
+}
+
+.list ul li a {
+    text-transform: none;
+}
+
+code {
+    margin: 0px;
+    padding: 0px;
+}
+
+code.verbatim {
+    block: inline;
+    margin: 0;
+    padding: 0 4px;
+}
+
+article p code.verbatim,
+article h2 code.verbatim {
+    background-color: #eee !important;
+    color: #333;
+}
+
+code.language-haskell,
+code.language-erl,
+code.language-ruby,
+code.language-javascript,
+code.language-text
+{
+    width: 100%;
+    padding: 12px;
+    margin: 0;
+}
+
+pre {
+    margin: 15px 5px;
+    padding: 0;
+}

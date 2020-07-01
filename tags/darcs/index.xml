@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>darcs on Susan Potter</title>
+    <link>/tags/darcs/</link>
+    <description>Recent content in darcs on Susan Potter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 25 Jan 2007 21:58:00 -0600</lastBuildDate>
+    
+	<atom:link href="/tags/darcs/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SCM: The Next Generation</title>
+      <link>/blogs/software/2007/01/scm-next-generation/</link>
+      <pubDate>Thu, 25 Jan 2007 21:58:00 -0600</pubDate>
+      
+      <guid>/blogs/software/2007/01/scm-next-generation/</guid>
+      <description>I am sure most developers (whether Java, Ruby, Python, or other) have used Subversion, Perforce or CVS to manage and control their projects&amp;#39; source, but have you used darcs or git?  I&amp;#39;m sure most of you would have heard of git it hosts the Linux kernel code currently. Less of you have probably heard of darcs before. Prior to this evening, the most notable point of darcs to me, is that it is written in Haskell.</description>
+    </item>
+    
+  </channel>
+</rss>

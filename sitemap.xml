@@ -1,948 +1,368 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
   <url>
-    <loc>susanpotter.net/</loc>
-    <lastmod>2018-06-19</lastmod>
+    <loc>/blogs/software/2019/12/unikernels/</loc>
+    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/404.html</loc>
-    <lastmod>2018-06-19</lastmod>
+    <loc>/</loc>
+    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/CNAME</loc>
-    <lastmod>2018-06-19</lastmod>
+    <loc>/blogs/software/2019/10/dynamodb-basics/</loc>
+    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/about/</loc>
-    <lastmod>2018-06-19</lastmod>
+    <loc>/talks/2019/from-zero-to-haskell-lessons-learned/</loc>
+    <lastmod>2019-06-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/about/clients/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/talks/</loc>
+    <lastmod>2019-06-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/about/interests/</loc>
-    <lastmod>2018-06-19</lastmod>
+    <loc>/film/</loc>
+    <lastmod>2019-05-11T22:41:25-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/about/locations/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/film/2019/05/shorts/</loc>
+    <lastmod>2019-05-11T22:41:25-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/software/</loc>
+    <lastmod>2019-04-27T17:11:08-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/03/agility-pair-programming-quality/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/talks/2019/dynamically-scaling-political-news-and-activism-hub/</loc>
+    <lastmod>2019-04-26T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/03/basecamp/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2018/04/haskell-decoding-lenses/</loc>
+    <lastmod>2018-04-21T14:15:59-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/03/trac-and-alternatives/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/</loc>
+    <lastmod>2018-04-21T14:15:59-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/04/illipy-c-us-python-user-group/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/talks/2018/functional-operations-comcast-labs-connect/</loc>
+    <lastmod>2018-03-09T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/04/iron-python/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/tags/economics/</loc>
+    <lastmod>2017-06-22T15:42:40-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/04/kaizen/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/blogs/software/2017/06/economic-theory/</loc>
+    <lastmod>2017-06-22T15:42:40-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/04/search-engine-optimization-devil-or/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/tags/</loc>
+    <lastmod>2017-06-22T15:42:40-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/04/tax-day-psychology-pragmatic-tools/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/jokes/a-mathematician-in-scotland/</loc>
+    <lastmod>2017-03-10T15:45:57-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/05/j2ee-vs-fastcgi/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/jokes/</loc>
+    <lastmod>2017-03-10T15:45:57-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/05/messaging-services/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2016/12/ruby-v2.4.0/</loc>
+    <lastmod>2016-12-25T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/07/rubyisms-forwardables/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/talks/2016/functional-and-reactive-operations/</loc>
+    <lastmod>2016-10-04T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/08/rubyisms-naming-conventions/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/talks/2016/put-a-type-on-it-idris/</loc>
+    <lastmod>2016-09-21T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/08/rubyisms-reopening-classes/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2016/08/nix-in-home-directory/</loc>
+    <lastmod>2016-08-30T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/09/configure-this/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/talks/2016/from-zero-to-production-nixos-erlang-factory/</loc>
+    <lastmod>2016-03-08T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/10/beck-on-smalltalk-vs-java-vs-ruby/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/blogs/software/2014/09/parametricity-practitioners-guide/</loc>
+    <lastmod>2014-09-25T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/10/oss-code-generation-for-rails/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2014/02/scala-wtfs/</loc>
+    <lastmod>2014-02-02T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/11/beautiful-code-domain-specific/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2014/01/osx-lion-setup/</loc>
+    <lastmod>2014-01-25T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/11/sapir-whorf-domain-specific-languages/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/talks/2012/functional-algebra-monoids-applied/</loc>
+    <lastmod>2012-11-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/12/agile-holiday-reading/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/talks/2012/why-haskell/</loc>
+    <lastmod>2012-03-16T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2006/12/miseducation-of-s-potter/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2012/01/erlang-otp-glossary/</loc>
+    <lastmod>2012-01-10T00:31:13-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/01/ruby-idioms-part-1/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/talks/2011/dynamo-not-just-for-datastores/</loc>
+    <lastmod>2011-09-19T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/01/ruby-idioms-part-2/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/talks/2011/distributed-developer-workflows-git/</loc>
+    <lastmod>2011-08-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/01/ruby-idioms-part-3/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2011/03/erlang-meck-api/</loc>
+    <lastmod>2011-03-23T01:11:30-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/01/ruby-idioms-part-4/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/talks/2011/deploying-distributed-software-services-to-the-cloud/</loc>
+    <lastmod>2011-03-05T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/01/ruby-idioms-part-5/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2011/02/custom-security-handler-nitrogen/</loc>
+    <lastmod>2011-02-16T01:04:41-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/01/ruby-idioms-part-6/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/talks/2010/designing-for-concurrency/</loc>
+    <lastmod>2010-08-22T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/01/ruby-idioms-part-7/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2007/11/gitconfig/</loc>
+    <lastmod>2007-11-08T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/01/scm-next-generation/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/tags/darcs/</loc>
+    <lastmod>2007-01-25T21:58:00-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/02/getting-local-with-illinilistnet/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/tags/dvcs/</loc>
+    <lastmod>2007-01-25T21:58:00-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/03/beautiful-code-debate/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/tags/git/</loc>
+    <lastmod>2007-01-25T21:58:00-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/03/twittering-around/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/blogs/software/2007/01/scm-next-generation/</loc>
+    <lastmod>2007-01-25T21:58:00-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/03/was-buddha-agile/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/tags/idioms/</loc>
+    <lastmod>2007-01-24T18:48:00-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/04/injecting-understanding/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/tags/ruby/</loc>
+    <lastmod>2007-01-24T18:48:00-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/04/is-linux-now-cool/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2007/01/ruby-idioms-part-7/</loc>
+    <lastmod>2007-01-24T18:48:00-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/04/registering-rails-file-extensions-in/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2007/01/ruby-idioms-part-6/</loc>
+    <lastmod>2007-01-23T22:28:00-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/05/activerecordbasetoxml-woes/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2007/01/ruby-idioms-part-5/</loc>
+    <lastmod>2007-01-22T19:43:00-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/05/are-you-pig-or-chicken/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2007/01/ruby-idioms-part-4/</loc>
+    <lastmod>2007-01-22T19:36:00-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/05/favorite-quote-of-week/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2007/01/ruby-idioms-part-3/</loc>
+    <lastmod>2007-01-22T19:32:00-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/05/finally-here/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2007/01/ruby-idioms-part-2/</loc>
+    <lastmod>2007-01-22T19:21:00-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/05/rails-application-scaling-tips/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2007/01/ruby-idioms-part-1/</loc>
+    <lastmod>2007-01-22T19:16:00-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/05/released/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2006/08/rubyisms-reopening-classes/</loc>
+    <lastmod>2006-08-10T14:26:00-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/05/ruby-equality/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2006/08/rubyisms-naming-conventions/</loc>
+    <lastmod>2006-08-01T12:43:00-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/06/api-changes/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/snippets/2006/07/rubyisms-forwardables/</loc>
+    <lastmod>2006-07-22T18:23:00-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
+  
   <url>
-    <loc>susanpotter.net/blogs/software/2007/06/are-you-cowboy-monkey/</loc>
-    <lastmod>2017-04-10</lastmod>
+    <loc>/about/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/06/good-riddance-to-bad-rubbish/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/06/higher-order-messaging/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/06/java-dogma-and-downfall/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/06/released/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/06/twitter4r-revamp/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/17-released/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/18-released/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/26-released/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/configuration-api/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/extras-api/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/friendship-api/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/marrying-autotest-with-rspec-on-gnome/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/messaging-api/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/model-api/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/my-blackle-energy-consumption/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/release/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/released/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/rspec-shouldyield/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/status-api/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/timeline-api/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/twitter-apis-unrestfulness-causing/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/07/user-api/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/08/anonymous-classes-javas-synthetic/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/08/anonymous-classes-javas-synthetic_22/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/08/higher-leve-bdd-specing-using-rbehave/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/08/restful-api-web-service-statuses/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/09/custom-processors-for-activewarehouse/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/09/model-conductor-controller-fix/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/09/separating-rails-layout-associations/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/09/twitter4r-announcements/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/10/agile-anti-patterns-part-1/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/10/coming-outin-support-of-dhh-to-some/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/10/democratic-debate-ann-coulter-and/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/11/my-gitconfig/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/11/twitter4r-v030/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/12/dont-outsource-your-thinking-process/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2007/12/predictions/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/01/deadly-rails-sins-part-1/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/01/deadly-rails-sins-part-2/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/01/deadly-rails-sins-part-3/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/01/twas-night-before-launch/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/02/datamapper-vs-activerecord/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/02/preventing-information-leaks-part-1/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/02/preventing-information-leaks-part-2/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/02/preventing-information-leaks-part-3/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/03/waking-up-from-hibernation/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/04/coding-with-explicit-intentions/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/04/comedy-of-errors/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/05/rails-rocks-x-sucks-how-provincial/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/05/why-merb-is-delicious/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/06/twitter4r-development-releases/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/07/la-times-travel-uses-twitter4r/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/07/serendipity-original-pradiptas-rolodex/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/08/never-use-or-trust-paypal/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/08/next-generating-syndication-and/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/09/book-shelf-clearing/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/09/datamapper-does-have-migrations/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/09/datamapper-flexibility-of-mapping-model/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/09/tips-to-enterpreneurs-hiring-ruby-on/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2008/11/free-coffee-for-voting/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2009/01/gedit-extensions-project/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2009/02/coworking-space-in-champaign-urbana/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2009/02/cubarcamp-champaign-urbanas-tech-meetup/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2009/03/yui-menubar-facebook-like-application/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2009/04/cubarcamp-champaign-urbanas-tech-meetup/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2009/04/geek-off/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2009/04/managers/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2009/05/and-future/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2009/05/erlang-doesnt-support-currying-news-to/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2009/05/google-wave-is-not-answer-xmpp-is/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2009/07/design-patterns-book-club/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2009/09/alan-turing-can-now-rest-in-peace/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2009/09/delivery-models/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2009/09/faker-ruby-on-rails-snippet-generator/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2009/09/law-privacy/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2010/01/how-agile-practices-improve-code-review/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2010/01/so-long-farewell-auf-wiedersehen/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2010/03/why-proponents-of-marriage-equality/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2010/04/draft-why-proponents-of-marriage/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2010/12/28_link-relations-html5/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2011/03/scaling-out-relational-databases/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2011/05/software-engineering-tools-of-trade/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2011/07/why-json-pointer-falls-short/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2013/10/how-erlang-slays-zombies/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2014/09/test-infected-infrastructure/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2014/10/command-line-usability/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2014/11/5-signs-your-techops-org-is-doing-it-wrong/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2014/11/air-travel-systemic-failures/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2014/11/air-travel-systemic-failures/customer-service-suggestions/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2014/11/air-travel-systemic-failures/gate-seat-assignments/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2014/11/air-travel-systemic-failures/overbooking/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2014/11/air-travel-systemic-failures/passenger-tips/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2014/11/air-travel-systemic-failures/travel-experience-connections/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2014/11/devops-princess-bride-hashtag/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/blogs/software/2014/11/responsive-enterprises-mealy-machines-hacker-way/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/contact/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/experiments/happybirthday/</loc>
-    <lastmod>2018-06-19</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/favorites/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/humans.txt</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/background_polaroid.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/bofa.gif</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/citadel.gif</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/clients_polaroid.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/erlang.gif</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/favicon.ico</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/feed-icon-28x28.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/flipchart.jpg</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/github.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/github_bw.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/gravatar.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/haskell.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/interests_polaroid.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/link.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/linkedin.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/linkedin_bw.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/logo.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/logo_large.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/monocle.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/ms.gif</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/oss.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/paribas.gif</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/photo_bg.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/photo_clip.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/photo_logo.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/polaroid09.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/polaroid10.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/princess_bride.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/rh.gif</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/rss.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/ruby.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/stark.gif</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/twitter.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/twitter4r.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/twitter_bw.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/unicorn.jpg</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/images/vim.png</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/javascripts/app.js</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/javascripts/raphael-min.js</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/keybase.txt</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/nextsftrip/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/portfolio/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/resume/</loc>
-    <lastmod>2018-06-19</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/resume/architect/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/resume/cloud-deployment/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/resume/distributed-systems/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/resume/linux/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/resume/multi-tenant-saas/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/resume/restful-design/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/resume/server-side/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/resume/software-engineering/</loc>
-    <lastmod>2018-06-19</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/resume/system-engineer/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/robots.txt</loc>
-    <lastmod>2018-06-19</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/sitemap.xml</loc>
-    <lastmod>2018-06-19</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/sites/laws/rochesters-theorem/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/sites/laws/weilers-law/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/sites/ports/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/sites/ports/port/0/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/sites/ports/port/22/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/sites/ports/port/443/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/sites/ports/port/5060/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/sites/ports/port/5061/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/sites/ports/port/80/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/stylesheets/bootstrap.css</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/stylesheets/coderay.css</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/stylesheets/reset.css</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/stylesheets/styles.css</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/tags/erlang/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/tags/nosql/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/tags/ruby/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/talks/</loc>
-    <lastmod>2018-06-19</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/talks/champaign-urbana-software-development/2010/coffeescript-javascript/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/talks/champaign-urbana-software-development/2010/concurrent-design/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/talks/codepalousa/2011/deployment-pipeline/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/talks/codepalousa/2011/women-in-software/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/talks/codepalousa/2012/why-haskell/</loc>
-    <lastmod>2018-06-19</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/talks/cudevmeetup/2011/git-distributed-development-workflows/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/talks/erlang-factory-lite-chicago/2013/functional-programming/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/talks/ricon-west/2013/distributing-work-across-clusters/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/talks/scna/2012/functional-algebra-monoids-applied/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/talks/strangeloop/2011/dynamo-not-just-for-datastores/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/talks/windycitydb/2011/link-walking-riak/</loc>
-    <lastmod>2018-06-19</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/whoami/windycitydb2011.json</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/writings/2011/05/miseducation-computer-science-graduates/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
-  <url>
-    <loc>susanpotter.net/youknowwhat/</loc>
-    <lastmod>2017-04-10</lastmod>
-  </url>
+  
 </urlset>
-

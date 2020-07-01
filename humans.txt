@@ -1,8 +1,7 @@
 /* whoami */
-Lead/Principal Software Engineer: Susan Potter.
-Site: http://susanpotter.net
-Phone: +1 (415) 577-9943
+Principal Software Developr: Susan Potter.
+Site: https://susanpotter.net
 Twitter: @SusanPotter
-Google+: +SusanPotter
 Github:  https://github.com/mbbx6spp
-Location: Urbana, IL (USA)
+Keybase: https://keybase.io/mbbx6spp
+Location: IL (USA)

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#123652"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Engineering Leadership, Technical Strategy">
+
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  Ruby 2.4 changes overview - Susan Potter
+">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/snippets/2016/12/ruby-v2.4.0/">
+    <meta property="og:image" content="/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/snippets/2016/12/ruby-v2.4.0/">
+    <meta name="twitter:image" content="/">
+
+    <base href="/snippets/2016/12/ruby-v2.4.0/">
+    <title>
+  Ruby 2.4 changes overview - Susan Potter
+</title>
+
+    <link rel="canonical" href="/snippets/2016/12/ruby-v2.4.0/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+      <link rel="stylesheet" href="/styles/main.css">
+    
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
+
+    <meta name="generator" content="Hugo 0.64.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/talks/">Talks</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/snippets/">Snippets</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Ruby 2.4 changes overview</h1>
+      
+        <h2 class="date">December 25, 2016</h2>
+      
+    </header>
+
+    <h2 id="unified-fixnum-and-bignum-into-integer">Unified <code>Fixnum</code> and <code>Bignum</code> into <code>Integer</code></h2>
+<p>It&rsquo;s backward compatible too.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#960050;background-color:#1e0010">$</span> irb
+irb(main):<span style="color:#ae81ff">001</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">RUBY_VERSION</span>
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">2.3.1</span><span style="color:#e6db74">&#34;</span>
+irb(main):<span style="color:#ae81ff">002</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> (<span style="color:#ae81ff">2</span><span style="color:#f92672"></span><span style="color:#f92672">**</span><span style="color:#ae81ff">100</span><span style="color:#f92672"></span>)<span style="color:#f92672">.</span>class
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bignum</span>
+irb(main):<span style="color:#ae81ff">003</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672"></span><span style="color:#f92672">.</span>class
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Fixnum</span>
+irb(main):<span style="color:#ae81ff">004</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Fixnum</span>
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Fixnum</span>
+irb(main):<span style="color:#ae81ff">005</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bignum</span>
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bignum</span>
+irb(main):<span style="color:#ae81ff">006</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bogonum</span>
+<span style="color:#e6db74">NameError</span>: uninitialized constant <span style="color:#66d9ef">Bogonum</span>
+        from (irb):<span style="color:#ae81ff">6</span>
+        <span style="color:#f92672"></span>from <span style="color:#e6db74">/</span><span style="color:#e6db74">home</span><span style="color:#e6db74">/s</span>potter<span style="color:#f92672">/</span><span style="color:#f92672">.</span>nix<span style="color:#f92672">-</span>profile<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span><span style="color:#e6db74">irb</span>:<span style="color:#ae81ff">11</span><span style="color:#f92672"></span><span style="color:#e6db74">:in</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">&lt;main&gt;&#39;
+</span><span style="color:#e6db74">irb(main):007:0&gt; quit
+</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ nix-env -f . -iA ruby_2_4_0
+replacing old ‘ruby-2.3.1-p0’
+installing ‘ruby-2.4.0’
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#960050;background-color:#1e0010">$</span> irb
+irb(main):<span style="color:#ae81ff">001</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">RUBY_VERSION</span>
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">2.4.0</span><span style="color:#e6db74">&#34;</span>
+irb(main):<span style="color:#ae81ff">002</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> (<span style="color:#ae81ff">2</span><span style="color:#f92672"></span><span style="color:#f92672">**</span><span style="color:#ae81ff">100</span><span style="color:#f92672"></span>)<span style="color:#f92672">.</span>class
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Integer
+irb(main):<span style="color:#ae81ff">003</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672"></span><span style="color:#f92672">.</span>class
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Integer
+irb(main):<span style="color:#ae81ff">004</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Fixnum</span>
+(irb):<span style="color:#ae81ff">4</span><span style="color:#f92672"></span>: <span style="color:#e6db74">warning</span>: constant <span style="color:#f92672">::</span><span style="color:#66d9ef">Fixnum</span> is deprecated
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Integer
+irb(main):<span style="color:#ae81ff">005</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bignum</span>
+(irb):<span style="color:#ae81ff">5</span><span style="color:#f92672"></span>: <span style="color:#e6db74">warning</span>: constant <span style="color:#f92672">::</span><span style="color:#66d9ef">Bignum</span> is deprecated
+<span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> Integer
+irb(main):<span style="color:#ae81ff">006</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bogonum</span>
+<span style="color:#e6db74">NameError</span>: uninitialized constant <span style="color:#66d9ef">Bogonum</span>
+        from (irb):<span style="color:#ae81ff">6</span>
+        <span style="color:#f92672"></span>from <span style="color:#e6db74">/</span><span style="color:#e6db74">home</span><span style="color:#e6db74">/s</span>potter<span style="color:#f92672">/</span><span style="color:#f92672">.</span>nix<span style="color:#f92672">-</span>profile<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span><span style="color:#e6db74">irb</span>:<span style="color:#ae81ff">11</span><span style="color:#f92672"></span><span style="color:#e6db74">:in</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">&lt;main&gt;&#39;
+</span><span style="color:#e6db74">irb(main):007:0&gt; quit
+</span></code></pre></div><h2 id="arrayminarraymax-optimization-in-ruby-v240">Array#min/Array#max optimization in Ruby v2.4.0+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#75715e"># content of ruby_array_benchmarks.rb</span>
+require <span style="color:#e6db74">&#39;benchmark&#39;</span>
+
+<span style="color:#66d9ef">LARGE_ARRAY</span> <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672"></span><span style="color:#f92672">..</span><span style="color:#ae81ff">100_000_000</span><span style="color:#f92672"></span>)<span style="color:#f92672">.</span>to_a<span style="color:#f92672">.</span>freeze
+
+puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Ruby v</span><span style="color:#e6db74">#{</span><span style="color:#66d9ef">RUBY_VERSION</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+
+<span style="color:#66d9ef">Benchmark</span><span style="color:#f92672">.</span>bm(<span style="color:#ae81ff">100</span><span style="color:#f92672"></span>) <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>b<span style="color:#f92672">|</span>
+  b<span style="color:#f92672">.</span>report(<span style="color:#e6db74">&#39;Array#min on large array&#39;</span>) <span style="color:#66d9ef">do</span>
+    <span style="color:#66d9ef">LARGE_ARRAY</span><span style="color:#f92672">.</span>min
+  <span style="color:#66d9ef">end</span>
+
+  b<span style="color:#f92672">.</span>report(<span style="color:#e6db74">&#39;Array#max on large array&#39;</span>) <span style="color:#66d9ef">do</span>
+    <span style="color:#66d9ef">LARGE_ARRAY</span><span style="color:#f92672">.</span>max
+  <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">end</span>
+</code></pre></div><p>Now let&rsquo;s run this in 2.3.3 and 2.4.0 (scroll to right):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mv ruby_2_4_0_benchmarks.rb ruby_array_benchmarks.rb
+
+$ ruby ruby_array_benchmarks.rb
+Ruby v2.3.3
+                                                                              user     system      total        real
+Array#min on large array                                                  4.670000   0.000000   4.670000 <span style="color:#f92672">(</span>  4.673932<span style="color:#f92672">)</span>
+Array#max on large array                                                  4.650000   0.000000   4.650000 <span style="color:#f92672">(</span>  4.644266<span style="color:#f92672">)</span>
+
+$ nix-env -f . -iA ruby_2_4_0
+replacing old ‘ruby-2.3.3’
+installing ‘ruby-2.4.0’
+
+$ ruby ruby_array_benchmarks.rb
+Ruby v2.4.0
+                                                                              user     system      total        real
+Array#min on large array                                                  0.170000   0.000000   0.170000 <span style="color:#f92672">(</span>  0.169169<span style="color:#f92672">)</span>
+Array#max on large array                                                  0.180000   0.000000   0.180000 <span style="color:#f92672">(</span>  0.186183<span style="color:#f92672">)</span>
+</code></pre></div><p>Quite impressive improvement. Not sure how relevant it will be in the wilds of Ruby servers in production though.</p>
+<p>There are other changes, which I haven&rsquo;t had time to check out yet.</p>
+<p>Note: the 2.3.3 build I used above to compare benchmarks to has RVM Railsexpress patches applied. The 2.4.0 version does not have the additional GC stats patch applied.</p>
+
+  </article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsnippets%2f2016%2f12%2fruby-v2.4.0%2f&ref_src=twsrc%5Etfw&text=Ruby%202.4%20changes%20overview Susan%20Potter&tw_p=tweetbutton&url=%2fsnippets%2f2016%2f12%2fruby-v2.4.0%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsnippets%2f2016%2f12%2fruby-v2.4.0%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsnippets%2f2016%2f12%2fruby-v2.4.0%2f&ref_src=twsrc%5Etfw&text=Ruby%202.4%20changes%20overview Susan%20Potter&tw_p=tweetbutton&url=%2fsnippets%2f2016%2f12%2fruby-v2.4.0%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          
+          
+            <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsnippets%2f2016%2f12%2fruby-v2.4.0%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          
+        </div>
+      
+    </section>
+  </div>
+</footer>
+
+      
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  <script src="/js/app.js"></script>
+  
+  </body>
+</html>

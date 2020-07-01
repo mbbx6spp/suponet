@@ -1,166 +1,246 @@
+<!DOCTYPE html>
+<html lang="en-us">
 
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#123652"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  
-  <meta charset="utf-8">
-  <meta http-equiv="content-type" content="text/html">
-  <link href="/images/favicon.ico" rel="shortcut icon">
-  <meta content="width=device-width, minimum-scale=1.0, maximum-scale=1.5" name="viewport">
-  <title>Susan Potter: SCM: The Next Generation</title>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css">
-  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="/stylesheets/styles.css">
-  <link rel="stylesheet" type="text/css" href="/stylesheets/coderay.css">
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Engineering Leadership, Technical Strategy">
 
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  SCM: The Next Generation - Susan Potter
+">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/blogs/software/2007/01/scm-next-generation/">
+    <meta property="og:image" content="/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/blogs/software/2007/01/scm-next-generation/">
+    <meta name="twitter:image" content="/">
 
-  
-    <header>
-  <div class="container">
-    <a href="/">
-      <img alt="Susan Potter" height="30" src="/images/logo.png" width="128">
-    </a>
-    <nav>
-      <a href="/about/">About</a>
-      <a href="/resume/">Resume</a>
-      <a href="/portfolio/">Portfolio</a>
-      <a href="/talks/">Talks</a>
-      <a href="/contact/">Contact</a>
-      <a target="_blank" id="twitter" class="icon" href="https://twitter.com/SusanPotter"><img src="/images/twitter.png" height="30" width="30" alt="@SusanPotter's Twitter feed"></a>
-      <a target="_blank" id="linked" class="icon" href="https://www.linkedin.com/in/susanpotter"><img src="/images/linkedin.png" height="30" width="30" alt="Susan Potter's LinkedIn profile"></a>
-      <a target="_blank" id="github" class="icon" href="https://github.com/mbbx6spp"><img src="/images/github.png" height="30" width="30" alt="Susan Potter's GitHub open source code repository profile"></a>
-    </nav>
-  </div>
-</header>
+    <base href="/blogs/software/2007/01/scm-next-generation/">
+    <title>
+  SCM: The Next Generation - Susan Potter
+</title>
 
+    <link rel="canonical" href="/blogs/software/2007/01/scm-next-generation/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
 
-    <div class="text post sidebar">
-      <aside class=".hidden-xs .hidden-sm">
-        <ul class="share-buttons">
-          <li class="twitter"><a href="https://twitter.com/share" class="twitter-share-button" data-count="vertical" data-via="SusanPotter">Tweet</a></li>
-          <li class="plusone">
-          <li class="linked">
-<script type="text/javascript" src="https://platform.linkedin.com/in.js"></script><script type="in/share" data-counter="top"></script>
-</li>
-        </ul>
-      </aside>
-      <section>
-        <article>
-          <h1 class="banner">
-            Software Development Blog <small>(formerly called 'Snakes, Gems &amp; Coffee')</small>
-            <span class="description">
-              A technical blog with articles on a number of topics from Erlang, Ruby idioms, Javascript,
-              semantic web, Rails tips, graph databases, distributed systems.
-            </span>
-          </h1>
+    
+
+    
+      <link rel="stylesheet" href="/styles/main.css">
+    
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
+
+    <meta name="generator" content="Hugo 0.64.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
           
-          <h2>SCM: The Next Generation</h2>
-          <h5 class="time">2007-01-25 21:58:00 -0600</h5>
-          I am sure most developers (whether Java, Ruby, Python, or other) have used Subversion, Perforce or CVS to manage and control their projects' source, but have you used
-%code darcs
-or
-= succeed "?" do
-  %code git
-I am sure most of you would have heard of
-%code git
-\- it hosts the Linux kernel code currently.  A few less have probably encountered
-%code darcs
-before on an obscure European open source project you were interested in once or twice.  Prior to this evening, the most notable point of
-= succeed "," do
-  %code darcs
-to me, is that it is written in Haskell - a language I plan on reading more about because I have heard so many good things about it.  Both
-%code git
-and
-%code darcs
-are examples of distributed version control systems of which there has been an explosion of products (both commercial and open source) since
-= succeed "." do
-  %code GNU's Arch
-Tonight I had the fortune of experiencing
-%code darcs
-for the first time.  Previously I had used
-%code darcs get URL
-to download code before, but never actually utilized any of the features before.  Tonight I submitted a patch to a Ruby open source project (RForum) and found the experience very pleasurable as a developer.
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/talks/">Talks</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/snippets/">Snippets</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
 
-I have read that
-%code darcs
-is a user friendly version of
-%code git
-minus some powerful options.
 
-Perhaps there are
-%code git
-or
-%code darcs
-gurus reading that can shed more light on these two less mainstream SCM systems?  If so, I would love to hear your thoughts on them especially if you can compare and contrast with any non-trivial Subversion, Perforce or CVS experiences.
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>SCM: The Next Generation</h1>
+      
+        <h2 class="date">January 25, 2007</h2>
+      
+    </header>
 
-Background: I currently use Subversion, however, I usually work in smaller teams, so concurrent work is not that much of an issue at present, but things will be changing.  The largest team I worked in on a Subversion project was 6 active developers (9 for the one Perforce project).  Of course, I have worked on a project with over 80 developers, but that was using
-%code ClearCase
-and there were so many problems with that project that I can't determine what was caused by
-%code ClearCase
-or the rest of the project's [many] issues.
+    <p>
+I am sure most developers (whether Java, Ruby, Python, or other) have
+used Subversion, Perforce or CVS to manage and control their projects&#39;
+source, but have you used <code class="verbatim">darcs</code> or <code class="verbatim">git</code>?
+</p>
+<p>
+I&#39;m sure most of you would have heard of <code class="verbatim">git</code> it hosts the Linux
+kernel code currently. Less of you have probably heard of <code class="verbatim">darcs</code>
+before. Prior to this evening, the most notable point of <code class="verbatim">darcs</code> to
+me, is that it is written in Haskell. Both <code class="verbatim">git</code> and <code class="verbatim">darcs</code> are
+examples of distributed version control systems (DVCS) of which there
+has been an explosion of products (both commercial and open source)
+since <code class="verbatim">GNU&#39;s Arch</code>.
+</p>
+<p>
+Tonight I had the fortune of experiencing <code class="verbatim">darcs</code> for the first
+time. Previously I had used <code class="verbatim">darcs get URL</code> to download code before,
+but had not utilized any other feature before.  Tonight I submitted a
+patch to a Ruby open source project (RForum) and found the experience
+very pleasurable as a developer.
+</p>
+<p>
+I have read that <code class="verbatim">darcs</code> is a user friendly version of <code class="verbatim">git</code> minus
+some powerful options.
+</p>
+<p>
+Perhaps there are <code class="verbatim">git</code> or <code class="verbatim">darcs</code> gurus reading that can shed more
+light on these two less mainstream SCM systems?  If so, I would love
+to hear your thoughts on them especially if you can compare and
+contrast with any non-trivial Subversion, Perforce or CVS experiences.
+</p>
+<p>
+Background: I currently use Subversion, however, I usually work in
+smaller teams, so concurrent work is not that much of an issue at
+present, but things will be changing. The largest team I worked in on
+a Subversion project was 6 active developers (9 for the one Perforce
+project). Previously I worked on a project with over 80 developers,
+but that was using <code class="verbatim">ClearCase</code> and there were many problems with that
+project that I can&#39;t determine what was caused by <code class="verbatim">ClearCase</code> or the
+rest of the project&#39;s many issues.
+</p>
 
-        </article>
-      </section>
-    </div>
-    <footer>
-  <p>
-    Copyright © 2006-2018 <a href="//susanpotter.net">Susan Potter</a>.
-  </p>
-  <p>
-    This website is developed by <a href="//susanpotter.net">Susan Potter</a>.
-  </p>
-  <div id="rights">
-    <a href="//susanpotter.net">Susan Potter</a> reserves all rights to the copy and intellectual rights that are presented on this website as original material to <a href="//susanpotter.net">Susan Potter</a>.
-    Links: <a href="//susanpotter.net/resume/software-engineering/">Software Engineer Extraordinaire</a>,
-           <a href="//susanpotter.net/resume/software-engineering/">Software Developer Extraordinaire</a>,
-           <a href="//susanpotter.net/resume/software-engineering/">Software Engineer</a>,
-           <a href="//susanpotter.net/resume/architect/">Application architect/</a>,
-           <a href="//susanpotter.net/resume/software-engineering/">Ruby Software Engineer</a>,
-           <a href="//susanpotter.net/resume/software-engineering/">Ruby Engineer</a>,
-           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Engineer</a>,
-           <a href="//susanpotter.net/resume/software-engineering/">Ruby on Rails Software Engineer</a>,
-           <a href="//susanpotter.net/resume/software-engineering/">Software Developer</a>,
-           <a href="//susanpotter.net/resume/architect/">Software architect/</a>,
-           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Engineer</a>,
-           <a href="//susanpotter.net/resume/software-engineering/">Hedge Fund Software Developer</a>,
-           <a href="//susanpotter.net/">Web Services Software Engineer</a>,
-           <a href="//susanpotter.net/">Web Services Software Developer</a>,
-           <a href="//susanpotter.net/">Web Services Engineer</a>,
-           <a href="//susanpotter.net/">Web Services Developer</a>,
-           <a href="//susanpotter.net/resume/restful-design/">REST Software Engineer</a>,
-           <a href="//susanpotter.net/resume/restful-design/">REST Software Developer</a>,
-           <a href="//susanpotter.net/resume/restful-design/">Resource Oriented architect/ure</a>,
+  </article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fblogs%2fsoftware%2f2007%2f01%2fscm-next-generation%2f&ref_src=twsrc%5Etfw&text=SCM%3a%20The%20Next%20Generation Susan%20Potter&tw_p=tweetbutton&url=%2fblogs%2fsoftware%2f2007%2f01%2fscm-next-generation%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fblogs%2fsoftware%2f2007%2f01%2fscm-next-generation%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fblogs%2fsoftware%2f2007%2f01%2fscm-next-generation%2f&ref_src=twsrc%5Etfw&text=SCM%3a%20The%20Next%20Generation Susan%20Potter&tw_p=tweetbutton&url=%2fblogs%2fsoftware%2f2007%2f01%2fscm-next-generation%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          
+          
+            <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fblogs%2fsoftware%2f2007%2f01%2fscm-next-generation%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          
+        </div>
+      
+    </section>
   </div>
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-     m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-     })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-    ga('create', 'UA-837842-1', 'auto');
-    ga('require', 'displayfeatures');
-    ga('send', 'pageview');
-  </script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
-  
-  
-  <script async="async" defer src="/javascripts/app.js"></script>
-  <script>
-    (function(){
-      var twitterWidgets = document.createElement('script');
-      twitterWidgets.type = 'text/javascript';
-      twitterWidgets.async = true;
-      twitterWidgets.src = '//platform.twitter.com/widgets.js';
-      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
-    })();
-  </script>
 </footer>
 
-    <script type="text/javascript">
-      (function($) {
-        var btns = $('.share-buttons .plusone').html('<g:plusone size="tall"></g:plusone>');
-        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-        po.src = 'https://apis.google.com/js/plusone.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-      })(jQuery);
-    </script>
-    <!-- Place this tag just before your close body tag -->
-  
+      
+    </main>
 
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  <script src="/js/app.js"></script>
+  
+  </body>
+</html>
