@@ -6,19 +6,10 @@
     <description>Recent content on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 Jul 2020 19:12:46 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Adding and removing friction to developer process and interaction by design</title>
-      <link>/blogs/software/2020/07/growing-good-developer-habits/</link>
-      <pubDate>Fri, 17 Jul 2020 19:12:46 -0500</pubDate>
-      
-      <guid>/blogs/software/2020/07/growing-good-developer-habits/</guid>
-      <description>In 2015 I was binge-reading books on how to break bad habits and create good habits. Since then I have been applying the psychology research I learned from those books to my personal habits and also work habits.  When trying to form habits there are four levers that psychology researchers found made forming habits easier:    easy    obvious    This post will describe just two examples from work the last few years that I designed into my teams delivery processes to encourage developers to deliver work assigned to them as soon as possible without them fearing management was constantly monitoring individual metrics and thresholds as they .</description>
-    </item>
     
     <item>
       <title>Random notes on Unikernels</title>
