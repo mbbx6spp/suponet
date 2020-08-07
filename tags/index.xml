@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Jun 2017 15:42:40 -0500</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jul 2020 19:12:46 -0500</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>habits</title>
+      <link>/tags/habits/</link>
+      <pubDate>Fri, 17 Jul 2020 19:12:46 -0500</pubDate>
+      
+      <guid>/tags/habits/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>software</title>
+      <link>/tags/software/</link>
+      <pubDate>Fri, 17 Jul 2020 19:12:46 -0500</pubDate>
+      
+      <guid>/tags/software/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>economics</title>
@@ -17,6 +35,24 @@
       <pubDate>Thu, 22 Jun 2017 15:42:40 -0500</pubDate>
       
       <guid>/tags/economics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>idris</title>
+      <link>/tags/idris/</link>
+      <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/idris/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>types</title>
+      <link>/tags/types/</link>
+      <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/types/</guid>
       <description></description>
     </item>
     

@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Adding and removing friction to developer process and interaction by design</title>
+      <link>/blogs/software/2020/07/growing-good-developer-habits/</link>
+      <pubDate>Fri, 17 Jul 2020 19:12:46 -0500</pubDate>
+      
+      <guid>/blogs/software/2020/07/growing-good-developer-habits/</guid>
+      <description>In 2015 I was binge-reading books on how to break bad habits and create good habits. Since then I have been applying the psychology research I learned from those books to my personal habits and also work habits.  When trying to form habits there are four levers that psychology researchers found made forming habits easier:    easy    obvious    This post will describe just two examples from work the last few years that I designed into my teams delivery processes to encourage developers to deliver work assigned to them as soon as possible without them fearing management was constantly monitoring individual metrics and thresholds as they .</description>
+    </item>
+    
+    <item>
       <title>Random notes on Unikernels</title>
       <link>/blogs/software/2019/12/unikernels/</link>
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
@@ -36,6 +45,15 @@
       
       <guid>/blogs/software/2017/06/economic-concepts-applied-in-software-development/</guid>
       <description>One of my favorite subjects as a layperson is economics. I have found many useful applications of methods and concepts to my work in software development, technical leadership, and reliability engineering roles.  This is a post to share some of these. A few ideas from economics: an overview   Below is an overview of ideas from economics that have resonated with me at work:   Opportunity cost    Looking at what you lose by choosing a specific activity over others.</description>
+    </item>
+    
+    <item>
+      <title>To Type or not to [Static] Type</title>
+      <link>/blogs/software/2016/05/types-research/</link>
+      <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/software/2016/05/types-research/</guid>
+      <description>Originally published as a Gist here: https://gist.github.com/mbbx6spp/60577af8dc4106d6e710cd804292ce20 Minor modifications in formatting and an extra line of no-judgement was added to this text from the original Gist. Purpose, Disclaimer and Confessions   This is the (mostly) no nonesense guide to studies and research that measures and/or compares a variety of facets, characteristics, or manifestations of software development in dynamically vs statically typed programming languages.  Disclaimer: For larger, more complex codebases, I do advocate for statically typed languages that also support algebraic data types, generic types, type classes, and preferrably a form of typelevel expressiveness (e.</description>
     </item>
     
     <item>

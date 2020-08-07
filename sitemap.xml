@@ -3,14 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>/blogs/software/2019/12/unikernels/</loc>
-    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
+    <loc>/blogs/software/2020/07/growing-good-developer-habits/</loc>
+    <lastmod>2020-07-17T19:12:46-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/habits/</loc>
+    <lastmod>2020-07-17T19:12:46-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/software/</loc>
+    <lastmod>2020-07-17T19:12:46-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>/</loc>
+    <lastmod>2020-07-17T19:12:46-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-07-17T19:12:46-05:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/blogs/software/2019/12/unikernels/</loc>
     <lastmod>2019-12-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -101,13 +129,6 @@
   </url>
   
   <url>
-    <loc>/tags/</loc>
-    <lastmod>2017-06-22T15:42:40-05:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>/jokes/a-mathematician-in-scotland/</loc>
     <lastmod>2017-03-10T15:45:57-05:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -145,6 +166,27 @@
   <url>
     <loc>/snippets/2016/08/nix-in-home-directory/</loc>
     <lastmod>2016-08-30T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/idris/</loc>
+    <lastmod>2016-05-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/blogs/software/2016/05/types-research/</loc>
+    <lastmod>2016-05-01T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/types/</loc>
+    <lastmod>2016-05-01T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

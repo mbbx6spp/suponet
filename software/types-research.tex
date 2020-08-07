@@ -1,0 +1,132 @@
+% Created 2020-08-07 Fri 08:46
+% Intended LaTeX compiler: pdflatex
+\documentclass[presentation]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[newfloat]{listings}
+\usetheme{default}
+\author{Susan Potter}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={Susan Potter},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.3)}, 
+ pdflang={English}}
+\begin{document}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+---
+title: To Type or not to [Static] Type
+date: 2016-05-01
+tags:
+\begin{itemize}
+\item types
+\item idris
+\end{itemize}
+---
+
+Originally published as a Gist here: \url{https://gist.github.com/mbbx6spp/60577af8dc4106d6e710cd804292ce20}
+
+\begin{frame}[label={sec:org29a9888}]{Purpose, Disclaimer and Confessions}
+This is the (mostly) no nonesense guide to studies and research that
+measures and/or compares a variety of facets, characteristics, or
+manifestations of software development in dynamically vs statically
+typed programming languages.
+
+\alert{\alert{Disclaimer:}} *For larger, more complex codebases, I do advocate for
+statically typed languages that also support algebraic data types,
+generic types, type classes, and preferrably a form of typelevel
+expressiveness (e.g. dependent types, refinement types) for larger,
+more complex codebases.*
+
+*This alone is not enough for me though. Other practices I advocate
+for include imposing referential transparency wherever  possible,
+modeling with algebraic abstractions such that laws of the system can
+be encoded as property-based tests either in a runnable test suite or
+in the type system itself (as with, for example, Idris), using some
+form of example-based tests to capture edge conditions. However, I
+have been known to write a lot of Bash for simpler glue logic, so much
+so that I wrote a Bash styleguide here:
+\url{https://github.com/mbbx6spp/styleguides/tree/master/bash}. I also write
+much Nix for the infrastructures I deploy.*
+
+Previously in my career as a developer I wrote Ruby (relgiously
+TDD-style) to build Rails web applications and advocated in favor of
+code-level practices that I read in disgust now.
+
+\alert{\href{http://susanpotter.net/blogs/software/2006/07/rubyisms-forwardables/}{Forgive me father, for I have sinned.}}
+\end{frame}
+
+\begin{frame}[label={sec:org4398f0f}]{Observations of results}
+\begin{itemize}
+\item Measuring things like proness to creating bugs, developer
+productivity, or otherwise effectiveness of type systems is a hairy
+tasks (to say the least) to design valid experiments for.
+\item The scope of the experiment is inversely proportional to how precise
+the result can be (i.e. the larger the scope, the smaller
+probability the result holds in all operating environments).
+\item The results I am presently aware of in this space are not conclusive
+towards one side or another. In fact, there are some results that
+offer mixed findings.
+\item Many experiments or research studies in the area that compare
+dynamically and statically typed languages tend to target the lowest
+common denominator kind of statically typed languages which are
+mainstream such as Java and C\#.
+\end{itemize}
+
+\#\# Studies
+
+\begin{itemize}
+\item Unit Testing Isn't Enough, You Need Static Typing Too:
+\url{http://evanfarrer.blogspot.ca/2012/06/unit-testing-isnt-enough-you-need.html?m=1}
+\item On The Revival of Dynamic Languages:
+\url{http://link.springer.com/chapter/10.1007\%2F11550679\_1?LI=true}
+\item Static Typing Where Possible, Dynamic Typing When Needed: The End of
+the Cold War Between Programming Languages:
+\url{http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.69.5966\&rep=rep1\&type=pdf}
+\item Improving Software Quality With Static Analysis:
+\url{http://www.cs.umd.edu/\~mwh/papers/paste41gp-foster.pdf}
+\item To type or not to type: quantifying detectable bugs in JavaScript:
+\url{https://blog.acolyer.org/2017/09/19/to-type-or-not-to-type-quantifying-detectable-bugs-in-javascript/}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label={sec:org2076381}]{Related (Statically Typed Background)}
+This is where my current bias will likely show up the most since I am
+more likely to be exposed to pro static types or at least pro static analysis papers:
+
+\begin{itemize}
+\item On understanding types, data abstraction, and polymorphism (1985):
+\url{http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.117.695}
+\item Idris, a General Purpose Dependently Typed Programming Language: Design and Implementation:
+\url{https://eb.host.cs.st-andrews.ac.uk/drafts/impldtp.pdf}
+\item Practical Erasure In Dependently Typed Languages:
+\url{https://edwinb.wordpress.com/2015/02/28/practical-erasure-in-dependently-typed-languages/}
+\end{itemize}
+
+These are just pointers. If you have a relevant paper, experiment, or study please link to it in the comments and I will add to this list.
+\end{frame}
+
+\begin{frame}[label={sec:orgcec2964}]{So\ldots{}}
+\alert{"To Type or not to Type, that is the question."}
+
+Make your own mind up. My suggestion is above in the disclaimer.
+\end{frame}
+\end{document}
