@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#123652"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Software Engineering Leadership, Technical Strategy">
+
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  Random notes on Unikernels - Susan Potter
+">
+    <meta property="og:description" content="Random thoughts on unikernels, nanokernels, and library operating systems">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/software/random-notes-on-unikernels/">
+    <meta property="og:image" content="/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/software/random-notes-on-unikernels/">
+    <meta name="twitter:image" content="/">
+
+    <base href="/software/random-notes-on-unikernels/">
+    <title>
+  Random notes on Unikernels - Susan Potter
+</title>
+
+    <link rel="canonical" href="/software/random-notes-on-unikernels/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+      <link rel="stylesheet" href="/styles/main.css">
+    
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
+
+    <meta name="generator" content="Hugo 0.64.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/talks/">Talks</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/snippets/">Snippets</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Random notes on Unikernels</h1>
+      
+        <h2 class="date">December 10, 2019</h2>
+      
+    </header>
+
+    
+<p>
+This is an adaptation of a Slack chat explanation from work (slightly
+reworded to read better for the audience) from work in 2017.
+</p>
+<h3 id="headline-1">
+Random notes on unikernels
+</h3>
+<h4 id="headline-2">
+Introducing unikernels
+</h4>
+<p>
+You might have heard terms like <em>unikernel</em>, <em>nanokernel</em>, or <em>library operating systems</em>.
+These aren&#39;t always used in exactly the same way, but they are highly related terms.
+</p>
+<p>
+<a href="https://mirage.io/">MirageOS</a> is the research project that has received the most industry love of which I
+am aware. The research team was acquihired by Docker a few years ago. It is
+language-based (they use OCaml), meaning you need to write <em>unikernel</em> applications
+in OCaml and it will build an image for various virtualization targets (as well as a
+Linux and probably macOS/BSD binary to run on existing OSes for development purposes).
+It strips all aspects of the runtime/OS that the application doesn&#39;t need. i.e. if it
+doesn&#39;t need the UDP or SCTP stack, then it isn&#39;t shipped in the &#34;library OS&#34; target
+binaries reducing your attack surface area. These are one of the awesome things that
+excite me about the possibility of the idea of unikernels.
+</p>
+<p>
+Some docs on this are here:
+<a href="https://mirage.io/docs/">https://mirage.io/docs/</a>
+</p>
+<p>
+A non-research oriented introduction can be found here: <a href="https://mirage.io/wiki/overview-of-mirage">https://mirage.io/wiki/overview-of-mirage</a>
+</p>
+<p>
+Other language-based unikernels include:
+</p>
+<ul>
+<li>
+<p>
+<a href="https://www.includeos.org/">IncludeOS</a> (C/C++)
+</p>
+</li>
+<li>
+<p>
+<a href="https://galois.com/project/halvm/">HaLVM</a> (Haskell)
+</p>
+</li>
+<li>
+<p>
+LingVM (Erlang, though it is dead, I think)
+</p>
+</li>
+</ul>
+<p>
+I have seen unikernels referred to as nanokernels or library operating systems.
+</p>
+<h4 id="headline-3">
+Rump kernels
+</h4>
+<p>
+<em>Rump kernels</em> are either a kind of unikernel or a stepping stone to unikernels
+depending on who you talk to. Rump kernels try to work on top of existing
+operating systems (OSes) to pare down the build to only what is needed.
+These are sometimes termed <em>Just-enough Operating Systems</em> (JeOS) and
+what qualifies varies from context to context.
+</p>
+<p>
+The main build-level trade-off compared to unikernels defined above is that rump
+kernels leverage existing mature build tooling ecosystems. However, they are often
+riddled with legacy decisions that make builds less hermetic or reproducible
+(outside of the Nix/Guix worlds), and the resulting artifacts are less slimline as
+unikernels by definition thus the comparative attack surface area is still greater
+with rump kernels as compared with unikernels though the attack surface area will be
+less than a typical system build that runs an equivalent application on a typical
+distribution of the same flavor (e.g. Linux, BSD, etc.). A benefit of
+rump kernels is the ability to leverage familiar system-level
+debugging tooling available compared to unikernels.
+</p>
+<p>
+Rump kernels do allow you to <em>more</em> incrementally migrate your application
+from typical OS deployments (where everything including the kitchen-sink is installed
+without manual effort to reduce this down) out of the box to more streamlined rump
+kernel deployments.
+</p>
+<p>
+The big win with the language-based unikernels (and the hope with the rump unikernels)
+is you only ship the code your application uses. Absolutely nothing else, meaning the
+compiler target optimizes to an extreme.
+</p>
+<h4 id="headline-4">
+Related areas
+</h4>
+<p>
+This is related to another area I am intrigued about as a bystander which is <em>whole
+program optimization</em>. Projects like this <a href="https://github.com/mu-chaco/ReWire">whole program optimizer</a> targeting VHDL
+from a subset of Haskell is exciting work to me:
+<a href="https://github.com/mu-chaco/ReWire">https://github.com/mu-chaco/ReWire</a>
+</p>
+<p>
+Arguably unikernels would could enable more application of whole program optimization
+at all levels.
+</p>
+<p>
+We will wait to see what happens in this space.
+</p>
+
+  </article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2frandom-notes-on-unikernels%2f&ref_src=twsrc%5Etfw&text=Random%20notes%20on%20Unikernels Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2frandom-notes-on-unikernels%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2frandom-notes-on-unikernels%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2frandom-notes-on-unikernels%2f&ref_src=twsrc%5Etfw&text=Random%20notes%20on%20Unikernels Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2frandom-notes-on-unikernels%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          
+          
+            <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2frandom-notes-on-unikernels%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          
+        </div>
+      
+    </section>
+  </div>
+</footer>
+
+      
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  <script src="/js/app.js"></script>
+  
+  </body>
+</html>

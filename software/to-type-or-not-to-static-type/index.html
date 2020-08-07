@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#123652"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Software Engineering Leadership, Technical Strategy">
+
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  To Type or not to Static Type - Susan Potter
+">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/software/to-type-or-not-to-static-type/">
+    <meta property="og:image" content="/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/software/to-type-or-not-to-static-type/">
+    <meta name="twitter:image" content="/">
+
+    <base href="/software/to-type-or-not-to-static-type/">
+    <title>
+  To Type or not to Static Type - Susan Potter
+</title>
+
+    <link rel="canonical" href="/software/to-type-or-not-to-static-type/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+      <link rel="stylesheet" href="/styles/main.css">
+    
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
+
+    <meta name="generator" content="Hugo 0.64.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/talks/">Talks</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/snippets/">Snippets</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>To Type or not to Static Type</h1>
+      
+        <h2 class="date">May 1, 2016</h2>
+      
+    </header>
+
+    
+<p>
+Originally published as a Gist here: <a href="https://gist.github.com/mbbx6spp/60577af8dc4106d6e710cd804292ce20">https://gist.github.com/mbbx6spp/60577af8dc4106d6e710cd804292ce20</a>
+</p>
+<p>
+Minor modifications in formatting and an extra line of no-judgement
+was added to this text from the original Gist.
+</p>
+<h3 id="headline-1">
+Purpose, Disclaimer and Confessions
+</h3>
+<p>
+This is the (mostly) no nonesense guide to studies and research that
+measures and/or compares a variety of facets, characteristics, or
+manifestations of software development in dynamically vs statically
+typed programming languages.
+</p>
+<p>
+<strong>Disclaimer:</strong> For larger, more complex codebases, I do advocate for
+statically typed languages that also support algebraic data types,
+generic types, type classes, and preferrably a form of typelevel
+expressiveness (e.g. dependent types, refinement types) for larger,
+more complex codebases.
+</p>
+<p>
+This alone is not enough for me though. Other practices I advocate
+for include imposing referential transparency wherever  possible,
+modeling with algebraic abstractions such that laws of the system can
+be encoded as property-based tests either in a runnable test suite or
+in the type system itself (as with, for example, Idris), using some
+form of example-based tests to capture edge conditions. However, I
+have been known to write a lot of Bash for simpler glue logic, so much
+so that I wrote a Bash styleguide here:
+<a href="https://github.com/mbbx6spp/styleguides/tree/master/bash.">https://github.com/mbbx6spp/styleguides/tree/master/bash.</a> I also write
+much Nix for the infrastructures I deploy.
+</p>
+<p>
+Previously in my career as a developer I wrote Ruby (relgiously
+TDD-style) to build Rails web applications and Ruby libraries and
+advocated in favor of code-level practices that I read in disgust now.
+</p>
+<p>
+<strong><a href="http://susanpotter.net/blogs/software/2006/07/rubyisms-forwardables/">Forgive me father, for I have sinned.</a></strong>
+</p>
+<p>
+I am not here to judge you on the bet you are making w.r.t. static
+versus dynamic types. Make your bet on your own terms. :)
+</p>
+<h3 id="headline-2">
+Observations of results
+</h3>
+<ul>
+<li>
+<p>
+Measuring things like proness to creating bugs, developer
+productivity, or otherwise effectiveness of type systems is a hairy
+task (to say the least) to design valid experiments for.
+</p>
+</li>
+<li>
+<p>
+The scope of the experiment is inversely proportional to how precise
+the result can be (i.e. the larger the scope, the smaller
+probability the result holds in all operating environments).
+</p>
+</li>
+<li>
+<p>
+The results I am presently aware of in this space are not conclusive
+towards one side or another. In fact, there are some results that
+offer mixed findings.
+</p>
+</li>
+<li>
+<p>
+Many experiments or research studies in the area that compare
+dynamically and statically typed languages tend to target the lowest
+common denominator kind of statically typed languages which are
+mainstream such as Java and C#.
+</p>
+</li>
+</ul>
+<h3 id="headline-3">
+Studies
+</h3>
+<ul>
+<li>
+<p>
+<a href="http://evanfarrer.blogspot.ca/2012/06/unit-testing-isnt-enough-you-need.html?m=1">Unit Testing Isn&#39;t Enough, You Need Static Typing Too</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://link.springer.com/chapter/10.1007%2F11550679_1?LI=true">On The Revival of Dynamic Languages</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.69.5966&amp;rep=rep1&amp;type=pdf">Static Typing Where Possible, Dynamic Typing When Needed: The End of the Cold War Between Programming Languages</a>
+</p>
+</li>
+<li>
+<p>
+<a href="http://www.cs.umd.edu/~mwh/papers/paste41gp-foster.pdf">Improving Software Quality With Static Analysis</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://blog.acolyer.org/2017/09/19/to-type-or-not-to-type-quantifying-detectable-bugs-in-javascript/">To type or not to type: quantifying detectable bugs in JavaScript</a>
+</p>
+</li>
+</ul>
+<h3 id="headline-4">
+Related (Statically Typed Background)
+</h3>
+<p>
+This is where my current bias will likely show up the most since I am
+more likely to be exposed to pro static types or at least pro static analysis papers:
+</p>
+<ul>
+<li>
+<p>
+<a href="http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.117.695">On understanding types, data abstraction, and polymorphism (1985)</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://eb.host.cs.st-andrews.ac.uk/drafts/impldtp.pdf">Idris, a General Purpose Dependently Typed Programming Language: Design and Implementation</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://edwinb.wordpress.com/2015/02/28/practical-erasure-in-dependently-typed-languages/">Practical Erasure In Dependently Typed Languages</a>
+</p>
+</li>
+</ul>
+<p>
+These are just pointers. If you have a relevant paper, experiment, or
+study please link to it in the comments and I will add to this list.
+</p>
+<h3 id="headline-5">
+So…
+</h3>
+<p>
+<strong>&#34;To Type or not to Type, that is the question.&#34;</strong>
+</p>
+<p>
+Make your own mind up. My suggestion is above in the disclaimer.
+</p>
+
+  </article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2fto-type-or-not-to-static-type%2f&ref_src=twsrc%5Etfw&text=To%20Type%20or%20not%20to%20Static%20Type Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2fto-type-or-not-to-static-type%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2fto-type-or-not-to-static-type%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2fto-type-or-not-to-static-type%2f&ref_src=twsrc%5Etfw&text=To%20Type%20or%20not%20to%20Static%20Type Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2fto-type-or-not-to-static-type%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          
+          
+            <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2fto-type-or-not-to-static-type%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          
+        </div>
+      
+    </section>
+  </div>
+</footer>
+
+      
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  <script src="/js/app.js"></script>
+  
+  </body>
+</html>

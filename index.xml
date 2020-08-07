@@ -13,19 +13,19 @@
     
     <item>
       <title>Random notes on Unikernels</title>
-      <link>/blogs/software/2019/12/unikernels/</link>
+      <link>/software/random-notes-on-unikernels/</link>
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blogs/software/2019/12/unikernels/</guid>
+      <guid>/software/random-notes-on-unikernels/</guid>
       <description>This is an adaptation of a Slack chat explanation from work (slightly reworded to read better for the audience) from work in 2017. Random notes on unikernels  Introducing unikernels   You might have heard terms like unikernel, nanokernel, or library operating systems. These aren&amp;#39;t always used in exactly the same way, but they are highly related terms.  MirageOS is the research project that has received the most industry love of which I am aware.</description>
     </item>
     
     <item>
       <title>DynamoDB: The Basics</title>
-      <link>/blogs/software/2019/10/dynamodb-basics/</link>
+      <link>/software/dynamodb-the-basics/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blogs/software/2019/10/dynamodb-basics/</guid>
+      <guid>/software/dynamodb-the-basics/</guid>
       <description>Introduction   This post introduces concepts and principles used to design DynamoDB tables as I have been learning how to leverage this technology in a new project.  This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS). Key takeaways   While using DynamoDB the last couple of months, one of the big takeaways is that data modeling is a vital part and that the modeling process itself looks structurally similar to relational database design.</description>
     </item>
     
@@ -57,15 +57,6 @@
     </item>
     
     <item>
-      <title>Profunctors: An exploration in less than 100 lines of Haskell</title>
-      <link>/blogs/software/2018/10/profunctors/</link>
-      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>/blogs/software/2018/10/profunctors/</guid>
-      <description>Originally adapted from a gist: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3  Profunctors are a remarkably practical abstraction for many activities software developers are concerned with on the day to day.  Consider that much of distributed systems software today concerns the following activity pairs:   Encoding &amp;amp; decoding    We often need to standardize on encoding ensure consistency, e.g. base64 encoding allows us to convert binary data into ASCII without loss, because many systems are more able to deal with ASCII than raw binary data (a legacy decision that we still have to consider today though many new developers do not do this consciously due to lack of context about the purpose of encoding)   Serializing &amp;amp; deserializing    We regularly need to transfer data over the wire and we need to have the client and server have an agreement about how to serialize that data to send and deserialize it when they receive it from the other party, e.</description>
-    </item>
-    
-    <item>
       <title>Decoding lens operators</title>
       <link>/snippets/2018/04/haskell-decoding-lenses/</link>
       <pubDate>Sat, 21 Apr 2018 14:15:59 -0500</pubDate>
@@ -85,10 +76,10 @@
     
     <item>
       <title>Economic concepts applied in software development, reliability engineering, and technical leadership</title>
-      <link>/blogs/software/2017/06/economic-concepts-applied-in-software-development/</link>
+      <link>/software/economic-concepts-applied-in-software-development-reliability-engineering-and-technical-leadership/</link>
       <pubDate>Thu, 22 Jun 2017 15:42:40 -0500</pubDate>
       
-      <guid>/blogs/software/2017/06/economic-concepts-applied-in-software-development/</guid>
+      <guid>/software/economic-concepts-applied-in-software-development-reliability-engineering-and-technical-leadership/</guid>
       <description>One of my favorite subjects as a layperson is economics. I have found many useful applications of methods and concepts to my work in software development, technical leadership, and reliability engineering roles.  This is a post to share some of these. A few ideas from economics: an overview   Below is an overview of ideas from economics that have resonated with me at work:   Opportunity cost    Looking at what you lose by choosing a specific activity over others.</description>
     </item>
     
@@ -140,10 +131,10 @@ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;#34;2.3.1&amp;#34; irb
     
     <item>
       <title>To Type or not to Static Type</title>
-      <link>/blogs/software/2016/05/types-research/</link>
+      <link>/software/to-type-or-not-to-static-type/</link>
       <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
       
-      <guid>/blogs/software/2016/05/types-research/</guid>
+      <guid>/software/to-type-or-not-to-static-type/</guid>
       <description>Originally published as a Gist here: https://gist.github.com/mbbx6spp/60577af8dc4106d6e710cd804292ce20  Minor modifications in formatting and an extra line of no-judgement was added to this text from the original Gist. Purpose, Disclaimer and Confessions   This is the (mostly) no nonesense guide to studies and research that measures and/or compares a variety of facets, characteristics, or manifestations of software development in dynamically vs statically typed programming languages.  Disclaimer: For larger, more complex codebases, I do advocate for statically typed languages that also support algebraic data types, generic types, type classes, and preferrably a form of typelevel expressiveness (e.</description>
     </item>
     
@@ -158,10 +149,10 @@ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;#34;2.3.1&amp;#34; irb
     
     <item>
       <title>Parametricity: A Practitioners Guide</title>
-      <link>/blogs/software/2014/09/parametricity-practitioners-guide/</link>
+      <link>/software/parametricity-a-practitioners-guide/</link>
       <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
       
-      <guid>/blogs/software/2014/09/parametricity-practitioners-guide/</guid>
+      <guid>/software/parametricity-a-practitioners-guide/</guid>
       <description>Introduction   What software developer likes surprises, especially in production? Not me. At least not when I am on call. ;)  Wouldn&amp;#39;t it be great if we were able to reason about our code to make our lives as simple as possible when debugging or eliminate debugging altogether?  The big idea of parametricity is that from parametric (or generic) &amp;#34;pure&amp;#34; functions we can determine interesting properties (and more of them) from the parametric (generic) types than the equivalent function fixed with specific types.</description>
     </item>
     
@@ -285,10 +276,10 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
     
     <item>
       <title>SCM: The Next Generation</title>
-      <link>/blogs/software/2007/01/scm-next-generation/</link>
+      <link>/software/scm-the-next-generation/</link>
       <pubDate>Thu, 25 Jan 2007 00:00:00 +0000</pubDate>
       
-      <guid>/blogs/software/2007/01/scm-next-generation/</guid>
+      <guid>/software/scm-the-next-generation/</guid>
       <description>I am sure most developers (whether Java, Ruby, Python, or other) have used Subversion, Perforce or CVS to manage and control their projects&amp;#39; source, but have you used darcs or git?  I&amp;#39;m sure most of you would have heard of git it hosts the Linux kernel code currently. Less of you have probably heard of darcs before. Prior to this evening, the most notable point of darcs to me, is that it is written in Haskell.</description>
     </item>
     

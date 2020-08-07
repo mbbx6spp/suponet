@@ -13,10 +13,10 @@
     
     <item>
       <title>Random notes on Unikernels</title>
-      <link>/blogs/software/2019/12/unikernels/</link>
+      <link>/software/random-notes-on-unikernels/</link>
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
       
-      <guid>/blogs/software/2019/12/unikernels/</guid>
+      <guid>/software/random-notes-on-unikernels/</guid>
       <description>This is an adaptation of a Slack chat explanation from work (slightly reworded to read better for the audience) from work in 2017. Random notes on unikernels  Introducing unikernels   You might have heard terms like unikernel, nanokernel, or library operating systems. These aren&amp;#39;t always used in exactly the same way, but they are highly related terms.  MirageOS is the research project that has received the most industry love of which I am aware.</description>
     </item>
     
