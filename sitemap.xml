@@ -3,6 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/tags/halvm/</loc>
+    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/lingvm/</loc>
+    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/mirageos/</loc>
+    <lastmod>2019-12-10T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/blogs/software/2019/12/unikernels/</loc>
     <lastmod>2019-12-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -11,13 +32,48 @@
   
   <url>
     <loc>/</loc>
+    <lastmod>2020-08-02T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-08-02T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/unikernel/</loc>
     <lastmod>2019-12-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
+    <loc>/tags/data-modeling/</loc>
+    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/dynamodb/</loc>
+    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/blogs/software/2019/10/dynamodb-basics/</loc>
+    <lastmod>2019-10-30T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/nosql/</loc>
     <lastmod>2019-10-30T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -66,6 +122,41 @@
   </url>
   
   <url>
+    <loc>/tags/funtional-programming/</loc>
+    <lastmod>2020-08-02T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/haskell/</loc>
+    <lastmod>2020-08-02T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/profunctors/</loc>
+    <lastmod>2020-08-02T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/blogs/software/2018/10/profunctors/</loc>
+    <lastmod>2020-08-02T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/software/</loc>
+    <lastmod>2020-08-02T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/snippets/2018/04/haskell-decoding-lenses/</loc>
     <lastmod>2018-04-21T14:15:59-05:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -95,13 +186,6 @@
   
   <url>
     <loc>/tags/economics/</loc>
-    <lastmod>2017-06-22T15:42:40-05:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2017-06-22T15:42:40-05:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -269,34 +353,6 @@
   </url>
   
   <url>
-    <loc>/tags/darcs/</loc>
-    <lastmod>2007-01-25T21:58:00-06:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/dvcs/</loc>
-    <lastmod>2007-01-25T21:58:00-06:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/git/</loc>
-    <lastmod>2007-01-25T21:58:00-06:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/blogs/software/2007/01/scm-next-generation/</loc>
-    <lastmod>2007-01-25T21:58:00-06:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>/tags/idioms/</loc>
     <lastmod>2007-01-24T18:48:00-06:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -313,6 +369,34 @@
   <url>
     <loc>/snippets/2007/01/ruby-idioms-part-7/</loc>
     <lastmod>2007-01-24T18:48:00-06:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/darcs/</loc>
+    <lastmod>2007-01-25T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/dvcs/</loc>
+    <lastmod>2007-01-25T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/git/</loc>
+    <lastmod>2007-01-25T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/blogs/software/2007/01/scm-next-generation/</loc>
+    <lastmod>2007-01-25T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

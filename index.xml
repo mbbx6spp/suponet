@@ -21,7 +21,7 @@
     </item>
     
     <item>
-      <title>DynamoDB: Basics</title>
+      <title>DynamoDB: The Basics</title>
       <link>/blogs/software/2019/10/dynamodb-basics/</link>
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
@@ -54,6 +54,15 @@
       
       <guid>/talks/2019/dynamically-scaling-political-news-and-activism-hub/</guid>
       <description>C-U Cloud Meetup / April 26, 2019 - Champaign, IL Keywords     AWS    Auto Scaling    EC2    Infrastructure   Abstract   On any given day we can receive traffic peaks up to five times our base traffic, sometimes requiring us to scale out to double our backend app server capacity within a 10-20 minutes window (sometimes at unpredictable times).</description>
+    </item>
+    
+    <item>
+      <title>Profunctors: An exploration in less than 100 lines of Haskell</title>
+      <link>/blogs/software/2018/10/profunctors/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/software/2018/10/profunctors/</guid>
+      <description>Originally adapted from a gist: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3  Profunctors are a remarkably practical abstraction for many activities software developers are concerned with on the day to day.  Consider that much of distributed systems software today concerns the following activity pairs:   Encoding &amp;amp; decoding    We often need to standardize on encoding ensure consistency, e.g. base64 encoding allows us to convert binary data into ASCII without loss, because many systems are more able to deal with ASCII than raw binary data (a legacy decision that we still have to consider today though many new developers do not do this consciously due to lack of context about the purpose of encoding)   Serializing &amp;amp; deserializing    We regularly need to transfer data over the wire and we need to have the client and server have an agreement about how to serialize that data to send and deserialize it when they receive it from the other party, e.</description>
     </item>
     
     <item>
@@ -266,21 +275,21 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
     </item>
     
     <item>
-      <title>SCM: The Next Generation</title>
-      <link>/blogs/software/2007/01/scm-next-generation/</link>
-      <pubDate>Thu, 25 Jan 2007 21:58:00 -0600</pubDate>
-      
-      <guid>/blogs/software/2007/01/scm-next-generation/</guid>
-      <description>I am sure most developers (whether Java, Ruby, Python, or other) have used Subversion, Perforce or CVS to manage and control their projects&amp;#39; source, but have you used darcs or git?  I&amp;#39;m sure most of you would have heard of git it hosts the Linux kernel code currently. Less of you have probably heard of darcs before. Prior to this evening, the most notable point of darcs to me, is that it is written in Haskell.</description>
-    </item>
-    
-    <item>
       <title>Ruby Idioms, Part 7</title>
       <link>/snippets/2007/01/ruby-idioms-part-7/</link>
       <pubDate>Wed, 24 Jan 2007 18:48:00 -0600</pubDate>
       
       <guid>/snippets/2007/01/ruby-idioms-part-7/</guid>
       <description>This idiom I have seen a little more in Rails than I have seen in Ruby, but I am putting it in this Ruby Idioms series anyway.  First off, most of you will know by know that you can &amp;#34;transparently&amp;#34; provide a method in Ruby a Hash. What do I mean by &amp;#34;transparently&amp;#34;? Well have a look at the code example below: user = User.find(:first, :include =&amp;gt; :preferences)   The last argument is actually a Hash even though you do not see the curly braces at all.</description>
+    </item>
+    
+    <item>
+      <title>SCM: The Next Generation</title>
+      <link>/blogs/software/2007/01/scm-next-generation/</link>
+      <pubDate>Thu, 25 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/blogs/software/2007/01/scm-next-generation/</guid>
+      <description>I am sure most developers (whether Java, Ruby, Python, or other) have used Subversion, Perforce or CVS to manage and control their projects&amp;#39; source, but have you used darcs or git?  I&amp;#39;m sure most of you would have heard of git it hosts the Linux kernel code currently. Less of you have probably heard of darcs before. Prior to this evening, the most notable point of darcs to me, is that it is written in Haskell.</description>
     </item>
     
     <item>

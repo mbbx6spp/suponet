@@ -6,10 +6,109 @@
     <description>Recent content in Tags on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 22 Jun 2017 15:42:40 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 10 Dec 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>HaLVM</title>
+      <link>/tags/halvm/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/halvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LingVM</title>
+      <link>/tags/lingvm/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/lingvm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>MirageOS</title>
+      <link>/tags/mirageos/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/mirageos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>unikernel</title>
+      <link>/tags/unikernel/</link>
+      <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/unikernel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>data modeling</title>
+      <link>/tags/data-modeling/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/data-modeling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DynamoDB</title>
+      <link>/tags/dynamodb/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/dynamodb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NoSQL</title>
+      <link>/tags/nosql/</link>
+      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/nosql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>funtional programming</title>
+      <link>/tags/funtional-programming/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/funtional-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>haskell</title>
+      <link>/tags/haskell/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/haskell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>profunctors</title>
+      <link>/tags/profunctors/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/profunctors/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>software</title>
+      <link>/tags/software/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/software/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>economics</title>
@@ -39,33 +138,6 @@
     </item>
     
     <item>
-      <title>darcs</title>
-      <link>/tags/darcs/</link>
-      <pubDate>Thu, 25 Jan 2007 21:58:00 -0600</pubDate>
-      
-      <guid>/tags/darcs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>dvcs</title>
-      <link>/tags/dvcs/</link>
-      <pubDate>Thu, 25 Jan 2007 21:58:00 -0600</pubDate>
-      
-      <guid>/tags/dvcs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>/tags/git/</link>
-      <pubDate>Thu, 25 Jan 2007 21:58:00 -0600</pubDate>
-      
-      <guid>/tags/git/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>idioms</title>
       <link>/tags/idioms/</link>
       <pubDate>Wed, 24 Jan 2007 18:48:00 -0600</pubDate>
@@ -80,6 +152,33 @@
       <pubDate>Wed, 24 Jan 2007 18:48:00 -0600</pubDate>
       
       <guid>/tags/ruby/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>darcs</title>
+      <link>/tags/darcs/</link>
+      <pubDate>Thu, 25 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/darcs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dvcs</title>
+      <link>/tags/dvcs/</link>
+      <pubDate>Thu, 25 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/dvcs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>/tags/git/</link>
+      <pubDate>Thu, 25 Jan 2007 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/git/</guid>
       <description></description>
     </item>
     

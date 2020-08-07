@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#123652"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Software Engineering Leadership, Technical Strategy">
+
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  Profunctors: An exploration in less than 100 lines of Haskell - Susan Potter
+">
+    <meta property="og:description" content="Introducing the idea of Profunctors">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/blogs/software/2018/10/profunctors/">
+    <meta property="og:image" content="/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/blogs/software/2018/10/profunctors/">
+    <meta name="twitter:image" content="/">
+
+    <base href="/blogs/software/2018/10/profunctors/">
+    <title>
+  Profunctors: An exploration in less than 100 lines of Haskell - Susan Potter
+</title>
+
+    <link rel="canonical" href="/blogs/software/2018/10/profunctors/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+      <link rel="stylesheet" href="/styles/main.css">
+    
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
+
+    <meta name="generator" content="Hugo 0.64.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/talks/">Talks</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/snippets/">Snippets</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Profunctors: An exploration in less than 100 lines of Haskell</h1>
+      
+        <h2 class="date">October 30, 2018</h2>
+      
+    </header>
+
+    
+<p>
+Originally adapted from a gist: <a href="https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3">https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3</a>
+</p>
+<p>
+<em>Profunctors</em> are a remarkably practical abstraction for many activities software
+developers are concerned with on the day to day.
+</p>
+<p>
+Consider that much of distributed systems software today concerns the following
+activity pairs:
+</p>
+<dl>
+<dt>
+<strong>Encoding &amp; decoding</strong>
+</dt>
+<dd>
+<p>
+We often need to standardize on encoding
+ensure consistency, e.g. base64 encoding allows us to convert binary
+data into ASCII without loss, because many systems are more able to
+deal with ASCII than raw binary data (a legacy decision that we
+still have to consider today though many new developers do not do
+this consciously due to lack of context about the purpose of encoding)
+</p>
+</dd>
+<dt>
+<strong>Serializing &amp; deserializing</strong>
+</dt>
+<dd>
+<p>
+We regularly need to transfer data
+over the wire and we need to have the client and server have an
+agreement about how to serialize that data to send and deserialize
+it when they receive it from the other party, e.g. JSON is a
+<em>format</em> that data representations can be serialized to, however,
+there is more detail for clients, servers, or peers must negotiation
+in terms of data representation beyond just &#34;I will send you this
+sum type to you as JSON&#34;.
+</p>
+</dd>
+<dt>
+<strong>Encrypting &amp; decrypting</strong>
+</dt>
+<dd>
+<p>
+We sometimes need to encrypt a piece of
+data so we can send it to another party such that if it is
+intercepted by a third party it would be difficult (at worst) to
+find a way to decrypt it without shared knowledge already,
+e.g. every time we visit a website over HTTPS our user-agent
+(typically browser) and the server negotiates keys, cipher suites,
+and protocols to communicate with in a <em>handshake</em> process and then
+each side encrypts and decrypts via that shared context.
+</p>
+</dd>
+<dt>
+<strong>Signing &amp; validating</strong>
+</dt>
+<dd>
+<p>
+We increasingly need to produce content
+that we identify as having been written by us such that another
+party can check it was us who authored the content. For example, we
+might want to publish statements to our users periodically (monthly,
+let&#39;s say) asserting that we have not received (to our knowledge)
+any secret subpoenas to share user data with government
+agencies. When that declaration is no longer true, we can say
+something entirely different in the monthly message. This is known
+as a <em><a href="https://www.eff.org/deeplinks/2014/04/warrant-canary-faq">Warrant Canary</a></em> but we also need to allow users to know <strong>we</strong>
+authored those messages. We do this by signing the statement each
+month (and to ensure we didn&#39;t just generate the statements ahead of
+time and slow release them, we also need to comment on current day
+news headlines or today&#39;s weather). Signing content allows readers
+to check you have a private key that allowed you to sign a statement
+as you. A simpler example is when we want to ensure one part of a
+system generated the content where we require the content is signed
+to validate by a different actor later in the process.
+</p>
+</dd>
+</dl>
+<p>
+These paired transforms can often be modeled as a <em>Profunctor</em>.
+</p>
+<p>
+We can also elegantly express the idea of functional optics with <em>Profunctor</em> as the
+central abstraction as well which gives us a compositional way to
+describe deeply nested focusing, selection by construction, tranversal
+over collections, and many more very handy ideas that we all do today
+in mainstream languages but without the compositionality.
+</p>
+<h3 id="headline-1">
+Reviewing covariant and contravariant functors
+</h3>
+<p>
+Let&#39;s review covariant and contravariant functors so we can use these terms through
+the rest of the post.
+</p>
+<p>
+In one direction (e.g. encoding, deserializing, decrypting, validating) we start with
+data that needs some post-transformation that yields new types of data
+to be used.
+This &#34;produces&#34; data that has been transformed and is modeled neatly by the
+<em>covariant functor</em> abstraction.
+</p>
+<p>
+For example, we want to provide functions to the transformation function (<code class="verbatim">(f)map</code>
+in this case) to take a given underlying value of type <code class="verbatim">a</code> and produce a new value of
+type <code class="verbatim">b</code> via <code class="verbatim">(a -&gt; b)</code> supplying the contextual value that contains <code class="verbatim">a</code>&#39;s as input
+and producing the contextual value that contains <code class="verbatim">b</code>&#39;s.
+</p>
+<p>
+Let&#39;s explore this idea with an example. Say we <strong>know</strong> the starting representation
+of some data that is stored on disk. This might be a byte string or something similar.
+Assume we have already read in the data from the file on disk to a <code class="verbatim">ByteString</code> value.
+</p>
+<p>
+There might be additional context provide that allows us to transform that <code class="verbatim">ByteString</code>
+value into a suitable encoding from some metadata in the datastore or filesystem.
+</p>
+<p>
+TODO: Code snippet here.
+</p>
+<p>
+Contextual values can be approximating initially to containers of zero or more
+values of an underlying type.
+</p>
+<p>
+In the other direction (e.g. decoding, serializing, encrypting, signing) we
+know how to consume the given [parametric] type to do something with the fixed result.
+</p>
+<p>
+This &#34;consumption&#34; of the unknown is modeled by the <em>contravariant
+functor</em> abstraction.
+</p>
+<h3 id="headline-2">
+<span class="todo">TODO</span>
+Pairing covariant and contravariant functors together (Profunctors)
+</h3>
+<h3 id="headline-3">
+Related ideas
+</h3>
+<p>
+Some reminders of interesting ideas to point readers to for further investigation and
+application:
+</p>
+<ul>
+<li>
+<p>
+Adjunctions
+</p>
+</li>
+<li>
+<p>
+Codensity
+</p>
+</li>
+<li>
+<p>
+Strong
+</p>
+</li>
+<li>
+<p>
+Costar
+</p>
+</li>
+</ul>
+<h3 id="headline-4">
+Original Source
+</h3>
+<p>
+This article was adapted with more explanation from my original Gist in 2018:
+<a href="https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3">Original Gist</a>
+</p>
+
+  </article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fblogs%2fsoftware%2f2018%2f10%2fprofunctors%2f&ref_src=twsrc%5Etfw&text=Profunctors%3a%20An%20exploration%20in%20less%20than%20100%20lines%20of%20Haskell Susan%20Potter&tw_p=tweetbutton&url=%2fblogs%2fsoftware%2f2018%2f10%2fprofunctors%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fblogs%2fsoftware%2f2018%2f10%2fprofunctors%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fblogs%2fsoftware%2f2018%2f10%2fprofunctors%2f&ref_src=twsrc%5Etfw&text=Profunctors%3a%20An%20exploration%20in%20less%20than%20100%20lines%20of%20Haskell Susan%20Potter&tw_p=tweetbutton&url=%2fblogs%2fsoftware%2f2018%2f10%2fprofunctors%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          
+          
+            <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fblogs%2fsoftware%2f2018%2f10%2fprofunctors%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          
+        </div>
+      
+    </section>
+  </div>
+</footer>
+
+      
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  <script src="/js/app.js"></script>
+  
+  </body>
+</html>
