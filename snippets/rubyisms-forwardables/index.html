@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#123652"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Software Engineering Leadership, Technical Strategy">
+
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  Rubyisms: forwardables - Susan Potter
+">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/snippets/rubyisms-forwardables/">
+    <meta property="og:image" content="/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/snippets/rubyisms-forwardables/">
+    <meta name="twitter:image" content="/">
+
+    <base href="/snippets/rubyisms-forwardables/">
+    <title>
+  Rubyisms: forwardables - Susan Potter
+</title>
+
+    <link rel="canonical" href="/snippets/rubyisms-forwardables/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+      <link rel="stylesheet" href="/styles/main.css">
+    
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
+
+    <meta name="generator" content="Hugo 0.64.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/talks/">Talks</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/snippets/">Snippets</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Rubyisms: forwardables</h1>
+      <div class="dateinfo">
+        
+        <span class="date"><strong>Date:</strong> July 22, 2006</span>
+        
+        
+        <span class="lastmod"><strong>Last modified:</strong> July 22, 2006</span>
+        
+      </div>
+
+    </header>
+
+    <p>
+Recently some Java friends of mine have decided to taste the juicier
+fruits in Ruby-land with my assistance. So below are some excerpts
+from an email conversation I had with one about Ruby&#39;s standard
+library <code class="verbatim">forwardable</code> features:
+</p>
+<p>
+Suppose we have the following model classes defined for a simple
+CRM system: Customer, Address, PhoneNumber, Name, etc. Now in
+Java-land we would have written something that looks like the
+following Ruby code (except you must type about a hundred more
+lines - although now you can write annotations to automate basic
+things like generate getters and setters or the like, which still
+requires a ridiculous amount of code to accomplish):
+</p>
+<div class="src src-ruby">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    <span style="color:#66d9ef">Name</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Struct</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">:first_name</span>, <span style="color:#e6db74">:last_name</span>, <span style="color:#e6db74">:suffix</span>, <span style="color:#e6db74">:salutation</span>)
+    <span style="color:#66d9ef">Address</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Struct</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">:street_address</span>, <span style="color:#e6db74">:suite</span>, <span style="color:#e6db74">:city</span>, <span style="color:#e6db74">:state</span>, <span style="color:#e6db74">:country</span>, <span style="color:#e6db74">:zip</span>)
+    <span style="color:#66d9ef">PhoneNumber</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Struct</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">:country_code</span>, <span style="color:#e6db74">:area_code</span>, <span style="color:#e6db74">:exchange</span>, <span style="color:#e6db74">:number</span>, <span style="color:#e6db74">:extension</span>)
+
+    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Customer</span>
+      <span style="color:#66d9ef">attr_accessor</span> <span style="color:#e6db74">:name</span>, <span style="color:#e6db74">:address</span>, <span style="color:#e6db74">:phone_number</span>
+    <span style="color:#66d9ef">end</span></code></pre></div>
+</div>
+<p>
+Note: the <code class="verbatim">attr_accessor</code> will create getters and setters for Ruby newbies.
+</p>
+<p>
+The problem is that you are not sure when you first design this if
+it will support future product offerings for business customers,
+which means the way we have modeled our simple CRM above may not
+support a business customer as well as individual customers.
+However, as good agile developers we know better than to pre-empt
+future requirements by modeling the world up-front, so we stick
+with our current implementation for this next iteration/release.
+To help us with future changes (even though we do not know what
+they will be or try to pre-empt them) we want to be able to access
+details directly from the <code class="verbatim">Customer</code> object to reduce coupling of
+clients of our <code class="verbatim">Customer</code> model. This also helps us implicitly
+adhere to the <a href="http://c2.com/cgi/wiki?LawOfDemeter">Law of Demeter</a>
+</p>
+<p>
+A naive approach would be to manually create accessor methods for the
+<code class="verbatim">Address</code>, <code class="verbatim">Name</code>, <code class="verbatim">PhoneNumber</code> attributes in the <code class="verbatim">Customer</code> class.
+But remember, this is Ruby-land, which is a magical place, so we can
+just do the following:
+</p>
+<div class="src src-ruby">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  require <span style="color:#e6db74">&#39;forwardable&#39;</span>
+
+  <span style="color:#66d9ef">NAME_FIELDS</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">:first_name</span>, <span style="color:#e6db74">:last_name</span>, <span style="color:#e6db74">:suffix</span>, <span style="color:#e6db74">:salutation</span><span style="color:#f92672">]</span>
+  <span style="color:#66d9ef">ADDRESS_FIELDS</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">:street_address</span>, <span style="color:#e6db74">:suite</span>, <span style="color:#e6db74">:city</span>, <span style="color:#e6db74">:state</span>, <span style="color:#e6db74">:country</span>, <span style="color:#e6db74">:zip</span><span style="color:#f92672">]</span>
+  <span style="color:#66d9ef">PHONE_NUMBER_FIELDS</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">:country_code</span>, <span style="color:#e6db74">:area_code</span>, <span style="color:#e6db74">:exchange</span>, <span style="color:#e6db74">:number</span>, <span style="color:#e6db74">:extension</span><span style="color:#f92672">]</span>
+
+  <span style="color:#66d9ef">Name</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Struct</span><span style="color:#f92672">.</span>new(<span style="color:#f92672">*</span><span style="color:#66d9ef">NAME_FIELDS</span>)
+  <span style="color:#66d9ef">Address</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Struct</span><span style="color:#f92672">.</span>new(<span style="color:#f92672">*</span><span style="color:#66d9ef">ADDRESS_FIELDS</span>)
+  <span style="color:#66d9ef">PhoneNumber</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Struct</span><span style="color:#f92672">.</span>new(<span style="color:#f92672">*</span><span style="color:#66d9ef">PHONE_NUMBER_FIELDS</span>)
+
+  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Customer</span>
+  <span style="color:#66d9ef">extend</span> <span style="color:#66d9ef">Forwardable</span>
+  attr_accessors <span style="color:#e6db74">:name</span>, <span style="color:#e6db74">:address</span>, <span style="color:#e6db74">:phone_number</span>
+  def_delegators <span style="color:#e6db74">:@name</span>, <span style="color:#f92672">*</span><span style="color:#66d9ef">NAME_FIELDS</span>
+  def_delegators <span style="color:#e6db74">:@address</span>, <span style="color:#f92672">*</span><span style="color:#66d9ef">ADDRESS_FIELDS</span>
+  def_delegators <span style="color:#e6db74">:@phone_number</span>, <span style="color:#f92672">*</span><span style="color:#66d9ef">PHONE_NUMBER_FIELDS</span>
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">initialize</span>(name, address, phone_number)
+  @name, @address, @phone_number <span style="color:#f92672">=</span> name, address, phone_number
+  <span style="color:#66d9ef">end</span>
+  <span style="color:#66d9ef">end</span></code></pre></div>
+</div>
+<p>
+One of the many fantastic things about Ruby (and Python) is we have
+<code class="verbatim">irb</code> Ruby&#39;s interactive shell to prototype with. So we open up an
+<code class="verbatim">irb</code> shell and do the following:
+</p>
+<div class="src src-ruby">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  irb<span style="color:#f92672">&gt;</span> require <span style="color:#e6db74">&#39;FILE_WITH_ABOVE_CODE_IN&#39;</span>
+  irb<span style="color:#f92672">&gt;</span> john_adams <span style="color:#f92672">=</span> <span style="color:#66d9ef">Customer</span><span style="color:#f92672">.</span>new(<span style="color:#66d9ef">Name</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">&#39;John&#39;</span>, <span style="color:#e6db74">&#39;Adams&#39;</span>, <span style="color:#66d9ef">nil</span>, <span style="color:#e6db74">&#39;Former President&#39;</span>), <span style="color:#66d9ef">Address</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">&#39;101 Constabulary Road&#39;</span>, <span style="color:#66d9ef">nil</span>, <span style="color:#e6db74">&#39;Bay Colony&#39;</span>, <span style="color:#e6db74">&#39;MA&#39;</span>, <span style="color:#e6db74">&#39;US&#39;</span>, <span style="color:#e6db74">&#39;000000&#39;</span>), <span style="color:#66d9ef">nil</span>) <span style="color:#75715e"># remember phones didn&#39;t exist in the mid-18th Century!</span>
+  <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#75715e">#&amp;lt;Customer:0xb7f2be30 @address=#&amp;lt;struct Address street_address=&#34;101 Constabulary Road&#34;, suite=nil, city=&#34;Bay Colony&#34;, state=&#34;MA&#34;, country=&#34;US&#34;, zip=&#34;000000&#34;&amp;gt;, @name=#&amp;lt;struct Name first_name=&#34;John&#34;, last_name=&#34;Adams&#34;, suffix=nil, salutation=&#34;Former President&#34;&amp;gt;, @phone_number=nil&amp;gt;</span>
+  irb<span style="color:#f92672">&gt;</span> john_adams<span style="color:#f92672">.</span>salutation
+  <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Former President</span><span style="color:#e6db74">&#34;</span>
+  irb<span style="color:#f92672">&gt;</span> john_adams<span style="color:#f92672">.</span>state
+  <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">MA</span><span style="color:#e6db74">&#34;</span>
+  irb<span style="color:#f92672">&gt;</span> john_adams<span style="color:#f92672">.</span>street_address
+  <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">101 Constabulary Road</span><span style="color:#e6db74">&#34;</span></code></pre></div>
+</div>
+<p>
+Javahead&gt;&gt;&gt; We are still passing in the <code class="verbatim">Name</code>, <code class="verbatim">Address</code> and
+<code class="verbatim">PhoneNumber</code> stucts to create the Customer object in the first place,
+so why would flattening out the Customer interface reduce coupling?
+</p>
+<p>
+Great question [Javahead]!  In general, most applications will read
+data from models much more than create them, and quite a number of
+applications do not actually initially create any of the data, they
+simply massage it. Now I am not suggesting that there are no
+applications that would create model objects more than read from them,
+but most likely your application will be 80% reading and 20% writing
+(including creating and updating). So if we were to change the
+underlying structure of the Customer, on average 80% of the code that
+uses the Customer object would not know about its constituents and
+would not need to be changed.
+</p>
+<p>
+Of course, this is somewhat of a contrived example, but I hope it
+shows how elegant, concise, simple, and yet powerful Rubyisms can be.
+</p>
+
+  </article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsnippets%2frubyisms-forwardables%2f&ref_src=twsrc%5Etfw&text=Rubyisms%3a%20forwardables Susan%20Potter&tw_p=tweetbutton&url=%2fsnippets%2frubyisms-forwardables%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsnippets%2frubyisms-forwardables%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsnippets%2frubyisms-forwardables%2f&ref_src=twsrc%5Etfw&text=Rubyisms%3a%20forwardables Susan%20Potter&tw_p=tweetbutton&url=%2fsnippets%2frubyisms-forwardables%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          
+          
+            <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsnippets%2frubyisms-forwardables%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          
+        </div>
+      
+    </section>
+  </div>
+</footer>
+
+      
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  <script src="/js/app.js"></script>
+  
+  </body>
+</html>

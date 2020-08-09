@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#123652"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Software Engineering Leadership, Technical Strategy">
+
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  Predicate Algebra in Python - Susan Potter
+">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/snippets/predicate-algebra-in-python/">
+    <meta property="og:image" content="/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/snippets/predicate-algebra-in-python/">
+    <meta name="twitter:image" content="/">
+
+    <base href="/snippets/predicate-algebra-in-python/">
+    <title>
+  Predicate Algebra in Python - Susan Potter
+</title>
+
+    <link rel="canonical" href="/snippets/predicate-algebra-in-python/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+      <link rel="stylesheet" href="/styles/main.css">
+    
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
+
+    <meta name="generator" content="Hugo 0.64.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/talks/">Talks</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/snippets/">Snippets</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Predicate Algebra in Python</h1>
+      <div class="dateinfo">
+        
+        <span class="date"><strong>Date:</strong> November 9, 2009</span>
+        
+        
+        <span class="lastmod"><strong>Last modified:</strong> March 22, 2016</span>
+        
+      </div>
+
+    </header>
+
+    <p>
+Updated for Python3 recently:
+</p>
+<div class="src src-python">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Predicate</span>:
+    <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;&#34;&#34;</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    Define predicate algebra.</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isEven=Predicate(lambda x: x </span><span style="color:#e6db74">%</span><span style="color:#e6db74"> 2 == 0)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isOdd=Predicate(lambda x: x </span><span style="color:#e6db74">%</span><span style="color:#e6db74"> 2 == 1)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isEven(6)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    True</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isOdd(6)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    False</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isEmpty=Predicate(lambda s: s == </span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isNotEmpty=~isEmpty</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isEmpty(</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">c</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    False</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isNotEmpty(</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    False</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isNotEmpty(</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hello</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    True</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+    <span style="color:#66d9ef">def</span> __init__(self, predicate):
+        self<span style="color:#f92672">.</span>predicate <span style="color:#f92672">=</span> predicate
+
+    <span style="color:#66d9ef">def</span> __or__(self, other):
+        <span style="color:#66d9ef">return</span> Predicate(<span style="color:#66d9ef">lambda</span> x: self<span style="color:#f92672">.</span>predicate(x) <span style="color:#f92672">or</span> other(x))
+
+    <span style="color:#66d9ef">def</span> __and__(self, other):
+        <span style="color:#66d9ef">return</span> Predicate(<span style="color:#66d9ef">lambda</span> x: self<span style="color:#f92672">.</span>predicate(x) <span style="color:#f92672">and</span> other(x))
+
+    <span style="color:#66d9ef">def</span> __xor__(self, other):
+        <span style="color:#66d9ef">return</span> Predicate(<span style="color:#66d9ef">lambda</span> x: self<span style="color:#f92672">.</span>predicate(x) <span style="color:#f92672">^</span> other(x))
+
+    <span style="color:#66d9ef">def</span> __invert__(self):
+        <span style="color:#66d9ef">return</span> Predicate(<span style="color:#66d9ef">lambda</span> x: <span style="color:#f92672">not</span> self<span style="color:#f92672">.</span>predicate(x))
+
+    <span style="color:#66d9ef">def</span> __call__(self, x):
+        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>predicate(x)
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">__main__</span><span style="color:#e6db74">&#34;</span>:
+    <span style="color:#f92672">import</span> doctest
+    doctest<span style="color:#f92672">.</span>testmod()</code></pre></div>
+</div>
+<p>
+Output from <code class="verbatim">python PredicateAlgebra.py -v</code>:
+</p>
+<div class="src src-text">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Trying:
+    isEven=Predicate(lambda x: x % 2 == 0)
+Expecting nothing
+ok
+Trying:
+    isOdd=Predicate(lambda x: x % 2 == 1)
+Expecting nothing
+ok
+Trying:
+    isEven(6)
+Expecting:
+    True
+ok
+Trying:
+    isOdd(6)
+Expecting:
+    False
+ok
+Trying:
+    isEmpty=Predicate(lambda s: s == &#34;&#34;)
+Expecting nothing
+ok
+Trying:
+    isNotEmpty=~isEmpty
+Expecting nothing
+ok
+Trying:
+    isEmpty(&#34;c&#34;)
+Expecting:
+    False
+ok
+Trying:
+    isNotEmpty(&#34;&#34;)
+Expecting:
+    False
+ok
+Trying:
+    isNotEmpty(&#34;hello&#34;)
+Expecting:
+    True
+ok
+7 items had no tests:
+    __main__
+    __main__.Predicate.__and__
+    __main__.Predicate.__call__
+    __main__.Predicate.__init__
+    __main__.Predicate.__invert__
+    __main__.Predicate.__or__
+    __main__.Predicate.__xor__
+1 items passed all tests:
+   9 tests in __main__.Predicate
+9 tests in 8 items.
+9 passed and 0 failed.
+Test passed.</code></pre></div>
+</div>
+
+  </article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsnippets%2fpredicate-algebra-in-python%2f&ref_src=twsrc%5Etfw&text=Predicate%20Algebra%20in%20Python Susan%20Potter&tw_p=tweetbutton&url=%2fsnippets%2fpredicate-algebra-in-python%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsnippets%2fpredicate-algebra-in-python%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsnippets%2fpredicate-algebra-in-python%2f&ref_src=twsrc%5Etfw&text=Predicate%20Algebra%20in%20Python Susan%20Potter&tw_p=tweetbutton&url=%2fsnippets%2fpredicate-algebra-in-python%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          
+          
+            <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsnippets%2fpredicate-algebra-in-python%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          
+        </div>
+      
+    </section>
+  </div>
+</footer>
+
+      
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  <script src="/js/app.js"></script>
+  
+  </body>
+</html>

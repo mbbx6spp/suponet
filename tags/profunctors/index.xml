@@ -6,18 +6,18 @@
     <description>Recent content in profunctors on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 30 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 09 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/profunctors/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Profunctors: An exploration in less than 100 lines of Haskell</title>
-      <link>/blogs/software/2018/10/profunctors/</link>
-      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      <title>Profunctors: An exploration, Part 1</title>
+      <link>/software/profunctors-an-exploration-part-1/</link>
+      <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>/blogs/software/2018/10/profunctors/</guid>
-      <description>Originally adapted from a gist: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3  Profunctors are a remarkably practical abstraction for many activities software developers are concerned with on the day to day.  Consider that much of distributed systems software today concerns the following activity pairs:   Encoding &amp;amp; decoding    We often need to standardize on encoding ensure consistency, e.g. base64 encoding allows us to convert binary data into ASCII without loss, because many systems are more able to deal with ASCII than raw binary data (a legacy decision that we still have to consider today though many new developers do not do this consciously due to lack of context about the purpose of encoding)   Serializing &amp;amp; deserializing    We regularly need to transfer data over the wire and we need to have the client and server have an agreement about how to serialize that data to send and deserialize it when they receive it from the other party, e.</description>
+      <guid>/software/profunctors-an-exploration-part-1/</guid>
+      <description>Notes:    Originally adapted from a gist in 2018: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3    Moved the original Gist to a snippet.    Photo by Alex on Unsplash Goals   This series explores one kind of motivation and the building blocks of Profunctors with an aim to introduce the concepts informally while introducing terminology along the way. After assembling the parts of a Profunctor the reader should start to see how packaging these operators as a pair allows library designers to offer a declarative interface for their clients to build custom codecs with a small number of primitives.</description>
     </item>
     
   </channel>

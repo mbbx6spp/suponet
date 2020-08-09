@@ -6,181 +6,199 @@
     <description>Recent content in Snippets on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 21 Apr 2018 14:15:59 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 30 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/snippets/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>Profunctor exploration in less than 100 lines of Haskell</title>
+      <link>/snippets/profunctor-exploration-in-less-than-100-lines-of-haskell/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/snippets/profunctor-exploration-in-less-than-100-lines-of-haskell/</guid>
+      <description>{-# LANGUAGE ExplicitForAll #-} {-# LANGUAGE KindSignatures #-} {-# LANGUAGE NoImplicitPrelude #-} {-# LANGUAGE RankNTypes #-} {-# LANGUAGE TypeOperators #-} {-# LANGUAGE TypeSynonymInstances #-} {-# LANGUAGE MultiParamTypeClasses #-} module Profunctors where import Data.Either import Data.Maybe import Data.Functor import Data.Function ((.), ($)) class Iso a b where to :: a -&amp;gt; b from :: b -&amp;gt; a -- law: a = from . to a type Lens s t a b = forall p.</description>
+    </item>
+    
+    <item>
       <title>Decoding lens operators</title>
-      <link>/snippets/2018/04/haskell-decoding-lenses/</link>
+      <link>/snippets/decoding-lens-operators/</link>
       <pubDate>Sat, 21 Apr 2018 14:15:59 -0500</pubDate>
       
-      <guid>/snippets/2018/04/haskell-decoding-lenses/</guid>
+      <guid>/snippets/decoding-lens-operators/</guid>
       <description>Notation conventions   The following table provides a quick overview of conventions used in symbolic operators in the lens library.    Symbol Concept Denotes     ^ getter gets value from structure   ~ setter sets values in structure   % over apply transformation over selected substructure   = state threads state through   &amp;lt;&amp;lt; before change returns value before specified change   &amp;lt; after change returns value after specified change   ?</description>
     </item>
     
     <item>
       <title>Ruby 2.4 changes overview</title>
-      <link>/snippets/2016/12/ruby-v2.4.0/</link>
+      <link>/snippets/ruby-2.4-changes-overview/</link>
       <pubDate>Sun, 25 Dec 2016 00:00:00 +0000</pubDate>
       
-      <guid>/snippets/2016/12/ruby-v2.4.0/</guid>
+      <guid>/snippets/ruby-2.4-changes-overview/</guid>
       <description>Unified Fixnum and Bignum into Integer It&amp;rsquo;s backward compatible too.
 $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;#34;2.3.1&amp;#34; irb(main):002:0&amp;gt; (2**100).class =&amp;gt; Bignum irb(main):003:0&amp;gt; 2.class =&amp;gt; Fixnum irb(main):004:0&amp;gt; Fixnum =&amp;gt; Fixnum irb(main):005:0&amp;gt; Bignum =&amp;gt; Bignum irb(main):006:0&amp;gt; Bogonum NameError: uninitialized constant Bogonum from (irb):6 from /home/spotter/.nix-profile/bin/irb:11:in `&amp;lt;main&amp;gt;&amp;#39; irb(main):007:0&amp;gt; quit $ nix-env -f . -iA ruby_2_4_0 replacing old ‘ruby-2.3.1-p0’ installing ‘ruby-2.4.0’ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;#34;2.4.0&amp;#34; irb(main):002:0&amp;gt; (2**100).class =&amp;gt; Integer irb(main):003:0&amp;gt; 2.class =&amp;gt; Integer irb(main):004:0&amp;gt; Fixnum (irb):4: warning: constant ::Fixnum is deprecated =&amp;gt; Integer irb(main):005:0&amp;gt; Bignum (irb):5: warning: constant ::Bignum is deprecated =&amp;gt; Integer irb(main):006:0&amp;gt; Bogonum NameError: uninitialized constant Bogonum from (irb):6 from /home/spotter/.</description>
     </item>
     
     <item>
       <title>Nix in your home directory</title>
-      <link>/snippets/2016/08/nix-in-home-directory/</link>
+      <link>/snippets/nix-in-your-home-directory/</link>
       <pubDate>Tue, 30 Aug 2016 00:00:00 +0000</pubDate>
       
-      <guid>/snippets/2016/08/nix-in-home-directory/</guid>
+      <guid>/snippets/nix-in-your-home-directory/</guid>
       <description>Prerequisites     wget is installed    tar is installed   Purpose   If you really don&amp;#39;t want to install Nix under /nix (or you can&amp;#39;t) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.  Now whenever you want to run a command under Nix&amp;#39;s control, you should prefix with nixrun.  Good luck.</description>
     </item>
     
     <item>
       <title>Scala WTFs</title>
-      <link>/snippets/2014/02/scala-wtfs/</link>
+      <link>/snippets/scala-wtfs/</link>
       <pubDate>Sun, 02 Feb 2014 00:00:00 +0000</pubDate>
       
-      <guid>/snippets/2014/02/scala-wtfs/</guid>
+      <guid>/snippets/scala-wtfs/</guid>
       <description>Small sample of Scala WTFs circa 2014 (many taken from Paul Phillips talks on the Scala Collections library):
 scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;).toSet // the only reasonable line of code in here res1: scala.collection.immutable.Set[String] = Set(a, b, c) scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;).toSet() // seen this when learning Scala first time. ROFL. res2: Boolean = false scala&amp;gt; List(1, 2) ::: List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;) // it&amp;#39;d be funny if you didn&amp;#39;t care. res3: List[Any] = List(1, 2, a, b) scala&amp;gt; List(1, 2) ::: List(3, 4.</description>
     </item>
     
     <item>
       <title>OSX Lion (10.7.4) work laptop setup</title>
-      <link>/snippets/2014/01/osx-lion-setup/</link>
+      <link>/snippets/osx-lion-10.7.4-work-laptop-setup/</link>
       <pubDate>Sat, 25 Jan 2014 00:00:00 +0000</pubDate>
       
-      <guid>/snippets/2014/01/osx-lion-setup/</guid>
+      <guid>/snippets/osx-lion-10.7.4-work-laptop-setup/</guid>
       <description>Homebrew   Install after the command-line tools for Xcode.    tmux    erlang    haskell-platform    zsh    git    figlet    scala    sbt    rbenv    ruby-build    s3cmd    pit   brew install tmux erlang haskell-platform zsh \  git figlet scala sbt rbenv ruby-build s3cmd pit  RubyGems     veewee   App Store     Opera    Skitch    XCode (Command-line tools)    Miro (if only there was a way to uninstall iTunes)   Manual Installs     Skype    Chrome    Firefox    Adium    Command-line tools from Xcode (after install)    GitHub for Mac    Java 7 (and change default to this in Java Preferences)    DropBox    Growl (latest free version)    VirtualBox    Vagrant - see http://vagrantup.</description>
     </item>
     
     <item>
       <title>Erlang OTP Glossary</title>
-      <link>/snippets/2012/01/erlang-otp-glossary/</link>
+      <link>/snippets/erlang-otp-glossary/</link>
       <pubDate>Tue, 10 Jan 2012 00:31:13 -0500</pubDate>
       
-      <guid>/snippets/2012/01/erlang-otp-glossary/</guid>
+      <guid>/snippets/erlang-otp-glossary/</guid>
       <description>I am hoping this will serve as a reference for coworkers and others new to Erlang and OTP to be able to figure out the terminology easier than I had to. I learned the hard way, so you don&amp;#39;t have to!:)    Erlang/OTP - The set of libraries and conventions that are used as part of the core Erlang distribution by Ericsson to build fault-tolerant, distributed systems more effectively.</description>
     </item>
     
     <item>
       <title>Erlang Meck API notes</title>
-      <link>/snippets/2011/03/erlang-meck-api/</link>
+      <link>/snippets/erlang-meck-api-notes/</link>
       <pubDate>Wed, 23 Mar 2011 01:11:30 -0500</pubDate>
       
-      <guid>/snippets/2011/03/erlang-meck-api/</guid>
+      <guid>/snippets/erlang-meck-api-notes/</guid>
       <description>Notes on using Meck API (a mocking library in Erlang) which are not well documented. % Will create a fully mocked version of existing_module until caller crashes meck:new(ExistingModule). % Will create a fully mocked version of existing_module even after caller crashes meck:new(ExistingModule, [nolink]). % Will allow you to overload existing module, keeping old functions around meck:new(ExistingModule, [passthrough]). % Unload mocks and revert to real module implementation meck:unload(ExistingModule). % Remove functions from the mock module meck:delete(WhateverMockedModule, SomeFun, Arity).</description>
     </item>
     
     <item>
       <title>Custom Security Handler Nitrogen</title>
-      <link>/snippets/2011/02/custom-security-handler-nitrogen/</link>
+      <link>/snippets/custom-security-handler-nitrogen/</link>
       <pubDate>Wed, 16 Feb 2011 01:04:41 -0500</pubDate>
       
-      <guid>/snippets/2011/02/custom-security-handler-nitrogen/</guid>
+      <guid>/snippets/custom-security-handler-nitrogen/</guid>
       <description>An example of a custom security handler implementation for Nitrogen 2.x.  customer_security_handler.erl %%% HEADER %%% @author Susan Potter &amp;lt;me@susanpotter.net&amp;gt; %%% @date 2011-02-16T17:08 %%% @license BSD %%% @doc Example of a security_handler behavior implementation module. %%% It assumes a callback module is passed in that exports: %%% login_path/0 and authorized/2. %%% @end -module(custom_security_handler). -include_lib(&amp;#34;nitrogen_core/include/wf.hrl&amp;#34;). -behaviour(security_handler). % security_handler behavior exports -export([init/2, finish/2]). %%%. %%% CALLBACKS  %% @hidden %% @todo Add authentication code.</description>
     </item>
     
     <item>
+      <title>Predicate Algebra in Python</title>
+      <link>/snippets/predicate-algebra-in-python/</link>
+      <pubDate>Mon, 09 Nov 2009 00:00:00 +0000</pubDate>
+      
+      <guid>/snippets/predicate-algebra-in-python/</guid>
+      <description>Updated for Python3 recently: class Predicate: &amp;#34;&amp;#34;&amp;#34;Define predicate algebra.&amp;gt;&amp;gt;&amp;gt; isEven=Predicate(lambda x: x %2 == 0)&amp;gt;&amp;gt;&amp;gt; isOdd=Predicate(lambda x: x %2 == 1)&amp;gt;&amp;gt;&amp;gt; isEven(6)True&amp;gt;&amp;gt;&amp;gt; isOdd(6)False&amp;gt;&amp;gt;&amp;gt; isEmpty=Predicate(lambda s: s == &amp;#34;&amp;#34;)&amp;gt;&amp;gt;&amp;gt; isNotEmpty=~isEmpty&amp;gt;&amp;gt;&amp;gt; isEmpty(&amp;#34;c&amp;#34;)False&amp;gt;&amp;gt;&amp;gt; isNotEmpty(&amp;#34;&amp;#34;)False&amp;gt;&amp;gt;&amp;gt; isNotEmpty(&amp;#34;hello&amp;#34;)True&amp;#34;&amp;#34;&amp;#34; def __init__(self, predicate): self.predicate = predicate def __or__(self, other): return Predicate(lambda x: self.predicate(x) or other(x)) def __and__(self, other): return Predicate(lambda x: self.predicate(x) and other(x)) def __xor__(self, other): return Predicate(lambda x: self.predicate(x) ^ other(x)) def __invert__(self): return Predicate(lambda x: not self.</description>
+    </item>
+    
+    <item>
       <title>My .gitconfig &amp; .tigrc files</title>
-      <link>/snippets/2007/11/gitconfig/</link>
+      <link>/snippets/my-.gitconfig-.tigrc-files/</link>
       <pubDate>Thu, 08 Nov 2007 00:00:00 +0000</pubDate>
       
-      <guid>/snippets/2007/11/gitconfig/</guid>
+      <guid>/snippets/my-.gitconfig-.tigrc-files/</guid>
       <description>[user] name = Susan Potter # make sure you change this email = me@susanpotter.net # make sure you change this [color] diff = auto status = auto branch = auto [diff] rename = copy color = auto [apply] whitespace = strip [pager] color = true [status] color = auto [branch] autosetuprebase = always [alias] co = &amp;#34;checkout&amp;#34; ci = &amp;#34;commit&amp;#34; ciall = &amp;#34;commit -a -v&amp;#34; unmerge = &amp;#34;reset --hard ORIG_HEAD&amp;#34; lsbr = &amp;#34;branch -a&amp;#34; # list all branches, even remote ones mkbr = &amp;#34;branch&amp;#34; # create branch if you specify a branch name after it, e.</description>
     </item>
     
     <item>
       <title>Ruby Idioms, Part 7</title>
-      <link>/snippets/2007/01/ruby-idioms-part-7/</link>
+      <link>/snippets/ruby-idioms-part-7/</link>
       <pubDate>Wed, 24 Jan 2007 18:48:00 -0600</pubDate>
       
-      <guid>/snippets/2007/01/ruby-idioms-part-7/</guid>
+      <guid>/snippets/ruby-idioms-part-7/</guid>
       <description>This idiom I have seen a little more in Rails than I have seen in Ruby, but I am putting it in this Ruby Idioms series anyway.  First off, most of you will know by know that you can &amp;#34;transparently&amp;#34; provide a method in Ruby a Hash. What do I mean by &amp;#34;transparently&amp;#34;? Well have a look at the code example below: user = User.find(:first, :include =&amp;gt; :preferences)   The last argument is actually a Hash even though you do not see the curly braces at all.</description>
     </item>
     
     <item>
       <title>Ruby Idioms, Part 6</title>
-      <link>/snippets/2007/01/ruby-idioms-part-6/</link>
+      <link>/snippets/ruby-idioms-part-6/</link>
       <pubDate>Tue, 23 Jan 2007 22:28:00 -0600</pubDate>
       
-      <guid>/snippets/2007/01/ruby-idioms-part-6/</guid>
+      <guid>/snippets/ruby-idioms-part-6/</guid>
       <description>Tonight I remembered couple more idioms in Ruby and felt compelled to share.  In Javafied Ruby code (below) we often see something like the following: if something for role in user.roles return true if @@roles.include? role end end   Now when I first started writing Ruby code almost 3 years ago, I thought looping through a collection like above was the nicest way. I quickly found Ruby like the following snippet in code I inherited: user.</description>
     </item>
     
     <item>
       <title>Ruby Idioms, Part 5</title>
-      <link>/snippets/2007/01/ruby-idioms-part-5/</link>
+      <link>/snippets/ruby-idioms-part-5/</link>
       <pubDate>Mon, 22 Jan 2007 19:43:00 -0600</pubDate>
       
-      <guid>/snippets/2007/01/ruby-idioms-part-5/</guid>
+      <guid>/snippets/ruby-idioms-part-5/</guid>
       <description>Some of you may say this isn&amp;#39;t strictly an idiom, but it is dependent on Ruby&amp;#39;s core API and classes, so I have included it. Ranges are a very nice low-level abstraction and can save Ruby developers a lot of time for certain coding needs. In a previous idiom example on this blog I had a list of positive odd numbers under 7. Well typing this out by hand is hardly consuming so I typed [1, 3, 5] by hand.</description>
     </item>
     
     <item>
       <title>Ruby Idioms, Part 4</title>
-      <link>/snippets/2007/01/ruby-idioms-part-4/</link>
+      <link>/snippets/ruby-idioms-part-4/</link>
       <pubDate>Mon, 22 Jan 2007 19:36:00 -0600</pubDate>
       
-      <guid>/snippets/2007/01/ruby-idioms-part-4/</guid>
+      <guid>/snippets/ruby-idioms-part-4/</guid>
       <description>To splat or not to splat, that is the question.  In Java to unpack an array&amp;#39;s values into separate variables you would need to do something like the following: burgers = [:hamburger, :bocaburger, :gardenburger, :turkeyburger] t = burgers[0] u = burgers[1] v = burgers[2] w = burgers[3]   In the Ruby mindset this would look more like the following: burgers = [:hamburger, :bocaburger, :gardenburger, :turkeyburger] t, u, v = *burgers # t=&amp;gt;:hamburger, u=&amp;gt; :bocaburger, v=&amp;gt;:gardenburger t, u, v, w = *burgers # t=&amp;gt;:hamburger, u=&amp;gt;:bocaburger, v=&amp;gt;:gardenburger, w=&amp;gt;:turkeyburger t, u, v, w, x = *burgers # t=&amp;gt;:hamburger, u=&amp;gt;:bocaburger, v=&amp;gt;:gardenburger, w=&amp;gt;:turkeyburger, x=&amp;gt;nil   Think of * (or splat) as the Ruby way of unpacking the elements of an Array into separate variables in Ruby.</description>
     </item>
     
     <item>
       <title>Ruby Idioms, Part 3</title>
-      <link>/snippets/2007/01/ruby-idioms-part-3/</link>
+      <link>/snippets/ruby-idioms-part-3/</link>
       <pubDate>Mon, 22 Jan 2007 19:32:00 -0600</pubDate>
       
-      <guid>/snippets/2007/01/ruby-idioms-part-3/</guid>
+      <guid>/snippets/ruby-idioms-part-3/</guid>
       <description>Now, probably the biggest difference after the syntax, and the non-static nature of Ruby for Java heads to get used to is that Ruby is an &amp;#34;expressionist&amp;#34; language. Meaning almost all statements in Ruby evaluates to a value, i.e. everything that reasonably can be is an expression in Ruby is. This is definitely not the way Java thinks or works. So this will take some adjusting to. Don&amp;#39;t worry I will show you an example.</description>
     </item>
     
     <item>
       <title>Ruby Idioms, Part 2</title>
-      <link>/snippets/2007/01/ruby-idioms-part-2/</link>
+      <link>/snippets/ruby-idioms-part-2/</link>
       <pubDate>Mon, 22 Jan 2007 19:21:00 -0600</pubDate>
       
-      <guid>/snippets/2007/01/ruby-idioms-part-2/</guid>
+      <guid>/snippets/ruby-idioms-part-2/</guid>
       <description>Now the &amp;#34;idiom&amp;#34; we will use is not specific to Ruby, since I am pretty sure Perl has one of the constructs we will use to solve the stated problem, but it is still idiomatic, since the majority of popular OO languages (static, dynamic or otherwise) do not have it (as far as I know). Also some consider this to be a sub-optimal idiom, because there is a terser way to do something like this.</description>
     </item>
     
     <item>
       <title>Ruby Idioms, Part 1</title>
-      <link>/snippets/2007/01/ruby-idioms-part-1/</link>
+      <link>/snippets/ruby-idioms-part-1/</link>
       <pubDate>Mon, 22 Jan 2007 19:16:00 -0600</pubDate>
       
-      <guid>/snippets/2007/01/ruby-idioms-part-1/</guid>
+      <guid>/snippets/ruby-idioms-part-1/</guid>
       <description>With more people moving to Ruby everyday from languages like Java, I wanted to create blog entries on the most common Ruby idioms (especially ones frequently found in Rails core or Rails application code) and briefly explain how to convert your Java mindset to Ruby (over time).  This is the first installment.  First let us inspect what we might do in Java (converted to Ruby syntax) when determining if a value passed in equals various fixed values: if val == 1 || val == 3 || val == 5 puts &amp;#34;hello odd number under 7&amp;#34; end   Rubyists will know this is really ugly, so our first attempt at Rubifying the code above would probably look like: if [1, 3, 5].</description>
     </item>
     
     <item>
       <title>Rubyisms: reopening classes</title>
-      <link>/snippets/2006/08/rubyisms-reopening-classes/</link>
+      <link>/snippets/rubyisms-reopening-classes/</link>
       <pubDate>Thu, 10 Aug 2006 14:26:00 -0500</pubDate>
       
-      <guid>/snippets/2006/08/rubyisms-reopening-classes/</guid>
+      <guid>/snippets/rubyisms-reopening-classes/</guid>
       <description>Ever wished you could write code in a very expressive way like the following examples?    expiration_date = 3.years.from_now    birth_date = 32.years.ago    Now you can, in Ruby at least.  Two years ago I was a very happy Python developer that thought no other language could compete with Python for developer productivity. My Python indoctrination occurred after 7 solid years of proclaiming Java was the ultimate language that would reign supreme.</description>
     </item>
     
     <item>
       <title>Rubyisms: naming conventions</title>
-      <link>/snippets/2006/08/rubyisms-naming-conventions/</link>
+      <link>/snippets/rubyisms-naming-conventions/</link>
       <pubDate>Tue, 01 Aug 2006 12:43:00 -0500</pubDate>
       
-      <guid>/snippets/2006/08/rubyisms-naming-conventions/</guid>
+      <guid>/snippets/rubyisms-naming-conventions/</guid>
       <description>Today I wanted to show the implicit and explicit naming conventions in Ruby for newbies. It isn&amp;#39;t particularly consistent with another language&amp;#39;s conventions, so could cause confusion when reading the Ruby Standard Library (RSL). Where appropriate I also discuss how some of the naming conventions really aid code readability and developer productivity. ClassName and ModuleName [implicit]   Naming classes is very similar to most common conventions following in C++, Java, Python and C#.</description>
     </item>
     
     <item>
       <title>Rubyisms: forwardables</title>
-      <link>/snippets/2006/07/rubyisms-forwardables/</link>
+      <link>/snippets/rubyisms-forwardables/</link>
       <pubDate>Sat, 22 Jul 2006 18:23:00 -0500</pubDate>
       
-      <guid>/snippets/2006/07/rubyisms-forwardables/</guid>
+      <guid>/snippets/rubyisms-forwardables/</guid>
       <description>Recently some Java friends of mine have decided to taste the juicier fruits in Ruby-land with my assistance. So below are some excerpts from an email conversation I had with one about Ruby&amp;#39;s standard library forwardable features:  Suppose we have the following model classes defined for a simple CRM system: Customer, Address, PhoneNumber, Name, etc. Now in Java-land we would have written something that looks like the following Ruby code (except you must type about a hundred more lines - although now you can write annotations to automate basic things like generate getters and setters or the like, which still requires a ridiculous amount of code to accomplish): Name = Struct.</description>
     </item>
     

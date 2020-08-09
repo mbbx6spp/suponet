@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#123652"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Software Engineering Leadership, Technical Strategy">
+
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  Ruby Idioms, Part 5 - Susan Potter
+">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/snippets/ruby-idioms-part-5/">
+    <meta property="og:image" content="/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/snippets/ruby-idioms-part-5/">
+    <meta name="twitter:image" content="/">
+
+    <base href="/snippets/ruby-idioms-part-5/">
+    <title>
+  Ruby Idioms, Part 5 - Susan Potter
+</title>
+
+    <link rel="canonical" href="/snippets/ruby-idioms-part-5/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+      <link rel="stylesheet" href="/styles/main.css">
+    
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
+
+    <meta name="generator" content="Hugo 0.64.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/talks/">Talks</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/snippets/">Snippets</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Ruby Idioms, Part 5</h1>
+      <div class="dateinfo">
+        
+        <span class="date"><strong>Date:</strong> January 22, 2007</span>
+        
+        
+        <span class="lastmod"><strong>Last modified:</strong> January 22, 2007</span>
+        
+      </div>
+
+    </header>
+
+    <p>
+Some of you may say this isn&#39;t strictly an idiom, but it is dependent
+on Ruby&#39;s core API and classes, so I have included it.  Ranges are a
+very nice low-level abstraction and can save Ruby developers a lot of
+time for certain coding needs.  In a previous idiom example on this
+blog I had a list of positive odd numbers under 7.  Well typing this
+out by hand is hardly consuming so I typed <code class="verbatim">[1, 3, 5]</code> by hand.
+However, say we wanted to check if a number given by the user is an
+odd number under, say, 1001.  How can we do that in as few lines of
+code, while still maintaining or even enhancing code readability?
+Look no further:
+</p>
+<div class="src src-ruby">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  ls <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#f92672">]</span>
+  (<span style="color:#ae81ff">1</span><span style="color:#f92672"></span><span style="color:#f92672">...</span><span style="color:#ae81ff">1001</span><span style="color:#f92672"></span>)<span style="color:#f92672">.</span>step(<span style="color:#ae81ff">2</span><span style="color:#f92672"></span>) {<span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> ls <span style="color:#f92672">&lt;&lt;</span> x} <span style="color:#75715e">#=&gt; [1, 3, ..., 997, 999]</span></code></pre></div>
+</div>
+<p>
+For Java heads that don&#39;t understand blocks - too bad that is out of
+the scope of this blog entry:)  Go and do you homework then revisit.
+Google should be able to help you out in this regard.
+</p>
+<p>
+Of course, Ruby developers could and would debate whether my solution
+above is the &#34;best&#34;, concerning how terse and readable it is since
+there are so many ways of doing this that provide a decent solution.
+There may even be another solution in the Ruby universe I may prefer,
+but at present this maintains readability to a high standard (assuming
+you understand blocks, of course), again in my opinion.  I may even
+expand the code as follows to make it truly readable:
+</p>
+<div class="src src-ruby">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  ls <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#f92672">]</span>
+  (<span style="color:#ae81ff">1</span><span style="color:#f92672"></span><span style="color:#f92672">...</span><span style="color:#ae81ff">1001</span><span style="color:#f92672"></span>)<span style="color:#f92672">.</span>step(<span style="color:#ae81ff">2</span><span style="color:#f92672"></span>) <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>x<span style="color:#f92672">|</span>
+    ls <span style="color:#f92672">&lt;&lt;</span> x
+  <span style="color:#66d9ef">end</span> <span style="color:#75715e">#=&gt; [1, 3, ..., 997, 999]</span></code></pre></div>
+</div>
+<p>
+What are a couple of extra lines to make something as readable as
+possible anyway?
+</p>
+
+  </article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsnippets%2fruby-idioms-part-5%2f&ref_src=twsrc%5Etfw&text=Ruby%20Idioms%2c%20Part%205 Susan%20Potter&tw_p=tweetbutton&url=%2fsnippets%2fruby-idioms-part-5%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsnippets%2fruby-idioms-part-5%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsnippets%2fruby-idioms-part-5%2f&ref_src=twsrc%5Etfw&text=Ruby%20Idioms%2c%20Part%205 Susan%20Potter&tw_p=tweetbutton&url=%2fsnippets%2fruby-idioms-part-5%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          
+          
+            <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsnippets%2fruby-idioms-part-5%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          
+        </div>
+      
+    </section>
+  </div>
+</footer>
+
+      
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  <script src="/js/app.js"></script>
+  
+  </body>
+</html>
