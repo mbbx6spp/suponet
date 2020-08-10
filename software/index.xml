@@ -12,15 +12,6 @@
     
     
     <item>
-      <title>Profunctors: Motivation, Part 1</title>
-      <link>/software/profunctors-motivation-part-1/</link>
-      <pubDate>Sun, 09 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/software/profunctors-motivation-part-1/</guid>
-      <description>Photo by Alex on Unsplash  Notes:    This post was originally adapted from a gist in 2018: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3    The Gist was moved to a snippet. Goals     This series explores one kind of motivation and the building blocks of Profunctors with an aim to introduce the concepts informally while introducing terminology along the way. After assembling the parts of a Profunctor the reader should start to see how packaging these operators as a pair allows library designers to offer a declarative interface for their clients to build custom codecs with a small number of primitives.</description>
-    </item>
-    
-    <item>
       <title>A quick review of a pure functional serverless application deployed to production
 </title>
       <link>/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/</link>
