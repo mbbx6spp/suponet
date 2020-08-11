@@ -67,6 +67,15 @@
     </item>
     
     <item>
+      <title>Algebraic Data Types</title>
+      <link>/software/algebraic-data-types/</link>
+      <pubDate>Tue, 27 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/software/algebraic-data-types/</guid>
+      <description>An algebraic data type can take many forms:    Sum type    Product type    Hybrid Sum/Product type    Recursive type (not covered in this post) Sum Types (aka Tagged Unions)     A sum type is a type that has a known and exhaustive list of constructors where a value of that type must be constructed by exactly one of the constructors.</description>
+    </item>
+    
+    <item>
       <title>SCM: The Next Generation</title>
       <link>/software/scm-the-next-generation/</link>
       <pubDate>Thu, 25 Jan 2007 00:00:00 +0000</pubDate>

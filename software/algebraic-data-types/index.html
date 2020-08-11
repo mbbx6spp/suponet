@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#123652"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Software Engineering Leadership, Technical Strategy">
+
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  Algebraic Data Types - Susan Potter
+">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/software/algebraic-data-types/">
+    <meta property="og:image" content="/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/software/algebraic-data-types/">
+    <meta name="twitter:image" content="/">
+
+    <base href="/software/algebraic-data-types/">
+    <title>
+  Algebraic Data Types - Susan Potter
+</title>
+
+    <link rel="canonical" href="/software/algebraic-data-types/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+      <link rel="stylesheet" href="/styles/main.css">
+    
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
+
+    <meta name="generator" content="Hugo 0.64.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/talks/">Talks</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/snippets/">Snippets</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Algebraic Data Types</h1>
+      <div class="dateinfo">
+        
+        <span class="date"><strong>Date:</strong> November 27, 2012</span>
+        
+        
+        <span class="lastmod"><strong>Last modified:</strong> August 10, 2020</span>
+        
+      </div>
+
+    </header>
+
+    
+<p>
+An algebraic data type can take many forms:
+</p>
+<ul>
+<li>
+<p>
+Sum type
+</p>
+</li>
+<li>
+<p>
+Product type
+</p>
+</li>
+<li>
+<p>
+Hybrid Sum/Product type
+</p>
+</li>
+<li>
+<p>
+Recursive type (not covered in this post)
+</p>
+<h3 id="headline-1">
+Sum Types (aka Tagged Unions)
+</h3>
+</li>
+</ul>
+<p>
+A sum type is a type that has a known and exhaustive list of
+constructors where a value of that type must be constructed by exactly
+one of the constructors. Also known as a <strong>tagged union</strong> or <strong>coproduct</strong>.
+</p>
+<p>
+A sum type is a type definition where our type has a finite number of
+known constructions. Each construction may hold zero or more components of
+specific types (although these components may vary from construction
+to construction).
+</p>
+<p>
+The simplest definition of a sum type is the <code class="verbatim">Unit</code> type which would
+look something like this in Scala:
+</p>
+<div class="src src-scala">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">case</span> <span style="color:#66d9ef">object</span> <span style="color:#a6e22e">Unit</span></code></pre></div>
+</div>
+<p>
+It has example one constructor (<code class="verbatim">Unit</code>) with no arguments.
+</p>
+<p>
+Let&#39;s step back to a basic example of a sum type (which is one variety
+of ADTs) to illustrate the difference between a sum type and a pure
+product type.
+</p>
+<div class="src src-scala">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#75715e">// Scala here to mix it up :)
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">sealed</span> <span style="color:#66d9ef">trait</span> <span style="color:#a6e22e">USCoin</span>                 <span style="color:#f92672">{</span> <span style="color:#66d9ef">def</span> value<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Int</span>  <span style="color:#f92672">}</span>
+<span style="color:#66d9ef">case</span> <span style="color:#66d9ef">object</span> <span style="color:#a6e22e">Penny</span>   <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">USCoin</span>  <span style="color:#f92672">{</span> <span style="color:#66d9ef">def</span> value <span style="color:#66d9ef">=</span> <span style="color:#ae81ff">1</span>   <span style="color:#f92672">}</span>
+<span style="color:#66d9ef">case</span> <span style="color:#66d9ef">object</span> <span style="color:#a6e22e">Nickel</span>  <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">USCoin</span>  <span style="color:#f92672">{</span> <span style="color:#66d9ef">def</span> value <span style="color:#66d9ef">=</span> <span style="color:#ae81ff">5</span>   <span style="color:#f92672">}</span>
+<span style="color:#66d9ef">case</span> <span style="color:#66d9ef">object</span> <span style="color:#a6e22e">Dime</span>    <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">USCoin</span>  <span style="color:#f92672">{</span> <span style="color:#66d9ef">def</span> value <span style="color:#66d9ef">=</span> <span style="color:#ae81ff">10</span>  <span style="color:#f92672">}</span>
+<span style="color:#66d9ef">case</span> <span style="color:#66d9ef">object</span> <span style="color:#a6e22e">Quarter</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">USCoin</span>  <span style="color:#f92672">{</span> <span style="color:#66d9ef">def</span> value <span style="color:#66d9ef">=</span> <span style="color:#ae81ff">25</span>  <span style="color:#f92672">}</span>
+<span style="color:#66d9ef">case</span> <span style="color:#66d9ef">object</span> <span style="color:#a6e22e">Dollar</span>  <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">USCoin</span>  <span style="color:#f92672">{</span> <span style="color:#66d9ef">def</span> value <span style="color:#66d9ef">=</span> <span style="color:#ae81ff">100</span> <span style="color:#f92672">}</span></code></pre></div>
+</div>
+<p>
+The above just tells Scala that there is this trait (in this case we
+can pretend it is the same as the LHS of Haskell&#39;s data declaration,
+but it isn&#39;t always this way), USCoin, that has a finite, and known
+number of constructors upfront (typically how case classes in Scala
+get used [well]). Note that the trait is sealed. For non-Scala people,
+this just means that outside of this source file, no extensions of
+this trait are allowed. i.e. the compiler can guarantee that consumers
+of our libraries or toolkits cannot extend <code class="verbatim">USCoin</code>.
+</p>
+<p>
+In this particular scenario that is probably what we want (not
+allowing consumers of our code to extend this). The likelihood that
+the US central bank would introduce new coins or take existing coins
+out of circulation before we update our library in time to cater for
+it, is pretty unlikely. However, there is another good reason why we
+might want this too: we can know we have exhaustively catered for all
+constructions of <code class="verbatim">USCoin</code> in our supporting logic or calculations.
+</p>
+<p>
+You might be wondering how this can be done. Let us try to use this
+code in <code class="verbatim">sbt console</code>:
+</p>
+<div class="src src-scala">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">scala<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">import</span> funalgebra.algdt._
+<span style="color:#66d9ef">import</span> funalgebra.algdt._
+
+scala<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">object</span> <span style="color:#a6e22e">VendingMachine</span> <span style="color:#f92672">{</span>
+     <span style="color:#f92672">|</span>   <span style="color:#66d9ef">def</span> accepts<span style="color:#f92672">(</span>coin<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">USCoin</span><span style="color:#f92672">)</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Boolean</span> <span style="color:#f92672">=</span> coin <span style="color:#66d9ef">match</span> <span style="color:#f92672">{</span>
+     <span style="color:#f92672">|</span>     <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">Penny</span> <span style="color:#66d9ef">=&gt;</span> <span style="color:#66d9ef">false</span>
+     <span style="color:#f92672">|</span>     <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">Nickel</span> <span style="color:#66d9ef">=&gt;</span> <span style="color:#66d9ef">false</span>
+     <span style="color:#f92672">|</span>     <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">Dime</span> <span style="color:#66d9ef">=&gt;</span> <span style="color:#66d9ef">true</span>
+     <span style="color:#f92672">|</span>     <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">Quarter</span> <span style="color:#66d9ef">=&gt;</span> <span style="color:#66d9ef">true</span>
+     <span style="color:#f92672">|</span>   <span style="color:#f92672">}</span>
+     <span style="color:#f92672">|</span> <span style="color:#f92672">}</span>
+<span style="color:#66d9ef">:</span><span style="color:#960050;background-color:#1e0010">1</span><span style="color:#960050;background-color:#1e0010">2</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">warning</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">match</span> <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">exhaustive</span><span style="color:#66d9ef">!</span>
+missing combination         <span style="color:#a6e22e">Dollar</span>
+
+         <span style="color:#66d9ef">def</span> accepts<span style="color:#f92672">(</span>coin<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">USCoin</span><span style="color:#f92672">)</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Boolean</span> <span style="color:#f92672">=</span> coin <span style="color:#66d9ef">match</span> <span style="color:#f92672">{</span>
+                                              <span style="color:#f92672">^</span>
+defined module <span style="color:#a6e22e">VendingMachine</span></code></pre></div>
+</div>
+<p>
+What happened here is that we forgot to match on the Dollar
+constructor for USCoin sum type and the Scala compiler warned us about
+it. If you find you want this behavior for a particular data type
+definition, then you probably want to define it as a sum type this way.
+</p>
+<h3 id="headline-2">
+Product Types (aka Record Types)
+</h3>
+<p>
+In the language of abstract algebra, which computer scientists in
+programming language theory appear to have adopted, a data type with
+exactly one constructor is isomorphic to what is often called a
+product type that takes an ordered list of typed operands. Informally
+these are sometimes called record types.
+</p>
+<p>
+The archetypal product type is the tuple. For example, perhaps we want
+to represent an image element in an HTML page. We might initially
+represent it as the following tuple:
+</p>
+<div class="src src-scala">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#f92672">(</span><span style="color:#a6e22e">String</span><span style="color:#f92672">,</span> <span style="color:#a6e22e">Int</span><span style="color:#f92672">,</span> <span style="color:#a6e22e">Int</span><span style="color:#f92672">)</span></code></pre></div>
+</div>
+<p>
+Here we take a string (the source URL), an integer (the width), and a
+second integer (the height). The problem with tuples is that this
+might also represent any number of issues. It is hard to know what it
+is referring to. Enter <strong>product types</strong>.
+</p>
+<p>
+In Scala, we can represent an image element in HTML like the following
+case class:
+</p>
+<div class="src src-scala">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">case</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ImageElement</span><span style="color:#f92672">(</span>sourceUrl<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">String</span><span style="color:#f92672">,</span> width<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Int</span><span style="color:#f92672">,</span> height<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Int</span><span style="color:#f92672">)</span></code></pre></div>
+</div>
+<p>
+Since pure product types only have one constructor for a type, we can
+eliminate the trait or abstract class type definition that we used in
+the sum type example above with <code class="verbatim">USCoin</code>.
+</p>
+<h3 id="headline-3">
+Sum-Product Hybrids
+</h3>
+<p>
+<img src="./images/facebook-notifications-small.png" alt="./images/facebook-notifications-small.png" title="./images/facebook-notifications-small.png" />
+</p>
+<p>
+How about a social network event notification. Let&#39;s take
+Facebook. Whenever you sign into Facebook (or whatever social network
+you might use), you will likely be greeted with a visual indication of
+any notifications you might have since you last signed in. Things like
+friends liking your statuses, comments, or making comments on your
+posts or posts you have commented on yourself.
+</p>
+<p>
+<img src="./images/facebook-notifications-timeline.png" alt="./images/facebook-notifications-timeline.png" title="./images/facebook-notifications-timeline.png" />
+</p>
+<p>
+So a first stab at modeling this with an algebraic data type in
+Haskell might look like:
+</p>
+<div class="src src-scala">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">import</span> Data.DateTime
+
+<span style="color:#f92672">--</span> <span style="color:#a6e22e">Assumes</span> <span style="color:#a6e22e">User</span> is defined elsewhere and imported
+
+<span style="color:#f92672">--</span> <span style="color:#a6e22e">Assume</span> <span style="color:#a6e22e">Status</span> and <span style="color:#a6e22e">Comment</span> types are already defined
+data <span style="color:#a6e22e">Notification</span> <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">CommentNotification</span> <span style="color:#a6e22e">Status</span> <span style="color:#f92672">[</span><span style="color:#66d9ef">User</span><span style="color:#f92672">]</span> <span style="color:#a6e22e">DateTime</span>
+                  <span style="color:#f92672">|</span> <span style="color:#a6e22e">CommentLikeNotification</span> <span style="color:#a6e22e">Comment</span> <span style="color:#f92672">[</span><span style="color:#66d9ef">User</span><span style="color:#f92672">]</span> <span style="color:#a6e22e">DateTime</span>
+                  <span style="color:#f92672">|</span> <span style="color:#a6e22e">PostLikeNotification</span> <span style="color:#a6e22e">Status</span> <span style="color:#f92672">[</span><span style="color:#66d9ef">User</span><span style="color:#f92672">]</span> <span style="color:#a6e22e">DateTime</span></code></pre></div>
+</div>
+<p>
+What did I actually do? Well if we look at the different notifications
+we see there are a variety of constructions of notification events,
+including:
+</p>
+<ul>
+<li>
+<p>
+When one of your statuses is liked it tells you who and at what time
+the last action was taken
+</p>
+</li>
+<li>
+<p>
+When one of your comments is liked it tells you who and the time the
+last action was taken
+</p>
+</li>
+<li>
+<p>
+When a post you commented on is commented on it tells you who and
+the time the last action was taken
+</p>
+</li>
+<li>
+<p>
+…
+</p>
+</li>
+</ul>
+<p>
+Let us dissect the Haskell code a little. The identifier on the
+left-hand-side (LHS), <code class="verbatim">Notification</code>, is the type name. Then the
+right-hand-side (RHS) contains an exhaustive list of possible
+constructors such as <code class="verbatim">CommentNotification</code>,
+<code class="verbatim">CommentLikeNotification</code>, <code class="verbatim">PostLikeNotification</code> for our simple model.
+</p>
+<p>
+Now we could have modeled Notification data type a little
+differently. Let us consider the following modeling of the domain:
+</p>
+<div class="src src-scala">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">import</span> Data.DateTime
+
+<span style="color:#f92672">--</span> <span style="color:#a6e22e">Assumes</span> <span style="color:#a6e22e">User</span> is defined elsewhere and imported
+
+<span style="color:#f92672">--</span> <span style="color:#a6e22e">We</span> might want to add more constructors <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">Post</span> sum <span style="color:#66d9ef">type</span> <span style="color:#66d9ef">of</span> <span style="color:#66d9ef">a</span> <span style="color:#66d9ef">more</span>
+<span style="color:#f92672">--</span> complete model of <span style="color:#a6e22e">Facebook</span> notifications<span style="color:#f92672">,</span> but left as a homework to
+<span style="color:#f92672">--</span> reader<span style="color:#f92672">,</span> because every algebra lesson has <span style="color:#66d9ef">this</span> <span style="color:#f92672">;</span><span style="color:#f92672">)</span>
+data <span style="color:#a6e22e">Post</span> <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Status</span> <span style="color:#a6e22e">Text</span> <span style="color:#a6e22e">DateTime</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">Comment</span> <span style="color:#a6e22e">Text</span> <span style="color:#a6e22e">DateTime</span>
+data <span style="color:#a6e22e">Notification</span> <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Notification</span> <span style="color:#a6e22e">Post</span> <span style="color:#f92672">[</span><span style="color:#66d9ef">User</span><span style="color:#f92672">]</span> <span style="color:#a6e22e">DateTime</span></code></pre></div>
+</div>
+<p>
+This model of the domain of Facebook notifications uses a pure product
+type for the <code class="verbatim">Notification</code> type definition and a hybrid sum-product
+type for the <code class="verbatim">Post</code> type.
+</p>
+<p>
+Exactly how you model this domain will depend on what properties you
+would like the various types to possess. In fact, there are many ways
+you can model this domain with various forms of algebraic data types
+(ADT). It all depends on your program&#39;s view of the domain.
+</p>
+<p>
+There is no one precise view of a particular domain, it depends on
+your program&#39;s functionality. For example, if you are building a
+front-office trade posting system, you are unlikely to need to model the
+historical view of a security or instrument type. You just need to
+know the active identifier (e.g. ticker, ISIN, CUSIP, internal id,
+etc.) for the security being traded today to flow through correctly.
+</p>
+<p>
+However, a knowledge management tool may need to model a financial
+security or instrument to have a historical view (e.g. how a corporate
+action impacted a financial security in the past, or the historical
+view of identifications or vendor symbols).
+</p>
+<h3 id="headline-4">
+Parting thoughts
+</h3>
+<p>
+With the expressive composability of algebraic data types, you will be
+able to model anything in your domain and build it up from smaller pieces.
+</p>
+
+  </article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2falgebraic-data-types%2f&ref_src=twsrc%5Etfw&text=Algebraic%20Data%20Types Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2falgebraic-data-types%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2falgebraic-data-types%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2falgebraic-data-types%2f&ref_src=twsrc%5Etfw&text=Algebraic%20Data%20Types Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2falgebraic-data-types%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          
+          
+            <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2falgebraic-data-types%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          
+        </div>
+      
+    </section>
+  </div>
+</footer>
+
+      
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  <script src="/js/app.js"></script>
+  
+  </body>
+</html>

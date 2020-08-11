@@ -100,10 +100,11 @@ h2.info {
     padding-top: 0.75em;
 }
 
-h2 code {
+h2 code, h3 code, h4 code, h5 code, h6 code {
     display: inline;
     background: inherit !important;
     color: inherit;
+    text-transform: none;
 }
 
 code {

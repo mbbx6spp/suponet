@@ -46,7 +46,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-08-09T00:00:00+00:00</lastmod>
+    <lastmod>2020-08-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -320,6 +320,13 @@
   <url>
     <loc>/snippets/osx-lion-10.7.4-work-laptop-setup/</loc>
     <lastmod>2014-01-25T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/software/algebraic-data-types/</loc>
+    <lastmod>2020-08-10T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
