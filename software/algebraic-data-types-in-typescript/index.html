@@ -670,9 +670,9 @@ same or similar goals in TypeScript without native algebraic data types:
 Parting Thoughts
 </h3>
 <p>
-I hope I&#39;ve shown that algebraic data types provides developers a
-way to build up descriptions of data from the small building up to the
-very big (compositionality) using the same construct (ADTs).
+I hope I&#39;ve shown that algebraic data types offer developers a
+way to build up descriptions of data from the small up to the
+very big using the same basic construct.
 </p>
 <p>
 Some languages like PureScript (plus Haskell, Fsharp, OCaml) offer a
@@ -686,7 +686,7 @@ in a compositional way with some extra boilerplate needed to gain the
 ideal characteristics of ADTs, specifically in TypeScript.
 </p>
 <p>
-My 2012 article about <a href="/software/algebraic-data-types/">Algebraic Data Types</a> showed using Scala using an
+My 2012 article about <a href="/software/algebraic-data-types/">Algebraic Data Types</a> showed Scala using an
 indirect encoding with sealed traits and case classes that was very
 common in Scala2 codebases. Since then Scala3 provides more direct
 encodings of ADTs though still not as native as ML-style languages support.
@@ -696,11 +696,14 @@ By building up a rich domain model from smaller ADTs we keep things
 compositional which makes it easier for developers to break down
 solutions to big problems into smaller parts that can be composed
 together without magic or fear and the ability to test and validate
-the smaller parts independently. This helps us keep our sanity the
-longer we maintain our codebases.
+the smaller parts of the solution independently. This helps us keep
+our sanity the longer we maintain our codebases.
 </p>
 <p>
-Have fun and exploit algebraic data types in your language.
+Have fun and exploit algebraic data types in your language (or
+consider using a language that more directly encodes this idea so you
+can worry less about the boilerplate and more about modeling your
+application domain).
 </p>
 
   </article>
