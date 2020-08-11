@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="theme-color" content="#123652"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="author" content="Susan Potter">
+    <meta name="description" content="/">
+    <meta name="keywords" content="Distributed Systems, Functional Programming, Systems Architecture, Software Development, Software Engineering Leadership, Technical Strategy">
+
+    <meta property="og:site_name" content="Susan Potter">
+    <meta property="og:title" content="
+  Algebraic Data Types in TypeScript - Susan Potter
+">
+    <meta property="og:description" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/software/algebraic-data-types-in-typescript/">
+    <meta property="og:image" content="/">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="/software/algebraic-data-types-in-typescript/">
+    <meta name="twitter:image" content="/">
+
+    <base href="/software/algebraic-data-types-in-typescript/">
+    <title>
+  Algebraic Data Types in TypeScript - Susan Potter
+</title>
+
+    <link rel="canonical" href="/software/algebraic-data-types-in-typescript/">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    
+    <link  rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700">
+    <link rel="stylesheet" href="/css/normalize.min.css">
+    <link rel="stylesheet" href="/css/style.min.css">
+
+    
+
+    
+      <link rel="stylesheet" href="/styles/main.css">
+    
+
+    <link href="/favicon.ico" rel="shortcut icon">
+
+    
+      <link rel="alternate" href="/index.xml" type="application/rss+xml" title="Susan Potter">
+      <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
+    
+
+    <meta name="generator" content="Hugo 0.64.0" />
+  </head>
+
+  <body class="">
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">Susan Potter</a>
+    <input type="checkbox" id="menu-control"/>
+    <label class="menu-mobile  float-right " for="menu-control">
+      <span class="btn-mobile  float-right ">&#9776;</span>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/about/">About</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/talks/">Talks</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/software/">Software</a>
+            </li>
+          
+            <li class="navigation-item   align-left  ">
+              <a class="navigation-link" href="/snippets/">Snippets</a>
+            </li>
+          
+        
+        
+      </ul>
+    </label>
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container page">
+  <article>
+    <header>
+      <h1>Algebraic Data Types in TypeScript</h1>
+      <div class="dateinfo">
+        
+        <span class="date"><strong>Date:</strong> August 11, 2020</span>
+        
+        
+        <span class="lastmod"><strong>Last modified:</strong> August 11, 2020</span>
+        
+      </div>
+
+    </header>
+
+    
+<p>
+Note: the code for the TypeScript (to help you follow along) is
+available here:
+<a href="https://www.typescriptlang.org/play?noUnusedParameters=true#code/MYewdgzgLgBBCmwoEtwHkCuUAOWYF4YAKMAQwFt4YAuOKAJ2TAHMAaGELXKCGmUsAE8A2gF0AlHwBuIZABMCAPhgBvAFAwYoSCAA28AHS6QzIgHJFlyzDMwA1DDKVxAbg0cuWCAfKlsRAA8lLXAIPUNjUwDxV3dtMP0jE3MAHjS0s1jNePCk0zNMtQBfNTUAejKYADFkemgy6FJ6FBYYZCh4elIUcFKoQWwqKpAQABVSZgIbACEm2wAfGdIALwWbAEUMALM3NX7B6pGUgEFlQnVNAH0oCc1aYbGJ1ncygCoYACV4AEcMWvgFAAzED0GBQAAWVDMs3othuzGYAJgUlIugw8F4IEBhxAMFeZXcACMmgB+O50RgsZ6aN6fH5-ehI4GgiFQ2arMETREKFFojEcbEPPEEzTE5ZkvhgDDkQmdakwWlfX7-IEgsGQjZbOFcpG89GYwUjYXuX4BCW0QkjfQCeW0tDYHpkXQwZnqqGbbachG61H6gU442aX5bMm0Y7FPoDKgAYQw9EZYGAgk0+HcZgAqgBlAAiZncizMACkAAoATTzmgLAFF0x8KzAC9GABJVPPlSrHYCgehyJiTKC41kwOQgYDS+BgG6O9gQ5C8Of8MAwACSADkAGrHAAyy+zMBhMAA1kwFFicWp4rBiaD7kdY-GJ0mzqoYNdbrRoXN2GK+ABGABMADMMBFLsFQwKM4ILguAgrhu267vuKxHie-oPBeoRXsht4gCk94Jk+UwqK+8J8J+HIlO2EFQfOvCwWum47nuHowAA7u04KcLAsEgA6qBOjAppBN0DDIISWDwBhkCwKafAPHhcYEYIz7EW+kwfh6ZjsLJtAMOi35NGRADqxyjCStiUeBnbdr2rQDm6w6juOk7dPx6rQXRS4MQhzFbChYCnoaIBUaMTZVtUaBbluaBGWuADiMBVh8HxoB8mbsOmq7RmgACyOVVquowQWgMCZlWVYGO2l6CVs-5yXeimPspRE1UEtCAqiCDaRgfkfiW5YgaU4HLsO8iOCAsCsQIsD2UwDAgHIGDAFQgLYAAtDwYK4oypByJ0vCsZx-CMo48CsVtbRQFRpC8CNU2TkiQ7AmOvD2bKHBLo+C19vwuiIoSXTIMAw7dKQYJRvOYAhVGmbAPQDrfngIK2U0yC6Mmd2cLoCiMlAcZLqtG0QGYvD2o6KTyacygglRVYcZ0JxyHIVbxiC7CU9Ye2DAFP3gGxkKsiyGrAKiug-aAe1UeQyDMOCsBgPAj24r2gKAp0E4oN0VCylArGK59rOgiLCDeFJ0D8EzMK8IQJwwPAAQdAFvAYGAh5gCArFgIoRDXgADPVuGnAZ9C-gHJyKJIOHhw2jgYLozr4MoFwhNJXq8LQ0CUpMhB+wYan2DAABEZSFwX16-nn8JuJoEDsVAwDgsQ8IQJIyfZDdVCFzCZQwoX1DuJoNKVMuS6wWjuhrZe9BLR0CgHnqVBDte-BQKJ4kdDA0uy-LE0D4P4HvQgV6IKQGAIA5y8iYw69UFNmJ8eAqKVYPg+4-jxC58vABkX8wOXBjXkkGSVSpEPwwi0n-QyFomi+wAYZBw-9l5FElHHXQ1dB57Q6nHKAtA370CXFKeO7gSigVKGoBASB+KYBwFgcwu05BWw8DQngEDhDuHoVbIgICJhgK-JA+gH5ITxxAGYIo7BuHMF4bCYOH42IgmxqI8Q8oOFNAgFwkiPCljSMgcsWgAFAIABYxEvjUlIiB14PysQ9hZJR7DLaqPUaYpYqwDK6JgPoox4iNGSK0eYpoljrEgVsRIMh1VyCHgPIQIg6cKR9kjjiBSD5EzNUTsQCRZFwHBz4LwIosQwkROQlEpctApQyk6PE+S+EmpnGUI40Bzi-HLElEEtw+SWJRJ0n-K08AbQ1RDHwKpySKkNSSYRVJ6izBqVsBpLU3UAjdT8rk3Y1VgQgH9oQcJMJzCEl0GDHZpBMitMwi6EYocNkFOWEQDxABWPJxzVl1XOR6Igel4B3NTqs4CTythEA6roLqNgsy5liOQxAjpqHcHMKs5EvoMSsPcKs328pVm-mRSMf8aKQCAWeCEqimZEDgAUO0Torleh7CjEhegdVB7nG8Rkvhy8M6iVaCUfYVB2TUpTCY+p5FGkoLKaCVlFKPT-mjrS-OMzthzL4JacIvTgxmj4McQabKcSitOFMGEdVFgcpjiK8OoTjm13aA3ToUxflGhwqKwZT54mZx+osG1yZFgu0wUwJEqTk7Gvro3C1IBK4TFbnvY2bI5i4PgHjfBNhATIGWKsdB7dz68vDZGpcZhxJxp2MGjumptgpvfqsgwCqE3DngFg3QOCYB4KXK6st7q5DoJIWBSokFahEo6F0R0kYDgwi+dy98vislMqziqil7I+3pN4S4nR-LZSCvJQcD0gExX9vUrmiBnTZXWjAAsxVtBVzgFXKg0gOz4DRyFQcB4y6NWEF7THcdeqtjXsUGQuanQOrLUpQY1d9LtGMtiSytQb76AfvZSsb9k6GmuNnWakowHQMwA9AY6OkGzCaWlRabp8qep7pgAesAR744nv0OehdQwRjIZvV++94HH0BEoy+s2sBNlNG-TbZV9tHZyGdq7d2ntvYxPtSwYZIAGPBDqQOz8f6oFwBaUxzeFy2MwFtpxic3GYAuzdh7L2JAYP0BE2J8ZqH2R8pKXJtpWwlMqYdmpnjWn+NEE3VhndfTcP4cI7s094cDNitqcRSZ8JpnrrmbuuToLKHoE8FAcwww4wQkuiSx08LNAsfoAY7Zuy-6Zf2ZkeULHljpcAr7YrtiUuHiQ78zq8B2BmGjCCR+Uhahn1y+4cJSHElKW9n8hAwSQXgQPedJgvIxpTxnvxV64JuhgggMDRkAArMF3g5ETQAIRUWqlIf2tAYTIadc+VL6X03ZeOwc2I4ENuh22+Bjr1Spj5cK8V32Z3KgbbqrQdre27vlcsykITzAutVZq3V+gDWmvExBbTAIk2z4oEa-0BLnb+JDUqOmRMIByCUEnBfYwwBDw1QmtreAxhzr2QYMmLidsoen2gMgOHyZTW477OUV48nfA+rNVE6FOFduNWSRHbJzLs5J3cN6huxBC1qSDS-ENvj81RpJgIOQWbpc5uTVWiN78zDLD8Mr-eKO0cY41g5YEwj2KtDFgrC6iIZozYuhAJay1HpRgZ8eFge8Kgy7Q1qOXaaAgjHILrptah8RAA">Encoding Algebraic Data Types in TypeScript code</a>
+</p>
+<h3 id="headline-1">
+Background
+</h3>
+<p>
+Recently I&#39;ve been reviewing TypeScript code at work. A common pattern
+I&#39;ve observed in pull requests and some open source projects is a type
+that looks like the following:
+</p>
+<div class="src src-typescript">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">FooTag</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Bar&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;Baz&#39;</span> <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;Qux&#39;</span>;
+
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Foo</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> {
+  <span style="color:#a6e22e">_tag</span>  : <span style="color:#66d9ef">FooTag</span>,
+  <span style="color:#75715e">/* Required for the &#39;Bar&#39; tagged values of Foo */</span>
+  <span style="color:#a6e22e">bar?</span>  : <span style="color:#66d9ef">string</span>,
+  <span style="color:#75715e">/* Required for the &#39;Baz&#39; tagged values of Foo */</span>
+  <span style="color:#a6e22e">baz?</span>  : <span style="color:#66d9ef">number</span>,
+  <span style="color:#75715e">/* Required for the &#39;Qux&#39; tagged values of Foo */</span>
+  <span style="color:#a6e22e">qux?</span>  : <span style="color:#66d9ef">boolean</span>,
+  <span style="color:#75715e">/* Optional for the &#39;Qux&#39; tagged values of Foo */</span>
+  <span style="color:#a6e22e">quux?</span> : <span style="color:#66d9ef">A</span>
+}
+</code></pre></div>
+</div>
+<p>
+Notice that <code class="verbatim">Foo</code> is a parameterized type (also called
+<a href="https://www.typescriptlang.org/docs/handbook/generics.html">generic type</a>) which means it places a value of type <code class="verbatim">A</code> which is
+determined by the caller somewhere in its structure.
+</p>
+<p>
+In a business application we might place a <code class="verbatim">Currency</code> enumeration (or
+another domain type) that might look like the following:
+</p>
+<div class="src src-typescript">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Currency</span>  <span style="color:#f92672">=</span>
+  <span style="color:#e6db74">&#39;USD&#39;</span>
+  <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;JPY&#39;</span>
+  <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;EUR&#39;</span>
+  <span style="color:#f92672">|</span> <span style="color:#e6db74">&#39;CHF&#39;</span>
+</code></pre></div>
+</div>
+<p>
+You might notice that (except for the <code class="verbatim">_tag</code> attribute value) all the
+other attributes of type <code class="verbatim">Foo</code> are optionally required to be
+present. The above type declaration would allow us to construct the
+following values that typecheck against this type:
+</p>
+<div class="src src-typescript">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// According to the documentation, this is an INVALID Bar kind of Foo
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">bar</span> : <span style="color:#66d9ef">Foo</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bar&#39;</span>, <span style="color:#a6e22e">baz</span> : <span style="color:#66d9ef">123</span> };
+
+<span style="color:#75715e">// This is an INVALID Baz kind of Foo
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">baz</span> : <span style="color:#66d9ef">Foo</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Baz&#39;</span> }
+
+<span style="color:#75715e">// This is an INVALID Qux without an optional quxx attribute
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">qux</span> : <span style="color:#66d9ef">Foo</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Qux&#39;</span>, <span style="color:#a6e22e">qux</span> : <span style="color:#66d9ef">true</span>, <span style="color:#a6e22e">bar</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;WAT?&#39;</span> }
+
+<span style="color:#75715e">// According to the documentation this is an INVALID Qux kind of Foo
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">qux2</span> : <span style="color:#66d9ef">Foo</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">qux</span> : <span style="color:#66d9ef">false</span>, <span style="color:#a6e22e">quux</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;JPY&#39;</span> }
+</code></pre></div>
+</div>
+<p>
+Here only the last invalid construction (according to the
+documentation) is raised as a type error by TypeScript. All the other
+invalid forms of the data get past <code class="verbatim">tsc</code> with no noise being made.
+</p>
+<h3 id="headline-2">
+Remembering Algebraic Data Types (ADTs)
+</h3>
+<p>
+For the remainder of this blog post, I&#39;ll assume you know the basics
+of algebraic data types before continuing with this post, but if you
+need a refresher, I wrote about <a href="/software/algebraic-data-types/">algebraic data types while ago</a>.
+</p>
+<h3 id="headline-3">
+Inconsistencies of the single record approach
+</h3>
+<p>
+The invalid data constructions above (assuming the documentation is
+correct) did not get caught by the <code class="verbatim">tsc</code> typechecker even though the
+data was badly constructed. This adds overhead for the developer using
+these types as inputs to their functions or outputs from their functions.
+</p>
+<p>
+I often see extra logic in utility or combinator functions that
+accommodate bad constructions scattered over all the impacted
+functions like this:
+</p>
+<div class="src src-typescript">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#75715e">// I did not want to introduce fp-ts to readers who are new to it
+</span><span style="color:#75715e"></span><span style="color:#75715e">// as I wanted the focus to be on encoding algebraic data types in
+</span><span style="color:#75715e"></span><span style="color:#75715e">// TypeScrpt, but ordinarily I would return fp-ts&#39;s Option&lt;Foo&lt;A&gt;&gt; or
+</span><span style="color:#75715e"></span><span style="color:#75715e">// Either&lt;AddError, Foo&lt;A&gt;&gt; depending on whether the calling code
+</span><span style="color:#75715e"></span><span style="color:#75715e">// might need to differentiate between error cases.
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">addBars</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">unknown</span><span style="color:#f92672">&gt;</span>(<span style="color:#a6e22e">bar0</span> : <span style="color:#66d9ef">Foo</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span>, <span style="color:#a6e22e">bar1</span> : <span style="color:#66d9ef">Foo</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span>) <span style="color:#f92672">:</span> <span style="color:#a6e22e">Foo</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">tags</span> : <span style="color:#66d9ef">string</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">bar0</span>.<span style="color:#a6e22e">_tag</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">bar1</span>.<span style="color:#a6e22e">_tag</span>;
+  <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">tags</span>) {
+    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#34;Bar/Bar&#34;</span><span style="color:#f92672">:</span>
+      <span style="color:#75715e">// In an ill-constructed Bar value the bar attribute might not
+</span><span style="color:#75715e"></span>      <span style="color:#75715e">// be set because the bar attribute was optional.
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">return</span> (<span style="color:#a6e22e">bar0</span>.<span style="color:#a6e22e">bar</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">bar1</span>.<span style="color:#a6e22e">bar</span>) <span style="color:#f92672">?</span> { <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bar&#39;</span>, <span style="color:#a6e22e">bar</span> : <span style="color:#66d9ef">bar0.bar</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">bar1</span>.<span style="color:#a6e22e">bar</span> } <span style="color:#f92672">:</span> <span style="color:#66d9ef">null</span>;
+    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">null</span>
+  }
+};
+</code></pre></div>
+</div>
+<p>
+Using this in <code class="verbatim">ts-node</code> we would see:
+</p>
+<div class="src src-typescript">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#75715e">// hits path that returns a new Bar value appending the bar attribute
+</span><span style="color:#75715e"></span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">addBars</span>({ <span style="color:#a6e22e">_tag</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bar&#39;</span>, <span style="color:#a6e22e">bar</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;hello&#39;</span>}, { <span style="color:#a6e22e">_tag</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bar&#39;</span>, <span style="color:#a6e22e">bar</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39; world&#39;</span>})
+{ <span style="color:#e6db74">&#34;_tag&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Bar&#34;</span>, <span style="color:#e6db74">&#34;bar&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;hello world&#34;</span> }
+
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#75715e">// hits the ternary else null path
+</span><span style="color:#75715e"></span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">addBars</span>({ <span style="color:#a6e22e">_tag</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bar&#39;</span>, <span style="color:#a6e22e">baz</span>: <span style="color:#66d9ef">1234</span>}, { <span style="color:#a6e22e">_tag</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bar&#39;</span>, <span style="color:#a6e22e">bar</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;wow&#39;</span> })
+<span style="color:#66d9ef">null</span>
+
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#75715e">// hits the default path that returns null
+</span><span style="color:#75715e"></span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">addBars</span>({ <span style="color:#a6e22e">_tag</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Baz&#39;</span>, <span style="color:#a6e22e">baz</span>: <span style="color:#66d9ef">1234</span>}, { <span style="color:#a6e22e">_tag</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bar&#39;</span>, <span style="color:#a6e22e">bar</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;wow&#39;</span> })
+<span style="color:#66d9ef">null</span>
+</code></pre></div>
+</div>
+<p>
+The clutter in <code class="verbatim">addBars</code> adds up across many functions and is not
+isolated to one area of the code or we end up writing partial
+functions that ignore bad constructions.
+</p>
+<p>
+We could offer clients of our library <em>&#34;smart constructors&#34;</em> which is a
+fancy way to say <em>&#34;functions that create well-formed data
+constructions&#34;</em>. Something like the following:
+</p>
+<div class="src src-typescript">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mkBar</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">s</span> : <span style="color:#66d9ef">string</span>) <span style="color:#f92672">:</span> <span style="color:#a6e22e">Foo</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> ({ <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bar&#39;</span>, <span style="color:#a6e22e">bar</span> : <span style="color:#66d9ef">s</span> });
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mkBaz</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">n</span> : <span style="color:#66d9ef">number</span>) <span style="color:#f92672">:</span> <span style="color:#a6e22e">Foo</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> ({ <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Baz&#39;</span>, <span style="color:#a6e22e">baz</span> : <span style="color:#66d9ef">n</span> });
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mkQux</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">qux</span> : <span style="color:#66d9ef">boolean</span>, <span style="color:#a6e22e">quux?</span> : <span style="color:#66d9ef">Currency</span>) <span style="color:#f92672">:</span> <span style="color:#a6e22e">Foo</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> ({ <span style="color:#e6db74">&#39;_tag&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Qux&#39;</span>, <span style="color:#a6e22e">qux</span>, <span style="color:#a6e22e">quux</span> });
+</code></pre></div>
+</div>
+<p>
+We can construct valid data from these smart constructors like so:
+</p>
+<div class="src src-typescript">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">foo0</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mkBar</span>(<span style="color:#e6db74">&#39;bla bla&#39;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">foo1</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mkBaz</span>(<span style="color:#ae81ff">12345</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">foo2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mkQux</span>(<span style="color:#66d9ef">true</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">foo3</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mkQux</span>(<span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#39;USD&#39;</span>);
+</code></pre></div>
+</div>
+<p>
+All these values get inferred as type <code class="verbatim">Foo</code> as expected (due to the
+type annotation for the return type of the smart constructors).
+</p>
+<p>
+This certainly helps keep clients of our library construct valid forms
+of <code class="verbatim">Foo</code> but the type declaration can still be used by rogue callers
+or those that don&#39;t bother reading the documentation (myself
+included). We could argue about whether it is worth our time nannying
+these developers but for the sake of this blog post, I will assume we
+want to do the best we can (within reason) to eliminate bad
+constructions of type <code class="verbatim">Foo</code> so that we don&#39;t need to add extra logic
+to our functions that consume these values to check they are
+well-formed according to how we intended (read the inline
+documentation in the type declaration).
+</p>
+<h3 id="headline-4">
+Native Algebraic Data Types
+</h3>
+<p>
+Stepping back this is how we might define data types in a language
+that natively supports algebraic data types satisfying the
+documentation&#39;s intent.
+</p>
+<p>
+Here is a datatype declaration in PureScript:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Foo</span> a
+  <span style="color:#f92672">=</span> <span style="color:#66d9ef">Bar</span> { bar <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> }
+  <span style="color:#f92672">|</span> <span style="color:#66d9ef">Baz</span> { baz <span style="color:#f92672">::</span> <span style="color:#66d9ef">Int</span> }
+  <span style="color:#f92672">|</span> <span style="color:#66d9ef">Qux</span> { qux <span style="color:#f92672">::</span> <span style="color:#66d9ef">Boolean</span>, quux <span style="color:#f92672">::</span> <span style="color:#66d9ef">Maybe</span> a }</code></pre></div>
+</div>
+<p>
+What it says is that we have one type named <code class="verbatim">Foo</code> and there are only three
+ways we can construct a valid value of <code class="verbatim">Foo</code> according to this type. Namely:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">foo0</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Bar</span> { bar <span style="color:#66d9ef">:</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">wowser</span><span style="color:#e6db74">&#34;</span> }
+<span style="color:#a6e22e">foo1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Baz</span> { baz <span style="color:#66d9ef">:</span> <span style="color:#ae81ff">3000</span> }
+<span style="color:#a6e22e">foo2</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Qux</span> { qux <span style="color:#66d9ef">:</span> true, quux <span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Nothing</span> }</code></pre></div>
+</div>
+<p>
+Similarly, the application type <code class="verbatim">Currency</code> used in the TypeScript
+example looks like this in PureScript:
+</p>
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Currency</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">USD</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">CHF</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">EUR</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">JPY</span></code></pre></div>
+</div>
+<p>
+With the declaration of <code class="verbatim">Foo a</code>  in PureScript, we are not able to
+construct the equivalent to the invalid forms that escaped the
+TypeScript typechecker unscathed above.
+</p>
+<p>
+Here is us attempting the equivalent of <code class="verbatim">{ _tag : &#39;Bar&#39;, baz : 123
+}</code>. It yields the following type error:
+</p>
+<div class="src src-text">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">&gt;&gt;&gt; invalid0 = Bar { baz : 123 }
+
+  Could not match type
+
+    ()
+
+  with type
+
+    ( baz :: Int
+    | t0
+    )
+
+
+while trying to match type ()
+  with type ( baz :: Int
+            | t0
+            )
+while checking that expression { baz: 123
+                               }
+  has type { bar :: String
+           }
+in value declaration invalid0
+
+where t0 is an unknown type</code></pre></div>
+</div>
+<p>
+Now attempting the PureScript equivalent of <code class="verbatim">{ _tag : &#39;Baz&#39; }</code> does not
+give us a type error but will infer the type as <code class="verbatim">{ baz :: Int } -&gt; Foo
+Currency</code>.
+</p>
+<p>
+Annotating with the type of <code class="verbatim">Foo Currency</code> yields the following error from the
+PureScript typechecker:
+</p>
+<div class="src src-text">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">&gt;&gt;&gt; invalid1 = Baz :: Foo Currency
+  Could not match type
+
+    Function
+      { baz :: Int
+      }
+
+  with type
+
+    Foo
+
+
+while trying to match type { baz :: Int
+                           }
+                           -&gt; Foo t0
+  with type Foo Currency
+while checking that expression Baz
+  has type Foo Currency
+in value declaration invalid1
+
+where t0 is an unknown type</code></pre></div>
+</div>
+<p>
+Attempting to do the equivalent of <code class="verbatim">{ _tag : &#39;Qux&#39;, qux : true, bar :
+&#39;WAT?&#39; }</code> in PureScript with the sum of products algebraic data type
+that describes our intent (based on documentation) yields:
+</p>
+<div class="src src-text">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">&gt;&gt;&gt; invalid2 = Qux { qux : true, bar : &#34;WAT?&#34; }
+
+ Could not match type
+
+    ()
+
+  with type
+
+    ( bar :: String
+    | t0
+    )
+
+
+while trying to match type ()
+  with type ( bar :: String
+            | t0
+            )
+while checking that expression { qux: true
+                               , bar: &#34;WAT?&#34;
+                               }
+  has type { quux :: Maybe String
+           , qux :: Boolean
+           }
+in value declaration invalid2
+
+where t0 is an unknown type</code></pre></div>
+</div>
+<p>
+We can already see that describing our <code class="verbatim">Foo a</code> parameterized type in a
+sum of products in PureScript keeps our troublesome callers out of
+much more trouble than our record-with-many-optional-attributes
+encoding in TypeScript at the top.
+</p>
+<h3 id="headline-5">
+TypeScript encodings of non-native algebraic data types
+</h3>
+<p>
+So how can we encode this kind of algebraic data type in
+TypeScript which doesn&#39;t natively support them (yet)?
+</p>
+<p>
+We will explore some of the design space and note the progressive
+solution&#39;s trade-offs as we go along, attempting to improve on the
+faithfulness of the encoding to PureScript&#39;s native algebraic data
+type&#39;s characteristics.
+</p>
+<p>
+Our first attempt might be the following:
+</p>
+<div class="src src-typescript">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Bar2</span>    <span style="color:#f92672">=</span> { <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bar&#39;</span>, <span style="color:#a6e22e">bar</span> : <span style="color:#66d9ef">string</span> }
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Baz2</span>    <span style="color:#f92672">=</span> { <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Baz&#39;</span>, <span style="color:#a6e22e">baz</span> : <span style="color:#66d9ef">number</span> }
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Qux2</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Qux&#39;</span>, <span style="color:#a6e22e">qux</span> : <span style="color:#66d9ef">boolean</span>, <span style="color:#a6e22e">quux?</span> : <span style="color:#66d9ef">A</span> }
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Foo2</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Bar2</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">Baz2</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">Qux2</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span>
+</code></pre></div>
+</div>
+<p>
+We can then determine which data construction was used via a switch statement like so:
+</p>
+<div class="src src-typescript">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">switcher</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">foo</span> : <span style="color:#66d9ef">Foo2</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span>) <span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">Currency</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">undefined</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">_tag</span>) {
+    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;Bar&#39;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;fizz&#39;</span>;
+    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;Baz&#39;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;buzz&#39;</span>;
+    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;Qux&#39;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">quux</span>;
+    <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">undefined</span>;
+  }
+};
+</code></pre></div>
+</div>
+<p>
+We can no longer mix and match attributes that don&#39;t correspond to the
+data constructor <em>&#34;tag&#34;</em> like we could with the &#34;tagged&#34; single
+record. However, we can pass a <code class="verbatim">null</code> value for one of the constructor
+arguments instead of giving it the required <code class="verbatim">Currency</code> value
+expected. We also probably still want to provide smart
+constructors. Also note that we now have four types: <code class="verbatim">Bar</code>, <code class="verbatim">Baz</code>,
+<code class="verbatim">Qux</code>, and <code class="verbatim">Foo</code> not just <code class="verbatim">Foo</code>. This point may not be that important
+for all library designers.
+</p>
+<p>
+However, let&#39;s see I we can prevent the nullability of the constructor
+attributes:
+</p>
+<div class="src src-typescript">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Bar3</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bar&#39;</span>, <span style="color:#a6e22e">bar</span> : <span style="color:#66d9ef">string</span> }
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Baz3</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Baz&#39;</span>, <span style="color:#a6e22e">baz</span> : <span style="color:#66d9ef">number</span> }
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Qux3</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> { <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Qux&#39;</span>, <span style="color:#a6e22e">qux</span> : <span style="color:#66d9ef">boolean</span>, <span style="color:#a6e22e">quux?</span> : <span style="color:#66d9ef">NonNullable</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span> }
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Foo3</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Bar3</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">Baz3</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">Qux3</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span>
+</code></pre></div>
+</div>
+<p>
+Note that:
+</p>
+<ul>
+<li>
+<p>
+primitive types like <code class="verbatim">string</code>, <code class="verbatim">number</code>, <code class="verbatim">boolean</code> cannot accept a
+<code class="verbatim">null</code> value.
+</p>
+</li>
+<li>
+<p>
+we only have to specifically annotate the parameterized type for the
+optional <code class="verbatim">quuz</code> attribute as <code class="verbatim">NonNullable</code> to get the semantics we
+want since it can be anything.
+</p>
+</li>
+</ul>
+<p>
+Now if we wanted to eliminate the possibility of constructing a value
+of type <code class="verbatim">Bar4</code> instead of unifying all the values under <code class="verbatim">Foo4</code> then we
+could update the type declaration like so:
+</p>
+<div class="src src-typescript">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Bar4</span> { <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bar&#39;</span>, <span style="color:#a6e22e">bar</span> : <span style="color:#66d9ef">string</span> }
+<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Baz4</span> { <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Baz&#39;</span>, <span style="color:#a6e22e">baz</span> : <span style="color:#66d9ef">number</span> }
+<span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">Qux4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span> { <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Qux&#39;</span>, <span style="color:#a6e22e">qux</span> : <span style="color:#66d9ef">boolean</span>, <span style="color:#a6e22e">quux?</span> : <span style="color:#66d9ef">NonNullable</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span> }
+<span style="color:#a6e22e">type</span> <span style="color:#a6e22e">Foo4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Bar4</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">Baz4</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">Qux4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span>
+
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mkBar4</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">unknown</span><span style="color:#f92672">&gt;</span>(<span style="color:#a6e22e">s</span> : <span style="color:#66d9ef">string</span>) <span style="color:#f92672">:</span> <span style="color:#a6e22e">Foo4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> ({ <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Bar&#39;</span>, <span style="color:#a6e22e">bar</span> : <span style="color:#66d9ef">s</span> });
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mkBaz4</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">unknown</span><span style="color:#f92672">&gt;</span>(<span style="color:#a6e22e">n</span> : <span style="color:#66d9ef">number</span>) <span style="color:#f92672">:</span> <span style="color:#a6e22e">Foo4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> ({ <span style="color:#a6e22e">_tag</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Baz&#39;</span>, <span style="color:#a6e22e">baz</span> : <span style="color:#66d9ef">n</span> });
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">mkQux4</span> <span style="color:#f92672">=</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">unknown</span><span style="color:#f92672">&gt;</span>(<span style="color:#a6e22e">qux</span> : <span style="color:#66d9ef">boolean</span>, <span style="color:#a6e22e">quux?</span> : <span style="color:#66d9ef">NonNullable</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span>) <span style="color:#f92672">:</span> <span style="color:#a6e22e">Foo4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">A</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> ({ <span style="color:#e6db74">&#39;_tag&#39;</span> <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;Qux&#39;</span>, <span style="color:#a6e22e">qux</span>, <span style="color:#a6e22e">quux</span> });
+</code></pre></div>
+</div>
+<p>
+Do not fear, we can still create a <code class="verbatim">Qux4</code> construction of <code class="verbatim">Foo4</code> with
+no <code class="verbatim">quux</code> attribute, but if one is given, it cannot be <code class="verbatim">null</code>. This
+is our intent based on the original documentation.
+</p>
+<p>
+This ensures we don&#39;t create values of types <code class="verbatim">Bar4</code>, <code class="verbatim">Baz4</code>, or <code class="verbatim">Qux4</code>
+instead of <code class="verbatim">Foo4</code> now giving us the same basic guarantees as
+PureScript&#39;s sum of products algebraic data type definition for data
+construction without pattern matching or exhaustivity checking.
+</p>
+<div class="src src-typescript">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">mkBar4</span>(<span style="color:#e6db74">&#39;bla bla bla&#39;</span>)
+{ <span style="color:#e6db74">&#34;_tag&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Bar&#34;</span>, <span style="color:#e6db74">&#34;bar&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;bla bla bla&#34;</span> }
+
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">mkBaz4</span>(<span style="color:#ae81ff">3000</span>);
+{ <span style="color:#e6db74">&#34;_tag&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Baz&#34;</span>, <span style="color:#e6db74">&#34;baz&#34;</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3000</span> }
+
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">mkQux4</span>(<span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#39;Coronavirus&#39;</span>)
+{ <span style="color:#e6db74">&#34;_tag&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Qux&#34;</span>, <span style="color:#e6db74">&#34;qux&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#34;quux&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Coronavirus&#34;</span> }
+
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#a6e22e">mkQux4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">MyType</span><span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">false</span>)
+{ <span style="color:#e6db74">&#34;_tag&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Qux&#34;</span>, <span style="color:#e6db74">&#34;qux&#34;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span> }
+</code></pre></div>
+</div>
+<p>
+The <code class="verbatim">_tag</code> values in each case correspond to the data constructor of
+<code class="verbatim">Foo</code> so we can switch on it when we need to but are the types
+inferred what we expect (all values infer as <code class="verbatim">Foo</code>)?
+</p>
+<p>
+First let&#39;s see what happens when we tell the typechecker they should
+be <code class="verbatim">Bar4</code>, <code class="verbatim">Baz4</code>, and <code class="verbatim">Qux4</code> respectively.
+</p>
+<div class="src src-typescript">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">v0</span> : <span style="color:#66d9ef">Bar4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mkBar4</span>(<span style="color:#e6db74">&#39;bla bla bla&#39;</span>);
+<span style="color:#a6e22e">Type</span> <span style="color:#e6db74">&#39;Foo4&#39;</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">assignable</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Bar4&#39;</span>.
+  <span style="color:#a6e22e">Property</span> <span style="color:#e6db74">&#39;bar&#39;</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">missing</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Baz4&#39;</span> <span style="color:#a6e22e">but</span> <span style="color:#a6e22e">required</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Bar4&#39;</span>.(<span style="color:#ae81ff">2322</span>)
+
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">v1</span> : <span style="color:#66d9ef">Baz4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mkBaz4</span>(<span style="color:#ae81ff">3000</span>);
+<span style="color:#a6e22e">Type</span> <span style="color:#e6db74">&#39;Foo4&#39;</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">assignable</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Baz4&#39;</span>.
+  <span style="color:#a6e22e">Property</span> <span style="color:#e6db74">&#39;baz&#39;</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">missing</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Bar4&#39;</span> <span style="color:#a6e22e">but</span> <span style="color:#a6e22e">required</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Baz4&#39;</span>.(<span style="color:#ae81ff">2322</span>)
+
+<span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">v2</span> : <span style="color:#66d9ef">Qux4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">mkQux4</span><span style="color:#f92672">&lt;</span><span style="color:#66d9ef">string</span><span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">false</span>, <span style="color:#e6db74">&#39;Coronavirus&#39;</span>);
+<span style="color:#a6e22e">Type</span> <span style="color:#e6db74">&#39;Foo4&#39;</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">not</span> <span style="color:#a6e22e">assignable</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Qux4&#39;</span>.
+  <span style="color:#a6e22e">Property</span> <span style="color:#e6db74">&#39;qux&#39;</span> <span style="color:#a6e22e">is</span> <span style="color:#a6e22e">missing</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Bar4&#39;</span> <span style="color:#a6e22e">but</span> <span style="color:#a6e22e">required</span> <span style="color:#66d9ef">in</span> <span style="color:#a6e22e">type</span> <span style="color:#e6db74">&#39;Qux4&#39;</span>.(<span style="color:#ae81ff">2322</span>)
+</code></pre></div>
+</div>
+<p>
+Removing explicit type annotations we see TypeScript infers type
+<code class="verbatim">Foo2&lt;A&gt;</code> which is ideally what we want for a faithful encoding of a
+sum type, which is &#34;closed&#34; (some familiar with JVM
+languages may say <em>sealed</em>) over a specified number of data
+constructions at time of declaration (it is not extensible later).
+</p>
+<p>
+In languages that support algebraic data types natively, like
+PureScript and Haskell, the typechecker can do exhaustivity checking
+on our pattern matching clauses. This one kind of check early in
+development can eliminate a large category of common runtime defects
+very early in the development process converting them to compile-time
+checks yielding with fast developer feedback. This means the developer
+retains their full context of the bugfix or feature being worked on. This is
+hugely valuable on several fronts:
+</p>
+<ul>
+<li>
+<p>
+developers can fix these partial function problems closer to the
+type they were created
+</p>
+</li>
+<li>
+<p>
+reduces developer frustration
+</p>
+</li>
+<li>
+<p>
+less likely to ship partial logic to environments higher than local
+development, saving everyone else&#39;s time too.
+</p>
+</li>
+</ul>
+<p>
+Next, we will attempt to trick TypeScript into providing exhaustivity
+checking for our switch-case statements that we are using as a poor
+substitute for pattern matching.
+</p>
+<h3 id="headline-6">
+Can we get <code class="verbatim">tsc</code> to do exhaustivity checking on our <code class="verbatim">_tag</code> switch statements?
+</h3>
+<p>
+In the earlier <code class="verbatim">switch</code> statement, the <code class="verbatim">default</code> branch returned a <code class="verbatim">null</code>
+which always irritated me because we had to update our return type to
+include <code class="verbatim">null</code>. Now let&#39;s remove the <code class="verbatim">return null</code> statement and tighten
+the return type to <code class="verbatim">string</code>:
+</p>
+<div class="src src-typescript">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-typescript" data-lang="typescript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">matcher</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">foo</span> : <span style="color:#66d9ef">Foo4</span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">Currency</span><span style="color:#f92672">&gt;</span>) <span style="color:#f92672">:</span> <span style="color:#66d9ef">string</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> {
+  <span style="color:#66d9ef">switch</span> (<span style="color:#a6e22e">foo</span>.<span style="color:#a6e22e">_tag</span>) {
+    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;Bar&#39;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;sand&#39;</span>;
+    <span style="color:#66d9ef">case</span> <span style="color:#e6db74">&#39;Baz&#39;</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;zap&#39;</span>;
+    <span style="color:#75715e">// Uncomment the following line to get tsc to succeed typechecking
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">//case &#39;Qux&#39;: return &#39;xoom&#39;;
+</span><span style="color:#75715e"></span>  }
+};
+</code></pre></div>
+</div>
+<p>
+When we comment one or more of the possible <code class="verbatim">_tag</code> cases out of our
+switch statement the TypeScript compiler gives us the error:
+</p>
+<div class="src src-text">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Function lacks ending return statement and return type does not include &#39;undefined&#39;.</code></pre></div>
+</div>
+<p>
+Uncommenting the missing switch statement gives us typechecked code.
+</p>
+<p>
+We now have some form of exhaustivity checking from this encoding.
+</p>
+<h3 id="headline-7">
+Alternative encodings of algebraic data types in TypeScript
+</h3>
+<p>
+This is just one way to encode algebraic data types in TypeScript with
+the characteristics we care most about and I hope this post gives you
+a launchpad to explore the design space further.
+</p>
+<p>
+The following are other approaches or explorations that accomplish the
+same or similar goals in TypeScript without native algebraic data types:
+</p>
+<ul>
+<li>
+<p>
+<a href="https://github.com/pfgray/ts-adt">ADTs for typescript, a library</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://dev.to/piq9117/typescript-button-color-state-with-adts-1755">Typescript - Button Color State with ADTs</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://www.javiercasas.com/articles/typescript-adts">Improving your React with Typescript ADTs</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://dev.to/gcanti/functional-design-algebraic-data-types-36kf">Functional design: Algebraic Data Types</a>
+</p>
+</li>
+<li>
+<p>
+<a href="https://blog.carbonfive.com/an-introduction-to-adts-and-structural-pattern-matching-in-typescript/">An Introduction to ADTs and Structural Pattern Matching in TypeScript</a>
+</p>
+</li>
+</ul>
+
+  </article>
+</section>
+
+
+      </div>
+      
+        <footer class="footer">
+  <section class="container">
+    
+      <div class="sns-shares sp-sns-shares">
+        
+          <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2falgebraic-data-types-in-typescript%2f&ref_src=twsrc%5Etfw&text=Algebraic%20Data%20Types%20in%20TypeScript Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2falgebraic-data-types-in-typescript%2f"><i class="fab fa-twitter"></i></a>
+        
+        
+          <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2falgebraic-data-types-in-typescript%2f"><i class="fab fa-linkedin"></i></a>
+        
+      </div>
+    
+    
+  </section>
+  <div class="fixed-bar">
+    <section class="container">
+      
+      <div class="social-list">
+        <span>Profiles:</span>
+        
+          <span class="social-item">
+            <a href="https://github.com/mbbx6spp/" aria-label="Github" >
+              
+                <i class="fab fa-github" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://keybase.io/mbbx6spp" aria-label="Keybase" >
+              
+                <i class="fab fa-keybase" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://www.linkedin.com/in/susanpotter/" aria-label="LinkedIn" >
+              
+                <i class="fab fa-linkedin" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://slideshare.net/mbbx6spp" aria-label="Slideshare" >
+              
+                <i class="fab fa-slideshare" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+          <span class="social-item">
+            <a href="https://twitter.com/SusanPotter" aria-label="Twitter" >
+              
+                <i class="fab fa-twitter" aria-hidden="true"></i>
+              
+            </a>
+          </span>
+        
+      </div>
+      
+      
+        <div class="sns-shares pc-sns-shares">
+          <span>Share:</span>
+          
+            <a class="sns-share twitter-share" aria-label="Share on twitter" href="https://twitter.com/intent/tweet?original_referer=%2fsoftware%2falgebraic-data-types-in-typescript%2f&ref_src=twsrc%5Etfw&text=Algebraic%20Data%20Types%20in%20TypeScript Susan%20Potter&tw_p=tweetbutton&url=%2fsoftware%2falgebraic-data-types-in-typescript%2f"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+          
+          
+            <a class="sns-share linkedIn-share" aria-label="Share on LinkedIn" href="https://www.linkedin.com/sharing/share-offsite/?url=%2fsoftware%2falgebraic-data-types-in-typescript%2f"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+          
+        </div>
+      
+    </section>
+  </div>
+</footer>
+
+      
+    </main>
+
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-837842-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+
+  <script src="/js/app.js"></script>
+  
+  </body>
+</html>

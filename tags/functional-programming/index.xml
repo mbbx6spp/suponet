@@ -6,10 +6,19 @@
     <description>Recent content in functional programming on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 03 Jun 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/functional-programming/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Algebraic Data Types in TypeScript</title>
+      <link>/software/algebraic-data-types-in-typescript/</link>
+      <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/algebraic-data-types-in-typescript/</guid>
+      <description>Note: the code for the TypeScript (to help you follow along) is available here: Encoding Algebraic Data Types in TypeScript code Background   Recently I&amp;#39;ve been reviewing TypeScript code at work. A common pattern I&amp;#39;ve observed in pull requests and some open source projects is a type that looks like the following: type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#39;; type Foo&amp;lt;A&amp;gt; = { _tag : FooTag, /* Required for the &amp;#39;Bar&amp;#39; tagged values of Foo */ bar?</description>
+    </item>
     
     <item>
       <title>A quick review of a pure functional serverless application deployed to production

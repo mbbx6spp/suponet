@@ -273,15 +273,15 @@ posts or posts you have commented on yourself.
 So a first stab at modeling this with an algebraic data type in
 Haskell might look like:
 </p>
-<div class="src src-scala">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">import</span> Data.DateTime
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">import</span> Data.DateTime
 
-<span style="color:#f92672">--</span> <span style="color:#a6e22e">Assumes</span> <span style="color:#a6e22e">User</span> is defined elsewhere and imported
+<span style="color:#75715e">-- Assumes User is defined elsewhere and imported</span>
 
-<span style="color:#f92672">--</span> <span style="color:#a6e22e">Assume</span> <span style="color:#a6e22e">Status</span> and <span style="color:#a6e22e">Comment</span> types are already defined
-data <span style="color:#a6e22e">Notification</span> <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">CommentNotification</span> <span style="color:#a6e22e">Status</span> <span style="color:#f92672">[</span><span style="color:#66d9ef">User</span><span style="color:#f92672">]</span> <span style="color:#a6e22e">DateTime</span>
-                  <span style="color:#f92672">|</span> <span style="color:#a6e22e">CommentLikeNotification</span> <span style="color:#a6e22e">Comment</span> <span style="color:#f92672">[</span><span style="color:#66d9ef">User</span><span style="color:#f92672">]</span> <span style="color:#a6e22e">DateTime</span>
-                  <span style="color:#f92672">|</span> <span style="color:#a6e22e">PostLikeNotification</span> <span style="color:#a6e22e">Status</span> <span style="color:#f92672">[</span><span style="color:#66d9ef">User</span><span style="color:#f92672">]</span> <span style="color:#a6e22e">DateTime</span></code></pre></div>
+<span style="color:#75715e">-- Assume Status and Comment types are already defined</span>
+<span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Notification</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">CommentNotification</span> <span style="color:#66d9ef">Status</span> [<span style="color:#66d9ef">User</span>] <span style="color:#66d9ef">DateTime</span>
+                  <span style="color:#f92672">|</span> <span style="color:#66d9ef">CommentLikeNotification</span> <span style="color:#66d9ef">Comment</span> [<span style="color:#66d9ef">User</span>] <span style="color:#66d9ef">DateTime</span>
+                  <span style="color:#f92672">|</span> <span style="color:#66d9ef">PostLikeNotification</span> <span style="color:#66d9ef">Status</span> [<span style="color:#66d9ef">User</span>] <span style="color:#66d9ef">DateTime</span></code></pre></div>
 </div>
 <p>
 What did I actually do? Well if we look at the different notifications
@@ -324,16 +324,16 @@ constructors such as <code class="verbatim">CommentNotification</code>,
 Now we could have modeled Notification data type a little
 differently. Let us consider the following modeling of the domain:
 </p>
-<div class="src src-scala">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">import</span> Data.DateTime
+<div class="src src-haskell">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">import</span> Data.DateTime
 
-<span style="color:#f92672">--</span> <span style="color:#a6e22e">Assumes</span> <span style="color:#a6e22e">User</span> is defined elsewhere and imported
+<span style="color:#75715e">-- Assumes User is defined elsewhere and imported</span>
 
-<span style="color:#f92672">--</span> <span style="color:#a6e22e">We</span> might want to add more constructors <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">Post</span> sum <span style="color:#66d9ef">type</span> <span style="color:#66d9ef">of</span> <span style="color:#66d9ef">a</span> <span style="color:#66d9ef">more</span>
-<span style="color:#f92672">--</span> complete model of <span style="color:#a6e22e">Facebook</span> notifications<span style="color:#f92672">,</span> but left as a homework to
-<span style="color:#f92672">--</span> reader<span style="color:#f92672">,</span> because every algebra lesson has <span style="color:#66d9ef">this</span> <span style="color:#f92672">;</span><span style="color:#f92672">)</span>
-data <span style="color:#a6e22e">Post</span> <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Status</span> <span style="color:#a6e22e">Text</span> <span style="color:#a6e22e">DateTime</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">Comment</span> <span style="color:#a6e22e">Text</span> <span style="color:#a6e22e">DateTime</span>
-data <span style="color:#a6e22e">Notification</span> <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Notification</span> <span style="color:#a6e22e">Post</span> <span style="color:#f92672">[</span><span style="color:#66d9ef">User</span><span style="color:#f92672">]</span> <span style="color:#a6e22e">DateTime</span></code></pre></div>
+<span style="color:#75715e">-- We might want to add more constructors for Post sum type of a more</span>
+<span style="color:#75715e">-- complete model of Facebook notifications, but left as a homework to</span>
+<span style="color:#75715e">-- reader, because every algebra lesson has this ;)</span>
+<span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Post</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Status</span> <span style="color:#66d9ef">Text</span> <span style="color:#66d9ef">DateTime</span> <span style="color:#f92672">|</span> <span style="color:#66d9ef">Comment</span> <span style="color:#66d9ef">Text</span> <span style="color:#66d9ef">DateTime</span>
+<span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Notification</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Notification</span> <span style="color:#66d9ef">Post</span> [<span style="color:#66d9ef">User</span>] <span style="color:#66d9ef">DateTime</span></code></pre></div>
 </div>
 <p>
 This model of the domain of Facebook notifications uses a pure product
