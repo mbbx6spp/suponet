@@ -140,3 +140,17 @@ pre {
     margin: 15px 5px;
     padding: 0;
 }
+
+.substack-signup {
+    display: block;
+    text-align: auto;
+    padding: auto;
+    padding-bottom: 4em;
+    margin: auto;
+    width: 480px;
+    height: 320px;
+}
+
+article {
+    display: inline-block;
+}

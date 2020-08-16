@@ -3,6 +3,55 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>/tags/funtional-programming/</loc>
+    <lastmod>2020-08-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/haskell/</loc>
+    <lastmod>2020-08-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/profunctors/</loc>
+    <lastmod>2020-08-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/software/profunctors-motivation-part-1/</loc>
+    <lastmod>2020-08-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/software/</loc>
+    <lastmod>2020-08-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/</loc>
+    <lastmod>2020-08-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
+    <lastmod>2020-08-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/tags/algebraic-data-types/</loc>
     <lastmod>2020-08-11T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -17,21 +66,14 @@
   </url>
   
   <url>
+    <loc>/software/algebraic-data-types-for-the-maths-inclined/</loc>
+    <lastmod>2020-08-15T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>/tags/functional-programming/</loc>
-    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/</loc>
-    <lastmod>2020-08-11T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
     <lastmod>2020-08-11T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
@@ -40,6 +82,41 @@
   <url>
     <loc>/tags/typescript/</loc>
     <lastmod>2020-08-11T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/javascript/</loc>
+    <lastmod>2020-08-06T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/snippets/javascript-performance-node-cli-flags/</loc>
+    <lastmod>2020-08-06T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/nodejs/</loc>
+    <lastmod>2020-08-06T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/snippets/</loc>
+    <lastmod>2020-08-06T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>/tags/v8/</loc>
+    <lastmod>2020-08-06T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -192,13 +269,6 @@
   </url>
   
   <url>
-    <loc>/snippets/</loc>
-    <lastmod>2018-10-30T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>/snippets/decoding-lens-operators/</loc>
     <lastmod>2018-04-21T14:15:59-05:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -297,20 +367,6 @@
   </url>
   
   <url>
-    <loc>/tags/funtional-programming/</loc>
-    <lastmod>2014-09-25T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/haskell/</loc>
-    <lastmod>2014-09-25T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>/tags/parametricity/</loc>
     <lastmod>2014-09-25T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
@@ -319,13 +375,6 @@
   
   <url>
     <loc>/software/parametricity-a-practitioners-guide/</loc>
-    <lastmod>2014-09-25T00:00:00+00:00</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>/tags/software/</loc>
     <lastmod>2014-09-25T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

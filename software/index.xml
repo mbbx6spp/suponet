@@ -12,12 +12,30 @@
     
     
     <item>
+      <title>Profunctors: Motivation, Part 1</title>
+      <link>/software/profunctors-motivation-part-1/</link>
+      <pubDate>Sat, 15 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/profunctors-motivation-part-1/</guid>
+      <description>Photo by Alex on Unsplash  Notes:    This post was originally adapted from a gist in 2018: https://gist.github.com/mbbx6spp/51bf2b694dc9bbf81b60f2f616453eb3    The Gist was moved to a snippet. Goals     This series explores one kind of motivation and the building blocks of Profunctors with an aim to introduce the concepts informally while introducing terminology along the way. After assembling the parts of a Profunctor the reader should start to see how packaging these operators as a pair allows library designers to offer a declarative interface for their clients to build custom codecs with a small number of primitives.</description>
+    </item>
+    
+    <item>
       <title>Algebraic Data Types in TypeScript</title>
       <link>/software/algebraic-data-types-in-typescript/</link>
       <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/algebraic-data-types-in-typescript/</guid>
       <description>Note: the code for the TypeScript (to help you follow along) is available here: Encoding Algebraic Data Types in TypeScript code Background   Recently I&amp;#39;ve been reviewing TypeScript code at work. A common pattern I&amp;#39;ve observed in pull requests and some open source projects is a type that looks like the following: type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#39;; type Foo&amp;lt;A&amp;gt; = { _tag : FooTag, /* Required for the &amp;#39;Bar&amp;#39; tagged values of Foo */ bar?</description>
+    </item>
+    
+    <item>
+      <title>Algebraic Data Types: For the math(s) inclined</title>
+      <link>/software/algebraic-data-types-for-the-maths-inclined/</link>
+      <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/algebraic-data-types-for-the-maths-inclined/</guid>
+      <description>This was initially published as a section of one of my substack posts.   You might be wondering why the term algebraic data types has the word algebra in it. Don’t sweat it if you hated algebra in high school, I will not call on you to solve simultaneous equations or prove by induction on the board in front of the class.  The basic idea is that through a little algebra we can determine the cardinality of an algebraic data type which represents how many possible values that could inhabit it.</description>
     </item>
     
     <item>
