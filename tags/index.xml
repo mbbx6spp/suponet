@@ -6,46 +6,10 @@
     <description>Recent content in Tags on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 11 Aug 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>funtional programming</title>
-      <link>/tags/funtional-programming/</link>
-      <pubDate>Sat, 15 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/funtional-programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>haskell</title>
-      <link>/tags/haskell/</link>
-      <pubDate>Sat, 15 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/haskell/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>profunctors</title>
-      <link>/tags/profunctors/</link>
-      <pubDate>Sat, 15 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/profunctors/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>software</title>
-      <link>/tags/software/</link>
-      <pubDate>Sat, 15 Aug 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/software/</guid>
-      <description></description>
-    </item>
     
     <item>
       <title>algebraic data types</title>
@@ -228,11 +192,38 @@
     </item>
     
     <item>
+      <title>funtional programming</title>
+      <link>/tags/funtional-programming/</link>
+      <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/funtional-programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>haskell</title>
+      <link>/tags/haskell/</link>
+      <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/haskell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>parametricity</title>
       <link>/tags/parametricity/</link>
       <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/tags/parametricity/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>software</title>
+      <link>/tags/software/</link>
+      <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/software/</guid>
       <description></description>
     </item>
     
