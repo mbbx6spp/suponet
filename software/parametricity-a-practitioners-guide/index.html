@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -98,348 +98,289 @@
         
         <span class="lastmod"><strong>Last modified:</strong> September 25, 2014</span>
         
+      
+
       </div>
 
     </header>
 
     
+<div id="outline-container-parametricity-part-1" class="outline-3">
 <h3 id="parametricity-part-1">
 Introduction
 </h3>
+<div id="outline-text-parametricity-part-1" class="outline-text-3">
 <p>
-What software developer likes surprises, especially in production? Not me. At least not when I am on call. ;)
-</p>
+What software developer likes surprises, especially in production? Not me. At least not when I am on call. ;)</p>
 <p>
-Wouldn&#39;t it be great if we were able to <strong>reason</strong> about our code to make our lives as simple as possible when debugging or eliminate debugging altogether?
-</p>
+Wouldn&#39;t it be great if we were able to <strong>reason</strong> about our code to make our lives as simple as possible when debugging or eliminate debugging altogether?</p>
 <p>
-The big idea of parametricity is that from parametric (or generic) <em>&#34;pure&#34;</em> functions we can determine interesting properties (and more of them) from the parametric (generic) types than the equivalent function fixed with specific types.
-</p>
+The big idea of parametricity is that from parametric (or generic) <em>&#34;pure&#34;</em> functions we can determine interesting properties (and more of them) from the parametric (generic) types than the equivalent function fixed with specific types.</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-3">
 <h3 id="headline-2">
 Goals
 </h3>
+<div id="outline-text-headline-2" class="outline-text-3">
 <p>
-The following article is an attempt to:
-</p>
+The following article is an attempt to:</p>
 <ul>
 <li>
-<p>
-introduce ideas and terms informally to target industry practitioners used to mainstream languages and methods
-</p>
+<p>introduce ideas and terms informally to target industry practitioners used to mainstream languages and methods</p>
 </li>
 <li>
-<p>
-motivate the utility of various kinds of reasoning applied to software development in practice through familiar examples
-</p>
+<p>motivate the utility of various kinds of reasoning applied to software development in practice through familiar examples</p>
 </li>
 <li>
-<p>
-highlight (again through examples) the utility of defining functions to be as generic as possible
-</p>
+<p>highlight (again through examples) the utility of defining functions to be as generic as possible</p>
 </li>
 <li>
-<p>
-describe tradeoffs in theory and ways to mitigate them using GHC pragmas
-</p>
+<p>describe tradeoffs in theory and ways to mitigate them using GHC pragmas</p>
 </li>
 <li>
-<p>
-provide links to further reading on the topic for the reader to investigate more formally if desired
-</p>
+<p>provide links to further reading on the topic for the reader to investigate more formally if desired</p>
 </li>
 </ul>
+</div>
+</div>
+<div id="outline-container-assumptions" class="outline-3">
 <h3 id="assumptions">
 Prerequisites &amp; Terminology
 </h3>
+<div id="outline-text-assumptions" class="outline-text-3">
 <p>
-The idea of parametricity only works when three things hold:
-</p>
+The idea of parametricity only works when three things hold:</p>
 <ol>
 <li>
+<p>We reason about <strong>&#34;pure&#34;</strong> functions only. i.e., parametricity cannot hold if a function is dependent on anything outside of its explicit inputs (or static definitions). Otherwise, we are unable to <strong>reason</strong> about the code in this delightful way.</p>
 <p>
-We reason about <strong>&#34;pure&#34;</strong> functions only. i.e., parametricity cannot hold if a function is dependent on anything outside of its explicit inputs (or static definitions). Otherwise, we are unable to <strong>reason</strong> about the code in this delightful way.
-</p>
-<p>
-Core business logic (in my experience) can be implemented using &#34;pure&#34; functions in most high-level languages today. However, some languages and ecosystems provide better feedback loops to help you define &#34;pure&#34; functions.
-</p>
+Core business logic (in my experience) can be implemented using &#34;pure&#34; functions in most high-level languages today. However, some languages and ecosystems provide better feedback loops to help you define &#34;pure&#34; functions.</p>
 </li>
 <li>
-<p>
-Our <em>&#34;pure&#34;</em> functions should be <strong>total</strong> for correctness. A total function is one that produces a result for all inputs to the function, even if it takes a while to compute. In practice, this means we can&#39;t have exceptions raised or infinite recursion for any input the function takes.
-</p>
+<p>Our <em>&#34;pure&#34;</em> functions should be <strong>total</strong> for correctness. A total function is one that produces a result for all inputs to the function, even if it takes a while to compute. In practice, this means we can&#39;t have exceptions raised or infinite recursion for any input the function takes.</p>
 </li>
 <li>
-<p>
-Your source language supports <strong>parametric polymorphism</strong>. Parametric polymorphism is when a function or a data type can be written generically so that it handles values without depending on their type in any way. If we have a generic type signature but use runtime reflection to determine implementation, then all bets are off, and we cannot use parametricity to reason about it.
-</p>
+<p>Your source language supports <strong>parametric polymorphism</strong>. Parametric polymorphism is when a function or a data type can be written generically so that it handles values without depending on their type in any way. If we have a generic type signature but use runtime reflection to determine implementation, then all bets are off, and we cannot use parametricity to reason about it.</p>
 </li>
 </ol>
-<p>
-I will use the terms <em>properties</em> and <em>theorems</em> interchangeably in this article, preferring the former given my target audience. The core material in this article is loosely based on Philip Wadler&#39;s <em><a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875">Theorems for Free!</a></em> paper, which uses the term <em>theorems</em> exclusively.
-</p>
+<p>I will use the terms <em>properties</em> and <em>theorems</em> interchangeably in this article, preferring the former given my target audience. The core material in this article is loosely based on Philip Wadler&#39;s <em><a href="http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.38.9875">Theorems for Free!</a></em> paper, which uses the term <em>theorems</em> exclusively.</p>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-3">
 <h3 id="headline-4">
 A Familiar Form of Reasoning
 </h3>
+<div id="outline-text-headline-4" class="outline-text-3">
 <p>
-Programmers of every stripe already use thinking tools from one form of reasoning no matter their language of choice: <strong>logical reasoning</strong>.
-</p>
+Programmers of every stripe already use thinking tools from one form of reasoning no matter their language of choice: <strong>logical reasoning</strong>.</p>
 <p>
-With logical reasoning, we have three primary thinking tools available to us, which we can use in isolation or combination with each other. They are:
-</p>
+With logical reasoning, we have three primary thinking tools available to us, which we can use in isolation or combination with each other. They are:</p>
 <ul>
 <li>
-<p>
-abduction
-</p>
+<p>abduction</p>
 </li>
 <li>
-<p>
-induction
-</p>
+<p>induction</p>
 </li>
 <li>
-<p>
-deduction
-</p>
+<p>deduction</p>
 </li>
 </ul>
+<div id="outline-container-headline-5" class="outline-4">
 <h4 id="headline-5">
 Abduction
 </h4>
+<div id="outline-text-headline-5" class="outline-text-4">
 <p>
-Abduction (in logical reasoning) is the act of attempting to infer the best explanation for a given set of observations. As programmers in working in industry, we employ this logical reasoning tool every time we tackle a bug report to varying levels of effectiveness. A bug report usually describes a set of observations by users who have witnessed our software doing something unexpected. Assuming this observed behavior is a defect, we then try to formulate hypotheses about where in the code this could be going wrong based on our understanding of the codebase and our understanding of how the data flows through the software. This specific act is <em>abduction</em>!
-</p>
+Abduction (in logical reasoning) is the act of attempting to infer the best explanation for a given set of observations. As programmers in working in industry, we employ this logical reasoning tool every time we tackle a bug report to varying levels of effectiveness. A bug report usually describes a set of observations by users who have witnessed our software doing something unexpected. Assuming this observed behavior is a defect, we then try to formulate hypotheses about where in the code this could be going wrong based on our understanding of the codebase and our understanding of how the data flows through the software. This specific act is <em>abduction</em>!</p>
+</div>
+</div>
+<div id="outline-container-headline-6" class="outline-4">
 <h4 id="headline-6">
 Induction
 </h4>
+<div id="outline-text-headline-6" class="outline-text-4">
 <p>
-When given a rule, we can sometimes generalize the rule to check if the rule holds for larger structures. When we have a way to generate the next value, and there is strict total ordering (i.e., ∀ x, y ∈ S, either x &lt; y or x &gt; y), then we can use the thinking tool of induction to prove or disprove whether the rule holds.
-</p>
+When given a rule, we can sometimes generalize the rule to check if the rule holds for larger structures. When we have a way to generate the next value, and there is strict total ordering (i.e., ∀ x, y ∈ S, either x &lt; y or x &gt; y), then we can use the thinking tool of induction to prove or disprove whether the rule holds.</p>
 <p>
-As an example, given a rule that the sum of all natural numbers incrementing by one from zero to a number <code class="verbatim">n</code> is <code class="verbatim">sumOfNats n = n * (n + 1) / 2</code> we can use induction to show if this does hold with the following work outline:
-</p>
+As an example, given a rule that the sum of all natural numbers incrementing by one from zero to a number <code class="verbatim">n</code> is <code class="verbatim">sumOfNats n = n * (n + 1) / 2</code> we can use induction to show if this does hold with the following work outline:</p>
 <ol>
 <li>
-<p>
-First, we start with the <em>base case</em>. For natural numbers the <em>base case</em> is zero, 0.
-<code class="verbatim">sumOfNats 0 = 0 * (0 + 1) / 2</code>. Because anything multiplied by zero is zero, the result of the rule is zero using zero as the input. Our expected value is zero, too (i.e., the sum of all natural numbers incrementing by one starting at zero and ending at zero is zero, right?).
-</p>
+<p>First, we start with the <em>base case</em>. For natural numbers the <em>base case</em> is zero, 0.
+<code class="verbatim">sumOfNats 0 = 0 * (0 + 1) / 2</code>. Because anything multiplied by zero is zero, the result of the rule is zero using zero as the input. Our expected value is zero, too (i.e., the sum of all natural numbers incrementing by one starting at zero and ending at zero is zero, right?).</p>
 </li>
 <li>
-<p>
-Now we assume that the rule holds for some natural number, let&#39;s call it <code class="verbatim">k</code>, that means we have <code class="verbatim">sumOfNats k = k * (k + 1) / 2</code>. All we have done here is alpha conversion in the lambda calculus (i.e., renaming our parameter through the definition consistently). The next step substitutes the next ((k + 1)<sup>th</sup>) natural number into the rule equation.
-</p>
+<p>Now we assume that the rule holds for some natural number, let&#39;s call it <code class="verbatim">k</code>, that means we have <code class="verbatim">sumOfNats k = k * (k + 1) / 2</code>. All we have done here is alpha conversion in the lambda calculus (i.e., renaming our parameter through the definition consistently). The next step substitutes the next ((k + 1)<sup>th</sup>) natural number into the rule equation.</p>
 </li>
 <li>
-<p>
-We expect our sum of natural numbers starting at zero and incrementing by one ending at <code class="verbatim">(k + 1)</code> to be equal to the expression <code class="verbatim">1 + 2 + ... + k + (k + 1)</code>. Since we assume (from the second step above) that the sum of naturals until <code class="verbatim">k</code> is <code class="verbatim">k * (k + 1) / 2</code> then we expect <code class="verbatim">k * (k + 1) / 2 + (k + 1)</code> to equal <code class="verbatim">(k + 1) * (k + 2) / 2</code>. Now we can use algebra rearrangement to show whether these are equivalent expressions or not:
-</p>
+<p>We expect our sum of natural numbers starting at zero and incrementing by one ending at <code class="verbatim">(k + 1)</code> to be equal to the expression <code class="verbatim">1 + 2 + ... + k + (k + 1)</code>. Since we assume (from the second step above) that the sum of naturals until <code class="verbatim">k</code> is <code class="verbatim">k * (k + 1) / 2</code> then we expect <code class="verbatim">k * (k + 1) / 2 + (k + 1)</code> to equal <code class="verbatim">(k + 1) * (k + 2) / 2</code>. Now we can use algebra rearrangement to show whether these are equivalent expressions or not:</p>
 <ul>
 <li>
-<p>
-Multiply out terms in numerator of expected result:
-</p>
+<p>Multiply out terms in numerator of expected result:</p>
 </li>
 </ul>
-<p>
-<code class="verbatim">(k * (k + 1) / 2) + (k + 1) = ((k^2 + k) / 2) + (k + 1)</code>
-</p>
+<p><code class="verbatim">(k * (k + 1) / 2) + (k + 1) = ((k^2 + k) / 2) + (k + 1)</code></p>
 <ul>
 <li>
-<p>
-Expand terms and factor out constant of 1/2:
-</p>
+<p>Expand terms and factor out constant of 1/2:</p>
 </li>
 </ul>
-<p>
-<code class="verbatim">1/2*k^2 + 3/2k + 1 = 1/2 * (k^2 + 3k + 2) = 1/2 * (k + 1)*(k + 2)</code>
-</p>
+<p><code class="verbatim">1/2*k^2 + 3/2k + 1 = 1/2 * (k^2 + 3k + 2) = 1/2 * (k + 1)*(k + 2)</code></p>
 <ul>
 <li>
-<p>
-Factor polynomial in numerator:
-</p>
+<p>Factor polynomial in numerator:</p>
 </li>
 </ul>
+<p><code class="verbatim">(k + 1) * (k + 2) / 2 = rule-based result substituting in (k+1) for k in the rule equation</code></p>
 <p>
-<code class="verbatim">(k + 1) * (k + 2) / 2 = rule-based result substituting in (k+1) for k in the rule equation</code>
-</p>
-<p>
-You might think there is circular logic involved because, in step 2, we assume the rule holds of the k<sup>th</sup> number. However, if we tried to <em>prove</em> the rule <code class="verbatim">sumOfNats2 k = k * (k - 1) / 2</code> held in step 3 you would not be able to reconcile the expected result with the result computed by the (k + 1)<sup>th</sup> substitution of the rule. You should try it on your own to convince yourself.
-</p>
+You might think there is circular logic involved because, in step 2, we assume the rule holds of the k<sup>th</sup> number. However, if we tried to <em>prove</em> the rule <code class="verbatim">sumOfNats2 k = k * (k - 1) / 2</code> held in step 3 you would not be able to reconcile the expected result with the result computed by the (k + 1)<sup>th</sup> substitution of the rule. You should try it on your own to convince yourself.</p>
 </li>
 </ol>
-<p>
-While mathematicians use this form of logical reasoning sometimes, especially in number theory proofs, a growing number of programmers using proof assistant languages are increasingly using induction to prove properties on functions acting on data inputs (as opposed to codata).
-</p>
+<p>While mathematicians use this form of logical reasoning sometimes, especially in number theory proofs, a growing number of programmers using proof assistant languages are increasingly using induction to prove properties on functions acting on data inputs (as opposed to codata).</p>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-4">
 <h4 id="headline-7">
 Deduction
 </h4>
+<div id="outline-text-headline-7" class="outline-text-4">
 <p>
-When you have a logical rule, inputs to that rule, or the conclusion made from that rule without the inputs, you can often use the thinking tool of deduction.
-</p>
+When you have a logical rule, inputs to that rule, or the conclusion made from that rule without the inputs, you can often use the thinking tool of deduction.</p>
 <p>
-When we read code to understand why the system worked the way it did (like when continuing the effort on fixing the defect from a bug report from the <em>abduction</em> section earlier), we might use deduction to execute the code in our minds before we run it in a debugger.
-</p>
+When we read code to understand why the system worked the way it did (like when continuing the effort on fixing the defect from a bug report from the <em>abduction</em> section earlier), we might use deduction to execute the code in our minds before we run it in a debugger.</p>
 <p>
-Deduction is the thinking tool in logical reasoning that no programmer needs an introduction to since we will typically use this at least once a day.
-</p>
+Deduction is the thinking tool in logical reasoning that no programmer needs an introduction to since we will typically use this at least once a day.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-give-me-more-forms-of-reasoning" class="outline-3">
 <h3 id="give-me-more-forms-of-reasoning">
 Give Me More (forms of reasoning)!
 </h3>
+<div id="outline-text-give-me-more-forms-of-reasoning" class="outline-text-3">
 <p>
-As an industry developer, I like being able to take advantage of other people&#39;s reusable work, whether it is a reusable library, our automated testing suites, or reasoning thinking tools developed and tested by mathematicians and scientists over many decades or centuries.
-</p>
+As an industry developer, I like being able to take advantage of other people&#39;s reusable work, whether it is a reusable library, our automated testing suites, or reasoning thinking tools developed and tested by mathematicians and scientists over many decades or centuries.</p>
 <p>
-Reasoning provides us confidence, helping us know how our code <em>can</em> behave. By understanding the properties of units of a system that can be composed, we can build functionality on top of a solid foundation with fewer surprises in later phases of development.
-</p>
+Reasoning provides us confidence, helping us know how our code <em>can</em> behave. By understanding the properties of units of a system that can be composed, we can build functionality on top of a solid foundation with fewer surprises in later phases of development.</p>
+</div>
+</div>
+<div id="outline-container-examples" class="outline-3">
 <h3 id="examples">
 Getting Started with Parametricity
 </h3>
+<div id="outline-text-examples" class="outline-text-3">
 <p>
-Let&#39;s look at some examples of what I mean by <em>properties</em> about functions from its generic type signatures.
-</p>
+Let&#39;s look at some examples of what I mean by <em>properties</em> about functions from its generic type signatures.</p>
 <p>
-Below is a type [signature] of a function. Assuming it is a pure function and that <code class="verbatim">a</code> can be any type, how many possible definitions can we give the function such that it typechecks and satisfies our prerequisites above?
-</p>
+Below is a type [signature] of a function. Assuming it is a pure function and that <code class="verbatim">a</code> can be any type, how many possible definitions can we give the function such that it typechecks and satisfies our prerequisites above?</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f1</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> a
 <span style="color:#a6e22e">f1</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">_</span></code></pre></div>
 </div>
 <p>
-Let&#39;s back up a little and have a quick referesher on how to read Haskell:
-</p>
+Let&#39;s back up a little and have a quick referesher on how to read Haskell:</p>
 <ul>
 <li>
-<p>
-<code class="verbatim">f1</code> is the name of the function
-</p>
+<p><code class="verbatim">f1</code> is the name of the function</p>
 </li>
 <li>
-<p>
-<code class="verbatim">::</code> translates to <em>&#34;has type&#34;</em>
-</p>
+<p><code class="verbatim">::</code> translates to <em>&#34;has type&#34;</em></p>
 </li>
 <li>
-<p>
-the first <code class="verbatim">a</code> after <code class="verbatim">::</code> is the generic type for the argument for <code class="verbatim">f1</code>
-</p>
+<p>the first <code class="verbatim">a</code> after <code class="verbatim">::</code> is the generic type for the argument for <code class="verbatim">f1</code></p>
 </li>
 <li>
-<p>
-<code class="verbatim">-&gt;</code> can read as <em>&#34;to&#34;</em> or <em>&#34;producing&#34;</em> depending on how you prefer to read function types
-</p>
+<p><code class="verbatim">-&gt;</code> can read as <em>&#34;to&#34;</em> or <em>&#34;producing&#34;</em> depending on how you prefer to read function types</p>
 </li>
 <li>
-<p>
-the <code class="verbatim">a</code> after the <code class="verbatim">-&gt;</code> is the generic type for the result of <code class="verbatim">f1</code>
-</p>
+<p>the <code class="verbatim">a</code> after the <code class="verbatim">-&gt;</code> is the generic type for the result of <code class="verbatim">f1</code></p>
 </li>
 </ul>
+<p>So reading the above code snippet out loud might sound like, <em>&#34;f1 is a function that has type generic a to generic a&#34;</em>.</p>
 <p>
-So reading the above code snippet out loud might sound like, <em>&#34;f1 is a function that has type generic a to generic a&#34;</em>.
-</p>
+Note: lower case types in Haskell (like <code class="verbatim">a</code> above) are parametric types. When lower case names or letters are in a type signature, the only restriction is that when there are two <code class="verbatim">x</code> types mentions, then they must refer to the same type at the callsite.</p>
 <p>
-Note: lower case types in Haskell (like <code class="verbatim">a</code> above) are parametric types. When lower case names or letters are in a type signature, the only restriction is that when there are two <code class="verbatim">x</code> types mentions, then they must refer to the same type at the callsite.
-</p>
+The caller of a function determines the specific type used for a generic type.</p>
 <p>
-The caller of a function determines the specific type used for a generic type.
-</p>
-<p>
-Now that we can read the Haskell type above let&#39;s fix <code class="verbatim">a</code> to a few different types to explore possibilities. We will start with fixing <code class="verbatim">a</code> to <code class="verbatim">String</code>.
-</p>
+Now that we can read the Haskell type above let&#39;s fix <code class="verbatim">a</code> to a few different types to explore possibilities. We will start with fixing <code class="verbatim">a</code> to <code class="verbatim">String</code>.</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f1str</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">String</span>
 <span style="color:#a6e22e">f1str</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">_</span></code></pre></div>
 </div>
 <p>
-If the function <code class="verbatim">f1str</code> can depend only on its input then it could be any transformation. In this case, the type <code class="verbatim">(String -&gt; String)</code> there are many kinds of transformations from a given <code class="verbatim">String</code> to another <code class="verbatim">String</code>. For example, we could apply a hash function on the input value or reverse the given string or some combination of the two. There are many possibilities.
-</p>
+If the function <code class="verbatim">f1str</code> can depend only on its input then it could be any transformation. In this case, the type <code class="verbatim">(String -&gt; String)</code> there are many kinds of transformations from a given <code class="verbatim">String</code> to another <code class="verbatim">String</code>. For example, we could apply a hash function on the input value or reverse the given string or some combination of the two. There are many possibilities.</p>
 <p>
-Now let&#39;s try <code class="verbatim">(Int -&gt; Int)</code>, there are not that many coinciding &#34;transforms&#34; that are valid for both =String=s and =Int=s. Now extending this to any type from input to output we realize there is only one possible definition, which is the identity function:
-</p>
+Now let&#39;s try <code class="verbatim">(Int -&gt; Int)</code>, there are not that many coinciding &#34;transforms&#34; that are valid for both =String=s and =Int=s. Now extending this to any type from input to output we realize there is only one possible definition, which is the identity function:</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">identity</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> a
 <span style="color:#a6e22e">identity</span> a <span style="color:#f92672">=</span> a</code></pre></div>
 </div>
 <p>
-What the above says is that given a value of type <code class="verbatim">a</code> the function <code class="verbatim">identity</code> produces that value back as the result.
-</p>
+What the above says is that given a value of type <code class="verbatim">a</code> the function <code class="verbatim">identity</code> produces that value back as the result.</p>
 <p>
-Yes, ok, that example was trivial, yet we see how when we made the types more generic and parametric we could make more assertions about the definition of the function?
-</p>
+Yes, ok, that example was trivial, yet we see how when we made the types more generic and parametric we could make more assertions about the definition of the function?</p>
 <p>
-That&#39;s a critical piece of the idea behind parametricity.
-</p>
+That&#39;s a critical piece of the idea behind parametricity.</p>
 <p>
-In this case, we could have compiler machinery generate that function definition for us (the thing on the right-hand-side, RHS, of the <code class="verbatim">=</code> on the second line is the definition) given just the type we wanted and a suitably &#34;pure&#34; and total capable language with parametric polymorphism. What if our compiler machinery generates our programs for us given just a type signature for less trivial examples, wouldn&#39;t that be mind-boggling?
-</p>
+In this case, we could have compiler machinery generate that function definition for us (the thing on the right-hand-side, RHS, of the <code class="verbatim">=</code> on the second line is the definition) given just the type we wanted and a suitably &#34;pure&#34; and total capable language with parametric polymorphism. What if our compiler machinery generates our programs for us given just a type signature for less trivial examples, wouldn&#39;t that be mind-boggling?</p>
+</div>
+</div>
+<div id="outline-container-headline-10" class="outline-3">
 <h3 id="headline-10">
 Applying Parametricity (in Haskell)
 </h3>
+<div id="outline-text-headline-10" class="outline-text-3">
 <p>
-Now let&#39;s take a look at a less trivial example:
-</p>
+Now let&#39;s take a look at a less trivial example:</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f2</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> [a] <span style="color:#f92672">-&gt;</span> [b]
 <span style="color:#a6e22e">f2</span> f as <span style="color:#f92672">=</span> <span style="color:#66d9ef">_</span></code></pre></div>
 </div>
 <p>
-We are given a function from type <code class="verbatim">a</code> to type <code class="verbatim">b</code>. Let&#39;s say this is something like <code class="verbatim">String -&gt; Int</code>, which could take the string argument and produce its length as the result value. After taking that function, let&#39;s say <code class="verbatim">length</code>, we would be taking a list of strings and returning a list of ints representing their lengths.
-</p>
+We are given a function from type <code class="verbatim">a</code> to type <code class="verbatim">b</code>. Let&#39;s say this is something like <code class="verbatim">String -&gt; Int</code>, which could take the string argument and produce its length as the result value. After taking that function, let&#39;s say <code class="verbatim">length</code>, we would be taking a list of strings and returning a list of ints representing their lengths.</p>
 <p>
-What can we say about this function, even the concrete one defined above? Well, the most likely definition of that is:
-</p>
+What can we say about this function, even the concrete one defined above? Well, the most likely definition of that is:</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f2</span> <span style="color:#f92672">::</span> (<span style="color:#66d9ef">String</span> <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Int</span>) <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">String</span>] <span style="color:#f92672">-&gt;</span> [<span style="color:#66d9ef">Int</span>]
 <span style="color:#a6e22e">f2</span> f ss <span style="color:#f92672">=</span> map f ss</code></pre></div>
 </div>
 <p>
-Assuming our functions are &#34;pure&#34; and total, by using equational reasoning, we can deduce that <code class="verbatim">f2</code> is <code class="verbatim">map</code>. The more generic we make the types, the surer we are that we can&#39;t have other possible definitions for this, which could eventually lead to type-directed programming or program derivations by the compiler.
-</p>
+Assuming our functions are &#34;pure&#34; and total, by using equational reasoning, we can deduce that <code class="verbatim">f2</code> is <code class="verbatim">map</code>. The more generic we make the types, the surer we are that we can&#39;t have other possible definitions for this, which could eventually lead to type-directed programming or program derivations by the compiler.</p>
 <p>
-To continue exploring parametricity we look at a new function <code class="verbatim">f3</code>:
-</p>
+To continue exploring parametricity we look at a new function <code class="verbatim">f3</code>:</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f3</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
 <span style="color:#a6e22e">f3</span> f ma <span style="color:#f92672">=</span> <span style="color:#66d9ef">_</span></code></pre></div>
 </div>
 <p>
-First, we need to understand what the <code class="verbatim">Maybe</code> type constructor is.
-</p>
+First, we need to understand what the <code class="verbatim">Maybe</code> type constructor is.</p>
 <p>
-Imagine you live in a world where <code class="verbatim">null</code>, <code class="verbatim">nil</code>, <code class="verbatim">None</code>, <code class="verbatim">NULL</code> or other such representations of the null pointer do not exist. In this world, if you are told there will be a value of type <code class="verbatim">PandaBear</code> somewhere, there will be an actual <code class="verbatim">PandaBear</code> value provided. Same for <code class="verbatim">GrizzlyBear</code>. No ifs, buts, or <code class="verbatim">null</code> s.
-</p>
+Imagine you live in a world where <code class="verbatim">null</code>, <code class="verbatim">nil</code>, <code class="verbatim">None</code>, <code class="verbatim">NULL</code> or other such representations of the null pointer do not exist. In this world, if you are told there will be a value of type <code class="verbatim">PandaBear</code> somewhere, there will be an actual <code class="verbatim">PandaBear</code> value provided. Same for <code class="verbatim">GrizzlyBear</code>. No ifs, buts, or <code class="verbatim">null</code> s.</p>
 <p>
-Sometimes you aren&#39;t sure if there will be exactly one value produced. We might only be able to produce zero or one value of a particular type. Therefore we have to be able to tell this to the caller of the code in some way. We do that with the type <code class="verbatim">Maybe a</code>.
-</p>
+Sometimes you aren&#39;t sure if there will be exactly one value produced. We might only be able to produce zero or one value of a particular type. Therefore we have to be able to tell this to the caller of the code in some way. We do that with the type <code class="verbatim">Maybe a</code>.</p>
+<div id="outline-container-headline-11" class="outline-4">
 <h4 id="headline-11">
 A <code class="verbatim">Maybe</code> Excursion
 </h4>
+<div id="outline-text-headline-11" class="outline-text-4">
 <p>
-The following is what the type definition of <code class="verbatim">Maybe a</code> looks like in Haskell:
-</p>
+The following is what the type definition of <code class="verbatim">Maybe a</code> looks like in Haskell:</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> a <span style="color:#f92672">|</span> <span style="color:#66d9ef">Nothing</span></code></pre></div>
 </div>
 <p>
-This definition means that there are precisely two ways to construct a value of type <code class="verbatim">Maybe a</code>:
-</p>
+This definition means that there are precisely two ways to construct a value of type <code class="verbatim">Maybe a</code>:</p>
 <ul>
 <li>
-<p>
-using the <code class="verbatim">Just</code> data constructor (as seen on the right-hand side of the equals sign of the definition) and passing a value of type <code class="verbatim">a</code>
-</p>
+<p>using the <code class="verbatim">Just</code> data constructor (as seen on the right-hand side of the equals sign of the definition) and passing a value of type <code class="verbatim">a</code></p>
 </li>
 <li>
-<p>
-using the <code class="verbatim">Nothing</code> data constructor (which takes no arguments)
-</p>
+<p>using the <code class="verbatim">Nothing</code> data constructor (which takes no arguments)</p>
 </li>
 </ul>
-<p>
-To explore how we could use this type we show two functions below:
-</p>
+<p>To explore how we could use this type we show two functions below:</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#75715e">-- We can use our @sqrt@ function like so:</span>
 <span style="color:#75715e">-- &gt;&gt;&gt; sqrt 1</span>
@@ -466,92 +407,84 @@ To explore how we could use this type we show two functions below:
 <span style="color:#a6e22e">defaulting</span> a1 <span style="color:#66d9ef">Nothing</span> <span style="color:#f92672">=</span> a1</code></pre></div>
 </div>
 <p>
-There are two functions above returning <code class="verbatim">Maybe a</code>. The <code class="verbatim">sqrt</code> function takes a <code class="verbatim">Double</code> value and if it is non-negative it will return a <code class="verbatim">Nothing</code> value since our return type is a <code class="verbatim">Double</code> (rather than <code class="verbatim">Complex</code>). If we had made the type signature of <code class="verbatim">sqrt</code> to be <code class="verbatim">Double -&gt; Double</code> and we know that no such value of <code class="verbatim">null</code>, <code class="verbatim">nil</code>, <code class="verbatim">None</code>, etc. can exist then we can deduce a design error in the type signature if we wish to strive for <em>total</em> functions. The definition of the <code class="verbatim">Double -&gt; Double</code> variety of <code class="verbatim">sqrt</code> is problematic due to its ambiguity when given a negative <code class="verbatim">Double</code> input value. This process has identified a problem with the design of our function type.
-</p>
+There are two functions above returning <code class="verbatim">Maybe a</code>. The <code class="verbatim">sqrt</code> function takes a <code class="verbatim">Double</code> value and if it is non-negative it will return a <code class="verbatim">Nothing</code> value since our return type is a <code class="verbatim">Double</code> (rather than <code class="verbatim">Complex</code>). If we had made the type signature of <code class="verbatim">sqrt</code> to be <code class="verbatim">Double -&gt; Double</code> and we know that no such value of <code class="verbatim">null</code>, <code class="verbatim">nil</code>, <code class="verbatim">None</code>, etc. can exist then we can deduce a design error in the type signature if we wish to strive for <em>total</em> functions. The definition of the <code class="verbatim">Double -&gt; Double</code> variety of <code class="verbatim">sqrt</code> is problematic due to its ambiguity when given a negative <code class="verbatim">Double</code> input value. This process has identified a problem with the design of our function type.</p>
 <p>
-Another way we could have resolved this is by ensuring the only values that can be passed in as inputs are non-negative by restricting the input type or expanding the result type to the <code class="verbatim">Complex</code> codomain. There are merits to these ideas, but consideration of them is outside of the scope of this post.
-</p>
+Another way we could have resolved this is by ensuring the only values that can be passed in as inputs are non-negative by restricting the input type or expanding the result type to the <code class="verbatim">Complex</code> codomain. There are merits to these ideas, but consideration of them is outside of the scope of this post.</p>
 <p>
-Note that because the <code class="verbatim">sqrt</code> function is concrete in its type - assuming we couldn&#39;t see its definition - we could not be sure this is giving us back the square root of the given value. We could instead have defined the function to divide an unknown constant by the given number.
-</p>
+Note that because the <code class="verbatim">sqrt</code> function is concrete in its type - assuming we couldn&#39;t see its definition - we could not be sure this is giving us back the square root of the given value. We could instead have defined the function to divide an unknown constant by the given number.</p>
 <p>
-In the second function, <code class="verbatim">defaulting</code>, which takes a value as a first argument and a &#34;maybe&#34; value of the same underlying type, <code class="verbatim">a</code> in this case, and for the case that <code class="verbatim">Maybe a</code> contains a value of <code class="verbatim">a</code> it will return that. Otherwise, it returns the first input value.
-</p>
+In the second function, <code class="verbatim">defaulting</code>, which takes a value as a first argument and a &#34;maybe&#34; value of the same underlying type, <code class="verbatim">a</code> in this case, and for the case that <code class="verbatim">Maybe a</code> contains a value of <code class="verbatim">a</code> it will return that. Otherwise, it returns the first input value.</p>
 <p>
-Both <code class="verbatim">sqrt</code> and <code class="verbatim">defaulting</code> demonstrate the utility of the <code class="verbatim">Maybe a</code> type.
-</p>
+Both <code class="verbatim">sqrt</code> and <code class="verbatim">defaulting</code> demonstrate the utility of the <code class="verbatim">Maybe a</code> type.</p>
+</div>
+</div>
+<div id="outline-container-headline-12" class="outline-4">
 <h4 id="headline-12">
 Back to properties
 </h4>
+<div id="outline-text-headline-12" class="outline-text-4">
 <p>
-Let&#39;s get back to the original function we were going to investigate: <code class="verbatim">(a -&gt; b) -&gt; Maybe a -&gt; Maybe b</code>. Again, assuming it is a pure function, what can we assert from the type signature?
-</p>
+Let&#39;s get back to the original function we were going to investigate: <code class="verbatim">(a -&gt; b) -&gt; Maybe a -&gt; Maybe b</code>. Again, assuming it is a pure function, what can we assert from the type signature?</p>
 <p>
-It seems obvious that if we can assume nothing about type <code class="verbatim">a</code> or <code class="verbatim">b</code> because they can be ANYTHING AT ALL, then there is only one definition of the function that can exist that uses all arguments. Let&#39;s see what this might look like with the definition expanded for <code class="verbatim">f3 :: (a -&gt; b) -&gt; Maybe a -&gt; Maybe b</code>:
-</p>
+It seems obvious that if we can assume nothing about type <code class="verbatim">a</code> or <code class="verbatim">b</code> because they can be ANYTHING AT ALL, then there is only one definition of the function that can exist that uses all arguments. Let&#39;s see what this might look like with the definition expanded for <code class="verbatim">f3 :: (a -&gt; b) -&gt; Maybe a -&gt; Maybe b</code>:</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f3</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
 <span style="color:#a6e22e">f3</span> f (<span style="color:#66d9ef">Just</span> x) <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> <span style="color:#f92672">$</span> f x
 <span style="color:#a6e22e">f3</span> f <span style="color:#66d9ef">Nothing</span>  <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span></code></pre></div>
 </div>
 <p>
-Here we are using pattern matching. This allows us to <em>branch</em> the code path between the cases when a <code class="verbatim">Just x</code> value is provided versus when we are provided <code class="verbatim">Nothing</code> as input. It yields (in my opinion) more readable code than typical <code class="verbatim">if/else</code> or switch statement branching.
-</p>
+Here we are using pattern matching. This allows us to <em>branch</em> the code path between the cases when a <code class="verbatim">Just x</code> value is provided versus when we are provided <code class="verbatim">Nothing</code> as input. It yields (in my opinion) more readable code than typical <code class="verbatim">if/else</code> or switch statement branching.</p>
 <p>
-When we program in a language that doesn&#39;t have have null pointers as a way of life, the compiler can warn us when we haven&#39;t covered all data constructors for a type you are matching on, eliminating one common cause of bugs in software.
-</p>
+When we program in a language that doesn&#39;t have have null pointers as a way of life, the compiler can warn us when we haven&#39;t covered all data constructors for a type you are matching on, eliminating one common cause of bugs in software.</p>
 <p>
-We can reduce <code class="verbatim">f3</code> to the following definition where you can find <code class="verbatim">fmap</code> in Haskell&#39;s Prelude (a Prelude is an automatically imported standard library of functions and types).
-</p>
+We can reduce <code class="verbatim">f3</code> to the following definition where you can find <code class="verbatim">fmap</code> in Haskell&#39;s Prelude (a Prelude is an automatically imported standard library of functions and types).</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#a6e22e">f3</span> <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Maybe</span> b
 <span style="color:#a6e22e">f3</span> f ma <span style="color:#f92672">=</span> fmap f ma</code></pre></div>
 </div>
 <p>
-The basic idea here is that we apply the function from <code class="verbatim">(a -&gt; b)</code> on the value of <code class="verbatim">Maybe a</code> in the case that it is a <code class="verbatim">Just a</code> value. If it is a <code class="verbatim">Nothing</code> value it will result in a <code class="verbatim">Nothing</code> in the type of <code class="verbatim">Maybe b</code> for the result of the function.
-</p>
+The basic idea here is that we apply the function from <code class="verbatim">(a -&gt; b)</code> on the value of <code class="verbatim">Maybe a</code> in the case that it is a <code class="verbatim">Just a</code> value. If it is a <code class="verbatim">Nothing</code> value it will result in a <code class="verbatim">Nothing</code> in the type of <code class="verbatim">Maybe b</code> for the result of the function.</p>
 <p>
-By <em>equational</em> reasoning we can see that <code class="verbatim">f3</code> must be equal to our friend <code class="verbatim">fmap</code> in the <code class="verbatim">Data.Functor</code> module because the <code class="verbatim">f</code> and <code class="verbatim">ma</code> are the same values and positions on both the left-hand side (LHS) and the right-hand side (RHS). Therefore, <code class="verbatim">f3 = fmap</code>.
-</p>
+By <em>equational</em> reasoning we can see that <code class="verbatim">f3</code> must be equal to our friend <code class="verbatim">fmap</code> in the <code class="verbatim">Data.Functor</code> module because the <code class="verbatim">f</code> and <code class="verbatim">ma</code> are the same values and positions on both the left-hand side (LHS) and the right-hand side (RHS). Therefore, <code class="verbatim">f3 = fmap</code>.</p>
 <p>
-By analysing the type of <code class="verbatim">f3</code> we determined how a function must be defined in order to produce a &#34;pure&#34; and total function without ignoring arguments. As a consequence we identified it must be the same function as another already available to us in the Prelude simply by looking at its type.
-</p>
+By analysing the type of <code class="verbatim">f3</code> we determined how a function must be defined in order to produce a &#34;pure&#34; and total function without ignoring arguments. As a consequence we identified it must be the same function as another already available to us in the Prelude simply by looking at its type.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-conclusion" class="outline-3">
 <h3 id="conclusion">
 Conclusion
 </h3>
+<div id="outline-text-conclusion" class="outline-text-3">
 <p>
-Hopefully, I have been able to illustrate the value of using the basic idea of parametricity (even in a very informal way) as both a way to reason about other people&#39;s code and also offering an example of how inspecting types signatures using a basic understanding of parametricity can show logical design level errors in your API design.
-</p>
+Hopefully, I have been able to illustrate the value of using the basic idea of parametricity (even in a very informal way) as both a way to reason about other people&#39;s code and also offering an example of how inspecting types signatures using a basic understanding of parametricity can show logical design level errors in your API design.</p>
 <p>
-To recap, in this informal high-level review of <strong>parametricity</strong>, we have seen that it enables us to:
-</p>
+To recap, in this informal high-level review of <strong>parametricity</strong>, we have seen that it enables us to:</p>
 <ul>
 <li>
-<p>
-analyze third party code which we may not have the source for
-</p>
+<p>analyze third party code which we may not have the source for</p>
 </li>
 <li>
-<p>
-identify design flaws in our types
-</p>
+<p>identify design flaws in our types</p>
 </li>
 <li>
-<p>
-generate code for us when there is only one possible definition or narrow down the universe of possibilities to a small number
-</p>
+<p>generate code for us when there is only one possible definition or narrow down the universe of possibilities to a small number</p>
 </li>
 </ul>
-<p>
-We should beware that writing general code comes at costs (potentially performance), however, with compilers like GHC we can provide hints to the code generator to <code class="verbatim">SPECIALIZE</code> for commonly used types to allow for more inlining.
-</p>
+<p>We should beware that writing general code comes at costs (potentially performance), however, with compilers like GHC we can provide hints to the code generator to <code class="verbatim">SPECIALIZE</code> for commonly used types to allow for more inlining.</p>
+</div>
+</div>
+<div id="outline-container-headline-14" class="outline-3">
 <h3 id="headline-14">
 Original Source
 </h3>
+<div id="outline-text-headline-14" class="outline-text-3">
 <p>
 This article was adapted (for English writing style) from my original Gist in 2014:
-<a href="https://gist.github.com/mbbx6spp/8da36c6cceb89a52d405">Original Gist</a>
-</p>
+<a href="https://gist.github.com/mbbx6spp/8da36c6cceb89a52d405">Original Gist</a></p>
+</div>
+</div>
 
   </article>
 

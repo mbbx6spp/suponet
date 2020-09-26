@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -98,16 +98,15 @@
         
         <span class="lastmod"><strong>Last modified:</strong> January 23, 2007</span>
         
+      
+
       </div>
 
     </header>
 
-    <p>
-Tonight I remembered couple more idioms in Ruby and felt compelled to share.
-</p>
+    <p>Tonight I remembered couple more idioms in Ruby and felt compelled to share.</p>
 <p>
-In Javafied Ruby code (below) we often see something like the following:
-</p>
+In Javafied Ruby code (below) we often see something like the following:</p>
 <div class="src src-ruby">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    <span style="color:#66d9ef">if</span> something
       <span style="color:#66d9ef">for</span> role <span style="color:#66d9ef">in</span> user<span style="color:#f92672">.</span>roles
@@ -118,8 +117,7 @@ In Javafied Ruby code (below) we often see something like the following:
 <p>
 Now when I first started writing Ruby code almost 3 years ago, I
 thought looping through a collection like above was the nicest way.  I
-quickly found Ruby like the following snippet in code I inherited:
-</p>
+quickly found Ruby like the following snippet in code I inherited:</p>
 <div class="src src-ruby">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    user<span style="color:#f92672">.</span>roles<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>role<span style="color:#f92672">|</span>
       <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span> <span style="color:#66d9ef">if</span> @@roles<span style="color:#f92672">.</span>include? role
@@ -136,12 +134,10 @@ Despite this violation, it feels much more natural.  If you are unsure
 about this yourself, I would encourage you to look into the power of
 blocks in Ruby.  Once you fully appreciate blocks, I think you might
 be persuaded, (though different opinions make this world more colorful
-and less bland).
-</p>
+and less bland).</p>
 <p>
 The second Ruby idiom is less odd and does enhance code readability
-more like natural language (again in my opinion):
-</p>
+more like natural language (again in my opinion):</p>
 <div class="src src-ruby">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    user<span style="color:#f92672">.</span>roles<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>role<span style="color:#f92672">|</span>
       <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span> <span style="color:#66d9ef">if</span> @@roles<span style="color:#f92672">.</span>include? role
@@ -157,8 +153,7 @@ experience).  So for this reason I think this idiom enhances
 readability of the code to be more like natural English.  For those
 that start every sentence that contains a conditional with the
 conditional clause, you have probably been a developer for far too
-long - go be a beach bum to save yourself before it is too late.
-</p>
+long - go be a beach bum to save yourself before it is too late.</p>
 
   </article>
 

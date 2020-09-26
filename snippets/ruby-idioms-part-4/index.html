@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -98,27 +98,25 @@
         
         <span class="lastmod"><strong>Last modified:</strong> January 22, 2007</span>
         
+      
+
       </div>
 
     </header>
 
-    <p>
-To splat or not to splat, that is the question.
-</p>
+    <p>To splat or not to splat, that is the question.</p>
 <p>
 In Java to unpack an array&#39;s values into separate variables you would
-need to do something like the following:
-</p>
+need to do something like the following:</p>
 <div class="src src-ruby">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    burgers <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">:hamburger</span>, <span style="color:#e6db74">:bocaburger</span>, <span style="color:#e6db74">:gardenburger</span>, <span style="color:#e6db74">:turkeyburger</span><span style="color:#f92672">]</span>
-    t <span style="color:#f92672">=</span> burgers<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672"></span><span style="color:#f92672">]</span>
-    u <span style="color:#f92672">=</span> burgers<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672"></span><span style="color:#f92672">]</span>
-    v <span style="color:#f92672">=</span> burgers<span style="color:#f92672">[</span><span style="color:#ae81ff">2</span><span style="color:#f92672"></span><span style="color:#f92672">]</span>
-    w <span style="color:#f92672">=</span> burgers<span style="color:#f92672">[</span><span style="color:#ae81ff">3</span><span style="color:#f92672"></span><span style="color:#f92672">]</span></code></pre></div>
+    t <span style="color:#f92672">=</span> burgers<span style="color:#f92672">[</span><span style="color:#ae81ff">0</span><span style="color:#f92672">]</span>
+    u <span style="color:#f92672">=</span> burgers<span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672">]</span>
+    v <span style="color:#f92672">=</span> burgers<span style="color:#f92672">[</span><span style="color:#ae81ff">2</span><span style="color:#f92672">]</span>
+    w <span style="color:#f92672">=</span> burgers<span style="color:#f92672">[</span><span style="color:#ae81ff">3</span><span style="color:#f92672">]</span></code></pre></div>
 </div>
 <p>
-In the Ruby mindset this would look more like the following:
-</p>
+In the Ruby mindset this would look more like the following:</p>
 <div class="src src-ruby">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    burgers <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">:hamburger</span>, <span style="color:#e6db74">:bocaburger</span>, <span style="color:#e6db74">:gardenburger</span>, <span style="color:#e6db74">:turkeyburger</span><span style="color:#f92672">]</span>
     t, u, v <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>burgers <span style="color:#75715e"># t=&gt;:hamburger, u=&gt; :bocaburger, v=&gt;:gardenburger</span>
@@ -134,26 +132,25 @@ following (except it has been Rubyfied for this blog entry so that I
 do not get sued for sharing outrageously fantastic proprietary code
 with the public - ok, ok….even lawyers would understand this
 couldn&#39;t be called outrageously fantastic even in a parallel
-universe):
-</p>
+universe):</p>
 <div class="src src-ruby">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RunnableWithParams</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">Thread</span>
-      <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">initialize</span>(param1)
+      <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initialize</span>(param1)
         @param1 <span style="color:#f92672">=</span> param1
       <span style="color:#66d9ef">end</span>
 
-      <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">initialize</span>(param1, param2)
+      <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initialize</span>(param1, param2)
         @param1 <span style="color:#f92672">=</span> param1
         @param2 <span style="color:#f92672">=</span> param2
       <span style="color:#66d9ef">end</span>
 
-      <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">initialize</span>(param1, param2, param3)
+      <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initialize</span>(param1, param2, param3)
         @param1 <span style="color:#f92672">=</span> param1
         @param2 <span style="color:#f92672">=</span> param2
         @param3 <span style="color:#f92672">=</span> param3
       <span style="color:#66d9ef">end</span>
 
-      <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">run</span>
+      <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span>
         <span style="color:#75715e"># some code the uses param1, param2, etc. - in Java this was an empty method body or abstract  - can&#39;t remember</span>
       <span style="color:#66d9ef">end</span>
     <span style="color:#66d9ef">end</span></code></pre></div>
@@ -161,8 +158,7 @@ universe):
 <p>
 Rubifying the the code sure does take some of the sting out of it, but
 you can probably still feel my initial pain when I realized what kind
-of code I was inheriting.
-</p>
+of code I was inheriting.</p>
 <p>
 The class name and the variables are in fact the same as the original
 code. The problem this tried to solve, which I suppose it did solve in
@@ -174,31 +170,27 @@ to beg the core framework people to add that constructor OR you had to
 do an ugly JAR patch hack and put your own implementation of
 <code class="verbatim">RunnableWithParams</code> class ahead of the core framework JAR in your
 CLASSPATH. They were all pretty ugly scenarios. Of course, you could
-pass in a List or Map instance, but that really isn&#39;t the point.
-</p>
+pass in a List or Map instance, but that really isn&#39;t the point.</p>
 <p>
 The most obvious optimization to the code from a readability,
 extensibility and utility perspective would be to pass in a list to
 the class&#39;s constructor and use elements in the list in the run method
 logic. However, Ruby provides a nicer way of doing things from the
-perspective of the client code:
-</p>
+perspective of the client code:</p>
 <p>
 %pre
-  :preserve
-</p>
+  :preserve</p>
 <div class="src src-ruby">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RunnableWithParams</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">Thread</span>
-  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">initialize</span>(<span style="color:#f92672">*</span>params)
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initialize</span>(<span style="color:#f92672">*</span>params)
     @params <span style="color:#f92672">=</span> params
   <span style="color:#66d9ef">end</span>
-  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">run</span> <span style="color:#75715e"># needs to be defined by clients</span>
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run</span> <span style="color:#75715e"># needs to be defined by clients</span>
   <span style="color:#66d9ef">end</span>
 <span style="color:#66d9ef">end</span></code></pre></div>
 </div>
 <p>
-The client code for using this class would look like the following:
-</p>
+The client code for using this class would look like the following:</p>
 <div class="src src-ruby">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    rwp <span style="color:#f92672">=</span> <span style="color:#66d9ef">RunnableWithParams</span><span style="color:#f92672">.</span>new param1, param2, param3, param4
     <span style="color:#75715e"># instead of the initially optimized suggestion, where the client code would look like the following</span>
@@ -208,8 +200,7 @@ The client code for using this class would look like the following:
 In my view the first line of the snippet above is slightly superior
 because it is more natural in the way it reads. Again, different
 people will have different views on this perhaps, but both lines of
-code provide a decent solution.
-</p>
+code provide a decent solution.</p>
 
   </article>
 

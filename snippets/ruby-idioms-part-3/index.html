@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -98,6 +98,8 @@
         
         <span class="lastmod"><strong>Last modified:</strong> January 22, 2007</span>
         
+      
+
       </div>
 
     </header>
@@ -109,11 +111,9 @@ is an &#34;expressionist&#34; language.  Meaning almost all statements in Ruby
 evaluates to a value, i.e. everything that reasonably can be is an
 expression in Ruby is.  This is definitely not the way Java thinks or
 works.  So this will take some adjusting to.  Don&#39;t worry I will show
-you an example.
-</p>
+you an example.</p>
 <p>
-Now the Java-fied Ruby code we will optimize is shown below:
-</p>
+Now the Java-fied Ruby code we will optimize is shown below:</p>
 <div class="src src-ruby">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    user_id <span style="color:#f92672">=</span> <span style="color:#66d9ef">nil</span>
     <span style="color:#66d9ef">if</span> comments
@@ -127,41 +127,33 @@ Now the Java-fied Ruby code we will optimize is shown below:
 <p>
 Now that is some ugly code, but sometimes doing something equivalent
 to that in Java is very necessary.  So how would a true Rubyist write
-that code:
-</p>
+that code:</p>
 <div class="src src-ruby">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  user_id <span style="color:#f92672">=</span> comments <span style="color:#f92672">&amp;&amp;</span> comments<span style="color:#f92672">.</span>first <span style="color:#f92672">&amp;&amp;</span> comments<span style="color:#f92672">.</span>first<span style="color:#f92672">.</span>user <span style="color:#f92672">&amp;&amp;</span> comments<span style="color:#f92672">.</span>first<span style="color:#f92672">.</span>user<span style="color:#f92672">.</span>id</code></pre></div>
 </div>
 <p>
-Now let us walk through what this really does:
-</p>
+Now let us walk through what this really does:</p>
 <ol>
 <li>
-<p>
-<code class="verbatim">comments is evaluated, if it is =nil</code> then the value <code class="verbatim">nil</code> is
+<p><code class="verbatim">comments is evaluated, if it is =nil</code> then the value <code class="verbatim">nil</code> is
 returned and the boolean expression is exited out of early because
 it is an AND (<code class="verbatim">&amp;&amp;</code>) which fails the whole expression at the first
-condition.
-</p>
+condition.</p>
 </li>
 <li>
-<p>
-We repeat the process of the previous step fo <code class="verbatim">comments.first</code>,
+<p>We repeat the process of the previous step fo <code class="verbatim">comments.first</code>,
 <code class="verbatim">comments.first.user</code>, and <code class="verbatim">comments.first.user.id</code> until either
 <code class="verbatim">nil</code> is encountered and set as the value of the <code class="verbatim">user_id</code> variable
 or the final part of the boolean expression evaluates to the
-non-<code class="verbatim">nil</code> value that the variable value is set to.
-</p>
+non-<code class="verbatim">nil</code> value that the variable value is set to.</p>
 </li>
 </ol>
-<p>
-This Ruby terseness &#34;optimization&#34; goes against my philosophy of
+<p>This Ruby terseness &#34;optimization&#34; goes against my philosophy of
 producing code that reads as much like natural language as possible.
 For the more elegant, natural language way to solve this, refer to my
 previous blog entry on <a href="/blogs/software/2006/07/rubyisms-forwardables">Rubyisms: Forwardables</a> that discusses about how
 to make evaluating attributes on attributes on attributes of your
-given object a thing of the past in a more elegant way.
-</p>
+given object a thing of the past in a more elegant way.</p>
 
   </article>
 

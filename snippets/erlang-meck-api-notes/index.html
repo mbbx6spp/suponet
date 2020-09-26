@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -98,13 +98,14 @@
         
         <span class="lastmod"><strong>Last modified:</strong> March 23, 2011</span>
         
+      
+
       </div>
 
     </header>
 
     <p>
-Notes on using Meck API (a mocking library in Erlang) which are not well documented.
-</p>
+Notes on using Meck API (a mocking library in Erlang) which are not well documented.</p>
 <div class="src src-erl">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erl" data-lang="erl"><span style="color:#75715e">% Will create a fully mocked version of existing_module until caller crashes
 </span><span style="color:#75715e"></span>meck:<span style="color:#a6e22e">new</span>(ExistingModule).
@@ -124,11 +125,11 @@ Notes on using Meck API (a mocking library in Erlang) which are not well documen
 <span style="color:#75715e">% Get list of all function calls made to the module (in order).
 </span><span style="color:#75715e"></span>History <span style="color:#f92672">=</span> meck:<span style="color:#a6e22e">history</span>(MockedModule).
 <span style="color:#75715e">% History will look _similar_ to an Erlang trace but with {{M, F, A}, Return} format
-</span><span style="color:#75715e"></span><span style="color:#75715e">% e.g. where MockedModule = my_mod
-</span><span style="color:#75715e"></span><span style="color:#75715e">% [
-</span><span style="color:#75715e"></span><span style="color:#75715e">%  {{my_mod, print, []}, ok},
-</span><span style="color:#75715e"></span><span style="color:#75715e">%  {{my_mod, sum, [1,2,3]}, 6},
-</span><span style="color:#75715e"></span><span style="color:#75715e">%  {{my_mod, copy_file, [&#34;non_existing_file&#34;, &#34;other_file_name&#34;]}, error, enoent, Stack}
+</span><span style="color:#75715e">% e.g. where MockedModule = my_mod
+</span><span style="color:#75715e">% [
+</span><span style="color:#75715e">%  {{my_mod, print, []}, ok},
+</span><span style="color:#75715e">%  {{my_mod, sum, [1,2,3]}, 6},
+</span><span style="color:#75715e">%  {{my_mod, copy_file, [&#34;non_existing_file&#34;, &#34;other_file_name&#34;]}, error, enoent, Stack}
 </span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">%</span> ]</code></pre></div>
 </div>
 

@@ -6,10 +6,35 @@
     <description>Recent content on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 Aug 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 25 Sep 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>TypeScript enum versus const enum</title>
+      <link>/software/typescript-enum-versus-const-enum/</link>
+      <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/typescript-enum-versus-const-enum/</guid>
+      <description>Today I found that there is a difference between enum and const enum in TypeScript in the generated JavaScript. Namely:
+  with a non-const enum the compiler generates an object with key-value pairs.
+  with a const enum the definition alone doesn&amp;#39;t generate any code, only usage of the enum does.
+  Note: all generated JavaScript code is generated from the TypeScript v4.1 compiler.
+non-const enum definition   Let&amp;#39;s say we wanted to rate desserts, we might have a rating scale defined as an enumeration.</description>
+    </item>
+    
+    <item>
+      <title>Using three-way diffing context for merge conflict style in Git</title>
+      <link>/software/using-three-way-diffing-context-for-merge-conflict-style-in-git/</link>
+      <pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/using-three-way-diffing-context-for-merge-conflict-style-in-git/</guid>
+      <description>It recently came to my attention that not everyone overrides the default merge.conflictStyle git-config setting. So in case anyone here wanted to try something new out that might help them provide more context during a rebase here you go.
+ I use diff3 which you can set like this to override the default:
+git config --global merge.conflictStyle diff3   When rebasing you will get the following markers:
+&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt; HEAD THIS IS SOME CODE ||||||| merged common ancestors This is some code ======= This is some other code &amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; d5439077.</description>
+    </item>
     
     <item>
       <title>Algebraic Data Types in TypeScript</title>
@@ -17,7 +42,9 @@
       <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/algebraic-data-types-in-typescript/</guid>
-      <description>Note: the code for the TypeScript (to help you follow along) is available here: Encoding Algebraic Data Types in TypeScript code Background   Recently I&amp;#39;ve been reviewing TypeScript code at work. A common pattern I&amp;#39;ve observed in pull requests and some open source projects is a type that looks like the following: type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#39;; type Foo&amp;lt;A&amp;gt; = { _tag : FooTag, /* Required for the &amp;#39;Bar&amp;#39; tagged values of Foo */ bar?</description>
+      <description>Note: the code for the TypeScript (to help you follow along) is available here: Encoding Algebraic Data Types in TypeScript code
+Background  Recently I&amp;#39;ve been reviewing TypeScript code at work. A common pattern I&amp;#39;ve observed in pull requests and some open source projects is a type that looks like the following:
+type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#39;; type Foo&amp;lt;A&amp;gt; = { _tag : FooTag, /* Required for the &amp;#39;Bar&amp;#39; tagged values of Foo */ bar?</description>
     </item>
     
     <item>
@@ -26,7 +53,9 @@
       <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/algebraic-data-types-for-the-maths-inclined/</guid>
-      <description>This was initially published as a section of one of my substack posts.   You might be wondering why the term algebraic data types has the word algebra in it. Don’t sweat it if you hated algebra in high school, I will not call on you to solve simultaneous equations or prove by induction on the board in front of the class.  The basic idea is that through a little algebra we can determine the cardinality of an algebraic data type which represents how many possible values that could inhabit it.</description>
+      <description>This was initially published as a section of one of my substack posts.
+  You might be wondering why the term algebraic data types has the word algebra in it. Don’t sweat it if you hated algebra in high school, I will not call on you to solve simultaneous equations or prove by induction on the board in front of the class.
+ The basic idea is that through a little algebra we can determine the cardinality of an algebraic data type which represents how many possible values that could inhabit it.</description>
     </item>
     
     <item>
@@ -35,7 +64,11 @@
       <pubDate>Thu, 06 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/snippets/javascript-performance-node-cli-flags/</guid>
-      <description>These are some notes on performance engineering related to generating insights into Node.js (v8) performance.  All material here is specific to the v8 engine found in Node.js, Chrome, and Opera.  Generally useful things to learn to tune JavaScript (for the v8 engine) is natives syntax. You can run JS with natives syntax directives sprinkled throughout using the Node.js command-line:    --allow-natives-syntax    Read more on available natives syntax directives available from the source.</description>
+      <description>These are some notes on performance engineering related to generating insights into Node.js (v8) performance.
+ All material here is specific to the v8 engine found in Node.js, Chrome, and Opera.
+ Generally useful things to learn to tune JavaScript (for the v8 engine) is natives syntax. You can run JS with natives syntax directives sprinkled throughout using the Node.js command-line:
+  --allow-natives-syntax
+  Read more on available natives syntax directives available from the source.</description>
     </item>
     
     <item>
@@ -45,7 +78,12 @@
       <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/</guid>
-      <description>Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.  Notes:    all references to $ (dollars) is in reference to US Dollars (USD)    latencies are quoted in milliseconds (ms) unless otherwise noted    this serverless application was deployed using the AWS primitives API Gateway (REST) and AWS Lambda     Last week I deployed my second &amp;#34;serverless app&amp;#34; to production.</description>
+      <description>Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.
+ Notes:
+  all references to $ (dollars) is in reference to US Dollars (USD)
+  latencies are quoted in milliseconds (ms) unless otherwise noted
+  this serverless application was deployed using the AWS primitives API Gateway (REST) and AWS Lambda
+    Last week I deployed my second &amp;#34;serverless app&amp;#34; to production.</description>
     </item>
     
     <item>
@@ -54,7 +92,9 @@
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/software/random-notes-on-unikernels/</guid>
-      <description>This is an adaptation of a Slack chat explanation from work (slightly reworded to read better for the audience) from work in 2017. Random notes on unikernels  Introducing unikernels   You might have heard terms like unikernel, nanokernel, or library operating systems. These aren&amp;#39;t always used in exactly the same way, but they are highly related terms.  MirageOS is the research project that has received the most industry love of which I am aware.</description>
+      <description>This is an adaptation of a Slack chat explanation from work (slightly reworded to read better for the audience) from work in 2017.
+Random notes on unikernels  Introducing unikernels   You might have heard terms like unikernel, nanokernel, or library operating systems. These aren&amp;#39;t always used in exactly the same way, but they are highly related terms.
+ MirageOS is the research project that has received the most industry love of which I am aware.</description>
     </item>
     
     <item>
@@ -63,7 +103,9 @@
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>/software/dynamodb-the-basics/</guid>
-      <description>Introduction   This post introduces concepts and principles used to design DynamoDB tables as I have been learning how to leverage this technology in a new project.  This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS). Key takeaways   While using DynamoDB the last couple of months, one of the big takeaways is that data modeling is a vital part and that the modeling process itself looks structurally similar to relational database design.</description>
+      <description>Introduction   This post introduces concepts and principles used to design DynamoDB tables as I have been learning how to leverage this technology in a new project.
+ This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS).
+  Key takeaways   While using DynamoDB the last couple of months, one of the big takeaways is that data modeling is a vital part and that the modeling process itself looks structurally similar to relational database design.</description>
     </item>
     
     <item>
@@ -72,7 +114,13 @@
       <pubDate>Sat, 15 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>/talks/from-zero-to-haskell-lessons-learned-zurihac-2019-/-zurich-switzerland/</guid>
-      <description>  ZuriHac 2019 / June 2019 - Zurich, Switzerland Keywords     Haskell    Training    Mentoring    Functional Programming   Abstract   TODO Slides   </description>
+      <description>  ZuriHac 2019 / June 2019 - Zurich, Switzerland
+Keywords    Haskell
+  Training
+  Mentoring
+  Functional Programming
+    Abstract   TODO
+  Slides     </description>
     </item>
     
     <item>
@@ -81,7 +129,11 @@
       <pubDate>Sat, 11 May 2019 22:41:25 -0500</pubDate>
       
       <guid>/film/2019/05/shorts/</guid>
-      <description>My absolute favorite format of film is the short film. Here are a list of short films I loved watching:    Re-Gifted (2018): CGI 3D short film that follows the life of a decrative ornament.    3x3 (2009): A tale of two different approaches to mastery.    The Bigger Picture (2015): Two brothers struggling to cope with their elderly mother&amp;#39;s care.    Round About Five (2005): A bicycle courier and a businessman share a fleeeting moment during a London rush hour.</description>
+      <description>My absolute favorite format of film is the short film. Here are a list of short films I loved watching:
+  Re-Gifted (2018): CGI 3D short film that follows the life of a decrative ornament.
+  3x3 (2009): A tale of two different approaches to mastery.
+  The Bigger Picture (2015): Two brothers struggling to cope with their elderly mother&amp;#39;s care.
+  Round About Five (2005): A bicycle courier and a businessman share a fleeeting moment during a London rush hour.</description>
     </item>
     
     <item>
@@ -90,7 +142,12 @@
       <pubDate>Fri, 26 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/talks/dynamically-scaling-a-political-news-and-activism-hub-up-to-5x-the-traffic-in-20-minutes/</guid>
-      <description>C-U Cloud Meetup / April 26, 2019 - Champaign, IL Keywords     AWS    Auto Scaling    EC2    Infrastructure   Abstract   On any given day we can receive traffic peaks up to five times our base traffic, sometimes requiring us to scale out to double our backend app server capacity within a 10-20 minutes window (sometimes at unpredictable times).</description>
+      <description>C-U Cloud Meetup / April 26, 2019 - Champaign, IL
+Keywords    AWS
+  Auto Scaling
+  EC2
+  Infrastructure
+    Abstract   On any given day we can receive traffic peaks up to five times our base traffic, sometimes requiring us to scale out to double our backend app server capacity within a 10-20 minutes window (sometimes at unpredictable times).</description>
     </item>
     
     <item>
@@ -108,7 +165,8 @@
       <pubDate>Sat, 21 Apr 2018 14:15:59 -0500</pubDate>
       
       <guid>/snippets/decoding-lens-operators/</guid>
-      <description>Notation conventions   The following table provides a quick overview of conventions used in symbolic operators in the lens library.    Symbol Concept Denotes     ^ getter gets value from structure   ~ setter sets values in structure   % over apply transformation over selected substructure   = state threads state through   &amp;lt;&amp;lt; before change returns value before specified change   &amp;lt; after change returns value after specified change   ?</description>
+      <description>Notation conventions   The following table provides a quick overview of conventions used in symbolic operators in the lens library.
+   Symbol Concept Denotes     ^ getter gets value from structure   ~ setter sets values in structure   % over apply transformation over selected substructure   = state threads state through   &amp;lt;&amp;lt; before change returns value before specified change   &amp;lt; after change returns value after specified change   ?</description>
     </item>
     
     <item>
@@ -117,7 +175,12 @@
       <pubDate>Fri, 09 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>/talks/functional-operations-functional-programming-at-comcast-labs-connect/</guid>
-      <description>Functional Programming at Comcast Labs Connect / March 2018 - Philadelphia, PA Keywords     Functional Programming    Nix    NixOS    Operations   Abstract   Maintaining configurations for different kinds of nodes and cloud resources in a [micro]service architecture can be an operational nightmare, especially if not managed with the application codebase. CI and CD job environments diverge from production configuration yielding their results unpredictable at best or produce false positives in the worst case.</description>
+      <description>Functional Programming at Comcast Labs Connect / March 2018 - Philadelphia, PA
+Keywords    Functional Programming
+  Nix
+  NixOS
+  Operations
+    Abstract   Maintaining configurations for different kinds of nodes and cloud resources in a [micro]service architecture can be an operational nightmare, especially if not managed with the application codebase. CI and CD job environments diverge from production configuration yielding their results unpredictable at best or produce false positives in the worst case.</description>
     </item>
     
     <item>
@@ -126,7 +189,10 @@
       <pubDate>Thu, 22 Jun 2017 15:42:40 -0500</pubDate>
       
       <guid>/software/economic-concepts-applied-in-software-development-reliability-engineering-and-technical-leadership/</guid>
-      <description>One of my favorite subjects as a layperson is economics. I have found many useful applications of methods and concepts to my work in software development, technical leadership, and reliability engineering roles.  This is a post to share some of these. A few ideas from economics: an overview   Below is an overview of ideas from economics that have resonated with me at work:   Opportunity cost    Looking at what you lose by choosing a specific activity over others.</description>
+      <description>One of my favorite subjects as a layperson is economics. I have found many useful applications of methods and concepts to my work in software development, technical leadership, and reliability engineering roles.
+ This is a post to share some of these.
+A few ideas from economics: an overview   Below is an overview of ideas from economics that have resonated with me at work:
+  Opportunity cost   Looking at what you lose by choosing a specific activity over others.</description>
     </item>
     
     <item>
@@ -135,7 +201,10 @@
       <pubDate>Fri, 10 Mar 2017 15:45:57 -0500</pubDate>
       
       <guid>/jokes/a-mathematician-in-scotland/</guid>
-      <description>A passage I came across recently amused me and I wished to share:   A mathematician, a physicist, and an engineer are riding a train through Scotland.  The engineer looks out the window, sees a black sheep, and exclaims, &amp;#34;Hey! They&amp;#39;ve got black sheep in Scotland!&amp;#34;  The physicist looks out the window and corrects the engineer, &amp;#34;Strictly speaking, all we know is that there&amp;#39;s at least one black sheep in Scotland.</description>
+      <description>A passage I came across recently amused me and I wished to share:
+ A mathematician, a physicist, and an engineer are riding a train through Scotland.
+ The engineer looks out the window, sees a black sheep, and exclaims, &amp;#34;Hey! They&amp;#39;ve got black sheep in Scotland!&amp;#34;
+ The physicist looks out the window and corrects the engineer, &amp;#34;Strictly speaking, all we know is that there&amp;#39;s at least one black sheep in Scotland.</description>
     </item>
     
     <item>
@@ -154,7 +223,12 @@ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;#34;2.3.1&amp;#34; irb
       <pubDate>Tue, 04 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>/talks/functional-and-reactive-operations/</guid>
-      <description>Reactive Summit / October 4, 2016 - Austin, TX Keywords     Functional Programming    Reactive Infrastructure    Nix    NixOS   Abstract   When we start greenfield development of a new service or web application today we&amp;#39;d likely employ a number of practices and design choices that are known to optimise application responsiveness, resiliency, elasticity, and/or composability. Delivering our reactive applications on top of predictable infrastructure will set our project up for success.</description>
+      <description>Reactive Summit / October 4, 2016 - Austin, TX
+Keywords    Functional Programming
+  Reactive Infrastructure
+  Nix
+  NixOS
+    Abstract   When we start greenfield development of a new service or web application today we&amp;#39;d likely employ a number of practices and design choices that are known to optimise application responsiveness, resiliency, elasticity, and/or composability. Delivering our reactive applications on top of predictable infrastructure will set our project up for success.</description>
     </item>
     
     <item>
@@ -163,7 +237,8 @@ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;#34;2.3.1&amp;#34; irb
       <pubDate>Wed, 21 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>/talks/put-a-type-on-it-idris-types-as-propositions/</guid>
-      <description>  Strange Loop 2016 / September 2016 - St. Louis, MO Abstract  Slides   </description>
+      <description>  Strange Loop 2016 / September 2016 - St. Louis, MO
+Abstract   Slides     </description>
     </item>
     
     <item>
@@ -172,7 +247,11 @@ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;#34;2.3.1&amp;#34; irb
       <pubDate>Tue, 30 Aug 2016 00:00:00 +0000</pubDate>
       
       <guid>/snippets/nix-in-your-home-directory/</guid>
-      <description>Prerequisites     wget is installed    tar is installed   Purpose   If you really don&amp;#39;t want to install Nix under /nix (or you can&amp;#39;t) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.  Now whenever you want to run a command under Nix&amp;#39;s control, you should prefix with nixrun.  Good luck.</description>
+      <description>Prerequisites    wget is installed
+  tar is installed
+    Purpose   If you really don&amp;#39;t want to install Nix under /nix (or you can&amp;#39;t) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.
+ Now whenever you want to run a command under Nix&amp;#39;s control, you should prefix with nixrun.
+ Good luck.</description>
     </item>
     
     <item>
@@ -181,7 +260,10 @@ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;#34;2.3.1&amp;#34; irb
       <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
       
       <guid>/software/to-type-or-not-to-static-type/</guid>
-      <description>Originally published as a Gist here: https://gist.github.com/mbbx6spp/60577af8dc4106d6e710cd804292ce20  Minor modifications in formatting and an extra line of no-judgement was added to this text from the original Gist. Purpose, Disclaimer and Confessions   This is the (mostly) no nonesense guide to studies and research that measures and/or compares a variety of facets, characteristics, or manifestations of software development in dynamically vs statically typed programming languages.  Disclaimer: For larger, more complex codebases, I do advocate for statically typed languages that also support algebraic data types, generic types, type classes, and preferrably a form of typelevel expressiveness (e.</description>
+      <description>Originally published as a Gist here: https://gist.github.com/mbbx6spp/60577af8dc4106d6e710cd804292ce20
+ Minor modifications in formatting and an extra line of no-judgement was added to this text from the original Gist.
+Purpose, Disclaimer and Confessions   This is the (mostly) no nonesense guide to studies and research that measures and/or compares a variety of facets, characteristics, or manifestations of software development in dynamically vs statically typed programming languages.
+ Disclaimer: For larger, more complex codebases, I do advocate for statically typed languages that also support algebraic data types, generic types, type classes, and preferrably a form of typelevel expressiveness (e.</description>
     </item>
     
     <item>
@@ -190,7 +272,10 @@ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;#34;2.3.1&amp;#34; irb
       <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
       
       <guid>/talks/from-zero-to-production-nixos-erlang/</guid>
-      <description>Erlang Factory SF 2016 / March 2016 - San Francisco, CA Abstract   This talk will introduce the audience to the Nix packaging, NixOS, and related ecosystem tools for Erlang/Elixir developers.  By reviewing common development, testing, and deployment problems we will look at what Nix has to offer to aid Erlang/Elixir developers in these areas.  From seamless developer environment bootstrapping to consistent CI environments and beyond.</description>
+      <description>Erlang Factory SF 2016 / March 2016 - San Francisco, CA
+Abstract   This talk will introduce the audience to the Nix packaging, NixOS, and related ecosystem tools for Erlang/Elixir developers.
+ By reviewing common development, testing, and deployment problems we will look at what Nix has to offer to aid Erlang/Elixir developers in these areas.
+ From seamless developer environment bootstrapping to consistent CI environments and beyond.</description>
     </item>
     
     <item>
@@ -199,7 +284,9 @@ $ irb irb(main):001:0&amp;gt; RUBY_VERSION =&amp;gt; &amp;#34;2.3.1&amp;#34; irb
       <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/software/parametricity-a-practitioners-guide/</guid>
-      <description>Introduction   What software developer likes surprises, especially in production? Not me. At least not when I am on call. ;)  Wouldn&amp;#39;t it be great if we were able to reason about our code to make our lives as simple as possible when debugging or eliminate debugging altogether?  The big idea of parametricity is that from parametric (or generic) &amp;#34;pure&amp;#34; functions we can determine interesting properties (and more of them) from the parametric (generic) types than the equivalent function fixed with specific types.</description>
+      <description>Introduction   What software developer likes surprises, especially in production? Not me. At least not when I am on call. ;)
+ Wouldn&amp;#39;t it be great if we were able to reason about our code to make our lives as simple as possible when debugging or eliminate debugging altogether?
+ The big idea of parametricity is that from parametric (or generic) &amp;#34;pure&amp;#34; functions we can determine interesting properties (and more of them) from the parametric (generic) types than the equivalent function fixed with specific types.</description>
     </item>
     
     <item>
@@ -218,7 +305,20 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Sat, 25 Jan 2014 00:00:00 +0000</pubDate>
       
       <guid>/snippets/osx-lion-10.7.4-work-laptop-setup/</guid>
-      <description>Homebrew   Install after the command-line tools for Xcode.    tmux    erlang    haskell-platform    zsh    git    figlet    scala    sbt    rbenv    ruby-build    s3cmd    pit   brew install tmux erlang haskell-platform zsh \  git figlet scala sbt rbenv ruby-build s3cmd pit  RubyGems     veewee   App Store     Opera    Skitch    XCode (Command-line tools)    Miro (if only there was a way to uninstall iTunes)   Manual Installs     Skype    Chrome    Firefox    Adium    Command-line tools from Xcode (after install)    GitHub for Mac    Java 7 (and change default to this in Java Preferences)    DropBox    Growl (latest free version)    VirtualBox    Vagrant - see http://vagrantup.</description>
+      <description>Homebrew   Install after the command-line tools for Xcode.
+  tmux
+  erlang
+  haskell-platform
+  zsh
+  git
+  figlet
+  scala
+  sbt
+  rbenv
+  ruby-build
+  s3cmd
+  pit
+  brew install tmux erlang haskell-platform zsh \  git figlet scala sbt rbenv ruby-build s3cmd pit    RubyGems    veewee</description>
     </item>
     
     <item>
@@ -227,7 +327,12 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Tue, 27 Nov 2012 00:00:00 +0000</pubDate>
       
       <guid>/software/algebraic-data-types/</guid>
-      <description>An algebraic data type can take many forms:    Sum type    Product type    Hybrid Sum/Product type    Recursive type (not covered in this post) Sum Types (aka Tagged Unions)     A sum type is a type that has a known and exhaustive list of constructors where a value of that type must be constructed by exactly one of the constructors.</description>
+      <description>An algebraic data type can take many forms:
+  Sum type
+  Product type
+  Hybrid Sum/Product type
+  Recursive type (not covered in this post)
+Sum Types (aka Tagged Unions)     A sum type is a type that has a known and exhaustive list of constructors where a value of that type must be constructed by exactly one of the constructors.</description>
     </item>
     
     <item>
@@ -236,7 +341,10 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Sat, 10 Nov 2012 00:00:00 +0000</pubDate>
       
       <guid>/talks/functional-algebra-monoids-applied/</guid>
-      <description>SCNA 2012 / November 10, 2012 - Chicago, IL Abstract   In functional programming, words from Category Theory are thrown around, but how useful are they really?  This session looks at applications of monoids specifically and how using their algebraic properties offers a solid foundation of reasoning in many types of business domains and reduces developer error as computational context complexity increases.  This will provide a tiny peak at Category Theory&amp;#39;s practical uses in software development and modeling.</description>
+      <description>SCNA 2012 / November 10, 2012 - Chicago, IL
+Abstract   In functional programming, words from Category Theory are thrown around, but how useful are they really?
+ This session looks at applications of monoids specifically and how using their algebraic properties offers a solid foundation of reasoning in many types of business domains and reduces developer error as computational context complexity increases.
+ This will provide a tiny peak at Category Theory&amp;#39;s practical uses in software development and modeling.</description>
     </item>
     
     <item>
@@ -245,7 +353,9 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Fri, 16 Mar 2012 00:00:00 +0000</pubDate>
       
       <guid>/talks/why-haskell/</guid>
-      <description>Code PaLOUsa 2012 / March 16, 2012 - Louisville, KY Abstract   Monads, also known as Kleisli triples in Category Theory, are an (endo-)functor together with two natural transformations, which are surprisingly useful in pure languages like Haskell, but this talk will NOT reference monads. Ever. (Well, at least not in this talk.)  Instead what I intend to impress upon an audience of newcomers to Haskell is the wide array of freely available libraries most of which is liberally licensed open source software, intuitive package management, practical build tools, reasonable documentation (when you know how to read it and where to find it), interactive shell (or REPL), mature compiler, stable runtime, testing tools that will blow your mind away, and a small but collaborative and knowledgeable community of developers.</description>
+      <description>Code PaLOUsa 2012 / March 16, 2012 - Louisville, KY
+Abstract   Monads, also known as Kleisli triples in Category Theory, are an (endo-)functor together with two natural transformations, which are surprisingly useful in pure languages like Haskell, but this talk will NOT reference monads. Ever. (Well, at least not in this talk.)
+ Instead what I intend to impress upon an audience of newcomers to Haskell is the wide array of freely available libraries most of which is liberally licensed open source software, intuitive package management, practical build tools, reasonable documentation (when you know how to read it and where to find it), interactive shell (or REPL), mature compiler, stable runtime, testing tools that will blow your mind away, and a small but collaborative and knowledgeable community of developers.</description>
     </item>
     
     <item>
@@ -254,7 +364,8 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Tue, 10 Jan 2012 00:31:13 -0500</pubDate>
       
       <guid>/snippets/erlang-otp-glossary/</guid>
-      <description>I am hoping this will serve as a reference for coworkers and others new to Erlang and OTP to be able to figure out the terminology easier than I had to. I learned the hard way, so you don&amp;#39;t have to!:)    Erlang/OTP - The set of libraries and conventions that are used as part of the core Erlang distribution by Ericsson to build fault-tolerant, distributed systems more effectively.</description>
+      <description>I am hoping this will serve as a reference for coworkers and others new to Erlang and OTP to be able to figure out the terminology easier than I had to. I learned the hard way, so you don&amp;#39;t have to!:)
+  Erlang/OTP - The set of libraries and conventions that are used as part of the core Erlang distribution by Ericsson to build fault-tolerant, distributed systems more effectively.</description>
     </item>
     
     <item>
@@ -263,7 +374,8 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Mon, 19 Sep 2011 00:00:00 +0000</pubDate>
       
       <guid>/talks/dynamo-not-just-for-datastores/</guid>
-      <description>Strange Loop 2011 / September 19, 2011 - St. Louis, MO Abstract   Find out how to build decentralized distributed systems based on a Dynamo-esque philosophy using riak_core, which is used to abstract away some of the more complicated decentralized and distributed features of Riak KV, Riak Search and other applications. Assumes some knowledge of basic Erlang and its concepts of behaviors. The audience will discover which Dynamo features can be taken advantage of via riak_core and how to build a simple example.</description>
+      <description>Strange Loop 2011 / September 19, 2011 - St. Louis, MO
+Abstract   Find out how to build decentralized distributed systems based on a Dynamo-esque philosophy using riak_core, which is used to abstract away some of the more complicated decentralized and distributed features of Riak KV, Riak Search and other applications. Assumes some knowledge of basic Erlang and its concepts of behaviors. The audience will discover which Dynamo features can be taken advantage of via riak_core and how to build a simple example.</description>
     </item>
     
     <item>
@@ -272,7 +384,9 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Mon, 01 Aug 2011 00:00:00 +0000</pubDate>
       
       <guid>/talks/distributed-developer-workflows-using-git/</guid>
-      <description>C-U Developer Meetup / August, 2011 - Urbana, IL Abstract   This meetup I will be walking the audience through how to setup, configure and maintain distributed development workflows using Git (the distributed VCS developers either love or hate). Much of the workflows suggested here will be applicable to other dVCSes like Mercurial, Darcs and Bazaar.  This will be a light, interactive taster of the chapter I am writing for &amp;#34;The Architecture of Open Source Applications, volume 2&amp;#34; that will be coming to an ebook reader or bookshelf near you in the Autumn of 2011.</description>
+      <description>C-U Developer Meetup / August 2011 - Urbana, IL
+Abstract   This meetup I will be walking the audience through how to setup, configure and maintain distributed development workflows using Git (the distributed VCS developers either love or hate). Much of the workflows suggested here will be applicable to other dVCSes like Mercurial, Darcs and Bazaar.
+ This will be a light, interactive taster of the chapter I am writing for &amp;#34;The Architecture of Open Source Applications, volume 2&amp;#34; that will be coming to an ebook reader or bookshelf near you in the Autumn of 2011.</description>
     </item>
     
     <item>
@@ -281,7 +395,8 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Wed, 23 Mar 2011 01:11:30 -0500</pubDate>
       
       <guid>/snippets/erlang-meck-api-notes/</guid>
-      <description>Notes on using Meck API (a mocking library in Erlang) which are not well documented. % Will create a fully mocked version of existing_module until caller crashes meck:new(ExistingModule). % Will create a fully mocked version of existing_module even after caller crashes meck:new(ExistingModule, [nolink]). % Will allow you to overload existing module, keeping old functions around meck:new(ExistingModule, [passthrough]). % Unload mocks and revert to real module implementation meck:unload(ExistingModule). % Remove functions from the mock module meck:delete(WhateverMockedModule, SomeFun, Arity).</description>
+      <description>Notes on using Meck API (a mocking library in Erlang) which are not well documented.
+% Will create a fully mocked version of existing_module until caller crashes meck:new(ExistingModule). % Will create a fully mocked version of existing_module even after caller crashes meck:new(ExistingModule, [nolink]). % Will allow you to overload existing module, keeping old functions around meck:new(ExistingModule, [passthrough]). % Unload mocks and revert to real module implementation meck:unload(ExistingModule). % Remove functions from the mock module meck:delete(WhateverMockedModule, SomeFun, Arity).</description>
     </item>
     
     <item>
@@ -290,7 +405,9 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Sat, 05 Mar 2011 00:00:00 +0000</pubDate>
       
       <guid>/talks/deploying-distributed-software-services-to-the-cloud-without-breaking-a-sweat/</guid>
-      <description>Code PaLOUsa 2011 / March, 2011 - Louisville, KY Abstract   The promise of cloud computing provides business benefits from reduced costs to increased flexibility. One struggle organizations face as they move to run on cloud infrastructure is automating complex dsitributed deployments.  The presenter will discuss issues surrounding the process of automating complex cloud deployments, review tools and techniques that will aid organizations of any size deploy more complex services on distributed nodes, even across a number of cloud infrastructure providers.</description>
+      <description>Code PaLOUsa 2011 / March 2011 - Louisville, KY
+Abstract   The promise of cloud computing provides business benefits from reduced costs to increased flexibility. One struggle organizations face as they move to run on cloud infrastructure is automating complex dsitributed deployments.
+ The presenter will discuss issues surrounding the process of automating complex cloud deployments, review tools and techniques that will aid organizations of any size deploy more complex services on distributed nodes, even across a number of cloud infrastructure providers.</description>
     </item>
     
     <item>
@@ -299,7 +416,9 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Wed, 16 Feb 2011 01:04:41 -0500</pubDate>
       
       <guid>/snippets/custom-security-handler-nitrogen/</guid>
-      <description>An example of a custom security handler implementation for Nitrogen 2.x.  customer_security_handler.erl %%% HEADER %%% @author Susan Potter &amp;lt;me@susanpotter.net&amp;gt; %%% @date 2011-02-16T17:08 %%% @license BSD %%% @doc Example of a security_handler behavior implementation module. %%% It assumes a callback module is passed in that exports: %%% login_path/0 and authorized/2. %%% @end -module(custom_security_handler). -include_lib(&amp;#34;nitrogen_core/include/wf.hrl&amp;#34;). -behaviour(security_handler). % security_handler behavior exports -export([init/2, finish/2]). %%%. %%% CALLBACKS  %% @hidden %% @todo Add authentication code.</description>
+      <description>An example of a custom security handler implementation for Nitrogen 2.x.
+ customer_security_handler.erl
+%%% HEADER %%% @author Susan Potter &amp;lt;me@susanpotter.net&amp;gt; %%% @date 2011-02-16T17:08 %%% @license BSD %%% @doc Example of a security_handler behavior implementation module. %%% It assumes a callback module is passed in that exports: %%% login_path/0 and authorized/2. %%% @end -module(custom_security_handler). -include_lib(&amp;#34;nitrogen_core/include/wf.hrl&amp;#34;). -behaviour(security_handler). % security_handler behavior exports -export([init/2, finish/2]). %%%. %%% CALLBACKS  %% @hidden %% @todo Add authentication code.</description>
     </item>
     
     <item>
@@ -308,7 +427,8 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Sun, 22 Aug 2010 00:00:00 +0000</pubDate>
       
       <guid>/talks/designing-for-concurrency/</guid>
-      <description> C-U Software Development Group / August 2010 - Champaign, IL  </description>
+      <description> C-U Software Development Group / August 2010 - Champaign, IL
+ </description>
     </item>
     
     <item>
@@ -317,7 +437,8 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Mon, 09 Nov 2009 00:00:00 +0000</pubDate>
       
       <guid>/snippets/predicate-algebra-in-python/</guid>
-      <description>Updated for Python3 recently: class Predicate: &amp;#34;&amp;#34;&amp;#34;Define predicate algebra.&amp;gt;&amp;gt;&amp;gt; isEven=Predicate(lambda x: x %2 == 0)&amp;gt;&amp;gt;&amp;gt; isOdd=Predicate(lambda x: x %2 == 1)&amp;gt;&amp;gt;&amp;gt; isEven(6)True&amp;gt;&amp;gt;&amp;gt; isOdd(6)False&amp;gt;&amp;gt;&amp;gt; isEmpty=Predicate(lambda s: s == &amp;#34;&amp;#34;)&amp;gt;&amp;gt;&amp;gt; isNotEmpty=~isEmpty&amp;gt;&amp;gt;&amp;gt; isEmpty(&amp;#34;c&amp;#34;)False&amp;gt;&amp;gt;&amp;gt; isNotEmpty(&amp;#34;&amp;#34;)False&amp;gt;&amp;gt;&amp;gt; isNotEmpty(&amp;#34;hello&amp;#34;)True&amp;#34;&amp;#34;&amp;#34; def __init__(self, predicate): self.predicate = predicate def __or__(self, other): return Predicate(lambda x: self.predicate(x) or other(x)) def __and__(self, other): return Predicate(lambda x: self.predicate(x) and other(x)) def __xor__(self, other): return Predicate(lambda x: self.predicate(x) ^ other(x)) def __invert__(self): return Predicate(lambda x: not self.</description>
+      <description>Updated for Python3 recently:
+class Predicate: &amp;#34;&amp;#34;&amp;#34; Define predicate algebra. &amp;gt;&amp;gt;&amp;gt; isEven=Predicate(lambda x: x % 2 == 0) &amp;gt;&amp;gt;&amp;gt; isOdd=Predicate(lambda x: x % 2 == 1) &amp;gt;&amp;gt;&amp;gt; isEven(6) True &amp;gt;&amp;gt;&amp;gt; isOdd(6) False &amp;gt;&amp;gt;&amp;gt; isEmpty=Predicate(lambda s: s == &amp;#34;&amp;#34;) &amp;gt;&amp;gt;&amp;gt; isNotEmpty=~isEmpty &amp;gt;&amp;gt;&amp;gt; isEmpty(&amp;#34;c&amp;#34;) False &amp;gt;&amp;gt;&amp;gt; isNotEmpty(&amp;#34;&amp;#34;) False &amp;gt;&amp;gt;&amp;gt; isNotEmpty(&amp;#34;hello&amp;#34;) True &amp;#34;&amp;#34;&amp;#34; def __init__(self, predicate): self.predicate = predicate def __or__(self, other): return Predicate(lambda x: self.predicate(x) or other(x)) def __and__(self, other): return Predicate(lambda x: self.</description>
     </item>
     
     <item>
@@ -335,7 +456,9 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Wed, 24 Jan 2007 18:48:00 -0600</pubDate>
       
       <guid>/snippets/ruby-idioms-part-7/</guid>
-      <description>This idiom I have seen a little more in Rails than I have seen in Ruby, but I am putting it in this Ruby Idioms series anyway.  First off, most of you will know by know that you can &amp;#34;transparently&amp;#34; provide a method in Ruby a Hash. What do I mean by &amp;#34;transparently&amp;#34;? Well have a look at the code example below: user = User.find(:first, :include =&amp;gt; :preferences)   The last argument is actually a Hash even though you do not see the curly braces at all.</description>
+      <description>This idiom I have seen a little more in Rails than I have seen in Ruby, but I am putting it in this Ruby Idioms series anyway.
+ First off, most of you will know by know that you can &amp;#34;transparently&amp;#34; provide a method in Ruby a Hash. What do I mean by &amp;#34;transparently&amp;#34;? Well have a look at the code example below:
+user = User.find(:first, :include =&amp;gt; :preferences)   The last argument is actually a Hash even though you do not see the curly braces at all.</description>
     </item>
     
     <item>
@@ -344,7 +467,8 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Thu, 25 Jan 2007 00:00:00 +0000</pubDate>
       
       <guid>/software/scm-the-next-generation/</guid>
-      <description>I am sure most developers (whether Java, Ruby, Python, or other) have used Subversion, Perforce or CVS to manage and control their projects&amp;#39; source, but have you used darcs or git?  I&amp;#39;m sure most of you would have heard of git it hosts the Linux kernel code currently. Less of you have probably heard of darcs before. Prior to this evening, the most notable point of darcs to me, is that it is written in Haskell.</description>
+      <description>I am sure most developers (whether Java, Ruby, Python, or other) have used Subversion, Perforce or CVS to manage and control their projects&amp;#39; source, but have you used darcs or git?
+ I&amp;#39;m sure most of you would have heard of git it hosts the Linux kernel code currently. Less of you have probably heard of darcs before. Prior to this evening, the most notable point of darcs to me, is that it is written in Haskell.</description>
     </item>
     
     <item>
@@ -353,7 +477,9 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Tue, 23 Jan 2007 22:28:00 -0600</pubDate>
       
       <guid>/snippets/ruby-idioms-part-6/</guid>
-      <description>Tonight I remembered couple more idioms in Ruby and felt compelled to share.  In Javafied Ruby code (below) we often see something like the following: if something for role in user.roles return true if @@roles.include? role end end   Now when I first started writing Ruby code almost 3 years ago, I thought looping through a collection like above was the nicest way. I quickly found Ruby like the following snippet in code I inherited: user.</description>
+      <description>Tonight I remembered couple more idioms in Ruby and felt compelled to share.
+ In Javafied Ruby code (below) we often see something like the following:
+if something for role in user.roles return true if @@roles.include? role end end   Now when I first started writing Ruby code almost 3 years ago, I thought looping through a collection like above was the nicest way. I quickly found Ruby like the following snippet in code I inherited:</description>
     </item>
     
     <item>
@@ -371,7 +497,10 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Mon, 22 Jan 2007 19:36:00 -0600</pubDate>
       
       <guid>/snippets/ruby-idioms-part-4/</guid>
-      <description>To splat or not to splat, that is the question.  In Java to unpack an array&amp;#39;s values into separate variables you would need to do something like the following: burgers = [:hamburger, :bocaburger, :gardenburger, :turkeyburger] t = burgers[0] u = burgers[1] v = burgers[2] w = burgers[3]   In the Ruby mindset this would look more like the following: burgers = [:hamburger, :bocaburger, :gardenburger, :turkeyburger] t, u, v = *burgers # t=&amp;gt;:hamburger, u=&amp;gt; :bocaburger, v=&amp;gt;:gardenburger t, u, v, w = *burgers # t=&amp;gt;:hamburger, u=&amp;gt;:bocaburger, v=&amp;gt;:gardenburger, w=&amp;gt;:turkeyburger t, u, v, w, x = *burgers # t=&amp;gt;:hamburger, u=&amp;gt;:bocaburger, v=&amp;gt;:gardenburger, w=&amp;gt;:turkeyburger, x=&amp;gt;nil   Think of * (or splat) as the Ruby way of unpacking the elements of an Array into separate variables in Ruby.</description>
+      <description>To splat or not to splat, that is the question.
+ In Java to unpack an array&amp;#39;s values into separate variables you would need to do something like the following:
+burgers = [:hamburger, :bocaburger, :gardenburger, :turkeyburger] t = burgers[0] u = burgers[1] v = burgers[2] w = burgers[3]   In the Ruby mindset this would look more like the following:
+burgers = [:hamburger, :bocaburger, :gardenburger, :turkeyburger] t, u, v = *burgers # t=&amp;gt;:hamburger, u=&amp;gt; :bocaburger, v=&amp;gt;:gardenburger t, u, v, w = *burgers # t=&amp;gt;:hamburger, u=&amp;gt;:bocaburger, v=&amp;gt;:gardenburger, w=&amp;gt;:turkeyburger t, u, v, w, x = *burgers # t=&amp;gt;:hamburger, u=&amp;gt;:bocaburger, v=&amp;gt;:gardenburger, w=&amp;gt;:turkeyburger, x=&amp;gt;nil   Think of * (or splat) as the Ruby way of unpacking the elements of an Array into separate variables in Ruby.</description>
     </item>
     
     <item>
@@ -398,7 +527,9 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Mon, 22 Jan 2007 19:16:00 -0600</pubDate>
       
       <guid>/snippets/ruby-idioms-part-1/</guid>
-      <description>With more people moving to Ruby everyday from languages like Java, I wanted to create blog entries on the most common Ruby idioms (especially ones frequently found in Rails core or Rails application code) and briefly explain how to convert your Java mindset to Ruby (over time).  This is the first installment.  First let us inspect what we might do in Java (converted to Ruby syntax) when determining if a value passed in equals various fixed values: if val == 1 || val == 3 || val == 5 puts &amp;#34;hello odd number under 7&amp;#34; end   Rubyists will know this is really ugly, so our first attempt at Rubifying the code above would probably look like: if [1, 3, 5].</description>
+      <description>With more people moving to Ruby everyday from languages like Java, I wanted to create blog entries on the most common Ruby idioms (especially ones frequently found in Rails core or Rails application code) and briefly explain how to convert your Java mindset to Ruby (over time).
+ This is the first installment.
+ First let us inspect what we might do in Java (converted to Ruby syntax) when determining if a value passed in equals various fixed values:</description>
     </item>
     
     <item>
@@ -407,7 +538,11 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Thu, 10 Aug 2006 14:26:00 -0500</pubDate>
       
       <guid>/snippets/rubyisms-reopening-classes/</guid>
-      <description>Ever wished you could write code in a very expressive way like the following examples?    expiration_date = 3.years.from_now    birth_date = 32.years.ago    Now you can, in Ruby at least.  Two years ago I was a very happy Python developer that thought no other language could compete with Python for developer productivity. My Python indoctrination occurred after 7 solid years of proclaiming Java was the ultimate language that would reign supreme.</description>
+      <description>Ever wished you could write code in a very expressive way like the following examples?
+  expiration_date = 3.years.from_now
+  birth_date = 32.years.ago
+  Now you can, in Ruby at least.
+ Two years ago I was a very happy Python developer that thought no other language could compete with Python for developer productivity. My Python indoctrination occurred after 7 solid years of proclaiming Java was the ultimate language that would reign supreme.</description>
     </item>
     
     <item>
@@ -416,7 +551,8 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Tue, 01 Aug 2006 12:43:00 -0500</pubDate>
       
       <guid>/snippets/rubyisms-naming-conventions/</guid>
-      <description>Today I wanted to show the implicit and explicit naming conventions in Ruby for newbies. It isn&amp;#39;t particularly consistent with another language&amp;#39;s conventions, so could cause confusion when reading the Ruby Standard Library (RSL). Where appropriate I also discuss how some of the naming conventions really aid code readability and developer productivity. ClassName and ModuleName [implicit]   Naming classes is very similar to most common conventions following in C++, Java, Python and C#.</description>
+      <description>Today I wanted to show the implicit and explicit naming conventions in Ruby for newbies. It isn&amp;#39;t particularly consistent with another language&amp;#39;s conventions, so could cause confusion when reading the Ruby Standard Library (RSL). Where appropriate I also discuss how some of the naming conventions really aid code readability and developer productivity.
+ClassName and ModuleName [implicit]   Naming classes is very similar to most common conventions following in C++, Java, Python and C#.</description>
     </item>
     
     <item>
@@ -425,7 +561,8 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Sat, 22 Jul 2006 18:23:00 -0500</pubDate>
       
       <guid>/snippets/rubyisms-forwardables/</guid>
-      <description>Recently some Java friends of mine have decided to taste the juicier fruits in Ruby-land with my assistance. So below are some excerpts from an email conversation I had with one about Ruby&amp;#39;s standard library forwardable features:  Suppose we have the following model classes defined for a simple CRM system: Customer, Address, PhoneNumber, Name, etc. Now in Java-land we would have written something that looks like the following Ruby code (except you must type about a hundred more lines - although now you can write annotations to automate basic things like generate getters and setters or the like, which still requires a ridiculous amount of code to accomplish): Name = Struct.</description>
+      <description>Recently some Java friends of mine have decided to taste the juicier fruits in Ruby-land with my assistance. So below are some excerpts from an email conversation I had with one about Ruby&amp;#39;s standard library forwardable features:
+ Suppose we have the following model classes defined for a simple CRM system: Customer, Address, PhoneNumber, Name, etc. Now in Java-land we would have written something that looks like the following Ruby code (except you must type about a hundred more lines - although now you can write annotations to automate basic things like generate getters and setters or the like, which still requires a ridiculous amount of code to accomplish):</description>
     </item>
     
     <item>
@@ -434,7 +571,11 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/about/</guid>
-      <description>I design, build, maintain, deploy, and manage distributed systems while transforming teams to be more effective through individual growth, technical leadership, re-organization, and streamlining processes.  Feel free to ask me:    how I might be able to help your Engineering organization live up to their highest potential;    how I could streamline your delivery workflow and also improve quality;    how I can grow an engineering mindset that allows engineers to take on projects of greater complexity without adding risk;    how I would improve productivity by optimizing for Flow;    how you could use algebraic properties to test-infect our distributed systems;    how I have used functional programming techniques to configure infrastructure more consistently leading to reduced downtime;    how I have led teams building type-safe software that reduced long-term maintenance costs    Current general purpose languages:    Haskell    JavaScript/TypeScript    PureScript    Ruby    Current configuration langauges:    Dhall    Nix    Current interests include practical use of formal methods for verification and risk management in software delivery, congruent configuration management (e.</description>
+      <description>I design, build, maintain, deploy, and manage distributed systems while transforming teams to be more effective through individual growth, technical leadership, re-organization, and streamlining processes.
+ Feel free to ask me:
+  how I might be able to help your Engineering organization live up to their highest potential;
+  how I could streamline your delivery workflow and also improve quality;
+  how I can grow an engineering mindset that allows engineers to take on projects of greater complexity without adding risk;</description>
     </item>
     
   </channel>

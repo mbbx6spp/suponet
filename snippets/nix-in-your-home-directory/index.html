@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -98,54 +98,59 @@
         
         <span class="lastmod"><strong>Last modified:</strong> August 30, 2016</span>
         
+      
+
       </div>
 
     </header>
 
     
+<div id="outline-container-headline-1" class="outline-3">
 <h3 id="headline-1">
 Prerequisites
 </h3>
+<div id="outline-text-headline-1" class="outline-text-3">
 <ul>
 <li>
-<p>
-<code class="verbatim">wget</code> is installed
-</p>
+<p><code class="verbatim">wget</code> is installed</p>
 </li>
 <li>
-<p>
-<code class="verbatim">tar</code> is installed
-</p>
+<p><code class="verbatim">tar</code> is installed</p>
 </li>
 </ul>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-3">
 <h3 id="headline-2">
 Purpose
 </h3>
+<div id="outline-text-headline-2" class="outline-text-3">
 <p>
-If you really don&#39;t want to install Nix under /nix (or you can&#39;t) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.
-</p>
+If you really don&#39;t want to install Nix under /nix (or you can&#39;t) then you can install Nix in your home directory like in the homedir_install.sh script included in this Gist.</p>
 <p>
-Now whenever you want to run a command under Nix&#39;s control, you should prefix with nixrun.
-</p>
+Now whenever you want to run a command under Nix&#39;s control, you should prefix with nixrun.</p>
 <p>
-Good luck.
-</p>
+Good luck.</p>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-3">
 <h3 id="headline-3">
 <code class="verbatim">homedir_install.sh</code>
 </h3>
+<div id="outline-text-headline-3" class="outline-text-3">
 <div class="src src-sh">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#66d9ef">function</span> install_nix<span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-  local -r bindir<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/opt/bin</span><span style="color:#e6db74">&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#66d9ef">function</span> install_nix<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+  local -r bindir<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/opt/bin&#34;</span>
   local -r proot_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://github.com/proot-me/proot-static-build/blob/master/static/proot-x86_64?raw=true&#34;</span>
-  local -r nixdir<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/mnt/nix</span><span style="color:#e6db74">&#34;</span>
+  local -r nixdir<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>HOME<span style="color:#e6db74">}</span><span style="color:#e6db74">/mnt/nix&#34;</span>
   local -r nixver<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.11.2&#34;</span>
   local -r arch<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x86_64&#34;</span>
   local -r os<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;linux&#34;</span>
-  local -r nixbz2_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">http://nixos.org/releases/nix/nix-</span><span style="color:#e6db74">${</span>nixver<span style="color:#e6db74">}</span><span style="color:#e6db74">/nix-</span><span style="color:#e6db74">${</span>nixver<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">${</span>arch<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">${</span>os<span style="color:#e6db74">}</span><span style="color:#e6db74">.tar.bz2</span><span style="color:#e6db74">&#34;</span>
+  local -r nixbz2_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://nixos.org/releases/nix/nix-</span><span style="color:#e6db74">${</span>nixver<span style="color:#e6db74">}</span><span style="color:#e6db74">/nix-</span><span style="color:#e6db74">${</span>nixver<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">${</span>arch<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">${</span>os<span style="color:#e6db74">}</span><span style="color:#e6db74">.tar.bz2&#34;</span>
 
   mkdir -p <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>bindir<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-  wget -O <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>bindir<span style="color:#e6db74">}</span><span style="color:#e6db74">/proot</span><span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>proot_url<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
-  chmod u+x <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>bindir<span style="color:#e6db74">}</span><span style="color:#e6db74">/proot</span><span style="color:#e6db74">&#34;</span>
+  wget -O <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>bindir<span style="color:#e6db74">}</span><span style="color:#e6db74">/proot&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>proot_url<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+  chmod u+x <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>bindir<span style="color:#e6db74">}</span><span style="color:#e6db74">/proot&#34;</span>
 
   mkdir -p <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>nixdir<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
   pushd <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>nixdir<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
@@ -157,9 +162,9 @@ Good luck.
   <span style="color:#f92672">{</span>
     echo <span style="color:#e6db74">&#34;#!/usr/bin/env bash&#34;</span>
     echo
-    echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">proot -b \&#34;</span><span style="color:#e6db74">${</span>nixdir<span style="color:#e6db74">}</span><span style="color:#e6db74">/nix-</span><span style="color:#e6db74">${</span>nixver<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">${</span>arch<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">${</span>os<span style="color:#e6db74">}</span><span style="color:#e6db74">/:/nix\&#34; \$@</span><span style="color:#e6db74">&#34;</span>
-  <span style="color:#f92672">}</span> &gt; <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>bindir<span style="color:#e6db74">}</span><span style="color:#e6db74">/nixrun</span><span style="color:#e6db74">&#34;</span>
-  chmod u+x <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>bindir<span style="color:#e6db74">}</span><span style="color:#e6db74">/nixrun</span><span style="color:#e6db74">&#34;</span>
+    echo <span style="color:#e6db74">&#34;proot -b \&#34;</span><span style="color:#e6db74">${</span>nixdir<span style="color:#e6db74">}</span><span style="color:#e6db74">/nix-</span><span style="color:#e6db74">${</span>nixver<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">${</span>arch<span style="color:#e6db74">}</span><span style="color:#e6db74">-</span><span style="color:#e6db74">${</span>os<span style="color:#e6db74">}</span><span style="color:#e6db74">/:/nix\&#34; \$@&#34;</span>
+  <span style="color:#f92672">}</span> &gt; <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>bindir<span style="color:#e6db74">}</span><span style="color:#e6db74">/nixrun&#34;</span>
+  chmod u+x <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>bindir<span style="color:#e6db74">}</span><span style="color:#e6db74">/nixrun&#34;</span>
 <span style="color:#f92672">}</span>
 
 set -eu
@@ -168,8 +173,9 @@ set -o pipefail
 install_nix</code></pre></div>
 </div>
 <p>
-<strong>Update:</strong> Thanks to <a href="https://github.com/willprice">Will Price (@willprice)</a> for pointing out my original link to the proot static binary was broken on Oct 23, 2017: <a href="https://github.com/proot-me/proot/issues/120#issuecomment-338649213">https://github.com/proot-me/proot/issues/120#issuecomment-338649213</a>
-</p>
+<strong>Update:</strong> Thanks to <a href="https://github.com/willprice">Will Price (@willprice)</a> for pointing out my original link to the proot static binary was broken on Oct 23, 2017: <a href="https://github.com/proot-me/proot/issues/120#issuecomment-338649213">https://github.com/proot-me/proot/issues/120#issuecomment-338649213</a></p>
+</div>
+</div>
 
   </article>
 
