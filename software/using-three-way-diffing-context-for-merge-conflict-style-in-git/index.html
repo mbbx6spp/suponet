@@ -109,7 +109,7 @@
 It recently came to my attention that not everyone overrides the
 default <code class="verbatim">merge.conflictStyle</code> git-config setting. So in case anyone
 here wanted to try something new out that would provide more context
-during a rebase here you go.</p>
+during a Git conflict resolution scenario here you go.</p>
 <p>
 I use <code class="verbatim">diff3</code> which you can set like this to override the default:</p>
 <div class="src src-text">
@@ -117,15 +117,14 @@ I use <code class="verbatim">diff3</code> which you can set like this to overrid
 </div>
 <p>
 When rebasing you will get the following markers:</p>
-<div class="src src-diff">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<div class="src src-diff3">
+<pre><code class="language-diff3" data-lang="diff3">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
 THIS IS SOME CODE
 ||||||| merged common ancestors
 This is some code
 =======
 This is some other code
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d5439077.....
-</code></pre></div>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; d5439077.....</code></pre>
 </div>
 <p>
 Notice the new section from the default version between <code class="verbatim">|||||||</code> and
@@ -139,15 +138,15 @@ the <code class="verbatim">======</code> and <code class="verbatim">&gt;&gt;&gt;
 HEAD of the rebase branch.</p>
 <div id="outline-container-headline-1" class="outline-3">
 <h3 id="headline-1">
-An example
+A simple illustration
 </h3>
 <div id="outline-text-headline-1" class="outline-text-3">
 <p>
 My last merge conflict arose when attempting to apply an old stash to
 the latest HEAD of new branch off of our mainline. It was a Nix
 expression conflict and looked like the following:</p>
-<div class="src src-diff">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-diff" data-lang="diff">&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream
+<div class="src src-diff3">
+<pre><code class="language-diff3" data-lang="diff3">&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream
   ruby = self.ruby_2_5;
 ||||||| merged common ancestors
   nodejs = nodejs_10_22_1;
@@ -155,8 +154,7 @@ expression conflict and looked like the following:</p>
 =======
   nodejs = nodejs_10_22_1;
   #ruby = self.ruby_2_5;
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes
-</code></pre></div>
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes</code></pre>
 </div>
 <p>
 What this is saying is that the current upstream has the following at
@@ -181,7 +179,7 @@ now:</p>
 <p>
 What this is saying is that another change to the upstream branch has
 removed (or moved) the <code class="verbatim">nodejs</code> version pinning, so maybe I should
-too (of course context matters given how Git works).</p>
+discard it (of course context matters given how Git works).</p>
 <p>
 Ignoring the first line of the region around our change means we just
 need to decide how to resolve the line that contains the change:</p>
@@ -194,7 +192,9 @@ need to decide how to resolve the line that contains the change:</p>
 </div>
 <p>
 The added context of the middle section allowed me to understand what
-was not relevant.</p>
+was not relevant for resolution which we could not have confidently
+deduced from just a two way merge conflict context (only the top and
+the bottom parts of the diff above).</p>
 <p>
 My resulting change was to delete the entirety of the conflict because
 I had merely commented out a line of Nix which means we could just
