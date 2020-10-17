@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="generator" content="Hugo 0.64.0" />
   </head>
 
   <body class="">
@@ -109,44 +109,48 @@
 It recently came to my attention that not everyone overrides the
 default <code class="verbatim">merge.conflictStyle</code> git-config setting. So in case anyone
 here wanted to try something new out that would provide more context
-during a Git conflict resolution scenario here you go.</p>
+during a Git conflict resolution scenario here you go.
+</p>
 <p>
-I use <code class="verbatim">diff3</code> which you can set like this to override the default:</p>
+I use <code class="verbatim">diff3</code> which you can set like this to override the default:
+</p>
 <div class="src src-text">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">git config --global merge.conflictStyle diff3</code></pre></div>
 </div>
 <p>
-When rebasing you will get the following markers:</p>
+When rebasing you will get the following markers:
+</p>
 <div class="src src-diff3">
-<pre><code class="language-diff3" data-lang="diff3">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+<pre><code class="language-diff3" data-lang="diff3"><<<<<<< HEAD
 THIS IS SOME CODE
 ||||||| merged common ancestors
 This is some code
 =======
 This is some other code
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; d5439077.....</code></pre>
+>>>>>>> d5439077.....</code></pre>
 </div>
 <p>
 Notice the new section from the default version between <code class="verbatim">|||||||</code> and
 <code class="verbatim">======</code> which denotes the state that the rebased commit expected to
-see.</p>
+see.
+</p>
 <p>
 The meaning of the diff between <code class="verbatim">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code> and <code class="verbatim">|||||||</code> markers
 remains what it used to be in the two way diff output which is the
 code on the branch you are rebasing on top of and the content between
 the <code class="verbatim">======</code> and <code class="verbatim">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code> is what you want to record on top of the
-HEAD of the rebase branch.</p>
-<div id="outline-container-headline-1" class="outline-3">
+HEAD of the rebase branch.
+</p>
 <h3 id="headline-1">
 A simple illustration
 </h3>
-<div id="outline-text-headline-1" class="outline-text-3">
 <p>
 My last merge conflict arose when attempting to apply an old stash to
 the latest HEAD of new branch off of our mainline. It was a Nix
-expression conflict and looked like the following:</p>
+expression conflict and looked like the following:
+</p>
 <div class="src src-diff3">
-<pre><code class="language-diff3" data-lang="diff3">&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream
+<pre><code class="language-diff3" data-lang="diff3"><<<<<<< Updated upstream
   ruby = self.ruby_2_5;
 ||||||| merged common ancestors
   nodejs = nodejs_10_22_1;
@@ -154,24 +158,27 @@ expression conflict and looked like the following:</p>
 =======
   nodejs = nodejs_10_22_1;
   #ruby = self.ruby_2_5;
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes</code></pre>
+>>>>>>> Stashed changes</code></pre>
 </div>
 <p>
 What this is saying is that the current upstream has the following at
-that location of the file:</p>
+that location of the file:
+</p>
 <div class="src src-nix">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nix" data-lang="nix">  ruby <span style="color:#960050;background-color:#1e0010">=</span> self<span style="color:#f92672">.</span>ruby_2_5;</code></pre></div>
 </div>
 <p>
 When this commit was applied last that part of the upstream content
-looked like this:</p>
+looked like this:
+</p>
 <div class="src src-nix">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nix" data-lang="nix">   nodejs <span style="color:#960050;background-color:#1e0010">=</span> nodejs_10_22_1;
    ruby <span style="color:#960050;background-color:#1e0010">=</span> self<span style="color:#f92672">.</span>ruby_2_4;</code></pre></div>
 </div>
 <p>
 My changes has content at that region of the file that looks like this
-now:</p>
+now:
+</p>
 <div class="src src-nix">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nix" data-lang="nix">  nodejs <span style="color:#960050;background-color:#1e0010">=</span> nodejs_10_22_1;
   <span style="color:#75715e">#ruby = self.ruby_2_5;</span></code></pre></div>
@@ -179,46 +186,46 @@ now:</p>
 <p>
 What this is saying is that another change to the upstream branch has
 removed (or moved) the <code class="verbatim">nodejs</code> version pinning, so maybe I should
-discard it (of course context matters given how Git works).</p>
+discard it (of course context matters given how Git works).
+</p>
 <p>
 Ignoring the first line of the region around our change means we just
-need to decide how to resolve the line that contains the change:</p>
+need to decide how to resolve the line that contains the change:
+</p>
 <div class="src src-nix">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nix" data-lang="nix"><span style="color:#f92672">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> Updated upstream
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nix" data-lang="nix"><span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> Updated upstream
   ruby <span style="color:#960050;background-color:#1e0010">=</span> self<span style="color:#f92672">.</span>ruby_2_4;
-<span style="color:#f92672">======</span><span style="color:#960050;background-color:#1e0010">=</span>
+<span style="color:#f92672">==</span><span style="color:#f92672">==</span><span style="color:#f92672">==</span><span style="color:#960050;background-color:#1e0010">=</span>
   <span style="color:#75715e">#ruby = self.ruby_2_5;</span>
-<span style="color:#f92672">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> Stashed changes</code></pre></div>
+<span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> Stashed changes</code></pre></div>
 </div>
 <p>
 The added context of the middle section allowed me to understand what
 was not relevant for resolution which we could not have confidently
 deduced from just a two way merge conflict context (only the top and
-the bottom parts of the diff above).</p>
+the bottom parts of the diff above).
+</p>
 <p>
 My resulting change was to delete the entirety of the conflict because
 I had merely commented out a line of Nix which means we could just
 delete it to get the same effect. It is also a great illustration of
 why commented out unused code, even just to &#34;try&#34; something (assuming
 you have the previous version in Git) hinders effectiveness and I
-should feel bad for this. I do! :)</p>
-</div>
-</div>
-<div id="outline-container-headline-2" class="outline-3">
+should feel bad for this. I do! :)
+</p>
 <h3 id="headline-2">
 Concluding thoughts
 </h3>
-<div id="outline-text-headline-2" class="outline-text-3">
 <p>
 Even in a simple example, we found having this extra context in the
 merge conflict beneficial since it allowed us to understand what part
-of the conflict was relevant to resolve.</p>
+of the conflict was relevant to resolve.
+</p>
 <p>
 Hopefully that provided a quick illustration of how to improve
 effectiveness of resolving merge conflicts, even in a minimally
-beneficial case.</p>
-</div>
-</div>
+beneficial case.
+</p>
 
   </article>
 

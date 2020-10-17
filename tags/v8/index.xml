@@ -17,11 +17,7 @@
       <pubDate>Thu, 06 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/snippets/javascript-performance-node-cli-flags/</guid>
-      <description>These are some notes on performance engineering related to generating insights into Node.js (v8) performance.
- All material here is specific to the v8 engine found in Node.js, Chrome, and Opera.
- Generally useful things to learn to tune JavaScript (for the v8 engine) is natives syntax. You can run JS with natives syntax directives sprinkled throughout using the Node.js command-line:
-  --allow-natives-syntax
-  Read more on available natives syntax directives available from the source.</description>
+      <description>These are some notes on performance engineering related to generating insights into Node.js (v8) performance.  All material here is specific to the v8 engine found in Node.js, Chrome, and Opera.  Generally useful things to learn to tune JavaScript (for the v8 engine) is natives syntax. You can run JS with natives syntax directives sprinkled throughout using the Node.js command-line:    --allow-natives-syntax    Read more on available natives syntax directives available from the source.</description>
     </item>
     
   </channel>

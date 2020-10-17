@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="generator" content="Hugo 0.64.0" />
   </head>
 
   <body class="">
@@ -109,30 +109,35 @@ With more people moving to Ruby everyday from languages like Java, I
 wanted to create blog entries on the most common Ruby idioms
 (especially ones frequently found in Rails core or Rails application
 code) and briefly explain how to convert your Java mindset to Ruby
-(over time).</p>
+(over time).
+</p>
 <p>
-This is the first installment.</p>
+This is the first installment.
+</p>
 <p>
 First let us inspect what we might do in Java (converted to Ruby
 syntax) when determining if a value passed in equals various fixed
-values:</p>
+values:
+</p>
 <div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    <span style="color:#66d9ef">if</span> val <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> val <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">||</span> val <span style="color:#f92672">==</span> <span style="color:#ae81ff">5</span>
-      puts <span style="color:#e6db74">&#34;hello odd number under 7&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    <span style="color:#66d9ef">if</span> val <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672"></span><span style="color:#f92672">||</span> val <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672"></span><span style="color:#f92672">||</span> val <span style="color:#f92672">==</span> <span style="color:#ae81ff">5</span>
+      <span style="color:#f92672"></span>puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hello odd number under 7</span><span style="color:#e6db74">&#34;</span>
     <span style="color:#66d9ef">end</span></code></pre></div>
 </div>
 <p>
 Rubyists will know this is really ugly, so our first attempt at
-Rubifying the code above would probably look like:</p>
+Rubifying the code above would probably look like:
+</p>
 <div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">].</span>include? val
-      puts <span style="color:#e6db74">&#34;hello odd number under 7&#34;</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672"></span>, <span style="color:#ae81ff">3</span><span style="color:#f92672"></span>, <span style="color:#ae81ff">5</span><span style="color:#f92672"></span><span style="color:#f92672">]</span><span style="color:#f92672">.</span>include? val
+      puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hello odd number under 7</span><span style="color:#e6db74">&#34;</span>
     <span style="color:#66d9ef">end</span></code></pre></div>
 </div>
 <p>
-Of course, one-liner fans should note you can also do the following:</p>
+Of course, one-liner fans should note you can also do the following:
+</p>
 <div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    puts <span style="color:#e6db74">&#34;hello odd number under 7&#34;</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">].</span>include? val</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hello odd number under 7</span><span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672"></span>, <span style="color:#ae81ff">3</span><span style="color:#f92672"></span>, <span style="color:#ae81ff">5</span><span style="color:#f92672"></span><span style="color:#f92672">]</span><span style="color:#f92672">.</span>include? val</code></pre></div>
 </div>
 <p>
 <code class="verbatim">include?</code> is an instance method on <code class="verbatim">Array</code> (a builtin Ruby class -
@@ -141,25 +146,28 @@ technically, modules]).  In Ruby developers use &#34;?&#34; postfixes in
 method names as a way to letting clients of the method know it should
 return a true or false value.  I described the unwritten/unofficial
 Ruby conventions and guidelines for naming in a previous blog entry,
-<a href="/blogs/software/2006/08/rubyisms-naming-conventions.html">Rubyisms: Naming Conventions</a>.</p>
+<a href="/blogs/software/2006/08/rubyisms-naming-conventions.html">Rubyisms: Naming Conventions</a>.
+</p>
 <p>
 This first attempt is fairly nice, because it makes (in my opinion)
 the code more readable and more like my natural language, English.
-Now it doesn&#39;t quite read as well as it could, so let&#39;s try again:</p>
+Now it doesn&#39;t quite read as well as it could, so let&#39;s try again:
+</p>
 <div class="src src-ruby">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Array</span>
       <span style="color:#66d9ef">alias</span> <span style="color:#e6db74">:includes?</span> <span style="color:#e6db74">:include?</span>
     <span style="color:#66d9ef">end</span>
 
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">].</span>includes? val
-      puts <span style="color:#e6db74">&#34;hello odd number under 7&#34;</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672"></span>, <span style="color:#ae81ff">3</span><span style="color:#f92672"></span>, <span style="color:#ae81ff">5</span><span style="color:#f92672"></span><span style="color:#f92672">]</span><span style="color:#f92672">.</span>includes? val
+      puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hello odd number under 7</span><span style="color:#e6db74">&#34;</span>
     <span style="color:#66d9ef">end</span>
     <span style="color:#75715e"># OR the one-liner version</span>
-    puts <span style="color:#e6db74">&#34;hello odd number under 7&#34;</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">].</span>includes? val</code></pre></div>
+    puts <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hello odd number under 7</span><span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span><span style="color:#f92672"></span>, <span style="color:#ae81ff">3</span><span style="color:#f92672"></span>, <span style="color:#ae81ff">5</span><span style="color:#f92672"></span><span style="color:#f92672">]</span><span style="color:#f92672">.</span>includes? val</code></pre></div>
 </div>
 <p>
 The code snippet above reopens a class in Ruby, a facility I describe
-in a previous blog entry <a href="/blogs/software/2006/08/rubyisms-reopening-classes">Rubyisms: Reopening Classes</a>.</p>
+in a previous blog entry <a href="/blogs/software/2006/08/rubyisms-reopening-classes">Rubyisms: Reopening Classes</a>.
+</p>
 <p>
 Now some of you might be saying, &#34;this is terrible…you have
 converted a 3 line code snippet into 6.&#34;  Well not exactly.  The
@@ -167,13 +175,15 @@ reason is, the first three lines just need to be put in a ruby file to
 extend the Array class just once in the whole application, library or
 framework and you can use the aliased method, <code class="verbatim">includes?</code> as many
 times as you like throughout the code base with not a care in the
-world.</p>
+world.
+</p>
 <p>
 There are a variety of ways to change the code to be more readable and
 this gets subjective, but I&#39;ll leave that as an exercise for the
 reader.  Ruby&#39;s core <code class="verbatim">Range</code> class could be used to generate an array
 of odd (or even) numbers under a specific number. Another blog entry
-will deal with this.</p>
+will deal with this.
+</p>
 
   </article>
 

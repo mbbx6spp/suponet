@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="generator" content="Hugo 0.64.0" />
   </head>
 
   <body class="">
@@ -105,19 +105,23 @@
     </header>
 
     <p>
-This was initially published as a section of one of <a href="https://funprogramming.substack.com/p/algebraic-data-types">my substack posts</a>.</p>
+This was initially published as a section of one of <a href="https://funprogramming.substack.com/p/algebraic-data-types">my substack posts</a>.
+</p>
 <hr>
 <p>
 You might be wondering why the term <strong>algebraic data types</strong> has the
 word <em>algebra</em> in it. Don’t sweat it if you hated algebra in high
 school, I will not call on you to solve simultaneous equations or
-prove by induction on the board in front of the class.</p>
+prove by induction on the board in front of the class.
+</p>
 <p>
 The basic idea is that through a little algebra we can determine the
 <strong>cardinality</strong> of an algebraic data type which represents how many
-possible values that could inhabit it.</p>
+possible values that could inhabit it.
+</p>
 <p>
-Consider the following sum type:</p>
+Consider the following sum type:
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Color</span>
   <span style="color:#75715e">-- | RGB uses 8 bits in three color channels with values of 0–255</span>
@@ -131,17 +135,20 @@ and each field can hold 256 different values which gives us a
 cardinality of 256^3 = 256*256*256 = 16777216. This means we can
 represent 16,777,216 (&gt;16 million) different colors with this
 representation. Record types are sometimes called “product types” for
-this reason.</p>
+this reason.
+</p>
 <p>
 Datatypes defined in terms of mutually exclusive data constructors are
 called “sum types” for a similar reason because you can “sum up” the
-cardinalities of all constructors to find the cardinality of the datatype.</p>
+cardinalities of all constructors to find the cardinality of the datatype.
+</p>
 <p>
 Consider our <code class="verbatim">Color</code> datatype from above where now our application needs
 to denote colors using the subtractive CMY representation because
 sometimes we want to be able to use our library or application for dye
 colors (rather than for light-based usages like photography,
-television, digital screens, etc.).</p>
+television, digital screens, etc.).
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Color</span>
   <span style="color:#75715e">-- | RGB uses 8 bits in three color channels with values of 0–255</span>
@@ -157,33 +164,47 @@ constructor acts as a way to differentiate between the
 representations, therefore the number of colors with different
 representations we can construct with this new datatype definition is
 the sum of the cardinality of both constructions (<code class="verbatim">RBG</code>, <code class="verbatim">CMY</code>) which
-happens to be 16777216 + 16777216 = 33,554,432.</p>
+happens to be 16777216 + 16777216 = 33,554,432.
+</p>
 <p>
 This post was just a teaser to show how the algebra of algebraic data
 types start off, but it continues even further than what we have
 covered with recursive algebraic data types. More details can be found
-in these blog posts or talks:</p>
+in these blog posts or talks:
+</p>
 <ul>
 <li>
-<p><a href="https://codewords.recurse.com/issues/three/algebra-and-calculus-of-algebraic-data-types">The algebra (and calculus!) of algebraic data types (post)</a></p>
+<p>
+<a href="https://codewords.recurse.com/issues/three/algebra-and-calculus-of-algebraic-data-types">The algebra (and calculus!) of algebraic data types (post)</a>
+</p>
 </li>
 <li>
-<p><a href="https://www.youtube.com/watch?v=YScIPA8RbVE">The algebra of algebraic data types (talk)</a></p>
+<p>
+<a href="https://www.youtube.com/watch?v=YScIPA8RbVE">The algebra of algebraic data types (talk)</a>
+</p>
 </li>
 </ul>
-<p>That zippers are derivations of the original type is wild and fun for
-the math inclined (see the links above)! :)</p>
+<p>
+That zippers are derivations of the original type is wild and fun for
+the math inclined (see the links above)! :)
+</p>
 <p>
 I hope you enjoy learning more about the algebra of ADTs as much as I
-did when I first learned about it.</p>
+did when I first learned about it.
+</p>
 <p>
-Useful links for the domain we explore with datatypes include:</p>
+Useful links for the domain we explore with datatypes include:
+</p>
 <ul>
 <li>
-<p><a href="https://en.wikipedia.org/wiki/RGB_color_model">RGB colo(u)r model</a></p>
+<p>
+<a href="https://en.wikipedia.org/wiki/RGB_color_model">RGB colo(u)r model</a>
+</p>
 </li>
 <li>
-<p><a href="https://en.wikipedia.org/wiki/CMY_color_model">CMY colo(u)r model</a></p>
+<p>
+<a href="https://en.wikipedia.org/wiki/CMY_color_model">CMY colo(u)r model</a>
+</p>
 </li>
 </ul>
 

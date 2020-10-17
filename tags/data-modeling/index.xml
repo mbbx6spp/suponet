@@ -17,9 +17,7 @@
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>/software/dynamodb-the-basics/</guid>
-      <description>Introduction   This post introduces concepts and principles used to design DynamoDB tables as I have been learning how to leverage this technology in a new project.
- This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS).
-  Key takeaways   While using DynamoDB the last couple of months, one of the big takeaways is that data modeling is a vital part and that the modeling process itself looks structurally similar to relational database design.</description>
+      <description>Introduction   This post introduces concepts and principles used to design DynamoDB tables as I have been learning how to leverage this technology in a new project.  This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS). Key takeaways   While using DynamoDB the last couple of months, one of the big takeaways is that data modeling is a vital part and that the modeling process itself looks structurally similar to relational database design.</description>
     </item>
     
   </channel>

@@ -50,7 +50,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="generator" content="Hugo 0.64.0" />
   </head>
 
   <body class="">
@@ -109,96 +109,119 @@
     </header>
 
     <p>
-<img src="/images/car-dashboard-small.jpg" alt="/images/car-dashboard-small.jpg" title="/images/car-dashboard-small.jpg" /></p>
+<img src="/images/car-dashboard-small.jpg" alt="/images/car-dashboard-small.jpg" title="/images/car-dashboard-small.jpg" />
+</p>
 <span>Photo by <a href="https://unsplash.com/@davealmine?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dawid Zawiła</a> on <a href="https://unsplash.com/s/photos/car-dashboard?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
 <p>
-This was adapted from <a href="https://twitter.com/SusanPotter/status/1279274236897615872">a tweet thread on June 3rd, 2020</a>.</p>
+This was adapted from <a href="https://twitter.com/SusanPotter/status/1279274236897615872">a tweet thread on June 3rd, 2020</a>.
+</p>
 <p>
-Notes:</p>
+Notes:
+</p>
 <ul>
 <li>
-<p>all references to $ (dollars) is in reference to US Dollars (USD)</p>
+<p>
+all references to $ (dollars) is in reference to US Dollars (USD)
+</p>
 </li>
 <li>
-<p>latencies are quoted in milliseconds (ms) unless otherwise noted</p>
+<p>
+latencies are quoted in milliseconds (ms) unless otherwise noted
+</p>
 </li>
 <li>
-<p>this serverless application was deployed using the AWS primitives
-API Gateway (REST) and AWS Lambda</p>
+<p>
+this serverless application was deployed using the AWS primitives
+API Gateway (REST) and AWS Lambda
+</p>
 </li>
 </ul>
 <hr>
 <p>
 Last week I deployed my second <em>&#34;serverless app&#34;</em> to production. Being
 fairly new to deploying serverless applications at scale I was
-concerned about the costs.</p>
+concerned about the costs.
+</p>
 <p>
 Without any cost optimization (during our first week in production) we
 spent ~$15/day on API Gateway + AWS Lambda invocations with
-~32k/minute (approx 530 invocations per second) lambda invocations at peak.</p>
+~32k/minute (approx 530 invocations per second) lambda invocations at peak.
+</p>
 <p>
 Our P99 (99th percentile) was at ~50ms latency and we used 50-75% of
 memory allowance (max 128MB). We shipped using the more expensive REST
 API Gateway due to familiarity but for this use case we could use the
-newer (and cheaper) HTTP API Gateway since we don&#39;t need caching.</p>
+newer (and cheaper) HTTP API Gateway since we don&#39;t need caching.
+</p>
 <p>
 An amusing side note is that our CloudWatch Logs cost a whopping
-$0.40/per day (yes, that means it was 40 cents a day).</p>
+$0.40/per day (yes, that means it was 40 cents a day).
+</p>
 <p>
 I thought I was going to be surprised in a negative way about the
 costs but after this week we haven&#39;t broken the bank and there is room
 for cost optimization that will not take too long now that functional
-barebones is running and fully automated for delivery.</p>
+barebones is running and fully automated for delivery.
+</p>
 <p>
 This is the second production backend I have launched written in
 PureScript during this pandemic (COVID-19 in case we have a sequence
 of them and you can&#39;t remember). Besides the SAM/AWS automation (docs
 conflicting with implementation) hell it was mostly fun to
 build. First one was a different beast (lower traffic volume, but
-higher complexity with an authorizer lambda).</p>
+higher complexity with an authorizer lambda).
+</p>
 <p>
 For those that are used to a pre-serverless world, in terms of
 debugging, deploying a serverless application is definitely not like
 what you are used to, depending on how deep you would troubleshoot
 issues. It will require some adjustment from developers used to that
-model but the change is not insurmountable.</p>
+model but the change is not insurmountable.
+</p>
 <p>
 For instance, I can&#39;t <code class="verbatim">strace</code>, <code class="verbatim">perf</code>, <code class="verbatim">ss</code>, <code class="verbatim">eBPF</code>, etc inside the
 lambda container running in AWS. However, what I can do is run a
-simulated API Gateway locally using SAM with localhost endpoint.</p>
+simulated API Gateway locally using SAM with localhost endpoint.
+</p>
 <p>
 The metrics service we use (DataDog) needs a custom Lambda runtime for
 their full level of APM, however, that is not OK for us security wise
 even if it is open source because we don&#39;t have the time to review it
-constantly so will leverge the embedded metric format.</p>
+constantly so will leverge the embedded metric format.
+</p>
 <p>
 Deployment automation (to get to our level of done and satisfy our
 push-button zero downtime requirements) in AWS always comes with a
 handful of warts that prevent us from doing exactly as we want. I
 spent more time in SAM CLI&#39;s Github issues reading workarounds than
-developing app code or deployment automation, perhaps combined.</p>
+developing app code or deployment automation, perhaps combined.
+</p>
 <p>
 Our current infrastructure satisfies push-button zero downtime deploys
 with EC2 instances in autoscaling groups (ASGs) attached to
 application load balancers (ALB) with some custom code. We wrote it 3
 years ago and only tweaked it 2-3 times since. I anticipate a similar
-payoff here.</p>
+payoff here.
+</p>
 <p>
 We have not yet setup reserved concurrency in AWS Lambda. After
 switching to the HTTP API Gateway, We will experiment with that for
 costs. Despite low enough costs currently for our budget our costs
 could balloon fast if we got a surge so there are a few other
-parameters we would like to tweak including reserved concurrency.</p>
+parameters we would like to tweak including reserved concurrency.
+</p>
 <p>
 The nature of the AWS Lambda deployed as part of this application is a
-write path HTTP Lambda.</p>
+write path HTTP Lambda.
+</p>
 <hr>
 <p>
 I put together a sample Git repository on GitHub of a <a href="https://github.com/mbbx6spp/lambda-purescript-starter">barebones
 Express-based PureScript Lambda with a SAM template.yaml</a> (for
 deployment automation) to help others get started with PureScript
 serverless applications quicker using familiar HTTP APIs (Express)
-from JavaScript.</p>
+from JavaScript.
+</p>
 
   </article>
 

@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="generator" content="Hugo 0.64.0" />
   </head>
 
   <body class="">
@@ -104,7 +104,8 @@
 
     </header>
 
-    <p>Some of you may say this isn&#39;t strictly an idiom, but it is dependent
+    <p>
+Some of you may say this isn&#39;t strictly an idiom, but it is dependent
 on Ruby&#39;s core API and classes, so I have included it.  Ranges are a
 very nice low-level abstraction and can save Ruby developers a lot of
 time for certain coding needs.  In a previous idiom example on this
@@ -113,15 +114,17 @@ out by hand is hardly consuming so I typed <code class="verbatim">[1, 3, 5]</cod
 However, say we wanted to check if a number given by the user is an
 odd number under, say, 1001.  How can we do that in as few lines of
 code, while still maintaining or even enhancing code readability?
-Look no further:</p>
+Look no further:
+</p>
 <div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  ls <span style="color:#f92672">=</span> <span style="color:#f92672">[]</span>
-  (<span style="color:#ae81ff">1</span><span style="color:#f92672">...</span><span style="color:#ae81ff">1001</span>)<span style="color:#f92672">.</span>step(<span style="color:#ae81ff">2</span>) {<span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> ls <span style="color:#f92672">&lt;&lt;</span> x} <span style="color:#75715e">#=&gt; [1, 3, ..., 997, 999]</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  ls <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#f92672">]</span>
+  (<span style="color:#ae81ff">1</span><span style="color:#f92672"></span><span style="color:#f92672">...</span><span style="color:#ae81ff">1001</span><span style="color:#f92672"></span>)<span style="color:#f92672">.</span>step(<span style="color:#ae81ff">2</span><span style="color:#f92672"></span>) {<span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> ls <span style="color:#f92672">&lt;&lt;</span> x} <span style="color:#75715e">#=&gt; [1, 3, ..., 997, 999]</span></code></pre></div>
 </div>
 <p>
 For Java heads that don&#39;t understand blocks - too bad that is out of
 the scope of this blog entry:)  Go and do you homework then revisit.
-Google should be able to help you out in this regard.</p>
+Google should be able to help you out in this regard.
+</p>
 <p>
 Of course, Ruby developers could and would debate whether my solution
 above is the &#34;best&#34;, concerning how terse and readable it is since
@@ -129,16 +132,18 @@ there are so many ways of doing this that provide a decent solution.
 There may even be another solution in the Ruby universe I may prefer,
 but at present this maintains readability to a high standard (assuming
 you understand blocks, of course), again in my opinion.  I may even
-expand the code as follows to make it truly readable:</p>
+expand the code as follows to make it truly readable:
+</p>
 <div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  ls <span style="color:#f92672">=</span> <span style="color:#f92672">[]</span>
-  (<span style="color:#ae81ff">1</span><span style="color:#f92672">...</span><span style="color:#ae81ff">1001</span>)<span style="color:#f92672">.</span>step(<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>x<span style="color:#f92672">|</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  ls <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#f92672">]</span>
+  (<span style="color:#ae81ff">1</span><span style="color:#f92672"></span><span style="color:#f92672">...</span><span style="color:#ae81ff">1001</span><span style="color:#f92672"></span>)<span style="color:#f92672">.</span>step(<span style="color:#ae81ff">2</span><span style="color:#f92672"></span>) <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>x<span style="color:#f92672">|</span>
     ls <span style="color:#f92672">&lt;&lt;</span> x
   <span style="color:#66d9ef">end</span> <span style="color:#75715e">#=&gt; [1, 3, ..., 997, 999]</span></code></pre></div>
 </div>
 <p>
 What are a couple of extra lines to make something as readable as
-possible anyway?</p>
+possible anyway?
+</p>
 
   </article>
 

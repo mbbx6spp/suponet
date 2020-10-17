@@ -591,6 +591,11 @@
   </url>
   
   <url>
+    <loc>/software/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>/about/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

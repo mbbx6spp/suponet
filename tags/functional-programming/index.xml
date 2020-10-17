@@ -17,9 +17,7 @@
       <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/algebraic-data-types-in-typescript/</guid>
-      <description>Note: the code for the TypeScript (to help you follow along) is available here: Encoding Algebraic Data Types in TypeScript code
-Background  Recently I&amp;#39;ve been reviewing TypeScript code at work. A common pattern I&amp;#39;ve observed in pull requests and some open source projects is a type that looks like the following:
-type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#39;; type Foo&amp;lt;A&amp;gt; = { _tag : FooTag, /* Required for the &amp;#39;Bar&amp;#39; tagged values of Foo */ bar?</description>
+      <description>Note: the code for the TypeScript (to help you follow along) is available here: Encoding Algebraic Data Types in TypeScript code Background   Recently I&amp;#39;ve been reviewing TypeScript code at work. A common pattern I&amp;#39;ve observed in pull requests and some open source projects is a type that looks like the following: type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#39;; type Foo&amp;lt;A&amp;gt; = { _tag : FooTag, /* Required for the &amp;#39;Bar&amp;#39; tagged values of Foo */ bar?</description>
     </item>
     
     <item>
@@ -29,12 +27,7 @@ type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#
       <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/</guid>
-      <description>Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.
- Notes:
-  all references to $ (dollars) is in reference to US Dollars (USD)
-  latencies are quoted in milliseconds (ms) unless otherwise noted
-  this serverless application was deployed using the AWS primitives API Gateway (REST) and AWS Lambda
-    Last week I deployed my second &amp;#34;serverless app&amp;#34; to production.</description>
+      <description>Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.  Notes:    all references to $ (dollars) is in reference to US Dollars (USD)    latencies are quoted in milliseconds (ms) unless otherwise noted    this serverless application was deployed using the AWS primitives API Gateway (REST) and AWS Lambda     Last week I deployed my second &amp;#34;serverless app&amp;#34; to production.</description>
     </item>
     
   </channel>

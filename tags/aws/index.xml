@@ -18,12 +18,7 @@
       <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/</guid>
-      <description>Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.
- Notes:
-  all references to $ (dollars) is in reference to US Dollars (USD)
-  latencies are quoted in milliseconds (ms) unless otherwise noted
-  this serverless application was deployed using the AWS primitives API Gateway (REST) and AWS Lambda
-    Last week I deployed my second &amp;#34;serverless app&amp;#34; to production.</description>
+      <description>Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.  Notes:    all references to $ (dollars) is in reference to US Dollars (USD)    latencies are quoted in milliseconds (ms) unless otherwise noted    this serverless application was deployed using the AWS primitives API Gateway (REST) and AWS Lambda     Last week I deployed my second &amp;#34;serverless app&amp;#34; to production.</description>
     </item>
     
   </channel>

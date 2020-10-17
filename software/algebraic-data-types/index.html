@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="generator" content="Hugo 0.64.0" />
   </head>
 
   <body class="">
@@ -106,46 +106,59 @@
 
     
 <p>
-An algebraic data type can take many forms:</p>
+An algebraic data type can take many forms:
+</p>
 <ul>
 <li>
-<p>Sum type</p>
+<p>
+Sum type
+</p>
 </li>
 <li>
-<p>Product type</p>
+<p>
+Product type
+</p>
 </li>
 <li>
-<p>Hybrid Sum/Product type</p>
+<p>
+Hybrid Sum/Product type
+</p>
 </li>
 <li>
-<p>Recursive type (not covered in this post)</p>
-<div id="outline-container-headline-1" class="outline-3">
+<p>
+Recursive type (not covered in this post)
+</p>
 <h3 id="headline-1">
 Sum Types (aka Tagged Unions)
 </h3>
-</div>
 </li>
 </ul>
-<p>A sum type is a type that has a known and exhaustive list of
+<p>
+A sum type is a type that has a known and exhaustive list of
 constructors where a value of that type must be constructed by exactly
-one of the constructors. Also known as a <strong>tagged union</strong> or <strong>coproduct</strong>.</p>
+one of the constructors. Also known as a <strong>tagged union</strong> or <strong>coproduct</strong>.
+</p>
 <p>
 A sum type is a type definition where our type has a finite number of
 known constructions. Each construction may hold zero or more components of
 specific types (although these components may vary from construction
-to construction).</p>
+to construction).
+</p>
 <p>
 The simplest definition of a sum type is the <code class="verbatim">Unit</code> type which would
-look something like this in Scala:</p>
+look something like this in Scala:
+</p>
 <div class="src src-scala">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">case</span> <span style="color:#66d9ef">object</span> <span style="color:#a6e22e">Unit</span></code></pre></div>
 </div>
 <p>
-It has example one constructor (<code class="verbatim">Unit</code>) with no arguments.</p>
+It has example one constructor (<code class="verbatim">Unit</code>) with no arguments.
+</p>
 <p>
 Let&#39;s step back to a basic example of a sum type (which is one variety
 of ADTs) to illustrate the difference between a sum type and a pure
-product type.</p>
+product type.
+</p>
 <div class="src src-scala">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#75715e">// Scala here to mix it up :)
 </span><span style="color:#75715e"></span>
@@ -164,7 +177,8 @@ number of constructors upfront (typically how case classes in Scala
 get used [well]). Note that the trait is sealed. For non-Scala people,
 this just means that outside of this source file, no extensions of
 this trait are allowed. i.e. the compiler can guarantee that consumers
-of our libraries or toolkits cannot extend <code class="verbatim">USCoin</code>.</p>
+of our libraries or toolkits cannot extend <code class="verbatim">USCoin</code>.
+</p>
 <p>
 In this particular scenario that is probably what we want (not
 allowing consumers of our code to extend this). The likelihood that
@@ -172,10 +186,12 @@ the US central bank would introduce new coins or take existing coins
 out of circulation before we update our library in time to cater for
 it, is pretty unlikely. However, there is another good reason why we
 might want this too: we can know we have exhaustively catered for all
-constructions of <code class="verbatim">USCoin</code> in our supporting logic or calculations.</p>
+constructions of <code class="verbatim">USCoin</code> in our supporting logic or calculations.
+</p>
 <p>
 You might be wondering how this can be done. Let us try to use this
-code in <code class="verbatim">sbt console</code>:</p>
+code in <code class="verbatim">sbt console</code>:
+</p>
 <div class="src src-scala">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">scala<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">import</span> funalgebra.algdt._
 <span style="color:#66d9ef">import</span> funalgebra.algdt._
@@ -188,7 +204,7 @@ scala<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">object<
      <span style="color:#f92672">|</span>     <span style="color:#66d9ef">case</span> <span style="color:#a6e22e">Quarter</span> <span style="color:#66d9ef">=&gt;</span> <span style="color:#66d9ef">true</span>
      <span style="color:#f92672">|</span>   <span style="color:#f92672">}</span>
      <span style="color:#f92672">|</span> <span style="color:#f92672">}</span>
-<span style="color:#66d9ef">:</span><span style="color:#960050;background-color:#1e0010">12</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">warning:</span> <span style="color:#66d9ef">match</span> <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">exhaustive!</span>
+<span style="color:#66d9ef">:</span><span style="color:#960050;background-color:#1e0010">1</span><span style="color:#960050;background-color:#1e0010">2</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">warning</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">match</span> <span style="color:#66d9ef">is</span> <span style="color:#66d9ef">not</span> <span style="color:#66d9ef">exhaustive</span><span style="color:#66d9ef">!</span>
 missing combination         <span style="color:#a6e22e">Dollar</span>
 
          <span style="color:#66d9ef">def</span> accepts<span style="color:#f92672">(</span>coin<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">USCoin</span><span style="color:#f92672">)</span><span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Boolean</span> <span style="color:#f92672">=</span> coin <span style="color:#66d9ef">match</span> <span style="color:#f92672">{</span>
@@ -199,22 +215,23 @@ defined module <span style="color:#a6e22e">VendingMachine</span></code></pre></d
 What happened here is that we forgot to match on the Dollar
 constructor for USCoin sum type and the Scala compiler warned us about
 it. If you find you want this behavior for a particular data type
-definition, then you probably want to define it as a sum type this way.</p>
-<div id="outline-container-headline-2" class="outline-3">
+definition, then you probably want to define it as a sum type this way.
+</p>
 <h3 id="headline-2">
 Product Types (aka Record Types)
 </h3>
-<div id="outline-text-headline-2" class="outline-text-3">
 <p>
 In the language of abstract algebra, which computer scientists in
 programming language theory appear to have adopted, a data type with
 exactly one constructor is isomorphic to what is often called a
 product type that takes an ordered list of typed operands. Informally
-these are sometimes called record types.</p>
+these are sometimes called record types.
+</p>
 <p>
 The archetypal product type is the tuple. For example, perhaps we want
 to represent an image element in an HTML page. We might initially
-represent it as the following tuple:</p>
+represent it as the following tuple:
+</p>
 <div class="src src-scala">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#f92672">(</span><span style="color:#a6e22e">String</span><span style="color:#f92672">,</span> <span style="color:#a6e22e">Int</span><span style="color:#f92672">,</span> <span style="color:#a6e22e">Int</span><span style="color:#f92672">)</span></code></pre></div>
 </div>
@@ -222,38 +239,41 @@ represent it as the following tuple:</p>
 Here we take a string (the source URL), an integer (the width), and a
 second integer (the height). The problem with tuples is that this
 might also represent any number of issues. It is hard to know what it
-is referring to. Enter <strong>product types</strong>.</p>
+is referring to. Enter <strong>product types</strong>.
+</p>
 <p>
 In Scala, we can represent an image element in HTML like the following
-case class:</p>
+case class:
+</p>
 <div class="src src-scala">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala"><span style="color:#66d9ef">case</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ImageElement</span><span style="color:#f92672">(</span>sourceUrl<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">String</span><span style="color:#f92672">,</span> width<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Int</span><span style="color:#f92672">,</span> height<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Int</span><span style="color:#f92672">)</span></code></pre></div>
 </div>
 <p>
 Since pure product types only have one constructor for a type, we can
 eliminate the trait or abstract class type definition that we used in
-the sum type example above with <code class="verbatim">USCoin</code>.</p>
-</div>
-</div>
-<div id="outline-container-headline-3" class="outline-3">
+the sum type example above with <code class="verbatim">USCoin</code>.
+</p>
 <h3 id="headline-3">
 Sum-Product Hybrids
 </h3>
-<div id="outline-text-headline-3" class="outline-text-3">
 <p>
-<img src="./images/facebook-notifications-small.png" alt="./images/facebook-notifications-small.png" title="./images/facebook-notifications-small.png" /></p>
+<img src="./images/facebook-notifications-small.png" alt="./images/facebook-notifications-small.png" title="./images/facebook-notifications-small.png" />
+</p>
 <p>
 How about a social network event notification. Let&#39;s take
 Facebook. Whenever you sign into Facebook (or whatever social network
 you might use), you will likely be greeted with a visual indication of
 any notifications you might have since you last signed in. Things like
 friends liking your statuses, comments, or making comments on your
-posts or posts you have commented on yourself.</p>
+posts or posts you have commented on yourself.
+</p>
 <p>
-<img src="./images/facebook-notifications-timeline.png" alt="./images/facebook-notifications-timeline.png" title="./images/facebook-notifications-timeline.png" /></p>
+<img src="./images/facebook-notifications-timeline.png" alt="./images/facebook-notifications-timeline.png" title="./images/facebook-notifications-timeline.png" />
+</p>
 <p>
 So a first stab at modeling this with an algebraic data type in
-Haskell might look like:</p>
+Haskell might look like:
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">import</span> Data.DateTime
 
@@ -267,32 +287,44 @@ Haskell might look like:</p>
 <p>
 What did I actually do? Well if we look at the different notifications
 we see there are a variety of constructions of notification events,
-including:</p>
+including:
+</p>
 <ul>
 <li>
-<p>When one of your statuses is liked it tells you who and at what time
-the last action was taken</p>
+<p>
+When one of your statuses is liked it tells you who and at what time
+the last action was taken
+</p>
 </li>
 <li>
-<p>When one of your comments is liked it tells you who and the time the
-last action was taken</p>
+<p>
+When one of your comments is liked it tells you who and the time the
+last action was taken
+</p>
 </li>
 <li>
-<p>When a post you commented on is commented on it tells you who and
-the time the last action was taken</p>
+<p>
+When a post you commented on is commented on it tells you who and
+the time the last action was taken
+</p>
 </li>
 <li>
-<p>…</p>
+<p>
+…
+</p>
 </li>
 </ul>
-<p>Let us dissect the Haskell code a little. The identifier on the
+<p>
+Let us dissect the Haskell code a little. The identifier on the
 left-hand-side (LHS), <code class="verbatim">Notification</code>, is the type name. Then the
 right-hand-side (RHS) contains an exhaustive list of possible
 constructors such as <code class="verbatim">CommentNotification</code>,
-<code class="verbatim">CommentLikeNotification</code>, <code class="verbatim">PostLikeNotification</code> for our simple model.</p>
+<code class="verbatim">CommentLikeNotification</code>, <code class="verbatim">PostLikeNotification</code> for our simple model.
+</p>
 <p>
 Now we could have modeled Notification data type a little
-differently. Let us consider the following modeling of the domain:</p>
+differently. Let us consider the following modeling of the domain:
+</p>
 <div class="src src-haskell">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">import</span> Data.DateTime
 
@@ -307,36 +339,35 @@ differently. Let us consider the following modeling of the domain:</p>
 <p>
 This model of the domain of Facebook notifications uses a pure product
 type for the <code class="verbatim">Notification</code> type definition and a hybrid sum-product
-type for the <code class="verbatim">Post</code> type.</p>
+type for the <code class="verbatim">Post</code> type.
+</p>
 <p>
 Exactly how you model this domain will depend on what properties you
 would like the various types to possess. In fact, there are many ways
 you can model this domain with various forms of algebraic data types
-(ADT). It all depends on your program&#39;s view of the domain.</p>
+(ADT). It all depends on your program&#39;s view of the domain.
+</p>
 <p>
 There is no one precise view of a particular domain, it depends on
 your program&#39;s functionality. For example, if you are building a
 front-office trade posting system, you are unlikely to need to model the
 historical view of a security or instrument type. You just need to
 know the active identifier (e.g. ticker, ISIN, CUSIP, internal id,
-etc.) for the security being traded today to flow through correctly.</p>
+etc.) for the security being traded today to flow through correctly.
+</p>
 <p>
 However, a knowledge management tool may need to model a financial
 security or instrument to have a historical view (e.g. how a corporate
 action impacted a financial security in the past, or the historical
-view of identifications or vendor symbols).</p>
-</div>
-</div>
-<div id="outline-container-headline-4" class="outline-3">
+view of identifications or vendor symbols).
+</p>
 <h3 id="headline-4">
 Parting thoughts
 </h3>
-<div id="outline-text-headline-4" class="outline-text-3">
 <p>
 With the expressive composability of algebraic data types, you will be
-able to model anything in your domain and build it up from smaller pieces.</p>
-</div>
-</div>
+able to model anything in your domain and build it up from smaller pieces.
+</p>
 
   </article>
 

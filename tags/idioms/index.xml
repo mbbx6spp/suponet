@@ -17,9 +17,7 @@
       <pubDate>Wed, 24 Jan 2007 18:48:00 -0600</pubDate>
       
       <guid>/snippets/ruby-idioms-part-7/</guid>
-      <description>This idiom I have seen a little more in Rails than I have seen in Ruby, but I am putting it in this Ruby Idioms series anyway.
- First off, most of you will know by know that you can &amp;#34;transparently&amp;#34; provide a method in Ruby a Hash. What do I mean by &amp;#34;transparently&amp;#34;? Well have a look at the code example below:
-user = User.find(:first, :include =&amp;gt; :preferences)   The last argument is actually a Hash even though you do not see the curly braces at all.</description>
+      <description>This idiom I have seen a little more in Rails than I have seen in Ruby, but I am putting it in this Ruby Idioms series anyway.  First off, most of you will know by know that you can &amp;#34;transparently&amp;#34; provide a method in Ruby a Hash. What do I mean by &amp;#34;transparently&amp;#34;? Well have a look at the code example below: user = User.find(:first, :include =&amp;gt; :preferences)   The last argument is actually a Hash even though you do not see the curly braces at all.</description>
     </item>
     
     <item>
@@ -28,9 +26,7 @@ user = User.find(:first, :include =&amp;gt; :preferences)   The last argument is
       <pubDate>Tue, 23 Jan 2007 22:28:00 -0600</pubDate>
       
       <guid>/snippets/ruby-idioms-part-6/</guid>
-      <description>Tonight I remembered couple more idioms in Ruby and felt compelled to share.
- In Javafied Ruby code (below) we often see something like the following:
-if something for role in user.roles return true if @@roles.include? role end end   Now when I first started writing Ruby code almost 3 years ago, I thought looping through a collection like above was the nicest way. I quickly found Ruby like the following snippet in code I inherited:</description>
+      <description>Tonight I remembered couple more idioms in Ruby and felt compelled to share.  In Javafied Ruby code (below) we often see something like the following: if something for role in user.roles return true if @@roles.include? role end end   Now when I first started writing Ruby code almost 3 years ago, I thought looping through a collection like above was the nicest way. I quickly found Ruby like the following snippet in code I inherited: user.</description>
     </item>
     
     <item>
@@ -48,10 +44,7 @@ if something for role in user.roles return true if @@roles.include? role end end
       <pubDate>Mon, 22 Jan 2007 19:36:00 -0600</pubDate>
       
       <guid>/snippets/ruby-idioms-part-4/</guid>
-      <description>To splat or not to splat, that is the question.
- In Java to unpack an array&amp;#39;s values into separate variables you would need to do something like the following:
-burgers = [:hamburger, :bocaburger, :gardenburger, :turkeyburger] t = burgers[0] u = burgers[1] v = burgers[2] w = burgers[3]   In the Ruby mindset this would look more like the following:
-burgers = [:hamburger, :bocaburger, :gardenburger, :turkeyburger] t, u, v = *burgers # t=&amp;gt;:hamburger, u=&amp;gt; :bocaburger, v=&amp;gt;:gardenburger t, u, v, w = *burgers # t=&amp;gt;:hamburger, u=&amp;gt;:bocaburger, v=&amp;gt;:gardenburger, w=&amp;gt;:turkeyburger t, u, v, w, x = *burgers # t=&amp;gt;:hamburger, u=&amp;gt;:bocaburger, v=&amp;gt;:gardenburger, w=&amp;gt;:turkeyburger, x=&amp;gt;nil   Think of * (or splat) as the Ruby way of unpacking the elements of an Array into separate variables in Ruby.</description>
+      <description>To splat or not to splat, that is the question.  In Java to unpack an array&amp;#39;s values into separate variables you would need to do something like the following: burgers = [:hamburger, :bocaburger, :gardenburger, :turkeyburger] t = burgers[0] u = burgers[1] v = burgers[2] w = burgers[3]   In the Ruby mindset this would look more like the following: burgers = [:hamburger, :bocaburger, :gardenburger, :turkeyburger] t, u, v = *burgers # t=&amp;gt;:hamburger, u=&amp;gt; :bocaburger, v=&amp;gt;:gardenburger t, u, v, w = *burgers # t=&amp;gt;:hamburger, u=&amp;gt;:bocaburger, v=&amp;gt;:gardenburger, w=&amp;gt;:turkeyburger t, u, v, w, x = *burgers # t=&amp;gt;:hamburger, u=&amp;gt;:bocaburger, v=&amp;gt;:gardenburger, w=&amp;gt;:turkeyburger, x=&amp;gt;nil   Think of * (or splat) as the Ruby way of unpacking the elements of an Array into separate variables in Ruby.</description>
     </item>
     
     <item>
@@ -78,9 +71,7 @@ burgers = [:hamburger, :bocaburger, :gardenburger, :turkeyburger] t, u, v = *bur
       <pubDate>Mon, 22 Jan 2007 19:16:00 -0600</pubDate>
       
       <guid>/snippets/ruby-idioms-part-1/</guid>
-      <description>With more people moving to Ruby everyday from languages like Java, I wanted to create blog entries on the most common Ruby idioms (especially ones frequently found in Rails core or Rails application code) and briefly explain how to convert your Java mindset to Ruby (over time).
- This is the first installment.
- First let us inspect what we might do in Java (converted to Ruby syntax) when determining if a value passed in equals various fixed values:</description>
+      <description>With more people moving to Ruby everyday from languages like Java, I wanted to create blog entries on the most common Ruby idioms (especially ones frequently found in Rails core or Rails application code) and briefly explain how to convert your Java mindset to Ruby (over time).  This is the first installment.  First let us inspect what we might do in Java (converted to Ruby syntax) when determining if a value passed in equals various fixed values: if val == 1 || val == 3 || val == 5 puts &amp;#34;hello odd number under 7&amp;#34; end   Rubyists will know this is really ugly, so our first attempt at Rubifying the code above would probably look like: if [1, 3, 5].</description>
     </item>
     
   </channel>

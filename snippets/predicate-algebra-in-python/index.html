@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.74.3" />
+    <meta name="generator" content="Hugo 0.64.0" />
   </head>
 
   <body class="">
@@ -105,28 +105,29 @@
     </header>
 
     <p>
-Updated for Python3 recently:</p>
+Updated for Python3 recently:
+</p>
 <div class="src src-python">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Predicate</span>:
-    <span style="color:#e6db74">&#34;&#34;&#34;
-</span><span style="color:#e6db74">    Define predicate algebra.
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">    &gt;&gt;&gt; isEven=Predicate(lambda x: x % 2 == 0)
-</span><span style="color:#e6db74">    &gt;&gt;&gt; isOdd=Predicate(lambda x: x % 2 == 1)
-</span><span style="color:#e6db74">    &gt;&gt;&gt; isEven(6)
-</span><span style="color:#e6db74">    True
-</span><span style="color:#e6db74">    &gt;&gt;&gt; isOdd(6)
-</span><span style="color:#e6db74">    False
-</span><span style="color:#e6db74">
-</span><span style="color:#e6db74">    &gt;&gt;&gt; isEmpty=Predicate(lambda s: s == &#34;&#34;)
-</span><span style="color:#e6db74">    &gt;&gt;&gt; isNotEmpty=~isEmpty
-</span><span style="color:#e6db74">    &gt;&gt;&gt; isEmpty(&#34;c&#34;)
-</span><span style="color:#e6db74">    False
-</span><span style="color:#e6db74">    &gt;&gt;&gt; isNotEmpty(&#34;&#34;)
-</span><span style="color:#e6db74">    False
-</span><span style="color:#e6db74">    &gt;&gt;&gt; isNotEmpty(&#34;hello&#34;)
-</span><span style="color:#e6db74">    True
-</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;&#34;&#34;</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    Define predicate algebra.</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isEven=Predicate(lambda x: x </span><span style="color:#e6db74">%</span><span style="color:#e6db74"> 2 == 0)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isOdd=Predicate(lambda x: x </span><span style="color:#e6db74">%</span><span style="color:#e6db74"> 2 == 1)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isEven(6)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    True</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isOdd(6)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    False</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isEmpty=Predicate(lambda s: s == </span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isNotEmpty=~isEmpty</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isEmpty(</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">c</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    False</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isNotEmpty(</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    False</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    &gt;&gt;&gt; isNotEmpty(</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hello</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">)</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    True</span><span style="color:#e6db74">
+</span><span style="color:#e6db74"></span><span style="color:#e6db74">    </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
     <span style="color:#66d9ef">def</span> __init__(self, predicate):
         self<span style="color:#f92672">.</span>predicate <span style="color:#f92672">=</span> predicate
 
@@ -145,12 +146,13 @@ Updated for Python3 recently:</p>
     <span style="color:#66d9ef">def</span> __call__(self, x):
         <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>predicate(x)
 
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">__main__</span><span style="color:#e6db74">&#34;</span>:
     <span style="color:#f92672">import</span> doctest
     doctest<span style="color:#f92672">.</span>testmod()</code></pre></div>
 </div>
 <p>
-Output from <code class="verbatim">python PredicateAlgebra.py -v</code>:</p>
+Output from <code class="verbatim">python PredicateAlgebra.py -v</code>:
+</p>
 <div class="src src-text">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Trying:
     isEven=Predicate(lambda x: x % 2 == 0)
