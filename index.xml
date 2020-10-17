@@ -6,10 +6,19 @@
     <description>Recent content on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 25 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 17 Oct 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>How to make seemingly difficult decisions</title>
+      <link>/software/how-to-make-seemingly-difficult-decisions/</link>
+      <pubDate>Sat, 17 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/how-to-make-seemingly-difficult-decisions/</guid>
+      <description>Originally published as a Twitter thread starting here.  Anyone who has spent any time in either a technical or people management leadership position in software development knows, you need to make seemingly difficult decisions all the time.  This week I coached a coworker through making what seemed like a difficult decision by walking through the following process with him. Process outline     Identify your options.</description>
+    </item>
     
     <item>
       <title>TypeScript enum versus const enum</title>
@@ -444,15 +453,6 @@ scala&amp;gt; List(&amp;#34;a&amp;#34;, &amp;#34;b&amp;#34;, &amp;#34;c&amp;#34;
       
       <guid>/snippets/rubyisms-forwardables/</guid>
       <description>Recently some Java friends of mine have decided to taste the juicier fruits in Ruby-land with my assistance. So below are some excerpts from an email conversation I had with one about Ruby&amp;#39;s standard library forwardable features:  Suppose we have the following model classes defined for a simple CRM system: Customer, Address, PhoneNumber, Name, etc. Now in Java-land we would have written something that looks like the following Ruby code (except you must type about a hundred more lines - although now you can write annotations to automate basic things like generate getters and setters or the like, which still requires a ridiculous amount of code to accomplish): Name = Struct.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/software/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/software/</guid>
-      <description>if you can&amp;#39;t— title: How to make seemingly difficult decisions date: 2020-10-17 categories:    leadership    tags:    decisions    leadership    —  Originally published as a Twitter thread starting here.  Anyone who has spent any time in either a technical or people management leadership position in software development knows, you need to make seemingly difficult decisions all the time.</description>
     </item>
     
     <item>

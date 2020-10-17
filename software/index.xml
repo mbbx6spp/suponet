@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>How to make seemingly difficult decisions</title>
+      <link>/software/how-to-make-seemingly-difficult-decisions/</link>
+      <pubDate>Sat, 17 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/how-to-make-seemingly-difficult-decisions/</guid>
+      <description>Originally published as a Twitter thread starting here.  Anyone who has spent any time in either a technical or people management leadership position in software development knows, you need to make seemingly difficult decisions all the time.  This week I coached a coworker through making what seemed like a difficult decision by walking through the following process with him. Process outline     Identify your options.</description>
+    </item>
+    
+    <item>
       <title>TypeScript enum versus const enum</title>
       <link>/software/typescript-enum-versus-const-enum/</link>
       <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>
@@ -118,15 +127,6 @@
       
       <guid>/software/scm-the-next-generation/</guid>
       <description>I am sure most developers (whether Java, Ruby, Python, or other) have used Subversion, Perforce or CVS to manage and control their projects&amp;#39; source, but have you used darcs or git?  I&amp;#39;m sure most of you would have heard of git it hosts the Linux kernel code currently. Less of you have probably heard of darcs before. Prior to this evening, the most notable point of darcs to me, is that it is written in Haskell.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>/software/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/software/</guid>
-      <description>if you can&amp;#39;t— title: How to make seemingly difficult decisions date: 2020-10-17 categories:    leadership    tags:    decisions    leadership    —  Originally published as a Twitter thread starting here.  Anyone who has spent any time in either a technical or people management leadership position in software development knows, you need to make seemingly difficult decisions all the time.</description>
     </item>
     
   </channel>
