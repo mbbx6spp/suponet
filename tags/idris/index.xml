@@ -17,7 +17,10 @@
       <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
       
       <guid>/software/to-type-or-not-to-static-type/</guid>
-      <description>Originally published as a Gist here: https://gist.github.com/mbbx6spp/60577af8dc4106d6e710cd804292ce20  Minor modifications in formatting and an extra line of no-judgement was added to this text from the original Gist. Purpose, Disclaimer and Confessions   This is the (mostly) no nonesense guide to studies and research that measures and/or compares a variety of facets, characteristics, or manifestations of software development in dynamically vs statically typed programming languages.  Disclaimer: For larger, more complex codebases, I do advocate for statically typed languages that also support algebraic data types, generic types, type classes, and preferrably a form of typelevel expressiveness (e.</description>
+      <description>Originally published as a Gist here: https://gist.github.com/mbbx6spp/60577af8dc4106d6e710cd804292ce20
+ Minor modifications in formatting and an extra line of no-judgement was added to this text from the original Gist.
+Purpose, Disclaimer and Confessions   This is the (mostly) no nonesense guide to studies and research that measures and/or compares a variety of facets, characteristics, or manifestations of software development in dynamically vs statically typed programming languages.
+ Disclaimer: For larger, more complex codebases, I do advocate for statically typed languages that also support algebraic data types, generic types, type classes, and preferrably a form of typelevel expressiveness (e.</description>
     </item>
     
   </channel>

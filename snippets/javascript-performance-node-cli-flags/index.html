@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -107,118 +107,118 @@
     
 <p>
 These are some notes on performance engineering related to generating
-insights into Node.js (v8) performance.
-</p>
+insights into Node.js (v8) performance.</p>
 <p>
 All material here is specific to the v8 engine found in Node.js,
-Chrome, and Opera.
-</p>
+Chrome, and Opera.</p>
 <p>
 Generally useful things to learn to tune JavaScript (for the v8
 engine) is natives syntax. You can run JS with natives syntax
-directives sprinkled throughout using the Node.js command-line:
-</p>
+directives sprinkled throughout using the Node.js command-line:</p>
 <ul>
 <li>
-<p>
-<code class="verbatim">--allow-natives-syntax</code>
-</p>
+<p><code class="verbatim">--allow-natives-syntax</code></p>
 </li>
 </ul>
-<p>
-Read more on <a href="https://github.com/v8/v8/blob/master/src/runtime/runtime.h">available natives syntax directives available from the source</a>.
-</p>
+<p>Read more on <a href="https://github.com/v8/v8/blob/master/src/runtime/runtime.h">available natives syntax directives available from the source</a>.</p>
 <p>
 Another generally useful tool for JavaScript performance engineering
-is the <a href="https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API">User Timing API</a>.
-</p>
+is the <a href="https://developer.mozilla.org/en-US/docs/Web/API/User_Timing_API">User Timing API</a>.</p>
+<div id="outline-container-headline-1" class="outline-3">
 <h3 id="headline-1">
 Speculative optimization with optimization and deoptimization
 </h3>
+<div id="outline-text-headline-1" class="outline-text-3">
 <p>
 With speculative optimization we have the bytecode interpreter look at
 how a function is used (e.g. what types of values are passed as
 arguments) to see if it can delegate to the optimizing compiler for
 specialization or related optimization strategies after observing call
-usages for patterns.
-</p>
+usages for patterns.</p>
 <p>
 If the observations that the interpreter uses to delegate to the
 optimizing compiler gets nullified after delegating to the optimizer
 then that unit of code (e.g. function) gets <em>deoptimized</em> and a
 request to the interpreter to generate general bytecode with no
 optimizations is made incurring more work and slowing the process
-down.
-</p>
+down.</p>
 <p>
 To understand what gets optimized by the turbofan optimizer and what
 gets delegated back for deoptimization from the turbofan to bytecode
-generator we can use:
-</p>
+generator we can use:</p>
 <ul>
 <li>
-<p>
-<code class="verbatim">--trace-opt</code>
-</p>
+<p><code class="verbatim">--trace-opt</code></p>
 </li>
 <li>
-<p>
-<code class="verbatim">--trace-deopt</code>
-</p>
+<p><code class="verbatim">--trace-deopt</code></p>
 </li>
 </ul>
-<p>
-The following terms may be used in different contexts to mean similar
+<p>The following terms may be used in different contexts to mean similar
 things but the following are defined in the bounded context of
-speculative optimization.
-</p>
+speculative optimization.</p>
+<div id="outline-container-headline-2" class="outline-4">
 <h4 id="headline-2">
 Monomorphic
 </h4>
+<div id="outline-text-headline-2" class="outline-text-4">
 <p>
 This is where a function handles a specific type only and all call
-sites only pass values of that type.
-</p>
+sites only pass values of that type.</p>
 <p>
 Using TypeScript we can ensure consistency of our call sites with
-appropriate type annotations:
-</p>
+appropriate type annotations:</p>
 <div class="src src-javascript">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">add</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">x</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>, <span style="color:#a6e22e">y</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">number</span> =&gt; <span style="color:#a6e22e">x</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">y</span>;
 </code></pre></div>
 </div>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-4">
 <h4 id="headline-3">
 Polymorphic
 </h4>
+<div id="outline-text-headline-3" class="outline-text-4">
 <p>
 This is where a function handles a range of types effectively making
 an optimized switch statement for the cases. The more cases the more
 the optimizer loses its effectiveness and gives up where it gets
-&#34;demoted&#34; to megamorphic.
-</p>
+&#34;demoted&#34; to megamorphic.</p>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-4">
 <h4 id="headline-4">
 Megamorphic
 </h4>
+<div id="outline-text-headline-4" class="outline-text-4">
 <p>
 Anything goes! This breaks the optimizer, big time. Avoid this at all
-costs.
-</p>
+costs.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-3">
 <h3 id="headline-5">
 Inlining
 </h3>
+<div id="outline-text-headline-5" class="outline-text-3">
+<div id="outline-container-headline-6" class="outline-4">
 <h4 id="headline-6">
 Functions
 </h4>
+<div id="outline-text-headline-6" class="outline-text-4">
 <p>
-Node.js command-line options related to function inlining are:
-</p>
+Node.js command-line options related to function inlining are:</p>
 <ul>
 <li>
-<p>
-<code class="verbatim">--trace-turbo-inlining</code>
-</p>
+<p><code class="verbatim">--trace-turbo-inlining</code></p>
 </li>
 </ul>
+</div>
+</div>
+</div>
+</div>
 
   </article>
 

@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -104,37 +104,26 @@
 
     </header>
 
-    <p>
-Ever wished you could write code in a very expressive way like the following examples?
-</p>
+    <p>Ever wished you could write code in a very expressive way like the following examples?</p>
 <ul>
 <li>
-<p>
-<code class="verbatim">expiration_date = 3.years.from_now</code>
-</p>
+<p><code class="verbatim">expiration_date = 3.years.from_now</code></p>
 </li>
 <li>
-<p>
-<code class="verbatim">birth_date = 32.years.ago</code>
-</p>
+<p><code class="verbatim">birth_date = 32.years.ago</code></p>
 </li>
 </ul>
-<p>
-Now you can, in Ruby at least.
-</p>
+<p>Now you can, in Ruby at least.</p>
 <p>
 Two years ago I was a very happy Python developer that thought no
 other language could compete with Python for developer productivity.
 My Python indoctrination occurred after 7 solid years of proclaiming
 Java was the ultimate language that would reign supreme. Prior to my
-Java phase I was a C++ and Perl coder.
-</p>
+Java phase I was a C++ and Perl coder.</p>
 <p>
 It was also two years ago that I got my first glimpse at Ruby. I read
 articles, blogs and forums between Python and Ruby heads discussing
-finer points of each language and how one is far more superior than
-the other, because….bla bla bla.
-</p>
+finer points of each language and how one is superior to the other.</p>
 <p>
 It was at this time that Ruby&#39;s concept of reopening classes came to
 my attention. As a hearty Python developer at the time I came to the
@@ -142,55 +131,50 @@ conclusion that Python had to be superior on this point because Python
 allowed class reopening through metaclasses, so the original author of
 the code could be explicit to allow class reopening or not. In Ruby,
 however, anyone could reopen your classes, write malicious code and
-redploy without others knowing.
-</p>
+redploy without others knowing.</p>
 <p>
 Over the past two years I have realized that while Python is a
 beautiful programming language (not just scripting language) in its
-own right, my views on this point have changed considerably.
-</p>
+own right, my views on this point have changed considerably.</p>
 <p>
 To show class reopening I will be using an example of code that is
 very similar to some Ruby standard library extensions found in Active
 Support included in Rails (Disclaimer: This is not necessarily the
-same underlying code - I have not checked to be honest).
-</p>
+same underlying code - I have not checked to be honest).</p>
 <p>
-Let us start up an <code class="verbatim">irb</code> shell session and write the following:
-</p>
+Let us start up an <code class="verbatim">irb</code> shell session and write the following:</p>
 <div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  irb<span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span><span style="color:#f92672"></span><span style="color:#f92672">.</span>class
-  <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Fixnum</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  irb<span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">.</span>class
+  <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Fixnum</span>
   irb<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Fixnum</span>
-  irb<span style="color:#f92672">&gt;</span>   <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">years</span>
-  irb<span style="color:#f92672">&gt;</span>     <span style="color:#66d9ef">return</span> self<span style="color:#f92672">*</span><span style="color:#ae81ff">365</span><span style="color:#f92672"></span><span style="color:#f92672">*</span><span style="color:#ae81ff">24</span><span style="color:#f92672"></span><span style="color:#f92672">*</span><span style="color:#ae81ff">60</span><span style="color:#f92672"></span><span style="color:#f92672">*</span><span style="color:#ae81ff">60</span>
-  <span style="color:#f92672"></span>irb<span style="color:#f92672">&gt;</span>   <span style="color:#66d9ef">end</span>
+  irb<span style="color:#f92672">&gt;</span>   <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">years</span>
+  irb<span style="color:#f92672">&gt;</span>     <span style="color:#66d9ef">return</span> self<span style="color:#f92672">*</span><span style="color:#ae81ff">365</span><span style="color:#f92672">*</span><span style="color:#ae81ff">24</span><span style="color:#f92672">*</span><span style="color:#ae81ff">60</span><span style="color:#f92672">*</span><span style="color:#ae81ff">60</span>
+  irb<span style="color:#f92672">&gt;</span>   <span style="color:#66d9ef">end</span>
   irb<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">end</span>
-  <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">nil</span>
-  irb<span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span><span style="color:#f92672"></span><span style="color:#f92672">.</span>years
-  <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">94608000</span>
-  <span style="color:#f92672"></span>irb<span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span><span style="color:#f92672"></span><span style="color:#f92672">.</span>years<span style="color:#f92672">.</span>class
-  <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Fixnum</span>
+  <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">nil</span>
+  irb<span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">.</span>years
+  <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">94608000</span>
+  irb<span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">.</span>years<span style="color:#f92672">.</span>class
+  <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Fixnum</span>
   irb<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Fixnum</span>
-  irb<span style="color:#f92672">&gt;</span>   <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">ago</span>
+  irb<span style="color:#f92672">&gt;</span>   <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ago</span>
   irb<span style="color:#f92672">&gt;</span>     <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">Time</span><span style="color:#f92672">.</span>now() <span style="color:#f92672">-</span> self
   irb<span style="color:#f92672">&gt;</span>   <span style="color:#66d9ef">end</span>
-  irb<span style="color:#f92672">&gt;</span>   <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">from_now</span>
+  irb<span style="color:#f92672">&gt;</span>   <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">from_now</span>
   irb<span style="color:#f92672">&gt;</span>     <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">Time</span><span style="color:#f92672">.</span>now() <span style="color:#f92672">+</span> self
   irb<span style="color:#f92672">&gt;</span>   <span style="color:#66d9ef">end</span>
   irb<span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">end</span>
-  <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">nil</span>
-  irb<span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span><span style="color:#f92672"></span><span style="color:#f92672">.</span>years<span style="color:#f92672">.</span>from_now
-  <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Sun</span> <span style="color:#66d9ef">Aug</span> <span style="color:#ae81ff">09</span> <span style="color:#f92672"></span><span style="color:#ae81ff">14</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">23</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">10</span> <span style="color:#f92672"></span><span style="color:#66d9ef">CDT</span> <span style="color:#ae81ff">2009</span>
-  <span style="color:#f92672"></span>irb<span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span><span style="color:#f92672"></span><span style="color:#f92672">.</span>years<span style="color:#f92672">.</span>ago
-  <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Mon</span> <span style="color:#66d9ef">Aug</span> <span style="color:#ae81ff">11</span> <span style="color:#f92672"></span><span style="color:#ae81ff">14</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">23</span><span style="color:#f92672"></span>:<span style="color:#ae81ff">19</span> <span style="color:#f92672"></span><span style="color:#66d9ef">CDT</span> <span style="color:#ae81ff">2003</span><span style="color:#f92672"></span></code></pre></div>
+  <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">nil</span>
+  irb<span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">.</span>years<span style="color:#f92672">.</span>from_now
+  <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Sun</span> <span style="color:#66d9ef">Aug</span> <span style="color:#ae81ff">09</span> <span style="color:#ae81ff">14</span>:<span style="color:#ae81ff">23</span>:<span style="color:#ae81ff">10</span> <span style="color:#66d9ef">CDT</span> <span style="color:#ae81ff">2009</span>
+  irb<span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">3</span><span style="color:#f92672">.</span>years<span style="color:#f92672">.</span>ago
+  <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Mon</span> <span style="color:#66d9ef">Aug</span> <span style="color:#ae81ff">11</span> <span style="color:#ae81ff">14</span>:<span style="color:#ae81ff">23</span>:<span style="color:#ae81ff">19</span> <span style="color:#66d9ef">CDT</span> <span style="color:#ae81ff">2003</span></code></pre></div>
 </div>
 <p>
-Did you follow what I just did?  I wanted to show what <code class="verbatim">3</code> s class is
+Did you follow what I just did? I wanted to show what <code class="verbatim">3</code> s class is
 in Ruby. To those not very familiar with Ruby, this was important to
 show, since newbies might expect 3.class to be <code class="verbatim">Integer</code> but in fact
-it is of type <code class="verbatim">Fixnum</code>.
-</p>
+it is of type <code class="verbatim">Fixnum</code>.</p>
 <p>
 Next we reopened the <code class="verbatim">Fixnum</code> class for new definition. If we had
 reopened it and inserted a method called <code class="verbatim">floor</code> or <code class="verbatim">ceil</code> we would
@@ -199,49 +183,39 @@ these methods. Instead we defined a method called <code class="verbatim">years</
 previously defined in Fixnum. Then we closed the class and found that
 <code class="verbatim">3.years</code> returns <code class="verbatim">94608000</code>. This is the number of seconds in a year.
 Is that useful? Not yet, so next we reopened <code class="verbatim">Fixnum</code> again and insert
-two methods:
-</p>
+two methods:</p>
 <ul>
 <li>
-<p>
-<code class="verbatim">ago</code>
-</p>
+<p><code class="verbatim">ago</code></p>
 </li>
 </ul>
-<p>
-= <code class="verbatim">from_now</code>
-</p>
+<p>= <code class="verbatim">from_now</code></p>
 <p>
 After reclosing the class again, we can write partial sentences in
 Ruby and provide an extremely expressive API for an application that
-deals a lot with dates and converting numbers to dates.
-</p>
+deals a lot with dates and converting numbers to dates.</p>
 <p>
 This couldn&#39;t be done in Python with the same ease using metaclasses,
 because the builtin <code class="verbatim">int</code> type cannot be reopened unless you redefined
 the <code class="verbatim">int</code> type from scratch in Python including the addition of your
-special purpose methods in the mix.
-</p>
+special purpose methods in the mix.</p>
 <p>
 Anyway, this might not convince all readers of the significant utility
 of the class reopening feature of Ruby, but I have began to love this
 feature, arguably too much (some may say). I have found it has
 significantly improved readability and condensed the code necessary to
-do many tasks.
-</p>
+do many tasks.</p>
 <p>
 After converting to Java a number of years ago from Perl and C++, I
 vowed not to take the Perlist&#39;s attitude toward trusting clients of
 your code not to bastardize it. However, I find myself accepting that
 if a client of my code knowingly decides to take this risk, it is on
 their own head they fall. I should not be bothered by this
-professionally or personally.
-</p>
+professionally or personally.</p>
 <p>
 This feature of Ruby is a stepping stone to promote the development of
 embedded domain specific languages (eDSL), which is difficult at best
-to do in many other languages.
-</p>
+to do in many other languages.</p>
 
   </article>
 

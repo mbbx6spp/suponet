@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -108,8 +108,7 @@
 Recently some Java friends of mine have decided to taste the juicier
 fruits in Ruby-land with my assistance. So below are some excerpts
 from an email conversation I had with one about Ruby&#39;s standard
-library <code class="verbatim">forwardable</code> features:
-</p>
+library <code class="verbatim">forwardable</code> features:</p>
 <p>
 Suppose we have the following model classes defined for a simple
 CRM system: Customer, Address, PhoneNumber, Name, etc. Now in
@@ -117,8 +116,7 @@ Java-land we would have written something that looks like the
 following Ruby code (except you must type about a hundred more
 lines - although now you can write annotations to automate basic
 things like generate getters and setters or the like, which still
-requires a ridiculous amount of code to accomplish):
-</p>
+requires a ridiculous amount of code to accomplish):</p>
 <div class="src src-ruby">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    <span style="color:#66d9ef">Name</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Struct</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">:first_name</span>, <span style="color:#e6db74">:last_name</span>, <span style="color:#e6db74">:suffix</span>, <span style="color:#e6db74">:salutation</span>)
     <span style="color:#66d9ef">Address</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Struct</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">:street_address</span>, <span style="color:#e6db74">:suite</span>, <span style="color:#e6db74">:city</span>, <span style="color:#e6db74">:state</span>, <span style="color:#e6db74">:country</span>, <span style="color:#e6db74">:zip</span>)
@@ -129,8 +127,7 @@ requires a ridiculous amount of code to accomplish):
     <span style="color:#66d9ef">end</span></code></pre></div>
 </div>
 <p>
-Note: the <code class="verbatim">attr_accessor</code> will create getters and setters for Ruby newbies.
-</p>
+Note: the <code class="verbatim">attr_accessor</code> will create getters and setters for Ruby newbies.</p>
 <p>
 The problem is that you are not sure when you first design this if
 it will support future product offerings for business customers,
@@ -143,14 +140,12 @@ To help us with future changes (even though we do not know what
 they will be or try to pre-empt them) we want to be able to access
 details directly from the <code class="verbatim">Customer</code> object to reduce coupling of
 clients of our <code class="verbatim">Customer</code> model. This also helps us implicitly
-adhere to the <a href="http://c2.com/cgi/wiki?LawOfDemeter">Law of Demeter</a>
-</p>
+adhere to the <a href="http://c2.com/cgi/wiki?LawOfDemeter">Law of Demeter</a></p>
 <p>
 A naive approach would be to manually create accessor methods for the
 <code class="verbatim">Address</code>, <code class="verbatim">Name</code>, <code class="verbatim">PhoneNumber</code> attributes in the <code class="verbatim">Customer</code> class.
 But remember, this is Ruby-land, which is a magical place, so we can
-just do the following:
-</p>
+just do the following:</p>
 <div class="src src-ruby">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  require <span style="color:#e6db74">&#39;forwardable&#39;</span>
 
@@ -168,7 +163,7 @@ just do the following:
   def_delegators <span style="color:#e6db74">:@name</span>, <span style="color:#f92672">*</span><span style="color:#66d9ef">NAME_FIELDS</span>
   def_delegators <span style="color:#e6db74">:@address</span>, <span style="color:#f92672">*</span><span style="color:#66d9ef">ADDRESS_FIELDS</span>
   def_delegators <span style="color:#e6db74">:@phone_number</span>, <span style="color:#f92672">*</span><span style="color:#66d9ef">PHONE_NUMBER_FIELDS</span>
-  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">initialize</span>(name, address, phone_number)
+  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initialize</span>(name, address, phone_number)
   @name, @address, @phone_number <span style="color:#f92672">=</span> name, address, phone_number
   <span style="color:#66d9ef">end</span>
   <span style="color:#66d9ef">end</span></code></pre></div>
@@ -176,24 +171,22 @@ just do the following:
 <p>
 One of the many fantastic things about Ruby (and Python) is we have
 <code class="verbatim">irb</code> Ruby&#39;s interactive shell to prototype with. So we open up an
-<code class="verbatim">irb</code> shell and do the following:
-</p>
+<code class="verbatim">irb</code> shell and do the following:</p>
 <div class="src src-ruby">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  irb<span style="color:#f92672">&gt;</span> require <span style="color:#e6db74">&#39;FILE_WITH_ABOVE_CODE_IN&#39;</span>
   irb<span style="color:#f92672">&gt;</span> john_adams <span style="color:#f92672">=</span> <span style="color:#66d9ef">Customer</span><span style="color:#f92672">.</span>new(<span style="color:#66d9ef">Name</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">&#39;John&#39;</span>, <span style="color:#e6db74">&#39;Adams&#39;</span>, <span style="color:#66d9ef">nil</span>, <span style="color:#e6db74">&#39;Former President&#39;</span>), <span style="color:#66d9ef">Address</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">&#39;101 Constabulary Road&#39;</span>, <span style="color:#66d9ef">nil</span>, <span style="color:#e6db74">&#39;Bay Colony&#39;</span>, <span style="color:#e6db74">&#39;MA&#39;</span>, <span style="color:#e6db74">&#39;US&#39;</span>, <span style="color:#e6db74">&#39;000000&#39;</span>), <span style="color:#66d9ef">nil</span>) <span style="color:#75715e"># remember phones didn&#39;t exist in the mid-18th Century!</span>
-  <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#75715e">#&amp;lt;Customer:0xb7f2be30 @address=#&amp;lt;struct Address street_address=&#34;101 Constabulary Road&#34;, suite=nil, city=&#34;Bay Colony&#34;, state=&#34;MA&#34;, country=&#34;US&#34;, zip=&#34;000000&#34;&amp;gt;, @name=#&amp;lt;struct Name first_name=&#34;John&#34;, last_name=&#34;Adams&#34;, suffix=nil, salutation=&#34;Former President&#34;&amp;gt;, @phone_number=nil&amp;gt;</span>
+  <span style="color:#f92672">=&gt;</span> <span style="color:#75715e">#&amp;lt;Customer:0xb7f2be30 @address=#&amp;lt;struct Address street_address=&#34;101 Constabulary Road&#34;, suite=nil, city=&#34;Bay Colony&#34;, state=&#34;MA&#34;, country=&#34;US&#34;, zip=&#34;000000&#34;&amp;gt;, @name=#&amp;lt;struct Name first_name=&#34;John&#34;, last_name=&#34;Adams&#34;, suffix=nil, salutation=&#34;Former President&#34;&amp;gt;, @phone_number=nil&amp;gt;</span>
   irb<span style="color:#f92672">&gt;</span> john_adams<span style="color:#f92672">.</span>salutation
-  <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Former President</span><span style="color:#e6db74">&#34;</span>
+  <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;Former President&#34;</span>
   irb<span style="color:#f92672">&gt;</span> john_adams<span style="color:#f92672">.</span>state
-  <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">MA</span><span style="color:#e6db74">&#34;</span>
+  <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;MA&#34;</span>
   irb<span style="color:#f92672">&gt;</span> john_adams<span style="color:#f92672">.</span>street_address
-  <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">101 Constabulary Road</span><span style="color:#e6db74">&#34;</span></code></pre></div>
+  <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;101 Constabulary Road&#34;</span></code></pre></div>
 </div>
 <p>
 Javahead&gt;&gt;&gt; We are still passing in the <code class="verbatim">Name</code>, <code class="verbatim">Address</code> and
 <code class="verbatim">PhoneNumber</code> stucts to create the Customer object in the first place,
-so why would flattening out the Customer interface reduce coupling?
-</p>
+so why would flattening out the Customer interface reduce coupling?</p>
 <p>
 Great question [Javahead]!  In general, most applications will read
 data from models much more than create them, and quite a number of
@@ -204,12 +197,10 @@ but most likely your application will be 80% reading and 20% writing
 (including creating and updating). So if we were to change the
 underlying structure of the Customer, on average 80% of the code that
 uses the Customer object would not know about its constituents and
-would not need to be changed.
-</p>
+would not need to be changed.</p>
 <p>
 Of course, this is somewhat of a contrived example, but I hope it
-shows how elegant, concise, simple, and yet powerful Rubyisms can be.
-</p>
+shows how elegant, concise, simple, and yet powerful Rubyisms can be.</p>
 
   </article>
 

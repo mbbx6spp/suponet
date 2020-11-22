@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -108,104 +108,99 @@
 <p>
 One of my favorite subjects as a layperson is economics. I have found many
 useful applications of methods and concepts to my work in software development,
-technical leadership, and reliability engineering roles.
-</p>
+technical leadership, and reliability engineering roles.</p>
 <p>
-This is a post to share some of these.
-</p>
+This is a post to share some of these.</p>
+<div id="outline-container-headline-1" class="outline-3">
 <h3 id="headline-1">
 A few ideas from economics: an overview
 </h3>
+<div id="outline-text-headline-1" class="outline-text-3">
 <p>
-Below is an overview of ideas from economics that have resonated with me at work:
-</p>
+Below is an overview of ideas from economics that have resonated with me at work:</p>
 <dl>
 <dt>
 <strong>Opportunity cost</strong>
 </dt>
 <dd>
-<p>
-Looking at what you lose by choosing a specific activity over
-others.
-</p>
+<p>Looking at what you lose by choosing a specific activity over
+others.</p>
 </dd>
 <dt>
 <strong>Causal inference with natural experiments</strong>
 </dt>
 <dd>
-<p>
-This uses results from a <em>natural
+<p>This uses results from a <em>natural
 experiment</em> to answer questions that have enormous potential for distributed
-systems.
-</p>
+systems.</p>
 </dd>
 <dt>
 <strong>Comparative advantage</strong>
 </dt>
 <dd>
-<p>
-This is not an intuitive idea and
+<p>This is not an intuitive idea and
 typically used in international trade policy to determine which
 trade partner would be better to produce a good even when they
 aren&#39;t the best at it globally. This has implications for technical
 leadership concerning the best person to assign work to given
-other constraints.
-</p>
+other constraints.</p>
 </dd>
 <dt>
 <strong>Thinking on the margins</strong>
 </dt>
 <dd>
-<p>
-This inspects when the marginal costs
+<p>This inspects when the marginal costs
 outweigh the marginal benefit. This has implications for me in my work when scoping, and specifying
-infrastructure and system architectures.
-</p>
+infrastructure and system architectures.</p>
 </dd>
 <dt>
 <strong>Lump of labor fallacy</strong>
 </dt>
 <dd>
-<p>
-This is a common misconception in society at
+<p>This is a common misconception in society at
 large where people think there is a fixed amount of work so automation or
 immigration yields job losses for manual native workers. There are deeper
-insights here too. This idea has implications in operations, &#34;DevOps&#34; culture, etc.
-</p>
+insights here too. This idea has implications in operations, &#34;DevOps&#34; culture, etc.</p>
 </dd>
 </dl>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-3">
 <h3 id="headline-2">
 Applying the ideas
 </h3>
+<div id="outline-text-headline-2" class="outline-text-3">
+<div id="outline-container-headline-3" class="outline-4">
 <h4 id="headline-3">
 Opportunity Cost
 </h4>
+<div id="outline-text-headline-3" class="outline-text-4">
 <p>
 <em>Opportunity cost</em> is the idea that to engage in some activity we are
 making those tasked unavailable for other activities for the duration
-it takes to get the work done.
-</p>
+it takes to get the work done.</p>
 <p>
 Paired with the idea of core competencies, which is our distilled
 understanding of what makes our company, product, and/or team special,
 we can strategically pick which parts of our application or platform
-our in-house product team builds versus buys.
-</p>
+our in-house product team builds versus buys.</p>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-4">
 <h4 id="headline-4">
 Causal inference with natural experiments
 </h4>
+<div id="outline-text-headline-4" class="outline-text-4">
 <p>
 To determine causality - engineers of all stripes - design experiments,
 collect observations and analyze those results derived from the observations.
-Today most <em>designed</em> experiments are randomized.
-</p>
+Today most <em>designed</em> experiments are randomized.</p>
 <p>
 However, when it is too expensive to design a randomized
 experiment or it&#39;s difficult to replicate the conditions of the real
 world, another category of experiment can be used effectively. These
 are known as <em>natural experiments</em> where recorded observations from
-the real world environment can be analyzed in a meaningful way.
-</p>
+the real world environment can be analyzed in a meaningful way.</p>
 <p>
 Consider in the 90s, when New Jersey increased their minimum wage from $4.25 to $5.05
 per hour. Adjacent Pennsylvania retained its minimum wage at $4.25 (the price before
@@ -218,8 +213,7 @@ set up the conditions of either New Jersey or Pennsylvania so they could run the
 experiment, they merely exploited <em>naturally</em> occurring conditions to extract
 observations that are meaningful to an interesting question of
 causality, e.g. did raising the minimum wage lower employment growth?
-Read the paper to find out. :)
-</p>
+Read the paper to find out. :)</p>
 <p>
 As a distributed systems engineer who has had to be on-call, I&#39;ve found myself
 wondering how a change in one part of the system will impact the
@@ -229,59 +223,47 @@ stressed in a specific way, I find ways to experiment to provide
 answers to causality questions. These periods are not as long-lived as
 most economic natural experiments, so your infrastructure must allow
 for dynamic experimentation. We need to be able
-to facilitate experimentation through a variety of tools, such as:
-</p>
+to facilitate experimentation through a variety of tools, such as:</p>
 <ul>
 <li>
-<p>
-queryable structured logging
-</p>
+<p>queryable structured logging</p>
 </li>
 <li>
-<p>
-good coverage metrics instrumentation
-</p>
+<p>good coverage metrics instrumentation</p>
 </li>
 <li>
-<p>
-visualization
-</p>
+<p>visualization</p>
 </li>
 <li>
-<p>
-distributed tracing
-</p>
+<p>distributed tracing</p>
 </li>
 <li>
-<p>
-traffic mirroring
-</p>
+<p>traffic mirroring</p>
 </li>
 </ul>
-<p>
-However, the crucial element is the mindset of conducting natural
+<p>However, the crucial element is the mindset of conducting natural
 experiments and knowing when it is fine to do this in a production
 setting so we can learn more about the real system because often
 simulated performance or stress tests are not adequate to depict the
-system as it often is stressed in production.
-</p>
+system as it often is stressed in production.</p>
 <p>
 A highly related term in reliability engineering is what Netflix calls
-<strong>chaos engineering</strong>.
-</p>
+<strong>chaos engineering</strong>.</p>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-4">
 <h4 id="headline-5">
 Comparative advantage
 </h4>
+<div id="outline-text-headline-5" class="outline-text-4">
 <p>
 <em>Comparative advantage</em> has to do with choosing trade partners with a
 lower relative opportunity cost than other possible trade partners to
-produce a good.
-</p>
+produce a good.</p>
 <p>
 In technical leadership and engineering management, we can use this
 idea when trying to determine the best person to work on a project or
-do a task at a specific time.
-</p>
+do a task at a specific time.</p>
 <p>
 Let&#39;s say that it is the end of July when many developers are on
 vacation. We have a need to upgrade an application dependency before
@@ -299,16 +281,18 @@ work on it. Given the constraints, we should prefer to assign this
 work to the mid-level developer because even if the more experienced developer
 was capable of upgrading within two days, the opportunity costs of not
 meeting our deadline exceed the extra time it would take the
-mid-level developer to do the upgrade.
-</p>
+mid-level developer to do the upgrade.</p>
+</div>
+</div>
+<div id="outline-container-headline-6" class="outline-4">
 <h4 id="headline-6">
 Thinking on the margins
 </h4>
+<div id="outline-text-headline-6" class="outline-text-4">
 <p>
 Sometimes a speedup, cost savings, or optimization of another kind can
 cost more than its benefits offer. This is where the thought process
-of thinking on the margins helps.
-</p>
+of thinking on the margins helps.</p>
 <p>
 In infrastructure engineering, there are many scenarios where we might
 be able to take advantage of new technology such as a new cloud provider
@@ -318,16 +302,18 @@ application code such that the overall speedup would not give us the
 net benefit we sought. In fact, it might yield net negative benefit
 when evaluating its use for our specific needs, even if the marketing
 blurb by the cloud provider reads very convincingly to the CTO or VP
-of Engineering.
-</p>
+of Engineering.</p>
 <p>
 By thinking on the margin we avoid making the mistake of investing the
 time and effort to migrate to this new resource type when the net
-benefits do not exist.
-</p>
+benefits do not exist.</p>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-4">
 <h4 id="headline-7">
 Lump  of labor fallacy
 </h4>
+<div id="outline-text-headline-7" class="outline-text-4">
 <p>
 At the advent of DevOps, in the 2000s when the term was coined,
 automation was one of the key ideas. In the world of economics, the
@@ -335,24 +321,20 @@ general notion of <em>automation</em> is associated with a well-known misconcept
 known as the &#39;lump of labor fallacy&#39;. The premise of &#39;lump of labor&#39; states
 that there is a fixed amount of work available in the economy at large
 such that if you were to automate a task you would permanently
-eliminate jobs and no new jobs would be created as a byproduct of the automation.
-</p>
+eliminate jobs and no new jobs would be created as a byproduct of the automation.</p>
 <p>
 In 1891 economist Schloss rebuked the idea that lowering the number of
 hours of labor in a workday would see reductions in unemployment and
-termed this the &#39;lump of labor fallacy.&#39;
-</p>
+termed this the &#39;lump of labor fallacy.&#39;</p>
 <p>
 Today many economists use the &#39;lump of labor fallacy&#39; to
 rebuke the idea that increasing the productivity of existing labor, growing
 the labor pool (e.g. via immigration), or increasing automation will
-increase unemployment.
-</p>
+increase unemployment.</p>
 <p>
 The original idea of &#39;lump of labor&#39; (not the fallacy) suggests the
 economy is a zero-sum game, which most economists do not consider to
-be true today.
-</p>
+be true today.</p>
 <p>
 In some countries business leaders and politicians created programs to
 offer older workers <em>early retirement</em> with the idea that it would
@@ -361,8 +343,7 @@ reality this was counter productive because it forced a smaller number
 of workers to bear the brunt of a pension system that had greater load
 and it did not reduce the unemployment levels in younger generations
 of workers as much hoped plus took productive and experienced workers
-out of the system at the same time.
-</p>
+out of the system at the same time.</p>
 <p>
 In a Software-as-a-Service engineering organization, you might be able
 to make changes to your application codebase such that your developers
@@ -374,8 +355,7 @@ and correction from a different team which restricts the number of
 available time slots for application developers to push their
 changes. This is similar to the early retirement example where the
 load has merely be shifted within the overall system which puts more
-strain on a part that cannot easily absorb the shock.
-</p>
+strain on a part that cannot easily absorb the shock.</p>
 <p>
 Also keep in mind as you are able to increase the number of changes
 pushed to production per day, someone in your engineering organization
@@ -383,33 +363,36 @@ will need to be thinking about how to decrease the latency of the
 deploys without increasing the risks too much which is more
 automation, i.e. automating yourself out of a job in software
 development can only happen when your organization is very badly
-managed or the viability of the business is in question.
-</p>
+managed or the viability of the business is in question.</p>
 <p>
 It is worth keeping these dynamics in mind when you are sequencing your
-strategic goals such that you ensure load shifts to load-bearing walls.
-</p>
+strategic goals such that you ensure load shifts to load-bearing walls.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-8" class="outline-3">
 <h3 id="headline-8">
 Concluding thoughts
 </h3>
+<div id="outline-text-headline-8" class="outline-text-3">
 <p>
 Transferring and applying concepts from other disciplines (including
 but not limited to economics) has helped me rethink my approaches
 in software development, delivery, system design, and management. Hopefully,
 this provided enough motivation to read the background on the ideas
 you found most interesting or inspired you to borrow from other
-disciplines you are familiar with.
-</p>
+disciplines you are familiar with.</p>
 <p>
 You could look at safety and reliability engineering disciplines
-for SRE applicable ideas from aviation and construction fields as well.
-</p>
+for SRE applicable ideas from aviation and construction fields as well.</p>
 <p>
 If you might be interested in transitioning your engineering
 organization to use better methods and process given your existing
 team through my customized team training and interim transformational
-leadership services then I would be happy to hear from you <a href="mailto:spotter.at.referentiallabs.com">via email</a>. :)
-</p>
+leadership services then I would be happy to hear from you <a href="mailto:spotter.at.referentiallabs.com">via email</a>. :)</p>
+</div>
+</div>
 
   </article>
 

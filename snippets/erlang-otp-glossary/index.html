@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -106,101 +106,66 @@
 
     
 <p>
-I am hoping this will serve as a reference for coworkers and others new to Erlang and OTP to be able to figure out the terminology easier than I had to. I learned the hard way, so you don&#39;t have to!:)
-</p>
+I am hoping this will serve as a reference for coworkers and others new to Erlang and OTP to be able to figure out the terminology easier than I had to. I learned the hard way, so you don&#39;t have to!:)</p>
 <ul>
 <li>
-<p>
-<strong>Erlang/OTP</strong> - The set of libraries and conventions that are used as part of the core Erlang distribution by Ericsson to build fault-tolerant, distributed systems more effectively.
-</p>
+<p><strong>Erlang/OTP</strong> - The set of libraries and conventions that are used as part of the core Erlang distribution by Ericsson to build fault-tolerant, distributed systems more effectively.</p>
 </li>
 <li>
-<p>
-<strong>OTP Release</strong> - A fully deployable distribution to run on an <strong>&#34;Erlang node&#34;</strong> (see below). An OTP Release may have one or more OTP Applications running inside of it at any time.
-</p>
+<p><strong>OTP Release</strong> - A fully deployable distribution to run on an <strong>&#34;Erlang node&#34;</strong> (see below). An OTP Release may have one or more OTP Applications running inside of it at any time.</p>
 </li>
 <li>
-<p>
-<strong>OTP Application</strong> - Usually a <strong>stateful</strong> long-running and active set of <strong>Erlang processes</strong> that collaborate together to achieve a well-defined set of responsibilities. It is a packaging of these collaborating modules and processes into a directory structure (see &#39;OTP Application Conventions&#39; below) along with metadata about the OTP Application and default/fallback environment variable values (in case the OTP Release above doesn&#39;t provide any values for them).
-</p>
+<p><strong>OTP Application</strong> - Usually a <strong>stateful</strong> long-running and active set of <strong>Erlang processes</strong> that collaborate together to achieve a well-defined set of responsibilities. It is a packaging of these collaborating modules and processes into a directory structure (see &#39;OTP Application Conventions&#39; below) along with metadata about the OTP Application and default/fallback environment variable values (in case the OTP Release above doesn&#39;t provide any values for them).</p>
 </li>
 <li>
-<p>
-<strong>OTP Application Resource File</strong> - Contains metadata and environment variable value defaults/fallbacks for the OTP Application.
-</p>
+<p><strong>OTP Application Resource File</strong> - Contains metadata and environment variable value defaults/fallbacks for the OTP Application.</p>
 </li>
 <li>
-<p>
-<strong>OTP Application Callback Module</strong> - For all <strong>active</strong> OTP Applications a callback module providing the `application` <strong>Erlang behaviour</strong> must be defined and export `start/2` and `stop/0` as per the expected contract (see [OTP Application manual](<a href="http://www.erlang.org/doc/design_principles/applications.html)).">http://www.erlang.org/doc/design_principles/applications.html)).</a>
-</p>
+<p><strong>OTP Application Callback Module</strong> - For all <strong>active</strong> OTP Applications a callback module providing the `application` <strong>Erlang behaviour</strong> must be defined and export `start/2` and `stop/0` as per the expected contract (see [OTP Application manual](<a href="http://www.erlang.org/doc/design_principles/applications.html)).">http://www.erlang.org/doc/design_principles/applications.html)).</a></p>
 </li>
 <li>
-<p>
-<strong>OTP Supervisor</strong> - Each <strong>active</strong> OTP Application Callback Module will start a root supervisor to run the different components of the application inside of a supervision tree.
-</p>
+<p><strong>OTP Supervisor</strong> - Each <strong>active</strong> OTP Application Callback Module will start a root supervisor to run the different components of the application inside of a supervision tree.</p>
 </li>
 <li>
-<p>
-<strong>OTP gen_server</strong> - A supervisor can launch one or more workers and/or one or more supervisors to create the supervision tree. One type of OTP defined behaviour is a `gen_server` that enables the very common client/server semantics. A `gen_server` callback/implementation module is launched as an Erlang process that can keep state running in a loop and receive messages sent from other Erlang processes. These messages may be `call`ed (i.e. the client blocks until the `gen_server` implementation replies) or can be `cast` (i.e. the client sends and forgets that it sent that message).
-</p>
+<p><strong>OTP gen_server</strong> - A supervisor can launch one or more workers and/or one or more supervisors to create the supervision tree. One type of OTP defined behaviour is a `gen_server` that enables the very common client/server semantics. A `gen_server` callback/implementation module is launched as an Erlang process that can keep state running in a loop and receive messages sent from other Erlang processes. These messages may be `call`ed (i.e. the client blocks until the `gen_server` implementation replies) or can be `cast` (i.e. the client sends and forgets that it sent that message).</p>
 </li>
 <li>
-<p>
-<strong>OTP gen_event</strong> - A lesser used OTP defined behaviour and broadcast module for event handling/broadcasting.
-</p>
+<p><strong>OTP gen_event</strong> - A lesser used OTP defined behaviour and broadcast module for event handling/broadcasting.</p>
 </li>
 <li>
-<p>
-<strong>OTP gen_fsm</strong> - A lesser used OTP defined behaviour for FSMs.
-</p>
+<p><strong>OTP gen_fsm</strong> - A lesser used OTP defined behaviour for FSMs.</p>
 </li>
 <li>
-<p>
-<strong>Erlang behaviours</strong> - a defined/expected interface that a module is expected to export. Any deviation from the defined/expected interface for a module defined as providing this <strong>Erlang behaviour</strong> will show up as a compiler <strong>warning</strong> (not error).
-</p>
+<p><strong>Erlang behaviours</strong> - a defined/expected interface that a module is expected to export. Any deviation from the defined/expected interface for a module defined as providing this <strong>Erlang behaviour</strong> will show up as a compiler <strong>warning</strong> (not error).</p>
 </li>
 <li>
-<p>
-<strong>Erlang node</strong> - one instance of a BEAM VM runtime, potentially having multiple OS processes in a process tree.
-</p>
+<p><strong>Erlang node</strong> - one instance of a BEAM VM runtime, potentially having multiple OS processes in a process tree.</p>
 </li>
 <li>
-<p>
-<strong>Erlang process</strong> - a very lightweight thread inside of the BEAM VM that only permits sharing global state via a process mailbox that can receive messages from other Erlang processes. The BEAM VM can create Erlang processes with very low resource consumption; with `+K true` passed in as a VM option upon startup, `epoll` (and other kernel polling mechanisms depending on the OS that Node.js/EventMachine utilizes) can be used to determine which Erlang processes are runnable at any moment, to minimize I/O blocking/wait times without impacting programming-style and impairing code readability/debuggability (which Node.js/EventMachine does drastically).
-</p>
+<p><strong>Erlang process</strong> - a very lightweight thread inside of the BEAM VM that only permits sharing global state via a process mailbox that can receive messages from other Erlang processes. The BEAM VM can create Erlang processes with very low resource consumption; with `+K true` passed in as a VM option upon startup, `epoll` (and other kernel polling mechanisms depending on the OS that Node.js/EventMachine utilizes) can be used to determine which Erlang processes are runnable at any moment, to minimize I/O blocking/wait times without impacting programming-style and impairing code readability/debuggability (which Node.js/EventMachine does drastically).</p>
+<div id="outline-container-headline-1" class="outline-3">
 <h3 id="headline-1">
 Recommended Reading
 </h3>
+</div>
 </li>
 </ul>
-<p>
-Book:
-</p>
+<p>Book:</p>
 <ul>
 <li>
-<p>
-<a href="http://www.manning.com/logan/">OTP in Action</a> - Manning Publishing: very useful for the budding Erlanger that wants to building production systems in OTP.
-</p>
+<p><a href="http://www.manning.com/logan/">OTP in Action</a> - Manning Publishing: very useful for the budding Erlanger that wants to building production systems in OTP.</p>
 </li>
 </ul>
-<p>
-Online:
-</p>
+<p>Online:</p>
 <ul>
 <li>
-<p>
-<a href="http://learnyousomeerlang.com/">Learn You Some Erlang</a> - Great online learning resource for Erlangers plus OTP beginner and intermediate developers.
-</p>
+<p><a href="http://learnyousomeerlang.com/">Learn You Some Erlang</a> - Great online learning resource for Erlangers plus OTP beginner and intermediate developers.</p>
 </li>
 </ul>
-<p>
-Code:
-</p>
+<p>Code:</p>
 <ul>
 <li>
-<p>
-<a href="https://github.com/basho">Basho Erlang Projects</a> - Often the best way to learn is by looking at a living breathing codebase that uses the language and/or libraries you are learning. A great source is Basho&#39;s Erlang projects. Check out rebar, lager, poolboy, riak_kv, riak_search and many more.
-</p>
+<p><a href="https://github.com/basho">Basho Erlang Projects</a> - Often the best way to learn is by looking at a living breathing codebase that uses the language and/or libraries you are learning. A great source is Basho&#39;s Erlang projects. Check out rebar, lager, poolboy, riak_kv, riak_search and many more.</p>
 </li>
 </ul>
 

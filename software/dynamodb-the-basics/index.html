@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -105,69 +105,62 @@
     </header>
 
     
+<div id="outline-container-headline-1" class="outline-3">
 <h3 id="headline-1">
 Introduction
 </h3>
+<div id="outline-text-headline-1" class="outline-text-3">
 <p>
 This post introduces concepts and principles used to design DynamoDB
 tables as I have been learning how to leverage this technology in a
-new project.
-</p>
+new project.</p>
 <p>
 This introduction will compare and contrast the core concepts and
 ideas with those found in relational database management systems
-(RDBMS).
-</p>
+(RDBMS).</p>
+</div>
+</div>
+<div id="outline-container-headline-2" class="outline-3">
 <h3 id="headline-2">
 Key takeaways
 </h3>
+<div id="outline-text-headline-2" class="outline-text-3">
 <p>
 While using DynamoDB the last couple of months, one of the big
 takeaways is that data modeling is a vital part and that the modeling
 process itself looks structurally similar to relational database
-design. The high-level process still looks like this:
-</p>
+design. The high-level process still looks like this:</p>
 <ul>
 <li>
-<p>
-Define how entities relate to each other (e.g. ERDs).
-</p>
+<p>Define how entities relate to each other (e.g. ERDs).</p>
 </li>
 <li>
-<p>
-Determine your data access patterns based on business requirements. In the RDBMS world this will help you decide how normalized your relational schema should be; in DynamoDB world you have different levers but the access patterns drive the DynamoDB table design significantly.
-</p>
+<p>Determine your data access patterns based on business requirements. In the RDBMS world this will help you decide how normalized your relational schema should be; in DynamoDB world you have different levers but the access patterns drive the DynamoDB table design significantly.</p>
 </li>
 <li>
-<p>
-Design your primary key and secondary indices based off of your data access pattern needs. Specifics documented via examples below.
-</p>
+<p>Design your primary key and secondary indices based off of your data access pattern needs. Specifics documented via examples below.</p>
 </li>
 </ul>
-<p>
-However, some relational database concepts or ideas will hinder your
-thought process, specifically:
-</p>
+<p>However, some relational database concepts or ideas will hinder your
+thought process, specifically:</p>
 <ul>
 <li>
-<p>
-one table for one entity and/or relationship
-</p>
+<p>one table for one entity and/or relationship</p>
 </li>
 <li>
-<p>
-normalization
-</p>
+<p>normalization</p>
 </li>
 <li>
-<p>
-<code class="verbatim">JOIN</code> <strong>across</strong> tables (we implicitly &#34;join&#34; within the same DynamoDB table across <em>partitions</em>)
-</p>
+<p><code class="verbatim">JOIN</code> <strong>across</strong> tables (we implicitly &#34;join&#34; within the same DynamoDB table across <em>partitions</em>)</p>
 </li>
 </ul>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-3">
 <h3 id="headline-3">
 Terminology
 </h3>
+<div id="outline-text-headline-3" class="outline-text-3">
 <table>
 <thead>
 <tr>
@@ -204,159 +197,133 @@ Terminology
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-3">
 <h3 id="headline-4">
 DynamoDB API
 </h3>
+<div id="outline-text-headline-4" class="outline-text-3">
 <p>
-The API consists of operations on:
-</p>
+The API consists of operations on:</p>
 <ul>
 <li>
-<p>
-items (requires you to identify the full primary key), includes batch operations
-</p>
+<p>items (requires you to identify the full primary key), includes batch operations</p>
 </li>
 <li>
-<p>
-queries
-</p>
+<p>queries</p>
 </li>
 <li>
-<p>
-scans (like a full table scan, which you want to avoid)
-</p>
+<p>scans (like a full table scan, which you want to avoid)</p>
 </li>
 </ul>
+</div>
+</div>
+<div id="outline-container-headline-5" class="outline-3">
 <h3 id="headline-5">
 DynamoDB Primary Keys
 </h3>
+<div id="outline-text-headline-5" class="outline-text-3">
 <p>
-You can have two kinds of primary keys:
-</p>
+You can have two kinds of primary keys:</p>
 <ul>
 <li>
-<p>
-Simple primary key (partition key)
-</p>
+<p>Simple primary key (partition key)</p>
 </li>
 <li>
-<p>
-Composite primary key (partition key + sort key)
-</p>
+<p>Composite primary key (partition key + sort key)</p>
 </li>
 </ul>
-<p>
-The partition key is used to disperse data across shards. Items with
+<p>The partition key is used to disperse data across shards. Items with
 the same partition key reside in the same partition (some developers
-may be use the analogy as of a &#34;shard&#34; for their initial intuitions).
-</p>
+may be use the analogy as of a &#34;shard&#34; for their initial intuitions).</p>
 <p>
-Sort keys are used to create ranges of items within a partition.
-</p>
+Sort keys are used to create ranges of items within a partition.</p>
 <p>
 So far we have been modeling complex enough data domains such that
-composite primary keys are essential for our query access model.
-</p>
+composite primary keys are essential for our query access model.</p>
+</div>
+</div>
+<div id="outline-container-headline-6" class="outline-3">
 <h3 id="headline-6">
 Secondary Indices
 </h3>
+<div id="outline-text-headline-6" class="outline-text-3">
 <p>
 Retrieving items using a DynamoDB table&#39;s primary key is the most
 efficient way, but at times we will still need to support a query
 pattern that isn&#39;t supported by the primary key. This is where, to
-avoid inefficient scan operations, we are able to use secondary indices.
-</p>
+avoid inefficient scan operations, we are able to use secondary indices.</p>
 <p>
-There are two types of secondary indices:
-</p>
+There are two types of secondary indices:</p>
 <dl>
 <dt>
 Global Secondary Index (GSI)
 </dt>
 <dd>
-<p>
-can be used to provide different
-partition and sort keys.
-</p>
+<p>can be used to provide different
+partition and sort keys.</p>
 </dd>
 <dt>
 Local Secondary Index (LSI)
 </dt>
 <dd>
-<p>
-used with a composite primary key
-where the partition key is the same but the sort key is different.
-</p>
+<p>used with a composite primary key
+where the partition key is the same but the sort key is different.</p>
 </dd>
 </dl>
-<p>
-Our DynamoDB tables typically use LSIs and a couple use GSIs.
-</p>
+<p>Our DynamoDB tables typically use LSIs and a couple use GSIs.</p>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-3">
 <h3 id="headline-7">
 Data Modeling for DynamoDB
 </h3>
+<div id="outline-text-headline-7" class="outline-text-3">
 <p>
-There are a few explicit steps that we borrow from our prior experience of data modeling in the relational world:
-</p>
+There are a few explicit steps that we borrow from our prior experience of data modeling in the relational world:</p>
 <ul>
 <li>
-<p>
-identify entities
-</p>
+<p>identify entities</p>
 </li>
 <li>
-<p>
-identify attributes
-</p>
+<p>identify attributes</p>
 </li>
 <li>
-<p>
-identify access patterns
-</p>
+<p>identify access patterns</p>
 </li>
 <li>
-<p>
-identify self-describing mechanism for primary keys
-</p>
+<p>identify self-describing mechanism for primary keys</p>
 </li>
 <li>
-<p>
-identify secondary indices based on access patterns as input
-</p>
+<p>identify secondary indices based on access patterns as input</p>
+<div id="outline-container-headline-8" class="outline-4">
 <h4 id="headline-8">
 Defining naming conventions
 </h4>
+</div>
 </li>
 </ul>
-<p>
-It doesn&#39;t matter if your fields are Capitalized, snake_cased, kebab-cased, camelCased, or PascalCased just pick something and make it consistent. The naming convention should be defined for:
-</p>
+<p>It doesn&#39;t matter if your fields are Capitalized, snake_cased, kebab-cased, camelCased, or PascalCased just pick something and make it consistent. The naming convention should be defined for:</p>
 <ul>
 <li>
-<p>
-Table names
-</p>
+<p>Table names</p>
 </li>
 <li>
-<p>
-Primary Key names
-</p>
+<p>Primary Key names</p>
 </li>
 <li>
-<p>
-Attribute names
-</p>
+<p>Attribute names</p>
 </li>
 </ul>
+<p>Just keep it simple and make sure it is applied consistently across your services (that one team will work on).</p>
 <p>
-Just keep it simple and make sure it is applied consistently across your services (that one team will work on).
-</p>
-<p>
-It seems silly to do first, but it will save a lot of irritation or rework later.
-</p>
+It seems silly to do first, but it will save a lot of irritation or rework later.</p>
+<div id="outline-container-headline-9" class="outline-4">
 <h4 id="headline-9">
 Entities
 </h4>
+<div id="outline-text-headline-9" class="outline-text-4">
 <p>
 Think about the nouns in your domains and then the relationships
 between them. This provides a good starting point for identifying your
@@ -365,19 +332,25 @@ entities for relational database design. The one difference is that we
 will typically model many entities in one DynamoDB table together
 whereas a table in the relational database way of thinking serves a
 fundamentally different aim given a fundamental primitive of
-relational database is the <code class="verbatim">JOIN</code> which is absent in DynamoDB.
-</p>
+relational database is the <code class="verbatim">JOIN</code> which is absent in DynamoDB.</p>
+</div>
+</div>
+<div id="outline-container-headline-10" class="outline-4">
 <h4 id="headline-10">
 Attributes
 </h4>
+<div id="outline-text-headline-10" class="outline-text-4">
 <p>
 Attributes are usually easily identified after finding your
 entities. This is identical to identifying the columns for relational
-schema design before normalizing data.
-</p>
+schema design before normalizing data.</p>
+</div>
+</div>
+<div id="outline-container-headline-11" class="outline-4">
 <h4 id="headline-11">
 Access patterns
 </h4>
+<div id="outline-text-headline-11" class="outline-text-4">
 <p>
 The way you identify access patterns to design a DynamoDB table well
 (for your current needs) is much like you would identify access
@@ -386,29 +359,37 @@ requirements of the software. Second/third systems have the benefit of
 having clarity of access and usage patterns, but the risk in migrating
 data from one datastore to another is that the migrations aren&#39;t
 particularly simple, not to mention cutting over 24/7 systems over
-without downtime or data loss.
-</p>
+without downtime or data loss.</p>
 <p>
 When reading user stories or technical stories it is possible to infer
-how data would need to be queried.
-</p>
+how data would need to be queried.</p>
+</div>
+</div>
+<div id="outline-container-headline-12" class="outline-4">
 <h4 id="headline-12">
 Self-describing keys
 </h4>
+<div id="outline-text-headline-12" class="outline-text-4">
 <p>
 Defining partition and sort keys that are self-describing based on a
 scheme of our entity model has allowed us to encode consistent
 querying and writing of items to provide a higher-level
-domain-oriented API on top of the lower-level DynamoDB API.
-</p>
+domain-oriented API on top of the lower-level DynamoDB API.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-headline-13" class="outline-3">
 <h3 id="headline-13">
 Summary
 </h3>
+<div id="outline-text-headline-13" class="outline-text-3">
 <p>
 There is a lot I didn&#39;t cover especially with respect to cost
 minimization. I will attempt to revisit that topic and recommended
-practices based on our experiences as we learn more.
-</p>
+practices based on our experiences as we learn more.</p>
+</div>
+</div>
 
   </article>
 

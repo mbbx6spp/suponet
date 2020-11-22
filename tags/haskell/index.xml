@@ -17,7 +17,9 @@
       <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/software/parametricity-a-practitioners-guide/</guid>
-      <description>Introduction   What software developer likes surprises, especially in production? Not me. At least not when I am on call. ;)  Wouldn&amp;#39;t it be great if we were able to reason about our code to make our lives as simple as possible when debugging or eliminate debugging altogether?  The big idea of parametricity is that from parametric (or generic) &amp;#34;pure&amp;#34; functions we can determine interesting properties (and more of them) from the parametric (generic) types than the equivalent function fixed with specific types.</description>
+      <description>Introduction   What software developer likes surprises, especially in production? Not me. At least not when I am on call. ;)
+ Wouldn&amp;#39;t it be great if we were able to reason about our code to make our lives as simple as possible when debugging or eliminate debugging altogether?
+ The big idea of parametricity is that from parametric (or generic) &amp;#34;pure&amp;#34; functions we can determine interesting properties (and more of them) from the parametric (generic) types than the equivalent function fixed with specific types.</description>
     </item>
     
   </channel>

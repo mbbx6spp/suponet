@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -105,10 +105,10 @@
     </header>
 
     <p>Small sample of Scala WTFs circa 2014 (many taken from Paul Phillips talks on the Scala Collections library):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">scala<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span>toSet <span style="color:#75715e">// the only reasonable line of code in here
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-scala" data-lang="scala">scala<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">).</span>toSet <span style="color:#75715e">// the only reasonable line of code in here
 </span><span style="color:#75715e"></span>res1<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">scala.collection.immutable.Set</span><span style="color:#f92672">[</span><span style="color:#66d9ef">String</span><span style="color:#f92672">]</span> <span style="color:#66d9ef">=</span> <span style="color:#a6e22e">Set</span><span style="color:#f92672">(</span>a<span style="color:#f92672">,</span> b<span style="color:#f92672">,</span> c<span style="color:#f92672">)</span>
 
-scala<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">)</span><span style="color:#f92672">.</span>toSet<span style="color:#f92672">(</span><span style="color:#f92672">)</span> <span style="color:#75715e">// seen this when learning Scala first time. ROFL.
+scala<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;a&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;b&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;c&#34;</span><span style="color:#f92672">).</span>toSet<span style="color:#f92672">()</span> <span style="color:#75715e">// seen this when learning Scala first time. ROFL.
 </span><span style="color:#75715e"></span>res2<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">Boolean</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
 
 scala<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">List</span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span><span style="color:#f92672">,</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">)</span> <span style="color:#66d9ef">:</span><span style="color:#66d9ef">::</span> <span style="color:#66d9ef">List</span><span style="color:#f92672">(</span><span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#66d9ef">a</span><span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#f92672">,</span> <span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#66d9ef">b</span><span style="color:#960050;background-color:#1e0010">&#34;</span><span style="color:#f92672">)</span> <span style="color:#75715e">// it&#39;d be funny if you didn&#39;t care.

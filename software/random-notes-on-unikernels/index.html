@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -107,18 +107,20 @@
     
 <p>
 This is an adaptation of a Slack chat explanation from work (slightly
-reworded to read better for the audience) from work in 2017.
-</p>
+reworded to read better for the audience) from work in 2017.</p>
+<div id="outline-container-headline-1" class="outline-3">
 <h3 id="headline-1">
 Random notes on unikernels
 </h3>
+<div id="outline-text-headline-1" class="outline-text-3">
+<div id="outline-container-headline-2" class="outline-4">
 <h4 id="headline-2">
 Introducing unikernels
 </h4>
+<div id="outline-text-headline-2" class="outline-text-4">
 <p>
 You might have heard terms like <em>unikernel</em>, <em>nanokernel</em>, or <em>library operating systems</em>.
-These aren&#39;t always used in exactly the same way, but they are highly related terms.
-</p>
+These aren&#39;t always used in exactly the same way, but they are highly related terms.</p>
 <p>
 <a href="https://mirage.io/">MirageOS</a> is the research project that has received the most industry love of which I
 am aware. The research team was acquihired by Docker a few years ago. It is
@@ -128,48 +130,39 @@ Linux and probably macOS/BSD binary to run on existing OSes for development purp
 It strips all aspects of the runtime/OS that the application doesn&#39;t need. i.e. if it
 doesn&#39;t need the UDP or SCTP stack, then it isn&#39;t shipped in the &#34;library OS&#34; target
 binaries reducing your attack surface area. These are one of the awesome things that
-excite me about the possibility of the idea of unikernels.
-</p>
+excite me about the possibility of the idea of unikernels.</p>
 <p>
 Some docs on this are here:
-<a href="https://mirage.io/docs/">https://mirage.io/docs/</a>
-</p>
+<a href="https://mirage.io/docs/">https://mirage.io/docs/</a></p>
 <p>
-A non-research oriented introduction can be found here: <a href="https://mirage.io/wiki/overview-of-mirage">https://mirage.io/wiki/overview-of-mirage</a>
-</p>
+A non-research oriented introduction can be found here: <a href="https://mirage.io/wiki/overview-of-mirage">https://mirage.io/wiki/overview-of-mirage</a></p>
 <p>
-Other language-based unikernels include:
-</p>
+Other language-based unikernels include:</p>
 <ul>
 <li>
-<p>
-<a href="https://www.includeos.org/">IncludeOS</a> (C/C++)
-</p>
+<p><a href="https://www.includeos.org/">IncludeOS</a> (C/C++)</p>
 </li>
 <li>
-<p>
-<a href="https://galois.com/project/halvm/">HaLVM</a> (Haskell)
-</p>
+<p><a href="https://galois.com/project/halvm/">HaLVM</a> (Haskell)</p>
 </li>
 <li>
-<p>
-LingVM (Erlang, though it is dead, I think)
-</p>
+<p>LingVM (Erlang, though it is dead, I think)</p>
 </li>
 </ul>
-<p>
-I have seen unikernels referred to as nanokernels or library operating systems.
-</p>
+<p>I have seen unikernels referred to as nanokernels or library operating systems.</p>
+</div>
+</div>
+<div id="outline-container-headline-3" class="outline-4">
 <h4 id="headline-3">
 Rump kernels
 </h4>
+<div id="outline-text-headline-3" class="outline-text-4">
 <p>
 <em>Rump kernels</em> are either a kind of unikernel or a stepping stone to unikernels
 depending on who you talk to. Rump kernels try to work on top of existing
 operating systems (OSes) to pare down the build to only what is needed.
 These are sometimes termed <em>Just-enough Operating Systems</em> (JeOS) and
-what qualifies varies from context to context.
-</p>
+what qualifies varies from context to context.</p>
 <p>
 The main build-level trade-off compared to unikernels defined above is that rump
 kernels leverage existing mature build tooling ecosystems. However, they are often
@@ -180,35 +173,37 @@ with rump kernels as compared with unikernels though the attack surface area wil
 less than a typical system build that runs an equivalent application on a typical
 distribution of the same flavor (e.g. Linux, BSD, etc.). A benefit of
 rump kernels is the ability to leverage familiar system-level
-debugging tooling available compared to unikernels.
-</p>
+debugging tooling available compared to unikernels.</p>
 <p>
 Rump kernels do allow you to <em>more</em> incrementally migrate your application
 from typical OS deployments (where everything including the kitchen-sink is installed
 without manual effort to reduce this down) out of the box to more streamlined rump
-kernel deployments.
-</p>
+kernel deployments.</p>
 <p>
 The big win with the language-based unikernels (and the hope with the rump unikernels)
 is you only ship the code your application uses. Absolutely nothing else, meaning the
-compiler target optimizes to an extreme.
-</p>
+compiler target optimizes to an extreme.</p>
+</div>
+</div>
+<div id="outline-container-headline-4" class="outline-4">
 <h4 id="headline-4">
 Related areas
 </h4>
+<div id="outline-text-headline-4" class="outline-text-4">
 <p>
 This is related to another area I am intrigued about as a bystander which is <em>whole
 program optimization</em>. Projects like this <a href="https://github.com/mu-chaco/ReWire">whole program optimizer</a> targeting VHDL
 from a subset of Haskell is exciting work to me:
-<a href="https://github.com/mu-chaco/ReWire">https://github.com/mu-chaco/ReWire</a>
-</p>
+<a href="https://github.com/mu-chaco/ReWire">https://github.com/mu-chaco/ReWire</a></p>
 <p>
 Arguably unikernels would could enable more application of whole program optimization
-at all levels.
-</p>
+at all levels.</p>
 <p>
-We will wait to see what happens in this space.
-</p>
+We will wait to see what happens in this space.</p>
+</div>
+</div>
+</div>
+</div>
 
   </article>
 

@@ -17,7 +17,9 @@
       <pubDate>Sat, 17 Oct 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/how-to-make-seemingly-difficult-decisions/</guid>
-      <description>Originally published as a Twitter thread starting here.  Anyone who has spent any time in either a technical or people management leadership position in software development knows that you need to make seemingly difficult decisions frequently.  This week I coached a coworker through making a difficult decision by walking through the following process with him. It turned out it wasn&amp;#39;t as difficult as he initially thought. Process outline     Identify your options.</description>
+      <description>Originally published as a Twitter thread starting here.
+ Anyone who has spent any time in either a technical or people management leadership position in software development knows that you need to make seemingly difficult decisions frequently.
+ This week I coached a coworker through making a difficult decision by walking through the following process with him. It turned out it wasn&amp;#39;t as difficult as he initially thought.</description>
     </item>
     
     <item>
@@ -26,7 +28,11 @@
       <pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/typescript-enum-versus-const-enum/</guid>
-      <description>Today I found that there is a difference between enum and const enum in TypeScript in the generated JavaScript. Namely:    with a non-const enum the compiler generates an object with key-value pairs.    with a const enum the definition alone doesn&amp;#39;t generate any code, only usage of the enum does.    Note: all generated JavaScript code is generated from the TypeScript v4.</description>
+      <description>Today I found that there is a difference between enum and const enum in TypeScript in the generated JavaScript. Namely:
+  with a non-const enum the compiler generates an object with key-value pairs.
+  with a const enum the definition alone doesn&amp;#39;t generate any code, only usage of the enum does.
+  Note: all generated JavaScript code is generated from the TypeScript v4.1 compiler.
+non-const enum definition   Let&amp;#39;s say we wanted to rate desserts, we might have a rating scale defined as an enumeration.</description>
     </item>
     
     <item>
@@ -35,7 +41,9 @@
       <pubDate>Thu, 24 Sep 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/using-three-way-diffing-context-for-merge-conflict-style-in-git/</guid>
-      <description>It recently came to my attention that not everyone overrides the default merge.conflictStyle git-config setting. So in case anyone here wanted to try something new out that would provide more context during a Git conflict resolution scenario here you go.  I use diff3 which you can set like this to override the default: git config --global merge.conflictStyle diff3   When rebasing you will get the following markers:  d5439077.</description>
+      <description>It recently came to my attention that not everyone overrides the default merge.conflictStyle git-config setting. So in case anyone here wanted to try something new out that would provide more context during a Git conflict resolution scenario here you go.
+ I use diff3 which you can set like this to override the default:
+git config --global merge.conflictStyle diff3   When rebasing you will get the following markers:</description>
     </item>
     
     <item>
@@ -44,7 +52,9 @@
       <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/algebraic-data-types-in-typescript/</guid>
-      <description>Note: the code for the TypeScript (to help you follow along) is available here: Encoding Algebraic Data Types in TypeScript code Background   Recently I&amp;#39;ve been reviewing TypeScript code at work. A common pattern I&amp;#39;ve observed in pull requests and some open source projects is a type that looks like the following: type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#39;; type Foo&amp;lt;A&amp;gt; = { _tag : FooTag, /* Required for the &amp;#39;Bar&amp;#39; tagged values of Foo */ bar?</description>
+      <description>Note: the code for the TypeScript (to help you follow along) is available here: Encoding Algebraic Data Types in TypeScript code
+Background  Recently I&amp;#39;ve been reviewing TypeScript code at work. A common pattern I&amp;#39;ve observed in pull requests and some open source projects is a type that looks like the following:
+type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#39;; type Foo&amp;lt;A&amp;gt; = { _tag : FooTag, /* Required for the &amp;#39;Bar&amp;#39; tagged values of Foo */ bar?</description>
     </item>
     
     <item>
@@ -53,7 +63,9 @@
       <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/algebraic-data-types-for-the-maths-inclined/</guid>
-      <description>This was initially published as a section of one of my substack posts.   You might be wondering why the term algebraic data types has the word algebra in it. Don’t sweat it if you hated algebra in high school, I will not call on you to solve simultaneous equations or prove by induction on the board in front of the class.  The basic idea is that through a little algebra we can determine the cardinality of an algebraic data type which represents how many possible values that could inhabit it.</description>
+      <description>This was initially published as a section of one of my substack posts.
+  You might be wondering why the term algebraic data types has the word algebra in it. Don’t sweat it if you hated algebra in high school, I will not call on you to solve simultaneous equations or prove by induction on the board in front of the class.
+ The basic idea is that through a little algebra we can determine the cardinality of an algebraic data type which represents how many possible values that could inhabit it.</description>
     </item>
     
     <item>
@@ -63,7 +75,12 @@
       <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/</guid>
-      <description>Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.  Notes:    all references to $ (dollars) is in reference to US Dollars (USD)    latencies are quoted in milliseconds (ms) unless otherwise noted    this serverless application was deployed using the AWS primitives API Gateway (REST) and AWS Lambda     Last week I deployed my second &amp;#34;serverless app&amp;#34; to production.</description>
+      <description>Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.
+ Notes:
+  all references to $ (dollars) is in reference to US Dollars (USD)
+  latencies are quoted in milliseconds (ms) unless otherwise noted
+  this serverless application was deployed using the AWS primitives API Gateway (REST) and AWS Lambda
+    Last week I deployed my second &amp;#34;serverless app&amp;#34; to production.</description>
     </item>
     
     <item>
@@ -72,7 +89,9 @@
       <pubDate>Tue, 10 Dec 2019 00:00:00 +0000</pubDate>
       
       <guid>/software/random-notes-on-unikernels/</guid>
-      <description>This is an adaptation of a Slack chat explanation from work (slightly reworded to read better for the audience) from work in 2017. Random notes on unikernels  Introducing unikernels   You might have heard terms like unikernel, nanokernel, or library operating systems. These aren&amp;#39;t always used in exactly the same way, but they are highly related terms.  MirageOS is the research project that has received the most industry love of which I am aware.</description>
+      <description>This is an adaptation of a Slack chat explanation from work (slightly reworded to read better for the audience) from work in 2017.
+Random notes on unikernels  Introducing unikernels   You might have heard terms like unikernel, nanokernel, or library operating systems. These aren&amp;#39;t always used in exactly the same way, but they are highly related terms.
+ MirageOS is the research project that has received the most industry love of which I am aware.</description>
     </item>
     
     <item>
@@ -81,7 +100,9 @@
       <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
       
       <guid>/software/dynamodb-the-basics/</guid>
-      <description>Introduction   This post introduces concepts and principles used to design DynamoDB tables as I have been learning how to leverage this technology in a new project.  This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS). Key takeaways   While using DynamoDB the last couple of months, one of the big takeaways is that data modeling is a vital part and that the modeling process itself looks structurally similar to relational database design.</description>
+      <description>Introduction   This post introduces concepts and principles used to design DynamoDB tables as I have been learning how to leverage this technology in a new project.
+ This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS).
+  Key takeaways   While using DynamoDB the last couple of months, one of the big takeaways is that data modeling is a vital part and that the modeling process itself looks structurally similar to relational database design.</description>
     </item>
     
     <item>
@@ -90,7 +111,10 @@
       <pubDate>Thu, 22 Jun 2017 15:42:40 -0500</pubDate>
       
       <guid>/software/economic-concepts-applied-in-software-development-reliability-engineering-and-technical-leadership/</guid>
-      <description>One of my favorite subjects as a layperson is economics. I have found many useful applications of methods and concepts to my work in software development, technical leadership, and reliability engineering roles.  This is a post to share some of these. A few ideas from economics: an overview   Below is an overview of ideas from economics that have resonated with me at work:   Opportunity cost    Looking at what you lose by choosing a specific activity over others.</description>
+      <description>One of my favorite subjects as a layperson is economics. I have found many useful applications of methods and concepts to my work in software development, technical leadership, and reliability engineering roles.
+ This is a post to share some of these.
+A few ideas from economics: an overview   Below is an overview of ideas from economics that have resonated with me at work:
+  Opportunity cost   Looking at what you lose by choosing a specific activity over others.</description>
     </item>
     
     <item>
@@ -99,7 +123,10 @@
       <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
       
       <guid>/software/to-type-or-not-to-static-type/</guid>
-      <description>Originally published as a Gist here: https://gist.github.com/mbbx6spp/60577af8dc4106d6e710cd804292ce20  Minor modifications in formatting and an extra line of no-judgement was added to this text from the original Gist. Purpose, Disclaimer and Confessions   This is the (mostly) no nonesense guide to studies and research that measures and/or compares a variety of facets, characteristics, or manifestations of software development in dynamically vs statically typed programming languages.  Disclaimer: For larger, more complex codebases, I do advocate for statically typed languages that also support algebraic data types, generic types, type classes, and preferrably a form of typelevel expressiveness (e.</description>
+      <description>Originally published as a Gist here: https://gist.github.com/mbbx6spp/60577af8dc4106d6e710cd804292ce20
+ Minor modifications in formatting and an extra line of no-judgement was added to this text from the original Gist.
+Purpose, Disclaimer and Confessions   This is the (mostly) no nonesense guide to studies and research that measures and/or compares a variety of facets, characteristics, or manifestations of software development in dynamically vs statically typed programming languages.
+ Disclaimer: For larger, more complex codebases, I do advocate for statically typed languages that also support algebraic data types, generic types, type classes, and preferrably a form of typelevel expressiveness (e.</description>
     </item>
     
     <item>
@@ -108,7 +135,9 @@
       <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/software/parametricity-a-practitioners-guide/</guid>
-      <description>Introduction   What software developer likes surprises, especially in production? Not me. At least not when I am on call. ;)  Wouldn&amp;#39;t it be great if we were able to reason about our code to make our lives as simple as possible when debugging or eliminate debugging altogether?  The big idea of parametricity is that from parametric (or generic) &amp;#34;pure&amp;#34; functions we can determine interesting properties (and more of them) from the parametric (generic) types than the equivalent function fixed with specific types.</description>
+      <description>Introduction   What software developer likes surprises, especially in production? Not me. At least not when I am on call. ;)
+ Wouldn&amp;#39;t it be great if we were able to reason about our code to make our lives as simple as possible when debugging or eliminate debugging altogether?
+ The big idea of parametricity is that from parametric (or generic) &amp;#34;pure&amp;#34; functions we can determine interesting properties (and more of them) from the parametric (generic) types than the equivalent function fixed with specific types.</description>
     </item>
     
     <item>
@@ -117,7 +146,12 @@
       <pubDate>Tue, 27 Nov 2012 00:00:00 +0000</pubDate>
       
       <guid>/software/algebraic-data-types/</guid>
-      <description>An algebraic data type can take many forms:    Sum type    Product type    Hybrid Sum/Product type    Recursive type (not covered in this post) Sum Types (aka Tagged Unions)     A sum type is a type that has a known and exhaustive list of constructors where a value of that type must be constructed by exactly one of the constructors.</description>
+      <description>An algebraic data type can take many forms:
+  Sum type
+  Product type
+  Hybrid Sum/Product type
+  Recursive type (not covered in this post)
+Sum Types (aka Tagged Unions)     A sum type is a type that has a known and exhaustive list of constructors where a value of that type must be constructed by exactly one of the constructors.</description>
     </item>
     
     <item>
@@ -126,7 +160,8 @@
       <pubDate>Thu, 25 Jan 2007 00:00:00 +0000</pubDate>
       
       <guid>/software/scm-the-next-generation/</guid>
-      <description>I am sure most developers (whether Java, Ruby, Python, or other) have used Subversion, Perforce or CVS to manage and control their projects&amp;#39; source, but have you used darcs or git?  I&amp;#39;m sure most of you would have heard of git it hosts the Linux kernel code currently. Less of you have probably heard of darcs before. Prior to this evening, the most notable point of darcs to me, is that it is written in Haskell.</description>
+      <description>I am sure most developers (whether Java, Ruby, Python, or other) have used Subversion, Perforce or CVS to manage and control their projects&amp;#39; source, but have you used darcs or git?
+ I&amp;#39;m sure most of you would have heard of git it hosts the Linux kernel code currently. Less of you have probably heard of darcs before. Prior to this evening, the most notable point of darcs to me, is that it is written in Haskell.</description>
     </item>
     
   </channel>

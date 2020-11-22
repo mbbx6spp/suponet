@@ -47,7 +47,7 @@
       <link href="/index.xml" rel="feed" type="application/rss+xml" title="Susan Potter" />
     
 
-    <meta name="generator" content="Hugo 0.64.0" />
+    <meta name="generator" content="Hugo 0.74.3" />
   </head>
 
   <body class="">
@@ -104,37 +104,32 @@
 
     </header>
 
-    <p>
-This idiom I have seen a little more in Rails than I have seen in
-Ruby, but I am putting it in this Ruby Idioms series anyway.
-</p>
+    <p>This idiom I have seen a little more in Rails than I have seen in
+Ruby, but I am putting it in this Ruby Idioms series anyway.</p>
 <p>
 First off, most of you will know by know that you can &#34;transparently&#34;
 provide a method in Ruby a Hash.  What do I mean by &#34;transparently&#34;?
-Well have a look at the code example below:
-</p>
+Well have a look at the code example below:</p>
 <div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">   user <span style="color:#f92672">=</span> <span style="color:#66d9ef">User</span><span style="color:#f92672">.</span>find(<span style="color:#e6db74">:first</span>, <span style="color:#e6db74">:include</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#e6db74">:preferences</span>)</code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">   user <span style="color:#f92672">=</span> <span style="color:#66d9ef">User</span><span style="color:#f92672">.</span>find(<span style="color:#e6db74">:first</span>, <span style="color:#e6db74">:include</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">:preferences</span>)</code></pre></div>
 </div>
 <p>
 The last argument is actually a Hash even though you do not see the
-curly braces at all.
-</p>
+curly braces at all.</p>
 <p>
 In my opinion it makes for more readable code.  So let us look behind
 the scenes at what the User.find method might do if it wasn&#39;t a magic
-method from <code class="verbatim">ActiveRecord</code>:
-</p>
+method from <code class="verbatim">ActiveRecord</code>:</p>
 <div class="src src-ruby">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">User</span>
     <span style="color:#75715e"># ... some stuff here</span>
     <span style="color:#66d9ef">class</span> <span style="color:#f92672">&lt;&lt;</span> self
-      <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">find</span>(type, params <span style="color:#f92672">=</span> {})
+      <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find</span>(type, params <span style="color:#f92672">=</span> {})
         options <span style="color:#f92672">=</span> @@DEFAULTS<span style="color:#f92672">.</span>merge(params)
         <span style="color:#66d9ef">case</span> type
         <span style="color:#66d9ef">when</span> <span style="color:#e6db74">:first</span>
           options<span style="color:#f92672">[</span><span style="color:#e6db74">:limit</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-        <span style="color:#f92672"></span><span style="color:#66d9ef">when</span> <span style="color:#e6db74">:all</span>
+        <span style="color:#66d9ef">when</span> <span style="color:#e6db74">:all</span>
           <span style="color:#75715e"># do stuff with options and query database</span>
           <span style="color:#75715e"># bla bla bla</span>
         <span style="color:#66d9ef">end</span>
@@ -146,35 +141,31 @@ method from <code class="verbatim">ActiveRecord</code>:
 </div>
 <p>
 This is quite useful, but one of the idioms in the same vain that I
-really appreciate is the following usage:
-</p>
+really appreciate is the following usage:</p>
 <div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  validates_length_of <span style="color:#e6db74">:name</span>, <span style="color:#e6db74">:title</span>, <span style="color:#e6db74">:company</span>, <span style="color:#e6db74">:in</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672"></span><span style="color:#f92672">..</span><span style="color:#ae81ff">128</span><span style="color:#f92672"></span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  validates_length_of <span style="color:#e6db74">:name</span>, <span style="color:#e6db74">:title</span>, <span style="color:#e6db74">:company</span>, <span style="color:#e6db74">:in</span> <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">..</span><span style="color:#ae81ff">128</span></code></pre></div>
 </div>
 <p>
 This provides another example of supplying a transparent <code class="verbatim">Hash</code>
 arguments at the end of a list of arguments, the length of which is
 unknown.  For example we may decide that the code needs to actually be
-more like:
-</p>
+more like:</p>
 <div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    validates_length_of <span style="color:#e6db74">:name</span>, <span style="color:#e6db74">:company</span>, <span style="color:#e6db74">:in</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672"></span><span style="color:#f92672">..</span><span style="color:#ae81ff">64</span>
-    <span style="color:#f92672"></span>validates_length_of <span style="color:#e6db74">:title</span>, <span style="color:#e6db74">:in</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672"></span><span style="color:#f92672">..</span><span style="color:#ae81ff">128</span><span style="color:#f92672"></span>, <span style="color:#e6db74">:allow_nil</span> <span style="color:#f92672">=</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">true</span> <span style="color:#75715e"># to cater for those ridiculously long job titles out there or those that do not have a job title at all</span></code></pre></div>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    validates_length_of <span style="color:#e6db74">:name</span>, <span style="color:#e6db74">:company</span>, <span style="color:#e6db74">:in</span> <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">..</span><span style="color:#ae81ff">64</span>
+    validates_length_of <span style="color:#e6db74">:title</span>, <span style="color:#e6db74">:in</span> <span style="color:#f92672">=&gt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">..</span><span style="color:#ae81ff">128</span>, <span style="color:#e6db74">:allow_nil</span> <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">true</span> <span style="color:#75715e"># to cater for those ridiculously long job titles out there or those that do not have a job title at all</span></code></pre></div>
 </div>
 <p>
 Now you will notice that the <code class="verbatim">validates_length_of</code> method accepts a
 list of variable size for the list of attribute symbols to check and
 then at the end an option hash to specify length checking specifics.
 How does the method know there is an option Hash at the end to use for
-these things and/or how long the list of attributes is?
-</p>
+these things and/or how long the list of attributes is?</p>
 <p>
 The secret is in the sauce.  If we were to look in the source code
 (though I am not, because I have seen it so many times before), we
-would see something like:
-</p>
+would see something like:</p>
 <div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e"></span><span style="color:#f92672"></span><span style="color:#a6e22e">validates_length_of</span>(<span style="color:#f92672">*</span>attrs)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">validates_length_of</span>(<span style="color:#f92672">*</span>attrs)
     options <span style="color:#f92672">=</span> @@DEFAULT_OPTIONS<span style="color:#f92672">.</span>merge(attrs<span style="color:#f92672">.</span>pop<span style="color:#f92672">.</span>symbolize_keys) <span style="color:#66d9ef">if</span> attrs<span style="color:#f92672">.</span>last<span style="color:#f92672">.</span>is_a?(<span style="color:#66d9ef">Hash</span>)
     <span style="color:#75715e"># then continue with rest of implementation.</span>
   <span style="color:#66d9ef">end</span></code></pre></div>
@@ -184,11 +175,9 @@ All it is doing here is in the signature, specifying that there is a
 list of unknown length to be supplied to the method.  Then it pops the
 last item off that list (<code class="verbatim">Array</code>) if and only if the last element of
 the list is a <code class="verbatim">Hash</code> for use as the options that the implementation
-will use.
-</p>
+will use.</p>
 <p>
-Until the next time enjoy Ruby&#39;s &#34;transparent&#34; <code class="verbatim">Hash</code> idioms.
-</p>
+Until the next time enjoy Ruby&#39;s &#34;transparent&#34; <code class="verbatim">Hash</code> idioms.</p>
 
   </article>
 
