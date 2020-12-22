@@ -583,6 +583,30 @@ One big limitation of this last approach approach is that it is based
 on the name of the <em>block</em> given by the regular expression in
 <code class="verbatim">xfuncname</code> in the relevant diff config section. It means that if the
 name of the block changed over time that will not be included in the output.</p>
+<p>
+Two related options for <code class="verbatim">git-log</code> includes:</p>
+<ul>
+<li>
+<p><code class="verbatim">-S &lt;TERM&gt;</code>: which searches for the specified string in the patch</p>
+</li>
+<li>
+<p><code class="verbatim">-G &lt;REGEX&gt;</code>: which searches for the regular expression in the patch</p>
+</li>
+</ul>
+<p>I have the following git aliases defined for each:</p>
+<div class="src src-ini">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[alias]</span>
+  <span style="color:#75715e"># ... truncated</span>
+  <span style="color:#a6e22e">search</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;log --all --pretty=oneline -S&#34;
+</span><span style="color:#e6db74">  egrep  = &#34;log --all --pretty=oneline -G&#34;</span></code></pre></div>
+</div>
+<p>
+Then I can use <code class="verbatim">git egrep &#34;^\s*module\s+&#34;</code> to search for all commits
+that contain something that resembles a module declaration in Ruby.</p>
+<p>
+Again note that this is just a quick-n-dirty way to eliminate noise
+and for many use cases this is enough, but we should dream about a
+more semantic world.</p>
 </div>
 </div>
 
