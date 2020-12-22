@@ -135,7 +135,7 @@ Scoping log diffs per file
 <div id="outline-text-headline-1" class="outline-text-3">
 <p>
 Sometimes a developer only wants to look at changes in one specific
-files in the repository. To do this we would use the <code class="verbatim">git-log</code>
+file in the repository. To do this we would use the <code class="verbatim">git-log</code>
 command:</p>
 <div class="src src-bash">
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -- README.md
@@ -571,6 +571,18 @@ As an exercise you could try building a regular expression for a file
 format that git doesn&#39;t automatically recognize how to find named
 blocks for and adding the <code class="verbatim">xfuncname</code> attribute under the relevant
 diff configuration section of your Git config file.</p>
+</div>
+</div>
+<div id="outline-container-headline-7" class="outline-3">
+<h3 id="headline-7">
+Limitations
+</h3>
+<div id="outline-text-headline-7" class="outline-text-3">
+<p>
+One big limitation of this last approach approach is that it is based
+on the name of the <em>block</em> given by the regular expression in
+<code class="verbatim">xfuncname</code> in the relevant diff config section. It means that if the
+name of the block changed over time that will not be included in the output.</p>
 </div>
 </div>
 
