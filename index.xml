@@ -6,10 +6,21 @@
     <description>Recent content on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 17 Oct 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 22 Dec 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Tracking diffs by scoping to file, range, function, method, or class changes in Git</title>
+      <link>/software/tracking-diffs-by-scoping-to-file-range-function-method-or-class-changes-in-git/</link>
+      <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/software/tracking-diffs-by-scoping-to-file-range-function-method-or-class-changes-in-git/</guid>
+      <description>One common question I see from developers using Git is how they can review the history of one function, method, or class over time through Git&amp;#39;s history of the project.
+ In codebases that have evolved over years, a developer just wants to know how one particular semantic scope of code has changed over time rather than on a file or directory basis.
+ We will start out by revisiting how to scope change diffs per file.</description>
+    </item>
     
     <item>
       <title>How to make seemingly difficult decisions</title>
