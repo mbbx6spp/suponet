@@ -183,6 +183,87 @@
     </item>
     
     <item>
+      <title>haskell</title>
+      <link>/tags/haskell/</link>
+      <pubDate>Sat, 15 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/haskell/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>training</title>
+      <link>/tags/training/</link>
+      <pubDate>Sat, 15 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/training/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>auto scaling</title>
+      <link>/tags/auto-scaling/</link>
+      <pubDate>Fri, 26 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/auto-scaling/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ec2</title>
+      <link>/tags/ec2/</link>
+      <pubDate>Fri, 26 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ec2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>infrastructure</title>
+      <link>/tags/infrastructure/</link>
+      <pubDate>Fri, 26 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/infrastructure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>profunctor</title>
+      <link>/tags/profunctor/</link>
+      <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/profunctor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nix</title>
+      <link>/tags/nix/</link>
+      <pubDate>Fri, 09 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/nix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nixos</title>
+      <link>/tags/nixos/</link>
+      <pubDate>Fri, 09 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/nixos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>operations</title>
+      <link>/tags/operations/</link>
+      <pubDate>Fri, 09 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/operations/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>economics</title>
       <link>/tags/economics/</link>
       <pubDate>Thu, 22 Jun 2017 15:42:40 -0500</pubDate>
@@ -192,9 +273,27 @@
     </item>
     
     <item>
+      <title>reactive infrastructure</title>
+      <link>/tags/reactive-infrastructure/</link>
+      <pubDate>Tue, 04 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/reactive-infrastructure/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>curry-howard</title>
+      <link>/tags/curry-howard/</link>
+      <pubDate>Wed, 21 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/curry-howard/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>idris</title>
       <link>/tags/idris/</link>
-      <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 21 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>/tags/idris/</guid>
       <description></description>
@@ -210,20 +309,20 @@
     </item>
     
     <item>
+      <title>erlang</title>
+      <link>/tags/erlang/</link>
+      <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/erlang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>funtional programming</title>
       <link>/tags/funtional-programming/</link>
       <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
       
       <guid>/tags/funtional-programming/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>haskell</title>
-      <link>/tags/haskell/</link>
-      <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/haskell/</guid>
       <description></description>
     </item>
     
@@ -237,11 +336,74 @@
     </item>
     
     <item>
-      <title>software</title>
-      <link>/tags/software/</link>
-      <pubDate>Thu, 25 Sep 2014 00:00:00 +0000</pubDate>
+      <title>monoids</title>
+      <link>/tags/monoids/</link>
+      <pubDate>Sat, 10 Nov 2012 00:00:00 +0000</pubDate>
       
-      <guid>/tags/software/</guid>
+      <guid>/tags/monoids/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dynamo</title>
+      <link>/tags/dynamo/</link>
+      <pubDate>Mon, 19 Sep 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/dynamo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dvcs</title>
+      <link>/tags/dvcs/</link>
+      <pubDate>Mon, 01 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/dvcs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>git</title>
+      <link>/tags/git/</link>
+      <pubDate>Mon, 01 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>actors</title>
+      <link>/tags/actors/</link>
+      <pubDate>Sun, 22 Aug 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/actors/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>concurrency</title>
+      <link>/tags/concurrency/</link>
+      <pubDate>Sun, 22 Aug 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/concurrency/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>multithreading</title>
+      <link>/tags/multithreading/</link>
+      <pubDate>Sun, 22 Aug 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/multithreading/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>software transactional memory</title>
+      <link>/tags/software-transactional-memory/</link>
+      <pubDate>Sun, 22 Aug 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/software-transactional-memory/</guid>
       <description></description>
     </item>
     
@@ -269,24 +431,6 @@
       <pubDate>Thu, 25 Jan 2007 00:00:00 +0000</pubDate>
       
       <guid>/tags/darcs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>dvcs</title>
-      <link>/tags/dvcs/</link>
-      <pubDate>Thu, 25 Jan 2007 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/dvcs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>git</title>
-      <link>/tags/git/</link>
-      <pubDate>Thu, 25 Jan 2007 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/git/</guid>
       <description></description>
     </item>
     

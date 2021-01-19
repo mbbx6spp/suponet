@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>software transactional memory on Susan Potter</title>
+    <link>/tags/software-transactional-memory/</link>
+    <description>Recent content in software transactional memory on Susan Potter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 22 Aug 2010 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/software-transactional-memory/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Designing for Concurrency</title>
+      <link>/talks/designing-for-concurrency/</link>
+      <pubDate>Sun, 22 Aug 2010 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/designing-for-concurrency/</guid>
+      <description>Presenting traditional and less traditional approaches to designing concurrent systems.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>monoids on Susan Potter</title>
+    <link>/tags/monoids/</link>
+    <description>Recent content in monoids on Susan Potter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 10 Nov 2012 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/monoids/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Functional Algebra: Monoids Applied</title>
+      <link>/talks/functional-algebra-monoids-applied/</link>
+      <pubDate>Sat, 10 Nov 2012 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/functional-algebra-monoids-applied/</guid>
+      <description>In functional programming, words from Category Theory are thrown around, but how useful are they really? This session looks at applications of monoids specifically and how using their algebraic properties offers a solid foundation of reasoning in many types of business domains and reduces developer error as computational context complexity increases. This will provide a tiny peak at Category Theory&amp;#39;s practical uses in software development and modeling. Code examples will be in Haskell and Scala, but monoids could be constructed in almost any language by software craftsmen and women utilizing higher orders of reasoning to their code.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -26,5 +26,14 @@
     Last week I deployed my second &amp;#34;serverless app&amp;#34; to production.</description>
     </item>
     
+    <item>
+      <title>Dynamically scaling a political news and activism hub (up to 5x the traffic in 20 minutes)</title>
+      <link>/talks/dynamically-scaling-a-political-news-and-activism-hub-up-to-5x-the-traffic-in-20-minutes/</link>
+      <pubDate>Fri, 26 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/dynamically-scaling-a-political-news-and-activism-hub-up-to-5x-the-traffic-in-20-minutes/</guid>
+      <description>On any given day this news discussion site can receive traffic peaks up to five times our base traffic, sometimes requiring us to scale out to double our backend app server capacity within a 10-20 minutes window (sometimes at unpredictable times). In this talk, Susan Potter will discuss DailyKos&amp;#39;s use of autoscaling in EC2 from the essential components to some gotchas learned along the way.</description>
+    </item>
+    
   </channel>
 </rss>

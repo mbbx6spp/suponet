@@ -6,10 +6,19 @@
     <description>Recent content in dvcs on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 25 Jan 2007 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 01 Aug 2011 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/dvcs/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Distributed Developer Workflows using Git</title>
+      <link>/talks/distributed-developer-workflows-using-git/</link>
+      <pubDate>Mon, 01 Aug 2011 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/distributed-developer-workflows-using-git/</guid>
+      <description>This meetup I will be walking the audience through how to setup, configure and maintain distributed development workflows using Git (the distributed VCS developers either love or hate). Much of the workflows suggested here will be applicable to other dVCSes like Mercurial, Darcs and Bazaar.</description>
+    </item>
     
     <item>
       <title>SCM: The Next Generation</title>

@@ -1,7 +1,10 @@
 /* whoami */
-Principal Software Developr: Susan Potter.
+Owner & Developer: Susan Potter.
 Site: https://susanpotter.net
+/* Come heckle me */
 Twitter: @SusanPotter
 Github:  https://github.com/mbbx6spp
 Keybase: https://keybase.io/mbbx6spp
+/* Endorse me for skills like: Typesafe Jira Comments, Highly Manicured Exit Blogging, or Functional Programming */
+LinkedIn: https://www.linkedin.com/in/susanpotter/
 Location: IL (USA)

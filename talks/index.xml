@@ -17,13 +17,7 @@
       <pubDate>Sat, 15 Jun 2019 00:00:00 +0000</pubDate>
       
       <guid>/talks/from-zero-to-haskell-lessons-learned-zurihac-2019-/-zurich-switzerland/</guid>
-      <description>  ZuriHac 2019 / June 2019 - Zurich, Switzerland
-Keywords    Haskell
-  Training
-  Mentoring
-  Functional Programming
-    Abstract   TODO
-  Slides     </description>
+      <description>Presented at ZuriHac 2019</description>
     </item>
     
     <item>
@@ -32,12 +26,7 @@ Keywords    Haskell
       <pubDate>Fri, 26 Apr 2019 00:00:00 +0000</pubDate>
       
       <guid>/talks/dynamically-scaling-a-political-news-and-activism-hub-up-to-5x-the-traffic-in-20-minutes/</guid>
-      <description>C-U Cloud Meetup / April 26, 2019 - Champaign, IL
-Keywords    AWS
-  Auto Scaling
-  EC2
-  Infrastructure
-    Abstract   On any given day we can receive traffic peaks up to five times our base traffic, sometimes requiring us to scale out to double our backend app server capacity within a 10-20 minutes window (sometimes at unpredictable times).</description>
+      <description>On any given day this news discussion site can receive traffic peaks up to five times our base traffic, sometimes requiring us to scale out to double our backend app server capacity within a 10-20 minutes window (sometimes at unpredictable times). In this talk, Susan Potter will discuss DailyKos&amp;#39;s use of autoscaling in EC2 from the essential components to some gotchas learned along the way.</description>
     </item>
     
     <item>
@@ -46,12 +35,10 @@ Keywords    AWS
       <pubDate>Fri, 09 Mar 2018 00:00:00 +0000</pubDate>
       
       <guid>/talks/functional-operations-functional-programming-at-comcast-labs-connect/</guid>
-      <description>Functional Programming at Comcast Labs Connect / March 2018 - Philadelphia, PA
-Keywords    Functional Programming
-  Nix
-  NixOS
-  Operations
-    Abstract   Maintaining configurations for different kinds of nodes and cloud resources in a [micro]service architecture can be an operational nightmare, especially if not managed with the application codebase. CI and CD job environments diverge from production configuration yielding their results unpredictable at best or produce false positives in the worst case.</description>
+      <description>If we were starting greenfield development of a service or web application today we would likely employ a number of practices and design choices that are known to optimise application responsiveness, resiliency, elasticity, and/or composability. Delivering our reactive applications on top of predictable infrastructure will set our project up for success.
+Some of us don&amp;#39;t have that luxury. We must provision, deploy, and operationally maintain legacy monolithic Rails web applications and HTTP APIs that are hard to refactor without introducing new bugs, poorly performing, and struggle to meet user load/peak demand. Built during a prior era of the company where fast and loose practices were rewarded, startup cowboys delivered the first set of features promptly at the expense of subsequent velocity, long-term maintainability, and high risk deployments. When living in this reality, our infrastructure must be reliable or our application needs constant babysitting, leading to on-call fatigue and high staff turnover.
+The good news is there are core principles we can apply to produce more reproducible systems, failstop deployments, and consistent environment configurations to eliminate a large class of bugs inherent in legacy applications and minimize related business risks. This will be the focus of the session and applies to both greenfield and legacy cases.
+Code examples given using NixOS and Haskell, but focus remains on the underlying principles.</description>
     </item>
     
     <item>
@@ -60,12 +47,7 @@ Keywords    Functional Programming
       <pubDate>Tue, 04 Oct 2016 00:00:00 +0000</pubDate>
       
       <guid>/talks/functional-and-reactive-operations/</guid>
-      <description>Reactive Summit / October 4, 2016 - Austin, TX
-Keywords    Functional Programming
-  Reactive Infrastructure
-  Nix
-  NixOS
-    Abstract   When we start greenfield development of a new service or web application today we&amp;#39;d likely employ a number of practices and design choices that are known to optimise application responsiveness, resiliency, elasticity, and/or composability. Delivering our reactive applications on top of predictable infrastructure will set our project up for success.</description>
+      <description>If we were starting greenfield development of a service or web application today we would likely employ a number of practices and design choices that are known to optimise application responsiveness, resiliency, elasticity, and/or composability. Delivering our reactive applications on top of predictable infrastructure will set our project up for success. Some of us don&amp;#39;t have that luxury. We must provision, deploy, and operationally maintain legacy monolithic Rails web applications and HTTP APIs that are hard to refactor without introducing new bugs, poorly performing, and struggle to meet user load/peak demand. Built during a prior era of the company where fast and loose practices were rewarded, startup cowboys delivered the first set of features promptly at the expense of subsequent velocity, long-term maintainability, and high risk deployments. When living in this reality, our infrastructure must be reliable or our application needs constant babysitting, leading to on-call fatigue and high staff turnover. The good news is there are core principles we can apply to produce more reproducible systems, failstop deployments, and consistent environment configurations to eliminate a large class of bugs inherent in legacy applications and minimize related business risks. This will be the focus of the session and applies to both greenfield and legacy cases. Code examples given using NixOS and Haskell, but focus remains on the underlying principles.</description>
     </item>
     
     <item>
@@ -74,8 +56,7 @@ Keywords    Functional Programming
       <pubDate>Wed, 21 Sep 2016 00:00:00 +0000</pubDate>
       
       <guid>/talks/put-a-type-on-it-idris-types-as-propositions/</guid>
-      <description>  Strange Loop 2016 / September 2016 - St. Louis, MO
-Abstract   Slides     </description>
+      <description>Showing how Curry-Howard can be applied to structuring types to represent logical propositions.</description>
     </item>
     
     <item>
@@ -84,10 +65,7 @@ Abstract   Slides     </description>
       <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
       
       <guid>/talks/from-zero-to-production-nixos-erlang/</guid>
-      <description>Erlang Factory SF 2016 / March 2016 - San Francisco, CA
-Abstract   This talk will introduce the audience to the Nix packaging, NixOS, and related ecosystem tools for Erlang/Elixir developers.
- By reviewing common development, testing, and deployment problems we will look at what Nix has to offer to aid Erlang/Elixir developers in these areas.
- From seamless developer environment bootstrapping to consistent CI environments and beyond.</description>
+      <description>This talk will introduce the audience to the Nix packaging, NixOS, and related ecosystem tools for Erlang/Elixir developers. By reviewing common development, testing, and deployment problems we will look at what Nix has to offer to aid Erlang/Elixir developers in these areas. From seamless developer environment bootstrapping to consistent CI environments and beyond.</description>
     </item>
     
     <item>
@@ -96,10 +74,7 @@ Abstract   This talk will introduce the audience to the Nix packaging, NixOS, an
       <pubDate>Sat, 10 Nov 2012 00:00:00 +0000</pubDate>
       
       <guid>/talks/functional-algebra-monoids-applied/</guid>
-      <description>SCNA 2012 / November 10, 2012 - Chicago, IL
-Abstract   In functional programming, words from Category Theory are thrown around, but how useful are they really?
- This session looks at applications of monoids specifically and how using their algebraic properties offers a solid foundation of reasoning in many types of business domains and reduces developer error as computational context complexity increases.
- This will provide a tiny peak at Category Theory&amp;#39;s practical uses in software development and modeling.</description>
+      <description>In functional programming, words from Category Theory are thrown around, but how useful are they really? This session looks at applications of monoids specifically and how using their algebraic properties offers a solid foundation of reasoning in many types of business domains and reduces developer error as computational context complexity increases. This will provide a tiny peak at Category Theory&amp;#39;s practical uses in software development and modeling. Code examples will be in Haskell and Scala, but monoids could be constructed in almost any language by software craftsmen and women utilizing higher orders of reasoning to their code.</description>
     </item>
     
     <item>
@@ -119,8 +94,7 @@ Abstract   Monads, also known as Kleisli triples in Category Theory, are an (end
       <pubDate>Mon, 19 Sep 2011 00:00:00 +0000</pubDate>
       
       <guid>/talks/dynamo-not-just-for-datastores/</guid>
-      <description>Strange Loop 2011 / September 19, 2011 - St. Louis, MO
-Abstract   Find out how to build decentralized distributed systems based on a Dynamo-esque philosophy using riak_core, which is used to abstract away some of the more complicated decentralized and distributed features of Riak KV, Riak Search and other applications. Assumes some knowledge of basic Erlang and its concepts of behaviors. The audience will discover which Dynamo features can be taken advantage of via riak_core and how to build a simple example.</description>
+      <description>Find out how to build decentralized, fault-tolerant, stateful application services using core concepts and techniques from the Amazon Dynamo paper using riak_core as a toolkit.</description>
     </item>
     
     <item>
@@ -129,9 +103,7 @@ Abstract   Find out how to build decentralized distributed systems based on a Dy
       <pubDate>Mon, 01 Aug 2011 00:00:00 +0000</pubDate>
       
       <guid>/talks/distributed-developer-workflows-using-git/</guid>
-      <description>C-U Developer Meetup / August 2011 - Urbana, IL
-Abstract   This meetup I will be walking the audience through how to setup, configure and maintain distributed development workflows using Git (the distributed VCS developers either love or hate). Much of the workflows suggested here will be applicable to other dVCSes like Mercurial, Darcs and Bazaar.
- This will be a light, interactive taster of the chapter I am writing for &amp;#34;The Architecture of Open Source Applications, volume 2&amp;#34; that will be coming to an ebook reader or bookshelf near you in the Autumn of 2011.</description>
+      <description>This meetup I will be walking the audience through how to setup, configure and maintain distributed development workflows using Git (the distributed VCS developers either love or hate). Much of the workflows suggested here will be applicable to other dVCSes like Mercurial, Darcs and Bazaar.</description>
     </item>
     
     <item>
@@ -140,9 +112,7 @@ Abstract   This meetup I will be walking the audience through how to setup, conf
       <pubDate>Sat, 05 Mar 2011 00:00:00 +0000</pubDate>
       
       <guid>/talks/deploying-distributed-software-services-to-the-cloud-without-breaking-a-sweat/</guid>
-      <description>Code PaLOUsa 2011 / March 2011 - Louisville, KY
-Abstract   The promise of cloud computing provides business benefits from reduced costs to increased flexibility. One struggle organizations face as they move to run on cloud infrastructure is automating complex dsitributed deployments.
- The presenter will discuss issues surrounding the process of automating complex cloud deployments, review tools and techniques that will aid organizations of any size deploy more complex services on distributed nodes, even across a number of cloud infrastructure providers.</description>
+      <description>The promise of cloud computing provides business benefits from reduced costs to increased flexibility. One struggle organizations face as they move to run on cloud infrastructure is automating complex dsitributed deployments.</description>
     </item>
     
     <item>
@@ -151,8 +121,7 @@ Abstract   The promise of cloud computing provides business benefits from reduce
       <pubDate>Sun, 22 Aug 2010 00:00:00 +0000</pubDate>
       
       <guid>/talks/designing-for-concurrency/</guid>
-      <description> C-U Software Development Group / August 2010 - Champaign, IL
- </description>
+      <description>Presenting traditional and less traditional approaches to designing concurrent systems.</description>
     </item>
     
   </channel>

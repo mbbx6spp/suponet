@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nixos on Susan Potter</title>
+    <link>/tags/nixos/</link>
+    <description>Recent content in nixos on Susan Potter</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 09 Mar 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/nixos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Functional Operations (Functional Programming at Comcast Labs Connect)</title>
+      <link>/talks/functional-operations-functional-programming-at-comcast-labs-connect/</link>
+      <pubDate>Fri, 09 Mar 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/functional-operations-functional-programming-at-comcast-labs-connect/</guid>
+      <description>If we were starting greenfield development of a service or web application today we would likely employ a number of practices and design choices that are known to optimise application responsiveness, resiliency, elasticity, and/or composability. Delivering our reactive applications on top of predictable infrastructure will set our project up for success.
+Some of us don&amp;#39;t have that luxury. We must provision, deploy, and operationally maintain legacy monolithic Rails web applications and HTTP APIs that are hard to refactor without introducing new bugs, poorly performing, and struggle to meet user load/peak demand. Built during a prior era of the company where fast and loose practices were rewarded, startup cowboys delivered the first set of features promptly at the expense of subsequent velocity, long-term maintainability, and high risk deployments. When living in this reality, our infrastructure must be reliable or our application needs constant babysitting, leading to on-call fatigue and high staff turnover.
+The good news is there are core principles we can apply to produce more reproducible systems, failstop deployments, and consistent environment configurations to eliminate a large class of bugs inherent in legacy applications and minimize related business risks. This will be the focus of the session and applies to both greenfield and legacy cases.
+Code examples given using NixOS and Haskell, but focus remains on the underlying principles.</description>
+    </item>
+    
+    <item>
+      <title>Functional and Reactive Operations</title>
+      <link>/talks/functional-and-reactive-operations/</link>
+      <pubDate>Tue, 04 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/functional-and-reactive-operations/</guid>
+      <description>If we were starting greenfield development of a service or web application today we would likely employ a number of practices and design choices that are known to optimise application responsiveness, resiliency, elasticity, and/or composability. Delivering our reactive applications on top of predictable infrastructure will set our project up for success. Some of us don&amp;#39;t have that luxury. We must provision, deploy, and operationally maintain legacy monolithic Rails web applications and HTTP APIs that are hard to refactor without introducing new bugs, poorly performing, and struggle to meet user load/peak demand. Built during a prior era of the company where fast and loose practices were rewarded, startup cowboys delivered the first set of features promptly at the expense of subsequent velocity, long-term maintainability, and high risk deployments. When living in this reality, our infrastructure must be reliable or our application needs constant babysitting, leading to on-call fatigue and high staff turnover. The good news is there are core principles we can apply to produce more reproducible systems, failstop deployments, and consistent environment configurations to eliminate a large class of bugs inherent in legacy applications and minimize related business risks. This will be the focus of the session and applies to both greenfield and legacy cases. Code examples given using NixOS and Haskell, but focus remains on the underlying principles.</description>
+    </item>
+    
+    <item>
+      <title>From Zero To Production (NixOS, Erlang)</title>
+      <link>/talks/from-zero-to-production-nixos-erlang/</link>
+      <pubDate>Tue, 08 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/from-zero-to-production-nixos-erlang/</guid>
+      <description>This talk will introduce the audience to the Nix packaging, NixOS, and related ecosystem tools for Erlang/Elixir developers. By reviewing common development, testing, and deployment problems we will look at what Nix has to offer to aid Erlang/Elixir developers in these areas. From seamless developer environment bootstrapping to consistent CI environments and beyond.</description>
+    </item>
+    
+  </channel>
+</rss>

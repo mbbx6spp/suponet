@@ -6,10 +6,19 @@
     <description>Recent content in idris on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 May 2016 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 21 Sep 2016 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/idris/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Put a Type On It: Idris Types as Propositions</title>
+      <link>/talks/put-a-type-on-it-idris-types-as-propositions/</link>
+      <pubDate>Wed, 21 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>/talks/put-a-type-on-it-idris-types-as-propositions/</guid>
+      <description>Showing how Curry-Howard can be applied to structuring types to represent logical propositions.</description>
+    </item>
     
     <item>
       <title>To Type or not to Static Type</title>
