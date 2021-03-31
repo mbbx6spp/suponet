@@ -1217,6 +1217,10 @@ main .src .highlight pre {
   margin-top: -1px;
 }
 
+.max-w-prose {
+  max-width: 65ch;
+}
+
 .overflow-hidden {
   overflow: hidden;
 }
