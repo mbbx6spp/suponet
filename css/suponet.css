@@ -1434,6 +1434,22 @@ main .src .highlight pre {
   width: 0.25rem;
 }
 
+.w-3 {
+  width: 0.75rem;
+}
+
+.w-4 {
+  width: 1rem;
+}
+
+.w-5 {
+  width: 1.25rem;
+}
+
+.w-7 {
+  width: 1.75rem;
+}
+
 .w-64 {
   width: 16rem;
 }
