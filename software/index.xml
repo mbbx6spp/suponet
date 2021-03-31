@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>The superpowers that higher-kinded types provides</title>
+      <link>/software/the-superpowers-that-higher-kinded-types-provides/</link>
+      <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/software/the-superpowers-that-higher-kinded-types-provides/</guid>
+      <description>Lately I have been working with TypeScript developers introducing stronger forms of functional programming and during our explorations about how to exploit the abstractions found in libraries like fp-ts and io-ts, I find myself missing higher-kinded types when one developer asked me to explain why higher-kinded types are so useful.
+ Here is my attempt.
+Functional Programming as Programming with Values   We first get introduced to functional programming with the big idea that we can pass functions around as arguments or return functions as values from other functions.</description>
+    </item>
+    
+    <item>
       <title>Tracking diffs by scoping to file, range, function, method, or class changes in Git</title>
       <link>/software/tracking-diffs-by-scoping-to-file-range-function-method-or-class-changes-in-git/</link>
       <pubDate>Tue, 22 Dec 2020 00:00:00 +0000</pubDate>
@@ -86,7 +97,8 @@ type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#
       <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/</guid>
-      <description>Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.
+      <description>/images/car-dashboard-small.webp
+Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.
  Notes:
   all references to $ (dollars) is in reference to US Dollars (USD)
   latencies are quoted in milliseconds (ms) unless otherwise noted

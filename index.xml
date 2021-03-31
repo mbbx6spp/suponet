@@ -6,10 +6,21 @@
     <description>Recent content on Susan Potter</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Dec 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 17 Mar 2021 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The superpowers that higher-kinded types provides</title>
+      <link>/software/the-superpowers-that-higher-kinded-types-provides/</link>
+      <pubDate>Wed, 17 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>/software/the-superpowers-that-higher-kinded-types-provides/</guid>
+      <description>Lately I have been working with TypeScript developers introducing stronger forms of functional programming and during our explorations about how to exploit the abstractions found in libraries like fp-ts and io-ts, I find myself missing higher-kinded types when one developer asked me to explain why higher-kinded types are so useful.
+ Here is my attempt.
+Functional Programming as Programming with Values   We first get introduced to functional programming with the big idea that we can pass functions around as arguments or return functions as values from other functions.</description>
+    </item>
     
     <item>
       <title>Tracking diffs by scoping to file, range, function, method, or class changes in Git</title>
@@ -99,7 +110,8 @@ type FooTag = &amp;#39;Bar&amp;#39; | &amp;#39;Baz&amp;#39; | &amp;#39;Qux&amp;#
       <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
       
       <guid>/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/</guid>
-      <description>Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.
+      <description>/images/car-dashboard-small.webp
+Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.
  Notes:
   all references to $ (dollars) is in reference to US Dollars (USD)
   latencies are quoted in milliseconds (ms) unless otherwise noted
@@ -158,6 +170,16 @@ Random notes on unikernels  Introducing unikernels   You might have heard terms 
       
       <guid>/talks/dynamically-scaling-a-political-news-and-activism-hub-up-to-5x-the-traffic-in-20-minutes/</guid>
       <description>On any given day this news discussion site can receive traffic peaks up to five times our base traffic, sometimes requiring us to scale out to double our backend app server capacity within a 10-20 minutes window (sometimes at unpredictable times). In this talk, Susan Potter will discuss DailyKos&amp;#39;s use of autoscaling in EC2 from the essential components to some gotchas learned along the way.</description>
+    </item>
+    
+    <item>
+      <title>Socket Statistics on Linux with ss</title>
+      <link>/snippets/socket-statistics-on-linux-with-ss/</link>
+      <pubDate>Wed, 03 Apr 2019 18:44:52 -0500</pubDate>
+      
+      <guid>/snippets/socket-statistics-on-linux-with-ss/</guid>
+      <description>An excellent tool when you need to troubleshoot distributed systems is ss, which provides visibility into TCP states of your live connections. Even if you know netstat this is a command you should get acquainted with because of its more powerful interface which requires fewer pipes to find the connection information you need and it is probably already installed on your favorite distribution.
+In this post, we walk through a couple of examples, and then show a real-world production problem that can be diagnosed by effective use of ss.</description>
     </item>
     
     <item>

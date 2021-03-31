@@ -25,6 +25,16 @@
     </item>
     
     <item>
+      <title>Socket Statistics on Linux with ss</title>
+      <link>/snippets/socket-statistics-on-linux-with-ss/</link>
+      <pubDate>Wed, 03 Apr 2019 18:44:52 -0500</pubDate>
+      
+      <guid>/snippets/socket-statistics-on-linux-with-ss/</guid>
+      <description>An excellent tool when you need to troubleshoot distributed systems is ss, which provides visibility into TCP states of your live connections. Even if you know netstat this is a command you should get acquainted with because of its more powerful interface which requires fewer pipes to find the connection information you need and it is probably already installed on your favorite distribution.
+In this post, we walk through a couple of examples, and then show a real-world production problem that can be diagnosed by effective use of ss.</description>
+    </item>
+    
+    <item>
       <title>Profunctor exploration in less than 100 lines of Haskell</title>
       <link>/snippets/profunctor-exploration-in-less-than-100-lines-of-haskell/</link>
       <pubDate>Tue, 30 Oct 2018 00:00:00 +0000</pubDate>
