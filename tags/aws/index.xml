@@ -1,40 +1,7 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>AWS on Susan Potter</title>
-    <link>/tags/aws/</link>
-    <description>Recent content in AWS on Susan Potter</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 03 Jun 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/aws/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>A quick review of a pure functional serverless application deployed to production
-</title>
-      <link>/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/</link>
-      <pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/</guid>
-      <description>/images/car-dashboard-small.webp
-Photo by Dawid Zawiła on Unsplash  This was adapted from a tweet thread on June 3rd, 2020.
- Notes:
-  all references to $ (dollars) is in reference to US Dollars (USD)
-  latencies are quoted in milliseconds (ms) unless otherwise noted
-  this serverless application was deployed using the AWS primitives API Gateway (REST) and AWS Lambda
-    Last week I deployed my second &amp;#34;serverless app&amp;#34; to production.</description>
-    </item>
-    
-    <item>
-      <title>Dynamically scaling a political news and activism hub (up to 5x the traffic in 20 minutes)</title>
-      <link>/talks/dynamically-scaling-a-political-news-and-activism-hub-up-to-5x-the-traffic-in-20-minutes/</link>
-      <pubDate>Fri, 26 Apr 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/talks/dynamically-scaling-a-political-news-and-activism-hub-up-to-5x-the-traffic-in-20-minutes/</guid>
-      <description>On any given day this news discussion site can receive traffic peaks up to five times our base traffic, sometimes requiring us to scale out to double our backend app server capacity within a 10-20 minutes window (sometimes at unpredictable times). In this talk, Susan Potter will discuss DailyKos&amp;#39;s use of autoscaling in EC2 from the essential components to some gotchas learned along the way.</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AWS on Susan Potter</title><link>/tags/aws/</link><description>Recent content in AWS on Susan Potter</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 03 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/aws/index.xml" rel="self" type="application/rss+xml"/><item><title>A quick review of a pure functional serverless application deployed to production</title><link>/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/</link><pubDate>Wed, 03 Jun 2020 00:00:00 +0000</pubDate><guid>/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/</guid><description>/images/car-dashboard-small.webp
+Photo by Dawid Zawiła on Unsplash This was adapted from a tweet thread on June 3rd, 2020.
+Notes:
+all references to $ (dollars) is in reference to US Dollars (USD)
+latencies are quoted in milliseconds (ms) unless otherwise noted
+this serverless application was deployed using the AWS primitives API Gateway (REST) and AWS Lambda
+Last week I deployed my second &amp;#34;serverless app&amp;#34; to production.</description></item><item><title>Dynamically scaling a political news and activism hub (up to 5x the traffic in 20 minutes)</title><link>/talks/dynamically-scaling-a-political-news-and-activism-hub-up-to-5x-the-traffic-in-20-minutes/</link><pubDate>Fri, 26 Apr 2019 00:00:00 +0000</pubDate><guid>/talks/dynamically-scaling-a-political-news-and-activism-hub-up-to-5x-the-traffic-in-20-minutes/</guid><description>On any given day this news discussion site can receive traffic peaks up to five times our base traffic, sometimes requiring us to scale out to double our backend app server capacity within a 10-20 minutes window (sometimes at unpredictable times). In this talk, Susan Potter will discuss DailyKos&amp;#39;s use of autoscaling in EC2 from the essential components to some gotchas learned along the way.</description></item></channel></rss>

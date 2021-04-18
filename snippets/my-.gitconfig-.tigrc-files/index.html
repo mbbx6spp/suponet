@@ -1,216 +1,114 @@
-<!DOCTYPE html>
-<html lang="en-us"><meta charset="UTF-8">
-<meta name="template-type" content="snippets">
-<meta name="template-kind" content="page">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-
-
-
-  <link rel="stylesheet" href="/css/suponet.css" integrity="">
-
-
-<meta name="author" content="Susan Potter">
-<meta name="description" content="">
-<meta name="keywords" content="[]">
-<meta name="theme-color" content="">
-<meta name="og:site_name" content="Susan Potter"/>
-<meta name="og:title" content='My .gitconfig &amp; .tigrc files &ndash; Susan Potter'/>
-<meta name="og:url" content="/snippets/my-.gitconfig-.tigrc-files/">
-<meta name="og:description" content="">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="SusanPotter">
-<meta name="twitter:creator" content="SusanPotter">
-
-<meta name="twitter:image" content="/images/hat-collage.jpg">
-
-
-<meta name="twitter:image:alt" content="Susan&#39;s avatar wearing many different hats.">
-
-<meta name="twitter:title" content='My .gitconfig &amp; .tigrc files &ndash; Susan Potter'>
-<meta name="twitter:description" content="">
-<title>My .gitconfig &amp; .tigrc files &ndash; Susan Potter</title>
-
-<meta property="og:type" content="website" />
-<body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center">
-    <a href="/" class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0">
-      <h1 class="ml-3 text-2xl font-bold">Susan Potter</h1>
-    </a>
-    
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      
-      <a href="/about/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
-      
-      <a href="/talks/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
-      
-      <a href="/software/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
-      
-      <a href="/snippets/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a>
-      
-    </nav>
-    
-  </div>
-
-  
-  <hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3">
-    <h2 class="text-3xl font-extrabold tracking-wider leading-loose">My .gitconfig &amp; .tigrc files</h2>
-    
-    <h3 class="text-gray-800 dark:text-gray-200">Thu November 11, 2007</h3>
-    
-    
-  </hgroup>
-  
-</header>
-
-<main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2">
-  <div class="src src-ini">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[user]</span>
-  <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">Susan Potter # make sure you change this
-</span><span style="color:#e6db74">  email = me@susanpotter.net # make sure you change this</span>
-<span style="color:#66d9ef">[color]</span>
-  <span style="color:#a6e22e">diff</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">auto
-</span><span style="color:#e6db74">  status = auto
-</span><span style="color:#e6db74">  branch = auto</span>
-<span style="color:#66d9ef">[diff]</span>
-  <span style="color:#a6e22e">rename</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">copy
-</span><span style="color:#e6db74">  color = auto</span>
-<span style="color:#66d9ef">[apply]</span>
-  <span style="color:#a6e22e">whitespace</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">strip</span>
-<span style="color:#66d9ef">[pager]</span>
-  <span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">true</span>
-<span style="color:#66d9ef">[status]</span>
-  <span style="color:#a6e22e">color</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">auto</span>
-<span style="color:#66d9ef">[branch]</span>
-  <span style="color:#a6e22e">autosetuprebase</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">always</span>
-<span style="color:#66d9ef">[alias]</span>
-  <span style="color:#a6e22e">co</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;checkout&#34;
-</span><span style="color:#e6db74">  ci = &#34;commit&#34;
-</span><span style="color:#e6db74">  ciall = &#34;commit -a -v&#34;
-</span><span style="color:#e6db74">  unmerge = &#34;reset --hard ORIG_HEAD&#34;
-</span><span style="color:#e6db74">  lsbr = &#34;branch -a&#34; # list all branches, even remote ones
-</span><span style="color:#e6db74">  mkbr = &#34;branch&#34; # create branch if you specify a branch name after it, e.g. git mkbr upgrading_rails
-</span><span style="color:#e6db74">  # remove branch named after it, e.g. git rmbr upgrading_rails
-</span><span style="color:#e6db74">  rmbr = &#34;branch -d&#34;
-</span><span style="color:#e6db74">  # rename branch from one name to another
-</span><span style="color:#e6db74">  mvbr = &#34;branch -m&#34;
-</span><span style="color:#e6db74">  #
-</span><span style="color:#e6db74">  track = &#34;branch --track&#34;
-</span><span style="color:#e6db74">  log = &#34;log -p&#34;
-</span><span style="color:#e6db74">  lol = &#34;log --graph --decorate --pretty=oneline --abbrev-commit&#34;
-</span><span style="color:#e6db74">  lola = &#34;log --graph --decorate --pretty=oneline --abbrev-commit --all&#34;
-</span><span style="color:#e6db74">  # list remote repositories
-</span><span style="color:#e6db74">  lsrem = &#34;remote&#34;
-</span><span style="color:#e6db74">  # list all tags, to keep commands consistent, e.g. git lstag
-</span><span style="color:#e6db74">  lstag = &#34;tag -l&#34;
-</span><span style="color:#e6db74">  # list unmerged branches
-</span><span style="color:#e6db74">  lsunmerged = &#34;branch --no-merged&#34;
-</span><span style="color:#e6db74">  # create a new tag based on specified commit
-</span><span style="color:#e6db74">  mktag = &#34;tag -a&#34;
-</span><span style="color:#e6db74">  # remove existing tag by name
-</span><span style="color:#e6db74">  rmtag = &#34;tag -d&#34;
-</span><span style="color:#e6db74">  # rename tag from one name to another
-</span><span style="color:#e6db74">  mvtag = &#34;tag -m&#34;
-</span><span style="color:#e6db74">  # create new remote repository for project
-</span><span style="color:#e6db74">  mkrem = &#34;remote add&#34;
-</span><span style="color:#e6db74">  # initialize all submodules
-</span><span style="color:#e6db74">  modinit = &#34;submodule init&#34;
-</span><span style="color:#e6db74">  # update all submodules
-</span><span style="color:#e6db74">  modup = &#34;submodule update&#34;
-</span><span style="color:#e6db74">  # show status of all submodules
-</span><span style="color:#e6db74">  modst = &#34;submodule status&#34;
-</span><span style="color:#e6db74">  # add new submodule, i.e. git modadd module-name url
-</span><span style="color:#e6db74">  modadd = &#34;submodule add&#34;
-</span><span style="color:#e6db74">  # push local committed changes to rubyforge and origin (usually GitHub)
-</span><span style="color:#e6db74">  osspush = !git push rubyforge master &amp;&amp; git push origin master
-</span><span style="color:#e6db74">  # pull changes from rubyforge and origin (usually GitHub)
-</span><span style="color:#e6db74">  osspull = !git pull rubyforge master &amp;&amp; git pull origin master
-</span><span style="color:#e6db74">  # sync (pull then push) from rubyforge and origin (usually GitHub)
-</span><span style="color:#e6db74">  osssync = !git osspull &amp;&amp; git osspush
-</span><span style="color:#e6db74">  # show last 15 log entries
-</span><span style="color:#e6db74">  recentlog = &#34;log -n 15&#34;
-</span><span style="color:#e6db74">  # search alias
-</span><span style="color:#e6db74">  search = &#34;log --pretty=short -S&#34;
-</span><span style="color:#e6db74">  # short log
-</span><span style="color:#e6db74">  shlog = &#34;log --oneline --decorate&#34;
-</span><span style="color:#e6db74">  # snap RPEO
-</span><span style="color:#e6db74">  snap = &#34;clone --depth 1&#34;
-</span><span style="color:#e6db74">  # show status, keep same as svn command I used most frequently
-</span><span style="color:#e6db74">  st = &#34;status --porcelain&#34;
-</span><span style="color:#e6db74">  # another alias for status that some scripts might use
-</span><span style="color:#e6db74">  stat = &#34;status --porcelain&#34;
-</span><span style="color:#e6db74">  # fetch and rebase from svn repository
-</span><span style="color:#e6db74">  spull = !git svn fetch &amp;&amp; git svn rebase
-</span><span style="color:#e6db74">  # push keeping each local commit as atomic.
-</span><span style="color:#e6db74">  spush = !git svn dcommit
-</span><span style="color:#e6db74">  # tracking push
-</span><span style="color:#e6db74">  tpush = &#34;push -u&#34;
-</span><span style="color:#e6db74">  # pull &amp; update submodules at once - assumed you are on tracking local branch
-</span><span style="color:#e6db74">  up = !git pull &amp;&amp; git submodule update
-</span><span style="color:#e6db74">  # word diff
-</span><span style="color:#e6db74">  wdiff = &#34;diff --word-diff&#34;
-</span><span style="color:#e6db74">  # prints out the branches a commit is on
-</span><span style="color:#e6db74">  whbr = &#34;branch -a --contains&#34;
-</span><span style="color:#e6db74">  # prints commits from a branch are already present upstream
-</span><span style="color:#e6db74">  whci = &#34;cherry -v&#34;
-</span><span style="color:#e6db74">  # prints out the tags a commit is a part of
-</span><span style="color:#e6db74">  whtag = &#34;name-rev --name-only&#34;</span>
-<span style="color:#66d9ef">[rerere]</span>
-  <span style="color:#a6e22e">enabled</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">1</span>
-<span style="color:#66d9ef">[merge]</span>
-  <span style="color:#a6e22e">tool</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">gvimdiff
-</span><span style="color:#e6db74">  conflictStyle = diff3</span>
-<span style="color:#66d9ef">[url &#34;https://github.com/&#34;]</span>
-  <span style="color:#a6e22e">insteadOf</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;gh:&#34;</span>
-<span style="color:#66d9ef">[url &#34;git@github.com:&#34;]</span>
-  <span style="color:#a6e22e">insteadOf</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;git@gh:&#34;</span></code></pre></div>
-</div>
-<div class="src src-text">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">set show-author = abbreviated
+<!doctype html><html lang=en-us><meta charset=utf-8><meta name=template-type content="snippets"><meta name=template-kind content="page"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://rsms.me/inter/inter.css><link rel=stylesheet href=/css/suponet.css integrity><meta name=author content="Susan Potter"><meta name=title content="My .gitconfig & .tigrc files &ndash; Susan Potter"><meta name=description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=keywords content="[]"><meta name=theme-color content><meta name=og:site_name content="Susan Potter"><meta name=og:title content="My .gitconfig & .tigrc files &ndash; Susan Potter"><meta name=og:url content="/snippets/my-.gitconfig-.tigrc-files/"><meta name=og:description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="SusanPotter"><meta name=twitter:creator content="SusanPotter"><meta name=twitter:image content="/images/hat-collage.jpg"><meta name=twitter:image:alt content="Susan's avatar wearing many different hats."><meta name=twitter:title content="My .gitconfig & .tigrc files &ndash; Susan Potter"><meta name=twitter:description content><title>My .gitconfig & .tigrc files &ndash; Susan Potter</title><meta property="og:type" content="website"><body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font"><div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center"><a href=/ class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0"><h1 class="ml-3 text-2xl font-bold">Susan Potter</h1></a><nav class="md:ml-auto flex flex-wrap items-center text-base justify-center"><a href=/about/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
+<a href=/talks/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
+<a href=/software/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
+<a href=/snippets/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a></nav></div><hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3"><h2 class="text-3xl font-extrabold tracking-wider leading-loose">My .gitconfig & .tigrc files</h2><h3 class="text-gray-800 dark:text-gray-200">Thu November 11, 2007</h3></hgroup></header><main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2"><div class="src src-ini"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ini data-lang=ini><span style=color:#66d9ef>[user]</span>
+  <span style=color:#a6e22e>name</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>Susan Potter # make sure you change this
+</span><span style=color:#e6db74>  email = me@susanpotter.net # make sure you change this</span>
+<span style=color:#66d9ef>[color]</span>
+  <span style=color:#a6e22e>diff</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>auto
+</span><span style=color:#e6db74>  status = auto
+</span><span style=color:#e6db74>  branch = auto</span>
+<span style=color:#66d9ef>[diff]</span>
+  <span style=color:#a6e22e>rename</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>copy
+</span><span style=color:#e6db74>  color = auto</span>
+<span style=color:#66d9ef>[apply]</span>
+  <span style=color:#a6e22e>whitespace</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>strip</span>
+<span style=color:#66d9ef>[pager]</span>
+  <span style=color:#a6e22e>color</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>true</span>
+<span style=color:#66d9ef>[status]</span>
+  <span style=color:#a6e22e>color</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>auto</span>
+<span style=color:#66d9ef>[branch]</span>
+  <span style=color:#a6e22e>autosetuprebase</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>always</span>
+<span style=color:#66d9ef>[alias]</span>
+  <span style=color:#a6e22e>co</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;checkout&#34;
+</span><span style=color:#e6db74>  ci = &#34;commit&#34;
+</span><span style=color:#e6db74>  ciall = &#34;commit -a -v&#34;
+</span><span style=color:#e6db74>  unmerge = &#34;reset --hard ORIG_HEAD&#34;
+</span><span style=color:#e6db74>  lsbr = &#34;branch -a&#34; # list all branches, even remote ones
+</span><span style=color:#e6db74>  mkbr = &#34;branch&#34; # create branch if you specify a branch name after it, e.g. git mkbr upgrading_rails
+</span><span style=color:#e6db74>  # remove branch named after it, e.g. git rmbr upgrading_rails
+</span><span style=color:#e6db74>  rmbr = &#34;branch -d&#34;
+</span><span style=color:#e6db74>  # rename branch from one name to another
+</span><span style=color:#e6db74>  mvbr = &#34;branch -m&#34;
+</span><span style=color:#e6db74>  #
+</span><span style=color:#e6db74>  track = &#34;branch --track&#34;
+</span><span style=color:#e6db74>  log = &#34;log -p&#34;
+</span><span style=color:#e6db74>  lol = &#34;log --graph --decorate --pretty=oneline --abbrev-commit&#34;
+</span><span style=color:#e6db74>  lola = &#34;log --graph --decorate --pretty=oneline --abbrev-commit --all&#34;
+</span><span style=color:#e6db74>  # list remote repositories
+</span><span style=color:#e6db74>  lsrem = &#34;remote&#34;
+</span><span style=color:#e6db74>  # list all tags, to keep commands consistent, e.g. git lstag
+</span><span style=color:#e6db74>  lstag = &#34;tag -l&#34;
+</span><span style=color:#e6db74>  # list unmerged branches
+</span><span style=color:#e6db74>  lsunmerged = &#34;branch --no-merged&#34;
+</span><span style=color:#e6db74>  # create a new tag based on specified commit
+</span><span style=color:#e6db74>  mktag = &#34;tag -a&#34;
+</span><span style=color:#e6db74>  # remove existing tag by name
+</span><span style=color:#e6db74>  rmtag = &#34;tag -d&#34;
+</span><span style=color:#e6db74>  # rename tag from one name to another
+</span><span style=color:#e6db74>  mvtag = &#34;tag -m&#34;
+</span><span style=color:#e6db74>  # create new remote repository for project
+</span><span style=color:#e6db74>  mkrem = &#34;remote add&#34;
+</span><span style=color:#e6db74>  # initialize all submodules
+</span><span style=color:#e6db74>  modinit = &#34;submodule init&#34;
+</span><span style=color:#e6db74>  # update all submodules
+</span><span style=color:#e6db74>  modup = &#34;submodule update&#34;
+</span><span style=color:#e6db74>  # show status of all submodules
+</span><span style=color:#e6db74>  modst = &#34;submodule status&#34;
+</span><span style=color:#e6db74>  # add new submodule, i.e. git modadd module-name url
+</span><span style=color:#e6db74>  modadd = &#34;submodule add&#34;
+</span><span style=color:#e6db74>  # push local committed changes to rubyforge and origin (usually GitHub)
+</span><span style=color:#e6db74>  osspush = !git push rubyforge master &amp;&amp; git push origin master
+</span><span style=color:#e6db74>  # pull changes from rubyforge and origin (usually GitHub)
+</span><span style=color:#e6db74>  osspull = !git pull rubyforge master &amp;&amp; git pull origin master
+</span><span style=color:#e6db74>  # sync (pull then push) from rubyforge and origin (usually GitHub)
+</span><span style=color:#e6db74>  osssync = !git osspull &amp;&amp; git osspush
+</span><span style=color:#e6db74>  # show last 15 log entries
+</span><span style=color:#e6db74>  recentlog = &#34;log -n 15&#34;
+</span><span style=color:#e6db74>  # search alias
+</span><span style=color:#e6db74>  search = &#34;log --pretty=short -S&#34;
+</span><span style=color:#e6db74>  # short log
+</span><span style=color:#e6db74>  shlog = &#34;log --oneline --decorate&#34;
+</span><span style=color:#e6db74>  # snap RPEO
+</span><span style=color:#e6db74>  snap = &#34;clone --depth 1&#34;
+</span><span style=color:#e6db74>  # show status, keep same as svn command I used most frequently
+</span><span style=color:#e6db74>  st = &#34;status --porcelain&#34;
+</span><span style=color:#e6db74>  # another alias for status that some scripts might use
+</span><span style=color:#e6db74>  stat = &#34;status --porcelain&#34;
+</span><span style=color:#e6db74>  # fetch and rebase from svn repository
+</span><span style=color:#e6db74>  spull = !git svn fetch &amp;&amp; git svn rebase
+</span><span style=color:#e6db74>  # push keeping each local commit as atomic.
+</span><span style=color:#e6db74>  spush = !git svn dcommit
+</span><span style=color:#e6db74>  # tracking push
+</span><span style=color:#e6db74>  tpush = &#34;push -u&#34;
+</span><span style=color:#e6db74>  # pull &amp; update submodules at once - assumed you are on tracking local branch
+</span><span style=color:#e6db74>  up = !git pull &amp;&amp; git submodule update
+</span><span style=color:#e6db74>  # word diff
+</span><span style=color:#e6db74>  wdiff = &#34;diff --word-diff&#34;
+</span><span style=color:#e6db74>  # prints out the branches a commit is on
+</span><span style=color:#e6db74>  whbr = &#34;branch -a --contains&#34;
+</span><span style=color:#e6db74>  # prints commits from a branch are already present upstream
+</span><span style=color:#e6db74>  whci = &#34;cherry -v&#34;
+</span><span style=color:#e6db74>  # prints out the tags a commit is a part of
+</span><span style=color:#e6db74>  whtag = &#34;name-rev --name-only&#34;</span>
+<span style=color:#66d9ef>[rerere]</span>
+  <span style=color:#a6e22e>enabled</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>1</span>
+<span style=color:#66d9ef>[merge]</span>
+  <span style=color:#a6e22e>tool</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>gvimdiff
+</span><span style=color:#e6db74>  conflictStyle = diff3</span>
+<span style=color:#66d9ef>[url &#34;https://github.com/&#34;]</span>
+  <span style=color:#a6e22e>insteadOf</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;gh:&#34;</span>
+<span style=color:#66d9ef>[url &#34;git@github.com:&#34;]</span>
+  <span style=color:#a6e22e>insteadOf</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;git@gh:&#34;</span></code></pre></div></div><div class="src src-text"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>set show-author = abbreviated
 set show-date = relative
 set show-rev-graph = yes
 set show-refs = yes
 set show-line-numbers = yes
 set line-number-interval = 5
 set tab-size = 2
-set commit-encoding = &#34;UTF-8&#34;</code></pre></div>
-</div>
-
-</main>
-<footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20">
-  <div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2">
-    <div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
-        <a href="https://twitter.com/SusanPotter" rel="noopener noreferrer" class="ml-1" aria-hidden="true">@SusanPotter</a>
-      </p>
-      
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        
-        <a href="https://github.com/mbbx6spp/" class="ml-3" title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github" >
-          <img src="/images/github.svg" width=24 height=24 alt="Github icon"/>
-        </a>
-        
-        <a href="https://keybase.io/mbbx6spp" class="ml-3" title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase" >
-          <img src="/images/keybase.svg" width=24 height=24 alt="Keybase icon"/>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/susanpotter/" class="ml-3" title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn" >
-          <img src="/images/linkedin.svg" width=24 height=24 alt="LinkedIn icon"/>
-        </a>
-        
-        <a href="https://slideshare.net/mbbx6spp" class="ml-3" title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare" >
-          <img src="/images/slideshare.svg" width=24 height=24 alt="Slideshare icon"/>
-        </a>
-        
-        <a href="https://twitter.com/SusanPotter" class="ml-3" title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter" >
-          <img src="/images/twitter.svg" width=24 height=24 alt="Twitter icon"/>
-        </a>
-        
-      </span>
-      
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+set commit-encoding = &#34;UTF-8&#34;</code></pre></div></div></main><footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20"><div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2"><div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row"><p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
+<a href=https://twitter.com/SusanPotter rel="noopener noreferrer" class=ml-1 aria-hidden=true>@SusanPotter</a></p><span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"><a href=https://github.com/mbbx6spp/ class=ml-3 title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github"><img src=/images/github.svg width=24 height=24 alt="Github icon"></a>
+<a href=https://keybase.io/mbbx6spp class=ml-3 title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase"><img src=/images/keybase.svg width=24 height=24 alt="Keybase icon"></a>
+<a href=https://www.linkedin.com/in/susanpotter/ class=ml-3 title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn"><img src=/images/linkedin.svg width=24 height=24 alt="LinkedIn icon"></a>
+<a href=https://slideshare.net/mbbx6spp class=ml-3 title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare"><img src=/images/slideshare.svg width=24 height=24 alt="Slideshare icon"></a>
+<a href=https://twitter.com/SusanPotter class=ml-3 title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter"><img src=/images/twitter.svg width=24 height=24 alt="Twitter icon"></a></span></div></div></footer></body></html>

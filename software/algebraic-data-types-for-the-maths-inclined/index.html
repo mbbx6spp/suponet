@@ -1,187 +1,45 @@
-<!DOCTYPE html>
-<html lang="en-us"><meta charset="UTF-8">
-<meta name="template-type" content="software">
-<meta name="template-kind" content="page">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-
-
-
-  <link rel="stylesheet" href="/css/suponet.css" integrity="">
-
-
-<meta name="author" content="Susan Potter">
-<meta name="description" content="">
-<meta name="keywords" content="[]">
-<meta name="theme-color" content="">
-<meta name="og:site_name" content="Susan Potter"/>
-<meta name="og:title" content='Algebraic Data Types: For the math(s) inclined &ndash; Susan Potter'/>
-<meta name="og:url" content="/software/algebraic-data-types-for-the-maths-inclined/">
-<meta name="og:description" content="">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="SusanPotter">
-<meta name="twitter:creator" content="SusanPotter">
-
-<meta name="twitter:image" content="/images/hat-collage.jpg">
-
-
-<meta name="twitter:image:alt" content="Susan&#39;s avatar wearing many different hats.">
-
-<meta name="twitter:title" content='Algebraic Data Types: For the math(s) inclined &ndash; Susan Potter'>
-<meta name="twitter:description" content="">
-<title>Algebraic Data Types: For the math(s) inclined &ndash; Susan Potter</title>
-
-<meta property="og:type" content="website" />
-<body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center">
-    <a href="/" class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0">
-      <h1 class="ml-3 text-2xl font-bold">Susan Potter</h1>
-    </a>
-    
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      
-      <a href="/about/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
-      
-      <a href="/talks/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
-      
-      <a href="/software/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
-      
-      <a href="/snippets/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a>
-      
-    </nav>
-    
-  </div>
-
-  
-  <hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3">
-    <h2 class="text-3xl font-extrabold tracking-wider leading-loose">Algebraic Data Types: For the math(s) inclined</h2>
-    
-    <h3 class="text-gray-800 dark:text-gray-200">Tue August 8, 2020</h3>
-    
-    
-  </hgroup>
-  
-</header>
-
-<main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2">
-  <p>
-This was initially published as a section of one of <a href="https://funprogramming.substack.com/p/algebraic-data-types">my substack posts</a>.</p>
-<hr>
-<p>
-You might be wondering why the term <strong>algebraic data types</strong> has the
+<!doctype html><html lang=en-us><meta charset=utf-8><meta name=template-type content="software"><meta name=template-kind content="page"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://rsms.me/inter/inter.css><link rel=stylesheet href=/css/suponet.css integrity><meta name=author content="Susan Potter"><meta name=title content="Algebraic Data Types: For the math(s) inclined &ndash; Susan Potter"><meta name=description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=keywords content="[]"><meta name=theme-color content><meta name=og:site_name content="Susan Potter"><meta name=og:title content="Algebraic Data Types: For the math(s) inclined &ndash; Susan Potter"><meta name=og:url content="/software/algebraic-data-types-for-the-maths-inclined/"><meta name=og:description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="SusanPotter"><meta name=twitter:creator content="SusanPotter"><meta name=twitter:image content="/images/hat-collage.jpg"><meta name=twitter:image:alt content="Susan's avatar wearing many different hats."><meta name=twitter:title content="Algebraic Data Types: For the math(s) inclined &ndash; Susan Potter"><meta name=twitter:description content><title>Algebraic Data Types: For the math(s) inclined &ndash; Susan Potter</title><meta property="og:type" content="website"><body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font"><div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center"><a href=/ class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0"><h1 class="ml-3 text-2xl font-bold">Susan Potter</h1></a><nav class="md:ml-auto flex flex-wrap items-center text-base justify-center"><a href=/about/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
+<a href=/talks/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
+<a href=/software/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
+<a href=/snippets/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a></nav></div><hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3"><h2 class="text-3xl font-extrabold tracking-wider leading-loose">Algebraic Data Types: For the math(s) inclined</h2><h3 class="text-gray-800 dark:text-gray-200">Tue August 8, 2020</h3></hgroup></header><main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2"><p>This was initially published as a section of one of <a href=https://funprogramming.substack.com/p/algebraic-data-types>my substack posts</a>.</p><hr><p>You might be wondering why the term <strong>algebraic data types</strong> has the
 word <em>algebra</em> in it. Don’t sweat it if you hated algebra in high
 school, I will not call on you to solve simultaneous equations or
-prove by induction on the board in front of the class.</p>
-<p>
-The basic idea is that through a little algebra we can determine the
+prove by induction on the board in front of the class.</p><p>The basic idea is that through a little algebra we can determine the
 <strong>cardinality</strong> of an algebraic data type which represents how many
-possible values that could inhabit it.</p>
-<p>
-Consider the following sum type:</p>
-<div class="src src-haskell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Color</span>
-  <span style="color:#75715e">-- | RGB uses 8 bits in three color channels with values of 0–255</span>
-  <span style="color:#f92672">=</span> <span style="color:#66d9ef">RGB</span> { red   <span style="color:#f92672">::</span> <span style="color:#66d9ef">Word8</span>, green <span style="color:#f92672">::</span> <span style="color:#66d9ef">Word8</span>, blue  <span style="color:#f92672">::</span> <span style="color:#66d9ef">Word8</span> }</code></pre></div>
-</div>
-<p>
-Here we have created a type <code class="verbatim">Color</code> and a data constructor <code class="verbatim">RBG</code> which
+possible values that could inhabit it.</p><p>Consider the following sum type:</p><div class="src src-haskell"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-haskell data-lang=haskell><span style=color:#66d9ef>data</span> <span style=color:#66d9ef>Color</span>
+  <span style=color:#75715e>-- | RGB uses 8 bits in three color channels with values of 0–255</span>
+  <span style=color:#f92672>=</span> <span style=color:#66d9ef>RGB</span> { red   <span style=color:#f92672>::</span> <span style=color:#66d9ef>Word8</span>, green <span style=color:#f92672>::</span> <span style=color:#66d9ef>Word8</span>, blue  <span style=color:#f92672>::</span> <span style=color:#66d9ef>Word8</span> }</code></pre></div></div><p>Here we have created a type <code class=verbatim>Color</code> and a data constructor <code class=verbatim>RBG</code> which
 represents a color as 8 bits in three color channels with values of
 0–255 (red, green, blue). This is basically a record with three fields
 and each field can hold 256 different values which gives us a
 cardinality of 256^3 = 256*256*256 = 16777216. This means we can
-represent 16,777,216 (&gt;16 million) different colors with this
+represent 16,777,216 (>16 million) different colors with this
 representation. Record types are sometimes called “product types” for
-this reason.</p>
-<p>
-Datatypes defined in terms of mutually exclusive data constructors are
+this reason.</p><p>Datatypes defined in terms of mutually exclusive data constructors are
 called “sum types” for a similar reason because you can “sum up” the
-cardinalities of all constructors to find the cardinality of the datatype.</p>
-<p>
-Consider our <code class="verbatim">Color</code> datatype from above where now our application needs
+cardinalities of all constructors to find the cardinality of the datatype.</p><p>Consider our <code class=verbatim>Color</code> datatype from above where now our application needs
 to denote colors using the subtractive CMY representation because
 sometimes we want to be able to use our library or application for dye
 colors (rather than for light-based usages like photography,
-television, digital screens, etc.).</p>
-<div class="src src-haskell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#66d9ef">data</span> <span style="color:#66d9ef">Color</span>
-  <span style="color:#75715e">-- | RGB uses 8 bits in three color channels with values of 0–255</span>
-  <span style="color:#f92672">=</span> <span style="color:#66d9ef">RGB</span> { red <span style="color:#f92672">::</span> <span style="color:#66d9ef">Word8</span>, green <span style="color:#f92672">::</span> <span style="color:#66d9ef">Word8</span>, blue <span style="color:#f92672">::</span> <span style="color:#66d9ef">Word8</span> }
-  <span style="color:#75715e">-- | CMY uses 8 bits in three other color channels w/ subtractive model</span>
-  <span style="color:#f92672">|</span> <span style="color:#66d9ef">CMY</span> { cyan <span style="color:#f92672">::</span> <span style="color:#66d9ef">Word8</span>, magenta <span style="color:#f92672">::</span> <span style="color:#66d9ef">Word8</span>, yellow <span style="color:#f92672">::</span> <span style="color:#66d9ef">Word8</span> }</code></pre></div>
-</div>
-<p>
-Now for every value of the type <code class="verbatim">Color</code>, we can choose between <code class="verbatim">RGB</code>
-and <code class="verbatim">CMY</code> constructions. Since <code class="verbatim">RGB</code> denotes an additive model which is
-fundamentally different from the <code class="verbatim">CMY</code> subtractive model the data
+television, digital screens, etc.).</p><div class="src src-haskell"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-haskell data-lang=haskell><span style=color:#66d9ef>data</span> <span style=color:#66d9ef>Color</span>
+  <span style=color:#75715e>-- | RGB uses 8 bits in three color channels with values of 0–255</span>
+  <span style=color:#f92672>=</span> <span style=color:#66d9ef>RGB</span> { red <span style=color:#f92672>::</span> <span style=color:#66d9ef>Word8</span>, green <span style=color:#f92672>::</span> <span style=color:#66d9ef>Word8</span>, blue <span style=color:#f92672>::</span> <span style=color:#66d9ef>Word8</span> }
+  <span style=color:#75715e>-- | CMY uses 8 bits in three other color channels w/ subtractive model</span>
+  <span style=color:#f92672>|</span> <span style=color:#66d9ef>CMY</span> { cyan <span style=color:#f92672>::</span> <span style=color:#66d9ef>Word8</span>, magenta <span style=color:#f92672>::</span> <span style=color:#66d9ef>Word8</span>, yellow <span style=color:#f92672>::</span> <span style=color:#66d9ef>Word8</span> }</code></pre></div></div><p>Now for every value of the type <code class=verbatim>Color</code>, we can choose between <code class=verbatim>RGB</code>
+and <code class=verbatim>CMY</code> constructions. Since <code class=verbatim>RGB</code> denotes an additive model which is
+fundamentally different from the <code class=verbatim>CMY</code> subtractive model the data
 constructor acts as a way to differentiate between the
 representations, therefore the number of colors with different
 representations we can construct with this new datatype definition is
-the sum of the cardinality of both constructions (<code class="verbatim">RBG</code>, <code class="verbatim">CMY</code>) which
-happens to be 16777216 + 16777216 = 33,554,432.</p>
-<p>
-This post was just a teaser to show how the algebra of algebraic data
+the sum of the cardinality of both constructions (<code class=verbatim>RBG</code>, <code class=verbatim>CMY</code>) which
+happens to be 16777216 + 16777216 = 33,554,432.</p><p>This post was just a teaser to show how the algebra of algebraic data
 types start off, but it continues even further than what we have
 covered with recursive algebraic data types. More details can be found
-in these blog posts or talks:</p>
-<ul>
-<li>
-<p><a href="https://codewords.recurse.com/issues/three/algebra-and-calculus-of-algebraic-data-types">The algebra (and calculus!) of algebraic data types (post)</a></p>
-</li>
-<li>
-<p><a href="https://www.youtube.com/watch?v=YScIPA8RbVE">The algebra of algebraic data types (talk)</a></p>
-</li>
-</ul>
-<p>That zippers are derivations of the original type is wild and fun for
-the math inclined (see the links above)! :)</p>
-<p>
-I hope you enjoy learning more about the algebra of ADTs as much as I
-did when I first learned about it.</p>
-<p>
-Useful links for the domain we explore with datatypes include:</p>
-<ul>
-<li>
-<p><a href="https://en.wikipedia.org/wiki/RGB_color_model">RGB colo(u)r model</a></p>
-</li>
-<li>
-<p><a href="https://en.wikipedia.org/wiki/CMY_color_model">CMY colo(u)r model</a></p>
-</li>
-</ul>
-
-</main>
-<footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20">
-  <div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2">
-    <div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
-        <a href="https://twitter.com/SusanPotter" rel="noopener noreferrer" class="ml-1" aria-hidden="true">@SusanPotter</a>
-      </p>
-      
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        
-        <a href="https://github.com/mbbx6spp/" class="ml-3" title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github" >
-          <img src="/images/github.svg" width=24 height=24 alt="Github icon"/>
-        </a>
-        
-        <a href="https://keybase.io/mbbx6spp" class="ml-3" title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase" >
-          <img src="/images/keybase.svg" width=24 height=24 alt="Keybase icon"/>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/susanpotter/" class="ml-3" title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn" >
-          <img src="/images/linkedin.svg" width=24 height=24 alt="LinkedIn icon"/>
-        </a>
-        
-        <a href="https://slideshare.net/mbbx6spp" class="ml-3" title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare" >
-          <img src="/images/slideshare.svg" width=24 height=24 alt="Slideshare icon"/>
-        </a>
-        
-        <a href="https://twitter.com/SusanPotter" class="ml-3" title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter" >
-          <img src="/images/twitter.svg" width=24 height=24 alt="Twitter icon"/>
-        </a>
-        
-      </span>
-      
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+in these blog posts or talks:</p><ul><li><p><a href=https://codewords.recurse.com/issues/three/algebra-and-calculus-of-algebraic-data-types>The algebra (and calculus!) of algebraic data types (post)</a></p></li><li><p><a href="https://www.youtube.com/watch?v=YScIPA8RbVE">The algebra of algebraic data types (talk)</a></p></li></ul><p>That zippers are derivations of the original type is wild and fun for
+the math inclined (see the links above)! :)</p><p>I hope you enjoy learning more about the algebra of ADTs as much as I
+did when I first learned about it.</p><p>Useful links for the domain we explore with datatypes include:</p><ul><li><p><a href=https://en.wikipedia.org/wiki/RGB_color_model>RGB colo(u)r model</a></p></li><li><p><a href=https://en.wikipedia.org/wiki/CMY_color_model>CMY colo(u)r model</a></p></li></ul></main><footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20"><div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2"><div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row"><p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
+<a href=https://twitter.com/SusanPotter rel="noopener noreferrer" class=ml-1 aria-hidden=true>@SusanPotter</a></p><span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"><a href=https://github.com/mbbx6spp/ class=ml-3 title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github"><img src=/images/github.svg width=24 height=24 alt="Github icon"></a>
+<a href=https://keybase.io/mbbx6spp class=ml-3 title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase"><img src=/images/keybase.svg width=24 height=24 alt="Keybase icon"></a>
+<a href=https://www.linkedin.com/in/susanpotter/ class=ml-3 title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn"><img src=/images/linkedin.svg width=24 height=24 alt="LinkedIn icon"></a>
+<a href=https://slideshare.net/mbbx6spp class=ml-3 title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare"><img src=/images/slideshare.svg width=24 height=24 alt="Slideshare icon"></a>
+<a href=https://twitter.com/SusanPotter class=ml-3 title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter"><img src=/images/twitter.svg width=24 height=24 alt="Twitter icon"></a></span></div></div></footer></body></html>

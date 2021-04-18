@@ -1,219 +1,120 @@
-<!DOCTYPE html>
-<html lang="en-us"><meta charset="UTF-8">
-<meta name="template-type" content="snippets">
-<meta name="template-kind" content="page">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<!doctype html><html lang=en-us><meta charset=utf-8><meta name=template-type content="snippets"><meta name=template-kind content="page"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://rsms.me/inter/inter.css><link rel=stylesheet href=/css/suponet.css integrity><meta name=author content="Susan Potter"><meta name=title content="Profunctor exploration in less than 100 lines of Haskell &ndash; Susan Potter"><meta name=description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=keywords content="[]"><meta name=theme-color content><meta name=og:site_name content="Susan Potter"><meta name=og:title content="Profunctor exploration in less than 100 lines of Haskell &ndash; Susan Potter"><meta name=og:url content="/snippets/profunctor-exploration-in-less-than-100-lines-of-haskell/"><meta name=og:description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="SusanPotter"><meta name=twitter:creator content="SusanPotter"><meta name=twitter:image content="/images/hat-collage.jpg"><meta name=twitter:image:alt content="Susan's avatar wearing many different hats."><meta name=twitter:title content="Profunctor exploration in less than 100 lines of Haskell &ndash; Susan Potter"><meta name=twitter:description content><title>Profunctor exploration in less than 100 lines of Haskell &ndash; Susan Potter</title><meta property="og:type" content="website"><body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font"><div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center"><a href=/ class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0"><h1 class="ml-3 text-2xl font-bold">Susan Potter</h1></a><nav class="md:ml-auto flex flex-wrap items-center text-base justify-center"><a href=/about/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
+<a href=/talks/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
+<a href=/software/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
+<a href=/snippets/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a></nav></div><hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3"><h2 class="text-3xl font-extrabold tracking-wider leading-loose">Profunctor exploration in less than 100 lines of Haskell</h2><h3 class="text-gray-800 dark:text-gray-200">Tue October 10, 2018</h3></hgroup></header><main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2"><div class="src src-haskell"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-haskell data-lang=haskell><span style=color:#75715e>{-# LANGUAGE ExplicitForAll #-}</span>
+<span style=color:#75715e>{-# LANGUAGE KindSignatures #-}</span>
+<span style=color:#75715e>{-# LANGUAGE NoImplicitPrelude #-}</span>
+<span style=color:#75715e>{-# LANGUAGE RankNTypes #-}</span>
+<span style=color:#75715e>{-# LANGUAGE TypeOperators #-}</span>
+<span style=color:#75715e>{-# LANGUAGE TypeSynonymInstances #-}</span>
+<span style=color:#75715e>{-# LANGUAGE MultiParamTypeClasses #-}</span>
 
+<span style=color:#66d9ef>module</span> Profunctors <span style=color:#66d9ef>where</span>
 
+<span style=color:#66d9ef>import</span> Data.Either
+<span style=color:#66d9ef>import</span> Data.Maybe
+<span style=color:#66d9ef>import</span> Data.Functor
+<span style=color:#66d9ef>import</span> Data.Function ((<span style=color:#f92672>.</span>), (<span style=color:#f92672>$</span>))
 
+<span style=color:#66d9ef>class</span> <span style=color:#66d9ef>Iso</span> a b <span style=color:#66d9ef>where</span>
+  to   <span style=color:#f92672>::</span> a <span style=color:#f92672>-&gt;</span> b
+  from <span style=color:#f92672>::</span> b <span style=color:#f92672>-&gt;</span> a
+  <span style=color:#75715e>-- law: a = from . to a</span>
 
-  <link rel="stylesheet" href="/css/suponet.css" integrity="">
+<span style=color:#66d9ef>type</span> <span style=color:#66d9ef>Lens</span> s t a b
+  <span style=color:#f92672>=</span> forall p<span style=color:#f92672>.</span> <span style=color:#66d9ef>Strong</span> (p <span style=color:#f92672>::</span> <span style=color:#f92672>*</span> <span style=color:#f92672>-&gt;</span> <span style=color:#f92672>*</span> <span style=color:#f92672>-&gt;</span> <span style=color:#f92672>*</span>) <span style=color:#f92672>=&gt;</span> p a b <span style=color:#f92672>-&gt;</span> p s t
 
+<span style=color:#66d9ef>type</span> <span style=color:#66d9ef>Prism</span> s t a b
+  <span style=color:#f92672>=</span> forall p<span style=color:#f92672>.</span> <span style=color:#66d9ef>Choice</span> (p <span style=color:#f92672>::</span> <span style=color:#f92672>*</span> <span style=color:#f92672>-&gt;</span> <span style=color:#f92672>*</span> <span style=color:#f92672>-&gt;</span> <span style=color:#f92672>*</span>) <span style=color:#f92672>=&gt;</span> p a b <span style=color:#f92672>-&gt;</span> p s t
 
-<meta name="author" content="Susan Potter">
-<meta name="description" content="">
-<meta name="keywords" content="[]">
-<meta name="theme-color" content="">
-<meta name="og:site_name" content="Susan Potter"/>
-<meta name="og:title" content='Profunctor exploration in less than 100 lines of Haskell &ndash; Susan Potter'/>
-<meta name="og:url" content="/snippets/profunctor-exploration-in-less-than-100-lines-of-haskell/">
-<meta name="og:description" content="">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="SusanPotter">
-<meta name="twitter:creator" content="SusanPotter">
+<span style=color:#66d9ef>class</span> <span style=color:#66d9ef>Profunctor</span> (p <span style=color:#f92672>::</span> <span style=color:#f92672>*</span> <span style=color:#f92672>-&gt;</span> <span style=color:#f92672>*</span> <span style=color:#f92672>-&gt;</span> <span style=color:#f92672>*</span>) <span style=color:#66d9ef>where</span>
+  dimap <span style=color:#f92672>::</span> (a <span style=color:#f92672>-&gt;</span> b) <span style=color:#f92672>-&gt;</span> (c <span style=color:#f92672>-&gt;</span> d) <span style=color:#f92672>-&gt;</span> (p b c <span style=color:#f92672>-&gt;</span> p a d)
+  <span style=color:#75715e>-- laws:</span>
+  <span style=color:#75715e>-- dimap identity identity = identity</span>
+  <span style=color:#75715e>-- dimap (f&#39; . f) (g . g&#39;) = dimap f g · dimap f&#39; g&#39;</span>
 
-<meta name="twitter:image" content="/images/hat-collage.jpg">
+<span style=color:#66d9ef>instance</span> <span style=color:#66d9ef>Profunctor</span> (<span style=color:#f92672>-&gt;</span>) <span style=color:#66d9ef>where</span>
+  dimap f g h <span style=color:#f92672>=</span> g <span style=color:#f92672>.</span> h <span style=color:#f92672>.</span> f
 
+<span style=color:#66d9ef>class</span> <span style=color:#66d9ef>Profunctor</span> p <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>Strong</span> (p <span style=color:#f92672>::</span> <span style=color:#f92672>*</span> <span style=color:#f92672>-&gt;</span> <span style=color:#f92672>*</span> <span style=color:#f92672>-&gt;</span> <span style=color:#f92672>*</span>) <span style=color:#66d9ef>where</span>
+  first&#39; <span style=color:#f92672>::</span> p a b <span style=color:#f92672>-&gt;</span> p (a, c) (b, c)
 
-<meta name="twitter:image:alt" content="Susan&#39;s avatar wearing many different hats.">
+<span style=color:#66d9ef>class</span> <span style=color:#66d9ef>Profunctor</span> p <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>Choice</span> (p <span style=color:#f92672>::</span> <span style=color:#f92672>*</span> <span style=color:#f92672>-&gt;</span> <span style=color:#f92672>*</span> <span style=color:#f92672>-&gt;</span> <span style=color:#f92672>*</span>) <span style=color:#66d9ef>where</span>
+  left&#39; <span style=color:#f92672>::</span> p a b <span style=color:#f92672>-&gt;</span> p (<span style=color:#66d9ef>Either</span> a c) (<span style=color:#66d9ef>Either</span> b c)
 
-<meta name="twitter:title" content='Profunctor exploration in less than 100 lines of Haskell &ndash; Susan Potter'>
-<meta name="twitter:description" content="">
-<title>Profunctor exploration in less than 100 lines of Haskell &ndash; Susan Potter</title>
+<span style=color:#66d9ef>class</span> <span style=color:#66d9ef>Profunctor</span> p <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>Cartesian</span> (p <span style=color:#f92672>::</span> <span style=color:#f92672>*</span> <span style=color:#f92672>-&gt;</span> <span style=color:#f92672>*</span> <span style=color:#f92672>-&gt;</span> <span style=color:#f92672>*</span>) <span style=color:#66d9ef>where</span>
+  first  <span style=color:#f92672>::</span> p a b <span style=color:#f92672>-&gt;</span> p (a, c) (b, c)
+  second <span style=color:#f92672>::</span> p a b <span style=color:#f92672>-&gt;</span> p (c, a) (c, b)
+  <span style=color:#75715e>-- laws:</span>
+  <span style=color:#75715e>-- dimap runit runit&#39; h = first h</span>
+  <span style=color:#75715e>-- dimap assoc assoc&#39; (first (first h)) = first h</span>
+  <span style=color:#75715e>--   where</span>
+  <span style=color:#75715e>--     runit  :: (a, ()) -&gt; a</span>
+  <span style=color:#75715e>--     runit&#39; :: a -&gt; (a, ())</span>
+  <span style=color:#75715e>--     assoc  :: (a, (b, c)) -&gt; ((a, b), c)</span>
+  <span style=color:#75715e>--     assoc&#39; :: ((a, b), c) -&gt; (a, (b, c))</span>
 
-<meta property="og:type" content="website" />
-<body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center">
-    <a href="/" class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0">
-      <h1 class="ml-3 text-2xl font-bold">Susan Potter</h1>
-    </a>
-    
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      
-      <a href="/about/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
-      
-      <a href="/talks/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
-      
-      <a href="/software/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
-      
-      <a href="/snippets/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a>
-      
-    </nav>
-    
-  </div>
+<span style=color:#66d9ef>instance</span> <span style=color:#66d9ef>Cartesian</span> (<span style=color:#f92672>-&gt;</span>) <span style=color:#66d9ef>where</span>
+  first  f (a, c) <span style=color:#f92672>=</span> (f a,   c)
+  second f (c, a) <span style=color:#f92672>=</span> (  c, f a)
 
-  
-  <hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3">
-    <h2 class="text-3xl font-extrabold tracking-wider leading-loose">Profunctor exploration in less than 100 lines of Haskell</h2>
-    
-    <h3 class="text-gray-800 dark:text-gray-200">Tue October 10, 2018</h3>
-    
-    
-  </hgroup>
-  
-</header>
+<span style=color:#66d9ef>class</span> <span style=color:#66d9ef>Profunctor</span> p <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>Monoidal</span> p <span style=color:#66d9ef>where</span>
+  par   <span style=color:#f92672>::</span> p a b <span style=color:#f92672>-&gt;</span> p c d <span style=color:#f92672>-&gt;</span> p (a, c) (b, d)
+  empty <span style=color:#f92672>::</span> p () ()
+  <span style=color:#75715e>-- laws:</span>
+  <span style=color:#75715e>-- dimap assoc assoc&#39; (par (par h j) k) = par h (par j k)</span>
+  <span style=color:#75715e>-- dimap runit runit&#39; h = par h empty</span>
+  <span style=color:#75715e>-- dimap lunit lunit&#39; h = par empty h</span>
+  <span style=color:#75715e>--   where</span>
+  <span style=color:#75715e>--     lunit  :: ((), a) -&gt; a</span>
+  <span style=color:#75715e>--     lunit&#39; :: a -&gt; ((), a)</span>
+  <span style=color:#75715e>--     runit  :: (a, ()) -&gt; a</span>
+  <span style=color:#75715e>--     runit&#39; :: a -&gt; (a, ())</span>
 
-<main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2">
-  <div class="src src-haskell">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-haskell" data-lang="haskell"><span style="color:#75715e">{-# LANGUAGE ExplicitForAll #-}</span>
-<span style="color:#75715e">{-# LANGUAGE KindSignatures #-}</span>
-<span style="color:#75715e">{-# LANGUAGE NoImplicitPrelude #-}</span>
-<span style="color:#75715e">{-# LANGUAGE RankNTypes #-}</span>
-<span style="color:#75715e">{-# LANGUAGE TypeOperators #-}</span>
-<span style="color:#75715e">{-# LANGUAGE TypeSynonymInstances #-}</span>
-<span style="color:#75715e">{-# LANGUAGE MultiParamTypeClasses #-}</span>
+<span style=color:#66d9ef>instance</span> <span style=color:#66d9ef>Monoidal</span> (<span style=color:#f92672>-&gt;</span>) <span style=color:#66d9ef>where</span>
+  par f g (a, c) <span style=color:#f92672>=</span> (f a, g c)
+  empty <span style=color:#f92672>=</span> identity
 
-<span style="color:#66d9ef">module</span> Profunctors <span style="color:#66d9ef">where</span>
+<span style=color:#75715e>-- Natural transformations</span>
+<span style=color:#66d9ef>type</span> f <span style=color:#f92672>~&gt;</span> g <span style=color:#f92672>=</span> forall x<span style=color:#f92672>.</span> f x <span style=color:#f92672>-&gt;</span> g x
 
-<span style="color:#66d9ef">import</span> Data.Either
-<span style="color:#66d9ef">import</span> Data.Maybe
-<span style="color:#66d9ef">import</span> Data.Functor
-<span style="color:#66d9ef">import</span> Data.Function ((<span style="color:#f92672">.</span>), (<span style="color:#f92672">$</span>))
+<span style=color:#75715e>-- Examples of natural transformations</span>
+<span style=color:#75715e>-- safeHead :: [a] -&gt; Maybe a</span>
+<span style=color:#a6e22e>safeHead</span> <span style=color:#f92672>::</span> <span style=color:#66d9ef>[]</span>  <span style=color:#f92672>~&gt;</span> <span style=color:#66d9ef>Maybe</span>
+<span style=color:#a6e22e>safeHead</span> <span style=color:#66d9ef>[]</span>     <span style=color:#f92672>=</span> <span style=color:#66d9ef>Nothing</span>
+<span style=color:#a6e22e>safeHead</span> (a<span style=color:#66d9ef>:</span> <span style=color:#66d9ef>_</span>) <span style=color:#f92672>=</span> <span style=color:#66d9ef>Just</span> a
 
-<span style="color:#66d9ef">class</span> <span style="color:#66d9ef">Iso</span> a b <span style="color:#66d9ef">where</span>
-  to   <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> b
-  from <span style="color:#f92672">::</span> b <span style="color:#f92672">-&gt;</span> a
-  <span style="color:#75715e">-- law: a = from . to a</span>
+<span style=color:#75715e>-- singletonList :: Maybe a -&gt; [a]</span>
+<span style=color:#a6e22e>singletonList</span> <span style=color:#f92672>::</span> <span style=color:#66d9ef>Maybe</span>   <span style=color:#f92672>~&gt;</span> <span style=color:#66d9ef>[]</span>
+<span style=color:#a6e22e>singletonList</span> <span style=color:#66d9ef>Nothing</span>    <span style=color:#f92672>=</span> <span style=color:#66d9ef>[]</span>
+<span style=color:#a6e22e>singletonList</span> (<span style=color:#66d9ef>Just</span> a)   <span style=color:#f92672>=</span> [a]
 
-<span style="color:#66d9ef">type</span> <span style="color:#66d9ef">Lens</span> s t a b
-  <span style="color:#f92672">=</span> forall p<span style="color:#f92672">.</span> <span style="color:#66d9ef">Strong</span> (p <span style="color:#f92672">::</span> <span style="color:#f92672">*</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">*</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">*</span>) <span style="color:#f92672">=&gt;</span> p a b <span style="color:#f92672">-&gt;</span> p s t
+<span style=color:#75715e>-- Reader and the Yoneda Lemma</span>
 
-<span style="color:#66d9ef">type</span> <span style="color:#66d9ef">Prism</span> s t a b
-  <span style="color:#f92672">=</span> forall p<span style="color:#f92672">.</span> <span style="color:#66d9ef">Choice</span> (p <span style="color:#f92672">::</span> <span style="color:#f92672">*</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">*</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">*</span>) <span style="color:#f92672">=&gt;</span> p a b <span style="color:#f92672">-&gt;</span> p s t
+<span style=color:#66d9ef>newtype</span> <span style=color:#66d9ef>Reader</span> a x
+  <span style=color:#f92672>=</span> <span style=color:#66d9ef>Reader</span> { runReader <span style=color:#f92672>::</span> a <span style=color:#f92672>-&gt;</span> x }
 
-<span style="color:#66d9ef">class</span> <span style="color:#66d9ef">Profunctor</span> (p <span style="color:#f92672">::</span> <span style="color:#f92672">*</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">*</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">*</span>) <span style="color:#66d9ef">where</span>
-  dimap <span style="color:#f92672">::</span> (a <span style="color:#f92672">-&gt;</span> b) <span style="color:#f92672">-&gt;</span> (c <span style="color:#f92672">-&gt;</span> d) <span style="color:#f92672">-&gt;</span> (p b c <span style="color:#f92672">-&gt;</span> p a d)
-  <span style="color:#75715e">-- laws:</span>
-  <span style="color:#75715e">-- dimap identity identity = identity</span>
-  <span style="color:#75715e">-- dimap (f&#39; . f) (g . g&#39;) = dimap f g · dimap f&#39; g&#39;</span>
+<span style=color:#66d9ef>instance</span> <span style=color:#66d9ef>Functor</span> (<span style=color:#66d9ef>Reader</span> a) <span style=color:#66d9ef>where</span>
+  fmap f x <span style=color:#f92672>=</span> <span style=color:#66d9ef>Reader</span> (f <span style=color:#f92672>.</span> runReader x)
 
-<span style="color:#66d9ef">instance</span> <span style="color:#66d9ef">Profunctor</span> (<span style="color:#f92672">-&gt;</span>) <span style="color:#66d9ef">where</span>
-  dimap f g h <span style="color:#f92672">=</span> g <span style="color:#f92672">.</span> h <span style="color:#f92672">.</span> f
-
-<span style="color:#66d9ef">class</span> <span style="color:#66d9ef">Profunctor</span> p <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Strong</span> (p <span style="color:#f92672">::</span> <span style="color:#f92672">*</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">*</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">*</span>) <span style="color:#66d9ef">where</span>
-  first&#39; <span style="color:#f92672">::</span> p a b <span style="color:#f92672">-&gt;</span> p (a, c) (b, c)
-
-<span style="color:#66d9ef">class</span> <span style="color:#66d9ef">Profunctor</span> p <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Choice</span> (p <span style="color:#f92672">::</span> <span style="color:#f92672">*</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">*</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">*</span>) <span style="color:#66d9ef">where</span>
-  left&#39; <span style="color:#f92672">::</span> p a b <span style="color:#f92672">-&gt;</span> p (<span style="color:#66d9ef">Either</span> a c) (<span style="color:#66d9ef">Either</span> b c)
-
-<span style="color:#66d9ef">class</span> <span style="color:#66d9ef">Profunctor</span> p <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Cartesian</span> (p <span style="color:#f92672">::</span> <span style="color:#f92672">*</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">*</span> <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">*</span>) <span style="color:#66d9ef">where</span>
-  first  <span style="color:#f92672">::</span> p a b <span style="color:#f92672">-&gt;</span> p (a, c) (b, c)
-  second <span style="color:#f92672">::</span> p a b <span style="color:#f92672">-&gt;</span> p (c, a) (c, b)
-  <span style="color:#75715e">-- laws:</span>
-  <span style="color:#75715e">-- dimap runit runit&#39; h = first h</span>
-  <span style="color:#75715e">-- dimap assoc assoc&#39; (first (first h)) = first h</span>
-  <span style="color:#75715e">--   where</span>
-  <span style="color:#75715e">--     runit  :: (a, ()) -&gt; a</span>
-  <span style="color:#75715e">--     runit&#39; :: a -&gt; (a, ())</span>
-  <span style="color:#75715e">--     assoc  :: (a, (b, c)) -&gt; ((a, b), c)</span>
-  <span style="color:#75715e">--     assoc&#39; :: ((a, b), c) -&gt; (a, (b, c))</span>
-
-<span style="color:#66d9ef">instance</span> <span style="color:#66d9ef">Cartesian</span> (<span style="color:#f92672">-&gt;</span>) <span style="color:#66d9ef">where</span>
-  first  f (a, c) <span style="color:#f92672">=</span> (f a,   c)
-  second f (c, a) <span style="color:#f92672">=</span> (  c, f a)
-
-<span style="color:#66d9ef">class</span> <span style="color:#66d9ef">Profunctor</span> p <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Monoidal</span> p <span style="color:#66d9ef">where</span>
-  par   <span style="color:#f92672">::</span> p a b <span style="color:#f92672">-&gt;</span> p c d <span style="color:#f92672">-&gt;</span> p (a, c) (b, d)
-  empty <span style="color:#f92672">::</span> p () ()
-  <span style="color:#75715e">-- laws:</span>
-  <span style="color:#75715e">-- dimap assoc assoc&#39; (par (par h j) k) = par h (par j k)</span>
-  <span style="color:#75715e">-- dimap runit runit&#39; h = par h empty</span>
-  <span style="color:#75715e">-- dimap lunit lunit&#39; h = par empty h</span>
-  <span style="color:#75715e">--   where</span>
-  <span style="color:#75715e">--     lunit  :: ((), a) -&gt; a</span>
-  <span style="color:#75715e">--     lunit&#39; :: a -&gt; ((), a)</span>
-  <span style="color:#75715e">--     runit  :: (a, ()) -&gt; a</span>
-  <span style="color:#75715e">--     runit&#39; :: a -&gt; (a, ())</span>
-
-<span style="color:#66d9ef">instance</span> <span style="color:#66d9ef">Monoidal</span> (<span style="color:#f92672">-&gt;</span>) <span style="color:#66d9ef">where</span>
-  par f g (a, c) <span style="color:#f92672">=</span> (f a, g c)
-  empty <span style="color:#f92672">=</span> identity
-
-<span style="color:#75715e">-- Natural transformations</span>
-<span style="color:#66d9ef">type</span> f <span style="color:#f92672">~&gt;</span> g <span style="color:#f92672">=</span> forall x<span style="color:#f92672">.</span> f x <span style="color:#f92672">-&gt;</span> g x
-
-<span style="color:#75715e">-- Examples of natural transformations</span>
-<span style="color:#75715e">-- safeHead :: [a] -&gt; Maybe a</span>
-<span style="color:#a6e22e">safeHead</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">[]</span>  <span style="color:#f92672">~&gt;</span> <span style="color:#66d9ef">Maybe</span>
-<span style="color:#a6e22e">safeHead</span> <span style="color:#66d9ef">[]</span>     <span style="color:#f92672">=</span> <span style="color:#66d9ef">Nothing</span>
-<span style="color:#a6e22e">safeHead</span> (a<span style="color:#66d9ef">:</span> <span style="color:#66d9ef">_</span>) <span style="color:#f92672">=</span> <span style="color:#66d9ef">Just</span> a
-
-<span style="color:#75715e">-- singletonList :: Maybe a -&gt; [a]</span>
-<span style="color:#a6e22e">singletonList</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Maybe</span>   <span style="color:#f92672">~&gt;</span> <span style="color:#66d9ef">[]</span>
-<span style="color:#a6e22e">singletonList</span> <span style="color:#66d9ef">Nothing</span>    <span style="color:#f92672">=</span> <span style="color:#66d9ef">[]</span>
-<span style="color:#a6e22e">singletonList</span> (<span style="color:#66d9ef">Just</span> a)   <span style="color:#f92672">=</span> [a]
-
-<span style="color:#75715e">-- Reader and the Yoneda Lemma</span>
-
-<span style="color:#66d9ef">newtype</span> <span style="color:#66d9ef">Reader</span> a x
-  <span style="color:#f92672">=</span> <span style="color:#66d9ef">Reader</span> { runReader <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> x }
-
-<span style="color:#66d9ef">instance</span> <span style="color:#66d9ef">Functor</span> (<span style="color:#66d9ef">Reader</span> a) <span style="color:#66d9ef">where</span>
-  fmap f x <span style="color:#f92672">=</span> <span style="color:#66d9ef">Reader</span> (f <span style="color:#f92672">.</span> runReader x)
-
-<span style="color:#66d9ef">newtype</span> <span style="color:#66d9ef">Yoneda</span> f a <span style="color:#f92672">=</span> <span style="color:#66d9ef">Yoneda</span> {
-  runYoneda <span style="color:#f92672">::</span> <span style="color:#66d9ef">Functor</span> f <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Reader</span> a <span style="color:#f92672">~&gt;</span> f
+<span style=color:#66d9ef>newtype</span> <span style=color:#66d9ef>Yoneda</span> f a <span style=color:#f92672>=</span> <span style=color:#66d9ef>Yoneda</span> {
+  runYoneda <span style=color:#f92672>::</span> <span style=color:#66d9ef>Functor</span> f <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>Reader</span> a <span style=color:#f92672>~&gt;</span> f
 }
 
-<span style="color:#a6e22e">toYoneda</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Functor</span> f <span style="color:#f92672">=&gt;</span> f a <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Yoneda</span> f a
-<span style="color:#a6e22e">toYoneda</span> fa <span style="color:#f92672">=</span> <span style="color:#66d9ef">Yoneda</span> (<span style="color:#a6e22e">\</span>x <span style="color:#f92672">-&gt;</span> fmap (runReader x) fa)
+<span style=color:#a6e22e>toYoneda</span> <span style=color:#f92672>::</span> <span style=color:#66d9ef>Functor</span> f <span style=color:#f92672>=&gt;</span> f a <span style=color:#f92672>-&gt;</span> <span style=color:#66d9ef>Yoneda</span> f a
+<span style=color:#a6e22e>toYoneda</span> fa <span style=color:#f92672>=</span> <span style=color:#66d9ef>Yoneda</span> (<span style=color:#a6e22e>\</span>x <span style=color:#f92672>-&gt;</span> fmap (runReader x) fa)
 
-<span style="color:#a6e22e">fromYoneda</span> <span style="color:#f92672">::</span> <span style="color:#66d9ef">Functor</span> f <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Yoneda</span> f a <span style="color:#f92672">-&gt;</span> f a
-<span style="color:#a6e22e">fromYoneda</span> yo <span style="color:#f92672">=</span> runYoneda yo (<span style="color:#66d9ef">Reader</span> identity)
+<span style=color:#a6e22e>fromYoneda</span> <span style=color:#f92672>::</span> <span style=color:#66d9ef>Functor</span> f <span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>Yoneda</span> f a <span style=color:#f92672>-&gt;</span> f a
+<span style=color:#a6e22e>fromYoneda</span> yo <span style=color:#f92672>=</span> runYoneda yo (<span style=color:#66d9ef>Reader</span> identity)
 
-<span style="color:#75715e">-- auxilliary functions</span>
-<span style="color:#a6e22e">identity</span> <span style="color:#f92672">::</span> a <span style="color:#f92672">-&gt;</span> a
-<span style="color:#a6e22e">identity</span> a <span style="color:#f92672">=</span> a
+<span style=color:#75715e>-- auxilliary functions</span>
+<span style=color:#a6e22e>identity</span> <span style=color:#f92672>::</span> a <span style=color:#f92672>-&gt;</span> a
+<span style=color:#a6e22e>identity</span> a <span style=color:#f92672>=</span> a
 
-<span style="color:#a6e22e">flip</span> <span style="color:#f92672">::</span> (b <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">-&gt;</span> c) <span style="color:#f92672">-&gt;</span> a <span style="color:#f92672">-&gt;</span> b <span style="color:#f92672">-&gt;</span> c
-<span style="color:#a6e22e">flip</span> f a b <span style="color:#f92672">=</span> f b a</code></pre></div>
-</div>
-
-</main>
-<footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20">
-  <div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2">
-    <div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
-        <a href="https://twitter.com/SusanPotter" rel="noopener noreferrer" class="ml-1" aria-hidden="true">@SusanPotter</a>
-      </p>
-      
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        
-        <a href="https://github.com/mbbx6spp/" class="ml-3" title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github" >
-          <img src="/images/github.svg" width=24 height=24 alt="Github icon"/>
-        </a>
-        
-        <a href="https://keybase.io/mbbx6spp" class="ml-3" title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase" >
-          <img src="/images/keybase.svg" width=24 height=24 alt="Keybase icon"/>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/susanpotter/" class="ml-3" title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn" >
-          <img src="/images/linkedin.svg" width=24 height=24 alt="LinkedIn icon"/>
-        </a>
-        
-        <a href="https://slideshare.net/mbbx6spp" class="ml-3" title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare" >
-          <img src="/images/slideshare.svg" width=24 height=24 alt="Slideshare icon"/>
-        </a>
-        
-        <a href="https://twitter.com/SusanPotter" class="ml-3" title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter" >
-          <img src="/images/twitter.svg" width=24 height=24 alt="Twitter icon"/>
-        </a>
-        
-      </span>
-      
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+<span style=color:#a6e22e>flip</span> <span style=color:#f92672>::</span> (b <span style=color:#f92672>-&gt;</span> a <span style=color:#f92672>-&gt;</span> c) <span style=color:#f92672>-&gt;</span> a <span style=color:#f92672>-&gt;</span> b <span style=color:#f92672>-&gt;</span> c
+<span style=color:#a6e22e>flip</span> f a b <span style=color:#f92672>=</span> f b a</code></pre></div></div></main><footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20"><div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2"><div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row"><p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
+<a href=https://twitter.com/SusanPotter rel="noopener noreferrer" class=ml-1 aria-hidden=true>@SusanPotter</a></p><span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"><a href=https://github.com/mbbx6spp/ class=ml-3 title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github"><img src=/images/github.svg width=24 height=24 alt="Github icon"></a>
+<a href=https://keybase.io/mbbx6spp class=ml-3 title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase"><img src=/images/keybase.svg width=24 height=24 alt="Keybase icon"></a>
+<a href=https://www.linkedin.com/in/susanpotter/ class=ml-3 title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn"><img src=/images/linkedin.svg width=24 height=24 alt="LinkedIn icon"></a>
+<a href=https://slideshare.net/mbbx6spp class=ml-3 title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare"><img src=/images/slideshare.svg width=24 height=24 alt="Slideshare icon"></a>
+<a href=https://twitter.com/SusanPotter class=ml-3 title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter"><img src=/images/twitter.svg width=24 height=24 alt="Twitter icon"></a></span></div></div></footer></body></html>

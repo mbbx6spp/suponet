@@ -1,140 +1,31 @@
-<!DOCTYPE html>
-<html lang="en-us"><meta charset="UTF-8">
-<meta name="template-type" content="snippets">
-<meta name="template-kind" content="page">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-
-
-
-  <link rel="stylesheet" href="/css/suponet.css" integrity="">
-
-
-<meta name="author" content="Susan Potter">
-<meta name="description" content="">
-<meta name="keywords" content="[]">
-<meta name="theme-color" content="">
-<meta name="og:site_name" content="Susan Potter"/>
-<meta name="og:title" content='Ruby Idioms, Part 5 &ndash; Susan Potter'/>
-<meta name="og:url" content="/snippets/ruby-idioms-part-5/">
-<meta name="og:description" content="">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="SusanPotter">
-<meta name="twitter:creator" content="SusanPotter">
-
-<meta name="twitter:image" content="/images/hat-collage.jpg">
-
-
-<meta name="twitter:image:alt" content="Susan&#39;s avatar wearing many different hats.">
-
-<meta name="twitter:title" content='Ruby Idioms, Part 5 &ndash; Susan Potter'>
-<meta name="twitter:description" content="">
-<title>Ruby Idioms, Part 5 &ndash; Susan Potter</title>
-
-<meta property="og:type" content="website" />
-<body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center">
-    <a href="/" class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0">
-      <h1 class="ml-3 text-2xl font-bold">Susan Potter</h1>
-    </a>
-    
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      
-      <a href="/about/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
-      
-      <a href="/talks/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
-      
-      <a href="/software/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
-      
-      <a href="/snippets/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a>
-      
-    </nav>
-    
-  </div>
-
-  
-  <hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3">
-    <h2 class="text-3xl font-extrabold tracking-wider leading-loose">Ruby Idioms, Part 5</h2>
-    
-    <h3 class="text-gray-800 dark:text-gray-200">Mon January 1, 2007</h3>
-    
-    
-  </hgroup>
-  
-</header>
-
-<main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2">
-  <p>Some of you may say this isn&#39;t strictly an idiom, but it is dependent
-on Ruby&#39;s core API and classes, so I have included it.  Ranges are a
+<!doctype html><html lang=en-us><meta charset=utf-8><meta name=template-type content="snippets"><meta name=template-kind content="page"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://rsms.me/inter/inter.css><link rel=stylesheet href=/css/suponet.css integrity><meta name=author content="Susan Potter"><meta name=title content="Ruby Idioms, Part 5 &ndash; Susan Potter"><meta name=description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=keywords content="[]"><meta name=theme-color content><meta name=og:site_name content="Susan Potter"><meta name=og:title content="Ruby Idioms, Part 5 &ndash; Susan Potter"><meta name=og:url content="/snippets/ruby-idioms-part-5/"><meta name=og:description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="SusanPotter"><meta name=twitter:creator content="SusanPotter"><meta name=twitter:image content="/images/hat-collage.jpg"><meta name=twitter:image:alt content="Susan's avatar wearing many different hats."><meta name=twitter:title content="Ruby Idioms, Part 5 &ndash; Susan Potter"><meta name=twitter:description content><title>Ruby Idioms, Part 5 &ndash; Susan Potter</title><meta property="og:type" content="website"><body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font"><div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center"><a href=/ class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0"><h1 class="ml-3 text-2xl font-bold">Susan Potter</h1></a><nav class="md:ml-auto flex flex-wrap items-center text-base justify-center"><a href=/about/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
+<a href=/talks/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
+<a href=/software/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
+<a href=/snippets/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a></nav></div><hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3"><h2 class="text-3xl font-extrabold tracking-wider leading-loose">Ruby Idioms, Part 5</h2><h3 class="text-gray-800 dark:text-gray-200">Mon January 1, 2007</h3></hgroup></header><main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2"><p>Some of you may say this isn't strictly an idiom, but it is dependent
+on Ruby's core API and classes, so I have included it. Ranges are a
 very nice low-level abstraction and can save Ruby developers a lot of
-time for certain coding needs.  In a previous idiom example on this
-blog I had a list of positive odd numbers under 7.  Well typing this
-out by hand is hardly consuming so I typed <code class="verbatim">[1, 3, 5]</code> by hand.
+time for certain coding needs. In a previous idiom example on this
+blog I had a list of positive odd numbers under 7. Well typing this
+out by hand is hardly consuming so I typed <code class=verbatim>[1, 3, 5]</code> by hand.
 However, say we wanted to check if a number given by the user is an
-odd number under, say, 1001.  How can we do that in as few lines of
+odd number under, say, 1001. How can we do that in as few lines of
 code, while still maintaining or even enhancing code readability?
-Look no further:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  ls <span style="color:#f92672">=</span> <span style="color:#f92672">[]</span>
-  (<span style="color:#ae81ff">1</span><span style="color:#f92672">...</span><span style="color:#ae81ff">1001</span>)<span style="color:#f92672">.</span>step(<span style="color:#ae81ff">2</span>) {<span style="color:#f92672">|</span>x<span style="color:#f92672">|</span> ls <span style="color:#f92672">&lt;&lt;</span> x} <span style="color:#75715e">#=&gt; [1, 3, ..., 997, 999]</span></code></pre></div>
-</div>
-<p>
-For Java heads that don&#39;t understand blocks - too bad that is out of
-the scope of this blog entry:)  Go and do you homework then revisit.
-Google should be able to help you out in this regard.</p>
-<p>
-Of course, Ruby developers could and would debate whether my solution
-above is the &#34;best&#34;, concerning how terse and readable it is since
+Look no further:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>  ls <span style=color:#f92672>=</span> <span style=color:#f92672>[]</span>
+  (<span style=color:#ae81ff>1</span><span style=color:#f92672>...</span><span style=color:#ae81ff>1001</span>)<span style=color:#f92672>.</span>step(<span style=color:#ae81ff>2</span>) {<span style=color:#f92672>|</span>x<span style=color:#f92672>|</span> ls <span style=color:#f92672>&lt;&lt;</span> x} <span style=color:#75715e>#=&gt; [1, 3, ..., 997, 999]</span></code></pre></div></div><p>For Java heads that don't understand blocks - too bad that is out of
+the scope of this blog entry:) Go and do you homework then revisit.
+Google should be able to help you out in this regard.</p><p>Of course, Ruby developers could and would debate whether my solution
+above is the "best", concerning how terse and readable it is since
 there are so many ways of doing this that provide a decent solution.
 There may even be another solution in the Ruby universe I may prefer,
 but at present this maintains readability to a high standard (assuming
-you understand blocks, of course), again in my opinion.  I may even
-expand the code as follows to make it truly readable:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  ls <span style="color:#f92672">=</span> <span style="color:#f92672">[]</span>
-  (<span style="color:#ae81ff">1</span><span style="color:#f92672">...</span><span style="color:#ae81ff">1001</span>)<span style="color:#f92672">.</span>step(<span style="color:#ae81ff">2</span>) <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>x<span style="color:#f92672">|</span>
-    ls <span style="color:#f92672">&lt;&lt;</span> x
-  <span style="color:#66d9ef">end</span> <span style="color:#75715e">#=&gt; [1, 3, ..., 997, 999]</span></code></pre></div>
-</div>
-<p>
-What are a couple of extra lines to make something as readable as
-possible anyway?</p>
-
-</main>
-<footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20">
-  <div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2">
-    <div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
-        <a href="https://twitter.com/SusanPotter" rel="noopener noreferrer" class="ml-1" aria-hidden="true">@SusanPotter</a>
-      </p>
-      
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        
-        <a href="https://github.com/mbbx6spp/" class="ml-3" title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github" >
-          <img src="/images/github.svg" width=24 height=24 alt="Github icon"/>
-        </a>
-        
-        <a href="https://keybase.io/mbbx6spp" class="ml-3" title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase" >
-          <img src="/images/keybase.svg" width=24 height=24 alt="Keybase icon"/>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/susanpotter/" class="ml-3" title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn" >
-          <img src="/images/linkedin.svg" width=24 height=24 alt="LinkedIn icon"/>
-        </a>
-        
-        <a href="https://slideshare.net/mbbx6spp" class="ml-3" title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare" >
-          <img src="/images/slideshare.svg" width=24 height=24 alt="Slideshare icon"/>
-        </a>
-        
-        <a href="https://twitter.com/SusanPotter" class="ml-3" title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter" >
-          <img src="/images/twitter.svg" width=24 height=24 alt="Twitter icon"/>
-        </a>
-        
-      </span>
-      
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+you understand blocks, of course), again in my opinion. I may even
+expand the code as follows to make it truly readable:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>  ls <span style=color:#f92672>=</span> <span style=color:#f92672>[]</span>
+  (<span style=color:#ae81ff>1</span><span style=color:#f92672>...</span><span style=color:#ae81ff>1001</span>)<span style=color:#f92672>.</span>step(<span style=color:#ae81ff>2</span>) <span style=color:#66d9ef>do</span> <span style=color:#f92672>|</span>x<span style=color:#f92672>|</span>
+    ls <span style=color:#f92672>&lt;&lt;</span> x
+  <span style=color:#66d9ef>end</span> <span style=color:#75715e>#=&gt; [1, 3, ..., 997, 999]</span></code></pre></div></div><p>What are a couple of extra lines to make something as readable as
+possible anyway?</p></main><footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20"><div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2"><div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row"><p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
+<a href=https://twitter.com/SusanPotter rel="noopener noreferrer" class=ml-1 aria-hidden=true>@SusanPotter</a></p><span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"><a href=https://github.com/mbbx6spp/ class=ml-3 title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github"><img src=/images/github.svg width=24 height=24 alt="Github icon"></a>
+<a href=https://keybase.io/mbbx6spp class=ml-3 title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase"><img src=/images/keybase.svg width=24 height=24 alt="Keybase icon"></a>
+<a href=https://www.linkedin.com/in/susanpotter/ class=ml-3 title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn"><img src=/images/linkedin.svg width=24 height=24 alt="LinkedIn icon"></a>
+<a href=https://slideshare.net/mbbx6spp class=ml-3 title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare"><img src=/images/slideshare.svg width=24 height=24 alt="Slideshare icon"></a>
+<a href=https://twitter.com/SusanPotter class=ml-3 title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter"><img src=/images/twitter.svg width=24 height=24 alt="Twitter icon"></a></span></div></div></footer></body></html>

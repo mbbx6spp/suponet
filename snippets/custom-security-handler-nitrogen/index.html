@@ -1,206 +1,93 @@
-<!DOCTYPE html>
-<html lang="en-us"><meta charset="UTF-8">
-<meta name="template-type" content="snippets">
-<meta name="template-kind" content="page">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+<!doctype html><html lang=en-us><meta charset=utf-8><meta name=template-type content="snippets"><meta name=template-kind content="page"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://rsms.me/inter/inter.css><link rel=stylesheet href=/css/suponet.css integrity><meta name=author content="Susan Potter"><meta name=title content="Custom Security Handler Nitrogen &ndash; Susan Potter"><meta name=description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=keywords content="[]"><meta name=theme-color content><meta name=og:site_name content="Susan Potter"><meta name=og:title content="Custom Security Handler Nitrogen &ndash; Susan Potter"><meta name=og:url content="/snippets/custom-security-handler-nitrogen/"><meta name=og:description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="SusanPotter"><meta name=twitter:creator content="SusanPotter"><meta name=twitter:image content="/images/hat-collage.jpg"><meta name=twitter:image:alt content="Susan's avatar wearing many different hats."><meta name=twitter:title content="Custom Security Handler Nitrogen &ndash; Susan Potter"><meta name=twitter:description content><title>Custom Security Handler Nitrogen &ndash; Susan Potter</title><meta property="og:type" content="website"><body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font"><div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center"><a href=/ class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0"><h1 class="ml-3 text-2xl font-bold">Susan Potter</h1></a><nav class="md:ml-auto flex flex-wrap items-center text-base justify-center"><a href=/about/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
+<a href=/talks/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
+<a href=/software/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
+<a href=/snippets/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a></nav></div><hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3"><h2 class="text-3xl font-extrabold tracking-wider leading-loose">Custom Security Handler Nitrogen</h2><h3 class="text-gray-800 dark:text-gray-200">Wed February 2, 2011</h3></hgroup></header><main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2"><p>An example of a custom security handler implementation for Nitrogen 2.x.</p><p><code class=verbatim>customer_security_handler.erl</code></p><div class="src src-erl"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-erl data-lang=erl><span style=color:#75715e>%%%   HEADER
+</span><span style=color:#75715e>%%% @author Susan Potter &lt;me@susanpotter.net&gt;
+</span><span style=color:#75715e>%%% @date 2011-02-16T17:08
+</span><span style=color:#75715e>%%% @license BSD
+</span><span style=color:#75715e>%%% @doc Example of a security_handler behavior implementation module.
+</span><span style=color:#75715e>%%% It assumes a callback module is passed in that exports:
+</span><span style=color:#75715e>%%% login_path/0 and authorized/2.
+</span><span style=color:#75715e>%%% @end
+</span><span style=color:#75715e></span>-module(custom_security_handler).
 
-
-
-
-  <link rel="stylesheet" href="/css/suponet.css" integrity="">
-
-
-<meta name="author" content="Susan Potter">
-<meta name="description" content="">
-<meta name="keywords" content="[]">
-<meta name="theme-color" content="">
-<meta name="og:site_name" content="Susan Potter"/>
-<meta name="og:title" content='Custom Security Handler Nitrogen &ndash; Susan Potter'/>
-<meta name="og:url" content="/snippets/custom-security-handler-nitrogen/">
-<meta name="og:description" content="">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="SusanPotter">
-<meta name="twitter:creator" content="SusanPotter">
-
-<meta name="twitter:image" content="/images/hat-collage.jpg">
-
-
-<meta name="twitter:image:alt" content="Susan&#39;s avatar wearing many different hats.">
-
-<meta name="twitter:title" content='Custom Security Handler Nitrogen &ndash; Susan Potter'>
-<meta name="twitter:description" content="">
-<title>Custom Security Handler Nitrogen &ndash; Susan Potter</title>
-
-<meta property="og:type" content="website" />
-<body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center">
-    <a href="/" class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0">
-      <h1 class="ml-3 text-2xl font-bold">Susan Potter</h1>
-    </a>
-    
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      
-      <a href="/about/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
-      
-      <a href="/talks/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
-      
-      <a href="/software/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
-      
-      <a href="/snippets/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a>
-      
-    </nav>
-    
-  </div>
-
-  
-  <hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3">
-    <h2 class="text-3xl font-extrabold tracking-wider leading-loose">Custom Security Handler Nitrogen</h2>
-    
-    <h3 class="text-gray-800 dark:text-gray-200">Wed February 2, 2011</h3>
-    
-    
-  </hgroup>
-  
-</header>
-
-<main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2">
-  <p>
-An example of a custom security handler implementation for Nitrogen 2.x.</p>
-<p>
-<code class="verbatim">customer_security_handler.erl</code></p>
-<div class="src src-erl">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erl" data-lang="erl"><span style="color:#75715e">%%%   HEADER
-</span><span style="color:#75715e">%%% @author Susan Potter &lt;me@susanpotter.net&gt;
-</span><span style="color:#75715e">%%% @date 2011-02-16T17:08
-</span><span style="color:#75715e">%%% @license BSD
-</span><span style="color:#75715e">%%% @doc Example of a security_handler behavior implementation module.
-</span><span style="color:#75715e">%%% It assumes a callback module is passed in that exports:
-</span><span style="color:#75715e">%%% login_path/0 and authorized/2.
-</span><span style="color:#75715e">%%% @end
-</span><span style="color:#75715e"></span>-module(custom_security_handler).
-
--include_lib(<span style="color:#e6db74">&#34;nitrogen_core/include/wf.hrl&#34;</span>).
+-include_lib(<span style=color:#e6db74>&#34;nitrogen_core/include/wf.hrl&#34;</span>).
 
 -behaviour(security_handler).
 
-<span style="color:#75715e">% security_handler behavior exports
-</span><span style="color:#75715e"></span>-export([init<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, finish<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>]).
+<span style=color:#75715e>% security_handler behavior exports
+</span><span style=color:#75715e></span>-export([init<span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>, finish<span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>]).
 
-<span style="color:#75715e">%%%.
-</span><span style="color:#75715e">%%%   CALLBACKS
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">%% @hidden
-</span><span style="color:#75715e">%% @todo Add authentication code. Currently only authorization.
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">init</span>(CallbackModule, State) <span style="color:#f92672">-&gt;</span>
-  PageModule <span style="color:#f92672">=</span> wf:<span style="color:#a6e22e">page_module</span>(),
-  User <span style="color:#f92672">=</span> wf:<span style="color:#a6e22e">user</span>(),
-  <span style="color:#66d9ef">case</span> CallbackModule:<span style="color:#a6e22e">authorized</span>(User, PageModule) <span style="color:#66d9ef">of</span>
-      true <span style="color:#f92672">-&gt;</span> {CallbackModule, State};
-      _ <span style="color:#f92672">-&gt;</span> redirect_to_login_page(CallbackModule)
-  <span style="color:#66d9ef">end</span>.
+<span style=color:#75715e>%%%.
+</span><span style=color:#75715e>%%%   CALLBACKS
+</span><span style=color:#75715e></span>
+<span style=color:#75715e>%% @hidden
+</span><span style=color:#75715e>%% @todo Add authentication code. Currently only authorization.
+</span><span style=color:#75715e></span><span style=color:#a6e22e>init</span>(CallbackModule, State) <span style=color:#f92672>-&gt;</span>
+  PageModule <span style=color:#f92672>=</span> wf:<span style=color:#a6e22e>page_module</span>(),
+  User <span style=color:#f92672>=</span> wf:<span style=color:#a6e22e>user</span>(),
+  <span style=color:#66d9ef>case</span> CallbackModule:<span style=color:#a6e22e>authorized</span>(User, PageModule) <span style=color:#66d9ef>of</span>
+      true <span style=color:#f92672>-&gt;</span> {CallbackModule, State};
+      _ <span style=color:#f92672>-&gt;</span> redirect_to_login_page(CallbackModule)
+  <span style=color:#66d9ef>end</span>.
 
-<span style="color:#75715e">%% @hidden
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">finish</span>(CallbackModule, State) <span style="color:#f92672">-&gt;</span>
+<span style=color:#75715e>%% @hidden
+</span><span style=color:#75715e></span><span style=color:#a6e22e>finish</span>(CallbackModule, State) <span style=color:#f92672>-&gt;</span>
   {CallbackModule, State}.
 
-<span style="color:#75715e">%%%.
-</span><span style="color:#75715e">%%%   PRIVATE FUNCTIONS
-</span><span style="color:#75715e">%% @private
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">redirect_to_login_page</span>(CallbackModule) <span style="color:#f92672">-&gt;</span>
-  wf:<span style="color:#a6e22e">redirect_to_login</span>(CallbackModule:<span style="color:#a6e22e">login_path</span>()).
+<span style=color:#75715e>%%%.
+</span><span style=color:#75715e>%%%   PRIVATE FUNCTIONS
+</span><span style=color:#75715e>%% @private
+</span><span style=color:#75715e></span><span style=color:#a6e22e>redirect_to_login_page</span>(CallbackModule) <span style=color:#f92672>-&gt;</span>
+  wf:<span style=color:#a6e22e>redirect_to_login</span>(CallbackModule:<span style=color:#a6e22e>login_path</span>()).
 
-<span style="color:#75715e">%%%.
-</span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">%%%</span> vim: set filetype<span style="color:#f92672">=</span>erlang tabstop<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> foldmarker<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">%%%&#39;</span>,<span style="color:#960050;background-color:#1e0010">%%%</span>. foldmethod<span style="color:#f92672">=</span>marker:</code></pre></div>
-</div>
-<p>
-<code class="verbatim">custom_security_handler_callback.erl</code></p>
-<div class="src src-erl">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erl" data-lang="erl"><span style="color:#75715e">%%%   HEADER
-</span><span style="color:#75715e">%%% @author Susan Potter &lt;me@susanpotter.net&gt;
-</span><span style="color:#75715e">%%% @date 2011-02-16T17:08
-</span><span style="color:#75715e">%%% @license BSD
-</span><span style="color:#75715e">%%% @doc Example of a security_handler callback module.
-</span><span style="color:#75715e">%%% @end
-</span><span style="color:#75715e"></span>-module(custom_security_handler_callback).
+<span style=color:#75715e>%%%.
+</span><span style=color:#75715e></span><span style=color:#960050;background-color:#1e0010>%%%</span> vim: set filetype<span style=color:#f92672>=</span>erlang tabstop<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span> foldmarker<span style=color:#f92672>=</span><span style=color:#960050;background-color:#1e0010>%%%&#39;</span>,<span style=color:#960050;background-color:#1e0010>%%%</span>. foldmethod<span style=color:#f92672>=</span>marker:</code></pre></div></div><p><code class=verbatim>custom_security_handler_callback.erl</code></p><div class="src src-erl"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-erl data-lang=erl><span style=color:#75715e>%%%   HEADER
+</span><span style=color:#75715e>%%% @author Susan Potter &lt;me@susanpotter.net&gt;
+</span><span style=color:#75715e>%%% @date 2011-02-16T17:08
+</span><span style=color:#75715e>%%% @license BSD
+</span><span style=color:#75715e>%%% @doc Example of a security_handler callback module.
+</span><span style=color:#75715e>%%% @end
+</span><span style=color:#75715e></span>-module(custom_security_handler_callback).
 
--include_lib(<span style="color:#e6db74">&#34;nitrogen_core/include/wf.hrl&#34;</span>).
+-include_lib(<span style=color:#e6db74>&#34;nitrogen_core/include/wf.hrl&#34;</span>).
 
-<span style="color:#75715e">% security_handler callback exports
-</span><span style="color:#75715e"></span>-export([authorized<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>, login_url<span style="color:#f92672">/</span><span style="color:#ae81ff">0</span>]).
+<span style=color:#75715e>% security_handler callback exports
+</span><span style=color:#75715e></span>-export([authorized<span style=color:#f92672>/</span><span style=color:#ae81ff>2</span>, login_url<span style=color:#f92672>/</span><span style=color:#ae81ff>0</span>]).
 
-<span style="color:#75715e">%%%.
-</span><span style="color:#75715e">%%%   CALLBACKS
-</span><span style="color:#75715e"></span>
-<span style="color:#75715e">%% @hidden
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">authorized</span>(_User, home_page) <span style="color:#f92672">-&gt;</span> true;
-<span style="color:#a6e22e">authorized</span>(User, admin_page) <span style="color:#f92672">-&gt;</span> admin_authorization(User);
-<span style="color:#a6e22e">authorized</span>(User, _) <span style="color:#f92672">-&gt;</span> user_authorization(User).
+<span style=color:#75715e>%%%.
+</span><span style=color:#75715e>%%%   CALLBACKS
+</span><span style=color:#75715e></span>
+<span style=color:#75715e>%% @hidden
+</span><span style=color:#75715e></span><span style=color:#a6e22e>authorized</span>(_User, home_page) <span style=color:#f92672>-&gt;</span> true;
+<span style=color:#a6e22e>authorized</span>(User, admin_page) <span style=color:#f92672>-&gt;</span> admin_authorization(User);
+<span style=color:#a6e22e>authorized</span>(User, _) <span style=color:#f92672>-&gt;</span> user_authorization(User).
 
-<span style="color:#75715e">%% @hidden
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">login_path</span>() <span style="color:#f92672">-&gt;</span>
-  <span style="color:#e6db74">&#34;/login&#34;</span>.
+<span style=color:#75715e>%% @hidden
+</span><span style=color:#75715e></span><span style=color:#a6e22e>login_path</span>() <span style=color:#f92672>-&gt;</span>
+  <span style=color:#e6db74>&#34;/login&#34;</span>.
 
-<span style="color:#75715e">%%%.
-</span><span style="color:#75715e">%%%   PRIVATE FUNCTIONS
-</span><span style="color:#75715e">%% @private
-</span><span style="color:#75715e"></span><span style="color:#a6e22e">admin_authorization</span>(User) <span style="color:#f92672">-&gt;</span>
-  <span style="color:#66d9ef">case</span> User <span style="color:#66d9ef">of</span>
-    <span style="color:#e6db74">&#34;admin&#34;</span> <span style="color:#f92672">-&gt;</span> true;
-    _ <span style="color:#f92672">-&gt;</span> false
-  <span style="color:#66d9ef">end</span>.
+<span style=color:#75715e>%%%.
+</span><span style=color:#75715e>%%%   PRIVATE FUNCTIONS
+</span><span style=color:#75715e>%% @private
+</span><span style=color:#75715e></span><span style=color:#a6e22e>admin_authorization</span>(User) <span style=color:#f92672>-&gt;</span>
+  <span style=color:#66d9ef>case</span> User <span style=color:#66d9ef>of</span>
+    <span style=color:#e6db74>&#34;admin&#34;</span> <span style=color:#f92672>-&gt;</span> true;
+    _ <span style=color:#f92672>-&gt;</span> false
+  <span style=color:#66d9ef>end</span>.
 
-<span style="color:#a6e22e">user_authorization</span>(User) <span style="color:#f92672">-&gt;</span>
-  <span style="color:#66d9ef">case</span> User <span style="color:#66d9ef">of</span>
-    undefined <span style="color:#f92672">-&gt;</span> false;
-    _ <span style="color:#f92672">-&gt;</span> true
-  <span style="color:#66d9ef">end</span>.
-<span style="color:#75715e">%%%.
-</span><span style="color:#75715e"></span><span style="color:#960050;background-color:#1e0010">%%%</span> vim: set filetype<span style="color:#f92672">=</span>erlang tabstop<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span> foldmarker<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">%%%&#39;</span>,<span style="color:#960050;background-color:#1e0010">%%%</span>. foldmethod<span style="color:#f92672">=</span>marker:</code></pre></div>
-</div>
-<p>
-In your application&#39;s supervisor code:</p>
-<div class="src src-erl">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-erl" data-lang="erl"><span style="color:#75715e">%% in your supervisor loop function where you call
-</span><span style="color:#75715e">%% nitrogen:run/0, you will need to add the following
-</span><span style="color:#75715e">%% code above your nitrogen:run/0 call
-</span><span style="color:#75715e"></span>nitrogen:<span style="color:#a6e22e">handler</span>(custom_security_handler, custom_security_handler_callback),</code></pre></div>
-</div>
-
-</main>
-<footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20">
-  <div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2">
-    <div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
-        <a href="https://twitter.com/SusanPotter" rel="noopener noreferrer" class="ml-1" aria-hidden="true">@SusanPotter</a>
-      </p>
-      
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        
-        <a href="https://github.com/mbbx6spp/" class="ml-3" title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github" >
-          <img src="/images/github.svg" width=24 height=24 alt="Github icon"/>
-        </a>
-        
-        <a href="https://keybase.io/mbbx6spp" class="ml-3" title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase" >
-          <img src="/images/keybase.svg" width=24 height=24 alt="Keybase icon"/>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/susanpotter/" class="ml-3" title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn" >
-          <img src="/images/linkedin.svg" width=24 height=24 alt="LinkedIn icon"/>
-        </a>
-        
-        <a href="https://slideshare.net/mbbx6spp" class="ml-3" title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare" >
-          <img src="/images/slideshare.svg" width=24 height=24 alt="Slideshare icon"/>
-        </a>
-        
-        <a href="https://twitter.com/SusanPotter" class="ml-3" title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter" >
-          <img src="/images/twitter.svg" width=24 height=24 alt="Twitter icon"/>
-        </a>
-        
-      </span>
-      
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+<span style=color:#a6e22e>user_authorization</span>(User) <span style=color:#f92672>-&gt;</span>
+  <span style=color:#66d9ef>case</span> User <span style=color:#66d9ef>of</span>
+    undefined <span style=color:#f92672>-&gt;</span> false;
+    _ <span style=color:#f92672>-&gt;</span> true
+  <span style=color:#66d9ef>end</span>.
+<span style=color:#75715e>%%%.
+</span><span style=color:#75715e></span><span style=color:#960050;background-color:#1e0010>%%%</span> vim: set filetype<span style=color:#f92672>=</span>erlang tabstop<span style=color:#f92672>=</span><span style=color:#ae81ff>2</span> foldmarker<span style=color:#f92672>=</span><span style=color:#960050;background-color:#1e0010>%%%&#39;</span>,<span style=color:#960050;background-color:#1e0010>%%%</span>. foldmethod<span style=color:#f92672>=</span>marker:</code></pre></div></div><p>In your application's supervisor code:</p><div class="src src-erl"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-erl data-lang=erl><span style=color:#75715e>%% in your supervisor loop function where you call
+</span><span style=color:#75715e>%% nitrogen:run/0, you will need to add the following
+</span><span style=color:#75715e>%% code above your nitrogen:run/0 call
+</span><span style=color:#75715e></span>nitrogen:<span style=color:#a6e22e>handler</span>(custom_security_handler, custom_security_handler_callback),</code></pre></div></div></main><footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20"><div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2"><div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row"><p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
+<a href=https://twitter.com/SusanPotter rel="noopener noreferrer" class=ml-1 aria-hidden=true>@SusanPotter</a></p><span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"><a href=https://github.com/mbbx6spp/ class=ml-3 title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github"><img src=/images/github.svg width=24 height=24 alt="Github icon"></a>
+<a href=https://keybase.io/mbbx6spp class=ml-3 title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase"><img src=/images/keybase.svg width=24 height=24 alt="Keybase icon"></a>
+<a href=https://www.linkedin.com/in/susanpotter/ class=ml-3 title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn"><img src=/images/linkedin.svg width=24 height=24 alt="LinkedIn icon"></a>
+<a href=https://slideshare.net/mbbx6spp class=ml-3 title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare"><img src=/images/slideshare.svg width=24 height=24 alt="Slideshare icon"></a>
+<a href=https://twitter.com/SusanPotter class=ml-3 title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter"><img src=/images/twitter.svg width=24 height=24 alt="Twitter icon"></a></span></div></div></footer></body></html>

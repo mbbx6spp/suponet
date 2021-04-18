@@ -1,203 +1,56 @@
-<!DOCTYPE html>
-<html lang="en-us"><meta charset="UTF-8">
-<meta name="template-type" content="software">
-<meta name="template-kind" content="page">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-
-
-
-  <link rel="stylesheet" href="/css/suponet.css" integrity="">
-
-
-<meta name="author" content="Susan Potter">
-<meta name="description" content="Notes from reviewing the first few weeks of a pure functional AWS Lambda in production.
-">
-<meta name="keywords" content="[]">
-<meta name="theme-color" content="">
-<meta name="og:site_name" content="Susan Potter"/>
-<meta name="og:title" content='A quick review of a pure functional serverless application deployed to production
- &ndash; Susan Potter'/>
-<meta name="og:url" content="/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/">
-<meta name="og:description" content="Notes from reviewing the first few weeks of a pure functional AWS Lambda in production.
-">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="SusanPotter">
-<meta name="twitter:creator" content="SusanPotter">
-
-<meta name="twitter:image" content="/images/hat-collage.jpg">
-
-
-<meta name="twitter:image:alt" content="Susan&#39;s avatar wearing many different hats.">
-
-<meta name="twitter:title" content='A quick review of a pure functional serverless application deployed to production
- &ndash; Susan Potter'>
-<meta name="twitter:description" content="Notes from reviewing the first few weeks of a pure functional AWS Lambda in production.
-">
-<title>A quick review of a pure functional serverless application deployed to production
- &ndash; Susan Potter</title>
-
-<meta property="og:type" content="website" />
-<body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center">
-    <a href="/" class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0">
-      <h1 class="ml-3 text-2xl font-bold">Susan Potter</h1>
-    </a>
-    
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      
-      <a href="/about/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
-      
-      <a href="/talks/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
-      
-      <a href="/software/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
-      
-      <a href="/snippets/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a>
-      
-    </nav>
-    
-  </div>
-
-  
-  <hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3">
-    <h2 class="text-3xl font-extrabold tracking-wider leading-loose">A quick review of a pure functional serverless application deployed to production
-</h2>
-    
-    <h3 class="text-gray-800 dark:text-gray-200">Wed June 6, 2020</h3>
-    
-    
-  </hgroup>
-  
-</header>
-
-<main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2">
-  <p>
-<a href="/images/car-dashboard-small.webp">/images/car-dashboard-small.webp</a></p>
-<span>Photo by <a href="https://unsplash.com/@davealmine?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Dawid Zawiła</a> on <a href="https://unsplash.com/s/photos/car-dashboard?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
-<p>
-This was adapted from <a href="https://twitter.com/SusanPotter/status/1279274236897615872">a tweet thread on June 3rd, 2020</a>.</p>
-<p>
-Notes:</p>
-<ul>
-<li>
-<p>all references to $ (dollars) is in reference to US Dollars (USD)</p>
-</li>
-<li>
-<p>latencies are quoted in milliseconds (ms) unless otherwise noted</p>
-</li>
-<li>
-<p>this serverless application was deployed using the AWS primitives
-API Gateway (REST) and AWS Lambda</p>
-</li>
-</ul>
-<hr>
-<p>
-Last week I deployed my second <em>&#34;serverless app&#34;</em> to production. Being
+<!doctype html><html lang=en-us><meta charset=utf-8><meta name=template-type content="software"><meta name=template-kind content="page"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://rsms.me/inter/inter.css><link rel=stylesheet href=/css/suponet.css integrity><meta name=author content="Susan Potter"><meta name=title content="A quick review of a pure functional serverless application deployed to production
+ &ndash; Susan Potter"><meta name=description content="Notes from reviewing the first few weeks of a pure functional AWS Lambda in production."><meta name=keywords content="[]"><meta name=theme-color content><meta name=og:site_name content="Susan Potter"><meta name=og:title content="A quick review of a pure functional serverless application deployed to production
+ &ndash; Susan Potter"><meta name=og:url content="/software/a-quick-review-of-a-pure-functional-serverless-application-deployed-to-production/"><meta name=og:description content="Notes from reviewing the first few weeks of a pure functional AWS Lambda in production."><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="SusanPotter"><meta name=twitter:creator content="SusanPotter"><meta name=twitter:image content="/images/hat-collage.jpg"><meta name=twitter:image:alt content="Susan's avatar wearing many different hats."><meta name=twitter:title content="A quick review of a pure functional serverless application deployed to production
+ &ndash; Susan Potter"><meta name=twitter:description content="Notes from reviewing the first few weeks of a pure functional AWS Lambda in production."><title>A quick review of a pure functional serverless application deployed to production
+&ndash; Susan Potter</title><meta property="og:type" content="website"><body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font"><div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center"><a href=/ class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0"><h1 class="ml-3 text-2xl font-bold">Susan Potter</h1></a><nav class="md:ml-auto flex flex-wrap items-center text-base justify-center"><a href=/about/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
+<a href=/talks/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
+<a href=/software/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
+<a href=/snippets/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a></nav></div><hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3"><h2 class="text-3xl font-extrabold tracking-wider leading-loose">A quick review of a pure functional serverless application deployed to production</h2><h3 class="text-gray-800 dark:text-gray-200">Wed June 6, 2020</h3></hgroup></header><main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2"><p><a href=/images/car-dashboard-small.webp>/images/car-dashboard-small.webp</a></p><span>Photo by <a href="https://unsplash.com/@davealmine?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Dawid Zawiła</a> on <a href="https://unsplash.com/s/photos/car-dashboard?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></span><p>This was adapted from <a href=https://twitter.com/SusanPotter/status/1279274236897615872>a tweet thread on June 3rd, 2020</a>.</p><p>Notes:</p><ul><li><p>all references to $ (dollars) is in reference to US Dollars (USD)</p></li><li><p>latencies are quoted in milliseconds (ms) unless otherwise noted</p></li><li><p>this serverless application was deployed using the AWS primitives
+API Gateway (REST) and AWS Lambda</p></li></ul><hr><p>Last week I deployed my second <em>"serverless app"</em> to production. Being
 fairly new to deploying serverless applications at scale I was
-concerned about the costs.</p>
-<p>
-Without any cost optimization (during our first week in production) we
+concerned about the costs.</p><p>Without any cost optimization (during our first week in production) we
 spent ~$15/day on API Gateway + AWS Lambda invocations with
-~32k/minute (approx 530 invocations per second) lambda invocations at peak.</p>
-<p>
-Our P99 (99th percentile) was at ~50ms latency and we used 50-75% of
+~32k/minute (approx 530 invocations per second) lambda invocations at peak.</p><p>Our P99 (99th percentile) was at ~50ms latency and we used 50-75% of
 memory allowance (max 128MB). We shipped using the more expensive REST
 API Gateway due to familiarity but for this use case we could use the
-newer (and cheaper) HTTP API Gateway since we don&#39;t need caching.</p>
-<p>
-An amusing side note is that our CloudWatch Logs cost a whopping
-$0.40/per day (yes, that means it was 40 cents a day).</p>
-<p>
-I thought I was going to be surprised in a negative way about the
-costs but after this week we haven&#39;t broken the bank and there is room
+newer (and cheaper) HTTP API Gateway since we don't need caching.</p><p>An amusing side note is that our CloudWatch Logs cost a whopping
+$0.40/per day (yes, that means it was 40 cents a day).</p><p>I thought I was going to be surprised in a negative way about the
+costs but after this week we haven't broken the bank and there is room
 for cost optimization that will not take too long now that functional
-barebones is running and fully automated for delivery.</p>
-<p>
-This is the second production backend I have launched written in
+barebones is running and fully automated for delivery.</p><p>This is the second production backend I have launched written in
 PureScript during this pandemic (COVID-19 in case we have a sequence
-of them and you can&#39;t remember). Besides the SAM/AWS automation (docs
+of them and you can't remember). Besides the SAM/AWS automation (docs
 conflicting with implementation) hell it was mostly fun to
 build. First one was a different beast (lower traffic volume, but
-higher complexity with an authorizer lambda).</p>
-<p>
-For those that are used to a pre-serverless world, in terms of
+higher complexity with an authorizer lambda).</p><p>For those that are used to a pre-serverless world, in terms of
 debugging, deploying a serverless application is definitely not like
 what you are used to, depending on how deep you would troubleshoot
 issues. It will require some adjustment from developers used to that
-model but the change is not insurmountable.</p>
-<p>
-For instance, I can&#39;t <code class="verbatim">strace</code>, <code class="verbatim">perf</code>, <code class="verbatim">ss</code>, <code class="verbatim">eBPF</code>, etc inside the
+model but the change is not insurmountable.</p><p>For instance, I can't <code class=verbatim>strace</code>, <code class=verbatim>perf</code>, <code class=verbatim>ss</code>, <code class=verbatim>eBPF</code>, etc inside the
 lambda container running in AWS. However, what I can do is run a
-simulated API Gateway locally using SAM with localhost endpoint.</p>
-<p>
-The metrics service we use (DataDog) needs a custom Lambda runtime for
+simulated API Gateway locally using SAM with localhost endpoint.</p><p>The metrics service we use (DataDog) needs a custom Lambda runtime for
 their full level of APM, however, that is not OK for us security wise
-even if it is open source because we don&#39;t have the time to review it
-constantly so will leverge the embedded metric format.</p>
-<p>
-Deployment automation (to get to our level of done and satisfy our
+even if it is open source because we don't have the time to review it
+constantly so will leverge the embedded metric format.</p><p>Deployment automation (to get to our level of done and satisfy our
 push-button zero downtime requirements) in AWS always comes with a
 handful of warts that prevent us from doing exactly as we want. I
-spent more time in SAM CLI&#39;s Github issues reading workarounds than
-developing app code or deployment automation, perhaps combined.</p>
-<p>
-Our current infrastructure satisfies push-button zero downtime deploys
+spent more time in SAM CLI's Github issues reading workarounds than
+developing app code or deployment automation, perhaps combined.</p><p>Our current infrastructure satisfies push-button zero downtime deploys
 with EC2 instances in autoscaling groups (ASGs) attached to
 application load balancers (ALB) with some custom code. We wrote it 3
 years ago and only tweaked it 2-3 times since. I anticipate a similar
-payoff here.</p>
-<p>
-We have not yet setup reserved concurrency in AWS Lambda. After
+payoff here.</p><p>We have not yet setup reserved concurrency in AWS Lambda. After
 switching to the HTTP API Gateway, We will experiment with that for
 costs. Despite low enough costs currently for our budget our costs
 could balloon fast if we got a surge so there are a few other
-parameters we would like to tweak including reserved concurrency.</p>
-<p>
-The nature of the AWS Lambda deployed as part of this application is a
-write path HTTP Lambda.</p>
-<hr>
-<p>
-I put together a sample Git repository on GitHub of a <a href="https://github.com/mbbx6spp/lambda-purescript-starter">barebones
+parameters we would like to tweak including reserved concurrency.</p><p>The nature of the AWS Lambda deployed as part of this application is a
+write path HTTP Lambda.</p><hr><p>I put together a sample Git repository on GitHub of a <a href=https://github.com/mbbx6spp/lambda-purescript-starter>barebones
 Express-based PureScript Lambda with a SAM template.yaml</a> (for
 deployment automation) to help others get started with PureScript
 serverless applications quicker using familiar HTTP APIs (Express)
-from JavaScript.</p>
-
-</main>
-<footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20">
-  <div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2">
-    <div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
-        <a href="https://twitter.com/SusanPotter" rel="noopener noreferrer" class="ml-1" aria-hidden="true">@SusanPotter</a>
-      </p>
-      
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        
-        <a href="https://github.com/mbbx6spp/" class="ml-3" title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github" >
-          <img src="/images/github.svg" width=24 height=24 alt="Github icon"/>
-        </a>
-        
-        <a href="https://keybase.io/mbbx6spp" class="ml-3" title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase" >
-          <img src="/images/keybase.svg" width=24 height=24 alt="Keybase icon"/>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/susanpotter/" class="ml-3" title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn" >
-          <img src="/images/linkedin.svg" width=24 height=24 alt="LinkedIn icon"/>
-        </a>
-        
-        <a href="https://slideshare.net/mbbx6spp" class="ml-3" title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare" >
-          <img src="/images/slideshare.svg" width=24 height=24 alt="Slideshare icon"/>
-        </a>
-        
-        <a href="https://twitter.com/SusanPotter" class="ml-3" title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter" >
-          <img src="/images/twitter.svg" width=24 height=24 alt="Twitter icon"/>
-        </a>
-        
-      </span>
-      
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+from JavaScript.</p></main><footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20"><div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2"><div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row"><p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
+<a href=https://twitter.com/SusanPotter rel="noopener noreferrer" class=ml-1 aria-hidden=true>@SusanPotter</a></p><span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"><a href=https://github.com/mbbx6spp/ class=ml-3 title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github"><img src=/images/github.svg width=24 height=24 alt="Github icon"></a>
+<a href=https://keybase.io/mbbx6spp class=ml-3 title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase"><img src=/images/keybase.svg width=24 height=24 alt="Keybase icon"></a>
+<a href=https://www.linkedin.com/in/susanpotter/ class=ml-3 title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn"><img src=/images/linkedin.svg width=24 height=24 alt="LinkedIn icon"></a>
+<a href=https://slideshare.net/mbbx6spp class=ml-3 title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare"><img src=/images/slideshare.svg width=24 height=24 alt="Slideshare icon"></a>
+<a href=https://twitter.com/SusanPotter class=ml-3 title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter"><img src=/images/twitter.svg width=24 height=24 alt="Twitter icon"></a></span></div></div></footer></body></html>

@@ -1,236 +1,54 @@
-<!DOCTYPE html>
-<html lang="en-us"><meta charset="UTF-8">
-<meta name="template-type" content="snippets">
-<meta name="template-kind" content="page">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-
-
-
-  <link rel="stylesheet" href="/css/suponet.css" integrity="">
-
-
-<meta name="author" content="Susan Potter">
-<meta name="description" content="">
-<meta name="keywords" content="[]">
-<meta name="theme-color" content="">
-<meta name="og:site_name" content="Susan Potter"/>
-<meta name="og:title" content='Rubyisms: naming conventions &ndash; Susan Potter'/>
-<meta name="og:url" content="/snippets/rubyisms-naming-conventions/">
-<meta name="og:description" content="">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="SusanPotter">
-<meta name="twitter:creator" content="SusanPotter">
-
-<meta name="twitter:image" content="/images/hat-collage.jpg">
-
-
-<meta name="twitter:image:alt" content="Susan&#39;s avatar wearing many different hats.">
-
-<meta name="twitter:title" content='Rubyisms: naming conventions &ndash; Susan Potter'>
-<meta name="twitter:description" content="">
-<title>Rubyisms: naming conventions &ndash; Susan Potter</title>
-
-<meta property="og:type" content="website" />
-<body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center">
-    <a href="/" class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0">
-      <h1 class="ml-3 text-2xl font-bold">Susan Potter</h1>
-    </a>
-    
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      
-      <a href="/about/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
-      
-      <a href="/talks/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
-      
-      <a href="/software/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
-      
-      <a href="/snippets/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a>
-      
-    </nav>
-    
-  </div>
-
-  
-  <hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3">
-    <h2 class="text-3xl font-extrabold tracking-wider leading-loose">Rubyisms: naming conventions</h2>
-    
-    <h3 class="text-gray-800 dark:text-gray-200">Tue August 8, 2006</h3>
-    
-    
-  </hgroup>
-  
-</header>
-
-<main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2">
-  
-<p>
-Today I wanted to show the implicit and explicit naming conventions in Ruby for newbies. It isn&#39;t particularly consistent with another language&#39;s conventions, so could cause confusion when reading the Ruby Standard Library (RSL). Where appropriate I also discuss how some of the naming conventions really aid code readability and developer productivity.</p>
-<div id="outline-container-headline-1" class="outline-3">
-<h3 id="headline-1">
-ClassName and ModuleName [implicit]
-</h3>
-<div id="outline-text-headline-1" class="outline-text-3">
-<p>
-Naming classes is very similar to most common conventions following in
-C++, Java, Python and C#. For example: <code class="verbatim">DataMigration</code>,
-<code class="verbatim">CorporateConvertibleBond, =Controller</code>, etc.</p>
-<p>
-I am unaware of a class name in the Ruby Standard Library (RSL) that
-violates this rule. RSL examples of convention usage are <code class="verbatim">Fixnum</code>,
-<code class="verbatim">Rational</code>, <code class="verbatim">DateTime</code>, <code class="verbatim">Module</code>, <code class="verbatim">NameError</code>, <code class="verbatim">NotImplementedError</code>,
-<code class="verbatim">NilClass</code>. I realize <code class="verbatim">Fixnum</code> is a little controversial, but I think
-there is a case for its naming as above.</p>
-</div>
-</div>
-<div id="outline-container-headline-2" class="outline-3">
-<h3 id="headline-2">
-variable_name and regular_method_name [implicit]
-</h3>
-<div id="outline-text-headline-2" class="outline-text-3">
-<p>
-For variable names and methods that do something that isn&#39;t dangerous
+<!doctype html><html lang=en-us><meta charset=utf-8><meta name=template-type content="snippets"><meta name=template-kind content="page"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://rsms.me/inter/inter.css><link rel=stylesheet href=/css/suponet.css integrity><meta name=author content="Susan Potter"><meta name=title content="Rubyisms: naming conventions &ndash; Susan Potter"><meta name=description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=keywords content="[]"><meta name=theme-color content><meta name=og:site_name content="Susan Potter"><meta name=og:title content="Rubyisms: naming conventions &ndash; Susan Potter"><meta name=og:url content="/snippets/rubyisms-naming-conventions/"><meta name=og:description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="SusanPotter"><meta name=twitter:creator content="SusanPotter"><meta name=twitter:image content="/images/hat-collage.jpg"><meta name=twitter:image:alt content="Susan's avatar wearing many different hats."><meta name=twitter:title content="Rubyisms: naming conventions &ndash; Susan Potter"><meta name=twitter:description content><title>Rubyisms: naming conventions &ndash; Susan Potter</title><meta property="og:type" content="website"><body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font"><div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center"><a href=/ class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0"><h1 class="ml-3 text-2xl font-bold">Susan Potter</h1></a><nav class="md:ml-auto flex flex-wrap items-center text-base justify-center"><a href=/about/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
+<a href=/talks/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
+<a href=/software/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
+<a href=/snippets/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a></nav></div><hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3"><h2 class="text-3xl font-extrabold tracking-wider leading-loose">Rubyisms: naming conventions</h2><h3 class="text-gray-800 dark:text-gray-200">Tue August 8, 2006</h3></hgroup></header><main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2"><p>Today I wanted to show the implicit and explicit naming conventions in Ruby for newbies. It isn't particularly consistent with another language's conventions, so could cause confusion when reading the Ruby Standard Library (RSL). Where appropriate I also discuss how some of the naming conventions really aid code readability and developer productivity.</p><div id=outline-container-headline-1 class=outline-3><h3 id=headline-1>ClassName and ModuleName [implicit]</h3><div id=outline-text-headline-1 class=outline-text-3><p>Naming classes is very similar to most common conventions following in
+C++, Java, Python and C#. For example: <code class=verbatim>DataMigration</code>,
+<code class=verbatim>CorporateConvertibleBond, =Controller</code>, etc.</p><p>I am unaware of a class name in the Ruby Standard Library (RSL) that
+violates this rule. RSL examples of convention usage are <code class=verbatim>Fixnum</code>,
+<code class=verbatim>Rational</code>, <code class=verbatim>DateTime</code>, <code class=verbatim>Module</code>, <code class=verbatim>NameError</code>, <code class=verbatim>NotImplementedError</code>,
+<code class=verbatim>NilClass</code>. I realize <code class=verbatim>Fixnum</code> is a little controversial, but I think
+there is a case for its naming as above.</p></div></div><div id=outline-container-headline-2 class=outline-3><h3 id=headline-2>variable_name and regular_method_name [implicit]</h3><div id=outline-text-headline-2 class=outline-text-3><p>For variable names and methods that do something that isn't dangerous
 and/or return a non-boolean to the caller, the common underscoring
 convention is used to name them. This is consistent with Perl and PHP
-variable naming conventions.</p>
-<p>
-RSL examples include: <code class="verbatim">String#strip</code>, <code class="verbatim">Object#instance_eval</code>,
-<code class="verbatim">Array#sort_by</code>.</p>
-</div>
-</div>
-<div id="outline-container-headline-3" class="outline-3">
-<h3 id="headline-3">
-method_asking_a_question? [implicit]
-</h3>
-<div id="outline-text-headline-3" class="outline-text-3">
-<p>
-Suffixing a method that asks a question with a &#39;?&#39; is a great way to
+variable naming conventions.</p><p>RSL examples include: <code class=verbatim>String#strip</code>, <code class=verbatim>Object#instance_eval</code>,
+<code class=verbatim>Array#sort_by</code>.</p></div></div><div id=outline-container-headline-3 class=outline-3><h3 id=headline-3>method_asking_a_question? [implicit]</h3><div id=outline-text-headline-3 class=outline-text-3><p>Suffixing a method that asks a question with a '?' is a great way to
 tell clients of your code it returns a boolean value to be used in
-conditional expressions.</p>
-<p>
-My favorite RSL example is <code class="verbatim">Object#nil?</code>. This is one of the most
+conditional expressions.</p><p>My favorite RSL example is <code class=verbatim>Object#nil?</code>. This is one of the most
 important methods, in my mind, that exist in Ruby in conjunction with
-making Ruby&#39;s <code class="verbatim">None</code>, <code class="verbatim">null</code>, <code class="verbatim">NULL</code> equivalent, <code class="verbatim">nil</code> an object of
-the type <code class="verbatim">NilClass</code>.</p>
-<p>
-RSL exaples include: <code class="verbatim">Object#is_a?</code>, <code class="verbatim">Hash#has_key?</code>, <code class="verbatim">Object#frozen?</code>.</p>
-<p>
-This naming approach is my joint favorite with the following
+making Ruby's <code class=verbatim>None</code>, <code class=verbatim>null</code>, <code class=verbatim>NULL</code> equivalent, <code class=verbatim>nil</code> an object of
+the type <code class=verbatim>NilClass</code>.</p><p>RSL exaples include: <code class=verbatim>Object#is_a?</code>, <code class=verbatim>Hash#has_key?</code>, <code class=verbatim>Object#frozen?</code>.</p><p>This naming approach is my joint favorite with the following
 convention that significantly increases readability of code and
-implicitly improves developer productivity as a side effect.</p>
-</div>
-</div>
-<div id="outline-container-headline-4" class="outline-3">
-<h3 id="headline-4">
-slightly_dangerous_method! [implicit]
-</h3>
-<div id="outline-text-headline-4" class="outline-text-3">
-<p>
-For methods that change the internal state of the object in a way that
-may not be apparent, a &#39;!&#39; is suffixed to the method name to follow
-this convention.</p>
-<p>
-As an example in the RSL, you would probably expect the call <code class="verbatim">&#34;a
-string&#34;.upcase</code> to return a copy of the original string in upper case,
-but the call <code class="verbatim">&#34;a string&#34;.upcase!</code> warns you via the bang (!) that the
-original object&#39;s internal state is changing. This informs developers
-writing the code of the String class what the implications are.</p>
-<p>
-This naming convention will keep you out of trouble. If a team mate
+implicitly improves developer productivity as a side effect.</p></div></div><div id=outline-container-headline-4 class=outline-3><h3 id=headline-4>slightly_dangerous_method! [implicit]</h3><div id=outline-text-headline-4 class=outline-text-3><p>For methods that change the internal state of the object in a way that
+may not be apparent, a '!' is suffixed to the method name to follow
+this convention.</p><p>As an example in the RSL, you would probably expect the call <code class=verbatim>"a
+string".upcase</code> to return a copy of the original string in upper case,
+but the call <code class=verbatim>"a string".upcase!</code> warns you via the bang (!) that the
+original object's internal state is changing. This informs developers
+writing the code of the String class what the implications are.</p><p>This naming convention will keep you out of trouble. If a team mate
 decides to try out some of your APIs, then you can feel safe knowing
-you have warned him/her of potential danger spots.</p>
-</div>
-</div>
-<div id="outline-container-headline-5" class="outline-3">
-<h3 id="headline-5">
-@instance_variable [explicit]
-</h3>
-<div id="outline-text-headline-5" class="outline-text-3">
-<p>
-Instance variables are explicitly prefixed with the &#39;@&#39; sign. Some may
-thing this is a Perlism that crept over, but in Perl &#39;@&#39; prefixed
+you have warned him/her of potential danger spots.</p></div></div><div id=outline-container-headline-5 class=outline-3><h3 id=headline-5>@instance_variable [explicit]</h3><div id=outline-text-headline-5 class=outline-text-3><p>Instance variables are explicitly prefixed with the '@' sign. Some may
+thing this is a Perlism that crept over, but in Perl '@' prefixed
 variables referred to arrays, if I remember correctly, so the usage is
-quite different. It should be noted that the &#39;@&#39; prefix is only used
-when referring to instance variables internally within the class.</p>
-<p>
-Using the &#39;@&#39; prefix does provide a convenient visual que that I am
-using an instance method which definitely improves readability of code.</p>
-</div>
-</div>
-<div id="outline-container-headline-6" class="outline-3">
-<h3 id="headline-6">
-$global_variable [explicit]
-</h3>
-<div id="outline-text-headline-6" class="outline-text-3">
-<p>
-To refer to global variables prefix the name with &#39;$&#39;. This is an
-explicit naming convention in Ruby, much like the &#39;@&#39; prefix for
+quite different. It should be noted that the '@' prefix is only used
+when referring to instance variables internally within the class.</p><p>Using the '@' prefix does provide a convenient visual que that I am
+using an instance method which definitely improves readability of code.</p></div></div><div id=outline-container-headline-6 class=outline-3><h3 id=headline-6>$global_variable [explicit]</h3><div id=outline-text-headline-6 class=outline-text-3><p>To refer to global variables prefix the name with '$'. This is an
+explicit naming convention in Ruby, much like the '@' prefix for
 instance variables above. This gives a quick visual note that we are
 knowingly using globals. For me it also provides a psychological
 check, where I start to question my motives whenever using a global
-variable and usually end up refactoring code to avoid using globals.</p>
-</div>
-</div>
-<div id="outline-container-headline-7" class="outline-3">
-<h3 id="headline-7">
-SOME_CONSTANT or OtherConstant [kind of explicit:)]
-</h3>
-<div id="outline-text-headline-7" class="outline-text-3">
-<p>
-Much like in Java and Python, Ruby&#39;s constant naming convention is not
+variable and usually end up refactoring code to avoid using globals.</p></div></div><div id=outline-container-headline-7 class=outline-3><h3 id=headline-7>SOME_CONSTANT or OtherConstant [kind of explicit:)]</h3><div id=outline-text-headline-7 class=outline-text-3><p>Much like in Java and Python, Ruby's constant naming convention is not
 commonly consistent. Often developers use the capilized naming
 approach, while just as many use the camel case convention used for
-class and module names in Ruby.</p>
-<p>
-Personally, if the constant is accessible from the module or class, I
+class and module names in Ruby.</p><p>Personally, if the constant is accessible from the module or class, I
 default to using the former approach unless the project has a
 different preference. For internally accessible constants, it is
-probably a moot point.</p>
-<p>
-All in all I find using these or very close naming conventions to
+probably a moot point.</p><p>All in all I find using these or very close naming conventions to
 those listed here, help me become more productive as a Ruby
 developer. I also find it useful to notice the Ruby mindset of being
 as expressive as possible without being verbose implicitly defined in
-the naming rules above.</p>
-</div>
-</div>
-
-</main>
-<footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20">
-  <div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2">
-    <div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
-        <a href="https://twitter.com/SusanPotter" rel="noopener noreferrer" class="ml-1" aria-hidden="true">@SusanPotter</a>
-      </p>
-      
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        
-        <a href="https://github.com/mbbx6spp/" class="ml-3" title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github" >
-          <img src="/images/github.svg" width=24 height=24 alt="Github icon"/>
-        </a>
-        
-        <a href="https://keybase.io/mbbx6spp" class="ml-3" title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase" >
-          <img src="/images/keybase.svg" width=24 height=24 alt="Keybase icon"/>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/susanpotter/" class="ml-3" title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn" >
-          <img src="/images/linkedin.svg" width=24 height=24 alt="LinkedIn icon"/>
-        </a>
-        
-        <a href="https://slideshare.net/mbbx6spp" class="ml-3" title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare" >
-          <img src="/images/slideshare.svg" width=24 height=24 alt="Slideshare icon"/>
-        </a>
-        
-        <a href="https://twitter.com/SusanPotter" class="ml-3" title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter" >
-          <img src="/images/twitter.svg" width=24 height=24 alt="Twitter icon"/>
-        </a>
-        
-      </span>
-      
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+the naming rules above.</p></div></div></main><footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20"><div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2"><div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row"><p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
+<a href=https://twitter.com/SusanPotter rel="noopener noreferrer" class=ml-1 aria-hidden=true>@SusanPotter</a></p><span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"><a href=https://github.com/mbbx6spp/ class=ml-3 title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github"><img src=/images/github.svg width=24 height=24 alt="Github icon"></a>
+<a href=https://keybase.io/mbbx6spp class=ml-3 title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase"><img src=/images/keybase.svg width=24 height=24 alt="Keybase icon"></a>
+<a href=https://www.linkedin.com/in/susanpotter/ class=ml-3 title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn"><img src=/images/linkedin.svg width=24 height=24 alt="LinkedIn icon"></a>
+<a href=https://slideshare.net/mbbx6spp class=ml-3 title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare"><img src=/images/slideshare.svg width=24 height=24 alt="Slideshare icon"></a>
+<a href=https://twitter.com/SusanPotter class=ml-3 title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter"><img src=/images/twitter.svg width=24 height=24 alt="Twitter icon"></a></span></div></div></footer></body></html>

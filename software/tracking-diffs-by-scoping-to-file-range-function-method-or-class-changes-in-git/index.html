@@ -1,171 +1,71 @@
-<!DOCTYPE html>
-<html lang="en-us"><meta charset="UTF-8">
-<meta name="template-type" content="software">
-<meta name="template-kind" content="page">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-
-
-
-  <link rel="stylesheet" href="/css/suponet.css" integrity="">
-
-
-<meta name="author" content="Susan Potter">
-<meta name="description" content="">
-<meta name="keywords" content="[]">
-<meta name="theme-color" content="">
-<meta name="og:site_name" content="Susan Potter"/>
-<meta name="og:title" content='Tracking diffs by scoping to file, range, function, method, or class changes in Git &ndash; Susan Potter'/>
-<meta name="og:url" content="/software/tracking-diffs-by-scoping-to-file-range-function-method-or-class-changes-in-git/">
-<meta name="og:description" content="">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="SusanPotter">
-<meta name="twitter:creator" content="SusanPotter">
-
-<meta name="twitter:image" content="/images/hat-collage.jpg">
-
-
-<meta name="twitter:image:alt" content="Susan&#39;s avatar wearing many different hats.">
-
-<meta name="twitter:title" content='Tracking diffs by scoping to file, range, function, method, or class changes in Git &ndash; Susan Potter'>
-<meta name="twitter:description" content="">
-<title>Tracking diffs by scoping to file, range, function, method, or class changes in Git &ndash; Susan Potter</title>
-
-<meta property="og:type" content="website" />
-<body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center">
-    <a href="/" class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0">
-      <h1 class="ml-3 text-2xl font-bold">Susan Potter</h1>
-    </a>
-    
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      
-      <a href="/about/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
-      
-      <a href="/talks/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
-      
-      <a href="/software/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
-      
-      <a href="/snippets/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a>
-      
-    </nav>
-    
-  </div>
-
-  
-  <hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3">
-    <h2 class="text-3xl font-extrabold tracking-wider leading-loose">Tracking diffs by scoping to file, range, function, method, or class changes in Git</h2>
-    
-    <h3 class="text-gray-800 dark:text-gray-200">Tue December 12, 2020</h3>
-    
-    
-  </hgroup>
-  
-</header>
-
-<main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2">
-  
-<p>
-One common question I see from developers using Git is how they can
+<!doctype html><html lang=en-us><meta charset=utf-8><meta name=template-type content="software"><meta name=template-kind content="page"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://rsms.me/inter/inter.css><link rel=stylesheet href=/css/suponet.css integrity><meta name=author content="Susan Potter"><meta name=title content="Tracking diffs by scoping to file, range, function, method, or class changes in Git &ndash; Susan Potter"><meta name=description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=keywords content="[]"><meta name=theme-color content><meta name=og:site_name content="Susan Potter"><meta name=og:title content="Tracking diffs by scoping to file, range, function, method, or class changes in Git &ndash; Susan Potter"><meta name=og:url content="/software/tracking-diffs-by-scoping-to-file-range-function-method-or-class-changes-in-git/"><meta name=og:description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="SusanPotter"><meta name=twitter:creator content="SusanPotter"><meta name=twitter:image content="/images/hat-collage.jpg"><meta name=twitter:image:alt content="Susan's avatar wearing many different hats."><meta name=twitter:title content="Tracking diffs by scoping to file, range, function, method, or class changes in Git &ndash; Susan Potter"><meta name=twitter:description content><title>Tracking diffs by scoping to file, range, function, method, or class changes in Git &ndash; Susan Potter</title><meta property="og:type" content="website"><body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font"><div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center"><a href=/ class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0"><h1 class="ml-3 text-2xl font-bold">Susan Potter</h1></a><nav class="md:ml-auto flex flex-wrap items-center text-base justify-center"><a href=/about/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
+<a href=/talks/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
+<a href=/software/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
+<a href=/snippets/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a></nav></div><hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3"><h2 class="text-3xl font-extrabold tracking-wider leading-loose">Tracking diffs by scoping to file, range, function, method, or class changes in Git</h2><h3 class="text-gray-800 dark:text-gray-200">Tue December 12, 2020</h3></hgroup></header><main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2"><p>One common question I see from developers using Git is how they can
 review the history of one function, method, or class over time through
-Git&#39;s history of the project.</p>
-<p>
-In codebases that have evolved over years, a developer just wants to
+Git's history of the project.</p><p>In codebases that have evolved over years, a developer just wants to
 know how one particular semantic scope of code has changed over time
-rather than on a file or directory basis.</p>
-<p>
-We will start out by revisiting how to scope change diffs per file.</p>
-<p>
-We will use the Ruby language repository to demonstrate the commands
-in this blog post, so please clone the repository like so:</p>
-<div class="src src-sh">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git clone https://github.com/ruby/ruby.git
-Cloning into <span style="color:#e6db74">&#39;ruby&#39;</span>...
-remote: Enumerating objects: 91, <span style="color:#66d9ef">done</span>.
-remote: Counting objects: 100% <span style="color:#f92672">(</span>91/91<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>.
-remote: Compressing objects: 100% <span style="color:#f92672">(</span>77/77<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>.
-remote: Total <span style="color:#ae81ff">488812</span> <span style="color:#f92672">(</span>delta 25<span style="color:#f92672">)</span>, reused <span style="color:#ae81ff">63</span> <span style="color:#f92672">(</span>delta 7<span style="color:#f92672">)</span>, pack-reused <span style="color:#ae81ff">488721</span>
-Receiving objects: 100% <span style="color:#f92672">(</span>488812/488812<span style="color:#f92672">)</span>, 229.77 MiB | 2.78 MiB/s, <span style="color:#66d9ef">done</span>.
-Resolving deltas: 100% <span style="color:#f92672">(</span>375083/375083<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>.</code></pre></div>
-</div>
-<div id="outline-container-headline-1" class="outline-3">
-<h3 id="headline-1">
-Scoping log diffs per file
-</h3>
-<div id="outline-text-headline-1" class="outline-text-3">
-<p>
-Sometimes a developer only wants to look at changes in one specific
-file in the repository. To do this we would use the <code class="verbatim">git-log</code>
-command:</p>
-<div class="src src-bash">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -- README.md
+rather than on a file or directory basis.</p><p>We will start out by revisiting how to scope change diffs per file.</p><p>We will use the Ruby language repository to demonstrate the commands
+in this blog post, so please clone the repository like so:</p><div class="src src-sh"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ git clone https://github.com/ruby/ruby.git
+Cloning into <span style=color:#e6db74>&#39;ruby&#39;</span>...
+remote: Enumerating objects: 91, <span style=color:#66d9ef>done</span>.
+remote: Counting objects: 100% <span style=color:#f92672>(</span>91/91<span style=color:#f92672>)</span>, <span style=color:#66d9ef>done</span>.
+remote: Compressing objects: 100% <span style=color:#f92672>(</span>77/77<span style=color:#f92672>)</span>, <span style=color:#66d9ef>done</span>.
+remote: Total <span style=color:#ae81ff>488812</span> <span style=color:#f92672>(</span>delta 25<span style=color:#f92672>)</span>, reused <span style=color:#ae81ff>63</span> <span style=color:#f92672>(</span>delta 7<span style=color:#f92672>)</span>, pack-reused <span style=color:#ae81ff>488721</span>
+Receiving objects: 100% <span style=color:#f92672>(</span>488812/488812<span style=color:#f92672>)</span>, 229.77 MiB | 2.78 MiB/s, <span style=color:#66d9ef>done</span>.
+Resolving deltas: 100% <span style=color:#f92672>(</span>375083/375083<span style=color:#f92672>)</span>, <span style=color:#66d9ef>done</span>.</code></pre></div></div><div id=outline-container-headline-1 class=outline-3><h3 id=headline-1>Scoping log diffs per file</h3><div id=outline-text-headline-1 class=outline-text-3><p>Sometimes a developer only wants to look at changes in one specific
+file in the repository. To do this we would use the <code class=verbatim>git-log</code>
+command:</p><div class="src src-bash"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ git log -- README.md
 commit 459670d47f8528db8f5d4f28aeac191b1af66d81
 Author: David Rodríguez &lt;deivid.rodriguez@riseup.net&gt;
-Date:   Sun Mar <span style="color:#ae81ff">8</span> 10:21:18 <span style="color:#ae81ff">2020</span> +0100
+Date:   Sun Mar <span style=color:#ae81ff>8</span> 10:21:18 <span style=color:#ae81ff>2020</span> +0100
 
     Fix bundled gems installation on a fresh clone
 
 commit adc303131187654d8ce83f3db17eefa3d5bae26c
 Author: Kazuhiro NISHIYAMA &lt;zn@mbf.nifty.com&gt;
-Date:   Sat Feb <span style="color:#ae81ff">1</span> 00:36:58 <span style="color:#ae81ff">2020</span> +0900
+Date:   Sat Feb <span style=color:#ae81ff>1</span> 00:36:58 <span style=color:#ae81ff>2020</span> +0900
 
-    README*.md: <span style="color:#e6db74">`</span>defines.h<span style="color:#e6db74">`</span> moved <span style="color:#f92672">[</span>ci skip<span style="color:#f92672">]</span>
+    README*.md: <span style=color:#e6db74>`</span>defines.h<span style=color:#e6db74>`</span> moved <span style=color:#f92672>[</span>ci skip<span style=color:#f92672>]</span>
 
     at 2b592580bf65040373b55ff2ccc3b59a0a231a18
 
 commit 2d61684e7c334ae4c5eb845c782d5fabeffdea67
 Author: Nobuyoshi Nakada &lt;nobu@ruby-lang.org&gt;
-Date:   Sun Jan <span style="color:#ae81ff">19</span> 21:15:23 <span style="color:#ae81ff">2020</span> +0900
+Date:   Sun Jan <span style=color:#ae81ff>19</span> 21:15:23 <span style=color:#ae81ff>2020</span> +0900
 
-    README.md: removed the badge <span style="color:#66d9ef">for</span> Cygwin <span style="color:#f92672">[</span>ci skip<span style="color:#f92672">]</span>
+    README.md: removed the badge <span style=color:#66d9ef>for</span> Cygwin <span style=color:#f92672>[</span>ci skip<span style=color:#f92672>]</span>
 
-    The workflow <span style="color:#66d9ef">for</span> Cygwin has been removed at
+    The workflow <span style=color:#66d9ef>for</span> Cygwin has been removed at
     3344f811074e1e6119eec23684013457dab4f8b0.
 
 commit 1a1862236da60e21e51c66543e89bf577b6ed14a
 Author: Kazuhiro NISHIYAMA &lt;zn@mbf.nifty.com&gt;
-Date:   Wed Jan <span style="color:#ae81ff">1</span> 00:02:01 <span style="color:#ae81ff">2020</span> +0900
+Date:   Wed Jan <span style=color:#ae81ff>1</span> 00:02:01 <span style=color:#ae81ff>2020</span> +0900
 
     Update GitHub Actions Badges
 
-<span style="color:#f92672">[</span>TRUNCATED<span style="color:#f92672">]</span></code></pre></div>
-</div>
-<p>
-This will show only the log message and metadata about commits that
-contain changes in that file.</p>
-</div>
-</div>
-<div id="outline-container-headline-2" class="outline-3">
-<h3 id="headline-2">
-Scoping diffs in a line range of a file
-</h3>
-<div id="outline-text-headline-2" class="outline-text-3">
-<p>
-In many projects each source file has a predefined documentation
+<span style=color:#f92672>[</span>TRUNCATED<span style=color:#f92672>]</span></code></pre></div></div><p>This will show only the log message and metadata about commits that
+contain changes in that file.</p></div></div><div id=outline-container-headline-2 class=outline-3><h3 id=headline-2>Scoping diffs in a line range of a file</h3><div id=outline-text-headline-2 class=outline-text-3><p>In many projects each source file has a predefined documentation
 header and we only want to find the change that introduced an
-inconsistency in the documentation header of a particular file.</p>
-<p>
-To find this we might do the following in our ruby repository:</p>
-<div class="src src-bash">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -L 1,9:vm.c
+inconsistency in the documentation header of a particular file.</p><p>To find this we might do the following in our ruby repository:</p><div class="src src-bash"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ git log -L 1,9:vm.c
 commit 79df14c04b452411b9d17e26a398e491bca1a811
 Author: Koichi Sasada &lt;ko1@atdot.net&gt;
-Date:   Tue Mar <span style="color:#ae81ff">10</span> 02:22:11 <span style="color:#ae81ff">2020</span> +0900
+Date:   Tue Mar <span style=color:#ae81ff>10</span> 02:22:11 <span style=color:#ae81ff>2020</span> +0900
 
-    Introduce Ractor mechanism <span style="color:#66d9ef">for</span> parallel execution
+    Introduce Ractor mechanism <span style=color:#66d9ef>for</span> parallel execution
 
     This commit introduces Ractor mechanism to run Ruby program in
-    parallel. See doc/ractor.md <span style="color:#66d9ef">for</span> more details about Ractor.
-    See ticket <span style="color:#f92672">[</span>Feature <span style="color:#75715e">#17100] to see the implementation details</span>
+    parallel. See doc/ractor.md <span style=color:#66d9ef>for</span> more details about Ractor.
+    See ticket <span style=color:#f92672>[</span>Feature <span style=color:#75715e>#17100] to see the implementation details</span>
     and discussions.
 
-    <span style="color:#f92672">[</span>Feature <span style="color:#75715e">#17100]</span>
+    <span style=color:#f92672>[</span>Feature <span style=color:#75715e>#17100]</span>
 
     This commit does not complete the implementation. You can find
     many bugs on using Ractor. Also the specification will be changed
     so that this feature is experimental. You will see a warning when
-    you make the first Ractor with <span style="color:#e6db74">`</span>Ractor.new<span style="color:#e6db74">`</span>.
+    you make the first Ractor with <span style=color:#e6db74>`</span>Ractor.new<span style=color:#e6db74>`</span>.
 
     I hope this feature can help programmers from thread-safety issues.
 
@@ -180,13 +80,13 @@ diff --git a/vm.c b/vm.c
 
    $Author$
 
-   Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> 2004-2007 Koichi Sasada
+   Copyright <span style=color:#f92672>(</span>C<span style=color:#f92672>)</span> 2004-2007 Koichi Sasada
 
  **********************************************************************/
 
 commit 6cdef2dc7e8a4098727de5befff8b2496fa71430
 Author: akr &lt;akr@b2dd03c8-39d4-4d8f-98ff-823fe69b080e&gt;
-Date:   Sun Jan <span style="color:#ae81ff">6</span> 15:49:38 <span style="color:#ae81ff">2008</span> +0000
+Date:   Sun Jan <span style=color:#ae81ff>6</span> 15:49:38 <span style=color:#ae81ff>2008</span> +0000
 
     * $Date$ keyword removed to avoid inclusion of locale dependent
       string.
@@ -205,36 +105,15 @@ diff --git a/vm.c b/vm.c
    $Author$
 -  $Date$
 
-   Copyright <span style="color:#f92672">(</span>C<span style="color:#f92672">)</span> 2004-2007 Koichi Sasada
+   Copyright <span style=color:#f92672>(</span>C<span style=color:#f92672>)</span> 2004-2007 Koichi Sasada
 
-<span style="color:#f92672">[</span>TRUNCATED<span style="color:#f92672">]</span></code></pre></div>
-</div>
-<p>
-This will show all commits containing changes in lines 1 through 9
-inclusive in the file <code class="verbatim">vm.c</code> along with patch diff output for that
-part of the file.</p>
-</div>
-</div>
-<div id="outline-container-headline-3" class="outline-3">
-<h3 id="headline-3">
-Scoping diffs by named block in a file
-</h3>
-<div id="outline-text-headline-3" class="outline-text-3">
-<p>
-In large files or when blocks (such as functions, methods, or
+<span style=color:#f92672>[</span>TRUNCATED<span style=color:#f92672>]</span></code></pre></div></div><p>This will show all commits containing changes in lines 1 through 9
+inclusive in the file <code class=verbatim>vm.c</code> along with patch diff output for that
+part of the file.</p></div></div><div id=outline-container-headline-3 class=outline-3><h3 id=headline-3>Scoping diffs by named block in a file</h3><div id=outline-text-headline-3 class=outline-text-3><p>In large files or when blocks (such as functions, methods, or
 classes) of code have been moved around the file, we might want to
 limit change log noise especially when that file is updated
 regularly. A typical example in a Ruby on Rails application might be
-an action method in a controller.</p>
-<p>
-Let&#39;s consult the man page for <code class="verbatim">git-log</code> like so:</p>
-<div class="src src-sh">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ man git-log</code></pre></div>
-</div>
-<p>
-We eventually come across a part like the following:</p>
-<div class="src src-text">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">      -L &lt;start&gt;,&lt;end&gt;:&lt;file&gt;, -L :&lt;funcname&gt;:&lt;file&gt;
+an action method in a controller.</p><p>Let's consult the man page for <code class=verbatim>git-log</code> like so:</p><div class="src src-sh"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-sh data-lang=sh>$ man git-log</code></pre></div></div><p>We eventually come across a part like the following:</p><div class="src src-text"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>      -L &lt;start&gt;,&lt;end&gt;:&lt;file&gt;, -L :&lt;funcname&gt;:&lt;file&gt;
           Trace the evolution of the line range given by &#34;&lt;start&gt;,&lt;end&gt;&#34; (or the
           function name regex &lt;funcname&gt;) within the &lt;file&gt;. You may not give any
           pathspec limiters. This is currently limited to a walk starting from a
@@ -269,32 +148,20 @@ We eventually come across a part like the following:</p>
           expression that denotes the range from the first funcname line that matches
           &lt;funcname&gt;, up to the next funcname line.  “:&lt;funcname&gt;” searches from the
           end of the previous -L range, if any, otherwise from the start of file.
-          “^:&lt;funcname&gt;” searches from the start of file.</code></pre></div>
-</div>
-<p>
-Ok, we have already seen how to list the relevant log entries with
+          “^:&lt;funcname&gt;” searches from the start of file.</code></pre></div></div><p>Ok, we have already seen how to list the relevant log entries with
 patches for a line range in a file (in the section above) and now want
-to take advantage of the form <code class="verbatim">-L :&lt;funcname&gt;:&lt;file&gt;</code>.</p>
-<p>
-To look at all changes in the <code class="verbatim">main</code> function of the
-<code class="verbatim">ext/nkf/nkf-utf8/nkf.c</code> file in the ruby repository we would issue
-the following command:</p>
-<div class="src src-bash">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -L :main:ext/nkf/nkf-utf8/nkf.c</code></pre></div>
-</div>
-<p>
-Cool, then armed with this new power we should be able to look at
-commits and relevant patches within a Ruby function too, right? Let&#39;s
-give that a try:</p>
-<div class="src src-bash">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -L :request_uri:lib/uri/http.rb
+to take advantage of the form <code class=verbatim>-L :&lt;funcname>:&lt;file></code>.</p><p>To look at all changes in the <code class=verbatim>main</code> function of the
+<code class=verbatim>ext/nkf/nkf-utf8/nkf.c</code> file in the ruby repository we would issue
+the following command:</p><div class="src src-bash"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ git log -L :main:ext/nkf/nkf-utf8/nkf.c</code></pre></div></div><p>Cool, then armed with this new power we should be able to look at
+commits and relevant patches within a Ruby function too, right? Let's
+give that a try:</p><div class="src src-bash"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ git log -L :request_uri:lib/uri/http.rb
 commit 107ba65fba13bdf791e5dae0305c5768e6f7d122
 Author: hsbt &lt;hsbt@b2dd03c8-39d4-4d8f-98ff-823fe69b080e&gt;
-Date:   Fri Sep <span style="color:#ae81ff">30</span> 10:06:24 <span style="color:#ae81ff">2016</span> +0000
+Date:   Fri Sep <span style=color:#ae81ff>30</span> 10:06:24 <span style=color:#ae81ff>2016</span> +0000
 
     * lib/uri/http.rb: Documentation and code style imrovements.
-    * test/uri/test_http.rb: Added test <span style="color:#66d9ef">for</span> coverage.
-      <span style="color:#f92672">[</span>fix GH-1427<span style="color:#f92672">][</span>ruby-core:77255<span style="color:#f92672">][</span>Misc <span style="color:#75715e">#12756]</span>
+    * test/uri/test_http.rb: Added test <span style=color:#66d9ef>for</span> coverage.
+      <span style=color:#f92672>[</span>fix GH-1427<span style=color:#f92672>][</span>ruby-core:77255<span style=color:#f92672>][</span>Misc <span style=color:#75715e>#12756]</span>
 
     git-svn-id: svn+ssh://ci.ruby-lang.org/ruby/trunk@56298 b2dd03c8-39d4-4d8f-98ff-823fe69b080e
 
@@ -303,30 +170,30 @@ diff --git a/lib/uri/http.rb b/lib/uri/http.rb
 +++ b/lib/uri/http.rb
 @@ -98,12 +102,11 @@
      def request_uri
--      <span style="color:#66d9ef">return</span> nil unless @path
--      <span style="color:#66d9ef">if</span> @path.start_with?<span style="color:#f92672">(</span>?/.freeze<span style="color:#f92672">)</span>
--        @query ? <span style="color:#e6db74">&#34;#@path?#@query&#34;</span> : @path.dup
--      <span style="color:#66d9ef">else</span>
--        @query ? <span style="color:#e6db74">&#34;/#@path?#@query&#34;</span> : <span style="color:#e6db74">&#34;/#@path&#34;</span>
+-      <span style=color:#66d9ef>return</span> nil unless @path
+-      <span style=color:#66d9ef>if</span> @path.start_with?<span style=color:#f92672>(</span>?/.freeze<span style=color:#f92672>)</span>
+-        @query ? <span style=color:#e6db74>&#34;#@path?#@query&#34;</span> : @path.dup
+-      <span style=color:#66d9ef>else</span>
+-        @query ? <span style=color:#e6db74>&#34;/#@path?#@query&#34;</span> : <span style=color:#e6db74>&#34;/#@path&#34;</span>
 -      end
-+      <span style="color:#66d9ef">return</span> unless @path
++      <span style=color:#66d9ef>return</span> unless @path
 +
-+      url <span style="color:#f92672">=</span> @query ? <span style="color:#e6db74">&#34;#@path?#@query&#34;</span> : @path.dup
-+      url.start_with?<span style="color:#f92672">(</span>?/.freeze<span style="color:#f92672">)</span> ? url : ?/ + url
++      url <span style=color:#f92672>=</span> @query ? <span style=color:#e6db74>&#34;#@path?#@query&#34;</span> : @path.dup
++      url.start_with?<span style=color:#f92672>(</span>?/.freeze<span style=color:#f92672>)</span> ? url : ?/ + url
      end
    end
 
-   @@schemes<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HTTP&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> HTTP
+   @@schemes<span style=color:#f92672>[</span><span style=color:#e6db74>&#39;HTTP&#39;</span><span style=color:#f92672>]</span> <span style=color:#f92672>=</span> HTTP
 +
  end
 
 commit a5c923f6c1ab0ddd68c4debb7c68623ff0cf4e6a
 Author: naruse &lt;naruse@b2dd03c8-39d4-4d8f-98ff-823fe69b080e&gt;
-Date:   Tue Aug <span style="color:#ae81ff">5</span> 19:09:01 <span style="color:#ae81ff">2014</span> +0000
+Date:   Tue Aug <span style=color:#ae81ff>5</span> 19:09:01 <span style=color:#ae81ff>2014</span> +0000
 
-    * lib/uri/http.rb <span style="color:#f92672">(</span>URI::HTTP#request_uri<span style="color:#f92672">)</span>: optimized.
+    * lib/uri/http.rb <span style=color:#f92672>(</span>URI::HTTP#request_uri<span style=color:#f92672>)</span>: optimized.
       decrease object allocation, and ensure always create at least one new
-      object <span style="color:#66d9ef">for</span> <span style="color:#66d9ef">return</span> value.
+      object <span style=color:#66d9ef>for</span> <span style=color:#66d9ef>return</span> value.
 
     git-svn-id: svn+ssh://ci.ruby-lang.org/ruby/trunk@47072 b2dd03c8-39d4-4d8f-98ff-823fe69b080e
 
@@ -335,127 +202,63 @@ diff --git a/lib/uri/http.rb b/lib/uri/http.rb
 +++ b/lib/uri/http.rb
 @@ -95,12 +95,12 @@
      def request_uri
--      r <span style="color:#f92672">=</span> path_query
--      <span style="color:#66d9ef">if</span> r <span style="color:#f92672">&amp;&amp;</span> r<span style="color:#f92672">[</span>0<span style="color:#f92672">]</span> !<span style="color:#f92672">=</span> ?/
--        r <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;/&#39;</span> + r
-+      <span style="color:#66d9ef">return</span> nil unless @path
-+      <span style="color:#66d9ef">if</span> @path.start_with?<span style="color:#f92672">(</span>?/.freeze<span style="color:#f92672">)</span>
-+        @query ? <span style="color:#e6db74">&#34;#@path?#@query&#34;</span> : @path.dup
-+      <span style="color:#66d9ef">else</span>
-+        @query ? <span style="color:#e6db74">&#34;/#@path?#@query&#34;</span> : <span style="color:#e6db74">&#34;/#@path&#34;</span>
+-      r <span style=color:#f92672>=</span> path_query
+-      <span style=color:#66d9ef>if</span> r <span style=color:#f92672>&amp;&amp;</span> r<span style=color:#f92672>[</span>0<span style=color:#f92672>]</span> !<span style=color:#f92672>=</span> ?/
+-        r <span style=color:#f92672>=</span> <span style=color:#e6db74>&#39;/&#39;</span> + r
++      <span style=color:#66d9ef>return</span> nil unless @path
++      <span style=color:#66d9ef>if</span> @path.start_with?<span style=color:#f92672>(</span>?/.freeze<span style=color:#f92672>)</span>
++        @query ? <span style=color:#e6db74>&#34;#@path?#@query&#34;</span> : @path.dup
++      <span style=color:#66d9ef>else</span>
++        @query ? <span style=color:#e6db74>&#34;/#@path?#@query&#34;</span> : <span style=color:#e6db74>&#34;/#@path&#34;</span>
        end
 -
-<span style="color:#f92672">[</span>TRUNCATED<span style="color:#f92672">]</span></code></pre></div>
-</div>
-<p>
-This works but you will notice some of the patches show changed lines
-outside of the method block.</p>
-<div id="outline-container-headline-4" class="outline-4">
-<h4 id="headline-4">
-How does this work?
-</h4>
-<div id="outline-text-headline-4" class="outline-text-4">
-<p>
-One key observation is that in the root of the <code class="verbatim">ruby</code> repository is a
-file named <code class="verbatim">.gitattributes</code>. This can do many things but for the
+<span style=color:#f92672>[</span>TRUNCATED<span style=color:#f92672>]</span></code></pre></div></div><p>This works but you will notice some of the patches show changed lines
+outside of the method block.</p><div id=outline-container-headline-4 class=outline-4><h4 id=headline-4>How does this work?</h4><div id=outline-text-headline-4 class=outline-text-4><p>One key observation is that in the root of the <code class=verbatim>ruby</code> repository is a
+file named <code class=verbatim>.gitattributes</code>. This can do many things but for the
 purposes of block-based git logs and patch review, the important line
-that made the above command mostly work is the following:</p>
-<div class="src src-text">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">*.rb diff=ruby</code></pre></div>
-</div>
-<p>
-This is telling Git to assume the file type for all files ending in
-and <code class="verbatim">rb</code> extension is <code class="verbatim">ruby</code>. For diffing purposes this uses a
-regex to determine the block boundaries for <code class="verbatim">ruby</code> files:</p>
-<figure>
-<div class="src src-c">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">PATTERNS(<span style="color:#e6db74">&#34;ruby&#34;</span>, <span style="color:#e6db74">&#34;^[ </span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">]*((class|module|def)[ </span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">].*)$&#34;</span>,
-   <span style="color:#75715e">/* -- */</span>
-   <span style="color:#e6db74">&#34;(@|@@|</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">$)?[a-zA-Z_][a-zA-Z0-9_]*&#34;</span>
-   <span style="color:#e6db74">&#34;|[-+0-9.e]+|0[xXbB]?[0-9a-fA-F]+|</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">?(</span><span style="color:#ae81ff">\\\\</span><span style="color:#e6db74">C-)?(</span><span style="color:#ae81ff">\\\\</span><span style="color:#e6db74">M-)?.&#34;</span>
-   <span style="color:#e6db74">&#34;|//=?|[-+*/&lt;&gt;%&amp;^|=!]=|&lt;&lt;=?|&gt;&gt;=?|===|</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">.{1,3}|::|[!=]~&#34;</span>),</code></pre></div>
-</div>
-<figcaption>
-Snippet of Git source code from <a href="https://git.kernel.org/pub/scm/git/git.git/tree/userdiff.c#n183">userdiff.c</a>
-</figcaption>
-</figure>
-<p>
-This identifies named class, module, function, or method definitions
+that made the above command mostly work is the following:</p><div class="src src-text"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>*.rb diff=ruby</code></pre></div></div><p>This is telling Git to assume the file type for all files ending in
+and <code class=verbatim>rb</code> extension is <code class=verbatim>ruby</code>. For diffing purposes this uses a
+regex to determine the block boundaries for <code class=verbatim>ruby</code> files:</p><figure><div class="src src-c"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-c data-lang=c>PATTERNS(<span style=color:#e6db74>&#34;ruby&#34;</span>, <span style=color:#e6db74>&#34;^[ </span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>]*((class|module|def)[ </span><span style=color:#ae81ff>\t</span><span style=color:#e6db74>].*)$&#34;</span>,
+   <span style=color:#75715e>/* -- */</span>
+   <span style=color:#e6db74>&#34;(@|@@|</span><span style=color:#ae81ff>\\</span><span style=color:#e6db74>$)?[a-zA-Z_][a-zA-Z0-9_]*&#34;</span>
+   <span style=color:#e6db74>&#34;|[-+0-9.e]+|0[xXbB]?[0-9a-fA-F]+|</span><span style=color:#ae81ff>\\</span><span style=color:#e6db74>?(</span><span style=color:#ae81ff>\\\\</span><span style=color:#e6db74>C-)?(</span><span style=color:#ae81ff>\\\\</span><span style=color:#e6db74>M-)?.&#34;</span>
+   <span style=color:#e6db74>&#34;|//=?|[-+*/&lt;&gt;%&amp;^|=!]=|&lt;&lt;=?|&gt;&gt;=?|===|</span><span style=color:#ae81ff>\\</span><span style=color:#e6db74>.{1,3}|::|[!=]~&#34;</span>),</code></pre></div></div><figcaption>Snippet of Git source code from <a href=https://git.kernel.org/pub/scm/git/git.git/tree/userdiff.c#n183>userdiff.c</a></figcaption></figure><p>This identifies named class, module, function, or method definitions
 as being named blocks. The start of the regular expression provides
-looks for spaces or tabs preceding either a <code class="verbatim">class</code>, <code class="verbatim">module</code>, or
-<code class="verbatim">def</code> keyword followed by a space or tag again.</p>
-<p>
-The way the <code class="verbatim">-L :funcname:file</code> argument to <code class="verbatim">git log</code> subcommand works
+looks for spaces or tabs preceding either a <code class=verbatim>class</code>, <code class=verbatim>module</code>, or
+<code class=verbatim>def</code> keyword followed by a space or tag again.</p><p>The way the <code class=verbatim>-L :funcname:file</code> argument to <code class=verbatim>git log</code> subcommand works
 is it will find the named marker matching that regex until the next
-named marker and this is why we don&#39;t just see changes within the
-<code class="verbatim">request_uri</code> method definition in the example in the parent section.</p>
-<p>
-For most purposes this is good enough for quick and dirty filtering of
-noise from git logs.</p>
-</div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-5" class="outline-3">
-<h3 id="headline-5">
-Tracking changes in markdown document sections
-</h3>
-<div id="outline-text-headline-5" class="outline-text-3">
-<p>
-Now let us say we want to see a log of all commits that changed the
-section &#39;Features of Ruby&#39; in the <code class="verbatim">README.md</code> file at the root of the
-<code class="verbatim">ruby</code> repository.</p>
-<p>
-Let us give that a try:</p>
-<div class="src src-bash">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -L :Features<span style="color:#ae81ff">\ </span>of<span style="color:#ae81ff">\ </span>Ruby:README.md</code></pre></div>
-</div>
-<p>
-This gives me a rather nasty error like so:</p>
-<div class="src src-text">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">fatal: -L parameter &#39;Features of Ruby&#39; starting at line 1: no match</code></pre></div>
-</div>
-<p>
-Not the best error message but based on the last subsection (&#39;How does
-this work?&#39;) I have a hunch. Let&#39;s find where in the <code class="verbatim">.gitattributes</code>
-that it specifies that README.md is a markdown file:</p>
-<div class="src src-bash">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ grep markdown .gitattributes</code></pre></div>
-</div>
-<p>
-It shows me nothing. We need to tell Git to assume that all <code class="verbatim">*.md</code>
-files are of type <code class="verbatim">markdown</code> which we can do by adding the following line:</p>
-<div class="src src-text">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">*.md diff=markdown</code></pre></div>
-</div>
-<p>
-Retrying the <code class="verbatim">git log</code> command above will show us only commits and
+named marker and this is why we don't just see changes within the
+<code class=verbatim>request_uri</code> method definition in the example in the parent section.</p><p>For most purposes this is good enough for quick and dirty filtering of
+noise from git logs.</p></div></div></div></div><div id=outline-container-headline-5 class=outline-3><h3 id=headline-5>Tracking changes in markdown document sections</h3><div id=outline-text-headline-5 class=outline-text-3><p>Now let us say we want to see a log of all commits that changed the
+section 'Features of Ruby' in the <code class=verbatim>README.md</code> file at the root of the
+<code class=verbatim>ruby</code> repository.</p><p>Let us give that a try:</p><div class="src src-bash"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ git log -L :Features<span style=color:#ae81ff>\ </span>of<span style=color:#ae81ff>\ </span>Ruby:README.md</code></pre></div></div><p>This gives me a rather nasty error like so:</p><div class="src src-text"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>fatal: -L parameter &#39;Features of Ruby&#39; starting at line 1: no match</code></pre></div></div><p>Not the best error message but based on the last subsection ('How does
+this work?') I have a hunch. Let's find where in the <code class=verbatim>.gitattributes</code>
+that it specifies that README.md is a markdown file:</p><div class="src src-bash"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ grep markdown .gitattributes</code></pre></div></div><p>It shows me nothing. We need to tell Git to assume that all <code class=verbatim>*.md</code>
+files are of type <code class=verbatim>markdown</code> which we can do by adding the following line:</p><div class="src src-text"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-text data-lang=text>*.md diff=markdown</code></pre></div></div><p>Retrying the <code class=verbatim>git log</code> command above will show us only commits and
 their patches that contain changes to that section of the markdown
-file <code class="verbatim">README.md</code> as expected now:</p>
-<div class="src src-bash">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git log -L :Features<span style="color:#ae81ff">\ </span>of<span style="color:#ae81ff">\ </span>Ruby:README.md
+file <code class=verbatim>README.md</code> as expected now:</p><div class="src src-bash"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash>$ git log -L :Features<span style=color:#ae81ff>\ </span>of<span style=color:#ae81ff>\ </span>Ruby:README.md
 commit dbe834ab5ac4f90df5db9fc314b45890726cca3b
 Author: Takashi Kokubun &lt;takashikkbn@gmail.com&gt;
-Date:   Mon Jul <span style="color:#ae81ff">1</span> 01:04:40 <span style="color:#ae81ff">2019</span> +0900
+Date:   Mon Jul <span style=color:#ae81ff>1</span> 01:04:40 <span style=color:#ae81ff>2019</span> +0900
 
-    Prefer master rather than trunk in README <span style="color:#f92672">[</span>ci skip<span style="color:#f92672">]</span>
+    Prefer master rather than trunk in README <span style=color:#f92672>[</span>ci skip<span style=color:#f92672>]</span>
 
 diff --git a/README.md b/README.md
 --- a/README.md
 +++ b/README.md
 @@ -13,15 +13,15 @@
- <span style="color:#75715e">## Features of Ruby</span>
+ <span style=color:#75715e>## Features of Ruby</span>
 
  *   Simple Syntax
- *   **Normal** Object-oriented Features <span style="color:#f92672">(</span>e.g. class, method calls<span style="color:#f92672">)</span>
- *   **Advanced** Object-oriented Features <span style="color:#f92672">(</span>e.g. mix-in, singleton-method<span style="color:#f92672">)</span>
+ *   **Normal** Object-oriented Features <span style=color:#f92672>(</span>e.g. class, method calls<span style=color:#f92672>)</span>
+ *   **Advanced** Object-oriented Features <span style=color:#f92672>(</span>e.g. mix-in, singleton-method<span style=color:#f92672>)</span>
  *   Operator Overloading
  *   Exception Handling
  *   Iterators and Closures
  *   Garbage Collection
- *   Dynamic Loading of Object Files <span style="color:#f92672">(</span>on some architectures<span style="color:#f92672">)</span>
- *   Highly Portable <span style="color:#f92672">(</span>works on many Unix-like/POSIX compatible platforms as
-     well as Windows, macOS, Haiku, etc.<span style="color:#f92672">)</span> cf.
+ *   Dynamic Loading of Object Files <span style=color:#f92672>(</span>on some architectures<span style=color:#f92672>)</span>
+ *   Highly Portable <span style=color:#f92672>(</span>works on many Unix-like/POSIX compatible platforms as
+     well as Windows, macOS, Haiku, etc.<span style=color:#f92672>)</span> cf.
 -    https://github.com/ruby/ruby/blob/trunk/doc/contributing.rdoc#platform-maintainers
 +    https://github.com/ruby/ruby/blob/master/doc/contributing.rdoc#platform-maintainers
 
@@ -463,9 +266,9 @@ diff --git a/README.md b/README.md
 
 commit 4fb5888a4dbc10b6f6d3f847f680baae60b9f757
 Author: kazu &lt;kazu@b2dd03c8-39d4-4d8f-98ff-823fe69b080e&gt;
-Date:   Fri Jun <span style="color:#ae81ff">15</span> 00:19:05 <span style="color:#ae81ff">2018</span> +0000
+Date:   Fri Jun <span style=color:#ae81ff>15</span> 00:19:05 <span style=color:#ae81ff>2018</span> +0000
 
-    Update obsoleted URLs of supported platforms <span style="color:#f92672">[</span>ci skip<span style="color:#f92672">]</span>
+    Update obsoleted URLs of supported platforms <span style=color:#f92672>[</span>ci skip<span style=color:#f92672>]</span>
 
     git-svn-id: svn+ssh://ci.ruby-lang.org/ruby/trunk@63666 b2dd03c8-39d4-4d8f-98ff-823fe69b080e
 
@@ -473,138 +276,45 @@ diff --git a/README.md b/README.md
 --- a/README.md
 +++ b/README.md
 @@ -11,15 +11,15 @@
- <span style="color:#75715e">## Features of Ruby</span>
+ <span style=color:#75715e>## Features of Ruby</span>
 
  *   Simple Syntax
- *   **Normal** Object-oriented Features <span style="color:#f92672">(</span>e.g. class, method calls<span style="color:#f92672">)</span>
- *   **Advanced** Object-oriented Features <span style="color:#f92672">(</span>e.g. mix-in, singleton-method<span style="color:#f92672">)</span>
+ *   **Normal** Object-oriented Features <span style=color:#f92672>(</span>e.g. class, method calls<span style=color:#f92672>)</span>
+ *   **Advanced** Object-oriented Features <span style=color:#f92672>(</span>e.g. mix-in, singleton-method<span style=color:#f92672>)</span>
  *   Operator Overloading
  *   Exception Handling
  *   Iterators and Closures
  *   Garbage Collection
- *   Dynamic Loading of Object Files <span style="color:#f92672">(</span>on some architectures<span style="color:#f92672">)</span>
- *   Highly Portable <span style="color:#f92672">(</span>works on many Unix-like/POSIX compatible platforms as
-     well as Windows, macOS, Haiku, etc.<span style="color:#f92672">)</span> cf.
+ *   Dynamic Loading of Object Files <span style=color:#f92672>(</span>on some architectures<span style=color:#f92672>)</span>
+ *   Highly Portable <span style=color:#f92672>(</span>works on many Unix-like/POSIX compatible platforms as
+     well as Windows, macOS, Haiku, etc.<span style=color:#f92672>)</span> cf.
 -    https://bugs.ruby-lang.org/projects/ruby-trunk/wiki/SupportedPlatforms
 +    https://github.com/ruby/ruby/blob/trunk/doc/contributing.rdoc#platform-maintainers
 
 
 
 commit f4ae225b04ae0cde3aa2781c82875074da49086b
-<span style="color:#f92672">[</span>TRUNCATED<span style="color:#f92672">]</span></code></pre></div>
-</div>
-</div>
-</div>
-<div id="outline-container-headline-6" class="outline-3">
-<h3 id="headline-6">
-Defining new named blocks for new formats and file types
-</h3>
-<div id="outline-text-headline-6" class="outline-text-3">
-<p>
-Now what happens if I wanted to write my documentation in <code class="verbatim">orgmode</code>
-format instead of markdown like all good emacsers?</p>
-<p>
-Let us try the following:</p>
-<ol>
-<li>
-<p>We will add an entry to <code class="verbatim">.gitattributes</code> file to tell Git to treat
-files matching the pattern <code class="verbatim">*.org</code> as <code class="verbatim">org</code> files.</p>
-</li>
-<li>
-<p>Write orgmode files over multiple commits changing parts of
-different sections.</p>
-</li>
-<li>
-<p>Try the <code class="verbatim">git log -L :&lt;funcname&gt;:&lt;filename&gt;</code> command like above.</p>
-</li>
-</ol>
-<p>Unfortunately this alone will not work. What we must also do is open
-up our user <code class="verbatim">~/.gitconfig</code> and add the following to the =[diff
-&#34;org&#34;] section.</p>
-<div class="src src-ini">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[diff &#34;org&#34;]</span>
-  <span style="color:#a6e22e">xfuncname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;^ *\*{1,6}[ \t].*&#34;</span></code></pre></div>
-</div>
-<p>
-Now if we try it we will see what we are looking for.</p>
-<p>
-As an exercise you could try building a regular expression for a file
-format that git doesn&#39;t automatically recognize how to find named
-blocks for and adding the <code class="verbatim">xfuncname</code> attribute under the relevant
-diff configuration section of your Git config file.</p>
-</div>
-</div>
-<div id="outline-container-headline-7" class="outline-3">
-<h3 id="headline-7">
-Limitations
-</h3>
-<div id="outline-text-headline-7" class="outline-text-3">
-<p>
-One big limitation of this last approach approach is that it is based
+<span style=color:#f92672>[</span>TRUNCATED<span style=color:#f92672>]</span></code></pre></div></div></div></div><div id=outline-container-headline-6 class=outline-3><h3 id=headline-6>Defining new named blocks for new formats and file types</h3><div id=outline-text-headline-6 class=outline-text-3><p>Now what happens if I wanted to write my documentation in <code class=verbatim>orgmode</code>
+format instead of markdown like all good emacsers?</p><p>Let us try the following:</p><ol><li><p>We will add an entry to <code class=verbatim>.gitattributes</code> file to tell Git to treat
+files matching the pattern <code class=verbatim>*.org</code> as <code class=verbatim>org</code> files.</p></li><li><p>Write orgmode files over multiple commits changing parts of
+different sections.</p></li><li><p>Try the <code class=verbatim>git log -L :&lt;funcname>:&lt;filename></code> command like above.</p></li></ol><p>Unfortunately this alone will not work. What we must also do is open
+up our user <code class=verbatim>~/.gitconfig</code> and add the following to the =[diff
+"org"] section.</p><div class="src src-ini"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ini data-lang=ini><span style=color:#66d9ef>[diff &#34;org&#34;]</span>
+  <span style=color:#a6e22e>xfuncname</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;^ *\*{1,6}[ \t].*&#34;</span></code></pre></div></div><p>Now if we try it we will see what we are looking for.</p><p>As an exercise you could try building a regular expression for a file
+format that git doesn't automatically recognize how to find named
+blocks for and adding the <code class=verbatim>xfuncname</code> attribute under the relevant
+diff configuration section of your Git config file.</p></div></div><div id=outline-container-headline-7 class=outline-3><h3 id=headline-7>Limitations</h3><div id=outline-text-headline-7 class=outline-text-3><p>One big limitation of this last approach approach is that it is based
 on the name of the <em>block</em> given by the regular expression in
-<code class="verbatim">xfuncname</code> in the relevant diff config section. It means that if the
-name of the block changed over time that will not be included in the output.</p>
-<p>
-Two related options for <code class="verbatim">git-log</code> includes:</p>
-<ul>
-<li>
-<p><code class="verbatim">-S &lt;TERM&gt;</code>: which searches for the specified string in the patch</p>
-</li>
-<li>
-<p><code class="verbatim">-G &lt;REGEX&gt;</code>: which searches for the regular expression in the patch</p>
-</li>
-</ul>
-<p>I have the following git aliases defined for each:</p>
-<div class="src src-ini">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ini" data-lang="ini"><span style="color:#66d9ef">[alias]</span>
-  <span style="color:#75715e"># ... truncated</span>
-  <span style="color:#a6e22e">search</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;log --all --pretty=oneline -S&#34;
-</span><span style="color:#e6db74">  egrep  = &#34;log --all --pretty=oneline -G&#34;</span></code></pre></div>
-</div>
-<p>
-Then I can use <code class="verbatim">git egrep &#34;^\s*module\s+&#34;</code> to search for all commits
-that contain something that resembles a module declaration in Ruby.</p>
-<p>
-Again note that this is just a quick-n-dirty way to eliminate noise
+<code class=verbatim>xfuncname</code> in the relevant diff config section. It means that if the
+name of the block changed over time that will not be included in the output.</p><p>Two related options for <code class=verbatim>git-log</code> includes:</p><ul><li><p><code class=verbatim>-S &lt;TERM></code>: which searches for the specified string in the patch</p></li><li><p><code class=verbatim>-G &lt;REGEX></code>: which searches for the regular expression in the patch</p></li></ul><p>I have the following git aliases defined for each:</p><div class="src src-ini"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ini data-lang=ini><span style=color:#66d9ef>[alias]</span>
+  <span style=color:#75715e># ... truncated</span>
+  <span style=color:#a6e22e>search</span> <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;log --all --pretty=oneline -S&#34;
+</span><span style=color:#e6db74>  egrep  = &#34;log --all --pretty=oneline -G&#34;</span></code></pre></div></div><p>Then I can use <code class=verbatim>git egrep "^\s*module\s+"</code> to search for all commits
+that contain something that resembles a module declaration in Ruby.</p><p>Again note that this is just a quick-n-dirty way to eliminate noise
 and for many use cases this is enough, but we should dream about a
-more semantic world.</p>
-</div>
-</div>
-
-</main>
-<footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20">
-  <div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2">
-    <div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
-        <a href="https://twitter.com/SusanPotter" rel="noopener noreferrer" class="ml-1" aria-hidden="true">@SusanPotter</a>
-      </p>
-      
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        
-        <a href="https://github.com/mbbx6spp/" class="ml-3" title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github" >
-          <img src="/images/github.svg" width=24 height=24 alt="Github icon"/>
-        </a>
-        
-        <a href="https://keybase.io/mbbx6spp" class="ml-3" title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase" >
-          <img src="/images/keybase.svg" width=24 height=24 alt="Keybase icon"/>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/susanpotter/" class="ml-3" title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn" >
-          <img src="/images/linkedin.svg" width=24 height=24 alt="LinkedIn icon"/>
-        </a>
-        
-        <a href="https://slideshare.net/mbbx6spp" class="ml-3" title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare" >
-          <img src="/images/slideshare.svg" width=24 height=24 alt="Slideshare icon"/>
-        </a>
-        
-        <a href="https://twitter.com/SusanPotter" class="ml-3" title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter" >
-          <img src="/images/twitter.svg" width=24 height=24 alt="Twitter icon"/>
-        </a>
-        
-      </span>
-      
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+more semantic world.</p></div></div></main><footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20"><div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2"><div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row"><p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
+<a href=https://twitter.com/SusanPotter rel="noopener noreferrer" class=ml-1 aria-hidden=true>@SusanPotter</a></p><span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"><a href=https://github.com/mbbx6spp/ class=ml-3 title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github"><img src=/images/github.svg width=24 height=24 alt="Github icon"></a>
+<a href=https://keybase.io/mbbx6spp class=ml-3 title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase"><img src=/images/keybase.svg width=24 height=24 alt="Keybase icon"></a>
+<a href=https://www.linkedin.com/in/susanpotter/ class=ml-3 title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn"><img src=/images/linkedin.svg width=24 height=24 alt="LinkedIn icon"></a>
+<a href=https://slideshare.net/mbbx6spp class=ml-3 title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare"><img src=/images/slideshare.svg width=24 height=24 alt="Slideshare icon"></a>
+<a href=https://twitter.com/SusanPotter class=ml-3 title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter"><img src=/images/twitter.svg width=24 height=24 alt="Twitter icon"></a></span></div></div></footer></body></html>

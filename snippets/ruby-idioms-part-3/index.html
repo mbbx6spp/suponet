@@ -1,155 +1,36 @@
-<!DOCTYPE html>
-<html lang="en-us"><meta charset="UTF-8">
-<meta name="template-type" content="snippets">
-<meta name="template-kind" content="page">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-
-
-
-  <link rel="stylesheet" href="/css/suponet.css" integrity="">
-
-
-<meta name="author" content="Susan Potter">
-<meta name="description" content="">
-<meta name="keywords" content="[]">
-<meta name="theme-color" content="">
-<meta name="og:site_name" content="Susan Potter"/>
-<meta name="og:title" content='Ruby Idioms, Part 3 &ndash; Susan Potter'/>
-<meta name="og:url" content="/snippets/ruby-idioms-part-3/">
-<meta name="og:description" content="">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="SusanPotter">
-<meta name="twitter:creator" content="SusanPotter">
-
-<meta name="twitter:image" content="/images/hat-collage.jpg">
-
-
-<meta name="twitter:image:alt" content="Susan&#39;s avatar wearing many different hats.">
-
-<meta name="twitter:title" content='Ruby Idioms, Part 3 &ndash; Susan Potter'>
-<meta name="twitter:description" content="">
-<title>Ruby Idioms, Part 3 &ndash; Susan Potter</title>
-
-<meta property="og:type" content="website" />
-<body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center">
-    <a href="/" class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0">
-      <h1 class="ml-3 text-2xl font-bold">Susan Potter</h1>
-    </a>
-    
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      
-      <a href="/about/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
-      
-      <a href="/talks/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
-      
-      <a href="/software/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
-      
-      <a href="/snippets/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a>
-      
-    </nav>
-    
-  </div>
-
-  
-  <hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3">
-    <h2 class="text-3xl font-extrabold tracking-wider leading-loose">Ruby Idioms, Part 3</h2>
-    
-    <h3 class="text-gray-800 dark:text-gray-200">Mon January 1, 2007</h3>
-    
-    
-  </hgroup>
-  
-</header>
-
-<main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2">
-  <p>
-Now, probably the biggest difference after the syntax, and the
+<!doctype html><html lang=en-us><meta charset=utf-8><meta name=template-type content="snippets"><meta name=template-kind content="page"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://rsms.me/inter/inter.css><link rel=stylesheet href=/css/suponet.css integrity><meta name=author content="Susan Potter"><meta name=title content="Ruby Idioms, Part 3 &ndash; Susan Potter"><meta name=description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=keywords content="[]"><meta name=theme-color content><meta name=og:site_name content="Susan Potter"><meta name=og:title content="Ruby Idioms, Part 3 &ndash; Susan Potter"><meta name=og:url content="/snippets/ruby-idioms-part-3/"><meta name=og:description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="SusanPotter"><meta name=twitter:creator content="SusanPotter"><meta name=twitter:image content="/images/hat-collage.jpg"><meta name=twitter:image:alt content="Susan's avatar wearing many different hats."><meta name=twitter:title content="Ruby Idioms, Part 3 &ndash; Susan Potter"><meta name=twitter:description content><title>Ruby Idioms, Part 3 &ndash; Susan Potter</title><meta property="og:type" content="website"><body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font"><div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center"><a href=/ class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0"><h1 class="ml-3 text-2xl font-bold">Susan Potter</h1></a><nav class="md:ml-auto flex flex-wrap items-center text-base justify-center"><a href=/about/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
+<a href=/talks/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
+<a href=/software/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
+<a href=/snippets/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a></nav></div><hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3"><h2 class="text-3xl font-extrabold tracking-wider leading-loose">Ruby Idioms, Part 3</h2><h3 class="text-gray-800 dark:text-gray-200">Mon January 1, 2007</h3></hgroup></header><main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2"><p>Now, probably the biggest difference after the syntax, and the
 non-static nature of Ruby for Java heads to get used to is that Ruby
-is an &#34;expressionist&#34; language.  Meaning almost all statements in Ruby
+is an "expressionist" language. Meaning almost all statements in Ruby
 evaluates to a value, i.e. everything that reasonably can be is an
-expression in Ruby is.  This is definitely not the way Java thinks or
-works.  So this will take some adjusting to.  Don&#39;t worry I will show
-you an example.</p>
-<p>
-Now the Java-fied Ruby code we will optimize is shown below:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    user_id <span style="color:#f92672">=</span> <span style="color:#66d9ef">nil</span>
-    <span style="color:#66d9ef">if</span> comments
-      <span style="color:#66d9ef">if</span> comments<span style="color:#f92672">.</span>first
-        <span style="color:#66d9ef">if</span> comments<span style="color:#f92672">.</span>first<span style="color:#f92672">.</span>user
-          user_id <span style="color:#f92672">=</span> comments<span style="color:#f92672">.</span>first<span style="color:#f92672">.</span>user<span style="color:#f92672">.</span>id
-        <span style="color:#66d9ef">end</span>
-      <span style="color:#66d9ef">end</span>
-    <span style="color:#66d9ef">end</span></code></pre></div>
-</div>
-<p>
-Now that is some ugly code, but sometimes doing something equivalent
-to that in Java is very necessary.  So how would a true Rubyist write
-that code:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  user_id <span style="color:#f92672">=</span> comments <span style="color:#f92672">&amp;&amp;</span> comments<span style="color:#f92672">.</span>first <span style="color:#f92672">&amp;&amp;</span> comments<span style="color:#f92672">.</span>first<span style="color:#f92672">.</span>user <span style="color:#f92672">&amp;&amp;</span> comments<span style="color:#f92672">.</span>first<span style="color:#f92672">.</span>user<span style="color:#f92672">.</span>id</code></pre></div>
-</div>
-<p>
-Now let us walk through what this really does:</p>
-<ol>
-<li>
-<p><code class="verbatim">comments is evaluated, if it is =nil</code> then the value <code class="verbatim">nil</code> is
+expression in Ruby is. This is definitely not the way Java thinks or
+works. So this will take some adjusting to. Don't worry I will show
+you an example.</p><p>Now the Java-fied Ruby code we will optimize is shown below:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>    user_id <span style=color:#f92672>=</span> <span style=color:#66d9ef>nil</span>
+    <span style=color:#66d9ef>if</span> comments
+      <span style=color:#66d9ef>if</span> comments<span style=color:#f92672>.</span>first
+        <span style=color:#66d9ef>if</span> comments<span style=color:#f92672>.</span>first<span style=color:#f92672>.</span>user
+          user_id <span style=color:#f92672>=</span> comments<span style=color:#f92672>.</span>first<span style=color:#f92672>.</span>user<span style=color:#f92672>.</span>id
+        <span style=color:#66d9ef>end</span>
+      <span style=color:#66d9ef>end</span>
+    <span style=color:#66d9ef>end</span></code></pre></div></div><p>Now that is some ugly code, but sometimes doing something equivalent
+to that in Java is very necessary. So how would a true Rubyist write
+that code:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>  user_id <span style=color:#f92672>=</span> comments <span style=color:#f92672>&amp;&amp;</span> comments<span style=color:#f92672>.</span>first <span style=color:#f92672>&amp;&amp;</span> comments<span style=color:#f92672>.</span>first<span style=color:#f92672>.</span>user <span style=color:#f92672>&amp;&amp;</span> comments<span style=color:#f92672>.</span>first<span style=color:#f92672>.</span>user<span style=color:#f92672>.</span>id</code></pre></div></div><p>Now let us walk through what this really does:</p><ol><li><p><code class=verbatim>comments is evaluated, if it is =nil</code> then the value <code class=verbatim>nil</code> is
 returned and the boolean expression is exited out of early because
-it is an AND (<code class="verbatim">&amp;&amp;</code>) which fails the whole expression at the first
-condition.</p>
-</li>
-<li>
-<p>We repeat the process of the previous step fo <code class="verbatim">comments.first</code>,
-<code class="verbatim">comments.first.user</code>, and <code class="verbatim">comments.first.user.id</code> until either
-<code class="verbatim">nil</code> is encountered and set as the value of the <code class="verbatim">user_id</code> variable
+it is an AND (<code class=verbatim>&&</code>) which fails the whole expression at the first
+condition.</p></li><li><p>We repeat the process of the previous step fo <code class=verbatim>comments.first</code>,
+<code class=verbatim>comments.first.user</code>, and <code class=verbatim>comments.first.user.id</code> until either
+<code class=verbatim>nil</code> is encountered and set as the value of the <code class=verbatim>user_id</code> variable
 or the final part of the boolean expression evaluates to the
-non-<code class="verbatim">nil</code> value that the variable value is set to.</p>
-</li>
-</ol>
-<p>This Ruby terseness &#34;optimization&#34; goes against my philosophy of
+non-<code class=verbatim>nil</code> value that the variable value is set to.</p></li></ol><p>This Ruby terseness "optimization" goes against my philosophy of
 producing code that reads as much like natural language as possible.
 For the more elegant, natural language way to solve this, refer to my
-previous blog entry on <a href="/blogs/software/2006/07/rubyisms-forwardables">Rubyisms: Forwardables</a> that discusses about how
+previous blog entry on <a href=/blogs/software/2006/07/rubyisms-forwardables>Rubyisms: Forwardables</a> that discusses about how
 to make evaluating attributes on attributes on attributes of your
-given object a thing of the past in a more elegant way.</p>
-
-</main>
-<footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20">
-  <div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2">
-    <div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
-        <a href="https://twitter.com/SusanPotter" rel="noopener noreferrer" class="ml-1" aria-hidden="true">@SusanPotter</a>
-      </p>
-      
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        
-        <a href="https://github.com/mbbx6spp/" class="ml-3" title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github" >
-          <img src="/images/github.svg" width=24 height=24 alt="Github icon"/>
-        </a>
-        
-        <a href="https://keybase.io/mbbx6spp" class="ml-3" title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase" >
-          <img src="/images/keybase.svg" width=24 height=24 alt="Keybase icon"/>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/susanpotter/" class="ml-3" title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn" >
-          <img src="/images/linkedin.svg" width=24 height=24 alt="LinkedIn icon"/>
-        </a>
-        
-        <a href="https://slideshare.net/mbbx6spp" class="ml-3" title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare" >
-          <img src="/images/slideshare.svg" width=24 height=24 alt="Slideshare icon"/>
-        </a>
-        
-        <a href="https://twitter.com/SusanPotter" class="ml-3" title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter" >
-          <img src="/images/twitter.svg" width=24 height=24 alt="Twitter icon"/>
-        </a>
-        
-      </span>
-      
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+given object a thing of the past in a more elegant way.</p></main><footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20"><div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2"><div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row"><p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
+<a href=https://twitter.com/SusanPotter rel="noopener noreferrer" class=ml-1 aria-hidden=true>@SusanPotter</a></p><span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"><a href=https://github.com/mbbx6spp/ class=ml-3 title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github"><img src=/images/github.svg width=24 height=24 alt="Github icon"></a>
+<a href=https://keybase.io/mbbx6spp class=ml-3 title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase"><img src=/images/keybase.svg width=24 height=24 alt="Keybase icon"></a>
+<a href=https://www.linkedin.com/in/susanpotter/ class=ml-3 title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn"><img src=/images/linkedin.svg width=24 height=24 alt="LinkedIn icon"></a>
+<a href=https://slideshare.net/mbbx6spp class=ml-3 title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare"><img src=/images/slideshare.svg width=24 height=24 alt="Slideshare icon"></a>
+<a href=https://twitter.com/SusanPotter class=ml-3 title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter"><img src=/images/twitter.svg width=24 height=24 alt="Twitter icon"></a></span></div></div></footer></body></html>

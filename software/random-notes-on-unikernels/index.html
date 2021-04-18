@@ -1,131 +1,22 @@
-<!DOCTYPE html>
-<html lang="en-us"><meta charset="UTF-8">
-<meta name="template-type" content="software">
-<meta name="template-kind" content="page">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-
-
-
-  <link rel="stylesheet" href="/css/suponet.css" integrity="">
-
-
-<meta name="author" content="Susan Potter">
-<meta name="description" content="Random thoughts on unikernels, nanokernels, and library operating systems">
-<meta name="keywords" content="[]">
-<meta name="theme-color" content="">
-<meta name="og:site_name" content="Susan Potter"/>
-<meta name="og:title" content='Random notes on Unikernels &ndash; Susan Potter'/>
-<meta name="og:url" content="/software/random-notes-on-unikernels/">
-<meta name="og:description" content="Random thoughts on unikernels, nanokernels, and library operating systems">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="SusanPotter">
-<meta name="twitter:creator" content="SusanPotter">
-
-<meta name="twitter:image" content="/images/hat-collage.jpg">
-
-
-<meta name="twitter:image:alt" content="Susan&#39;s avatar wearing many different hats.">
-
-<meta name="twitter:title" content='Random notes on Unikernels &ndash; Susan Potter'>
-<meta name="twitter:description" content="Random thoughts on unikernels, nanokernels, and library operating systems">
-<title>Random notes on Unikernels &ndash; Susan Potter</title>
-
-<meta property="og:type" content="website" />
-<body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center">
-    <a href="/" class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0">
-      <h1 class="ml-3 text-2xl font-bold">Susan Potter</h1>
-    </a>
-    
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      
-      <a href="/about/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
-      
-      <a href="/talks/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
-      
-      <a href="/software/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
-      
-      <a href="/snippets/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a>
-      
-    </nav>
-    
-  </div>
-
-  
-  <hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3">
-    <h2 class="text-3xl font-extrabold tracking-wider leading-loose">Random notes on Unikernels</h2>
-    
-    <h3 class="text-gray-800 dark:text-gray-200">Tue December 12, 2019</h3>
-    
-    
-  </hgroup>
-  
-</header>
-
-<main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2">
-  
-<p>
-This is an adaptation of a Slack chat explanation from work (slightly
-reworded to read better for the audience) from work in 2017.</p>
-<div id="outline-container-headline-1" class="outline-3">
-<h3 id="headline-1">
-Random notes on unikernels
-</h3>
-<div id="outline-text-headline-1" class="outline-text-3">
-<div id="outline-container-headline-2" class="outline-4">
-<h4 id="headline-2">
-Introducing unikernels
-</h4>
-<div id="outline-text-headline-2" class="outline-text-4">
-<p>
-You might have heard terms like <em>unikernel</em>, <em>nanokernel</em>, or <em>library operating systems</em>.
-These aren&#39;t always used in exactly the same way, but they are highly related terms.</p>
-<p>
-<a href="https://mirage.io/">MirageOS</a> is the research project that has received the most industry love of which I
+<!doctype html><html lang=en-us><meta charset=utf-8><meta name=template-type content="software"><meta name=template-kind content="page"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://rsms.me/inter/inter.css><link rel=stylesheet href=/css/suponet.css integrity><meta name=author content="Susan Potter"><meta name=title content="Random notes on Unikernels &ndash; Susan Potter"><meta name=description content="Random thoughts on unikernels, nanokernels, and library operating systems"><meta name=keywords content="[]"><meta name=theme-color content><meta name=og:site_name content="Susan Potter"><meta name=og:title content="Random notes on Unikernels &ndash; Susan Potter"><meta name=og:url content="/software/random-notes-on-unikernels/"><meta name=og:description content="Random thoughts on unikernels, nanokernels, and library operating systems"><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="SusanPotter"><meta name=twitter:creator content="SusanPotter"><meta name=twitter:image content="/images/hat-collage.jpg"><meta name=twitter:image:alt content="Susan's avatar wearing many different hats."><meta name=twitter:title content="Random notes on Unikernels &ndash; Susan Potter"><meta name=twitter:description content="Random thoughts on unikernels, nanokernels, and library operating systems"><title>Random notes on Unikernels &ndash; Susan Potter</title><meta property="og:type" content="website"><body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font"><div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center"><a href=/ class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0"><h1 class="ml-3 text-2xl font-bold">Susan Potter</h1></a><nav class="md:ml-auto flex flex-wrap items-center text-base justify-center"><a href=/about/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
+<a href=/talks/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
+<a href=/software/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
+<a href=/snippets/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a></nav></div><hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3"><h2 class="text-3xl font-extrabold tracking-wider leading-loose">Random notes on Unikernels</h2><h3 class="text-gray-800 dark:text-gray-200">Tue December 12, 2019</h3></hgroup></header><main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2"><p>This is an adaptation of a Slack chat explanation from work (slightly
+reworded to read better for the audience) from work in 2017.</p><div id=outline-container-headline-1 class=outline-3><h3 id=headline-1>Random notes on unikernels</h3><div id=outline-text-headline-1 class=outline-text-3><div id=outline-container-headline-2 class=outline-4><h4 id=headline-2>Introducing unikernels</h4><div id=outline-text-headline-2 class=outline-text-4><p>You might have heard terms like <em>unikernel</em>, <em>nanokernel</em>, or <em>library operating systems</em>.
+These aren't always used in exactly the same way, but they are highly related terms.</p><p><a href=https://mirage.io/>MirageOS</a> is the research project that has received the most industry love of which I
 am aware. The research team was acquihired by Docker a few years ago. It is
 language-based (they use OCaml), meaning you need to write <em>unikernel</em> applications
 in OCaml and it will build an image for various virtualization targets (as well as a
 Linux and probably macOS/BSD binary to run on existing OSes for development purposes).
-It strips all aspects of the runtime/OS that the application doesn&#39;t need. i.e. if it
-doesn&#39;t need the UDP or SCTP stack, then it isn&#39;t shipped in the &#34;library OS&#34; target
+It strips all aspects of the runtime/OS that the application doesn't need. i.e. if it
+doesn't need the UDP or SCTP stack, then it isn't shipped in the "library OS" target
 binaries reducing your attack surface area. These are one of the awesome things that
-excite me about the possibility of the idea of unikernels.</p>
-<p>
-Some docs on this are here:
-<a href="https://mirage.io/docs/">https://mirage.io/docs/</a></p>
-<p>
-A non-research oriented introduction can be found here: <a href="https://mirage.io/wiki/overview-of-mirage">https://mirage.io/wiki/overview-of-mirage</a></p>
-<p>
-Other language-based unikernels include:</p>
-<ul>
-<li>
-<p><a href="https://www.includeos.org/">IncludeOS</a> (C/C++)</p>
-</li>
-<li>
-<p><a href="https://galois.com/project/halvm/">HaLVM</a> (Haskell)</p>
-</li>
-<li>
-<p>LingVM (Erlang, though it is dead, I think)</p>
-</li>
-</ul>
-<p>I have seen unikernels referred to as nanokernels or library operating systems.</p>
-</div>
-</div>
-<div id="outline-container-headline-3" class="outline-4">
-<h4 id="headline-3">
-Rump kernels
-</h4>
-<div id="outline-text-headline-3" class="outline-text-4">
-<p>
-<em>Rump kernels</em> are either a kind of unikernel or a stepping stone to unikernels
+excite me about the possibility of the idea of unikernels.</p><p>Some docs on this are here:
+<a href=https://mirage.io/docs/>https://mirage.io/docs/</a></p><p>A non-research oriented introduction can be found here: <a href=https://mirage.io/wiki/overview-of-mirage>https://mirage.io/wiki/overview-of-mirage</a></p><p>Other language-based unikernels include:</p><ul><li><p><a href=https://www.includeos.org/>IncludeOS</a> (C/C++)</p></li><li><p><a href=https://galois.com/project/halvm/>HaLVM</a> (Haskell)</p></li><li><p>LingVM (Erlang, though it is dead, I think)</p></li></ul><p>I have seen unikernels referred to as nanokernels or library operating systems.</p></div></div><div id=outline-container-headline-3 class=outline-4><h4 id=headline-3>Rump kernels</h4><div id=outline-text-headline-3 class=outline-text-4><p><em>Rump kernels</em> are either a kind of unikernel or a stepping stone to unikernels
 depending on who you talk to. Rump kernels try to work on top of existing
 operating systems (OSes) to pare down the build to only what is needed.
 These are sometimes termed <em>Just-enough Operating Systems</em> (JeOS) and
-what qualifies varies from context to context.</p>
-<p>
-The main build-level trade-off compared to unikernels defined above is that rump
+what qualifies varies from context to context.</p><p>The main build-level trade-off compared to unikernels defined above is that rump
 kernels leverage existing mature build tooling ecosystems. However, they are often
 riddled with legacy decisions that make builds less hermetic or reproducible
 (outside of the Nix/Guix worlds), and the resulting artifacts are less slimline as
@@ -134,72 +25,18 @@ with rump kernels as compared with unikernels though the attack surface area wil
 less than a typical system build that runs an equivalent application on a typical
 distribution of the same flavor (e.g. Linux, BSD, etc.). A benefit of
 rump kernels is the ability to leverage familiar system-level
-debugging tooling available compared to unikernels.</p>
-<p>
-Rump kernels do allow you to <em>more</em> incrementally migrate your application
+debugging tooling available compared to unikernels.</p><p>Rump kernels do allow you to <em>more</em> incrementally migrate your application
 from typical OS deployments (where everything including the kitchen-sink is installed
 without manual effort to reduce this down) out of the box to more streamlined rump
-kernel deployments.</p>
-<p>
-The big win with the language-based unikernels (and the hope with the rump unikernels)
+kernel deployments.</p><p>The big win with the language-based unikernels (and the hope with the rump unikernels)
 is you only ship the code your application uses. Absolutely nothing else, meaning the
-compiler target optimizes to an extreme.</p>
-</div>
-</div>
-<div id="outline-container-headline-4" class="outline-4">
-<h4 id="headline-4">
-Related areas
-</h4>
-<div id="outline-text-headline-4" class="outline-text-4">
-<p>
-This is related to another area I am intrigued about as a bystander which is <em>whole
-program optimization</em>. Projects like this <a href="https://github.com/mu-chaco/ReWire">whole program optimizer</a> targeting VHDL
+compiler target optimizes to an extreme.</p></div></div><div id=outline-container-headline-4 class=outline-4><h4 id=headline-4>Related areas</h4><div id=outline-text-headline-4 class=outline-text-4><p>This is related to another area I am intrigued about as a bystander which is <em>whole
+program optimization</em>. Projects like this <a href=https://github.com/mu-chaco/ReWire>whole program optimizer</a> targeting VHDL
 from a subset of Haskell is exciting work to me:
-<a href="https://github.com/mu-chaco/ReWire">https://github.com/mu-chaco/ReWire</a></p>
-<p>
-Arguably unikernels would could enable more application of whole program optimization
-at all levels.</p>
-<p>
-We will wait to see what happens in this space.</p>
-</div>
-</div>
-</div>
-</div>
-
-</main>
-<footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20">
-  <div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2">
-    <div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
-        <a href="https://twitter.com/SusanPotter" rel="noopener noreferrer" class="ml-1" aria-hidden="true">@SusanPotter</a>
-      </p>
-      
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        
-        <a href="https://github.com/mbbx6spp/" class="ml-3" title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github" >
-          <img src="/images/github.svg" width=24 height=24 alt="Github icon"/>
-        </a>
-        
-        <a href="https://keybase.io/mbbx6spp" class="ml-3" title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase" >
-          <img src="/images/keybase.svg" width=24 height=24 alt="Keybase icon"/>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/susanpotter/" class="ml-3" title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn" >
-          <img src="/images/linkedin.svg" width=24 height=24 alt="LinkedIn icon"/>
-        </a>
-        
-        <a href="https://slideshare.net/mbbx6spp" class="ml-3" title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare" >
-          <img src="/images/slideshare.svg" width=24 height=24 alt="Slideshare icon"/>
-        </a>
-        
-        <a href="https://twitter.com/SusanPotter" class="ml-3" title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter" >
-          <img src="/images/twitter.svg" width=24 height=24 alt="Twitter icon"/>
-        </a>
-        
-      </span>
-      
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+<a href=https://github.com/mu-chaco/ReWire>https://github.com/mu-chaco/ReWire</a></p><p>Arguably unikernels would could enable more application of whole program optimization
+at all levels.</p><p>We will wait to see what happens in this space.</p></div></div></div></div></main><footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20"><div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2"><div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row"><p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
+<a href=https://twitter.com/SusanPotter rel="noopener noreferrer" class=ml-1 aria-hidden=true>@SusanPotter</a></p><span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"><a href=https://github.com/mbbx6spp/ class=ml-3 title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github"><img src=/images/github.svg width=24 height=24 alt="Github icon"></a>
+<a href=https://keybase.io/mbbx6spp class=ml-3 title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase"><img src=/images/keybase.svg width=24 height=24 alt="Keybase icon"></a>
+<a href=https://www.linkedin.com/in/susanpotter/ class=ml-3 title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn"><img src=/images/linkedin.svg width=24 height=24 alt="LinkedIn icon"></a>
+<a href=https://slideshare.net/mbbx6spp class=ml-3 title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare"><img src=/images/slideshare.svg width=24 height=24 alt="Slideshare icon"></a>
+<a href=https://twitter.com/SusanPotter class=ml-3 title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter"><img src=/images/twitter.svg width=24 height=24 alt="Twitter icon"></a></span></div></div></footer></body></html>

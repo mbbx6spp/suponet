@@ -1,195 +1,56 @@
-<!DOCTYPE html>
-<html lang="en-us"><meta charset="UTF-8">
-<meta name="template-type" content="snippets">
-<meta name="template-kind" content="page">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-
-
-
-  <link rel="stylesheet" href="/css/suponet.css" integrity="">
-
-
-<meta name="author" content="Susan Potter">
-<meta name="description" content="">
-<meta name="keywords" content="[]">
-<meta name="theme-color" content="">
-<meta name="og:site_name" content="Susan Potter"/>
-<meta name="og:title" content='Ruby Idioms, Part 2 &ndash; Susan Potter'/>
-<meta name="og:url" content="/snippets/ruby-idioms-part-2/">
-<meta name="og:description" content="">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="SusanPotter">
-<meta name="twitter:creator" content="SusanPotter">
-
-<meta name="twitter:image" content="/images/hat-collage.jpg">
-
-
-<meta name="twitter:image:alt" content="Susan&#39;s avatar wearing many different hats.">
-
-<meta name="twitter:title" content='Ruby Idioms, Part 2 &ndash; Susan Potter'>
-<meta name="twitter:description" content="">
-<title>Ruby Idioms, Part 2 &ndash; Susan Potter</title>
-
-<meta property="og:type" content="website" />
-<body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center">
-    <a href="/" class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0">
-      <h1 class="ml-3 text-2xl font-bold">Susan Potter</h1>
-    </a>
-    
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      
-      <a href="/about/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
-      
-      <a href="/talks/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
-      
-      <a href="/software/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
-      
-      <a href="/snippets/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a>
-      
-    </nav>
-    
-  </div>
-
-  
-  <hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3">
-    <h2 class="text-3xl font-extrabold tracking-wider leading-loose">Ruby Idioms, Part 2</h2>
-    
-    <h3 class="text-gray-800 dark:text-gray-200">Mon January 1, 2007</h3>
-    
-    
-  </hgroup>
-  
-</header>
-
-<main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2">
-  <p>
-Now the &#34;idiom&#34; we will use is not specific to Ruby, since I am pretty
-sure Perl has one of the  constructs we will use to solve the stated
+<!doctype html><html lang=en-us><meta charset=utf-8><meta name=template-type content="snippets"><meta name=template-kind content="page"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://rsms.me/inter/inter.css><link rel=stylesheet href=/css/suponet.css integrity><meta name=author content="Susan Potter"><meta name=title content="Ruby Idioms, Part 2 &ndash; Susan Potter"><meta name=description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=keywords content="[]"><meta name=theme-color content><meta name=og:site_name content="Susan Potter"><meta name=og:title content="Ruby Idioms, Part 2 &ndash; Susan Potter"><meta name=og:url content="/snippets/ruby-idioms-part-2/"><meta name=og:description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="SusanPotter"><meta name=twitter:creator content="SusanPotter"><meta name=twitter:image content="/images/hat-collage.jpg"><meta name=twitter:image:alt content="Susan's avatar wearing many different hats."><meta name=twitter:title content="Ruby Idioms, Part 2 &ndash; Susan Potter"><meta name=twitter:description content><title>Ruby Idioms, Part 2 &ndash; Susan Potter</title><meta property="og:type" content="website"><body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font"><div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center"><a href=/ class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0"><h1 class="ml-3 text-2xl font-bold">Susan Potter</h1></a><nav class="md:ml-auto flex flex-wrap items-center text-base justify-center"><a href=/about/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
+<a href=/talks/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
+<a href=/software/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
+<a href=/snippets/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a></nav></div><hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3"><h2 class="text-3xl font-extrabold tracking-wider leading-loose">Ruby Idioms, Part 2</h2><h3 class="text-gray-800 dark:text-gray-200">Mon January 1, 2007</h3></hgroup></header><main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2"><p>Now the "idiom" we will use is not specific to Ruby, since I am pretty
+sure Perl has one of the constructs we will use to solve the stated
 problem, but it is still idiomatic, since the majority of popular OO
 languages (static, dynamic or otherwise) do not have it (as far as I
-know).  Also some consider this to be a sub-optimal idiom, because
-there is a terser way to do something like this.  However, the idiom I
+know). Also some consider this to be a sub-optimal idiom, because
+there is a terser way to do something like this. However, the idiom I
 recommend below is much more multi-purpose, though I will show the
-terser version for the trivial case.</p>
-<p>
-Firstly our Javafied Ruby code looks like the following for the
-problem at hand:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> var
-      var <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;some text string&#34;</span>
-    <span style="color:#66d9ef">end</span>
-    <span style="color:#75715e"># OR for a pure Java to Ruby translation with ZERO Rubification</span>
-    <span style="color:#66d9ef">if</span> <span style="color:#66d9ef">nil</span> <span style="color:#f92672">==</span> var <span style="color:#75715e"># of course &#34;if var == nil&#34; is equivalent too.</span>
-      var <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;some text string&#34;</span>
-    <span style="color:#66d9ef">end</span></code></pre></div>
-</div>
-<p>
-Now this is the most trivial case of wanting to set a variable to a
-value only when it is <code class="verbatim">nil</code>. The Ruby idiom I advocate is much more
+terser version for the trivial case.</p><p>Firstly our Javafied Ruby code looks like the following for the
+problem at hand:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>not</span> var
+      var <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;some text string&#34;</span>
+    <span style=color:#66d9ef>end</span>
+    <span style=color:#75715e># OR for a pure Java to Ruby translation with ZERO Rubification</span>
+    <span style=color:#66d9ef>if</span> <span style=color:#66d9ef>nil</span> <span style=color:#f92672>==</span> var <span style=color:#75715e># of course &#34;if var == nil&#34; is equivalent too.</span>
+      var <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;some text string&#34;</span>
+    <span style=color:#66d9ef>end</span></code></pre></div></div><p>Now this is the most trivial case of wanting to set a variable to a
+value only when it is <code class=verbatim>nil</code>. The Ruby idiom I advocate is much more
 versatile than for this trivial case, but there is an even terser Ruby
 idiom that is only applicable to this case, which I wanted to show you
-first:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    var <span style="color:#f92672">||=</span> <span style="color:#e6db74">&#34;some text string&#34;</span></code></pre></div>
-</div>
-<p>
-As you can see this is very terse, but my question is, is it readable?
+first:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>    var <span style=color:#f92672>||=</span> <span style=color:#e6db74>&#34;some text string&#34;</span></code></pre></div></div><p>As you can see this is very terse, but my question is, is it readable?
 Well to many Rubyists it is, but this relies on expressionistic
-understanding of how Ruby works under the covers.  On projects
+understanding of how Ruby works under the covers. On projects
 involving developers with varied skill levels, I would definitely
-prefer my proposal below.</p>
-<p>
-Now onto the more readable and more multi-purpose idiom that reads
+prefer my proposal below.</p><p>Now onto the more readable and more multi-purpose idiom that reads
 much more like my natural language (which is my preference in
-general):</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    var <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;some text string&#34;</span> <span style="color:#66d9ef">unless</span> var</code></pre></div>
-</div>
-<p>
-Now some of you may think this isn&#39;t as readable as it could be, I
-concur.  I sometimes prefer to use something like the following, but
+general):</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>    var <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;some text string&#34;</span> <span style=color:#66d9ef>unless</span> var</code></pre></div></div><p>Now some of you may think this isn't as readable as it could be, I
+concur. I sometimes prefer to use something like the following, but
 consistency on a project is important in my view, so pick on and go
-with it:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    var <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;some text string&#34;</span> <span style="color:#66d9ef">if</span> var<span style="color:#f92672">.</span>nil?</code></pre></div>
-</div>
-<p>
-I do find myself using the terser &#34;or equals&#34; idiom in favor of the
+with it:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>    var <span style=color:#f92672>=</span> <span style=color:#e6db74>&#34;some text string&#34;</span> <span style=color:#66d9ef>if</span> var<span style=color:#f92672>.</span>nil?</code></pre></div></div><p>I do find myself using the terser "or equals" idiom in favor of the
 above for the trivial case (but consistently on projects with other
-advanced Ruby developers).  The &#34;if var nil?&#34; idiom can be used in
+advanced Ruby developers). The "if var nil?" idiom can be used in
 more multi-purpose situations, not only when you wish to set a
-variable when it has a <code class="verbatim">nil</code> value (that is null to you Java heads).</p>
-<p>
-A non-trivial usage of the &#34;unless&#34; version of the idiom would be well
-suited to a code snippet that tries to do the following:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    user_defined_fruits <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#e6db74">&#39;cantaloupe&#39;</span><span style="color:#f92672">]</span>
-    fruits <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#e6db74">&#39;banana&#39;</span><span style="color:#f92672">]</span>
-    user_defined_fruits<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>fruit<span style="color:#f92672">|</span>
-      <span style="color:#66d9ef">if</span> fruits<span style="color:#f92672">.</span>include? fruit
-        fruits <span style="color:#f92672">&lt;&lt;</span> fruit
-      <span style="color:#66d9ef">end</span>
-    <span style="color:#66d9ef">end</span>
-    fruits <span style="color:#75715e">#=&gt; [&#39;apple&#39;, &#39;banana&#39;, &#39;cantaloupe&#39;] NOT [&#39;apple&#39;, &#39;banana&#39;, &#39;apple&#39;, &#39;cantaloupe&#39;]</span></code></pre></div>
-</div>
-<p>
-Now a better way of doing this with the &#34;unless&#34; version of the idiom
-would be:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    user_defined_fruits <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#e6db74">&#39;cantaloupe&#39;</span><span style="color:#f92672">]</span>
-    fruits <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#e6db74">&#39;banana&#39;</span><span style="color:#f92672">]</span>
-    user_defined_fruits<span style="color:#f92672">.</span>each <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>fruit<span style="color:#f92672">|</span>
-      fruits <span style="color:#f92672">&lt;&lt;</span> fruit <span style="color:#66d9ef">unless</span> fruits<span style="color:#f92672">.</span>include? fruit
-    <span style="color:#66d9ef">end</span></code></pre></div>
-</div>
-<p>
-As you see above the code is terser, while being as readable, if not
-more (in my opinion again).</p>
-<p>
-Again the as-terse-as-possible enthusiasts will love the following:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    user_defined_fruits <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#e6db74">&#39;cantaloupe&#39;</span><span style="color:#f92672">]</span>
-    fruits <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;apple&#39;</span>, <span style="color:#e6db74">&#39;banana&#39;</span><span style="color:#f92672">]</span>
-    fruits <span style="color:#f92672">|=</span> user_defined_fruits</code></pre></div>
-</div>
-
-</main>
-<footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20">
-  <div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2">
-    <div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
-        <a href="https://twitter.com/SusanPotter" rel="noopener noreferrer" class="ml-1" aria-hidden="true">@SusanPotter</a>
-      </p>
-      
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        
-        <a href="https://github.com/mbbx6spp/" class="ml-3" title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github" >
-          <img src="/images/github.svg" width=24 height=24 alt="Github icon"/>
-        </a>
-        
-        <a href="https://keybase.io/mbbx6spp" class="ml-3" title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase" >
-          <img src="/images/keybase.svg" width=24 height=24 alt="Keybase icon"/>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/susanpotter/" class="ml-3" title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn" >
-          <img src="/images/linkedin.svg" width=24 height=24 alt="LinkedIn icon"/>
-        </a>
-        
-        <a href="https://slideshare.net/mbbx6spp" class="ml-3" title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare" >
-          <img src="/images/slideshare.svg" width=24 height=24 alt="Slideshare icon"/>
-        </a>
-        
-        <a href="https://twitter.com/SusanPotter" class="ml-3" title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter" >
-          <img src="/images/twitter.svg" width=24 height=24 alt="Twitter icon"/>
-        </a>
-        
-      </span>
-      
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+variable when it has a <code class=verbatim>nil</code> value (that is null to you Java heads).</p><p>A non-trivial usage of the "unless" version of the idiom would be well
+suited to a code snippet that tries to do the following:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>    user_defined_fruits <span style=color:#f92672>=</span> <span style=color:#f92672>[</span><span style=color:#e6db74>&#39;apple&#39;</span>, <span style=color:#e6db74>&#39;cantaloupe&#39;</span><span style=color:#f92672>]</span>
+    fruits <span style=color:#f92672>=</span> <span style=color:#f92672>[</span><span style=color:#e6db74>&#39;apple&#39;</span>, <span style=color:#e6db74>&#39;banana&#39;</span><span style=color:#f92672>]</span>
+    user_defined_fruits<span style=color:#f92672>.</span>each <span style=color:#66d9ef>do</span> <span style=color:#f92672>|</span>fruit<span style=color:#f92672>|</span>
+      <span style=color:#66d9ef>if</span> fruits<span style=color:#f92672>.</span>include? fruit
+        fruits <span style=color:#f92672>&lt;&lt;</span> fruit
+      <span style=color:#66d9ef>end</span>
+    <span style=color:#66d9ef>end</span>
+    fruits <span style=color:#75715e>#=&gt; [&#39;apple&#39;, &#39;banana&#39;, &#39;cantaloupe&#39;] NOT [&#39;apple&#39;, &#39;banana&#39;, &#39;apple&#39;, &#39;cantaloupe&#39;]</span></code></pre></div></div><p>Now a better way of doing this with the "unless" version of the idiom
+would be:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>    user_defined_fruits <span style=color:#f92672>=</span> <span style=color:#f92672>[</span><span style=color:#e6db74>&#39;apple&#39;</span>, <span style=color:#e6db74>&#39;cantaloupe&#39;</span><span style=color:#f92672>]</span>
+    fruits <span style=color:#f92672>=</span> <span style=color:#f92672>[</span><span style=color:#e6db74>&#39;apple&#39;</span>, <span style=color:#e6db74>&#39;banana&#39;</span><span style=color:#f92672>]</span>
+    user_defined_fruits<span style=color:#f92672>.</span>each <span style=color:#66d9ef>do</span> <span style=color:#f92672>|</span>fruit<span style=color:#f92672>|</span>
+      fruits <span style=color:#f92672>&lt;&lt;</span> fruit <span style=color:#66d9ef>unless</span> fruits<span style=color:#f92672>.</span>include? fruit
+    <span style=color:#66d9ef>end</span></code></pre></div></div><p>As you see above the code is terser, while being as readable, if not
+more (in my opinion again).</p><p>Again the as-terse-as-possible enthusiasts will love the following:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>    user_defined_fruits <span style=color:#f92672>=</span> <span style=color:#f92672>[</span><span style=color:#e6db74>&#39;apple&#39;</span>, <span style=color:#e6db74>&#39;cantaloupe&#39;</span><span style=color:#f92672>]</span>
+    fruits <span style=color:#f92672>=</span> <span style=color:#f92672>[</span><span style=color:#e6db74>&#39;apple&#39;</span>, <span style=color:#e6db74>&#39;banana&#39;</span><span style=color:#f92672>]</span>
+    fruits <span style=color:#f92672>|=</span> user_defined_fruits</code></pre></div></div></main><footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20"><div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2"><div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row"><p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
+<a href=https://twitter.com/SusanPotter rel="noopener noreferrer" class=ml-1 aria-hidden=true>@SusanPotter</a></p><span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"><a href=https://github.com/mbbx6spp/ class=ml-3 title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github"><img src=/images/github.svg width=24 height=24 alt="Github icon"></a>
+<a href=https://keybase.io/mbbx6spp class=ml-3 title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase"><img src=/images/keybase.svg width=24 height=24 alt="Keybase icon"></a>
+<a href=https://www.linkedin.com/in/susanpotter/ class=ml-3 title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn"><img src=/images/linkedin.svg width=24 height=24 alt="LinkedIn icon"></a>
+<a href=https://slideshare.net/mbbx6spp class=ml-3 title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare"><img src=/images/slideshare.svg width=24 height=24 alt="Slideshare icon"></a>
+<a href=https://twitter.com/SusanPotter class=ml-3 title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter"><img src=/images/twitter.svg width=24 height=24 alt="Twitter icon"></a></span></div></div></footer></body></html>

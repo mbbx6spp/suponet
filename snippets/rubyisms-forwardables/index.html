@@ -1,96 +1,22 @@
-<!DOCTYPE html>
-<html lang="en-us"><meta charset="UTF-8">
-<meta name="template-type" content="snippets">
-<meta name="template-kind" content="page">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-
-
-
-  <link rel="stylesheet" href="/css/suponet.css" integrity="">
-
-
-<meta name="author" content="Susan Potter">
-<meta name="description" content="">
-<meta name="keywords" content="[]">
-<meta name="theme-color" content="">
-<meta name="og:site_name" content="Susan Potter"/>
-<meta name="og:title" content='Rubyisms: forwardables &ndash; Susan Potter'/>
-<meta name="og:url" content="/snippets/rubyisms-forwardables/">
-<meta name="og:description" content="">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="SusanPotter">
-<meta name="twitter:creator" content="SusanPotter">
-
-<meta name="twitter:image" content="/images/hat-collage.jpg">
-
-
-<meta name="twitter:image:alt" content="Susan&#39;s avatar wearing many different hats.">
-
-<meta name="twitter:title" content='Rubyisms: forwardables &ndash; Susan Potter'>
-<meta name="twitter:description" content="">
-<title>Rubyisms: forwardables &ndash; Susan Potter</title>
-
-<meta property="og:type" content="website" />
-<body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center">
-    <a href="/" class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0">
-      <h1 class="ml-3 text-2xl font-bold">Susan Potter</h1>
-    </a>
-    
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      
-      <a href="/about/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
-      
-      <a href="/talks/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
-      
-      <a href="/software/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
-      
-      <a href="/snippets/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a>
-      
-    </nav>
-    
-  </div>
-
-  
-  <hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3">
-    <h2 class="text-3xl font-extrabold tracking-wider leading-loose">Rubyisms: forwardables</h2>
-    
-    <h3 class="text-gray-800 dark:text-gray-200">Sat July 7, 2006</h3>
-    
-    
-  </hgroup>
-  
-</header>
-
-<main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2">
-  <p>
-Recently some Java friends of mine have decided to taste the juicier
+<!doctype html><html lang=en-us><meta charset=utf-8><meta name=template-type content="snippets"><meta name=template-kind content="page"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://rsms.me/inter/inter.css><link rel=stylesheet href=/css/suponet.css integrity><meta name=author content="Susan Potter"><meta name=title content="Rubyisms: forwardables &ndash; Susan Potter"><meta name=description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=keywords content="[]"><meta name=theme-color content><meta name=og:site_name content="Susan Potter"><meta name=og:title content="Rubyisms: forwardables &ndash; Susan Potter"><meta name=og:url content="/snippets/rubyisms-forwardables/"><meta name=og:description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="SusanPotter"><meta name=twitter:creator content="SusanPotter"><meta name=twitter:image content="/images/hat-collage.jpg"><meta name=twitter:image:alt content="Susan's avatar wearing many different hats."><meta name=twitter:title content="Rubyisms: forwardables &ndash; Susan Potter"><meta name=twitter:description content><title>Rubyisms: forwardables &ndash; Susan Potter</title><meta property="og:type" content="website"><body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font"><div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center"><a href=/ class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0"><h1 class="ml-3 text-2xl font-bold">Susan Potter</h1></a><nav class="md:ml-auto flex flex-wrap items-center text-base justify-center"><a href=/about/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
+<a href=/talks/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
+<a href=/software/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
+<a href=/snippets/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a></nav></div><hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3"><h2 class="text-3xl font-extrabold tracking-wider leading-loose">Rubyisms: forwardables</h2><h3 class="text-gray-800 dark:text-gray-200">Sat July 7, 2006</h3></hgroup></header><main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2"><p>Recently some Java friends of mine have decided to taste the juicier
 fruits in Ruby-land with my assistance. So below are some excerpts
-from an email conversation I had with one about Ruby&#39;s standard
-library <code class="verbatim">forwardable</code> features:</p>
-<p>
-Suppose we have the following model classes defined for a simple
+from an email conversation I had with one about Ruby's standard
+library <code class=verbatim>forwardable</code> features:</p><p>Suppose we have the following model classes defined for a simple
 CRM system: Customer, Address, PhoneNumber, Name, etc. Now in
 Java-land we would have written something that looks like the
 following Ruby code (except you must type about a hundred more
 lines - although now you can write annotations to automate basic
 things like generate getters and setters or the like, which still
-requires a ridiculous amount of code to accomplish):</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    <span style="color:#66d9ef">Name</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Struct</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">:first_name</span>, <span style="color:#e6db74">:last_name</span>, <span style="color:#e6db74">:suffix</span>, <span style="color:#e6db74">:salutation</span>)
-    <span style="color:#66d9ef">Address</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Struct</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">:street_address</span>, <span style="color:#e6db74">:suite</span>, <span style="color:#e6db74">:city</span>, <span style="color:#e6db74">:state</span>, <span style="color:#e6db74">:country</span>, <span style="color:#e6db74">:zip</span>)
-    <span style="color:#66d9ef">PhoneNumber</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Struct</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">:country_code</span>, <span style="color:#e6db74">:area_code</span>, <span style="color:#e6db74">:exchange</span>, <span style="color:#e6db74">:number</span>, <span style="color:#e6db74">:extension</span>)
+requires a ridiculous amount of code to accomplish):</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>    <span style=color:#66d9ef>Name</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>Struct</span><span style=color:#f92672>.</span>new(<span style=color:#e6db74>:first_name</span>, <span style=color:#e6db74>:last_name</span>, <span style=color:#e6db74>:suffix</span>, <span style=color:#e6db74>:salutation</span>)
+    <span style=color:#66d9ef>Address</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>Struct</span><span style=color:#f92672>.</span>new(<span style=color:#e6db74>:street_address</span>, <span style=color:#e6db74>:suite</span>, <span style=color:#e6db74>:city</span>, <span style=color:#e6db74>:state</span>, <span style=color:#e6db74>:country</span>, <span style=color:#e6db74>:zip</span>)
+    <span style=color:#66d9ef>PhoneNumber</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>Struct</span><span style=color:#f92672>.</span>new(<span style=color:#e6db74>:country_code</span>, <span style=color:#e6db74>:area_code</span>, <span style=color:#e6db74>:exchange</span>, <span style=color:#e6db74>:number</span>, <span style=color:#e6db74>:extension</span>)
 
-    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Customer</span>
-      <span style="color:#66d9ef">attr_accessor</span> <span style="color:#e6db74">:name</span>, <span style="color:#e6db74">:address</span>, <span style="color:#e6db74">:phone_number</span>
-    <span style="color:#66d9ef">end</span></code></pre></div>
-</div>
-<p>
-Note: the <code class="verbatim">attr_accessor</code> will create getters and setters for Ruby newbies.</p>
-<p>
-The problem is that you are not sure when you first design this if
+    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Customer</span>
+      <span style=color:#66d9ef>attr_accessor</span> <span style=color:#e6db74>:name</span>, <span style=color:#e6db74>:address</span>, <span style=color:#e6db74>:phone_number</span>
+    <span style=color:#66d9ef>end</span></code></pre></div></div><p>Note: the <code class=verbatim>attr_accessor</code> will create getters and setters for Ruby newbies.</p><p>The problem is that you are not sure when you first design this if
 it will support future product offerings for business customers,
 which means the way we have modeled our simple CRM above may not
 support a business customer as well as individual customers.
@@ -99,57 +25,43 @@ future requirements by modeling the world up-front, so we stick
 with our current implementation for this next iteration/release.
 To help us with future changes (even though we do not know what
 they will be or try to pre-empt them) we want to be able to access
-details directly from the <code class="verbatim">Customer</code> object to reduce coupling of
-clients of our <code class="verbatim">Customer</code> model. This also helps us implicitly
-adhere to the <a href="http://c2.com/cgi/wiki?LawOfDemeter">Law of Demeter</a></p>
-<p>
-A naive approach would be to manually create accessor methods for the
-<code class="verbatim">Address</code>, <code class="verbatim">Name</code>, <code class="verbatim">PhoneNumber</code> attributes in the <code class="verbatim">Customer</code> class.
+details directly from the <code class=verbatim>Customer</code> object to reduce coupling of
+clients of our <code class=verbatim>Customer</code> model. This also helps us implicitly
+adhere to the <a href=http://c2.com/cgi/wiki?LawOfDemeter>Law of Demeter</a></p><p>A naive approach would be to manually create accessor methods for the
+<code class=verbatim>Address</code>, <code class=verbatim>Name</code>, <code class=verbatim>PhoneNumber</code> attributes in the <code class=verbatim>Customer</code> class.
 But remember, this is Ruby-land, which is a magical place, so we can
-just do the following:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  require <span style="color:#e6db74">&#39;forwardable&#39;</span>
+just do the following:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>  require <span style=color:#e6db74>&#39;forwardable&#39;</span>
 
-  <span style="color:#66d9ef">NAME_FIELDS</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">:first_name</span>, <span style="color:#e6db74">:last_name</span>, <span style="color:#e6db74">:suffix</span>, <span style="color:#e6db74">:salutation</span><span style="color:#f92672">]</span>
-  <span style="color:#66d9ef">ADDRESS_FIELDS</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">:street_address</span>, <span style="color:#e6db74">:suite</span>, <span style="color:#e6db74">:city</span>, <span style="color:#e6db74">:state</span>, <span style="color:#e6db74">:country</span>, <span style="color:#e6db74">:zip</span><span style="color:#f92672">]</span>
-  <span style="color:#66d9ef">PHONE_NUMBER_FIELDS</span> <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">:country_code</span>, <span style="color:#e6db74">:area_code</span>, <span style="color:#e6db74">:exchange</span>, <span style="color:#e6db74">:number</span>, <span style="color:#e6db74">:extension</span><span style="color:#f92672">]</span>
+  <span style=color:#66d9ef>NAME_FIELDS</span> <span style=color:#f92672>=</span> <span style=color:#f92672>[</span><span style=color:#e6db74>:first_name</span>, <span style=color:#e6db74>:last_name</span>, <span style=color:#e6db74>:suffix</span>, <span style=color:#e6db74>:salutation</span><span style=color:#f92672>]</span>
+  <span style=color:#66d9ef>ADDRESS_FIELDS</span> <span style=color:#f92672>=</span> <span style=color:#f92672>[</span><span style=color:#e6db74>:street_address</span>, <span style=color:#e6db74>:suite</span>, <span style=color:#e6db74>:city</span>, <span style=color:#e6db74>:state</span>, <span style=color:#e6db74>:country</span>, <span style=color:#e6db74>:zip</span><span style=color:#f92672>]</span>
+  <span style=color:#66d9ef>PHONE_NUMBER_FIELDS</span> <span style=color:#f92672>=</span> <span style=color:#f92672>[</span><span style=color:#e6db74>:country_code</span>, <span style=color:#e6db74>:area_code</span>, <span style=color:#e6db74>:exchange</span>, <span style=color:#e6db74>:number</span>, <span style=color:#e6db74>:extension</span><span style=color:#f92672>]</span>
 
-  <span style="color:#66d9ef">Name</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Struct</span><span style="color:#f92672">.</span>new(<span style="color:#f92672">*</span><span style="color:#66d9ef">NAME_FIELDS</span>)
-  <span style="color:#66d9ef">Address</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Struct</span><span style="color:#f92672">.</span>new(<span style="color:#f92672">*</span><span style="color:#66d9ef">ADDRESS_FIELDS</span>)
-  <span style="color:#66d9ef">PhoneNumber</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Struct</span><span style="color:#f92672">.</span>new(<span style="color:#f92672">*</span><span style="color:#66d9ef">PHONE_NUMBER_FIELDS</span>)
+  <span style=color:#66d9ef>Name</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>Struct</span><span style=color:#f92672>.</span>new(<span style=color:#f92672>*</span><span style=color:#66d9ef>NAME_FIELDS</span>)
+  <span style=color:#66d9ef>Address</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>Struct</span><span style=color:#f92672>.</span>new(<span style=color:#f92672>*</span><span style=color:#66d9ef>ADDRESS_FIELDS</span>)
+  <span style=color:#66d9ef>PhoneNumber</span> <span style=color:#f92672>=</span> <span style=color:#66d9ef>Struct</span><span style=color:#f92672>.</span>new(<span style=color:#f92672>*</span><span style=color:#66d9ef>PHONE_NUMBER_FIELDS</span>)
 
-  <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Customer</span>
-  <span style="color:#66d9ef">extend</span> <span style="color:#66d9ef">Forwardable</span>
-  attr_accessors <span style="color:#e6db74">:name</span>, <span style="color:#e6db74">:address</span>, <span style="color:#e6db74">:phone_number</span>
-  def_delegators <span style="color:#e6db74">:@name</span>, <span style="color:#f92672">*</span><span style="color:#66d9ef">NAME_FIELDS</span>
-  def_delegators <span style="color:#e6db74">:@address</span>, <span style="color:#f92672">*</span><span style="color:#66d9ef">ADDRESS_FIELDS</span>
-  def_delegators <span style="color:#e6db74">:@phone_number</span>, <span style="color:#f92672">*</span><span style="color:#66d9ef">PHONE_NUMBER_FIELDS</span>
-  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initialize</span>(name, address, phone_number)
-  @name, @address, @phone_number <span style="color:#f92672">=</span> name, address, phone_number
-  <span style="color:#66d9ef">end</span>
-  <span style="color:#66d9ef">end</span></code></pre></div>
-</div>
-<p>
-One of the many fantastic things about Ruby (and Python) is we have
-<code class="verbatim">irb</code> Ruby&#39;s interactive shell to prototype with. So we open up an
-<code class="verbatim">irb</code> shell and do the following:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">  irb<span style="color:#f92672">&gt;</span> require <span style="color:#e6db74">&#39;FILE_WITH_ABOVE_CODE_IN&#39;</span>
-  irb<span style="color:#f92672">&gt;</span> john_adams <span style="color:#f92672">=</span> <span style="color:#66d9ef">Customer</span><span style="color:#f92672">.</span>new(<span style="color:#66d9ef">Name</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">&#39;John&#39;</span>, <span style="color:#e6db74">&#39;Adams&#39;</span>, <span style="color:#66d9ef">nil</span>, <span style="color:#e6db74">&#39;Former President&#39;</span>), <span style="color:#66d9ef">Address</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">&#39;101 Constabulary Road&#39;</span>, <span style="color:#66d9ef">nil</span>, <span style="color:#e6db74">&#39;Bay Colony&#39;</span>, <span style="color:#e6db74">&#39;MA&#39;</span>, <span style="color:#e6db74">&#39;US&#39;</span>, <span style="color:#e6db74">&#39;000000&#39;</span>), <span style="color:#66d9ef">nil</span>) <span style="color:#75715e"># remember phones didn&#39;t exist in the mid-18th Century!</span>
-  <span style="color:#f92672">=&gt;</span> <span style="color:#75715e">#&amp;lt;Customer:0xb7f2be30 @address=#&amp;lt;struct Address street_address=&#34;101 Constabulary Road&#34;, suite=nil, city=&#34;Bay Colony&#34;, state=&#34;MA&#34;, country=&#34;US&#34;, zip=&#34;000000&#34;&amp;gt;, @name=#&amp;lt;struct Name first_name=&#34;John&#34;, last_name=&#34;Adams&#34;, suffix=nil, salutation=&#34;Former President&#34;&amp;gt;, @phone_number=nil&amp;gt;</span>
-  irb<span style="color:#f92672">&gt;</span> john_adams<span style="color:#f92672">.</span>salutation
-  <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;Former President&#34;</span>
-  irb<span style="color:#f92672">&gt;</span> john_adams<span style="color:#f92672">.</span>state
-  <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;MA&#34;</span>
-  irb<span style="color:#f92672">&gt;</span> john_adams<span style="color:#f92672">.</span>street_address
-  <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;101 Constabulary Road&#34;</span></code></pre></div>
-</div>
-<p>
-Javahead&gt;&gt;&gt; We are still passing in the <code class="verbatim">Name</code>, <code class="verbatim">Address</code> and
-<code class="verbatim">PhoneNumber</code> stucts to create the Customer object in the first place,
-so why would flattening out the Customer interface reduce coupling?</p>
-<p>
-Great question [Javahead]!  In general, most applications will read
+  <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Customer</span>
+  <span style=color:#66d9ef>extend</span> <span style=color:#66d9ef>Forwardable</span>
+  attr_accessors <span style=color:#e6db74>:name</span>, <span style=color:#e6db74>:address</span>, <span style=color:#e6db74>:phone_number</span>
+  def_delegators <span style=color:#e6db74>:@name</span>, <span style=color:#f92672>*</span><span style=color:#66d9ef>NAME_FIELDS</span>
+  def_delegators <span style=color:#e6db74>:@address</span>, <span style=color:#f92672>*</span><span style=color:#66d9ef>ADDRESS_FIELDS</span>
+  def_delegators <span style=color:#e6db74>:@phone_number</span>, <span style=color:#f92672>*</span><span style=color:#66d9ef>PHONE_NUMBER_FIELDS</span>
+  <span style=color:#66d9ef>def</span> <span style=color:#a6e22e>initialize</span>(name, address, phone_number)
+  @name, @address, @phone_number <span style=color:#f92672>=</span> name, address, phone_number
+  <span style=color:#66d9ef>end</span>
+  <span style=color:#66d9ef>end</span></code></pre></div></div><p>One of the many fantastic things about Ruby (and Python) is we have
+<code class=verbatim>irb</code> Ruby's interactive shell to prototype with. So we open up an
+<code class=verbatim>irb</code> shell and do the following:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>  irb<span style=color:#f92672>&gt;</span> require <span style=color:#e6db74>&#39;FILE_WITH_ABOVE_CODE_IN&#39;</span>
+  irb<span style=color:#f92672>&gt;</span> john_adams <span style=color:#f92672>=</span> <span style=color:#66d9ef>Customer</span><span style=color:#f92672>.</span>new(<span style=color:#66d9ef>Name</span><span style=color:#f92672>.</span>new(<span style=color:#e6db74>&#39;John&#39;</span>, <span style=color:#e6db74>&#39;Adams&#39;</span>, <span style=color:#66d9ef>nil</span>, <span style=color:#e6db74>&#39;Former President&#39;</span>), <span style=color:#66d9ef>Address</span><span style=color:#f92672>.</span>new(<span style=color:#e6db74>&#39;101 Constabulary Road&#39;</span>, <span style=color:#66d9ef>nil</span>, <span style=color:#e6db74>&#39;Bay Colony&#39;</span>, <span style=color:#e6db74>&#39;MA&#39;</span>, <span style=color:#e6db74>&#39;US&#39;</span>, <span style=color:#e6db74>&#39;000000&#39;</span>), <span style=color:#66d9ef>nil</span>) <span style=color:#75715e># remember phones didn&#39;t exist in the mid-18th Century!</span>
+  <span style=color:#f92672>=&gt;</span> <span style=color:#75715e>#&amp;lt;Customer:0xb7f2be30 @address=#&amp;lt;struct Address street_address=&#34;101 Constabulary Road&#34;, suite=nil, city=&#34;Bay Colony&#34;, state=&#34;MA&#34;, country=&#34;US&#34;, zip=&#34;000000&#34;&amp;gt;, @name=#&amp;lt;struct Name first_name=&#34;John&#34;, last_name=&#34;Adams&#34;, suffix=nil, salutation=&#34;Former President&#34;&amp;gt;, @phone_number=nil&amp;gt;</span>
+  irb<span style=color:#f92672>&gt;</span> john_adams<span style=color:#f92672>.</span>salutation
+  <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#34;Former President&#34;</span>
+  irb<span style=color:#f92672>&gt;</span> john_adams<span style=color:#f92672>.</span>state
+  <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#34;MA&#34;</span>
+  irb<span style=color:#f92672>&gt;</span> john_adams<span style=color:#f92672>.</span>street_address
+  <span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#34;101 Constabulary Road&#34;</span></code></pre></div></div><p>Javahead>>> We are still passing in the <code class=verbatim>Name</code>, <code class=verbatim>Address</code> and
+<code class=verbatim>PhoneNumber</code> stucts to create the Customer object in the first place,
+so why would flattening out the Customer interface reduce coupling?</p><p>Great question [Javahead]! In general, most applications will read
 data from models much more than create them, and quite a number of
 applications do not actually initially create any of the data, they
 simply massage it. Now I am not suggesting that there are no
@@ -158,45 +70,10 @@ but most likely your application will be 80% reading and 20% writing
 (including creating and updating). So if we were to change the
 underlying structure of the Customer, on average 80% of the code that
 uses the Customer object would not know about its constituents and
-would not need to be changed.</p>
-<p>
-Of course, this is somewhat of a contrived example, but I hope it
-shows how elegant, concise, simple, and yet powerful Rubyisms can be.</p>
-
-</main>
-<footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20">
-  <div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2">
-    <div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
-        <a href="https://twitter.com/SusanPotter" rel="noopener noreferrer" class="ml-1" aria-hidden="true">@SusanPotter</a>
-      </p>
-      
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        
-        <a href="https://github.com/mbbx6spp/" class="ml-3" title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github" >
-          <img src="/images/github.svg" width=24 height=24 alt="Github icon"/>
-        </a>
-        
-        <a href="https://keybase.io/mbbx6spp" class="ml-3" title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase" >
-          <img src="/images/keybase.svg" width=24 height=24 alt="Keybase icon"/>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/susanpotter/" class="ml-3" title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn" >
-          <img src="/images/linkedin.svg" width=24 height=24 alt="LinkedIn icon"/>
-        </a>
-        
-        <a href="https://slideshare.net/mbbx6spp" class="ml-3" title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare" >
-          <img src="/images/slideshare.svg" width=24 height=24 alt="Slideshare icon"/>
-        </a>
-        
-        <a href="https://twitter.com/SusanPotter" class="ml-3" title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter" >
-          <img src="/images/twitter.svg" width=24 height=24 alt="Twitter icon"/>
-        </a>
-        
-      </span>
-      
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+would not need to be changed.</p><p>Of course, this is somewhat of a contrived example, but I hope it
+shows how elegant, concise, simple, and yet powerful Rubyisms can be.</p></main><footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20"><div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2"><div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row"><p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
+<a href=https://twitter.com/SusanPotter rel="noopener noreferrer" class=ml-1 aria-hidden=true>@SusanPotter</a></p><span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"><a href=https://github.com/mbbx6spp/ class=ml-3 title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github"><img src=/images/github.svg width=24 height=24 alt="Github icon"></a>
+<a href=https://keybase.io/mbbx6spp class=ml-3 title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase"><img src=/images/keybase.svg width=24 height=24 alt="Keybase icon"></a>
+<a href=https://www.linkedin.com/in/susanpotter/ class=ml-3 title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn"><img src=/images/linkedin.svg width=24 height=24 alt="LinkedIn icon"></a>
+<a href=https://slideshare.net/mbbx6spp class=ml-3 title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare"><img src=/images/slideshare.svg width=24 height=24 alt="Slideshare icon"></a>
+<a href=https://twitter.com/SusanPotter class=ml-3 title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter"><img src=/images/twitter.svg width=24 height=24 alt="Twitter icon"></a></span></div></div></footer></body></html>

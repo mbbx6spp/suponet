@@ -1,175 +1,47 @@
-<!DOCTYPE html>
-<html lang="en-us"><meta charset="UTF-8">
-<meta name="template-type" content="snippets">
-<meta name="template-kind" content="page">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-
-
-
-  <link rel="stylesheet" href="/css/suponet.css" integrity="">
-
-
-<meta name="author" content="Susan Potter">
-<meta name="description" content="">
-<meta name="keywords" content="[]">
-<meta name="theme-color" content="">
-<meta name="og:site_name" content="Susan Potter"/>
-<meta name="og:title" content='Ruby Idioms, Part 1 &ndash; Susan Potter'/>
-<meta name="og:url" content="/snippets/ruby-idioms-part-1/">
-<meta name="og:description" content="">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="SusanPotter">
-<meta name="twitter:creator" content="SusanPotter">
-
-<meta name="twitter:image" content="/images/hat-collage.jpg">
-
-
-<meta name="twitter:image:alt" content="Susan&#39;s avatar wearing many different hats.">
-
-<meta name="twitter:title" content='Ruby Idioms, Part 1 &ndash; Susan Potter'>
-<meta name="twitter:description" content="">
-<title>Ruby Idioms, Part 1 &ndash; Susan Potter</title>
-
-<meta property="og:type" content="website" />
-<body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center">
-    <a href="/" class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0">
-      <h1 class="ml-3 text-2xl font-bold">Susan Potter</h1>
-    </a>
-    
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      
-      <a href="/about/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
-      
-      <a href="/talks/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
-      
-      <a href="/software/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
-      
-      <a href="/snippets/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a>
-      
-    </nav>
-    
-  </div>
-
-  
-  <hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3">
-    <h2 class="text-3xl font-extrabold tracking-wider leading-loose">Ruby Idioms, Part 1</h2>
-    
-    <h3 class="text-gray-800 dark:text-gray-200">Mon January 1, 2007</h3>
-    
-    
-  </hgroup>
-  
-</header>
-
-<main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2">
-  <p>
-With more people moving to Ruby everyday from languages like Java, I
+<!doctype html><html lang=en-us><meta charset=utf-8><meta name=template-type content="snippets"><meta name=template-kind content="page"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://rsms.me/inter/inter.css><link rel=stylesheet href=/css/suponet.css integrity><meta name=author content="Susan Potter"><meta name=title content="Ruby Idioms, Part 1 &ndash; Susan Potter"><meta name=description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=keywords content="[]"><meta name=theme-color content><meta name=og:site_name content="Susan Potter"><meta name=og:title content="Ruby Idioms, Part 1 &ndash; Susan Potter"><meta name=og:url content="/snippets/ruby-idioms-part-1/"><meta name=og:description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="SusanPotter"><meta name=twitter:creator content="SusanPotter"><meta name=twitter:image content="/images/hat-collage.jpg"><meta name=twitter:image:alt content="Susan's avatar wearing many different hats."><meta name=twitter:title content="Ruby Idioms, Part 1 &ndash; Susan Potter"><meta name=twitter:description content><title>Ruby Idioms, Part 1 &ndash; Susan Potter</title><meta property="og:type" content="website"><body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font"><div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center"><a href=/ class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0"><h1 class="ml-3 text-2xl font-bold">Susan Potter</h1></a><nav class="md:ml-auto flex flex-wrap items-center text-base justify-center"><a href=/about/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
+<a href=/talks/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
+<a href=/software/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
+<a href=/snippets/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a></nav></div><hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3"><h2 class="text-3xl font-extrabold tracking-wider leading-loose">Ruby Idioms, Part 1</h2><h3 class="text-gray-800 dark:text-gray-200">Mon January 1, 2007</h3></hgroup></header><main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2"><p>With more people moving to Ruby everyday from languages like Java, I
 wanted to create blog entries on the most common Ruby idioms
 (especially ones frequently found in Rails core or Rails application
 code) and briefly explain how to convert your Java mindset to Ruby
-(over time).</p>
-<p>
-This is the first installment.</p>
-<p>
-First let us inspect what we might do in Java (converted to Ruby
+(over time).</p><p>This is the first installment.</p><p>First let us inspect what we might do in Java (converted to Ruby
 syntax) when determining if a value passed in equals various fixed
-values:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    <span style="color:#66d9ef">if</span> val <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> val <span style="color:#f92672">==</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">||</span> val <span style="color:#f92672">==</span> <span style="color:#ae81ff">5</span>
-      puts <span style="color:#e6db74">&#34;hello odd number under 7&#34;</span>
-    <span style="color:#66d9ef">end</span></code></pre></div>
-</div>
-<p>
-Rubyists will know this is really ugly, so our first attempt at
-Rubifying the code above would probably look like:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">].</span>include? val
-      puts <span style="color:#e6db74">&#34;hello odd number under 7&#34;</span>
-    <span style="color:#66d9ef">end</span></code></pre></div>
-</div>
-<p>
-Of course, one-liner fans should note you can also do the following:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    puts <span style="color:#e6db74">&#34;hello odd number under 7&#34;</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">].</span>include? val</code></pre></div>
-</div>
-<p>
-<code class="verbatim">include?</code> is an instance method on <code class="verbatim">Array</code> (a builtin Ruby class -
+values:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>    <span style=color:#66d9ef>if</span> val <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span> <span style=color:#f92672>||</span> val <span style=color:#f92672>==</span> <span style=color:#ae81ff>3</span> <span style=color:#f92672>||</span> val <span style=color:#f92672>==</span> <span style=color:#ae81ff>5</span>
+      puts <span style=color:#e6db74>&#34;hello odd number under 7&#34;</span>
+    <span style=color:#66d9ef>end</span></code></pre></div></div><p>Rubyists will know this is really ugly, so our first attempt at
+Rubifying the code above would probably look like:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>5</span><span style=color:#f92672>].</span>include? val
+      puts <span style=color:#e6db74>&#34;hello odd number under 7&#34;</span>
+    <span style=color:#66d9ef>end</span></code></pre></div></div><p>Of course, one-liner fans should note you can also do the following:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>    puts <span style=color:#e6db74>&#34;hello odd number under 7&#34;</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>5</span><span style=color:#f92672>].</span>include? val</code></pre></div></div><p><code class=verbatim>include?</code> is an instance method on <code class=verbatim>Array</code> (a builtin Ruby class -
 remember all first class citizens in Ruby are classes [or more
-technically, modules]).  In Ruby developers use &#34;?&#34; postfixes in
+technically, modules]). In Ruby developers use "?" postfixes in
 method names as a way to letting clients of the method know it should
-return a true or false value.  I described the unwritten/unofficial
+return a true or false value. I described the unwritten/unofficial
 Ruby conventions and guidelines for naming in a previous blog entry,
-<a href="/blogs/software/2006/08/rubyisms-naming-conventions.html">Rubyisms: Naming Conventions</a>.</p>
-<p>
-This first attempt is fairly nice, because it makes (in my opinion)
+<a href=/blogs/software/2006/08/rubyisms-naming-conventions.html>Rubyisms: Naming Conventions</a>.</p><p>This first attempt is fairly nice, because it makes (in my opinion)
 the code more readable and more like my natural language, English.
-Now it doesn&#39;t quite read as well as it could, so let&#39;s try again:</p>
-<div class="src src-ruby">
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby">    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Array</span>
-      <span style="color:#66d9ef">alias</span> <span style="color:#e6db74">:includes?</span> <span style="color:#e6db74">:include?</span>
-    <span style="color:#66d9ef">end</span>
+Now it doesn't quite read as well as it could, so let's try again:</p><div class="src src-ruby"><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby>    <span style=color:#66d9ef>class</span> <span style=color:#a6e22e>Array</span>
+      <span style=color:#66d9ef>alias</span> <span style=color:#e6db74>:includes?</span> <span style=color:#e6db74>:include?</span>
+    <span style=color:#66d9ef>end</span>
 
-    <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">].</span>includes? val
-      puts <span style="color:#e6db74">&#34;hello odd number under 7&#34;</span>
-    <span style="color:#66d9ef">end</span>
-    <span style="color:#75715e"># OR the one-liner version</span>
-    puts <span style="color:#e6db74">&#34;hello odd number under 7&#34;</span> <span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span><span style="color:#f92672">].</span>includes? val</code></pre></div>
-</div>
-<p>
-The code snippet above reopens a class in Ruby, a facility I describe
-in a previous blog entry <a href="/blogs/software/2006/08/rubyisms-reopening-classes">Rubyisms: Reopening Classes</a>.</p>
-<p>
-Now some of you might be saying, &#34;this is terrible…you have
-converted a 3 line code snippet into 6.&#34;  Well not exactly.  The
+    <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>5</span><span style=color:#f92672>].</span>includes? val
+      puts <span style=color:#e6db74>&#34;hello odd number under 7&#34;</span>
+    <span style=color:#66d9ef>end</span>
+    <span style=color:#75715e># OR the one-liner version</span>
+    puts <span style=color:#e6db74>&#34;hello odd number under 7&#34;</span> <span style=color:#66d9ef>if</span> <span style=color:#f92672>[</span><span style=color:#ae81ff>1</span>, <span style=color:#ae81ff>3</span>, <span style=color:#ae81ff>5</span><span style=color:#f92672>].</span>includes? val</code></pre></div></div><p>The code snippet above reopens a class in Ruby, a facility I describe
+in a previous blog entry <a href=/blogs/software/2006/08/rubyisms-reopening-classes>Rubyisms: Reopening Classes</a>.</p><p>Now some of you might be saying, "this is terrible…you have
+converted a 3 line code snippet into 6." Well not exactly. The
 reason is, the first three lines just need to be put in a ruby file to
 extend the Array class just once in the whole application, library or
-framework and you can use the aliased method, <code class="verbatim">includes?</code> as many
+framework and you can use the aliased method, <code class=verbatim>includes?</code> as many
 times as you like throughout the code base with not a care in the
-world.</p>
-<p>
-There are a variety of ways to change the code to be more readable and
-this gets subjective, but I&#39;ll leave that as an exercise for the
-reader.  Ruby&#39;s core <code class="verbatim">Range</code> class could be used to generate an array
+world.</p><p>There are a variety of ways to change the code to be more readable and
+this gets subjective, but I'll leave that as an exercise for the
+reader. Ruby's core <code class=verbatim>Range</code> class could be used to generate an array
 of odd (or even) numbers under a specific number. Another blog entry
-will deal with this.</p>
-
-</main>
-<footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20">
-  <div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2">
-    <div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
-        <a href="https://twitter.com/SusanPotter" rel="noopener noreferrer" class="ml-1" aria-hidden="true">@SusanPotter</a>
-      </p>
-      
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        
-        <a href="https://github.com/mbbx6spp/" class="ml-3" title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github" >
-          <img src="/images/github.svg" width=24 height=24 alt="Github icon"/>
-        </a>
-        
-        <a href="https://keybase.io/mbbx6spp" class="ml-3" title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase" >
-          <img src="/images/keybase.svg" width=24 height=24 alt="Keybase icon"/>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/susanpotter/" class="ml-3" title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn" >
-          <img src="/images/linkedin.svg" width=24 height=24 alt="LinkedIn icon"/>
-        </a>
-        
-        <a href="https://slideshare.net/mbbx6spp" class="ml-3" title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare" >
-          <img src="/images/slideshare.svg" width=24 height=24 alt="Slideshare icon"/>
-        </a>
-        
-        <a href="https://twitter.com/SusanPotter" class="ml-3" title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter" >
-          <img src="/images/twitter.svg" width=24 height=24 alt="Twitter icon"/>
-        </a>
-        
-      </span>
-      
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+will deal with this.</p></main><footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20"><div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2"><div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row"><p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
+<a href=https://twitter.com/SusanPotter rel="noopener noreferrer" class=ml-1 aria-hidden=true>@SusanPotter</a></p><span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"><a href=https://github.com/mbbx6spp/ class=ml-3 title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github"><img src=/images/github.svg width=24 height=24 alt="Github icon"></a>
+<a href=https://keybase.io/mbbx6spp class=ml-3 title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase"><img src=/images/keybase.svg width=24 height=24 alt="Keybase icon"></a>
+<a href=https://www.linkedin.com/in/susanpotter/ class=ml-3 title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn"><img src=/images/linkedin.svg width=24 height=24 alt="LinkedIn icon"></a>
+<a href=https://slideshare.net/mbbx6spp class=ml-3 title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare"><img src=/images/slideshare.svg width=24 height=24 alt="Slideshare icon"></a>
+<a href=https://twitter.com/SusanPotter class=ml-3 title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter"><img src=/images/twitter.svg width=24 height=24 alt="Twitter icon"></a></span></div></div></footer></body></html>

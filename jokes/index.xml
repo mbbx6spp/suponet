@@ -1,27 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Jokes on Susan Potter</title>
-    <link>/jokes/</link>
-    <description>Recent content in Jokes on Susan Potter</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 10 Mar 2017 15:45:57 -0500</lastBuildDate>
-    
-	<atom:link href="/jokes/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>A Mathematician in Scotland</title>
-      <link>/jokes/a-mathematician-in-scotland/</link>
-      <pubDate>Fri, 10 Mar 2017 15:45:57 -0500</pubDate>
-      
-      <guid>/jokes/a-mathematician-in-scotland/</guid>
-      <description>A passage I came across recently amused me and I wished to share:
- A mathematician, a physicist, and an engineer are riding a train through Scotland.
- The engineer looks out the window, sees a black sheep, and exclaims, &amp;#34;Hey! They&amp;#39;ve got black sheep in Scotland!&amp;#34;
- The physicist looks out the window and corrects the engineer, &amp;#34;Strictly speaking, all we know is that there&amp;#39;s at least one black sheep in Scotland.</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jokes on Susan Potter</title><link>/jokes/</link><description>Recent content in Jokes on Susan Potter</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Fri, 10 Mar 2017 15:45:57 -0500</lastBuildDate><atom:link href="/jokes/index.xml" rel="self" type="application/rss+xml"/><item><title>A Mathematician in Scotland</title><link>/jokes/a-mathematician-in-scotland/</link><pubDate>Fri, 10 Mar 2017 15:45:57 -0500</pubDate><guid>/jokes/a-mathematician-in-scotland/</guid><description>A passage I came across recently amused me and I wished to share:
+A mathematician, a physicist, and an engineer are riding a train through Scotland.
+The engineer looks out the window, sees a black sheep, and exclaims, &amp;#34;Hey! They&amp;#39;ve got black sheep in Scotland!&amp;#34;
+The physicist looks out the window and corrects the engineer, &amp;#34;Strictly speaking, all we know is that there&amp;#39;s at least one black sheep in Scotland.</description></item></channel></rss>

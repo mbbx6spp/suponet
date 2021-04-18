@@ -1,26 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>DynamoDB on Susan Potter</title>
-    <link>/tags/dynamodb/</link>
-    <description>Recent content in DynamoDB on Susan Potter</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/dynamodb/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>DynamoDB: The Basics</title>
-      <link>/software/dynamodb-the-basics/</link>
-      <pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate>
-      
-      <guid>/software/dynamodb-the-basics/</guid>
-      <description>Introduction   This post introduces concepts and principles used to design DynamoDB tables as I have been learning how to leverage this technology in a new project.
- This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS).
-  Key takeaways   While using DynamoDB the last couple of months, one of the big takeaways is that data modeling is a vital part and that the modeling process itself looks structurally similar to relational database design.</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DynamoDB on Susan Potter</title><link>/tags/dynamodb/</link><description>Recent content in DynamoDB on Susan Potter</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Wed, 30 Oct 2019 00:00:00 +0000</lastBuildDate><atom:link href="/tags/dynamodb/index.xml" rel="self" type="application/rss+xml"/><item><title>DynamoDB: The Basics</title><link>/software/dynamodb-the-basics/</link><pubDate>Wed, 30 Oct 2019 00:00:00 +0000</pubDate><guid>/software/dynamodb-the-basics/</guid><description>Introduction This post introduces concepts and principles used to design DynamoDB tables as I have been learning how to leverage this technology in a new project.
+This introduction will compare and contrast the core concepts and ideas with those found in relational database management systems (RDBMS).
+Key takeaways While using DynamoDB the last couple of months, one of the big takeaways is that data modeling is a vital part and that the modeling process itself looks structurally similar to relational database design.</description></item></channel></rss>

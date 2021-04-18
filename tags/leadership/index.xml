@@ -1,26 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>leadership on Susan Potter</title>
-    <link>/tags/leadership/</link>
-    <description>Recent content in leadership on Susan Potter</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 17 Oct 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/tags/leadership/index.xml" rel="self" type="application/rss+xml" />
-    
-    
-    <item>
-      <title>How to make seemingly difficult decisions</title>
-      <link>/software/how-to-make-seemingly-difficult-decisions/</link>
-      <pubDate>Sat, 17 Oct 2020 00:00:00 +0000</pubDate>
-      
-      <guid>/software/how-to-make-seemingly-difficult-decisions/</guid>
-      <description>Originally published as a Twitter thread starting here.
- Anyone who has spent any time in either a technical or people management leadership position in software development knows that you need to make seemingly difficult decisions frequently.
- This week I coached a coworker through making a difficult decision by walking through the following process with him. It turned out it wasn&amp;#39;t as difficult as he initially thought.</description>
-    </item>
-    
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>leadership on Susan Potter</title><link>/tags/leadership/</link><description>Recent content in leadership on Susan Potter</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 17 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="/tags/leadership/index.xml" rel="self" type="application/rss+xml"/><item><title>How to make seemingly difficult decisions</title><link>/software/how-to-make-seemingly-difficult-decisions/</link><pubDate>Sat, 17 Oct 2020 00:00:00 +0000</pubDate><guid>/software/how-to-make-seemingly-difficult-decisions/</guid><description>Originally published as a Twitter thread starting here.
+Anyone who has spent any time in either a technical or people management leadership position in software development knows that you need to make seemingly difficult decisions frequently.
+This week I coached a coworker through making a difficult decision by walking through the following process with him. It turned out it wasn&amp;#39;t as difficult as he initially thought.</description></item></channel></rss>

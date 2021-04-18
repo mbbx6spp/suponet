@@ -1,134 +1,66 @@
-<!DOCTYPE html>
-<html lang="en-us"><meta charset="UTF-8">
-<meta name="template-type" content="snippets">
-<meta name="template-kind" content="page">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-
-
-
-
-  <link rel="stylesheet" href="/css/suponet.css" integrity="">
-
-
-<meta name="author" content="Susan Potter">
-<meta name="description" content="">
-<meta name="keywords" content="[]">
-<meta name="theme-color" content="">
-<meta name="og:site_name" content="Susan Potter"/>
-<meta name="og:title" content='Ruby 2.4 changes overview &ndash; Susan Potter'/>
-<meta name="og:url" content="/snippets/ruby-2.4-changes-overview/">
-<meta name="og:description" content="">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="SusanPotter">
-<meta name="twitter:creator" content="SusanPotter">
-
-<meta name="twitter:image" content="/images/hat-collage.jpg">
-
-
-<meta name="twitter:image:alt" content="Susan&#39;s avatar wearing many different hats.">
-
-<meta name="twitter:title" content='Ruby 2.4 changes overview &ndash; Susan Potter'>
-<meta name="twitter:description" content="">
-<title>Ruby 2.4 changes overview &ndash; Susan Potter</title>
-
-<meta property="og:type" content="website" />
-<body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font">
-  <div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center">
-    <a href="/" class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0">
-      <h1 class="ml-3 text-2xl font-bold">Susan Potter</h1>
-    </a>
-    
-    <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
-      
-      <a href="/about/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
-      
-      <a href="/talks/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
-      
-      <a href="/software/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
-      
-      <a href="/snippets/" class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a>
-      
-    </nav>
-    
-  </div>
-
-  
-  <hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3">
-    <h2 class="text-3xl font-extrabold tracking-wider leading-loose">Ruby 2.4 changes overview</h2>
-    
-    <h3 class="text-gray-800 dark:text-gray-200">Sun December 12, 2016</h3>
-    
-    
-  </hgroup>
-  
-</header>
-
-<main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2">
-  <h2 id="unified-fixnum-and-bignum-into-integer">Unified <code>Fixnum</code> and <code>Bignum</code> into <code>Integer</code></h2>
-<p>It&rsquo;s backward compatible too.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#960050;background-color:#1e0010">$</span> irb
-irb(main):<span style="color:#ae81ff">001</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">RUBY_VERSION</span>
-<span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;2.3.1&#34;</span>
-irb(main):<span style="color:#ae81ff">002</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> (<span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">100</span>)<span style="color:#f92672">.</span>class
-<span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Bignum</span>
-irb(main):<span style="color:#ae81ff">003</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">.</span>class
-<span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Fixnum</span>
-irb(main):<span style="color:#ae81ff">004</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Fixnum</span>
-<span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Fixnum</span>
-irb(main):<span style="color:#ae81ff">005</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bignum</span>
-<span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">Bignum</span>
-irb(main):<span style="color:#ae81ff">006</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bogonum</span>
-<span style="color:#e6db74">NameError</span>: uninitialized constant <span style="color:#66d9ef">Bogonum</span>
-        from (irb):<span style="color:#ae81ff">6</span>
-        from <span style="color:#e6db74">/home/s</span>potter<span style="color:#f92672">/.</span>nix<span style="color:#f92672">-</span>profile<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span><span style="color:#e6db74">irb</span>:<span style="color:#ae81ff">11</span><span style="color:#e6db74">:in</span> <span style="color:#e6db74">`&lt;main&gt;&#39;
-</span><span style="color:#e6db74">irb(main):007:0&gt; quit
-</span></code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ nix-env -f . -iA ruby_2_4_0
+<!doctype html><html lang=en-us><meta charset=utf-8><meta name=template-type content="snippets"><meta name=template-kind content="page"><meta name=viewport content="width=device-width,initial-scale=1"><link rel=stylesheet href=https://rsms.me/inter/inter.css><link rel=stylesheet href=/css/suponet.css integrity><meta name=author content="Susan Potter"><meta name=title content="Ruby 2.4 changes overview &ndash; Susan Potter"><meta name=description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=keywords content="[]"><meta name=theme-color content><meta name=og:site_name content="Susan Potter"><meta name=og:title content="Ruby 2.4 changes overview &ndash; Susan Potter"><meta name=og:url content="/snippets/ruby-2.4-changes-overview/"><meta name=og:description content="Susan Potter is a distributed systems and infrastructure software developer/architect/leader who likes to wear many hats, write strongly typed pure functional programs, and listens to bad pop music."><meta name=twitter:card content="summary_large_image"><meta name=twitter:site content="SusanPotter"><meta name=twitter:creator content="SusanPotter"><meta name=twitter:image content="/images/hat-collage.jpg"><meta name=twitter:image:alt content="Susan's avatar wearing many different hats."><meta name=twitter:title content="Ruby 2.4 changes overview &ndash; Susan Potter"><meta name=twitter:description content><title>Ruby 2.4 changes overview &ndash; Susan Potter</title><meta property="og:type" content="website"><body class="text-gray-800 dark:text-gray-200 bg-gray-50 dark:bg-gray-900"><header class="text-gray-600 body-font"><div class="container mx-auto flex flex-wrap py-6 px-12 flex-col md:flex-row items-center"><a href=/ class="flex title-font font-medium items-center text-gray-700 dark:text-gray-200 mb-4 md:mb-0"><h1 class="ml-3 text-2xl font-bold">Susan Potter</h1></a><nav class="md:ml-auto flex flex-wrap items-center text-base justify-center"><a href=/about/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">About</a>
+<a href=/talks/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Talks</a>
+<a href=/software/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Software</a>
+<a href=/snippets/ class="mx-6 text-xl text-pink-600 hover:underline dark:text-pink-500">Snippets</a></nav></div><hgroup class="text-black dark:text-gray-50 container mx-auto px-16 pb-3"><h2 class="text-3xl font-extrabold tracking-wider leading-loose">Ruby 2.4 changes overview</h2><h3 class="text-gray-800 dark:text-gray-200">Sun December 12, 2016</h3></hgroup></header><main class="container px-16 mx-auto rounded-md border shadow-md border-gray-200 dark:border-gray-600 py-2"><h2 id=unified-fixnum-and-bignum-into-integer>Unified <code>Fixnum</code> and <code>Bignum</code> into <code>Integer</code></h2><p>It&rsquo;s backward compatible too.</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=color:#960050;background-color:#1e0010>$</span> irb
+irb(main):<span style=color:#ae81ff>001</span>:<span style=color:#ae81ff>0</span><span style=color:#f92672>&gt;</span> <span style=color:#66d9ef>RUBY_VERSION</span>
+<span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#34;2.3.1&#34;</span>
+irb(main):<span style=color:#ae81ff>002</span>:<span style=color:#ae81ff>0</span><span style=color:#f92672>&gt;</span> (<span style=color:#ae81ff>2</span><span style=color:#f92672>**</span><span style=color:#ae81ff>100</span>)<span style=color:#f92672>.</span>class
+<span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>Bignum</span>
+irb(main):<span style=color:#ae81ff>003</span>:<span style=color:#ae81ff>0</span><span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>2</span><span style=color:#f92672>.</span>class
+<span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>Fixnum</span>
+irb(main):<span style=color:#ae81ff>004</span>:<span style=color:#ae81ff>0</span><span style=color:#f92672>&gt;</span> <span style=color:#66d9ef>Fixnum</span>
+<span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>Fixnum</span>
+irb(main):<span style=color:#ae81ff>005</span>:<span style=color:#ae81ff>0</span><span style=color:#f92672>&gt;</span> <span style=color:#66d9ef>Bignum</span>
+<span style=color:#f92672>=&gt;</span> <span style=color:#66d9ef>Bignum</span>
+irb(main):<span style=color:#ae81ff>006</span>:<span style=color:#ae81ff>0</span><span style=color:#f92672>&gt;</span> <span style=color:#66d9ef>Bogonum</span>
+<span style=color:#e6db74>NameError</span>: uninitialized constant <span style=color:#66d9ef>Bogonum</span>
+        from (irb):<span style=color:#ae81ff>6</span>
+        from <span style=color:#e6db74>/home/s</span>potter<span style=color:#f92672>/.</span>nix<span style=color:#f92672>-</span>profile<span style=color:#f92672>/</span>bin<span style=color:#f92672>/</span><span style=color:#e6db74>irb</span>:<span style=color:#ae81ff>11</span><span style=color:#e6db74>:in</span> <span style=color:#e6db74>`&lt;main&gt;&#39;
+</span><span style=color:#e6db74>irb(main):007:0&gt; quit
+</span></code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ nix-env -f . -iA ruby_2_4_0
 replacing old ‘ruby-2.3.1-p0’
 installing ‘ruby-2.4.0’
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#960050;background-color:#1e0010">$</span> irb
-irb(main):<span style="color:#ae81ff">001</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">RUBY_VERSION</span>
-<span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;2.4.0&#34;</span>
-irb(main):<span style="color:#ae81ff">002</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> (<span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">100</span>)<span style="color:#f92672">.</span>class
-<span style="color:#f92672">=&gt;</span> Integer
-irb(main):<span style="color:#ae81ff">003</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">.</span>class
-<span style="color:#f92672">=&gt;</span> Integer
-irb(main):<span style="color:#ae81ff">004</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Fixnum</span>
-(irb):<span style="color:#ae81ff">4</span>: <span style="color:#e6db74">warning</span>: constant <span style="color:#f92672">::</span><span style="color:#66d9ef">Fixnum</span> is deprecated
-<span style="color:#f92672">=&gt;</span> Integer
-irb(main):<span style="color:#ae81ff">005</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bignum</span>
-(irb):<span style="color:#ae81ff">5</span>: <span style="color:#e6db74">warning</span>: constant <span style="color:#f92672">::</span><span style="color:#66d9ef">Bignum</span> is deprecated
-<span style="color:#f92672">=&gt;</span> Integer
-irb(main):<span style="color:#ae81ff">006</span>:<span style="color:#ae81ff">0</span><span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">Bogonum</span>
-<span style="color:#e6db74">NameError</span>: uninitialized constant <span style="color:#66d9ef">Bogonum</span>
-        from (irb):<span style="color:#ae81ff">6</span>
-        from <span style="color:#e6db74">/home/s</span>potter<span style="color:#f92672">/.</span>nix<span style="color:#f92672">-</span>profile<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span><span style="color:#e6db74">irb</span>:<span style="color:#ae81ff">11</span><span style="color:#e6db74">:in</span> <span style="color:#e6db74">`&lt;main&gt;&#39;
-</span><span style="color:#e6db74">irb(main):007:0&gt; quit
-</span></code></pre></div><h2 id="arrayminarraymax-optimization-in-ruby-v240">Array#min/Array#max optimization in Ruby v2.4.0+</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-ruby" data-lang="ruby"><span style="color:#75715e"># content of ruby_array_benchmarks.rb</span>
-require <span style="color:#e6db74">&#39;benchmark&#39;</span>
+</code></pre></div><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=color:#960050;background-color:#1e0010>$</span> irb
+irb(main):<span style=color:#ae81ff>001</span>:<span style=color:#ae81ff>0</span><span style=color:#f92672>&gt;</span> <span style=color:#66d9ef>RUBY_VERSION</span>
+<span style=color:#f92672>=&gt;</span> <span style=color:#e6db74>&#34;2.4.0&#34;</span>
+irb(main):<span style=color:#ae81ff>002</span>:<span style=color:#ae81ff>0</span><span style=color:#f92672>&gt;</span> (<span style=color:#ae81ff>2</span><span style=color:#f92672>**</span><span style=color:#ae81ff>100</span>)<span style=color:#f92672>.</span>class
+<span style=color:#f92672>=&gt;</span> Integer
+irb(main):<span style=color:#ae81ff>003</span>:<span style=color:#ae81ff>0</span><span style=color:#f92672>&gt;</span> <span style=color:#ae81ff>2</span><span style=color:#f92672>.</span>class
+<span style=color:#f92672>=&gt;</span> Integer
+irb(main):<span style=color:#ae81ff>004</span>:<span style=color:#ae81ff>0</span><span style=color:#f92672>&gt;</span> <span style=color:#66d9ef>Fixnum</span>
+(irb):<span style=color:#ae81ff>4</span>: <span style=color:#e6db74>warning</span>: constant <span style=color:#f92672>::</span><span style=color:#66d9ef>Fixnum</span> is deprecated
+<span style=color:#f92672>=&gt;</span> Integer
+irb(main):<span style=color:#ae81ff>005</span>:<span style=color:#ae81ff>0</span><span style=color:#f92672>&gt;</span> <span style=color:#66d9ef>Bignum</span>
+(irb):<span style=color:#ae81ff>5</span>: <span style=color:#e6db74>warning</span>: constant <span style=color:#f92672>::</span><span style=color:#66d9ef>Bignum</span> is deprecated
+<span style=color:#f92672>=&gt;</span> Integer
+irb(main):<span style=color:#ae81ff>006</span>:<span style=color:#ae81ff>0</span><span style=color:#f92672>&gt;</span> <span style=color:#66d9ef>Bogonum</span>
+<span style=color:#e6db74>NameError</span>: uninitialized constant <span style=color:#66d9ef>Bogonum</span>
+        from (irb):<span style=color:#ae81ff>6</span>
+        from <span style=color:#e6db74>/home/s</span>potter<span style=color:#f92672>/.</span>nix<span style=color:#f92672>-</span>profile<span style=color:#f92672>/</span>bin<span style=color:#f92672>/</span><span style=color:#e6db74>irb</span>:<span style=color:#ae81ff>11</span><span style=color:#e6db74>:in</span> <span style=color:#e6db74>`&lt;main&gt;&#39;
+</span><span style=color:#e6db74>irb(main):007:0&gt; quit
+</span></code></pre></div><h2 id=arrayminarraymax-optimization-in-ruby-v240>Array#min/Array#max optimization in Ruby v2.4.0+</h2><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-ruby data-lang=ruby><span style=color:#75715e># content of ruby_array_benchmarks.rb</span>
+require <span style=color:#e6db74>&#39;benchmark&#39;</span>
 
-<span style="color:#66d9ef">LARGE_ARRAY</span> <span style="color:#f92672">=</span> (<span style="color:#ae81ff">1</span><span style="color:#f92672">..</span><span style="color:#ae81ff">100_000_000</span>)<span style="color:#f92672">.</span>to_a<span style="color:#f92672">.</span>freeze
+<span style=color:#66d9ef>LARGE_ARRAY</span> <span style=color:#f92672>=</span> (<span style=color:#ae81ff>1</span><span style=color:#f92672>..</span><span style=color:#ae81ff>100_000_000</span>)<span style=color:#f92672>.</span>to_a<span style=color:#f92672>.</span>freeze
 
-puts <span style="color:#e6db74">&#34;Ruby v</span><span style="color:#e6db74">#{</span><span style="color:#66d9ef">RUBY_VERSION</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+puts <span style=color:#e6db74>&#34;Ruby v</span><span style=color:#e6db74>#{</span><span style=color:#66d9ef>RUBY_VERSION</span><span style=color:#e6db74>}</span><span style=color:#e6db74>&#34;</span>
 
-<span style="color:#66d9ef">Benchmark</span><span style="color:#f92672">.</span>bm(<span style="color:#ae81ff">100</span>) <span style="color:#66d9ef">do</span> <span style="color:#f92672">|</span>b<span style="color:#f92672">|</span>
-  b<span style="color:#f92672">.</span>report(<span style="color:#e6db74">&#39;Array#min on large array&#39;</span>) <span style="color:#66d9ef">do</span>
-    <span style="color:#66d9ef">LARGE_ARRAY</span><span style="color:#f92672">.</span>min
-  <span style="color:#66d9ef">end</span>
+<span style=color:#66d9ef>Benchmark</span><span style=color:#f92672>.</span>bm(<span style=color:#ae81ff>100</span>) <span style=color:#66d9ef>do</span> <span style=color:#f92672>|</span>b<span style=color:#f92672>|</span>
+  b<span style=color:#f92672>.</span>report(<span style=color:#e6db74>&#39;Array#min on large array&#39;</span>) <span style=color:#66d9ef>do</span>
+    <span style=color:#66d9ef>LARGE_ARRAY</span><span style=color:#f92672>.</span>min
+  <span style=color:#66d9ef>end</span>
 
-  b<span style="color:#f92672">.</span>report(<span style="color:#e6db74">&#39;Array#max on large array&#39;</span>) <span style="color:#66d9ef">do</span>
-    <span style="color:#66d9ef">LARGE_ARRAY</span><span style="color:#f92672">.</span>max
-  <span style="color:#66d9ef">end</span>
-<span style="color:#66d9ef">end</span>
-</code></pre></div><p>Now let&rsquo;s run this in 2.3.3 and 2.4.0 (scroll to right):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mv ruby_2_4_0_benchmarks.rb ruby_array_benchmarks.rb
+  b<span style=color:#f92672>.</span>report(<span style=color:#e6db74>&#39;Array#max on large array&#39;</span>) <span style=color:#66d9ef>do</span>
+    <span style=color:#66d9ef>LARGE_ARRAY</span><span style=color:#f92672>.</span>max
+  <span style=color:#66d9ef>end</span>
+<span style=color:#66d9ef>end</span>
+</code></pre></div><p>Now let&rsquo;s run this in 2.3.3 and 2.4.0 (scroll to right):</p><div class=highlight><pre style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-shell data-lang=shell>$ mv ruby_2_4_0_benchmarks.rb ruby_array_benchmarks.rb
 
 $ ruby ruby_array_benchmarks.rb
 Ruby v2.3.3
                                                                               user     system      total        real
-Array#min on large array                                                  4.670000   0.000000   4.670000 <span style="color:#f92672">(</span>  4.673932<span style="color:#f92672">)</span>
-Array#max on large array                                                  4.650000   0.000000   4.650000 <span style="color:#f92672">(</span>  4.644266<span style="color:#f92672">)</span>
+Array#min on large array                                                  4.670000   0.000000   4.670000 <span style=color:#f92672>(</span>  4.673932<span style=color:#f92672>)</span>
+Array#max on large array                                                  4.650000   0.000000   4.650000 <span style=color:#f92672>(</span>  4.644266<span style=color:#f92672>)</span>
 
 $ nix-env -f . -iA ruby_2_4_0
 replacing old ‘ruby-2.3.3’
@@ -137,46 +69,11 @@ installing ‘ruby-2.4.0’
 $ ruby ruby_array_benchmarks.rb
 Ruby v2.4.0
                                                                               user     system      total        real
-Array#min on large array                                                  0.170000   0.000000   0.170000 <span style="color:#f92672">(</span>  0.169169<span style="color:#f92672">)</span>
-Array#max on large array                                                  0.180000   0.000000   0.180000 <span style="color:#f92672">(</span>  0.186183<span style="color:#f92672">)</span>
-</code></pre></div><p>Quite impressive improvement. Not sure how relevant it will be in the wilds of Ruby servers in production though.</p>
-<p>There are other changes, which I haven&rsquo;t had time to check out yet.</p>
-<p>Note: the 2.3.3 build I used above to compare benchmarks to has RVM Railsexpress patches applied. The 2.4.0 version does not have the additional GC stats patch applied.</p>
-
-</main>
-<footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20">
-  <div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2">
-    <div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row">
-      <p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
-        <a href="https://twitter.com/SusanPotter" rel="noopener noreferrer" class="ml-1" aria-hidden="true">@SusanPotter</a>
-      </p>
-      
-      <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-        
-        <a href="https://github.com/mbbx6spp/" class="ml-3" title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github" >
-          <img src="/images/github.svg" width=24 height=24 alt="Github icon"/>
-        </a>
-        
-        <a href="https://keybase.io/mbbx6spp" class="ml-3" title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase" >
-          <img src="/images/keybase.svg" width=24 height=24 alt="Keybase icon"/>
-        </a>
-        
-        <a href="https://www.linkedin.com/in/susanpotter/" class="ml-3" title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn" >
-          <img src="/images/linkedin.svg" width=24 height=24 alt="LinkedIn icon"/>
-        </a>
-        
-        <a href="https://slideshare.net/mbbx6spp" class="ml-3" title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare" >
-          <img src="/images/slideshare.svg" width=24 height=24 alt="Slideshare icon"/>
-        </a>
-        
-        <a href="https://twitter.com/SusanPotter" class="ml-3" title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter" >
-          <img src="/images/twitter.svg" width=24 height=24 alt="Twitter icon"/>
-        </a>
-        
-      </span>
-      
-    </div>
-  </div>
-</footer>
-</body>
-</html>
+Array#min on large array                                                  0.170000   0.000000   0.170000 <span style=color:#f92672>(</span>  0.169169<span style=color:#f92672>)</span>
+Array#max on large array                                                  0.180000   0.000000   0.180000 <span style=color:#f92672>(</span>  0.186183<span style=color:#f92672>)</span>
+</code></pre></div><p>Quite impressive improvement. Not sure how relevant it will be in the wilds of Ruby servers in production though.</p><p>There are other changes, which I haven&rsquo;t had time to check out yet.</p><p>Note: the 2.3.3 build I used above to compare benchmarks to has RVM Railsexpress patches applied. The 2.4.0 version does not have the additional GC stats patch applied.</p></main><footer class="h-full text-gray-600 dark:text-gray-200 body-font w-full mt-8 md:mt-12 lg:mt-16 xl:mt-20"><div class="bg-blue-50 dark:bg-gray-800 text-gray-600 dark:text-gray-200 p-2"><div class="container mx-auto py-4 px-16 flex flex-wrap flex-col sm:flex-row"><p class="text-sm text-center sm:text-left">© 2006 - 2021 Susan Potter —
+<a href=https://twitter.com/SusanPotter rel="noopener noreferrer" class=ml-1 aria-hidden=true>@SusanPotter</a></p><span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start"><a href=https://github.com/mbbx6spp/ class=ml-3 title="mbbx6spp on Github" aria-label="Susan is mbbx6spp on Github"><img src=/images/github.svg width=24 height=24 alt="Github icon"></a>
+<a href=https://keybase.io/mbbx6spp class=ml-3 title="mbbx6spp on Keybase" aria-label="Susan is mbbx6spp on Keybase"><img src=/images/keybase.svg width=24 height=24 alt="Keybase icon"></a>
+<a href=https://www.linkedin.com/in/susanpotter/ class=ml-3 title="susanpotter on LinkedIn" aria-label="Susan is susanpotter on LinkedIn"><img src=/images/linkedin.svg width=24 height=24 alt="LinkedIn icon"></a>
+<a href=https://slideshare.net/mbbx6spp class=ml-3 title="mbbx6spp on Slideshare" aria-label="Susan is mbbx6spp on Slideshare"><img src=/images/slideshare.svg width=24 height=24 alt="Slideshare icon"></a>
+<a href=https://twitter.com/SusanPotter class=ml-3 title="SusanPotter on Twitter" aria-label="Susan is SusanPotter on Twitter"><img src=/images/twitter.svg width=24 height=24 alt="Twitter icon"></a></span></div></div></footer></body></html>
