@@ -735,9 +735,9 @@ body {
 @media (prefers-color-scheme: dark) {
   body {
     --tw-bg-opacity: 1;
-    background-color: rgba(0, 0, 0, var(--tw-bg-opacity));
-    --tw-bg-opacity: 1;
     background-color: rgba(245, 245, 245, var(--tw-bg-opacity));
+    --tw-bg-opacity: 1;
+    background-color: rgba(38, 38, 38, var(--tw-bg-opacity));
   }
 }
 
@@ -967,16 +967,31 @@ main ul li p {
 main .src .highlight pre {
   --tw-border-opacity: 1;
   border-color: rgba(82, 82, 82, var(--tw-border-opacity));
-  border-radius: 0.375rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  main .src .highlight pre {
+    --tw-border-opacity: 1;
+    border-color: rgba(163, 163, 163, var(--tw-border-opacity));
+  }
+}
+
+main .src .highlight pre {
+  border-radius: 0.125rem;
   border-width: 1px;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   margin-bottom: 0.75rem;
   overflow: auto;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
   --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  --tw-drop-shadow: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04)) drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
 }
 
 .divide-y-2 > :not([hidden]) ~ :not([hidden]) {
@@ -1006,6 +1021,11 @@ main .src .highlight pre {
 }
 
 @media (prefers-color-scheme: dark) {
+  .dark\:bg-gray-700 {
+    --tw-bg-opacity: 1;
+    background-color: rgba(64, 64, 64, var(--tw-bg-opacity));
+  }
+
   .dark\:bg-gray-800 {
     --tw-bg-opacity: 1;
     background-color: rgba(38, 38, 38, var(--tw-bg-opacity));
@@ -1057,10 +1077,19 @@ main .src .highlight pre {
     border-color: rgba(82, 82, 82, var(--tw-border-opacity));
   }
 
+  .dark\:border-gray-800 {
+    --tw-border-opacity: 1;
+    border-color: rgba(38, 38, 38, var(--tw-border-opacity));
+  }
+
   .dark\:border-gray-900 {
     --tw-border-opacity: 1;
     border-color: rgba(23, 23, 23, var(--tw-border-opacity));
   }
+}
+
+.rounded-sm {
+  border-radius: 0.125rem;
 }
 
 .rounded-md {
@@ -1129,6 +1158,10 @@ main .src .highlight pre {
 
 .flex-1 {
   flex: 1 1 0%;
+}
+
+.flex-grow {
+  flex-grow: 1;
 }
 
 .flex-shrink-0 {
@@ -1232,6 +1265,10 @@ main .src .highlight pre {
   margin-bottom: -2rem;
 }
 
+.mt-0 {
+  margin-top: 0px;
+}
+
 .ml-1 {
   margin-left: 0.25rem;
 }
@@ -1280,14 +1317,13 @@ main .src .highlight pre {
   padding: 0.5rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .py-0 {
   padding-top: 0px;
   padding-bottom: 0px;
-}
-
-.px-1 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
 }
 
 .py-2 {
@@ -1298,11 +1334,6 @@ main .src .highlight pre {
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-}
-
-.py-3 {
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
 }
 
 .px-3 {
@@ -1372,6 +1403,14 @@ main .src .highlight pre {
 
 .relative {
   position: relative;
+}
+
+.bottom-0 {
+  bottom: 0px;
+}
+
+.left-0 {
+  left: 0px;
 }
 
 * {
@@ -1631,6 +1670,10 @@ main .src .highlight pre {
     margin-bottom: 0px;
   }
 
+  .md\:mb-4 {
+    margin-bottom: 1rem;
+  }
+
   .md\:mt-12 {
     margin-top: 3rem;
   }
@@ -1641,6 +1684,11 @@ main .src .highlight pre {
 
   .md\:-mt-px {
     margin-top: -1px;
+  }
+
+  .md\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
   .md\:w-64 {
@@ -1663,8 +1711,17 @@ main .src .highlight pre {
     line-height: 1.75rem;
   }
 
+  .lg\:mb-8 {
+    margin-bottom: 2rem;
+  }
+
   .lg\:mt-16 {
     margin-top: 4rem;
+  }
+
+  .lg\:px-16 {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 
   .lg\:w-7\/12 {
@@ -1683,8 +1740,17 @@ main .src .highlight pre {
     line-height: 2rem;
   }
 
+  .xl\:mb-16 {
+    margin-bottom: 4rem;
+  }
+
   .xl\:mt-20 {
     margin-top: 5rem;
+  }
+
+  .xl\:px-24 {
+    padding-left: 6rem;
+    padding-right: 6rem;
   }
 
   .xl\:w-5\/12 {
@@ -1693,4 +1759,12 @@ main .src .highlight pre {
 }
 
 @media (min-width: 1536px) {
+  .\32xl\:mb-24 {
+    margin-bottom: 6rem;
+  }
+
+  .\32xl\:px-32 {
+    padding-left: 8rem;
+    padding-right: 8rem;
+  }
 }
