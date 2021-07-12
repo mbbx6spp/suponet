@@ -64,3 +64,84 @@ View my publicly-auditable identity here: https://keybase.io/mbbx6spp
 
 ==================================================================
 
+==================================================================
+https://keybase.io/mbbx6spp
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.susanpotter.net
+  * I am mbbx6spp (https://keybase.io/mbbx6spp) on keybase.
+  * I have a public key with fingerprint CE87 D62D 2F78 7073 7B09  498E BCC9 DA82 9DB1 2C14
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "01017d6881d79351a5012bf5358aa2a88cdf7e9e0858df11cbb24c84f460adb90c100a",
+      "fingerprint": "ce87d62d2f7870737b09498ebcc9da829db12c14",
+      "host": "keybase.io",
+      "key_id": "bcc9da829db12c14",
+      "kid": "01017d6881d79351a5012bf5358aa2a88cdf7e9e0858df11cbb24c84f460adb90c100a",
+      "uid": "c7e3ee68fd80871726cd7ca85af9ee00",
+      "username": "mbbx6spp"
+    },
+    "merkle_root": {
+      "ctime": 1626124209,
+      "hash_meta": "ddc5c9ef648653771403dbf92b67efd084226bca8decfcde58e6047d237ea543",
+      "seqno": 20363416
+    },
+    "revoke": {
+      "sig_ids": [
+        "b653a2fd406e92421ae58baf924c75b70a54ebc5e4248b903dc04c0a0d9a10960f"
+      ]
+    },
+    "service": {
+      "hostname": "www.susanpotter.net",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1626124213,
+  "expire_in": 157680000,
+  "prev": "fd8a5e9f2e51a56721a1e9d789ea808ff1fea39a0c170b8d78cb3ced75763afb",
+  "seqno": 67,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMLEAnicrVNbaBxVGN5sYtGtJdt4efESnIgEE9Nz5nLOmbWtkFZoxJK2kYKXsD2X
+/yTjJjPrzORmSEBpDCpUKGjxoda2PkhVSqFVF5VqW18qSkvQGgiWNqFoEZTgQ6ul
+emapCOKj8zLMzPd9//d/35xTqxpzhYY38893t15t/6PhqxPTI7kdPx8+NmmJSE1Y
+pUmrAvUbDClI0nIlUFbJQhhhqghjWFHf8TD3ELaF9hyPcW5zxqTSFHxAzGNKYyyF
+sF3JXO0SxJXwkcQIcavT0kE4AHE1DsLUyEpgRtVWtqaMIupQgXzXZyCk9BVntq8E
+tiV2DXEwSjKGMSd4Al1BZN6Zh3Ld3n/g/2ffI3U5ScEBIEwrhhjF1CZSUcmZx7UP
+gFAGTCAO+TAY9LAQ4ySpVq2pTmsY4soQlOMoSrNwZRpkEExsgm3XRr5ZkCeD5WFI
+uWEqJT3pgyYuI55DKXaRo4T2bUEoaIWYa9tEmMEKpJYKPAYEuVTZDgXuuY7xkcBz
+YWSVbOQQx8XEWIhhNKpANj0JBkxuiVV62hJGn9tauYiAb5xgbsSEWcfEQD1BkZEz
+dXjg2i4zeThKIlcijpTPMfIJ0lb/VDYtHg1kXTwr6kYAY2NjXclIwsNqlKYQd4WQ
+GmfVOEojGQ0ZwGCaVpNSlk86Ua0zQJRvaJVFECrztxjGKMRJEIUmL4P8V3TY6bRg
+vBrEUA4yhEcJQ+bK5sCokTRdcQ98bUNWP6FmRQy+oswHblrUGmvgjs9N1RQJZj5I
+4UhQ1Cg5XIt/siTU+OQDRtMEGPJ0JAZr6sTnzzTlGgq5FTfls2OUK9xS/PtwBYWb
+c0fp9jvbrvVumFseObP9zx8244lx8VDT8fbmy71bribpawvdu678dg9/+IF1eqFy
+8uXKg+jjmY59yy378rW+vfe2//4N6enQiwlZs2L9G6vWHuhZSAvhUq331mst1Y1w
+8tyhnUfu957ddOniyv7JL/N7Vtbe6Vv6uumj5unOs7/e9uPS+/f9dKatsaWx+NTs
+5c9OT6379vti912dx0+dfm+imd/xem33uz071zx69+HuT/bvXf70oP2Wf2l1+2Mz
+GzY9nm/d9kjf4qtvN75wZf78k9vcIxdrr5z/ZW7/FzOq4dzu/pbF+dbZ62ePtm0t
+Hrowt3b+wxdbP/hu49aw2PHS7PSeXU/sWL/59i3XL+QO/gU1g4E9
+=zzKJ
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mbbx6spp
+
+==================================================================
