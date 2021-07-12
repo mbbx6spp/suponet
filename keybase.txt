@@ -1,0 +1,66 @@
+==================================================================
+https://keybase.io/mbbx6spp
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://susanpotter.net
+  * I am mbbx6spp (https://keybase.io/mbbx6spp) on keybase.
+  * I have a public key with fingerprint CE87 D62D 2F78 7073 7B09  498E BCC9 DA82 9DB1 2C14
+
+To claim this, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "fingerprint": "ce87d62d2f7870737b09498ebcc9da829db12c14",
+            "host": "keybase.io",
+            "key_id": "bcc9da829db12c14",
+            "uid": "c7e3ee68fd80871726cd7ca85af9ee00",
+            "username": "mbbx6spp"
+        },
+        "service": {
+            "hostname": "susanpotter.net",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1415368979,
+    "expire_in": 157680000,
+    "prev": "2b87c879c6ab6591efd2c2f220784b110a95a19a1356c8f10eca4b662e6b4fb4",
+    "seqno": 3,
+    "tag": "signature"
+}
+
+with the aforementioned key, yielding the PGP signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v1.1.3
+Comment: https://keybase.io/crypto
+
+yMHtAnicbZFrSBRRFMd3LV8bhlEkWRDOh5IQm5ndnTuzEYlYSYgliBtobXPv3HEn
+dWacmV1dbaN8lFERFWbSAwsq/GbLIr2oTcoiI1Qyw6IgibDsBaaItDYj9a375XLP
++f3/55x7HqUtsjnsnQkN+Wtns+fsA7GpgK20Ymh5IwEVIUR4GokqvHCJklyJNVWT
+ZIPwEAizQGBogRYBC0jgBJDkXByLIUKcwLM0J0CKRpSLyCH8im4pTBvI6zhXUsyY
++fBJghn9Dx9YSCCAnRgzrCiwJAsoQDNIAIhn3bzIYUySFqhjTeZrsEnXQFjP6KpK
+hHMIMxqUELZ6tkr/JfSAzsuqYhhYy5WxYcpVTTEUpFSbSb9hqB5La4RUC67D0PfX
+xgclWTBHNwVBrOmSIhMeyiSRIVm+lItyOxmWA1wOgetVScM+ySLcgGFJ81hlcNC0
+pCELEAs4xPCQcXMUFgUa0SJNk4B1QYoiec7NUxxPOd0MYkWKxIh3QYahMQNdIrQ+
+Rse1skJ4nGabfKU1klQp80ZAw0S4L1ax2GZ32JISE6zl2Ryp6f9Wmkgk/86I3T90
+xp2+5WvdhL21/lTvi5Ti1R1gaTnSBsomjzUVDmz7VfXmXUtN+/7gtZERrmC9rWTN
+6bQL/TNSxtvxrKvzXdGsHtB2eLi6afeR9obhG94OveTo4OD52VWd492w+QR3L7Zi
+HBUcKMOtoWB0qvmHf2X/zcmOzI0PyUhRRd7L60/LfpJPEnYN3Z6p2r7kQ1Gv8Hz0
+mycvfBFc7tsQ9sxl9taO3Ym00fE94e7877cC78N7uz6/8ibFTybEs88qpd7a0cKt
+2T3CTrgj9W7KlTAee1D4rDsyUvc4Y93m+dD0649jl+aPt5RHo/5zy4KfHF+mk6MT
+8U1ehYkU72s4WPQH61kbmw==
+=XaGX
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/mbbx6spp
+
+==================================================================
+
